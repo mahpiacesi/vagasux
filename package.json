@@ -1,0 +1,12 @@
+﻿{
+  "name": "vagasux",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export:carousel": "node tools/carousel/export-carousel.mjs",
+    "fetch:storyset": "node tools/carousel/scripts/fetch-storyset-illustrations.mjs"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

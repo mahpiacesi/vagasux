@@ -1,0 +1,16 @@
+﻿# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+
+# Carousel generated outputs
+tools/carousel/out/*.png
+tools/carousel/out/*.pdf
+tools/carousel/out/_html/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
