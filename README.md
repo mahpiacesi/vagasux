@@ -1,4 +1,4 @@
-﻿# VagasUX
+# VagasUX
 
 Repositório do projeto **VagasUX** — comunidade e produto para conectar pessoas a oportunidades com foco em experiência, clareza e inclusão.
 
