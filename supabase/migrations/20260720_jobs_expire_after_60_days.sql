@@ -28,3 +28,7 @@ $$;
 
 COMMENT ON FUNCTION public.expire_stale_jobs(integer) IS
   'Marks jobs as expired when coalesce(published_at, captured_at) is older than max_age_days (default 60). Returns how many rows were updated.';
+
+-- Only the service role (n8n / backend) should expire jobs
+GRANT EXECUTE ON FUNCTION public.expire_stale_jobs(integer) TO service_role;
+REVOKE EXECUTE ON FUNCTION public.expire_stale_jobs(integer) FROM PUBLIC, anon, authenticated;

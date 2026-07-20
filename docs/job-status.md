@@ -34,7 +34,7 @@ select public.expire_stale_jobs();     -- padrão: 60 dias
 select public.expire_stale_jobs(60);   -- explícito
 ```
 
-Deve rodar no Scheduler (diariamente, junto com a coleta).
+Roda no **Scheduler** do n8n (node `Expire stale jobs`) depois dos collectors, todo dia.
 
 ## Regras
 
