@@ -9,7 +9,7 @@ Cada vaga passa por etapas claras. Isso separa **coleta**, **IA**, **publicaçã
 | `raw` | Acabou de ser coletada (bruta, só normalizada) | Collector |
 | `enriched` | Passou pela IA (senioridade, resumo, skills, etc.) | Workflow de enrichment |
 | `published` | Liberada para o site / comunidade | Curadoria ou regra automática |
-| `expired` | Não está mais ativa | Collector / job de limpeza |
+| `expired` | Não está mais ativa (passou do prazo) | Regra automática de 60 dias |
 
 Fluxo normal:
 
@@ -17,12 +17,32 @@ Fluxo normal:
 raw → enriched → published → expired
 ```
 
+## Regra de expiração (60 dias)
+
+Uma vaga pode ficar ativa no repositório por **até 60 dias**.
+
+- Conta a partir de `published_at` (data da fonte)
+- Se não tiver `published_at`, usa `captured_at` (quando entrou no VagasUX)
+- Depois disso: status → `expired`
+- O registro **não é apagado** (fica para histórico / analytics)
+- Site e comunidade **não mostram** `expired`
+
+Função no banco:
+
+```sql
+select public.expire_stale_jobs();     -- padrão: 60 dias
+select public.expire_stale_jobs(60);   -- explícito
+```
+
+Deve rodar no Scheduler (diariamente, junto com a coleta).
+
 ## Regras
 
-1. Collectors **sempre** gravam/atualizam como `raw` (ou mantêm status atual se a vaga já avançou — ver abaixo).
+1. Collectors **não rebaixam** status avançado no upsert (não enviam `status`).
 2. Site e canais públicos leem **apenas** `published`.
-3. IA só processa vagas `raw` (e, no futuro, `raw`/`enriched` com conteúdo mudado).
-4. Valores permitidos no banco: só esses quatro (qualquer outro é rejeitado).
+3. IA só processa vagas `raw` (e, no futuro, com conteúdo mudado).
+4. Valores permitidos no banco: só `raw`, `enriched`, `published`, `expired`.
+5. Expiração por idade: **60 dias** (`expire_stale_jobs`).
 
 ## Upsert e status (importante)
 
