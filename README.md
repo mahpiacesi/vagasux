@@ -6,6 +6,11 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [job-status.md](docs/job-status.md) — ciclo de vida da vaga (`raw` → `enriched` → `published` → `expired`)
+
+## Banco (Supabase)
+
+Migrations em [`supabase/migrations/`](supabase/migrations/).
 
 ## Ferramenta: export do carrossel (Instagram)
 
