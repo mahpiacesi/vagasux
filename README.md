@@ -6,6 +6,13 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [dedup.md](docs/dedup.md) — evitar vagas duplicadas (Supabase + upsert nos collectors)
+
+## Banco (Supabase)
+
+Migrations versionadas em [`supabase/migrations/`](supabase/migrations/).
+
+Dedup ativo em `jobs`: chave única `(source, source_job_id)` + `url` única.
 
 ## Ferramenta: export do carrossel (Instagram)
 
