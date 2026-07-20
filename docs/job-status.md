@@ -17,14 +17,24 @@ Fluxo normal:
 raw → enriched → published → expired
 ```
 
-## Regra de expiração (60 dias)
+## Regra de 60 dias (entrada + expiração)
 
 Uma vaga pode ficar ativa no repositório por **até 60 dias**.
 
+### Na coleta (entrada)
+
+Nos collectors (**Max age 60 days**):
+
+- Se `published_at` tem **mais de 60 dias** → **não grava** (nem upsert)
+- Se **não tem** `published_at` (ou data inválida) → **deixa entrar**
+- Banco de talentos **não é excluído** por tipo de vaga; só segue a mesma regra de idade
+
+### Depois de estar no banco
+
 - Conta a partir de `published_at` (data da fonte)
-- Se não tiver `published_at`, usa `captured_at` (quando entrou no VagasUX)
-- Depois disso: status → `expired`
-- O registro **não é apagado** (fica para histórico / analytics)
+- Se não tiver `published_at`, usa `captured_at`
+- Depois de 60 dias: status → `expired`
+- O registro **não é apagado** (histórico / analytics)
 - Site e comunidade **não mostram** `expired`
 
 Função no banco:
