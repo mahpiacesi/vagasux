@@ -6,6 +6,9 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [architecture-decisions.md](docs/architecture-decisions.md) — decisões de arquitetura (ADRs)
+- [job-status.md](docs/job-status.md) — ciclo de vida da vaga
+- [enrichment.md](docs/enrichment.md) — etapa de IA (Gemini)
 
 ## Ferramenta: export do carrossel (Instagram)
 
