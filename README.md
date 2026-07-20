@@ -6,6 +6,13 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [mcp-setup.md](docs/mcp-setup.md) — conectar Supabase + n8n via MCP (agregador de vagas)
+
+## MCP (Supabase + n8n)
+
+Config do projeto em [`.cursor/mcp.json`](.cursor/mcp.json). Secrets ficam em variáveis de ambiente (`N8N_API_URL`, `N8N_API_KEY`); o Supabase usa OAuth no servidor hospedado.
+
+Passo a passo completo: [docs/mcp-setup.md](docs/mcp-setup.md).
 
 ## Ferramenta: export do carrossel (Instagram)
 
