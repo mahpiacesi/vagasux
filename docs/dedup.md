@@ -23,61 +23,27 @@ Migration: [`supabase/migrations/20260720_jobs_dedup_unique_keys.sql`](../supaba
 
 ---
 
-## Ajuste necessário nos collectors (n8n)
+## Collectors n8n (feito)
 
-Os workflows **Collector Gupy** e **Collector Greenhouse** ainda estão com MCP desligado (`availableInMCP: false`), então este ajuste precisa ser feito no editor do n8n.
-
-### Ativar MCP nos workflows (para o agente ajudar depois)
-
-Em cada workflow (Scheduler, Collector Gupy, Collector Greenhouse):
-
-1. Abra o workflow
-2. Em **Settings** (ou no card da lista), ative **Available in MCP** / acesso MCP
-3. Salve
-
-### Configurar upsert no node do Supabase
-
-No node que **grava** em `jobs` (Create / Insert):
-
-1. Troque a operação de **Create/Insert** para **Upsert** (se o node Supabase tiver essa opção)  
-   **ou** use HTTP Request para a API REST do Supabase (abaixo).
-2. Conflict / on conflict: `source,source_job_id`
-3. Não envie `id` no payload (deixe o banco gerar só na criação)
-4. Não sobrescreva `captured_at` em updates se quiser preservar a primeira captura — opcional: só mande `captured_at` na criação
-
-#### Opção HTTP Request (PostgREST)
+O node nativo **Supabase** do n8n não tem upsert. Por isso os collectors usam um node **HTTP Request** chamado **Upsert job**:
 
 - Method: `POST`
 - URL: `https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/jobs?on_conflict=source,source_job_id`
-- Headers:
-  - `apikey`: service role (ou key com permissão de escrita)
-  - `Authorization`: `Bearer <mesma key>`
-  - `Content-Type`: `application/json`
-  - `Prefer`: `resolution=merge-duplicates,return=representation`
-- Body: JSON do contrato normalizado (um objeto ou array)
+- Auth: credencial Supabase (`supabaseApi`)
+- Header `Prefer`: `resolution=merge-duplicates,return=representation`
+- Body: contrato normalizado (`source`, `source_job_id`, `company`, `title`, `description`, `url`, `location`, `published_at`, `status`)
 
-Campos mínimos:
+Workflows atualizados e publicados:
 
-```json
-{
-  "source": "Gupy",
-  "source_job_id": "123",
-  "company": "Empresa",
-  "title": "Product Designer",
-  "description": "...",
-  "url": "https://...",
-  "location": "Remoto",
-  "published_at": "2026-07-20T00:00:00Z",
-  "status": "draft"
-}
-```
+- [Collector Gupy](https://vagasux.app.n8n.cloud/workflow/qbbA18TRpFVeMSrG)
+- [Collector Greenhouse](https://vagasux.app.n8n.cloud/workflow/tytzmAOMbIMyQjLD)
 
-### Checklist por collector
+### Validação feita
 
-- [ ] Collector Gupy grava com upsert em `(source, source_job_id)`
-- [ ] Collector Greenhouse grava com upsert em `(source, source_job_id)`
-- [ ] Rodar collector 2× e confirmar que o total de linhas em `jobs` não dobra
-- [ ] Confirmar que `updated_at` muda nas vagas reprocessadas
+- Scheduler executado com sucesso (Gupy + Greenhouse)
+- Greenhouse permaneceu em **3** vagas (só atualizou `updated_at`)
+- Gupy ganhou algumas vagas **novas** legítimas; **0** duplicatas
+- `location` do Greenhouse normalizada para texto (não JSON)
 
 ---
 
