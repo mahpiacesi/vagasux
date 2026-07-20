@@ -6,6 +6,9 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [architecture-decisions.md](docs/architecture-decisions.md) — decisões de arquitetura (ADRs)
+
+Toda escolha importante de plataforma (dedup, status, 60 dias, etc.) deve ser registrada nos ADRs.
 
 ## Ferramenta: export do carrossel (Instagram)
 
