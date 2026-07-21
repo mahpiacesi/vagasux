@@ -24,11 +24,8 @@ export function MuralIntro({ count }: MuralIntroProps) {
           mesmo.
         </h1>
         <p className="mural-fade mural-fade-delay-1 mt-3 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-          A VagasUX reúne vagas de diversas plataformas em um só lugar, além de
-          oferecer conteúdos, guias e iniciativas para apoiar profissionais em
-          todas as etapas da carreira. Com foco em quem está começando ou
-          migrando para a área, tornamos o acesso a oportunidades mais simples,
-          acessível e organizado.
+          Acreditamos que oportunidades transformam carreiras. Por isso,
+          reunimos vagas, conteúdos e recursos em um só lugar.
           {count != null ? (
             <>
               {' '}
