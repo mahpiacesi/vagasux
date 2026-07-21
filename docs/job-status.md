@@ -7,15 +7,18 @@ Cada vaga passa por etapas claras. Isso separa **coleta**, **IA**, **publicaçã
 | Status | Significado | Quem muda |
 |--------|-------------|-----------|
 | `raw` | Acabou de ser coletada (bruta, só normalizada) | Collector |
-| `enriched` | Passou pela IA (senioridade, resumo, skills, etc.) | Workflow **Enrichment** (ver `docs/enrichment.md`) |
-| `published` | Liberada para o site / comunidade | Curadoria ou regra automática |
-| `expired` | Não está mais ativa (passou do prazo) | Regra automática de 60 dias |
+| `enriched` | Reservado (híbrido futuro / revisão humana) | — no MVP quase não usa |
+| `published` | Liberada para o site / comunidade | **Enrichment** (auto, se design + confidence ≥ 0.70) |
+| `expired` | Fora do mural (não-design, baixa confiança, ou > 60 dias) | Enrichment ou regra de 60 dias |
 
-Fluxo normal:
+Fluxo do MVP (auto-publish):
 
 ```text
-raw → enriched → published → expired
+raw → published → expired
+         ↘ expired (não-design / confiança baixa)
 ```
+
+O status `enriched` continua válido no banco para um híbrido futuro, se a qualidade da IA pedir revisão.
 
 ## Regra de 60 dias (entrada + expiração)
 

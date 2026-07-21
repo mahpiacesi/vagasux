@@ -222,19 +222,39 @@ raw → enriched → published → expired
 | **Data** | 2026-07-20 |
 | **Refs** | `docs/enrichment.md`, workflow n8n `Enrichment` |
 
-**Contexto:** Precisamos classificar e enriquecer vagas `raw` sem publicar ainda.
+**Contexto:** Precisamos classificar e enriquecer vagas `raw`.
 
 **Decisão:**
 
 - Modelo: **Gemini 3.1 Flash-Lite** (barato e disponível; 2.5 Flash bloqueado para contas novas e 3.5 Flash com alta demanda no teste)
-- Design + `confidence >= 0.70` → `enriched`
+- Design + `confidence >= 0.70` → publicação automática (ver ADR-013)
 - Não-design → `expired` (com `ai_reason`)
 - Campo `is_international` para filtro no site
 - `ai_summary` em **inglês** se internacional; **PT-BR** se nacional
-- Publicação (`published`) fica para etapa futura
-- Lote de 20 vagas por run, após collectors + expire no Scheduler
+- Lote throttled (1-by-1 + wait) por causa do free tier do Gemini
 
 **Consequências:** Custo previsível; mural futuro já nasce com tags de idioma/mercado.
+
+---
+
+## ADR-013 — Publicação automática no MVP
+
+| | |
+|---|---|
+| **Status** | Aceita |
+| **Data** | 2026-07-21 |
+| **Refs** | `docs/enrichment.md`, `docs/job-status.md`, workflow n8n `Enrichment` |
+
+**Contexto:** UXfetch e a maioria dos agregadores põem no ar o que passa no filtro, sem fila humana. Curadoria manual não escala no início da VagasUX; a IA já é o filtro de qualidade.
+
+**Decisão:**
+
+- No MVP: design + `ai_confidence >= 0.70` → status **`published`** direto (sem parar em `enriched`)
+- Não-design ou confiança baixa → `expired`
+- Status `enriched` permanece no schema para um híbrido futuro (auto + revisão na zona cinza), se o mural ficar sujo
+- Site/canais leem só `published`
+
+**Consequências:** Mural enche sozinho após o Enrichment; dá para endurecer depois sem mudar collectors.
 
 ---
 
@@ -249,6 +269,7 @@ raw → enriched → published → expired
 | 2026-07-20 | ADR-010 Direção n8n vs código |
 | 2026-07-20 | ADR-011 LinkedIn fora do MVP |
 | 2026-07-20 | ADR-012 Enrichment Gemini Flash |
+| 2026-07-21 | ADR-013 Publicação automática no MVP |
 
 ---
 

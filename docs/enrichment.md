@@ -1,16 +1,16 @@
-# Enrichment (etapa 3 — IA)
+# Enrichment (etapa 3 — IA + publicação automática)
 
-Transforma vagas `raw` em `enriched` (design) ou `expired` (não-design).  
-**Ainda não publica** no site (`published` fica para depois).
+Transforma vagas `raw` em `published` (design) ou `expired` (não-design).  
+No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o site.
 
 ## Decisões fechadas
 
 | # | Decisão |
 |---|---|
 | 1 | Não-design → `expired` direto |
-| 2 | Esta etapa só chega em `enriched` |
+| 2 | Design + `confidence >= 0.70` → **`published` automático** |
 | 3 | Modelo: **Gemini 3.1 Flash-Lite** (barato e suficiente; trocamos se qualidade falhar) |
-| 4 | Aceita design se `confidence >= 0.70` |
+| 4 | Status `enriched` fica reservado para um híbrido futuro (revisão humana), se precisar |
 | 5 | Summary em **inglês** quando `is_international = true`; **PT-BR** quando nacional |
 
 ## Fluxo
@@ -20,7 +20,7 @@ Scheduler (após collectors + expire)
     → Enrichment
          buscar status = raw (lote)
          → Gemini (JSON)
-         → se design + confidence >= 0.70 → enriched
+         → se design + confidence >= 0.70 → published
          → senão → expired
 ```
 
