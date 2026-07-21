@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Lato', system-ui, sans-serif;
+
+  --color-brand-100: #eff0ff;
+  --color-brand-200: #a8b0ff;
+  --color-brand-300: #5d6bf6;
+  --color-brand-400: #3d4ac3;
+  --color-brand-500: #242e90;
+
+  --color-complementary-100: #fffbf1;
+  --color-complementary-200: #ffeab1;
+  --color-complementary-300: #f6d16e;
+  --color-complementary-400: #c3a34c;
+  --color-complementary-500: #907630;
+
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #d9d7e0;
+  --color-neutral-300: #b5b2c7;
+  --color-neutral-400: #6f6a94;
+  --color-neutral-500: #07003a;
+
+  --color-highlight-100: #c773a9;
+  --color-highlight-200: #da4946;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-neutral-100 font-sans text-neutral-500 antialiased;
+  }
+}
+
+@keyframes mural-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes job-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.mural-fade {
+  animation: mural-fade-up 0.55s ease-out both;
+}
+
+.mural-fade-delay-1 {
+  animation-delay: 80ms;
+}
+
+.mural-fade-delay-2 {
+  animation-delay: 160ms;
+}
+
+.job-row {
+  animation: job-row-in 0.45s ease-out both;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #eff0ff 0%,
+    #d9d7e0 45%,
+    #eff0ff 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mural-fade,
+  .job-row,
+  .skeleton {
+    animation: none;
+  }
+}
