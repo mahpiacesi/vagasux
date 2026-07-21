@@ -4,6 +4,7 @@ export type Job = {
   company: string
   location: string | null
   url: string
+  source: string
   seniority: string | null
   work_model: string | null
   employment_type: string | null

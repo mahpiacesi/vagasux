@@ -22,6 +22,7 @@ export async function fetchPublishedJobs(): Promise<Job[]> {
         'company',
         'location',
         'url',
+        'source',
         'seniority',
         'work_model',
         'employment_type',

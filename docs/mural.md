@@ -29,7 +29,7 @@ npm run dev
 
 ```sql
 select
-  id, title, company, location, url,
+  id, title, company, location, url, source,
   seniority, work_model, employment_type,
   is_international, area, role,
   ai_summary, skills, tools,
@@ -38,3 +38,13 @@ from public.jobs
 where status = 'published'
 order by published_at desc nulls last, captured_at desc;
 ```
+
+## Badges no card
+
+Cada vaga pode mostrar:
+
+- **Nova** — capturada nos últimos 3 dias
+- **Remota / Híbrida / Presencial** — quando `work_model` estiver preenchido
+- **Internacional** — quando `is_international = true`
+- **Fonte** — Gupy, Remotar, Greenhouse, etc. (`source`)
+- Data **Capturada em** no rodapé do item
