@@ -43,7 +43,7 @@ export function JobList({ jobs, totalCount, loading, error, onLoadMore }: JobLis
 
   return (
     <div>
-      <div className="divide-y-0">
+      <div>
         {jobs.map((job, index) => (
           <JobRow key={job.id} job={job} index={index} />
         ))}
