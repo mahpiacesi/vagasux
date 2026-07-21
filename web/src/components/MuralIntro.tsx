@@ -23,9 +23,12 @@ export function MuralIntro({ count }: MuralIntroProps) {
           Curadoria de conteúdos e vagas em UX para todos os níveis, todos
           mesmo.
         </h1>
-        <p className="mural-fade mural-fade-delay-1 mt-3 max-w-lg text-base leading-relaxed text-neutral-400 md:text-lg">
-          Agregamos oportunidades de UX, Produto e Design e publicamos só o que
-          faz sentido pra comunidade.
+        <p className="mural-fade mural-fade-delay-1 mt-3 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          A VagasUX reúne vagas de diversas plataformas em um só lugar, além de
+          oferecer conteúdos, guias e iniciativas para apoiar profissionais em
+          todas as etapas da carreira. Com foco em quem está começando ou
+          migrando para a área, tornamos o acesso a oportunidades mais simples,
+          acessível e organizado.
           {count != null ? (
             <>
               {' '}
