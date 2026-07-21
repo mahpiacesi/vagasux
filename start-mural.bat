@@ -8,14 +8,12 @@ if not exist "package.json" (
   exit /b 1
 )
 
-if not exist "node_modules" (
-  echo Primeira vez: instalando dependencias...
-  call npm install
-  if errorlevel 1 (
-    echo Falhou o npm install. Confira se o Node.js esta instalado.
-    pause
-    exit /b 1
-  )
+echo Atualizando dependencias (pode demorar um pouco na 1a vez)...
+call npm install
+if errorlevel 1 (
+  echo Falhou o npm install. Confira se o Node.js esta instalado.
+  pause
+  exit /b 1
 )
 
 echo.
