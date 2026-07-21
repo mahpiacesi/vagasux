@@ -10,7 +10,7 @@ export function LoadMore({ shown, total, onLoadMore }: LoadMoreProps) {
   const hasMore = shown < total
 
   return (
-    <div className="mt-8 flex flex-col items-center gap-3 border-t border-border pt-8">
+    <div className="flex flex-col items-center gap-3 pt-8">
       <p className="text-sm text-muted-foreground" aria-live="polite">
         Mostrando <span className="font-bold text-foreground">{shown}</span> de{' '}
         <span className="font-bold text-foreground">{total}</span>

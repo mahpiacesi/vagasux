@@ -30,7 +30,7 @@ export function JobRow({ job, index }: JobRowProps) {
       href={job.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="job-row group block border-b border-border py-5 transition-colors last:border-b-0 hover:bg-secondary/70 focus-visible:bg-secondary focus-visible:outline-none"
+      className="job-row group block border-b border-border py-5 transition-colors hover:bg-secondary/70 focus-visible:bg-secondary focus-visible:outline-none"
       style={{ animationDelay: `${Math.min(index, 12) * 45}ms` }}
     >
       <div className="flex items-start justify-between gap-4">
