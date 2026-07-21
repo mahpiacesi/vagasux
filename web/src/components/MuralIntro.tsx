@@ -1,3 +1,5 @@
+import brandLogo from '../assets/brand-vagasux.svg'
+
 type MuralIntroProps = {
   count: number | null
 }
@@ -19,10 +21,15 @@ export function MuralIntro({ count }: MuralIntroProps) {
       </div>
 
       <div className="mx-auto max-w-3xl md:max-w-4xl">
-        <p className="mural-fade text-sm font-black tracking-tight text-brand-500 md:text-base">
-          Vagas<span className="text-brand-300">UX</span>
-        </p>
-        <h1 className="mural-fade mural-fade-delay-1 mt-2 max-w-xl text-3xl font-black tracking-tight text-neutral-500 md:text-4xl">
+        <img
+          src={brandLogo}
+          alt="VagasUX"
+          width={417}
+          height={170}
+          decoding="async"
+          className="mural-fade h-12 w-auto md:h-14"
+        />
+        <h1 className="mural-fade mural-fade-delay-1 mt-4 max-w-xl text-3xl font-black tracking-tight text-neutral-500 md:text-4xl">
           Vagas de design, sem o ruído.
         </h1>
         <p className="mural-fade mural-fade-delay-2 mt-3 max-w-lg text-base leading-relaxed text-neutral-400 md:text-lg">
