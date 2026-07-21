@@ -1,11 +1,12 @@
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import {
+  displayLocation,
   formatCapturedAt,
   isNewJob,
   labelSeniority,
   labelSource,
-  labelWorkModel,
+  resolveWorkModelLabel,
 } from '@/lib/labels'
 import type { Job } from '@/types/job'
 
@@ -18,8 +19,9 @@ const badgeBase = 'rounded-md border-transparent font-semibold uppercase trackin
 
 export function JobRow({ job, index }: JobRowProps) {
   const seniority = labelSeniority(job.seniority)
-  const workModel = labelWorkModel(job.work_model)
+  const workModel = resolveWorkModelLabel(job.work_model, job.location)
   const source = labelSource(job.source)
+  const location = displayLocation(job.location, workModel)
   const capturedLabel = formatCapturedAt(job.captured_at)
   const showNew = isNewJob(job.captured_at)
 
@@ -74,11 +76,8 @@ export function JobRow({ job, index }: JobRowProps) {
           </h2>
           <p className="mt-1 text-sm font-semibold text-muted-foreground">
             {job.company}
-            {job.location ? (
-              <span className="font-medium text-muted-foreground/80">
-                {' '}
-                · {job.location}
-              </span>
+            {location ? (
+              <span className="font-medium text-muted-foreground/80"> · {location}</span>
             ) : null}
           </p>
 
@@ -88,22 +87,18 @@ export function JobRow({ job, index }: JobRowProps) {
             </p>
           ) : null}
 
-          {seniority ? (
+          {seniority || job.area ? (
             <div className="mt-3 flex flex-wrap gap-1.5">
-              <Badge variant="outline" className="rounded-md font-medium">
-                {seniority}
-              </Badge>
+              {seniority ? (
+                <Badge variant="outline" className="rounded-md font-medium">
+                  {seniority}
+                </Badge>
+              ) : null}
               {job.area ? (
                 <Badge variant="outline" className="rounded-md font-medium">
                   {job.area}
                 </Badge>
               ) : null}
-            </div>
-          ) : job.area ? (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <Badge variant="outline" className="rounded-md font-medium">
-                {job.area}
-              </Badge>
             </div>
           ) : null}
 
