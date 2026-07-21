@@ -1,13 +1,16 @@
 import type { Job } from '../types/job'
 import { JobRow } from './JobRow'
+import { LoadMore } from './LoadMore'
 
 type JobListProps = {
   jobs: Job[]
+  totalCount: number
   loading: boolean
   error: string | null
+  onLoadMore: () => void
 }
 
-export function JobList({ jobs, loading, error }: JobListProps) {
+export function JobList({ jobs, totalCount, loading, error, onLoadMore }: JobListProps) {
   if (loading) {
     return (
       <div className="space-y-4 py-8" aria-busy="true" aria-live="polite">
@@ -27,7 +30,7 @@ export function JobList({ jobs, loading, error }: JobListProps) {
     )
   }
 
-  if (jobs.length === 0) {
+  if (totalCount === 0) {
     return (
       <div className="px-1 py-12 text-center">
         <p className="text-lg font-black text-neutral-500">Nenhuma vaga por aqui</p>
@@ -39,10 +42,13 @@ export function JobList({ jobs, loading, error }: JobListProps) {
   }
 
   return (
-    <div className="divide-y-0">
-      {jobs.map((job, index) => (
-        <JobRow key={job.id} job={job} index={index} />
-      ))}
+    <div>
+      <div className="divide-y-0">
+        {jobs.map((job, index) => (
+          <JobRow key={job.id} job={job} index={index} />
+        ))}
+      </div>
+      <LoadMore shown={jobs.length} total={totalCount} onLoadMore={onLoadMore} />
     </div>
   )
 }

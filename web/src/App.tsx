@@ -8,6 +8,8 @@ import { filterJobs } from './lib/filterJobs'
 import { fetchPublishedJobs } from './lib/supabase'
 import type { Job, JobFiltersState } from './types/job'
 
+const PAGE_SIZE = 15
+
 const initialFilters: JobFiltersState = {
   query: '',
   market: 'all',
@@ -20,6 +22,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filters, setFilters] = useState<JobFiltersState>(initialFilters)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const deferredQuery = useDeferredValue(filters.query)
 
   useEffect(() => {
@@ -55,6 +58,16 @@ function App() {
     [jobs, filters, deferredQuery],
   )
 
+  // Reset page when search/filters change
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [filters.market, filters.workModel, filters.seniority, deferredQuery])
+
+  const visibleJobs = useMemo(
+    () => filtered.slice(0, visibleCount),
+    [filtered, visibleCount],
+  )
+
   return (
     <div className="min-h-screen bg-neutral-100">
       <Header />
@@ -70,7 +83,15 @@ function App() {
               onClear={() => setFilters(initialFilters)}
             />
             <div className="mt-6">
-              <JobList jobs={filtered} loading={loading} error={error} />
+              <JobList
+                jobs={visibleJobs}
+                totalCount={filtered.length}
+                loading={loading}
+                error={error}
+                onLoadMore={() => {
+                  setVisibleCount((count) => count + PAGE_SIZE)
+                }}
+              />
             </div>
           </div>
         </section>
