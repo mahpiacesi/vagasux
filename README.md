@@ -6,6 +6,18 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
+- [mural.md](docs/mural.md) — leitura pública das vagas `published`
+
+## Mural (web)
+
+App Vite + React em `web/` que lista vagas publicadas no Supabase.
+
+```bash
+cd web
+cp .env.example .env.local   # preencha URL + anon key
+npm install
+npm run dev
+```
 
 ## Ferramenta: export do carrossel (Instagram)
 
@@ -36,6 +48,8 @@ Detalhes da ferramenta: [tools/carousel/README.md](tools/carousel/README.md).
 ## Estrutura
 
 ```
-docs/              # design e UI
+docs/              # design, arquitetura e mural
+web/               # mural público (Vite + React)
+supabase/          # migrations
 tools/carousel/    # exportador do carrossel (assets, scripts, out/)
 ```

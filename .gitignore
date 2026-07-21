@@ -4,6 +4,8 @@ node_modules/
 # Environment
 .env
 .env.*
+!.env.example
+!**/.env.example
 
 # Carousel generated outputs
 tools/carousel/out/*.png
