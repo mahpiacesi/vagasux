@@ -7,6 +7,7 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
 - [mural.md](docs/mural.md) — leitura pública das vagas `published`
+- [ui-system.md](docs/ui-system.md) — shadcn/ui + tokens da marca
 
 ## Mural (web)
 

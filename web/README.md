@@ -1,6 +1,7 @@
 # VagasUX Web — Mural
 
-App Vite + React que lê vagas `published` do Supabase.
+App Vite + React que lê vagas `published` do Supabase.  
+UI com **shadcn/ui** + tokens da marca (ver `docs/ui-system.md`).
 
 ```bash
 cp .env.example .env.local
@@ -9,4 +10,8 @@ npm install
 npm run dev
 ```
 
-Ver também `docs/mural.md`.
+Adicionar componente shadcn:
+
+```bash
+npx shadcn@latest add <nome>
+```

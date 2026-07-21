@@ -1,11 +1,13 @@
 import { Search, X } from 'lucide-react'
-import { hasActiveFilters } from '../lib/filterJobs'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { hasActiveFilters } from '@/lib/filterJobs'
 import type {
   JobFiltersState,
   MarketFilter,
   SeniorityFilter,
   WorkModelFilter,
-} from '../types/job'
+} from '@/types/job'
 
 type Option<T extends string> = { id: T; label: string }
 
@@ -52,25 +54,22 @@ function FilterRow<T extends string>({
 }) {
   return (
     <div>
-      <p className="text-xs font-bold tracking-wide text-neutral-400 uppercase">{label}</p>
+      <p className="text-xs font-bold tracking-wide text-muted-foreground uppercase">{label}</p>
       <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={label}>
         {options.map((option) => {
           const active = value === option.id
           return (
-            <button
+            <Button
               key={option.id}
               type="button"
+              size="sm"
+              variant={active ? 'default' : 'outline'}
               aria-pressed={active}
               onClick={() => onChange(option.id)}
-              className={[
-                'rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
-                active
-                  ? 'bg-brand-300 text-neutral-100'
-                  : 'bg-neutral-100 text-neutral-400 ring-1 ring-neutral-500/10 hover:text-neutral-500 hover:ring-brand-200',
-              ].join(' ')}
+              className="font-semibold"
             >
               {option.label}
-            </button>
+            </Button>
           )
         })}
       </div>
@@ -88,32 +87,34 @@ export function JobFilters({
   const active = hasActiveFilters(value)
 
   return (
-    <div className="mural-fade mural-fade-delay-2 rounded-2xl bg-brand-100/50 px-4 py-5 ring-1 ring-brand-200/40 md:px-5">
+    <div className="mural-fade mural-fade-delay-2 rounded-2xl bg-secondary/80 px-4 py-5 ring-1 ring-primary/15 md:px-5">
       <label className="block">
-        <span className="text-xs font-bold tracking-wide text-neutral-400 uppercase">
+        <span className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
           Buscar
         </span>
         <div className="relative mt-2">
           <Search
-            className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-300"
+            className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
             aria-hidden
           />
-          <input
+          <Input
             type="search"
             value={value.query}
             onChange={(event) => onChange({ ...value, query: event.target.value })}
             placeholder="Cargo, empresa, cidade, ferramenta…"
-            className="w-full rounded-xl border-0 bg-neutral-100 py-3 pr-10 pl-10 text-sm font-medium text-neutral-500 shadow-sm ring-1 ring-neutral-500/10 outline-none transition placeholder:text-neutral-300 focus:ring-2 focus:ring-brand-300"
+            className="h-11 bg-background pr-10 pl-10 text-sm font-medium shadow-sm"
           />
           {value.query ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon-xs"
               aria-label="Limpar busca"
               onClick={() => onChange({ ...value, query: '' })}
-              className="absolute top-1/2 right-3 -translate-y-1/2 text-neutral-300 hover:text-neutral-500"
+              className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground"
             >
-              <X className="h-4 w-4" />
-            </button>
+              <X />
+            </Button>
           ) : null}
         </div>
       </label>
@@ -139,25 +140,19 @@ export function JobFilters({
         />
       </div>
 
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-brand-200/50 pt-4">
-        <p className="text-sm text-neutral-400">
-          <span className="font-bold text-neutral-500">{resultCount}</span>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-primary/15 pt-4">
+        <p className="text-sm text-muted-foreground">
+          <span className="font-bold text-foreground">{resultCount}</span>
           {resultCount === 1 ? ' vaga' : ' vagas'}
-          {active ? (
-            <span className="text-neutral-300"> de {totalCount}</span>
-          ) : null}
+          {active ? <span className="text-muted-foreground/70"> de {totalCount}</span> : null}
         </p>
         {active ? (
-          <button
-            type="button"
-            onClick={onClear}
-            className="text-sm font-semibold text-brand-400 hover:text-brand-500"
-          >
+          <Button type="button" variant="link" onClick={onClear} className="h-auto px-0 font-semibold">
             Limpar filtros
-          </button>
+          </Button>
         ) : null}
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-neutral-300">
+      <p className="mt-3 text-xs leading-relaxed text-muted-foreground/80">
         Formato e nível ficam mais precisos conforme a IA classifica as vagas. A busca já
         funciona em todas.
       </p>
