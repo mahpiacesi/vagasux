@@ -226,7 +226,7 @@ raw → enriched → published → expired
 
 **Decisão:**
 
-- Modelo: **Gemini 2.5 Flash** (custo/benefício; revisamos se a qualidade falhar)
+- Modelo: **Gemini 3.1 Flash-Lite** (barato e disponível; 2.5 Flash bloqueado para contas novas e 3.5 Flash com alta demanda no teste)
 - Design + `confidence >= 0.70` → `enriched`
 - Não-design → `expired` (com `ai_reason`)
 - Campo `is_international` para filtro no site

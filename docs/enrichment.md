@@ -9,7 +9,7 @@ Transforma vagas `raw` em `enriched` (design) ou `expired` (não-design).
 |---|---|
 | 1 | Não-design → `expired` direto |
 | 2 | Esta etapa só chega em `enriched` |
-| 3 | Modelo: **Gemini Flash** (barato e suficiente; trocamos se qualidade falhar) |
+| 3 | Modelo: **Gemini 3.1 Flash-Lite** (barato e suficiente; trocamos se qualidade falhar) |
 | 4 | Aceita design se `confidence >= 0.70` |
 | 5 | Summary em **inglês** quando `is_international = true`; **PT-BR** quando nacional |
 
@@ -56,20 +56,18 @@ Enums:
 
 **Idioma do `summary`:** se `is_international` → inglês; senão → português (PT-BR).
 
-## Setup no n8n (obrigatório uma vez)
+## Setup no n8n (já feito)
 
-Hoje só existe credencial Supabase. Para a IA:
+1. API key no [Google AI Studio](https://aistudio.google.com/apikey)
+2. Credencial n8n: **Google Gemini (PaLM) API**
+3. Workflow [Enrichment](https://vagasux.app.n8n.cloud/workflow/8UwmTMOPybExOrdi) publicado
+4. Scheduler com `Call 'Enrichment'` habilitado e publicado
 
-1. Crie uma API key no [Google AI Studio](https://aistudio.google.com/apikey)
-2. No n8n: **Credentials → Add credential → Google Gemini (PaLM) API** → cole a key (nome sugerido: `Google Gemini`)
-3. Abra o workflow [Enrichment](https://vagasux.app.n8n.cloud/workflow/8UwmTMOPybExOrdi)
-4. No node **Gemini enrich**, selecione a credencial
-5. **Publish** o Enrichment
-6. No **Scheduler**, habilite o node `Call 'Enrichment'` (hoje está desabilitado de propósito) e publique de novo
-7. Rode um lote de teste (Execute workflow no Enrichment) e revise 10–20 vagas
+Free tier do Gemini tem cota baixa: o Enrichment processa **1 vaga por vez** com espera de 2s entre elas.
 
 ## Workflow
 
 - Nome: **Enrichment** — `8UwmTMOPybExOrdi`
-- Chamado pelo Scheduler após `Expire stale jobs` (quando habilitado)
-- Lote: **20 vagas/run**
+- Modelo: `models/gemini-3.1-flash-lite`
+- Chamado pelo Scheduler após `Expire stale jobs`
+- Lote: **10 vagas/run** (throttled 1-by-1)
