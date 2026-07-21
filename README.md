@@ -12,12 +12,18 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 App Vite + React em `web/` que lista vagas publicadas no Supabase.
 
+**No Windows (mais fácil):** no GitHub Desktop, faça *Fetch* / *Pull* da branch que quiser ver. Depois dê dois cliques em `start-mural.bat` na pasta do projeto. O mural abre em [http://localhost:5173](http://localhost:5173).
+
+**Pelo terminal (se preferir):**
+
 ```bash
 cd web
-cp .env.example .env.local   # preencha URL + anon key
-npm install
+cp .env.example .env.local   # preencha URL + anon key (só na 1ª vez)
+npm install                  # só na 1ª vez ou quando mudar dependências
 npm run dev
 ```
+
+Com o `npm run dev` (ou o `.bat`) já rodando, mudanças de código atualizam sozinhas no navegador — não precisa digitar de novo a cada alteração. Para ver o site online após merge em `main`: [https://vagasux.vercel.app](https://vagasux.vercel.app).
 
 ## Ferramenta: export do carrossel (Instagram)
 
