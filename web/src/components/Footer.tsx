@@ -81,9 +81,17 @@ export function Footer() {
           </div>
 
           <p className="max-w-md text-sm leading-relaxed text-neutral-400">
-            Uma comunidade idealizada por Mah Piacesi em 2020 e construída por
-            voluntários que acreditam que oportunidades devem ser acessíveis
-            para todas as pessoas.
+            Uma comunidade idealizada por{' '}
+            <a
+              href="https://avely.me/mahpiacesi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-neutral-500 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+            >
+              Mah Piacesi
+            </a>{' '}
+            em 2020 e construída por voluntários que acreditam que
+            oportunidades devem ser acessíveis para todas as pessoas.
           </p>
         </div>
 
