@@ -18,3 +18,12 @@ export type Job = {
 }
 
 export type MarketFilter = 'all' | 'national' | 'international'
+export type WorkModelFilter = 'all' | 'remote' | 'hybrid' | 'onsite'
+export type SeniorityFilter = 'all' | 'intern' | 'junior' | 'mid' | 'senior' | 'lead'
+
+export type JobFiltersState = {
+  query: string
+  market: MarketFilter
+  workModel: WorkModelFilter
+  seniority: SeniorityFilter
+}

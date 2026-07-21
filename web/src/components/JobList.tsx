@@ -30,9 +30,9 @@ export function JobList({ jobs, loading, error }: JobListProps) {
   if (jobs.length === 0) {
     return (
       <div className="px-1 py-12 text-center">
-        <p className="text-lg font-black text-neutral-500">Nenhuma vaga por aqui ainda</p>
+        <p className="text-lg font-black text-neutral-500">Nenhuma vaga por aqui</p>
         <p className="mt-2 text-sm text-neutral-400">
-          Assim que o enrichment publicar novas oportunidades, elas aparecem neste mural.
+          Tenta limpar a busca ou os filtros — ou volta mais tarde, o mural atualiza todo dia.
         </p>
       </div>
     )

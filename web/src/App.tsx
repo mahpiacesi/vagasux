@@ -1,18 +1,26 @@
-import { useEffect, useMemo, useState, useTransition } from 'react'
+import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
+import { JobFilters } from './components/JobFilters'
 import { JobList } from './components/JobList'
-import { MarketFilters } from './components/MarketFilters'
 import { MuralIntro } from './components/MuralIntro'
+import { filterJobs } from './lib/filterJobs'
 import { fetchPublishedJobs } from './lib/supabase'
-import type { Job, MarketFilter } from './types/job'
+import type { Job, JobFiltersState } from './types/job'
+
+const initialFilters: JobFiltersState = {
+  query: '',
+  market: 'all',
+  workModel: 'all',
+  seniority: 'all',
+}
 
 function App() {
   const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [market, setMarket] = useState<MarketFilter>('all')
-  const [, startTransition] = useTransition()
+  const [filters, setFilters] = useState<JobFiltersState>(initialFilters)
+  const deferredQuery = useDeferredValue(filters.query)
 
   useEffect(() => {
     let cancelled = false
@@ -38,15 +46,14 @@ function App() {
     }
   }, [])
 
-  const filtered = useMemo(() => {
-    if (market === 'national') {
-      return jobs.filter((job) => job.is_international !== true)
-    }
-    if (market === 'international') {
-      return jobs.filter((job) => job.is_international === true)
-    }
-    return jobs
-  }, [jobs, market])
+  const filtered = useMemo(
+    () =>
+      filterJobs(jobs, {
+        ...filters,
+        query: deferredQuery,
+      }),
+    [jobs, filters, deferredQuery],
+  )
 
   return (
     <div className="min-h-screen bg-neutral-100">
@@ -55,13 +62,16 @@ function App() {
         <MuralIntro count={loading ? null : jobs.length} />
         <section className="px-5 pb-16 md:px-6">
           <div className="mx-auto max-w-3xl md:max-w-4xl">
-            <MarketFilters
-              value={market}
-              onChange={(value) => {
-                startTransition(() => setMarket(value))
-              }}
+            <JobFilters
+              value={filters}
+              resultCount={loading ? 0 : filtered.length}
+              totalCount={jobs.length}
+              onChange={setFilters}
+              onClear={() => setFilters(initialFilters)}
             />
-            <JobList jobs={filtered} loading={loading} error={error} />
+            <div className="mt-6">
+              <JobList jobs={filtered} loading={loading} error={error} />
+            </div>
           </div>
         </section>
       </main>
