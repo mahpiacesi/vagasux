@@ -1,0 +1,16 @@
+---
+description: Design system da VagasUX — ler design.md antes de gerar UI, componentes e conteúdo
+globs: ["**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.astro", "**/*.css", "**/*.scss"]
+alwaysApply: false
+---
+
+Antes de criar ou editar interfaces, componentes visuais ou textos de produto, leia `design.md` na raiz do projeto.
+
+Regras:
+
+- Usar apenas as cores e tokens definidos em `design.md`
+- Seguir a escala tipográfica (Lato) e os pesos indicados
+- Respeitar o tom de voz: conversacional, claro, acolhedor — sem buzzwords ou tom corporativo
+- Aplicar os princípios de UX Writing e acessibilidade (WCAG AA)
+- Seguir o estilo de iconografia (outline, rounded, minimalista)
+- Em dúvida, consultar `design.md` — não inventar valores visuais ou de voz fora do guia
