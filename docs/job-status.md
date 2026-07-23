@@ -6,17 +6,19 @@ Cada vaga passa por etapas claras. Isso separa **coleta**, **IA**, **publicaçã
 
 | Status | Significado | Quem muda |
 |--------|-------------|-----------|
-| `raw` | Acabou de ser coletada (bruta, só normalizada) | Collector |
+| `raw` | Fila histórica / reprocessamento (quase não usado no cold start) | — |
 | `enriched` | Reservado (híbrido futuro / revisão humana) | — no MVP quase não usa |
-| `published` | Liberada para o site / comunidade | **Enrichment** (auto, se design + confidence ≥ 0.70) |
+| `published` | Liberada para o site / comunidade | **Collector** (default) + Enrichment refine |
 | `expired` | Fora do mural (não-design, baixa confiança, ou > 60 dias) | Enrichment ou regra de 60 dias |
 
-Fluxo do MVP (auto-publish):
+Fluxo do MVP (cold start — publicar antes da IA):
 
 ```text
-raw → published → expired
-         ↘ expired (não-design / confiança baixa)
+published (na coleta) → published (com tags/summary da IA)
+                      ↘ expired (não-design / confiança baixa / > 60 dias)
 ```
+
+O default do banco é `published` (`20260721_jobs_publish_before_enrich.sql`), para o mural não ficar vazio enquanto a IA processa.
 
 O status `enriched` continua válido no banco para um híbrido futuro, se a qualidade da IA pedir revisão.
 
