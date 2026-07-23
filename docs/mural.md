@@ -2,17 +2,30 @@
 
 O site lê **apenas** vagas `status = 'published'` no Supabase.
 
+## Cold start: publicar antes da IA
+
+Para o mural não ficar vazio enquanto o Gemini processa o backlog:
+
+1. Vagas **coletadas entram como `published`** (default no banco)
+2. A IA roda **depois**, em lote: preenche summary/tags e pode **expirar** o que não for design
+3. Até a IA passar, o card mostra título/empresa/local da coleta (sem `ai_summary`)
+
+Assim o mural já tem volume; a qualidade melhora com o tempo.
+
 ## Segurança
 
 - RLS ativo em `public.jobs`
 - Política: `anon` / `authenticated` só fazem `SELECT` onde `status = 'published'`
 - Collectors e Enrichment usam `service_role` (bypass RLS)
-- Migration: `supabase/migrations/20260721_jobs_public_read_published.sql`
+- Migrations:
+  - `20260721_jobs_public_read_published.sql`
+  - `20260721_jobs_publish_before_enrich.sql`
 
 ## App
 
 - Pasta: `web/`
 - Stack: Vite + React + TypeScript + Tailwind (tokens da marca)
+- Produção: https://vagasux.vercel.app/
 - Cliente: `@supabase/supabase-js` com chave **anon** / publishable
 
 ### Env local

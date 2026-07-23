@@ -7,6 +7,9 @@ node_modules/
 !.env.example
 !**/.env.example
 
+# MCP local overrides (secrets)
+.cursor/mcp.local.json
+
 # Carousel generated outputs
 tools/carousel/out/*.png
 tools/carousel/out/*.pdf

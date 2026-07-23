@@ -6,8 +6,15 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 - [design.md](docs/design.md) — diretrizes de marca e design
 - [frontend-ui.md](docs/frontend-ui.md) — notas de interface
-- [mural.md](docs/mural.md) — leitura pública das vagas `published`
 - [ui-system.md](docs/ui-system.md) — shadcn/ui + tokens da marca
+- [mural.md](docs/mural.md) — leitura pública das vagas `published`
+- [dedup.md](docs/dedup.md) — chaves únicas e upsert dos collectors
+- [job-status.md](docs/job-status.md) — ciclo de vida `raw → enriched → published → expired`
+- [enrichment.md](docs/enrichment.md) — classificação e resumo com IA
+- [architecture-decisions.md](docs/architecture-decisions.md) — ADRs do agregador
+- [mcp-setup.md](docs/mcp-setup.md) — MCP Supabase + n8n no Cursor
+
+Migrations em `supabase/migrations/` (dedup, status, expiry, enrichment, publish-before-enrich, upsert Remotar, RLS do mural).
 
 ## Mural (web)
 
