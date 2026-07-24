@@ -29,5 +29,16 @@ export const externalSupport = {
   pix: 'https://nubank.com.br/pagar/2263/5bTyrhPEwh',
   lojinha: 'https://www.colab55.com/@vagasux',
   mah: 'https://avely.me/mahpiacesi',
-  telegramCanal: 'https://t.me/guiadoproductdesigner',
+} as const
+
+/** Official community entry points (from vagasux.com.br/a-comunidade). */
+export const communityChannels = {
+  whatsappAvisos: 'https://www.whatsapp.com/channel/0029VaolXJkId7nHWZAPTz0P',
+  whatsappModeracao: 'https://chat.whatsapp.com/DJwdSS9jmH4FK8iCAH5XG4',
+  whatsappDamas: 'https://chat.whatsapp.com/F8GrEhy2ubYAafWZzsiOmk',
+  whatsappGrupo1: 'https://chat.whatsapp.com/JfHSbF6yz0fHXYEEUSX28h',
+  whatsappGrupo2: 'https://chat.whatsapp.com/E9vTTALO6lAD4DdTELQZma',
+  telegramCanal: 'https://t.me/vagasux',
+  telegramConversas: 'https://t.me/guiadoproductdesigner',
+  discord: 'https://discord.gg/NmsWUzCmN4',
 } as const
