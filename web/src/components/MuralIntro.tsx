@@ -19,13 +19,15 @@ export function MuralIntro({ count }: MuralIntroProps) {
       </div>
 
       <div className="mx-auto max-w-3xl md:max-w-4xl">
-        <h1 className="mural-fade max-w-2xl text-3xl font-black tracking-tight text-neutral-500 md:text-4xl">
-          Curadoria de conteúdos e vagas em UX para todos os níveis, todos
-          mesmo.
+        <p className="mural-fade text-xs font-bold tracking-wide text-brand-400 uppercase md:text-sm">
+          Mural de vagas
+        </p>
+        <h1 className="mural-fade mural-fade-delay-1 mt-2 max-w-2xl text-3xl font-black tracking-tight text-neutral-500 md:text-4xl">
+          Seu hub de vagas em UX
         </h1>
-        <p className="mural-fade mural-fade-delay-1 mt-3 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-          Acreditamos que oportunidades transformam carreiras. Por isso,
-          reunimos vagas, conteúdos e recursos em um só lugar.
+        <p className="mural-fade mural-fade-delay-2 mt-3 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          Curadoria de oportunidades de UX, Produto e Design — com indicações da
+          comunidade e atualização constante.
           {count != null ? (
             <>
               {' '}

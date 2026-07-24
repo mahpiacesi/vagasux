@@ -1,6 +1,6 @@
-# VagasUX Web — Mural
+# VagasUX Web
 
-App Vite + React que lê vagas `published` do Supabase.  
+App Vite + React + React Router. Home institucional e mural em `/oportunidades` (vagas `published` do Supabase).  
 UI com **shadcn/ui** + tokens da marca (ver `docs/ui-system.md`).
 
 ```bash

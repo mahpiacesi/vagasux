@@ -16,9 +16,9 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 
 Migrations em `supabase/migrations/` (dedup, status, expiry, enrichment, publish-before-enrich, upsert Remotar, RLS do mural).
 
-## Mural (web)
+## Site (web)
 
-App Vite + React em `web/` que lista vagas publicadas no Supabase.
+App Vite + React + React Router em `web/`: home em `/` e mural em `/oportunidades` (vagas `published` no Supabase).
 
 ```bash
 cd web
