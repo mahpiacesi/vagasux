@@ -3,16 +3,25 @@ import { Button } from '@/components/ui/button'
 import { routes, superSite } from '@/lib/siteLinks'
 
 const starterLinks = [
-  { label: 'Guia do Product Designer', href: superSite.guia },
-  { label: 'Vagas para iniciantes', href: superSite.iniciantes },
-  { label: 'Iniciantes em Design', href: superSite.baseIniciantes },
+  { label: 'Guia do Product Designer', href: superSite.guia, external: true },
+  {
+    label: 'Vagas para iniciantes',
+    href: superSite.iniciantes,
+    external: true,
+  },
+  {
+    label: 'Iniciantes em Design',
+    href: superSite.baseIniciantes,
+    external: true,
+  },
 ] as const
 
 const communityLinks = [
-  { label: 'Conheça a comunidade', href: superSite.comunidade },
-  { label: 'Quem organiza', href: superSite.quemOrganiza },
-  { label: 'Parcerias', href: superSite.parcerias },
-  { label: 'Apoie a iniciativa', href: superSite.apoie },
+  { label: 'Conheça a comunidade', to: routes.comunidade },
+  { label: 'Quem organiza', to: routes.quemOrganiza },
+  { label: 'Parcerias', to: routes.parcerias },
+  { label: 'Apoie a iniciativa', to: routes.apoie },
+  { label: 'Código de conduta', to: routes.codigoDeConduta },
 ] as const
 
 export function HomePage() {
@@ -79,7 +88,10 @@ export function HomePage() {
                   <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
                     {item.label}
                   </span>
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                  <span
+                    aria-hidden
+                    className="transition-transform group-hover:translate-x-0.5"
+                  >
                     →
                   </span>
                 </a>
@@ -95,20 +107,17 @@ export function HomePage() {
             Comunidade e apoio
           </h2>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base">
-            Conheça quem faz a VagasUX, parcerias e como apoiar o projeto. Essas
-            páginas ainda estão no site atual.
+            Conheça quem faz a VagasUX, parcerias e como apoiar o projeto.
           </p>
           <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
             {communityLinks.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <li key={item.to}>
+                <Link
+                  to={item.to}
                   className="text-sm font-semibold text-neutral-400 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-brand-500 hover:decoration-brand-200"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
