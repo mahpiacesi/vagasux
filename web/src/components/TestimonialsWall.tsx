@@ -1,53 +1,56 @@
-import { useEffect } from 'react'
+import { communityTestimonials } from '@/data/communityTestimonials'
 
-const WALL_SRC =
-  'https://embed.testimonial.to/w/vagasux?theme=light&card=base&loadMore=on&initialCount=4&autoPlay=off'
+const WALL_ALL = 'https://testimonial.to/pt/vagasux/all'
+const WALL_WRITE = 'https://testimonial.to/vagasux'
 
-declare global {
-  interface Window {
-    iFrameResize?: (
-      options: Record<string, unknown>,
-      target: string,
-    ) => void
-  }
-}
-
-/** Embeds the VagasUX Wall of Love from testimonial.to */
 export function TestimonialsWall() {
-  useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[data-testimonial-iframe-resizer]',
-    )
-    if (existing) {
-      window.iFrameResize?.(
-        { log: false, checkOrigin: false },
-        '#testimonialto-vagasux',
-      )
-      return
-    }
-
-    const script = document.createElement('script')
-    script.src = 'https://testimonial.to/js/iframeResizer.min.js'
-    script.async = true
-    script.dataset.testimonialIframeResizer = 'true'
-    script.onload = () => {
-      window.iFrameResize?.(
-        { log: false, checkOrigin: false },
-        '#testimonialto-vagasux',
-      )
-    }
-    document.body.appendChild(script)
-  }, [])
-
   return (
-    <div className="w-full overflow-hidden">
-      <iframe
-        id="testimonialto-vagasux"
-        title="Depoimentos da comunidade VagasUX"
-        src={WALL_SRC}
-        loading="lazy"
-        className="min-h-[28rem] w-full border-0"
-      />
+    <div className="space-y-8">
+      <ul className="grid gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-10">
+        {communityTestimonials.map((item) => (
+          <li key={item.name} className="flex flex-col gap-4">
+            <blockquote className="relative pl-4 text-base leading-relaxed text-neutral-500 md:text-[17px]">
+              <span
+                aria-hidden
+                className="absolute top-0 left-0 h-full w-0.5 rounded-full bg-complementary-300"
+              />
+              <span className="font-black text-complementary-400">“</span>
+              {item.quote}
+              <span className="font-black text-complementary-400">”</span>
+            </blockquote>
+            <div className="pl-4">
+              {item.rating ? (
+                <p
+                  className="mb-1 text-xs tracking-wide text-complementary-400"
+                  aria-label={`${item.rating} de 5 estrelas`}
+                >
+                  {'★'.repeat(item.rating)}
+                </p>
+              ) : null}
+              <p className="text-sm font-bold text-neutral-500">{item.name}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
+        <a
+          href={WALL_ALL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400"
+        >
+          Ver todos os relatos →
+        </a>
+        <a
+          href={WALL_WRITE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-400 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-brand-500"
+        >
+          Deixar o seu
+        </a>
+      </p>
     </div>
   )
 }
