@@ -15,7 +15,10 @@ export function Header() {
           <Logo />
         </NavLink>
 
-        <nav aria-label="Principal" className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 md:gap-x-5">
+        <nav
+          aria-label="Principal"
+          className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 md:gap-x-5"
+        >
           <NavLink
             to={routes.oportunidades}
             className={({ isActive }) =>
@@ -24,6 +27,14 @@ export function Header() {
           >
             Oportunidades
           </NavLink>
+          <NavLink
+            to={routes.comunidade}
+            className={({ isActive }) =>
+              `${linkClass} ${isActive ? activeClass : ''}`
+            }
+          >
+            Comunidade
+          </NavLink>
           <a
             href={superSite.guia}
             target="_blank"
@@ -31,14 +42,6 @@ export function Header() {
             className={linkClass}
           >
             Guia
-          </a>
-          <a
-            href={superSite.comunidade}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            Comunidade
           </a>
           <a
             href={superSite.publicar}
