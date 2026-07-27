@@ -127,7 +127,7 @@
 @keyframes mural-fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -156,16 +156,25 @@
   }
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .mural-fade {
-  animation: mural-fade-up 0.55s ease-out both;
+  animation: mural-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .mural-fade-delay-1 {
-  animation-delay: 80ms;
+  animation-delay: 90ms;
 }
 
 .mural-fade-delay-2 {
-  animation-delay: 160ms;
+  animation-delay: 180ms;
 }
 
 .job-row {
@@ -183,10 +192,23 @@
   animation: skeleton-pulse 1.4s ease-in-out infinite;
 }
 
+.text-mark {
+  background-image: linear-gradient(
+    180deg,
+    transparent 62%,
+    color-mix(in srgb, var(--color-complementary-300) 75%, transparent) 62%
+  );
+}
+
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
-  .skeleton {
+  .skeleton,
+  .marquee-track {
     animation: none;
   }
 }
