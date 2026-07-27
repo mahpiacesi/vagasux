@@ -32,6 +32,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Participei de um workshop incrível através do VagasUX sobre Google Analytics e UX Metrics. Reforçou a importância de olhar além do design e compreender o usuário por meio de métricas.',
     name: 'Luiz Filipe Cardoso',
+    role: 'UX/UI Designer',
     category: 'Eventos',
     tone: 'cream',
   },
@@ -67,6 +68,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'As mentorias me ajudaram a recuperar a confiança e me preparar emocionalmente para os processos seletivos. Graças a esse apoio, consegui minha recolocação como UX/UI Designer Analista no Banco Inter.',
     name: 'Caroline Gomes',
+    role: 'UX/UI Designer',
     category: 'Mentorias',
     tone: 'lilac',
   },
@@ -75,6 +77,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Depois de uma demissão em massa, as mentorias do VagasUX fizeram toda a diferença. Um mês depois, ainda arrumando o portfólio, fui convidada para uma entrevista.',
     name: 'Mariah Carrard',
+    role: 'Product Designer',
     category: 'Mentorias',
     tone: 'cream',
   },
@@ -83,6 +86,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Participei da primeira vez da Portfolio Review Live da comunidade. Feedbacks claros no portfólio, com juniores assistindo e aprendendo junto — conteúdo que eu não teria acesso sozinha.',
     name: 'Mai Fukuda',
+    role: 'UX/UI Designer Junior',
     category: 'Mentorias',
     tone: 'soft',
   },
@@ -100,6 +104,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'A VagasUX foi meu principal porto de apoio quando decidi migrar de área. Mentoria, orientação e escuta — o que fez toda a diferença naquele momento.',
     name: 'Beatriz Miranda',
+    role: 'Senior Product Designer',
     category: 'Mentorias',
     tone: 'mustard',
   },
@@ -135,6 +140,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Site com um design gostosinho de usar, filtrinho na bagaça que desafiam e que deixam as vagas muito bem divididas. Encontrei as que mais tinham a ver com meu perfil em questão de segundos.',
     name: 'Gustavo Barbosa',
+    role: 'UX/UI Designer',
     category: 'Vagas',
     tone: 'soft',
   },
@@ -169,6 +175,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Depois de 3 meses intensos, chegou ao fim essa jornada de muito aprendizado pela parceria entre a VagasUX e a Alura. Mais uma vez, meu agradecimento à comunidade e aos instrutores.',
     name: 'Daniela Salles',
+    role: 'Designer Gráfico',
     category: 'Seletivas',
     tone: 'cream',
   },
