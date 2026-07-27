@@ -113,11 +113,11 @@ export const testimonials: Testimonial[] = [
     tone: 'navy',
   },
   {
-    id: 'jessica-vagas',
+    id: 'amanda-vagas',
     quote:
-      'Quero compartilhar que agora faço parte do time da Amaris Consulting. Tudo isso só está sendo possível graças a essa iniciativa incrível promovida pelo Grupo Murey — o Coding Queendom.',
-    name: 'Jéssica Nunes',
-    role: 'Project Analyst | UX/UI Designer',
+      'Estou iniciando em um novo cargo de Product Designer na Softplan. Queria agradecer aos voluntariados que faço parte — VagasUX e Friends of Figma RJ — pela curadoria impecável de vagas e pelas trocas sobre carreira no dia a dia.',
+    name: 'Amanda Alves Andrade',
+    role: 'Product Designer',
     category: 'Vagas',
     tone: 'cream',
   },
