@@ -214,11 +214,6 @@
   animation: marquee-scroll var(--marquee-duration) linear infinite reverse;
 }
 
-.testimonials-row:hover .testimonials-track,
-.testimonials-row:hover .testimonials-track-reverse {
-  animation-duration: calc(var(--marquee-duration) * 2.75);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,

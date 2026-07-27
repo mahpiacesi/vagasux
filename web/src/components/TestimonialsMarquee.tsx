@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import type { Testimonial, TestimonialTone } from '@/data/testimonials'
 import { testimonials } from '@/data/testimonials'
 
@@ -96,10 +97,25 @@ function MarqueeRow({
   duration?: number
 }) {
   const loop = [...items, ...items]
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const setSpeed = (rate: number) => {
+    const el = trackRef.current
+    if (!el) return
+    for (const animation of el.getAnimations()) {
+      animation.playbackRate = rate
+    }
+  }
 
   return (
-    <div className="testimonials-row relative overflow-hidden" aria-hidden>
+    <div
+      className="testimonials-row relative overflow-hidden"
+      aria-hidden
+      onMouseEnter={() => setSpeed(0.35)}
+      onMouseLeave={() => setSpeed(1)}
+    >
       <div
+        ref={trackRef}
         className={`flex w-max gap-4 ${reverse ? 'testimonials-track-reverse' : 'testimonials-track'}`}
         style={{ ['--marquee-duration' as string]: `${duration}s` }}
       >
