@@ -7,7 +7,7 @@ const toneClass: Record<TestimonialTone, string> = {
   mustard: 'bg-complementary-200 text-neutral-500',
   navy: 'bg-neutral-500 text-neutral-100',
   lilac: 'bg-brand-200/80 text-brand-500',
-  coral: 'bg-highlight-200 text-neutral-100',
+  soft: 'bg-complementary-100 text-neutral-500 ring-1 ring-complementary-300/40',
 }
 
 const badgeClass: Record<TestimonialTone, string> = {
@@ -16,7 +16,7 @@ const badgeClass: Record<TestimonialTone, string> = {
   mustard: 'bg-neutral-500/10 text-neutral-500',
   navy: 'bg-complementary-300/20 text-complementary-300',
   lilac: 'bg-white/60 text-brand-500',
-  coral: 'bg-white/20 text-neutral-100',
+  soft: 'bg-complementary-200 text-complementary-500',
 }
 
 type RowItem =
@@ -26,7 +26,7 @@ type RowItem =
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
     <article
-      className={`flex w-[min(22rem,78vw)] shrink-0 flex-col justify-between rounded-2xl p-5 md:w-[24rem] md:p-6 ${toneClass[item.tone]}`}
+      className={`flex h-full min-h-[22rem] w-[min(22rem,78vw)] shrink-0 flex-col justify-between rounded-2xl p-5 md:w-[24rem] md:p-6 ${toneClass[item.tone]}`}
     >
       <div>
         <span
@@ -61,10 +61,12 @@ function AccentCard({
 }) {
   return (
     <article
-      className={`flex w-[min(16rem,70vw)] shrink-0 flex-col justify-between rounded-2xl p-5 md:w-[18rem] md:p-6 ${className}`}
+      className={`flex h-full min-h-[22rem] w-[min(20rem,78vw)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl p-5 md:w-[22rem] md:p-6 ${className}`}
     >
-      <p className="text-4xl font-black tracking-tight md:text-5xl">{title}</p>
-      <p className="mt-4 text-sm leading-snug font-bold tracking-wide uppercase opacity-90">
+      <p className="max-w-full text-[2.35rem] leading-[0.95] font-black tracking-[-0.04em] break-words md:text-5xl">
+        {title}
+      </p>
+      <p className="mt-8 max-w-[16ch] text-sm leading-snug font-bold tracking-wide uppercase opacity-90">
         {subtitle}
       </p>
     </article>
@@ -131,8 +133,8 @@ export function TestimonialsMarquee() {
     {
       kind: 'accent',
       id: 'accent-depoimentos',
-      title: 'Depoimentos',
-      subtitle: 'Escreva o seu no Wall of Vaguiners',
+      title: 'Wall of Vaguiners',
+      subtitle: 'Escreva o seu relato também',
       className: 'bg-complementary-300 text-neutral-500',
     },
   ]

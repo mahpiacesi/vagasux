@@ -11,7 +11,7 @@ export type TestimonialTone =
   | 'mustard'
   | 'navy'
   | 'lilac'
-  | 'coral'
+  | 'soft'
 
 export type Testimonial = {
   id: string
@@ -84,7 +84,7 @@ export const testimonials: Testimonial[] = [
       'Participei da primeira vez da Portfolio Review Live da comunidade. Feedbacks claros no portfólio, com juniores assistindo e aprendendo junto — conteúdo que eu não teria acesso sozinha.',
     name: 'Mai Fukuda',
     category: 'Mentorias',
-    tone: 'coral',
+    tone: 'soft',
   },
   {
     id: 'mayara-mentoria',
@@ -136,7 +136,7 @@ export const testimonials: Testimonial[] = [
       'Site com um design gostosinho de usar, filtrinho na bagaça que desafiam e que deixam as vagas muito bem divididas. Encontrei as que mais tinham a ver com meu perfil em questão de segundos.',
     name: 'Gustavo Barbosa',
     category: 'Vagas',
-    tone: 'coral',
+    tone: 'soft',
   },
   {
     id: 'jade-projetos',
