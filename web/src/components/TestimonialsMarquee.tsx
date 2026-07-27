@@ -63,10 +63,10 @@ function AccentCard({
     <article
       className={`flex h-full min-h-[22rem] w-[min(20rem,78vw)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl p-5 md:w-[22rem] md:p-6 ${className}`}
     >
-      <p className="max-w-full text-[2.35rem] leading-[0.95] font-black tracking-[-0.04em] break-words md:text-5xl">
+      <p className="max-w-full text-[3rem] leading-[0.9] font-black tracking-[-0.05em] break-words md:text-6xl">
         {title}
       </p>
-      <p className="mt-8 max-w-[16ch] text-sm leading-snug font-bold tracking-wide uppercase opacity-90">
+      <p className="mt-8 max-w-[14ch] text-sm leading-snug font-bold tracking-wide uppercase opacity-90">
         {subtitle}
       </p>
     </article>
@@ -89,7 +89,7 @@ function RowCard({ entry }: { entry: RowItem }) {
 function MarqueeRow({
   items,
   reverse = false,
-  duration = 55,
+  duration = 95,
 }: {
   items: RowItem[]
   reverse?: boolean
@@ -98,10 +98,10 @@ function MarqueeRow({
   const loop = [...items, ...items]
 
   return (
-    <div className="relative overflow-hidden" aria-hidden>
+    <div className="testimonials-row relative overflow-hidden" aria-hidden>
       <div
         className={`flex w-max gap-4 ${reverse ? 'testimonials-track-reverse' : 'testimonials-track'}`}
-        style={{ animationDuration: `${duration}s` }}
+        style={{ ['--marquee-duration' as string]: `${duration}s` }}
       >
         {loop.map((entry, index) => (
           <RowCard
@@ -122,9 +122,9 @@ export function TestimonialsMarquee() {
   const rowB: RowItem[] = [
     {
       kind: 'accent',
-      id: 'accent-vaguiner',
-      title: 'Vaguiner',
-      subtitle: 'Comunidade que se ajuda de verdade',
+      id: 'accent-mentorias',
+      title: '+100',
+      subtitle: 'mentorias realizadas',
       className: 'bg-brand-500 text-neutral-100',
     },
     ...testimonials
@@ -132,9 +132,9 @@ export function TestimonialsMarquee() {
       .map((item) => ({ kind: 'quote' as const, item })),
     {
       kind: 'accent',
-      id: 'accent-depoimentos',
-      title: 'Wall of Vaguiners',
-      subtitle: 'Escreva o seu relato também',
+      id: 'accent-contratados',
+      title: '+50',
+      subtitle: 'vaguiners contratados',
       className: 'bg-complementary-300 text-neutral-500',
     },
   ]
@@ -161,9 +161,9 @@ export function TestimonialsMarquee() {
       </div>
 
       <div className="mt-12 flex flex-col gap-4 md:mt-14 md:gap-5">
-        <MarqueeRow items={rowA} duration={58} />
-        <MarqueeRow items={rowB} reverse duration={64} />
-        <MarqueeRow items={rowC} duration={52} />
+        <MarqueeRow items={rowA} duration={95} />
+        <MarqueeRow items={rowB} reverse duration={105} />
+        <MarqueeRow items={rowC} duration={88} />
       </div>
 
       <div className="mx-auto mt-10 max-w-3xl px-5 md:mt-12 md:max-w-4xl md:px-6">
