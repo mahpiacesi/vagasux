@@ -3,12 +3,12 @@ import type { Testimonial, TestimonialTone } from '@/data/testimonials'
 import { testimonials } from '@/data/testimonials'
 
 const toneClass: Record<TestimonialTone, string> = {
-  cream: 'bg-neutral-100 text-neutral-500 ring-1 ring-neutral-500/10',
+  cream: 'border border-neutral-500/15 bg-neutral-100 text-neutral-500',
   indigo: 'bg-brand-100 text-brand-500',
   mustard: 'bg-complementary-200 text-neutral-500',
   navy: 'bg-neutral-500 text-neutral-100',
   lilac: 'bg-brand-200/80 text-brand-500',
-  soft: 'bg-complementary-100 text-neutral-500 ring-1 ring-complementary-300/40',
+  soft: 'border border-complementary-300/50 bg-complementary-100 text-neutral-500',
 }
 
 const badgeClass: Record<TestimonialTone, string> = {
@@ -109,7 +109,7 @@ function MarqueeRow({
 
   return (
     <div
-      className="testimonials-row relative overflow-hidden"
+      className="testimonials-row relative overflow-hidden py-1"
       aria-hidden
       onMouseEnter={() => setSpeed(0.35)}
       onMouseLeave={() => setSpeed(1)}
