@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
+import { PartnershipsSection } from '@/components/PartnershipsSection'
 import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
 
@@ -113,6 +114,8 @@ export function HomePage() {
           </ul>
         </div>
       </section>
+
+      <PartnershipsSection />
 
       <section className="bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl md:max-w-4xl">
