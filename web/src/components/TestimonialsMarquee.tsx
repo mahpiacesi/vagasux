@@ -131,11 +131,20 @@ function MarqueeRow({
 }
 
 export function TestimonialsMarquee() {
-  const rowA: RowItem[] = testimonials
-    .filter((_, i) => i % 2 === 0)
-    .map((item) => ({ kind: 'quote', item }))
+  const byCategory = (category: Testimonial['category']) =>
+    testimonials.filter((item) => item.category === category)
 
-  const rowB: RowItem[] = [
+  const mentorias = byCategory('Mentorias')
+  const vagas = byCategory('Vagas')
+  const outros = testimonials.filter(
+    (item) => item.category !== 'Mentorias' && item.category !== 'Vagas',
+  )
+
+  const quote = (item: Testimonial): RowItem => ({ kind: 'quote', item })
+
+  // +100 mentorias sits beside Mentoria cards; +50 contratados beside Vagas cards
+  const rowA: RowItem[] = [
+    quote(mentorias[0]),
     {
       kind: 'accent',
       id: 'accent-mentorias',
@@ -143,9 +152,16 @@ export function TestimonialsMarquee() {
       subtitle: 'mentorias realizadas',
       className: 'bg-brand-500 text-neutral-100',
     },
-    ...testimonials
-      .filter((_, i) => i % 2 === 1)
-      .map((item) => ({ kind: 'quote' as const, item })),
+    quote(mentorias[1]),
+    quote(outros[0]),
+    quote(outros[1]),
+    quote(vagas[0]),
+    quote(outros[2]),
+    quote(mentorias[2]),
+  ]
+
+  const rowB: RowItem[] = [
+    quote(vagas[1]),
     {
       kind: 'accent',
       id: 'accent-contratados',
@@ -153,12 +169,24 @@ export function TestimonialsMarquee() {
       subtitle: 'vaguiners contratados',
       className: 'bg-complementary-300 text-neutral-500',
     },
+    quote(vagas[2]),
+    quote(outros[3]),
+    quote(mentorias[3]),
+    quote(outros[4]),
+    quote(vagas[3]),
+    quote(outros[5]),
   ]
 
-  const rowC: RowItem[] = [...testimonials]
-    .reverse()
-    .slice(0, 8)
-    .map((item) => ({ kind: 'quote', item }))
+  const rowC: RowItem[] = [
+    quote(mentorias[4]),
+    quote(outros[6]),
+    quote(vagas[0]),
+    quote(outros[7]),
+    quote(mentorias[1]),
+    quote(outros[0]),
+    quote(vagas[1]),
+    quote(outros[2]),
+  ].filter((entry) => entry.kind === 'quote' && entry.item)
 
   return (
     <section className="overflow-hidden bg-[#f3f2f8] py-16 md:py-24">
