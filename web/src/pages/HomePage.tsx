@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
+import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
 
 const starterLinks = [
@@ -75,6 +76,8 @@ export function HomePage() {
       </section>
 
       <Marquee items={marqueeItems} />
+
+      <TestimonialsMarquee />
 
       <section className="bg-brand-100/50 px-5 py-20 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl md:max-w-4xl">

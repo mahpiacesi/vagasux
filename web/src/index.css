@@ -204,11 +204,21 @@
   animation: marquee-scroll 28s linear infinite;
 }
 
+.testimonials-track {
+  animation: marquee-scroll 55s linear infinite;
+}
+
+.testimonials-track-reverse {
+  animation: marquee-scroll 55s linear infinite reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
   .skeleton,
-  .marquee-track {
+  .marquee-track,
+  .testimonials-track,
+  .testimonials-track-reverse {
     animation: none;
   }
 }

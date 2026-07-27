@@ -1,0 +1,180 @@
+import type { Testimonial, TestimonialTone } from '@/data/testimonials'
+import { testimonials } from '@/data/testimonials'
+
+const toneClass: Record<TestimonialTone, string> = {
+  cream: 'bg-neutral-100 text-neutral-500 ring-1 ring-neutral-500/10',
+  indigo: 'bg-brand-100 text-brand-500',
+  mustard: 'bg-complementary-200 text-neutral-500',
+  navy: 'bg-neutral-500 text-neutral-100',
+  lilac: 'bg-brand-200/80 text-brand-500',
+  coral: 'bg-highlight-200 text-neutral-100',
+}
+
+const badgeClass: Record<TestimonialTone, string> = {
+  cream: 'bg-brand-100 text-brand-400',
+  indigo: 'bg-white/70 text-brand-500',
+  mustard: 'bg-neutral-500/10 text-neutral-500',
+  navy: 'bg-complementary-300/20 text-complementary-300',
+  lilac: 'bg-white/60 text-brand-500',
+  coral: 'bg-white/20 text-neutral-100',
+}
+
+type RowItem =
+  | { kind: 'quote'; item: Testimonial }
+  | { kind: 'accent'; id: string; title: string; subtitle: string; className: string }
+
+function TestimonialCard({ item }: { item: Testimonial }) {
+  return (
+    <article
+      className={`flex w-[min(22rem,78vw)] shrink-0 flex-col justify-between rounded-2xl p-5 md:w-[24rem] md:p-6 ${toneClass[item.tone]}`}
+    >
+      <div>
+        <span
+          className={`inline-flex rounded-md px-2 py-0.5 text-[0.65rem] font-bold tracking-wide uppercase ${badgeClass[item.tone]}`}
+        >
+          {item.category}
+        </span>
+        <p className="mt-4 text-[0.95rem] leading-relaxed md:text-base">
+          “{item.quote}”
+        </p>
+      </div>
+      <footer className="mt-6">
+        <p className="text-sm font-black tracking-tight">{item.name}</p>
+        {item.role ? (
+          <p className="mt-0.5 text-xs font-semibold tracking-wide uppercase opacity-70">
+            {item.role}
+          </p>
+        ) : null}
+      </footer>
+    </article>
+  )
+}
+
+function AccentCard({
+  title,
+  subtitle,
+  className,
+}: {
+  title: string
+  subtitle: string
+  className: string
+}) {
+  return (
+    <article
+      className={`flex w-[min(16rem,70vw)] shrink-0 flex-col justify-between rounded-2xl p-5 md:w-[18rem] md:p-6 ${className}`}
+    >
+      <p className="text-4xl font-black tracking-tight md:text-5xl">{title}</p>
+      <p className="mt-4 text-sm leading-snug font-bold tracking-wide uppercase opacity-90">
+        {subtitle}
+      </p>
+    </article>
+  )
+}
+
+function RowCard({ entry }: { entry: RowItem }) {
+  if (entry.kind === 'accent') {
+    return (
+      <AccentCard
+        title={entry.title}
+        subtitle={entry.subtitle}
+        className={entry.className}
+      />
+    )
+  }
+  return <TestimonialCard item={entry.item} />
+}
+
+function MarqueeRow({
+  items,
+  reverse = false,
+  duration = 55,
+}: {
+  items: RowItem[]
+  reverse?: boolean
+  duration?: number
+}) {
+  const loop = [...items, ...items]
+
+  return (
+    <div className="relative overflow-hidden" aria-hidden>
+      <div
+        className={`flex w-max gap-4 ${reverse ? 'testimonials-track-reverse' : 'testimonials-track'}`}
+        style={{ animationDuration: `${duration}s` }}
+      >
+        {loop.map((entry, index) => (
+          <RowCard
+            key={`${entry.kind === 'quote' ? entry.item.id : entry.id}-${index}`}
+            entry={entry}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export function TestimonialsMarquee() {
+  const rowA: RowItem[] = testimonials
+    .filter((_, i) => i % 2 === 0)
+    .map((item) => ({ kind: 'quote', item }))
+
+  const rowB: RowItem[] = [
+    {
+      kind: 'accent',
+      id: 'accent-vaguiner',
+      title: 'Vaguiner',
+      subtitle: 'Comunidade que se ajuda de verdade',
+      className: 'bg-brand-500 text-neutral-100',
+    },
+    ...testimonials
+      .filter((_, i) => i % 2 === 1)
+      .map((item) => ({ kind: 'quote' as const, item })),
+    {
+      kind: 'accent',
+      id: 'accent-depoimentos',
+      title: 'Depoimentos',
+      subtitle: 'Escreva o seu no Wall of Vaguiners',
+      className: 'bg-complementary-300 text-neutral-500',
+    },
+  ]
+
+  const rowC: RowItem[] = [...testimonials]
+    .reverse()
+    .slice(0, 8)
+    .map((item) => ({ kind: 'quote', item }))
+
+  return (
+    <section className="overflow-hidden bg-[#f3f2f8] py-16 md:py-24">
+      <div className="mx-auto max-w-3xl px-5 md:max-w-4xl md:px-6">
+        <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
+          Wall of Vaguiners
+        </p>
+        <h2 className="mt-4 max-w-2xl text-3xl leading-[1.1] font-black tracking-[-0.03em] text-neutral-500 md:text-5xl">
+          Quem já viveu a{' '}
+          <span className="text-mark">comunidade</span> deixa um recado.
+        </h2>
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          Relatos reais de eventos, mentorias, vagas, projetos e seletivas —
+          escritos por quem faz parte.
+        </p>
+      </div>
+
+      <div className="mt-12 flex flex-col gap-4 md:mt-14 md:gap-5">
+        <MarqueeRow items={rowA} duration={58} />
+        <MarqueeRow items={rowB} reverse duration={64} />
+        <MarqueeRow items={rowC} duration={52} />
+      </div>
+
+      <div className="mx-auto mt-10 max-w-3xl px-5 md:mt-12 md:max-w-4xl md:px-6">
+        <a
+          href="https://testimonial.to/vagasux/all"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-base font-bold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400"
+        >
+          Ver todos os relatos
+          <span aria-hidden>→</span>
+        </a>
+      </div>
+    </section>
+  )
+}
