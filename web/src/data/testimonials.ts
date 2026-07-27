@@ -167,6 +167,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Fui contemplado pelo VagasUX com um ano de acesso à TALKNTALK. Foi incrível praticar sem julgamentos, me sentindo acolhido o tempo todo. De verdade, estou muito grato pela oportunidade.',
     name: 'Luiz Reis',
+    role: 'Front-end | UX/UI Designer',
     category: 'Seletivas',
     tone: 'navy',
   },
