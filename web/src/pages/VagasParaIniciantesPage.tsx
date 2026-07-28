@@ -5,6 +5,7 @@ import { JobList } from '@/components/JobList'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
+import { collectBrazilianStates } from '@/lib/location'
 import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
@@ -16,6 +17,7 @@ const initialFilters: JobFiltersState = {
   market: 'all',
   workModel: 'all',
   seniority: 'all',
+  state: 'all',
 }
 
 export function VagasParaIniciantesPage() {
@@ -59,9 +61,11 @@ export function VagasParaIniciantesPage() {
     [jobs, filters, deferredQuery],
   )
 
+  const stateOptions = useMemo(() => collectBrazilianStates(jobs), [jobs])
+
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
-  }, [filters.market, filters.workModel, filters.seniority, deferredQuery])
+  }, [filters.market, filters.workModel, filters.seniority, filters.state, deferredQuery])
 
   const visibleJobs = useMemo(
     () => filtered.slice(0, visibleCount),
@@ -79,6 +83,7 @@ export function VagasParaIniciantesPage() {
             resultCount={loading ? 0 : filtered.length}
             totalCount={jobs.length}
             hideSeniority
+            stateOptions={stateOptions}
             searchPlaceholder="Buscar empresa, função ou palavra-chave…"
             onChange={setFilters}
             onClear={() => setFilters(initialFilters)}

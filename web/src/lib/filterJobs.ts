@@ -1,4 +1,5 @@
 import { resolveIsInternational, resolveWorkModel } from './labels'
+import { parseBrazilianState } from './location'
 import type { Job, JobFiltersState } from '../types/job'
 
 function normalize(value: string) {
@@ -24,6 +25,11 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
 
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 
+    if (filters.state !== 'all') {
+      const state = parseBrazilianState(job.location)
+      if (state !== filters.state) return false
+    }
+
     if (!q) return true
 
     const haystack = normalize(
@@ -48,6 +54,7 @@ export function hasActiveFilters(filters: JobFiltersState) {
     filters.query.trim() !== '' ||
     filters.market !== 'all' ||
     filters.workModel !== 'all' ||
-    filters.seniority !== 'all'
+    filters.seniority !== 'all' ||
+    filters.state !== 'all'
   )
 }

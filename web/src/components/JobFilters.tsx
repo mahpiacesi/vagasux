@@ -1,6 +1,7 @@
 import { Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 import { hasActiveFilters } from '@/lib/filterJobs'
 import type {
   JobFiltersState,
@@ -41,6 +42,7 @@ type JobFiltersProps = {
   onClear: () => void
   hideSeniority?: boolean
   searchPlaceholder?: string
+  stateOptions?: string[]
 }
 
 function FilterRow<T extends string>({
@@ -85,6 +87,42 @@ function FilterRow<T extends string>({
   )
 }
 
+function StateFilterSelect({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string
+  options: string[]
+  value: string
+  onChange: (value: string) => void
+}) {
+  return (
+    <div>
+      <label htmlFor="job-filter-state" className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+        {label}
+      </label>
+      <select
+        id="job-filter-state"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className={cn(
+          'mt-2.5 h-10 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner outline-none',
+          'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
+        )}
+      >
+        <option value="all">Todos</option>
+        {options.map((state) => (
+          <option key={state} value={state}>
+            {state}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+}
+
 export function JobFilters({
   value,
   resultCount,
@@ -93,6 +131,7 @@ export function JobFilters({
   onClear,
   hideSeniority = false,
   searchPlaceholder = 'Cargo, empresa, cidade, ferramenta…',
+  stateOptions = [],
 }: JobFiltersProps) {
   const active = hasActiveFilters(value)
 
@@ -163,6 +202,14 @@ export function JobFilters({
           value={value.workModel}
           onChange={(workModel) => onChange({ ...value, workModel })}
         />
+        {stateOptions.length > 0 ? (
+          <StateFilterSelect
+            label="Estado"
+            options={stateOptions}
+            value={value.state}
+            onChange={(state) => onChange({ ...value, state })}
+          />
+        ) : null}
         {hideSeniority ? null : (
           <FilterRow
             label="Nível"
