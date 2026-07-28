@@ -1,7 +1,9 @@
-import { Briefcase, ChevronDown } from 'lucide-react'
+import { Briefcase, CaretDown } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { routes } from '@/lib/siteLinks'
+
+const navIconProps = { weight: 'bold' as const }
 
 const vagasItems = [
   {
@@ -25,6 +27,28 @@ const itemClass =
   'block rounded-xl px-4 py-3 transition-colors hover:bg-brand-100/80 focus-visible:bg-brand-100/80 focus-visible:outline-none'
 
 const CLOSE_DELAY_MS = 120
+
+function VagasMenuItem({
+  to,
+  label,
+  description,
+  onNavigate,
+}: (typeof vagasItems)[number] & { onNavigate?: () => void }) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
+      }
+      onClick={onNavigate}
+    >
+      <span className="block text-sm font-bold text-neutral-500">{label}</span>
+      <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
+        {description}
+      </span>
+    </NavLink>
+  )
+}
 
 export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
   const { pathname } = useLocation()
@@ -58,27 +82,20 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
           }`}
         >
           <span className="inline-flex items-center gap-1">
+            <Briefcase
+              size={14}
+              {...navIconProps}
+              className="shrink-0 translate-y-0.5"
+              aria-hidden
+            />
             Vagas
-            <ChevronDown className="size-3.5 opacity-70" aria-hidden />
+            <CaretDown size={14} {...navIconProps} className="opacity-70" aria-hidden />
           </span>
         </summary>
         <div className="absolute top-full right-0 z-50 min-w-[15rem] pt-2">
           <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_16px_40px_-20px_rgb(7_0_58_/_0.35)]">
             {vagasItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
-                }
-              >
-                <span className="block text-sm font-bold text-neutral-500">
-                  {item.label}
-                </span>
-                <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-                  {item.description}
-                </span>
-              </NavLink>
+              <VagasMenuItem key={item.to} {...item} />
             ))}
           </div>
         </div>
@@ -104,10 +121,17 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <Briefcase className="size-4 shrink-0" aria-hidden />
+        <Briefcase
+          size={16}
+          {...navIconProps}
+          className="shrink-0 translate-y-0.5"
+          aria-hidden
+        />
         Vagas
-        <ChevronDown
-          className={`size-3.5 shrink-0 opacity-70 transition-transform ${open ? 'rotate-180' : ''}`}
+        <CaretDown
+          size={14}
+          {...navIconProps}
+          className={`shrink-0 opacity-70 transition-transform ${open ? 'rotate-180' : ''}`}
           aria-hidden
         />
         {isVagasActive ? (
@@ -122,21 +146,11 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
       >
         <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_20px_48px_-24px_rgb(7_0_58_/_0.4)]">
           {vagasItems.map((item) => (
-            <NavLink
+            <VagasMenuItem
               key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
-              }
-              onClick={() => setOpen(false)}
-            >
-              <span className="block text-sm font-bold text-neutral-500">
-                {item.label}
-              </span>
-              <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-                {item.description}
-              </span>
-            </NavLink>
+              {...item}
+              onNavigate={() => setOpen(false)}
+            />
           ))}
         </div>
       </div>
