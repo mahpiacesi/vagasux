@@ -1,5 +1,5 @@
 import aluraLogo from '@/assets/partners/alura.svg'
-import carrefourLogo from '@/assets/partners/carrefour.svg'
+import bancoCarrefourLogo from '@/assets/partners/banco-carrefour-white.png'
 import fiapLogo from '@/assets/partners/fiap.svg'
 import thestarterLogo from '@/assets/partners/thestarter.png'
 import uxconfLogo from '@/assets/partners/uxconf.png'
@@ -12,15 +12,34 @@ const highlights = [
   { value: '+30', label: 'contratados' },
 ] as const
 
-const partners = [
+type PartnerCard =
+  | {
+      kind: 'logo'
+      name: string
+      logo: string
+      bg: string
+      className: string
+      logoClass: string
+    }
+  | {
+      kind: 'more'
+      name: string
+      value: string
+      label: string
+      className: string
+    }
+
+const partners: PartnerCard[] = [
   {
+    kind: 'logo',
     name: 'Alura',
     logo: aluraLogo,
     bg: '#052FD3',
-    className: 'col-span-2 row-span-1 min-h-[7.5rem] md:min-h-[8.5rem]',
+    className: 'col-span-2 min-h-[7.5rem] md:min-h-[8.5rem]',
     logoClass: 'h-8 w-auto md:h-10',
   },
   {
+    kind: 'logo',
     name: 'FIAP',
     logo: fiapLogo,
     bg: '#ED145B',
@@ -28,6 +47,7 @@ const partners = [
     logoClass: 'h-7 w-auto md:h-8',
   },
   {
+    kind: 'logo',
     name: 'UXConf BR',
     logo: uxconfLogo,
     bg: '#0070C0',
@@ -35,20 +55,29 @@ const partners = [
     logoClass: 'h-8 w-auto max-w-[10rem] md:h-9 md:max-w-[12rem]',
   },
   {
+    kind: 'logo',
     name: 'Banco Carrefour',
-    logo: carrefourLogo,
-    bg: '#004E9A',
+    logo: bancoCarrefourLogo,
+    bg: '#004A99',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
-    logoClass: 'h-8 w-auto max-w-[9rem] md:h-9',
+    logoClass: 'h-16 w-auto md:h-[4.5rem]',
   },
   {
+    kind: 'logo',
     name: 'TheStarter',
     logo: thestarterLogo,
     bg: '#0A0707',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
     logoClass: 'h-6 w-auto max-w-[9rem] md:h-7',
   },
-] as const
+  {
+    kind: 'more',
+    name: 'Mais parceiros',
+    value: '+25',
+    label: 'parceiros ativos',
+    className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
+  },
+]
 
 export function PartnershipsSection() {
   return (
@@ -106,21 +135,35 @@ export function PartnershipsSection() {
           className="grid grid-cols-3 gap-3 md:gap-3.5"
           aria-label="Principais parceiros"
         >
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className={`flex items-center justify-center rounded-2xl px-4 py-5 ${partner.className}`}
-              style={{ backgroundColor: partner.bg }}
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={`object-contain ${partner.logoClass}`}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          ))}
+          {partners.map((partner) =>
+            partner.kind === 'more' ? (
+              <div
+                key={partner.name}
+                className={`flex flex-row items-center justify-center gap-3 rounded-2xl border border-dashed border-neutral-500/20 bg-neutral-100/80 px-4 py-5 text-center ${partner.className}`}
+              >
+                <p className="text-3xl font-black tracking-tight text-neutral-500 md:text-4xl">
+                  {partner.value}
+                </p>
+                <p className="text-xs font-bold tracking-wide text-neutral-400 uppercase">
+                  {partner.label}
+                </p>
+              </div>
+            ) : (
+              <div
+                key={partner.name}
+                className={`flex items-center justify-center rounded-2xl px-4 py-5 ${partner.className}`}
+                style={{ backgroundColor: partner.bg }}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`object-contain ${partner.logoClass}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>
