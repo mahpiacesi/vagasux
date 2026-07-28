@@ -71,7 +71,7 @@ function FilterRow<T extends string>({
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
       </p>
-      <div className="mt-2.5 flex flex-wrap gap-2" role="group" aria-label={label}>
+      <div className="mt-2 flex flex-wrap gap-1.5" role="group" aria-label={label}>
         {visibleOptions.map((option) => {
           const active = value === option.id
           return (
@@ -127,7 +127,7 @@ function StateFilterSelect({
           aria-label={label}
           disabled={hidden}
           className={cn(
-            'mt-2.5 h-9 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-left text-sm font-semibold text-neutral-500 shadow-inner',
+            'mt-2 h-9 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-left text-sm font-semibold text-neutral-500 shadow-inner',
             'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
             value === 'all' && 'text-neutral-400',
           )}
@@ -168,13 +168,13 @@ export function JobFilters({
   }
 
   return (
-    <div className="mural-fade mural-fade-delay-2 sticky top-[4.5rem] z-40 rounded-2xl border border-neutral-200/70 bg-neutral-100/95 px-4 py-4 shadow-[0_16px_40px_-28px_rgb(7_0_58_/_0.35)] backdrop-blur-md md:px-5 md:py-5">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+    <div className="mural-fade mural-fade-delay-2 sticky top-[4.5rem] z-40 rounded-2xl border border-neutral-200/70 bg-neutral-100/95 px-4 py-3 shadow-[0_16px_40px_-28px_rgb(7_0_58_/_0.35)] backdrop-blur-md md:px-5 md:py-4">
+      <div className="flex flex-wrap items-end justify-between gap-2">
         <div>
           <p className="text-xs font-bold tracking-[0.14em] text-brand-400 uppercase">
             Filtrar vagas
           </p>
-          <p className="mt-1 text-sm text-neutral-400">
+          <p className="mt-0.5 text-sm text-neutral-400">
             <span className="font-black text-neutral-500">{resultCount}</span>
             {resultCount === 1 ? ' vaga' : ' vagas'}
             {active ? <span className="text-neutral-400/80"> de {totalCount}</span> : null}
@@ -192,7 +192,7 @@ export function JobFilters({
         ) : null}
       </div>
 
-      <label className="mt-4 block">
+      <label className="mt-3 block">
         <span className="sr-only">Buscar</span>
         <div className="relative">
           <Search
@@ -204,7 +204,7 @@ export function JobFilters({
             value={value.query}
             onChange={(event) => onChange({ ...value, query: event.target.value })}
             placeholder={searchPlaceholder}
-            className="h-12 rounded-xl border-neutral-200/80 bg-brand-100/30 pr-11 pl-11 text-sm font-medium shadow-inner"
+            className="h-11 rounded-xl border-neutral-200/80 bg-brand-100/30 pr-11 pl-11 text-sm font-medium shadow-inner"
           />
           {value.query ? (
             <Button
@@ -221,45 +221,41 @@ export function JobFilters({
         </div>
       </label>
 
-      <div className="mt-4 flex min-h-[4.25rem] flex-wrap items-end justify-between gap-x-5 gap-y-4">
-        <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
-          <FilterRow
-            label="Mercado"
-            options={marketOptions}
-            value={value.market}
-            onChange={handleMarketChange}
-          />
-          <FilterRow
-            label="Formato"
-            options={workOptions}
-            value={value.workModel}
-            onChange={(workModel) => onChange({ ...value, workModel })}
-          />
-          {hideSeniority ? null : (
+      <div className="mt-3 space-y-3">
+        <div className="flex items-end justify-between gap-x-4 gap-y-3">
+          <div className="flex flex-wrap items-end gap-x-4 gap-y-3">
             <FilterRow
-              label="Nível"
-              options={seniorityOptions}
-              value={value.seniority}
-              onChange={(seniority) => onChange({ ...value, seniority })}
+              label="Mercado"
+              options={marketOptions}
+              value={value.market}
+              onChange={handleMarketChange}
             />
-          )}
+            <FilterRow
+              label="Formato"
+              options={workOptions}
+              value={value.workModel}
+              onChange={(workModel) => onChange({ ...value, workModel })}
+            />
+          </div>
+          {showStateFilter ? (
+            <StateFilterSelect
+              label="Estado"
+              options={BRAZILIAN_STATES}
+              value={value.state}
+              hidden={!showState}
+              onChange={(state) => onChange({ ...value, state })}
+            />
+          ) : null}
         </div>
-        {showStateFilter ? (
-          <StateFilterSelect
-            label="Estado"
-            options={BRAZILIAN_STATES}
-            value={value.state}
-            hidden={!showState}
-            onChange={(state) => onChange({ ...value, state })}
+        {hideSeniority ? null : (
+          <FilterRow
+            label="Nível"
+            options={seniorityOptions}
+            value={value.seniority}
+            onChange={(seniority) => onChange({ ...value, seniority })}
           />
-        ) : null}
+        )}
       </div>
-
-      {!hideSeniority ? (
-        <p className="mt-3 text-xs leading-relaxed text-neutral-400/80">
-          Formato e nível ficam mais precisos conforme a IA classifica as vagas.
-        </p>
-      ) : null}
     </div>
   )
 }
