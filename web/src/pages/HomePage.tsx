@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
+import { NewsletterSection } from '@/components/NewsletterSection'
 import { PartnershipsSection } from '@/components/PartnershipsSection'
 import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
@@ -80,6 +81,8 @@ export function HomePage() {
       </section>
 
       <Marquee items={marqueeItems} />
+
+      <NewsletterSection />
 
       <TestimonialsMarquee />
 
