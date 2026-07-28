@@ -96,7 +96,7 @@ function normalizeUrl(raw) {
 }
 
 function parseDeadline(row) {
-  const raw = row['Inscrições aberta até'] ?? row['Inscricoes aberta ate'];
+  const raw = row.property_inscri_es_aberta_at ?? row['Inscrições aberta até'] ?? row['Inscricoes aberta ate'];
   if (!raw) return null;
   const start = raw.start ?? raw;
   const d = new Date(start);
@@ -109,9 +109,9 @@ for (const item of items) {
   const pageId = String(row.id || '').trim();
   if (!pageId) continue;
 
-  const company = pickString(row.Empresa);
-  const title = pickString(row['Função'] ?? row.Funcao);
-  const url = normalizeUrl(row['Link da vaga/empresa']);
+  const company = pickString(row.property_empresa ?? row.Empresa ?? row.name);
+  const title = pickString(row.property_fun_o ?? row['Função'] ?? row.Funcao);
+  const url = normalizeUrl(row.property_link_da_vaga_empresa ?? row['Link da vaga/empresa']);
   let skipReason = null;
 
   if (!company) skipReason = 'missing_company';
@@ -129,10 +129,10 @@ for (const item of items) {
       source_job_id: pageId,
       company,
       title,
-      description: pickString(row['Descrição'] ?? row.Descricao) || null,
+      description: pickString(row.property_descri_o ?? row['Descrição'] ?? row.Descricao) || null,
       url,
-      location: pickString(row['Localização'] ?? row.Localizacao) || null,
-      published_at: row['Data da inclusão'] ?? row.createdTime ?? row.created_time ?? null,
+      location: pickString(row.property_localiza_o ?? row['Localização'] ?? row.Localizacao) || null,
+      published_at: row.property_data_da_inclus_o ?? row['Data da inclusão'] ?? row.createdTime ?? row.created_time ?? null,
       skip: Boolean(skipReason),
       skip_reason: skipReason,
     },
