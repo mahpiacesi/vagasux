@@ -5,8 +5,8 @@ import { superSite } from '@/lib/siteLinks'
 export function BeginnersSection() {
   return (
     <section className="bg-brand-100/50 px-5 py-20 md:px-6 md:py-24">
-      <div className="mx-auto grid max-w-3xl items-center gap-12 md:max-w-6xl md:grid-cols-2 md:gap-14 lg:gap-16">
-        <div>
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-10 md:max-w-5xl md:flex-row md:items-center md:justify-center md:gap-12 lg:gap-14">
+        <div className="w-full md:max-w-md lg:max-w-lg">
           <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
             Para quem é iniciante
           </p>
@@ -34,11 +34,8 @@ export function BeginnersSection() {
           </div>
         </div>
 
-        {/* Same column as Parcerias cards — art left-aligned so it sits near the copy */}
-        <div className="min-w-0 w-full">
-          <div className="mx-auto w-full max-w-[22rem] md:mx-0 md:max-w-[26rem]">
-            <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
-          </div>
+        <div className="w-full max-w-[22rem] shrink-0 md:max-w-[26rem]">
+          <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
         </div>
       </div>
     </section>

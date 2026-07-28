@@ -19,9 +19,9 @@ const GLANCE_LEFT = [
  * corner in the SVG; motion stays small so gaze stays conjugate.
  */
 const GLANCE_RIGHT = [
-  { x: 0.35, y: 0.15 },
-  { x: -0.5, y: -0.9 },
-  { x: -1.2, y: 0.1 },
+  { x: 0.2, y: 0.1 },
+  { x: -0.7, y: -0.85 },
+  { x: -1.3, y: 0.1 },
 ] as const
 
 const STEP_MS = 2200
