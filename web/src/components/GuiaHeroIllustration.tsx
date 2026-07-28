@@ -11,7 +11,7 @@ type GuiaHeroIllustrationProps = {
 const GLANCE = [
   { x: 4.2, y: 0.6 },
   { x: 0, y: -3.8 },
-  { x: -6.5, y: -0.8 },
+  { x: -11, y: -1 },
 ] as const
 
 const STEP_MS = 2200
