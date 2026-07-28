@@ -10,18 +10,23 @@ export function LoadMore({ shown, total, onLoadMore }: LoadMoreProps) {
   const hasMore = shown < total
 
   return (
-    <div className="flex flex-col items-center gap-3 pt-8">
-      <p className="text-sm text-muted-foreground" aria-live="polite">
-        Mostrando <span className="font-bold text-foreground">{shown}</span> de{' '}
-        <span className="font-bold text-foreground">{total}</span>
+    <div className="flex flex-col items-center gap-4 pt-10">
+      <p className="text-sm text-neutral-400" aria-live="polite">
+        Mostrando <span className="font-black text-neutral-500">{shown}</span> de{' '}
+        <span className="font-black text-neutral-500">{total}</span>
         {total === 1 ? ' vaga' : ' vagas'}
       </p>
       {hasMore ? (
-        <Button type="button" size="lg" onClick={onLoadMore} className="px-6 font-bold">
+        <Button
+          type="button"
+          size="lg"
+          onClick={onLoadMore}
+          className="h-12 rounded-xl px-8 text-base font-black"
+        >
           Ver mais vagas
         </Button>
       ) : total > 0 ? (
-        <p className="text-xs font-semibold text-muted-foreground/70">
+        <p className="text-xs font-semibold text-neutral-400/80">
           Você viu todas as vagas deste filtro
         </p>
       ) : null}

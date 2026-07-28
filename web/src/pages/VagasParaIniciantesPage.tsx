@@ -2,12 +2,26 @@ import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { IniciantesHero } from '@/components/IniciantesHero'
 import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
+import { Marquee } from '@/components/Marquee'
+import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
+import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
 import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
 const PAGE_SIZE = 15
 const CURATED_SOURCE = 'VagasUX'
+
+const marqueeItems = [
+  'Estágio',
+  'Trainee',
+  'Júnior',
+  'Curadoria humana',
+  'Entry-level',
+  'UX',
+  'Product Design',
+  'Primeiro emprego',
+]
 
 const initialFilters: JobFiltersState = {
   query: '',
@@ -69,8 +83,10 @@ export function VagasParaIniciantesPage() {
   return (
     <main>
       <IniciantesHero count={loading ? null : jobs.length} />
-      <section className="px-5 pb-16 md:px-6">
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
+      <Marquee items={marqueeItems} className="bg-brand-500" />
+      <JobsListingSection>
+        <JobsCrossLink variant="curadoria" />
+        <div className="mt-6">
           <JobFilters
             value={filters}
             resultCount={loading ? 0 : filtered.length}
@@ -80,21 +96,22 @@ export function VagasParaIniciantesPage() {
             onChange={setFilters}
             onClear={() => setFilters(initialFilters)}
           />
-          <div className="mt-6">
-            <JobList
-              jobs={visibleJobs}
-              totalCount={filtered.length}
-              loading={loading}
-              error={error}
-              emptyTitle="Nenhuma vaga curada por aqui"
-              emptyDescription="Tenta limpar a busca ou os filtros — ou indica uma vaga entry-level pra gente incluir na curadoria."
-              onLoadMore={() => {
-                setVisibleCount((count) => count + PAGE_SIZE)
-              }}
-            />
-          </div>
         </div>
-      </section>
+        <div className="mt-6">
+          <JobList
+            jobs={visibleJobs}
+            totalCount={filtered.length}
+            loading={loading}
+            error={error}
+            hideSourceBadge
+            emptyTitle="Nenhuma vaga curada por aqui"
+            emptyDescription="Tenta limpar a busca ou os filtros — ou indica uma vaga entry-level pra gente incluir na curadoria."
+            onLoadMore={() => {
+              setVisibleCount((count) => count + PAGE_SIZE)
+            }}
+          />
+        </div>
+      </JobsListingSection>
     </main>
   )
 }

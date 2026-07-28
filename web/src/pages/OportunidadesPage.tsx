@@ -1,12 +1,28 @@
 import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
+import { Marquee } from '@/components/Marquee'
 import { MuralIntro } from '@/components/MuralIntro'
+import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
+import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
 import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
 const PAGE_SIZE = 15
+
+const marqueeItems = [
+  'Remoto',
+  'Júnior',
+  'Pleno',
+  'Estágio',
+  'Híbrido',
+  'Sênior',
+  'Trainee',
+  'Lead',
+  'UX',
+  'Product Design',
+]
 
 const initialFilters: JobFiltersState = {
   query: '',
@@ -68,8 +84,10 @@ export function OportunidadesPage() {
   return (
     <main>
       <MuralIntro count={loading ? null : jobs.length} />
-      <section className="px-5 pb-16 md:px-6">
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
+      <Marquee items={marqueeItems} />
+      <JobsListingSection>
+        <JobsCrossLink variant="oportunidades" />
+        <div className="mt-6">
           <JobFilters
             value={filters}
             resultCount={loading ? 0 : filtered.length}
@@ -77,19 +95,19 @@ export function OportunidadesPage() {
             onChange={setFilters}
             onClear={() => setFilters(initialFilters)}
           />
-          <div className="mt-6">
-            <JobList
-              jobs={visibleJobs}
-              totalCount={filtered.length}
-              loading={loading}
-              error={error}
-              onLoadMore={() => {
-                setVisibleCount((count) => count + PAGE_SIZE)
-              }}
-            />
-          </div>
         </div>
-      </section>
+        <div className="mt-6">
+          <JobList
+            jobs={visibleJobs}
+            totalCount={filtered.length}
+            loading={loading}
+            error={error}
+            onLoadMore={() => {
+              setVisibleCount((count) => count + PAGE_SIZE)
+            }}
+          />
+        </div>
+      </JobsListingSection>
     </main>
   )
 }
