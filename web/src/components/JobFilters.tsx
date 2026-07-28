@@ -64,13 +64,15 @@ function FilterRow<T extends string>({
   value: T
   onChange: (value: T) => void
 }) {
+  const visibleOptions = options.filter((option) => option.id !== 'all')
+
   return (
     <div>
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
       </p>
       <div className="mt-2.5 flex flex-wrap gap-2" role="group" aria-label={label}>
-        {options.map((option) => {
+        {visibleOptions.map((option) => {
           const active = value === option.id
           return (
             <Button
@@ -79,7 +81,7 @@ function FilterRow<T extends string>({
               size="sm"
               variant={active ? 'default' : 'outline'}
               aria-pressed={active}
-              onClick={() => onChange(option.id)}
+              onClick={() => onChange(active ? ('all' as T) : option.id)}
               className={`rounded-full px-4 font-semibold ${
                 active
                   ? 'bg-brand-500 text-neutral-100 shadow-sm hover:bg-brand-400'
@@ -109,18 +111,21 @@ function StateFilterSelect({
   return (
     <div>
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">{label}</p>
-      <Select value={value} onValueChange={onChange}>
+      <Select
+        value={value === 'all' ? undefined : value}
+        onValueChange={(next) => onChange(next)}
+      >
         <SelectTrigger
           aria-label={label}
           className={cn(
             'mt-2.5 h-10 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner',
             'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
+            value === 'all' && 'text-neutral-400',
           )}
         >
-          <SelectValue placeholder="Todos" />
+          <SelectValue placeholder="Estado" />
         </SelectTrigger>
         <SelectContent className="max-h-72">
-          <SelectItem value="all">Todos</SelectItem>
           {options.map((state) => (
             <SelectItem key={state} value={state}>
               {state}
