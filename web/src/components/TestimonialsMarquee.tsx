@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import { ArrowUpRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import type { Testimonial, TestimonialTone } from '@/data/testimonials'
 import { testimonials } from '@/data/testimonials'
 
@@ -210,16 +212,35 @@ export function TestimonialsMarquee() {
         <MarqueeRow items={rowC} duration={88} />
       </div>
 
-      <div className="mx-auto mt-10 max-w-3xl px-5 md:mt-12 md:max-w-4xl md:px-6">
-        <a
-          href="https://testimonial.to/vagasux/all"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-base font-bold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400"
+      <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center gap-3 px-5 md:mt-12 md:max-w-4xl md:px-6">
+        <Button
+          asChild
+          size="lg"
+          className="h-12 rounded-xl px-7 text-base font-black shadow-md shadow-brand-500/15"
         >
-          Ver todos os relatos
-          <span aria-hidden>→</span>
-        </a>
+          <a
+            href="https://testimonial.to/vagasux"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Escrever meu relato
+            <ArrowUpRight className="size-4" aria-hidden />
+          </a>
+        </Button>
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+        >
+          <a
+            href="https://testimonial.to/vagasux/all"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver todos os relatos
+          </a>
+        </Button>
       </div>
     </section>
   )
