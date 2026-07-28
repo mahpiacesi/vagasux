@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom'
+import { BeginnersSection } from '@/components/BeginnersSection'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
 import { NewsletterSection } from '@/components/NewsletterSection'
 import { PartnershipsSection } from '@/components/PartnershipsSection'
 import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
-
-const starterLinks = [
-  { label: 'Guia do Product Designer', href: superSite.guia },
-  { label: 'Vagas para iniciantes', href: superSite.iniciantes },
-  { label: 'Iniciantes em Design', href: superSite.baseIniciantes },
-] as const
 
 const communityLinks = [
   { label: 'Conheça a comunidade', href: superSite.comunidade },
@@ -84,42 +79,9 @@ export function HomePage() {
 
       <NewsletterSection />
 
-      <TestimonialsMarquee />
+      <BeginnersSection />
 
-      <section className="bg-brand-100/50 px-5 py-20 md:px-6 md:py-24">
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
-            Para quem é iniciante
-          </p>
-          <h2 className="mt-4 max-w-2xl text-3xl leading-[1.1] font-black tracking-[-0.03em] text-neutral-500 md:text-5xl">
-            Espaço pra quem está começando — de verdade.
-          </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Iniciativas focadas em ensinar e abrir caminho pra quem está
-            entrando ou migrando pra área.
-          </p>
-          <ul className="mt-10 space-y-1 border-t border-brand-200/60">
-            {starterLinks.map((item) => (
-              <li key={item.href} className="border-b border-brand-200/60">
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 py-5 text-lg font-black text-brand-500 transition-colors hover:text-brand-400 md:text-xl"
-                >
-                  <span>{item.label}</span>
-                  <span
-                    aria-hidden
-                    className="text-brand-300 transition-transform group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <TestimonialsMarquee />
 
       <PartnershipsSection />
 

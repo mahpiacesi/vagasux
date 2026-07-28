@@ -214,13 +214,43 @@
   animation: marquee-scroll var(--marquee-duration) linear infinite reverse;
 }
 
+@keyframes beginners-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes beginners-blob {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate(4px, -6px);
+  }
+}
+
+.beginners-float {
+  animation: beginners-float 5.5s ease-in-out infinite;
+}
+
+.beginners-blob {
+  animation: beginners-blob 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
   .skeleton,
   .marquee-track,
   .testimonials-track,
-  .testimonials-track-reverse {
+  .testimonials-track-reverse,
+  .beginners-float,
+  .beginners-blob {
     animation: none;
   }
 }
