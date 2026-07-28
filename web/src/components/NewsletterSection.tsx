@@ -9,11 +9,11 @@ export function NewsletterSection() {
             Newsletter
           </p>
           <h2 className="mt-4 text-3xl leading-[1.1] font-black tracking-[-0.03em] text-neutral-500 md:text-4xl">
-            Receba oportunidades e conteúdos no seu e-mail
+            A curadoria da VagasUX no seu e-mail
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-neutral-400">
-            A newsletter da VagasUX com vagas, dicas e novidades da comunidade —
-            direto na sua caixa de entrada.
+            As principais vagas, conteúdos e novidades da comunidade, reunidos
+            em uma newsletter feita para quem quer crescer na carreira.
           </p>
         </div>
 
