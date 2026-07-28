@@ -229,7 +229,7 @@
 
 .guia-hero #pupil-left,
 .guia-hero #pupil-right {
-  transform-box: view-box;
+  transform-box: fill-box;
   transform-origin: center;
   transition: transform 0.85s cubic-bezier(0.33, 0.1, 0.25, 1);
 }
