@@ -9,12 +9,13 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 - [ui-system.md](docs/ui-system.md) — shadcn/ui + tokens da marca
 - [mural.md](docs/mural.md) — leitura pública das vagas `published`
 - [dedup.md](docs/dedup.md) — chaves únicas e upsert dos collectors
+- [collector-vagasux.md](docs/collector-vagasux.md) — curadoria Notion → Supabase
 - [job-status.md](docs/job-status.md) — ciclo de vida `raw → enriched → published → expired`
 - [enrichment.md](docs/enrichment.md) — classificação e resumo com IA
 - [architecture-decisions.md](docs/architecture-decisions.md) — ADRs do agregador
 - [mcp-setup.md](docs/mcp-setup.md) — MCP Supabase + n8n no Cursor
 
-Migrations em `supabase/migrations/` (dedup, status, expiry, enrichment, publish-before-enrich, upsert Remotar, RLS do mural).
+Migrations em `supabase/migrations/` (dedup, status, expiry, enrichment, publish-before-enrich, upsert Remotar, source VagasUX, RLS do mural).
 
 ## Site (web)
 

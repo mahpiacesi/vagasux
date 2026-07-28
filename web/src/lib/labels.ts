@@ -21,6 +21,7 @@ const sourceLabels: Record<string, string> = {
   Sólides: 'Sólides',
   Solides: 'Sólides',
   InfoJobs: 'InfoJobs',
+  VagasUX: 'VagasUX',
 }
 
 const NEW_JOB_MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000
