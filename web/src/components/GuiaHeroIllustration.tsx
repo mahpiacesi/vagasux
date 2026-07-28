@@ -8,12 +8,12 @@ type GuiaHeroIllustrationProps = {
 }
 
 const GLANCE = [
-  { x: 4, y: 1 },
-  { x: 0, y: -4 },
-  { x: -4.5, y: 0.5 },
+  { x: 5.5, y: 1.2 },
+  { x: 0, y: -5 },
+  { x: -5.5, y: 0.6 },
 ] as const
 
-const STEP_MS = 1800
+const STEP_MS = 1600
 
 /**
  * Guia SVG: circular pupils clipped to eye openings; JS/CSS motion for

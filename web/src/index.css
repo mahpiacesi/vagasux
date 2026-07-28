@@ -236,10 +236,10 @@
     transform: translate(0, 0) scale(1);
   }
   40% {
-    transform: translate(6px, -10px) scale(1.03);
+    transform: translate(10px, -14px) scale(1.04);
   }
   70% {
-    transform: translate(-5px, 6px) scale(0.985);
+    transform: translate(-8px, 8px) scale(0.98);
   }
 }
 
@@ -249,7 +249,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-16px);
   }
 }
 
