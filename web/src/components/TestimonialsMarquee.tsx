@@ -201,8 +201,8 @@ export function TestimonialsMarquee() {
           <span className="text-mark">comunidade</span> deixa um recado.
         </h2>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-          Relatos reais de eventos, mentorias, vagas, projetos e seletivas —
-          escritos por quem faz parte.
+          Veja como a VagasUX impactou a trajetória de profissionais por meio de
+          vagas, mentorias, eventos e iniciativas da comunidade.
         </p>
       </div>
 
