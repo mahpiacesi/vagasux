@@ -202,8 +202,40 @@ export function TestimonialsMarquee() {
         </h2>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
           Veja como a VagasUX impactou a trajetória de profissionais por meio de
-          vagas, mentorias, eventos e iniciativas da comunidade.
+          vagas, mentorias, eventos e iniciativas dentro da comunidade.
         </p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+          >
+            <a
+              href="https://testimonial.to/vagasux"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Compartilhe um relato
+              <ArrowUpRight className="size-4" aria-hidden />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="link"
+            className="h-auto px-0 text-base font-bold text-brand-500"
+          >
+            <a
+              href="https://testimonial.to/vagasux/all"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver todos os relatos
+              <span aria-hidden>→</span>
+            </a>
+          </Button>
+        </div>
       </div>
 
       <div className="mt-12 flex flex-col gap-4 md:mt-14 md:gap-5">
