@@ -109,9 +109,8 @@ function stripDiacritics(value) {
 
 function mapWorkModel(raw) {
   const label = stripDiacritics(pickString(raw)).toLowerCase();
-  if (!label || label === 'nao informado' || label === 'não informado' || label === 'unknown') {
-    return null;
-  }
+  if (!label) return null;
+  if (label === 'nao informado' || label === 'unknown') return 'unknown';
   if (label === 'remoto' || label === 'remote') return 'remote';
   if (label.startsWith('hibrid') || label === 'hybrid') return 'hybrid';
   if (label === 'presencial' || label === 'onsite') return 'onsite';
