@@ -108,7 +108,12 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
           }`}
         >
           <span className="inline-flex items-center gap-1">
-            <Briefcase size={14} {...navIconProps} className="shrink-0" aria-hidden />
+            <Briefcase
+              size={14}
+              {...navIconProps}
+              className="shrink-0 translate-y-0.5"
+              aria-hidden
+            />
             Vagas
             <CaretDown size={14} {...navIconProps} className="opacity-70" aria-hidden />
           </span>
@@ -142,7 +147,12 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <Briefcase size={16} {...navIconProps} className="shrink-0" aria-hidden />
+        <Briefcase
+          size={16}
+          {...navIconProps}
+          className="shrink-0 translate-y-0.5"
+          aria-hidden
+        />
         Vagas
         <CaretDown
           size={14}
