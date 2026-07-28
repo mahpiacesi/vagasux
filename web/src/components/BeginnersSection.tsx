@@ -4,7 +4,7 @@ import { superSite } from '@/lib/siteLinks'
 
 export function BeginnersSection() {
   return (
-    <section className="overflow-hidden bg-brand-100/50 px-5 py-20 md:px-6 md:py-24">
+    <section className="bg-brand-100/50 px-5 py-20 md:px-6 md:py-24">
       <div className="mx-auto grid max-w-3xl items-center gap-12 md:max-w-6xl md:grid-cols-2 md:gap-14 lg:gap-16">
         <div>
           <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
@@ -34,8 +34,8 @@ export function BeginnersSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md md:max-w-none">
-          <GuiaHeroIllustration className="guia-hero h-auto w-full" />
+        <div className="relative mx-auto w-full max-w-md overflow-visible px-2 pt-6 md:max-w-none md:px-4 md:pt-8">
+          <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
         </div>
       </div>
     </section>
