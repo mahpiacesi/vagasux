@@ -20,7 +20,7 @@ const copy = {
     eyebrow: 'Mural de vagas',
     title: 'Quer ver vagas de todos os níveis?',
     description:
-      'Reunimos automaticamente oportunidades de diversas plataformas para facilitar sua busca.',
+      'Reunimos oportunidades de diversas plataformas para facilitar sua busca.',
     cta: 'Ver oportunidades',
   },
 } as const
