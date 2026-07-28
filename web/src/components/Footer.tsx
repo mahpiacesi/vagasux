@@ -58,12 +58,12 @@ const socialLinks: { label: string; href: string; Icon: Icon }[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 px-5 py-10 md:px-6">
+    <footer className="bg-neutral-500 px-5 py-10 text-neutral-100 md:px-6">
       <div className="mx-auto flex max-w-3xl flex-col gap-8 md:max-w-4xl">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col items-start gap-4">
             <Link to={routes.home} aria-label="VagasUX — início">
-              <Logo />
+              <Logo variant="white" />
             </Link>
             <nav aria-label="Redes sociais da VagasUX">
               <ul className="flex flex-wrap items-center gap-1">
@@ -74,7 +74,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="inline-flex size-10 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-brand-100 hover:text-brand-500 focus-visible:bg-brand-100 focus-visible:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                      className="inline-flex size-10 items-center justify-center rounded-lg text-neutral-300 transition-colors hover:bg-white/10 hover:text-complementary-300 focus-visible:bg-white/10 focus-visible:text-complementary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-complementary-300"
                     >
                       <Icon size={22} weight="regular" aria-hidden />
                     </a>
@@ -84,13 +84,13 @@ export function Footer() {
             </nav>
           </div>
 
-          <p className="max-w-md text-sm leading-relaxed text-neutral-400">
+          <p className="max-w-md text-sm leading-relaxed text-neutral-300">
             Uma comunidade idealizada por{' '}
             <a
               href="https://avely.me/mahpiacesi"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-neutral-500 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+              className="font-semibold text-neutral-100 underline decoration-neutral-300/50 underline-offset-2 transition-colors hover:text-complementary-300 hover:decoration-complementary-300"
             >
               Mah Piacesi
             </a>{' '}
@@ -99,7 +99,7 @@ export function Footer() {
           </p>
         </div>
 
-        <p className="text-sm text-neutral-300">
+        <p className="text-sm text-neutral-300/70">
           © {new Date().getFullYear()} VagasUX
         </p>
       </div>

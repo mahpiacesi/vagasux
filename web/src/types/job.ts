@@ -3,6 +3,7 @@ export type Job = {
   title: string
   company: string
   location: string | null
+  description: string | null
   url: string
   source: string
   seniority: string | null
@@ -21,10 +22,12 @@ export type Job = {
 export type MarketFilter = 'all' | 'national' | 'international'
 export type WorkModelFilter = 'all' | 'remote' | 'hybrid' | 'onsite'
 export type SeniorityFilter = 'all' | 'intern' | 'junior' | 'mid' | 'senior' | 'lead'
+export type StateFilter = 'all' | string
 
 export type JobFiltersState = {
   query: string
   market: MarketFilter
   workModel: WorkModelFilter
   seniority: SeniorityFilter
+  state: StateFilter
 }

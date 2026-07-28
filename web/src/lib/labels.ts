@@ -1,9 +1,11 @@
+import { parseBrazilianState } from './location'
+
 const seniorityLabels: Record<string, string> = {
   intern: 'Estágio',
   junior: 'Júnior',
   mid: 'Pleno',
   senior: 'Sênior',
-  lead: 'Lead',
+  lead: 'Liderança',
   unknown: 'Nível —',
 }
 
@@ -30,9 +32,101 @@ function stripDiacritics(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
+function normalizeText(value: string) {
+  return stripDiacritics(value).replace(/\s+/g, ' ').trim().toLowerCase()
+}
+
 function isRemoteLocation(value: string) {
-  const normalized = stripDiacritics(value).trim().toLowerCase()
+  const normalized = normalizeText(value)
   return /^(remote|remoto|remota)$/i.test(normalized)
+}
+
+export type ResolvedWorkModel = 'remote' | 'hybrid' | 'onsite'
+
+function inferWorkModelFromText(text: string): ResolvedWorkModel | null {
+  if (!text) return null
+
+  if (/\b(hibrid\w*|hybrid\w*)\b/.test(text)) return 'hybrid'
+  if (/\b\d+\s*x?\s*(no\s+)?escritor/i.test(text)) return 'hybrid'
+  if (/\b(um|uma|\d+)\s+dias?(\s+por\s+semana)?\s+presencial/.test(text)) {
+    return 'hybrid'
+  }
+  if (/\batuacao\s+hibrid/.test(text)) return 'hybrid'
+
+  if (/#\s*remot/i.test(text)) return 'remote'
+  if (
+    /\b(100%\s+)?(trabalho\s+)?(remote|remoto|remota)\b/.test(text) &&
+    !/\b(hibrid\w*|hybrid\w*)\b/.test(text)
+  ) {
+    return 'remote'
+  }
+
+  if (/#\s*presencial\b/.test(text)) return 'onsite'
+  if (/\bpresencial\b/.test(text) && !/\b(hibrid\w*|hybrid\w*)\b/.test(text)) {
+    return 'onsite'
+  }
+
+  return null
+}
+
+function inferWorkModelFromLocation(location: string): ResolvedWorkModel | null {
+  const normalized = normalizeText(location)
+
+  if (/^(remote|remoto|remota)$/.test(normalized)) return 'remote'
+  if (/\b(hibrid\w*|hybrid\w*)\b/.test(normalized)) return 'hybrid'
+  if (/\b(remote|remoto|remota)\b/.test(normalized)) return 'remote'
+  if (/\be regiao\b/.test(normalized)) return 'onsite'
+  if (/\b(presencial|onsite)\b/.test(normalized)) return 'onsite'
+
+  return null
+}
+
+/** Prefer work_model; infer from description/location only when work_model is null (legacy). */
+export function resolveWorkModel(
+  workModel: string | null | undefined,
+  location: string | null | undefined,
+  description?: string | null | undefined,
+): ResolvedWorkModel | null {
+  if (workModel === 'unknown') return null
+  if (workModel) return workModel as ResolvedWorkModel
+
+  if (description) {
+    const fromDescription = inferWorkModelFromText(normalizeText(description))
+    if (fromDescription) return fromDescription
+  }
+
+  if (location) {
+    return inferWorkModelFromLocation(location)
+  }
+
+  return null
+}
+
+export function resolveIsInternational(
+  isInternational: boolean | null | undefined,
+  location: string | null | undefined,
+): boolean | null {
+  if (isInternational != null) return isInternational
+  if (!location) return null
+
+  const normalized = normalizeText(location)
+
+  if (
+    /\b(internacional|international|global|worldwide|eua|usa|europe|latam)\b/.test(
+      normalized,
+    )
+  ) {
+    return true
+  }
+
+  if (
+    /\be regiao\b/.test(normalized) ||
+    /\b(remote|remoto|remota)\b/.test(normalized)
+  ) {
+    return false
+  }
+
+  return null
 }
 
 export function labelSeniority(value: string | null | undefined) {
@@ -45,20 +139,23 @@ export function labelWorkModel(value: string | null | undefined) {
   return workModelLabels[value] ?? value
 }
 
-/** Prefer work_model; if missing, infer Remota from location "Remote". */
 export function resolveWorkModelLabel(
   workModel: string | null | undefined,
   location: string | null | undefined,
+  description?: string | null | undefined,
 ) {
-  const fromField = labelWorkModel(workModel)
-  if (fromField) return fromField
-  if (location && isRemoteLocation(location)) return 'Remota'
-  return null
+  const resolved = resolveWorkModel(workModel, location, description)
+  if (!resolved) return null
+  return workModelLabels[resolved] ?? null
 }
 
 export function labelSource(value: string | null | undefined) {
   if (!value) return null
   return sourceLabels[value] ?? value
+}
+
+function isRegionShorthand(location: string) {
+  return /^[A-Za-z]{2}\s+e\s+regi[aã]o$/i.test(location.trim())
 }
 
 /** Location for the subtitle — never repeat Remote/Remoto when the Remota badge already covers it. */
@@ -69,6 +166,12 @@ export function displayLocation(
   if (!location) return null
   const cleaned = location.replace(/\uFFFD/g, '').replace(/\s+/g, ' ').trim()
   if (!cleaned) return null
+
+  if (isRegionShorthand(cleaned)) {
+    const state = parseBrazilianState(cleaned)
+    if (state) return state
+  }
+
   if (isRemoteLocation(cleaned)) {
     return workModelLabel ? null : 'Remota'
   }
