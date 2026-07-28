@@ -1,27 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import guiaHeroSvg from '@/assets/illustrations/guia-hero.svg?raw'
 
 type GuiaHeroIllustrationProps = {
   className?: string
+  /** Keep SMIL motion even when the OS asks for reduced motion (dev QA). */
+  forceMotion?: boolean
 }
 
-/** Glance: Figma (right) → Miro (up) → Notion (left) — kept small so balls stay in orbit */
-const GLANCE = [
-  { x: 3.2, y: 0.8 },
-  { x: 0, y: -3.2 },
-  { x: -3.5, y: 0.4 },
-] as const
-
-const STEP_MS = 1800
-const PUPIL_IDS = ['pupil-left', 'pupil-right'] as const
-
 /**
- * Guia SVG: reconstructed circular pupils clipped to the eye openings,
- * plus CSS motion on the blob and tool balloons.
+ * Guia SVG with reconstructed circular pupils (clipped to eye openings)
+ * and SMIL motion on pupils, blob, and tool balloons.
  */
-export function GuiaHeroIllustration({ className }: GuiaHeroIllustrationProps) {
+export function GuiaHeroIllustration({
+  className,
+  forceMotion = false,
+}: GuiaHeroIllustrationProps) {
   const hostRef = useRef<HTMLDivElement>(null)
-  const [glanceIndex, setGlanceIndex] = useState(0)
 
   useEffect(() => {
     const host = hostRef.current
@@ -33,27 +27,16 @@ export function GuiaHeroIllustration({ className }: GuiaHeroIllustrationProps) {
       host.textContent = 'Falha ao carregar SVG'
       return
     }
-    host.appendChild(document.importNode(svg, true))
-  }, [])
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = window.setInterval(() => {
-      setGlanceIndex((i) => (i + 1) % GLANCE.length)
-    }, STEP_MS)
-    return () => window.clearInterval(id)
-  }, [])
-
-  useEffect(() => {
-    const host = hostRef.current
-    if (!host) return
-    const { x, y } = GLANCE[glanceIndex]
-    for (const id of PUPIL_IDS) {
-      const el = host.querySelector(`#${id}`) as HTMLElement | null
-      if (!el) continue
-      el.style.transform = `translate(${x}px, ${y}px)`
+    const reduceMotion =
+      !forceMotion &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      svg.querySelectorAll('animateTransform').forEach((el) => el.remove())
     }
-  }, [glanceIndex])
+
+    host.appendChild(document.importNode(svg, true))
+  }, [forceMotion])
 
   return <div ref={hostRef} className={className} />
 }
