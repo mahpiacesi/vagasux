@@ -189,7 +189,7 @@ export function TestimonialsMarquee() {
   ].filter((entry) => entry.kind === 'quote' && entry.item)
 
   return (
-    <section className="overflow-hidden bg-[#f3f2f8] py-16 md:py-24">
+    <section className="overflow-hidden bg-white py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-5 md:max-w-4xl md:px-6">
         <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
           Wall of Vaguiners
