@@ -1,6 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { superSite } from '@/lib/siteLinks'
 
+const highlights = [
+  { value: '+40 mil', label: 'pessoas engajadas' },
+  { value: '+230', label: 'bolsas distribuídas' },
+  { value: '+30', label: 'iniciantes contratados' },
+] as const
+
 export function PartnershipsSection() {
   return (
     <section className="relative overflow-hidden px-5 py-20 md:px-6 md:py-24">
@@ -17,7 +23,25 @@ export function PartnershipsSection() {
           Sua marca perto de quem está{' '}
           <span className="text-mark">construindo carreira</span> em UX.
         </h2>
-        <div className="mt-8">
+        <p className="mt-5 max-w-lg text-base leading-relaxed text-neutral-400 md:text-lg">
+          Apoie uma comunidade que abre portas de verdade — e ainda tem espaço
+          pra sua marca.
+        </p>
+
+        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
+          {highlights.map((item) => (
+            <div key={item.label}>
+              <p className="text-2xl font-black tracking-tight text-brand-500 md:text-3xl">
+                {item.value}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-neutral-400">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10">
           <Button
             asChild
             size="lg"
