@@ -102,23 +102,31 @@ function StateFilterSelect({
   options,
   value,
   onChange,
+  hidden = false,
 }: {
   label: string
   options: string[]
   value: string
   onChange: (value: string) => void
+  hidden?: boolean
 }) {
   return (
-    <div>
-      <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">{label}</p>
+    <div
+      aria-hidden={hidden}
+      className={cn('ml-auto w-[11rem] shrink-0', hidden && 'invisible pointer-events-none')}
+    >
+      <p className="text-left text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+        {label}
+      </p>
       <Select
         value={value === 'all' ? undefined : value}
         onValueChange={(next) => onChange(next)}
       >
         <SelectTrigger
           aria-label={label}
+          disabled={hidden}
           className={cn(
-            'mt-2.5 h-9 w-full min-w-[9.5rem] rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner sm:w-[11rem]',
+            'mt-2.5 h-9 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-left text-sm font-semibold text-neutral-500 shadow-inner',
             'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
             value === 'all' && 'text-neutral-400',
           )}
@@ -212,35 +220,38 @@ export function JobFilters({
         </div>
       </label>
 
-      <div className="mt-4 flex flex-wrap items-end gap-x-5 gap-y-4">
-        <FilterRow
-          label="Mercado"
-          options={marketOptions}
-          value={value.market}
-          onChange={handleMarketChange}
-        />
-        <FilterRow
-          label="Formato"
-          options={workOptions}
-          value={value.workModel}
-          onChange={(workModel) => onChange({ ...value, workModel })}
-        />
-        {showState ? (
+      <div className="mt-4 flex min-h-[4.25rem] flex-wrap items-end justify-between gap-x-5 gap-y-4">
+        <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
+          <FilterRow
+            label="Mercado"
+            options={marketOptions}
+            value={value.market}
+            onChange={handleMarketChange}
+          />
+          <FilterRow
+            label="Formato"
+            options={workOptions}
+            value={value.workModel}
+            onChange={(workModel) => onChange({ ...value, workModel })}
+          />
+          {hideSeniority ? null : (
+            <FilterRow
+              label="Nível"
+              options={seniorityOptions}
+              value={value.seniority}
+              onChange={(seniority) => onChange({ ...value, seniority })}
+            />
+          )}
+        </div>
+        {showStateFilter ? (
           <StateFilterSelect
             label="Estado"
             options={BRAZILIAN_STATES}
             value={value.state}
+            hidden={!showState}
             onChange={(state) => onChange({ ...value, state })}
           />
         ) : null}
-        {hideSeniority ? null : (
-          <FilterRow
-            label="Nível"
-            options={seniorityOptions}
-            value={value.seniority}
-            onChange={(seniority) => onChange({ ...value, seniority })}
-          />
-        )}
       </div>
 
       {!hideSeniority ? (
