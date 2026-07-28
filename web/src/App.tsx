@@ -17,7 +17,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route index element={<HomePage />} />
           <Route path={routes.oportunidades} element={<OportunidadesPage />} />
-          <Route path={routes.iniciantes} element={<VagasParaIniciantesPage />} />
+          <Route path={routes.curadoria} element={<VagasParaIniciantesPage />} />
           <Route path="*" element={<Navigate to={routes.home} replace />} />
         </Route>
       </Routes>

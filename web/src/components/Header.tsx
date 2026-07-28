@@ -1,12 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
+import { VagasNavMenu } from './VagasNavMenu'
 
 const linkClass =
   'relative text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
-
-const activeClass =
-  "text-neutral-500 after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:bg-complementary-300 after:content-['']"
 
 export function Header() {
   return (
@@ -24,30 +22,6 @@ export function Header() {
           aria-label="Principal"
           className="hidden items-center gap-6 md:flex"
         >
-          <NavLink
-            to={routes.iniciantes}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? activeClass : ''}`
-            }
-          >
-            Iniciantes
-          </NavLink>
-          <NavLink
-            to={routes.oportunidades}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? activeClass : ''}`
-            }
-          >
-            Oportunidades
-          </NavLink>
-          <a
-            href={superSite.guia}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            Guia
-          </a>
           <a
             href={superSite.comunidade}
             target="_blank"
@@ -55,6 +29,15 @@ export function Header() {
             className={linkClass}
           >
             Comunidade
+          </a>
+          <VagasNavMenu />
+          <a
+            href={superSite.guia}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            Guia
           </a>
           <a
             href={superSite.publicar}
@@ -67,12 +50,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <NavLink
-            to={routes.oportunidades}
-            className="rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500"
-          >
-            Vagas
-          </NavLink>
+          <VagasNavMenu variant="mobile" />
           <a
             href={superSite.publicar}
             target="_blank"

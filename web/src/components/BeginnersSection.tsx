@@ -38,7 +38,7 @@ export function BeginnersSection() {
               variant="outline"
               className="h-12 rounded-xl border-brand-200 px-8 text-base font-bold"
             >
-              <Link to={routes.iniciantes}>Vagas para iniciantes</Link>
+              <Link to={routes.curadoria}>Ver curadoria</Link>
             </Button>
           </div>
         </div>

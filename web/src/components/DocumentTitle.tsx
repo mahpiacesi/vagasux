@@ -5,7 +5,7 @@ import { routes } from '@/lib/siteLinks'
 const titles: Record<string, string> = {
   [routes.home]: 'VagasUX — Curadoria de conteúdos e vagas em UX',
   [routes.oportunidades]: 'VagasUX — Mural de vagas',
-  [routes.iniciantes]: 'VagasUX — Vagas para iniciantes',
+  [routes.curadoria]: 'VagasUX — Curadoria de vagas para iniciantes',
 }
 
 export function DocumentTitle() {

@@ -2,7 +2,7 @@
 export const routes = {
   home: '/',
   oportunidades: '/oportunidades',
-  iniciantes: '/vagas-para-iniciantes',
+  curadoria: '/vagas-para-iniciantes',
 } as const
 
 /**
