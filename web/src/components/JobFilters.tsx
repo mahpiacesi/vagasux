@@ -1,6 +1,13 @@
 import { Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { BRAZILIAN_STATES } from '@/lib/location'
 import { hasActiveFilters } from '@/lib/filterJobs'
@@ -101,25 +108,26 @@ function StateFilterSelect({
 }) {
   return (
     <div>
-      <label htmlFor="job-filter-state" className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-        {label}
-      </label>
-      <select
-        id="job-filter-state"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className={cn(
-          'mt-2.5 h-10 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner outline-none',
-          'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
-        )}
-      >
-        <option value="all">Todos</option>
-        {options.map((state) => (
-          <option key={state} value={state}>
-            {state}
-          </option>
-        ))}
-      </select>
+      <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">{label}</p>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger
+          aria-label={label}
+          className={cn(
+            'mt-2.5 h-10 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner',
+            'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
+          )}
+        >
+          <SelectValue placeholder="Todos" />
+        </SelectTrigger>
+        <SelectContent className="max-h-72">
+          <SelectItem value="all">Todos</SelectItem>
+          {options.map((state) => (
+            <SelectItem key={state} value={state}>
+              {state}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   )
 }
