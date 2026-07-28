@@ -5,14 +5,14 @@ import { routes } from '@/lib/siteLinks'
 
 const vagasItems = [
   {
-    to: routes.oportunidades,
-    label: 'Oportunidades',
-    description: 'Vagas de diversos níveis',
-  },
-  {
     to: routes.curadoria,
     label: 'Curadoria',
     description: 'Curadoria de vagas Júnior, Trainee e Estágio',
+  },
+  {
+    to: routes.oportunidades,
+    label: 'Oportunidades',
+    description: 'Vagas de diversos níveis',
   },
 ] as const
 

@@ -15,17 +15,17 @@ const highlights = [
   {
     icon: HeartHandshake,
     title: 'Curadoria humana',
-    text: 'Cada vaga passa pelo olhar da comunidade — não é robô empilhando link.',
+    text: 'Cada vaga passa pelo olhar de um voluntário antes de entrar na lista.',
   },
   {
     icon: Sprout,
-    title: 'Só quem está começando',
-    text: 'Estágio, trainee e júnior em UX, Produto e Design. Sem “sênior master blaster”.',
+    title: 'Apenas vagas iniciantes',
+    text: 'Estágio, trainee e júnior. Aqui, "sênior master blaster" fica de fora.',
   },
   {
     icon: Sparkles,
-    title: 'Atualizado todo dia',
-    text: 'Novas oportunidades entram na lista conforme a curadoria publica no Notion.',
+    title: 'Sempre atualizada',
+    text: 'Novas oportunidades entram na curadoria para você perder menos tempo procurando.',
   },
 ] as const
 
@@ -45,18 +45,19 @@ export function IniciantesHero({ count }: IniciantesHeroProps) {
               <span className="text-mark">começando</span>
             </h1>
             <p className="mural-fade mural-fade-delay-2 mt-5 max-w-md text-base leading-relaxed text-neutral-400 md:text-lg">
-              Cansada de ver só vaga sênior no feed? Aqui a seleção é humana:
-              estagiário, trainee e júnior em UX, Produto e Design — oportunidades
-              que abrem porta, não muro.
-              {count != null ? (
-                <>
-                  {' '}
-                  <span className="font-semibold text-brand-500">
-                    {count} {count === 1 ? 'vaga curada no ar' : 'vagas curadas no ar'}.
-                  </span>
-                </>
-              ) : null}
+              Cansada de ver só vaga sênior no feed? Aqui a seleção é humana e feita para
+              quem está começando. Porque acreditamos que toda carreira merece uma{' '}
+              <em className="font-semibold italic text-neutral-500">primeira</em>{' '}
+              oportunidade.
             </p>
+            {count != null ? (
+              <p className="mural-fade mural-fade-delay-2 mt-3 text-base font-semibold text-brand-500 md:text-lg">
+                {count}{' '}
+                {count === 1
+                  ? 'oportunidade esperando por você.'
+                  : 'oportunidades esperando por você.'}
+              </p>
+            ) : null}
 
             <div className="mural-fade mural-fade-delay-2 mt-5 flex flex-wrap gap-2">
               {levelPills.map((pill) => (
