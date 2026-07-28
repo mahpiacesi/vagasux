@@ -9,7 +9,7 @@ import { useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { routes } from '@/lib/siteLinks'
 
-const navIconProps = { weight: 'regular' as const }
+const navIconProps = { weight: 'bold' as const }
 
 const vagasItems: {
   to: (typeof routes)[keyof typeof routes]

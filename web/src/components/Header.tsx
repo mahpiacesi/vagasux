@@ -1,10 +1,10 @@
-import { BookOpen, Umbrella, UmbrellaSimple } from '@phosphor-icons/react'
+import { BookOpen, Umbrella } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 import { VagasNavMenu } from './VagasNavMenu'
 
-const navIconProps = { size: 16, weight: 'regular' as const }
+const navIconProps = { size: 16, weight: 'bold' as const }
 
 const linkClass =
   'relative inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -48,9 +48,8 @@ export function Header() {
             href={superSite.publicar}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500"
+            className="inline-flex items-center rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500"
           >
-            <UmbrellaSimple {...navIconProps} aria-hidden />
             Publicar
           </a>
         </nav>
@@ -61,9 +60,8 @@ export function Header() {
             href={superSite.publicar}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100"
+            className="rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100"
           >
-            <UmbrellaSimple size={14} weight="regular" aria-hidden />
             Publicar
           </a>
         </div>
