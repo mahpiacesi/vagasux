@@ -34,7 +34,7 @@ export function BeginnersSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[20rem] overflow-visible px-2 pt-4 md:max-w-[24rem] md:px-3 md:pt-6">
+        <div className="relative mx-auto w-[72%] max-w-[14rem] justify-self-center overflow-visible pt-2 md:w-[65%] md:max-w-[18rem] md:pt-4">
           <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
         </div>
       </div>
