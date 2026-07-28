@@ -1,35 +1,22 @@
-import type { Icon } from '@phosphor-icons/react'
-import {
-  Briefcase,
-  CaretDown,
-  EggCrack,
-  Umbrella,
-} from '@phosphor-icons/react'
+import { Briefcase, CaretDown } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { routes } from '@/lib/siteLinks'
 
 const navIconProps = { weight: 'bold' as const }
 
-const vagasItems: {
-  to: (typeof routes)[keyof typeof routes]
-  label: string
-  Icon: Icon
-  description: string
-}[] = [
+const vagasItems = [
   {
     to: routes.curadoria,
     label: 'Curadoria',
-    Icon: EggCrack,
     description: 'Curadoria de vagas Júnior, Trainee e Estágio',
   },
   {
     to: routes.oportunidades,
     label: 'Oportunidades',
-    Icon: Umbrella,
     description: 'Vagas de diversos níveis',
   },
-]
+] as const
 
 const triggerClass =
   'inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -44,7 +31,6 @@ const CLOSE_DELAY_MS = 120
 function VagasMenuItem({
   to,
   label,
-  Icon: ItemIcon,
   description,
   onNavigate,
 }: (typeof vagasItems)[number] & { onNavigate?: () => void }) {
@@ -56,21 +42,9 @@ function VagasMenuItem({
       }
       onClick={onNavigate}
     >
-      <span className="flex items-start gap-2.5">
-        <ItemIcon
-          size={18}
-          {...navIconProps}
-          className="mt-0.5 shrink-0"
-          aria-hidden
-        />
-        <span>
-          <span className="block text-sm font-bold text-neutral-500">
-            {label}
-          </span>
-          <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-            {description}
-          </span>
-        </span>
+      <span className="block text-sm font-bold text-neutral-500">{label}</span>
+      <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
+        {description}
       </span>
     </NavLink>
   )
