@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button'
 import { routes, superSite } from '@/lib/siteLinks'
 
 const starterLinks = [
-  { label: 'Guia do Product Designer', href: superSite.guia },
-  { label: 'Vagas para iniciantes', href: superSite.iniciantes },
-  { label: 'Iniciantes em Design', href: superSite.baseIniciantes },
+  { label: 'Guia do Product Designer', href: superSite.guia, external: true },
+  { label: 'Vagas para iniciantes', to: routes.iniciantes, external: false },
+  { label: 'Iniciantes em Design', href: superSite.baseIniciantes, external: true },
 ] as const
 
 const communityLinks = [
@@ -69,20 +69,34 @@ export function HomePage() {
           </p>
           <ul className="mt-6 flex flex-col gap-3">
             {starterLinks.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-base font-bold text-brand-500 transition-colors hover:text-brand-400"
-                >
-                  <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
-                    {item.label}
-                  </span>
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </a>
+              <li key={item.label}>
+                {'to' in item ? (
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-2 text-base font-bold text-brand-500 transition-colors hover:text-brand-400"
+                  >
+                    <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
+                      {item.label}
+                    </span>
+                    <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-base font-bold text-brand-500 transition-colors hover:text-brand-400"
+                  >
+                    <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
+                      {item.label}
+                    </span>
+                    <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </a>
+                )}
               </li>
             ))}
           </ul>

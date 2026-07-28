@@ -12,31 +12,43 @@ if (!url || !anonKey) {
 
 export const supabase = createClient(url ?? '', anonKey ?? '')
 
-export async function fetchPublishedJobs(): Promise<Job[]> {
-  const { data, error } = await supabase
+const jobColumns = [
+  'id',
+  'title',
+  'company',
+  'location',
+  'url',
+  'source',
+  'seniority',
+  'work_model',
+  'employment_type',
+  'is_international',
+  'area',
+  'role',
+  'ai_summary',
+  'skills',
+  'tools',
+  'published_at',
+  'captured_at',
+] as const
+
+export type FetchPublishedJobsOptions = {
+  source?: string
+}
+
+export async function fetchPublishedJobs(
+  options?: FetchPublishedJobsOptions,
+): Promise<Job[]> {
+  let query = supabase
     .from('jobs')
-    .select(
-      [
-        'id',
-        'title',
-        'company',
-        'location',
-        'url',
-        'source',
-        'seniority',
-        'work_model',
-        'employment_type',
-        'is_international',
-        'area',
-        'role',
-        'ai_summary',
-        'skills',
-        'tools',
-        'published_at',
-        'captured_at',
-      ].join(', '),
-    )
+    .select(jobColumns.join(', '))
     .eq('status', 'published')
+
+  if (options?.source) {
+    query = query.eq('source', options.source)
+  }
+
+  const { data, error } = await query
     .order('published_at', { ascending: false, nullsFirst: false })
     .order('captured_at', { ascending: false })
 

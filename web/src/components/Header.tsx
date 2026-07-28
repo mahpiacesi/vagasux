@@ -17,6 +17,14 @@ export function Header() {
 
         <nav aria-label="Principal" className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 md:gap-x-5">
           <NavLink
+            to={routes.iniciantes}
+            className={({ isActive }) =>
+              `${linkClass} ${isActive ? activeClass : ''}`
+            }
+          >
+            Iniciantes
+          </NavLink>
+          <NavLink
             to={routes.oportunidades}
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeClass : ''}`

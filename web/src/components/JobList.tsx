@@ -8,9 +8,19 @@ type JobListProps = {
   loading: boolean
   error: string | null
   onLoadMore: () => void
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
-export function JobList({ jobs, totalCount, loading, error, onLoadMore }: JobListProps) {
+export function JobList({
+  jobs,
+  totalCount,
+  loading,
+  error,
+  onLoadMore,
+  emptyTitle = 'Nenhuma vaga por aqui',
+  emptyDescription = 'Tenta limpar a busca ou os filtros — ou volta mais tarde, o mural atualiza todo dia.',
+}: JobListProps) {
   if (loading) {
     return (
       <div className="space-y-4 py-8" aria-busy="true" aria-live="polite">
@@ -33,10 +43,8 @@ export function JobList({ jobs, totalCount, loading, error, onLoadMore }: JobLis
   if (totalCount === 0) {
     return (
       <div className="px-1 py-12 text-center">
-        <p className="text-lg font-black text-neutral-500">Nenhuma vaga por aqui</p>
-        <p className="mt-2 text-sm text-neutral-400">
-          Tenta limpar a busca ou os filtros — ou volta mais tarde, o mural atualiza todo dia.
-        </p>
+        <p className="text-lg font-black text-neutral-500">{emptyTitle}</p>
+        <p className="mt-2 text-sm text-neutral-400">{emptyDescription}</p>
       </div>
     )
   }

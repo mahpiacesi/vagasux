@@ -39,6 +39,8 @@ type JobFiltersProps = {
   totalCount: number
   onChange: (next: JobFiltersState) => void
   onClear: () => void
+  hideSeniority?: boolean
+  searchPlaceholder?: string
 }
 
 function FilterRow<T extends string>({
@@ -83,6 +85,8 @@ export function JobFilters({
   totalCount,
   onChange,
   onClear,
+  hideSeniority = false,
+  searchPlaceholder = 'Cargo, empresa, cidade, ferramenta…',
 }: JobFiltersProps) {
   const active = hasActiveFilters(value)
 
@@ -101,7 +105,7 @@ export function JobFilters({
             type="search"
             value={value.query}
             onChange={(event) => onChange({ ...value, query: event.target.value })}
-            placeholder="Cargo, empresa, cidade, ferramenta…"
+            placeholder={searchPlaceholder}
             className="h-11 bg-background pr-10 pl-10 text-sm font-medium shadow-sm"
           />
           {value.query ? (
@@ -132,12 +136,14 @@ export function JobFilters({
           value={value.workModel}
           onChange={(workModel) => onChange({ ...value, workModel })}
         />
-        <FilterRow
-          label="Nível"
-          options={seniorityOptions}
-          value={value.seniority}
-          onChange={(seniority) => onChange({ ...value, seniority })}
-        />
+        {hideSeniority ? null : (
+          <FilterRow
+            label="Nível"
+            options={seniorityOptions}
+            value={value.seniority}
+            onChange={(seniority) => onChange({ ...value, seniority })}
+          />
+        )}
       </div>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-primary/15 pt-4">
