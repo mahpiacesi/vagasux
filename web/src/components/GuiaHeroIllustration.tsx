@@ -5,19 +5,19 @@ type GuiaHeroIllustrationProps = {
   className?: string
 }
 
-/** Glance: Figma (right) → Miro (up) → Notion (left) */
+/** Glance: Figma (right) → Miro (up) → Notion (left) — kept small so balls stay in orbit */
 const GLANCE = [
-  { x: 4, y: 1 },
-  { x: 0, y: -4 },
-  { x: -5, y: 0 },
+  { x: 3.2, y: 0.8 },
+  { x: 0, y: -3.2 },
+  { x: -3.5, y: 0.4 },
 ] as const
 
 const STEP_MS = 1800
 const PUPIL_IDS = ['pupil-left', 'pupil-right'] as const
 
 /**
- * Original Figma SVG. Only translates existing #pupil-left / #pupil-right paths.
- * Does not draw overlays or alter the illustration artwork.
+ * Guia SVG: reconstructed circular pupils clipped to the eye openings,
+ * plus CSS motion on the blob and tool balloons.
  */
 export function GuiaHeroIllustration({ className }: GuiaHeroIllustrationProps) {
   const hostRef = useRef<HTMLDivElement>(null)
@@ -48,9 +48,10 @@ export function GuiaHeroIllustration({ className }: GuiaHeroIllustrationProps) {
     const host = hostRef.current
     if (!host) return
     const { x, y } = GLANCE[glanceIndex]
-    const transform = `translate(${x} ${y})`
     for (const id of PUPIL_IDS) {
-      host.querySelector(`#${id}`)?.setAttribute('transform', transform)
+      const el = host.querySelector(`#${id}`) as HTMLElement | null
+      if (!el) continue
+      el.style.transform = `translate(${x}px, ${y}px)`
     }
   }, [glanceIndex])
 
