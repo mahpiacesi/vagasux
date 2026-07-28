@@ -65,7 +65,11 @@ export function JobRow({ job, index, hideSourceBadge = false }: JobRowProps) {
             {source && !hideSourceBadge ? (
               <Badge
                 variant="outline"
-                className={`${badgeBase} border-brand-200/80 bg-brand-100/60 text-brand-500`}
+                className={`${badgeBase} ${
+                  job.source === 'VagasUX'
+                    ? 'border-complementary-200 bg-complementary-100 text-complementary-500'
+                    : 'border-brand-200/80 bg-brand-100/60 text-brand-500'
+                }`}
               >
                 {source}
               </Badge>

@@ -1,3 +1,5 @@
+import { parseBrazilianState } from './location'
+
 const seniorityLabels: Record<string, string> = {
   intern: 'Estágio',
   junior: 'Júnior',
@@ -21,7 +23,7 @@ const sourceLabels: Record<string, string> = {
   Sólides: 'Sólides',
   Solides: 'Sólides',
   InfoJobs: 'InfoJobs',
-  VagasUX: 'Curada',
+  VagasUX: 'VagasUX',
 }
 
 const NEW_JOB_MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000
@@ -152,6 +154,10 @@ export function labelSource(value: string | null | undefined) {
   return sourceLabels[value] ?? value
 }
 
+function isRegionShorthand(location: string) {
+  return /^[A-Za-z]{2}\s+e\s+regi[aã]o$/i.test(location.trim())
+}
+
 /** Location for the subtitle — never repeat Remote/Remoto when the Remota badge already covers it. */
 export function displayLocation(
   location: string | null | undefined,
@@ -160,6 +166,12 @@ export function displayLocation(
   if (!location) return null
   const cleaned = location.replace(/\uFFFD/g, '').replace(/\s+/g, ' ').trim()
   if (!cleaned) return null
+
+  if (isRegionShorthand(cleaned)) {
+    const state = parseBrazilianState(cleaned)
+    if (state) return state
+  }
+
   if (isRemoteLocation(cleaned)) {
     return workModelLabel ? null : 'Remota'
   }
