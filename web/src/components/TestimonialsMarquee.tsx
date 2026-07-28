@@ -224,7 +224,7 @@ export function TestimonialsMarquee() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Escrever meu relato
+            Compartilhe um relato
             <ArrowUpRight className="size-4" aria-hidden />
           </a>
         </Button>
