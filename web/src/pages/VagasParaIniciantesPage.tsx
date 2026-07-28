@@ -2,7 +2,6 @@ import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { IniciantesHero } from '@/components/IniciantesHero'
 import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
-import { Marquee } from '@/components/Marquee'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
@@ -11,17 +10,6 @@ import type { Job, JobFiltersState } from '@/types/job'
 
 const PAGE_SIZE = 15
 const CURATED_SOURCE = 'VagasUX'
-
-const marqueeItems = [
-  'Estágio',
-  'Trainee',
-  'Júnior',
-  'Curadoria humana',
-  'Entry-level',
-  'UX',
-  'Product Design',
-  'Primeiro emprego',
-]
 
 const initialFilters: JobFiltersState = {
   query: '',
@@ -83,7 +71,6 @@ export function VagasParaIniciantesPage() {
   return (
     <main>
       <IniciantesHero count={loading ? null : jobs.length} />
-      <Marquee items={marqueeItems} className="bg-brand-500" />
       <JobsListingSection>
         <JobsCrossLink variant="curadoria" />
         <div className="mt-6">

@@ -282,13 +282,33 @@
   animation: guia-balloon-float 3.9s ease-in-out 0.7s infinite;
 }
 
+/* Curadoria illustration */
+.curation-hero {
+  overflow: visible;
+}
+
+.curation-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.curation-hero-svg--motion #blob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guia-blob-morph 9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
   .skeleton,
   .marquee-track,
   .testimonials-track,
-  .testimonials-track-reverse {
+  .testimonials-track-reverse,
+  .curation-hero-svg--motion #blob {
     animation: none;
   }
 }

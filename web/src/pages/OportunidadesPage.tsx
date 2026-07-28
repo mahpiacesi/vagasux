@@ -1,7 +1,6 @@
 import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
-import { Marquee } from '@/components/Marquee'
 import { MuralIntro } from '@/components/MuralIntro'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
@@ -10,19 +9,6 @@ import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
 const PAGE_SIZE = 15
-
-const marqueeItems = [
-  'Remoto',
-  'Júnior',
-  'Pleno',
-  'Estágio',
-  'Híbrido',
-  'Sênior',
-  'Trainee',
-  'Lead',
-  'UX',
-  'Product Design',
-]
 
 const initialFilters: JobFiltersState = {
   query: '',
@@ -84,7 +70,6 @@ export function OportunidadesPage() {
   return (
     <main>
       <MuralIntro count={loading ? null : jobs.length} />
-      <Marquee items={marqueeItems} />
       <JobsListingSection>
         <JobsCrossLink variant="oportunidades" />
         <div className="mt-6">
