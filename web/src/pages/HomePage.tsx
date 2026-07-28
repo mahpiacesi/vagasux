@@ -10,8 +10,6 @@ import { routes, superSite } from '@/lib/siteLinks'
 const communityLinks = [
   { label: 'Conheça a comunidade', href: superSite.comunidade },
   { label: 'Quem organiza', href: superSite.quemOrganiza },
-  { label: 'Parcerias', href: superSite.parcerias },
-  { label: 'Apoie a iniciativa', href: superSite.apoie },
 ] as const
 
 const marqueeItems = [
@@ -91,26 +89,37 @@ export function HomePage() {
             Comunidade e apoio
           </p>
           <h2 className="mt-4 max-w-2xl text-3xl leading-[1.1] font-black tracking-[-0.03em] md:text-5xl">
-            Feito por pessoas. Sustentado por pessoas.
+            Toda comunidade precisa de quem acredita nela
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            Conheça quem faz a VagasUX, parcerias e como apoiar o projeto. Essas
-            páginas ainda estão no site atual.
+            Apoie a VagasUX e ajude a manter uma comunidade que amplia o acesso a
+            oportunidades em Design.
           </p>
-          <ul className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-8">
-            {communityLinks.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-bold text-complementary-300 underline decoration-complementary-300/40 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10 flex flex-col gap-6">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 w-fit rounded-xl bg-complementary-300 px-8 text-base font-black text-neutral-500 shadow-md shadow-black/20 hover:bg-complementary-200"
+            >
+              <a href={superSite.apoie} target="_blank" rel="noopener noreferrer">
+                Apoie a iniciativa
+              </a>
+            </Button>
+            <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
+              {communityLinks.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-neutral-300/80 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200/60"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     </main>
