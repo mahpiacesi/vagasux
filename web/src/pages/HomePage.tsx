@@ -19,14 +19,17 @@ const communityLinks = [
 ] as const
 
 const marqueeItems = [
-  'UX',
-  'Product Design',
-  'UI',
-  'Research',
-  'Writing',
-  'Design System',
-  'Vagas',
-  'Comunidade',
+  'Júnior',
+  'Híbrido',
+  'Sênior',
+  'Estágio',
+  'Presencial',
+  'Trainee',
+  'Lead',
+  'PJ',
+  'Entry-level',
+  'CLT',
+  'Remoto',
 ]
 
 export function HomePage() {
