@@ -5,7 +5,6 @@ import { MuralIntro } from '@/components/MuralIntro'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
-import { collectBrazilianStates } from '@/lib/location'
 import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
@@ -60,8 +59,6 @@ export function OportunidadesPage() {
     [jobs, filters, deferredQuery],
   )
 
-  const stateOptions = useMemo(() => collectBrazilianStates(jobs), [jobs])
-
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
   }, [filters.market, filters.workModel, filters.seniority, filters.state, deferredQuery])
@@ -81,7 +78,6 @@ export function OportunidadesPage() {
             value={filters}
             resultCount={loading ? 0 : filtered.length}
             totalCount={jobs.length}
-            stateOptions={stateOptions}
             onChange={setFilters}
             onClear={() => setFilters(initialFilters)}
           />

@@ -2,6 +2,7 @@ import { Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
+import { BRAZILIAN_STATES } from '@/lib/location'
 import { hasActiveFilters } from '@/lib/filterJobs'
 import type {
   JobFiltersState,
@@ -42,7 +43,7 @@ type JobFiltersProps = {
   onClear: () => void
   hideSeniority?: boolean
   searchPlaceholder?: string
-  stateOptions?: string[]
+  showStateFilter?: boolean
 }
 
 function FilterRow<T extends string>({
@@ -131,7 +132,7 @@ export function JobFilters({
   onClear,
   hideSeniority = false,
   searchPlaceholder = 'Cargo, empresa, cidade, ferramenta…',
-  stateOptions = [],
+  showStateFilter = true,
 }: JobFiltersProps) {
   const active = hasActiveFilters(value)
 
@@ -202,10 +203,10 @@ export function JobFilters({
           value={value.workModel}
           onChange={(workModel) => onChange({ ...value, workModel })}
         />
-        {stateOptions.length > 0 ? (
+        {showStateFilter ? (
           <StateFilterSelect
             label="Estado"
-            options={stateOptions}
+            options={BRAZILIAN_STATES}
             value={value.state}
             onChange={(state) => onChange({ ...value, state })}
           />

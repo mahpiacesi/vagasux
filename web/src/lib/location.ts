@@ -1,5 +1,3 @@
-import type { Job } from '../types/job'
-
 const UF_TO_STATE: Record<string, string> = {
   AC: 'Acre',
   AL: 'Alagoas',
@@ -30,8 +28,13 @@ const UF_TO_STATE: Record<string, string> = {
   TO: 'Tocantins',
 }
 
+/** All Brazilian states, sorted alphabetically for filter dropdowns. */
+export const BRAZILIAN_STATES = Object.values(UF_TO_STATE).sort((a, b) =>
+  a.localeCompare(b, 'pt-BR'),
+)
+
 /** Longest names first so "Rio Grande do Sul" wins over "Rio Grande do Norte". */
-const STATE_NAMES = Object.values(UF_TO_STATE).sort((a, b) => b.length - a.length)
+const STATE_NAMES = [...BRAZILIAN_STATES].sort((a, b) => b.length - a.length)
 
 function stripDiacritics(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -70,14 +73,4 @@ export function parseBrazilianState(location: string | null | undefined): string
   }
 
   return null
-}
-
-/** Unique Brazilian state names present in a job list, sorted for display. */
-export function collectBrazilianStates(jobs: Job[]): string[] {
-  const states = new Set<string>()
-  for (const job of jobs) {
-    const state = parseBrazilianState(job.location)
-    if (state) states.add(state)
-  }
-  return [...states].sort((a, b) => a.localeCompare(b, 'pt-BR'))
 }

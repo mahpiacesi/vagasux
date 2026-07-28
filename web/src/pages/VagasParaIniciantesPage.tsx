@@ -5,7 +5,6 @@ import { JobList } from '@/components/JobList'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
-import { collectBrazilianStates } from '@/lib/location'
 import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job, JobFiltersState } from '@/types/job'
 
@@ -61,8 +60,6 @@ export function VagasParaIniciantesPage() {
     [jobs, filters, deferredQuery],
   )
 
-  const stateOptions = useMemo(() => collectBrazilianStates(jobs), [jobs])
-
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
   }, [filters.market, filters.workModel, filters.seniority, filters.state, deferredQuery])
@@ -83,7 +80,6 @@ export function VagasParaIniciantesPage() {
             resultCount={loading ? 0 : filtered.length}
             totalCount={jobs.length}
             hideSeniority
-            stateOptions={stateOptions}
             searchPlaceholder="Buscar empresa, função ou palavra-chave…"
             onChange={setFilters}
             onClear={() => setFilters(initialFilters)}
@@ -96,8 +92,8 @@ export function VagasParaIniciantesPage() {
             loading={loading}
             error={error}
             hideSourceBadge
-            emptyTitle="Nenhuma vaga curada por aqui"
-            emptyDescription="Tenta limpar a busca ou os filtros — ou indica uma vaga entry-level pra gente incluir na curadoria."
+            emptyTitle="Nenhuma vaga encontrada"
+            emptyDescription="Não encontramos vagas com esses filtros no momento. Tente ajustar a busca ou indique uma oportunidade para fortalecer a curadoria da VagasUX."
             onLoadMore={() => {
               setVisibleCount((count) => count + PAGE_SIZE)
             }}
