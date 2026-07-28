@@ -7,11 +7,13 @@ const vagasItems = [
   {
     to: routes.curadoria,
     label: 'Curadoria',
+    icon: '🐣',
     description: 'Curadoria de vagas Júnior, Trainee e Estágio',
   },
   {
     to: routes.oportunidades,
     label: 'Oportunidades',
+    icon: '☂️',
     description: 'Vagas de diversos níveis',
   },
 ] as const
@@ -58,6 +60,7 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
           }`}
         >
           <span className="inline-flex items-center gap-1">
+            <Briefcase className="size-3.5 shrink-0" aria-hidden />
             Vagas
             <ChevronDown className="size-3.5 opacity-70" aria-hidden />
           </span>
@@ -72,11 +75,18 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
                   `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
                 }
               >
-                <span className="block text-sm font-bold text-neutral-500">
-                  {item.label}
-                </span>
-                <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-                  {item.description}
+                <span className="flex items-start gap-2.5">
+                  <span className="text-base leading-none" aria-hidden>
+                    {item.icon}
+                  </span>
+                  <span>
+                    <span className="block text-sm font-bold text-neutral-500">
+                      {item.label}
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
+                      {item.description}
+                    </span>
+                  </span>
                 </span>
               </NavLink>
             ))}
@@ -130,11 +140,18 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
               }
               onClick={() => setOpen(false)}
             >
-              <span className="block text-sm font-bold text-neutral-500">
-                {item.label}
-              </span>
-              <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-                {item.description}
+              <span className="flex items-start gap-2.5">
+                <span className="text-base leading-none" aria-hidden>
+                  {item.icon}
+                </span>
+                <span>
+                  <span className="block text-sm font-bold text-neutral-500">
+                    {item.label}
+                  </span>
+                  <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
+                    {item.description}
+                  </span>
+                </span>
               </span>
             </NavLink>
           ))}
