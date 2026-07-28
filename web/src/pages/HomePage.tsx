@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
+import { BeginnersSection } from '@/components/BeginnersSection'
 import { Button } from '@/components/ui/button'
+import { Marquee } from '@/components/Marquee'
+import { NewsletterSection } from '@/components/NewsletterSection'
+import { PartnershipsSection } from '@/components/PartnershipsSection'
+import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
-
-const starterLinks = [
-  { label: 'Guia do Product Designer', href: superSite.guia, external: true },
-  { label: 'Vagas para iniciantes', to: routes.iniciantes, external: false },
-  { label: 'Iniciantes em Design', href: superSite.baseIniciantes, external: true },
-] as const
 
 const communityLinks = [
   { label: 'Conheça a comunidade', href: superSite.comunidade },
@@ -15,37 +14,55 @@ const communityLinks = [
   { label: 'Apoie a iniciativa', href: superSite.apoie },
 ] as const
 
+const marqueeItems = [
+  'Júnior',
+  'Híbrido',
+  'Sênior',
+  'Estágio',
+  'Presencial',
+  'Trainee',
+  'Lead',
+  'PJ',
+  'Entry-level',
+  'CLT',
+  'Remoto',
+]
+
 export function HomePage() {
   return (
     <main>
-      <section className="relative overflow-hidden px-5 pt-12 pb-10 md:px-6 md:pt-16 md:pb-14">
+      <section className="relative overflow-hidden px-5 pt-16 pb-14 md:px-6 md:pt-24 md:pb-20">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-brand-200/40 blur-3xl" />
-          <div className="absolute top-16 right-0 h-64 w-64 rounded-full bg-complementary-200/50 blur-3xl" />
-          <div
-            className="absolute inset-0 opacity-[0.35]"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgb(111 106 148 / 0.18) 1px, transparent 0)',
-              backgroundSize: '22px 22px',
-            }}
-          />
+          <div className="absolute -top-28 -left-20 h-[28rem] w-[28rem] rounded-full bg-brand-200/35 blur-3xl" />
+          <div className="absolute top-32 -right-24 h-80 w-80 rounded-full bg-complementary-200/45 blur-3xl" />
         </div>
 
         <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <h1 className="mural-fade max-w-2xl text-3xl font-black tracking-tight text-neutral-500 md:text-5xl md:leading-tight">
-            Curadoria de conteúdos e vagas em UX para todos os níveis, todos
-            mesmo.
+          <p className="mural-fade text-xs font-bold tracking-[0.2em] text-brand-400 uppercase md:text-sm">
+            Comunidade · Curadoria · Carreira
+          </p>
+          <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-4xl text-[2.5rem] leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-6xl lg:text-7xl">
+            Curadoria de conteúdos e vagas em UX para{' '}
+            <span className="text-mark">todos os níveis</span>, todos mesmo.
           </h1>
-          <p className="mural-fade mural-fade-delay-1 mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          <p className="mural-fade mural-fade-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl">
             Acreditamos que oportunidades transformam carreiras. Por isso,
             reunimos vagas, conteúdos e recursos em um só lugar.
           </p>
-          <div className="mural-fade mural-fade-delay-2 mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg" className="px-6 font-bold">
+          <div className="mural-fade mural-fade-delay-2 mt-10 flex flex-wrap items-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 rounded-xl px-7 text-base font-black"
+            >
               <Link to={routes.oportunidades}>Ver oportunidades</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="px-6 font-bold">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+            >
               <a
                 href={superSite.publicar}
                 target="_blank"
@@ -58,68 +75,36 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-neutral-200/80 px-5 py-12 md:px-6 md:py-14">
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <h2 className="text-xl font-black tracking-tight text-neutral-500 md:text-2xl">
-            Para quem é iniciante
-          </h2>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base">
-            Iniciativas focadas em ensinar e abrir espaço pra quem está
-            começando ou migrando pra área.
-          </p>
-          <ul className="mt-6 flex flex-col gap-3">
-            {starterLinks.map((item) => (
-              <li key={item.label}>
-                {'to' in item ? (
-                  <Link
-                    to={item.to}
-                    className="group inline-flex items-center gap-2 text-base font-bold text-brand-500 transition-colors hover:text-brand-400"
-                  >
-                    <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
-                      {item.label}
-                    </span>
-                    <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </Link>
-                ) : (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-base font-bold text-brand-500 transition-colors hover:text-brand-400"
-                  >
-                    <span className="underline decoration-brand-200 underline-offset-4 group-hover:decoration-brand-300">
-                      {item.label}
-                    </span>
-                    <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <Marquee items={marqueeItems} />
 
-      <section className="border-t border-neutral-200/80 px-5 py-12 md:px-6 md:py-14">
+      <NewsletterSection />
+
+      <BeginnersSection />
+
+      <TestimonialsMarquee />
+
+      <PartnershipsSection />
+
+      <section className="bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <h2 className="text-xl font-black tracking-tight text-neutral-500 md:text-2xl">
+          <p className="text-xs font-bold tracking-[0.18em] text-complementary-300 uppercase">
             Comunidade e apoio
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl leading-[1.1] font-black tracking-[-0.03em] md:text-5xl">
+            Feito por pessoas. Sustentado por pessoas.
           </h2>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
             Conheça quem faz a VagasUX, parcerias e como apoiar o projeto. Essas
             páginas ainda estão no site atual.
           </p>
-          <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
+          <ul className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-8">
             {communityLinks.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-neutral-400 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-brand-500 hover:decoration-brand-200"
+                  className="text-base font-bold text-complementary-300 underline decoration-complementary-300/40 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200"
                 >
                   {item.label}
                 </a>

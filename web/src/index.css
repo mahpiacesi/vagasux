@@ -127,7 +127,7 @@
 @keyframes mural-fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -156,16 +156,25 @@
   }
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .mural-fade {
-  animation: mural-fade-up 0.55s ease-out both;
+  animation: mural-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .mural-fade-delay-1 {
-  animation-delay: 80ms;
+  animation-delay: 90ms;
 }
 
 .mural-fade-delay-2 {
-  animation-delay: 160ms;
+  animation-delay: 180ms;
 }
 
 .job-row {
@@ -183,10 +192,103 @@
   animation: skeleton-pulse 1.4s ease-in-out infinite;
 }
 
+.text-mark {
+  background-image: linear-gradient(
+    180deg,
+    transparent 62%,
+    color-mix(in srgb, var(--color-complementary-300) 75%, transparent) 62%
+  );
+}
+
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.testimonials-track {
+  --marquee-duration: 95s;
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
+}
+
+.testimonials-track-reverse {
+  --marquee-duration: 95s;
+  animation: marquee-scroll var(--marquee-duration) linear infinite reverse;
+}
+
+/* Guia illustration */
+.guia-hero {
+  overflow: visible;
+}
+
+.guia-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.guia-hero #pupil-left,
+.guia-hero #pupil-right {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.85s cubic-bezier(0.33, 0.1, 0.25, 1);
+}
+
+@keyframes guia-blob-morph {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(10px, -14px) scale(1.04);
+  }
+  70% {
+    transform: translate(-8px, 8px) scale(0.98);
+  }
+}
+
+@keyframes guia-balloon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+.guia-hero-svg--motion #blob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guia-blob-morph 9s ease-in-out infinite;
+}
+
+.guia-hero-svg--motion #balloon-figma,
+.guia-hero-svg--motion #balloon-miro,
+.guia-hero-svg--motion #balloon-notion {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.guia-hero-svg--motion #balloon-figma {
+  animation: guia-balloon-float 3.6s ease-in-out infinite;
+}
+
+.guia-hero-svg--motion #balloon-miro {
+  animation: guia-balloon-float 4.1s ease-in-out 0.35s infinite;
+}
+
+.guia-hero-svg--motion #balloon-notion {
+  animation: guia-balloon-float 3.9s ease-in-out 0.7s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
-  .skeleton {
+  .skeleton,
+  .marquee-track,
+  .testimonials-track,
+  .testimonials-track-reverse {
     animation: none;
   }
 }
