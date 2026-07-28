@@ -212,11 +212,12 @@ export function TestimonialsMarquee() {
         <MarqueeRow items={rowC} duration={88} />
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center gap-3 px-5 md:mt-12 md:max-w-4xl md:px-6">
+      <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center gap-x-4 gap-y-2 px-5 md:mt-12 md:max-w-4xl md:px-6">
         <Button
           asChild
           size="lg"
-          className="h-12 rounded-xl px-7 text-base font-black shadow-md shadow-brand-500/15"
+          variant="outline"
+          className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
         >
           <a
             href="https://testimonial.to/vagasux"
@@ -229,9 +230,8 @@ export function TestimonialsMarquee() {
         </Button>
         <Button
           asChild
-          size="lg"
-          variant="outline"
-          className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+          variant="link"
+          className="h-auto px-0 text-base font-bold text-brand-500"
         >
           <a
             href="https://testimonial.to/vagasux/all"
@@ -239,6 +239,7 @@ export function TestimonialsMarquee() {
             rel="noopener noreferrer"
           >
             Ver todos os relatos
+            <span aria-hidden>→</span>
           </a>
         </Button>
       </div>
