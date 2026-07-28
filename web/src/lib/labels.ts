@@ -5,7 +5,7 @@ const seniorityLabels: Record<string, string> = {
   junior: 'Júnior',
   mid: 'Pleno',
   senior: 'Sênior',
-  lead: 'Lead',
+  lead: 'Liderança',
   unknown: 'Nível —',
 }
 

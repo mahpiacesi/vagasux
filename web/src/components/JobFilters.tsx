@@ -39,7 +39,7 @@ const seniorityOptions: Option<SeniorityFilter>[] = [
   { id: 'junior', label: 'Júnior' },
   { id: 'mid', label: 'Pleno' },
   { id: 'senior', label: 'Sênior' },
-  { id: 'lead', label: 'Lead' },
+  { id: 'lead', label: 'Liderança' },
 ]
 
 type JobFiltersProps = {
