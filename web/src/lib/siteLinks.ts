@@ -16,6 +16,7 @@ export const superSite = {
   iniciantes: 'https://vagasux.com.br/vagas-para-iniciantes',
   baseIniciantes: 'https://vagasux.com.br/iniciantes-em-design',
   publicar: 'https://vagasux.com.br/publicar-vaga',
+  mentoria: 'https://vagasux.com.br/iniciantes-em-design/apenas-mentores',
   parcerias: 'https://vagasux.com.br/parcerias',
   apoie: 'https://vagasux.com.br/apoie-a-iniciativa',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',

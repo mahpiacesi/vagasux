@@ -1,4 +1,4 @@
-import { BookOpen, Umbrella } from '@phosphor-icons/react'
+import { BookOpen, ChatCircleDots, Handshake, Umbrella } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
@@ -8,6 +8,31 @@ const navIconProps = { size: 16, weight: 'bold' as const }
 
 const linkClass =
   'relative inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
+
+const externalNavLinks = [
+  { label: 'Comunidade', href: superSite.comunidade, Icon: Umbrella },
+  { label: 'Guia', href: superSite.guia, Icon: BookOpen },
+  { label: 'Mentoria', href: superSite.mentoria, Icon: ChatCircleDots },
+  { label: 'Parcerias', href: superSite.parcerias, Icon: Handshake },
+] as const
+
+function ExternalNavLink({
+  label,
+  href,
+  Icon,
+}: (typeof externalNavLinks)[number]) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={linkClass}
+    >
+      <Icon {...navIconProps} className="shrink-0" aria-hidden />
+      {label}
+    </a>
+  )
+}
 
 export function Header() {
   return (
@@ -25,44 +50,30 @@ export function Header() {
           aria-label="Principal"
           className="hidden items-center gap-6 md:flex"
         >
-          <a
-            href={superSite.comunidade}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            <Umbrella {...navIconProps} className="shrink-0" aria-hidden />
-            Comunidade
-          </a>
+          <ExternalNavLink {...externalNavLinks[0]} />
           <VagasNavMenu />
+          <ExternalNavLink {...externalNavLinks[1]} />
+          <ExternalNavLink {...externalNavLinks[2]} />
+          <ExternalNavLink {...externalNavLinks[3]} />
           <a
-            href={superSite.guia}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-          >
-            <BookOpen {...navIconProps} className="shrink-0" aria-hidden />
-            Guia
-          </a>
-          <a
-            href={superSite.publicar}
+            href={superSite.apoie}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500"
           >
-            Publicar
+            Apoie
           </a>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
           <VagasNavMenu variant="mobile" />
           <a
-            href={superSite.publicar}
+            href={superSite.apoie}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100"
           >
-            Publicar
+            Apoie
           </a>
         </div>
       </div>
