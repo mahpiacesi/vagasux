@@ -7,13 +7,21 @@ type GuiaHeroIllustrationProps = {
   forceMotion?: boolean
 }
 
-const GLANCE = [
-  { x: 5.5, y: 1.2 },
-  { x: 0, y: -5 },
-  { x: -5.5, y: 0.6 },
+/** Minimal glance: Figma (right) → Miro (up) → Notion (left) */
+const GLANCE_LEFT = [
+  { x: 2.4, y: 0.4 },
+  { x: 0, y: -2.2 },
+  { x: -2.4, y: 0.3 },
 ] as const
 
-const STEP_MS = 1600
+/** Right orbit is tighter — smaller travel so gaze stays conjugate, not cross-eyed */
+const GLANCE_RIGHT = [
+  { x: 1.1, y: 0.2 },
+  { x: 0, y: -1.0 },
+  { x: -1.1, y: 0.15 },
+] as const
+
+const STEP_MS = 2200
 
 /**
  * Guia SVG: circular pupils clipped to eye openings; JS/CSS motion for
@@ -50,21 +58,20 @@ export function GuiaHeroIllustration({
 
     svg.classList.add('guia-hero-svg--motion')
 
-    const pupils = ['pupil-left', 'pupil-right']
-      .map((id) => host.querySelector<SVGGElement>(`#${id}`))
-      .filter(Boolean) as SVGGElement[]
+    const left = host.querySelector<SVGGElement>('#pupil-left')
+    const right = host.querySelector<SVGGElement>('#pupil-right')
 
     let glanceIndex = 0
     const applyGlance = () => {
-      const { x, y } = GLANCE[glanceIndex]
-      for (const el of pupils) {
-        el.style.transform = `translate(${x}px, ${y}px)`
-      }
+      const l = GLANCE_LEFT[glanceIndex]
+      const r = GLANCE_RIGHT[glanceIndex]
+      if (left) left.style.transform = `translate(${l.x}px, ${l.y}px)`
+      if (right) right.style.transform = `translate(${r.x}px, ${r.y}px)`
     }
     applyGlance()
 
     const id = window.setInterval(() => {
-      glanceIndex = (glanceIndex + 1) % GLANCE.length
+      glanceIndex = (glanceIndex + 1) % GLANCE_LEFT.length
       applyGlance()
     }, STEP_MS)
 

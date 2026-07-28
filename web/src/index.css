@@ -227,7 +227,7 @@
 .guia-hero #pupil-right {
   transform-box: fill-box;
   transform-origin: center;
-  transition: transform 0.55s ease-in-out;
+  transition: transform 0.85s cubic-bezier(0.33, 0.1, 0.25, 1);
 }
 
 @keyframes guia-blob-morph {
