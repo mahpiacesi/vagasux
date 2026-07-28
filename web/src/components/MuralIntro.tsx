@@ -34,7 +34,7 @@ export function MuralIntro({ count }: MuralIntroProps) {
 
       <div className="mx-auto max-w-3xl md:max-w-4xl">
         <p className="mural-fade text-xs font-bold tracking-[0.2em] text-brand-400 uppercase md:text-sm">
-          Mural vivo
+          Mural de vagas
         </p>
         <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-4xl text-[2.35rem] leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-6xl">
           Oportunidades em <span className="text-mark">UX e design</span>

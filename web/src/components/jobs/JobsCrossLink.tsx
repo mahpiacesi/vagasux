@@ -9,16 +9,18 @@ type JobsCrossLinkProps = {
 const copy = {
   oportunidades: {
     to: routes.curadoria,
-    eyebrow: 'Curadoria humana',
-    title: 'Procurando estágio, trainee ou júnior?',
-    description: 'A curadoria VagasUX separa oportunidades reais para quem está começando.',
+    eyebrow: 'Curadoria VagasUX',
+    title: 'Procurando sua primeira oportunidade?',
+    description:
+      'Cada vaga é revisada por pessoas antes de entrar na lista. Uma curadoria humana para estágio, trainee e júnior.',
     cta: 'Ver curadoria',
   },
   curadoria: {
     to: routes.oportunidades,
-    eyebrow: 'Mural completo',
+    eyebrow: 'Mural de vagas',
     title: 'Quer ver vagas de todos os níveis?',
-    description: 'No mural de oportunidades entram pleno, sênior, lead e mais — de várias fontes.',
+    description:
+      'Reunimos automaticamente oportunidades de diversas plataformas para facilitar sua busca.',
     cta: 'Ver oportunidades',
   },
 } as const
