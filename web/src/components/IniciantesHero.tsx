@@ -5,10 +5,6 @@ import { HeroBackdrop } from '@/components/jobs/HeroBackdrop'
 import { PageHighlights } from '@/components/jobs/PageHighlights'
 import { superSite } from '@/lib/siteLinks'
 
-type IniciantesHeroProps = {
-  count: number | null
-}
-
 const levelPills = ['Estágio', 'Trainee', 'Júnior'] as const
 
 const highlights = [
@@ -29,7 +25,7 @@ const highlights = [
   },
 ] as const
 
-export function IniciantesHero({ count }: IniciantesHeroProps) {
+export function IniciantesHero() {
   return (
     <section className="relative overflow-hidden bg-brand-100/40 px-5 pt-14 pb-10 md:px-6 md:pt-20 md:pb-14">
       <HeroBackdrop variant="curated" />
@@ -47,17 +43,9 @@ export function IniciantesHero({ count }: IniciantesHeroProps) {
             <p className="mural-fade mural-fade-delay-2 mt-5 max-w-md text-base leading-relaxed text-neutral-400 md:text-lg">
               Cansada de ver só vaga sênior no feed? Aqui a seleção é humana e feita para
               quem está começando. Porque acreditamos que toda carreira merece uma{' '}
-              <em className="font-semibold italic text-neutral-500">primeira</em>{' '}
+              <span className="font-bold text-neutral-500">primeira</span>{' '}
               oportunidade.
             </p>
-            {count != null ? (
-              <p className="mural-fade mural-fade-delay-2 mt-3 text-base font-semibold text-brand-500 md:text-lg">
-                {count}{' '}
-                {count === 1
-                  ? 'oportunidade esperando por você.'
-                  : 'oportunidades esperando por você.'}
-              </p>
-            ) : null}
 
             <div className="mural-fade mural-fade-delay-2 mt-5 flex flex-wrap gap-2">
               {levelPills.map((pill) => (

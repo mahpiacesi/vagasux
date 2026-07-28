@@ -71,7 +71,7 @@ export function VagasParaIniciantesPage() {
 
   return (
     <main>
-      <IniciantesHero count={loading ? null : jobs.length} />
+      <IniciantesHero />
       <JobsListingSection>
         <JobsCrossLink variant="curadoria" />
         <div className="mt-6">
