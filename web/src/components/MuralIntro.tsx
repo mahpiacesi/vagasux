@@ -12,18 +12,18 @@ type MuralIntroProps = {
 const highlights = [
   {
     icon: RefreshCw,
-    title: 'Atualizado todo dia',
-    text: 'Novas vagas entram no mural conforme a coleta e a comunidade publicam.',
+    title: 'Atualização automática',
+    text: 'Novas oportunidades entram diariamente no mural a partir de diversas plataformas.',
   },
   {
     icon: Search,
-    title: 'Busca e filtros',
-    text: 'Encontre por empresa, cargo, mercado, formato e nível — sem rolar infinito.',
+    title: 'Encontre mais rápido',
+    text: 'Filtre por empresa, cargo, mercado, formato e nível para encontrar as vagas ideais para você.',
   },
   {
     icon: Layers,
-    title: 'Várias fontes',
-    text: 'Gupy, Remotar, Greenhouse e curadoria humana — tudo num lugar só.',
+    title: 'Diversas fontes',
+    text: 'Gupy, Remotar, Greenhouse e outras plataformas reunidas em um único lugar.',
   },
 ] as const
 
@@ -37,11 +37,11 @@ export function MuralIntro({ count }: MuralIntroProps) {
           Mural de vagas
         </p>
         <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-4xl text-[2.35rem] leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-6xl">
-          Oportunidades em <span className="text-mark">UX e design</span>
+          Oportunidades em <span className="text-mark">UX e Design</span>
         </h1>
         <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400 md:text-xl">
-          Vagas reais, atualizadas pela comunidade. Filtre, explore e candidate-se
-          — sem enrolação.
+          Reunimos vagas de diversas plataformas em um só lugar para facilitar sua busca.
+          Filtre, explore e encontre sua próxima oportunidade.
           {count != null ? (
             <>
               {' '}
