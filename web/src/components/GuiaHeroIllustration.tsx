@@ -27,10 +27,12 @@ export function GuiaHeroIllustration({
 
   useEffect(() => {
     const host = hostRef.current
-    if (!host || host.querySelector('svg')) return
+    if (!host) return
 
-    // innerHTML keeps SVG CSS/SMIL wiring more reliably than importNode
-    host.innerHTML = guiaHeroSvg
+    if (!host.querySelector('svg')) {
+      host.innerHTML = guiaHeroSvg
+    }
+
     const svg = host.querySelector('svg')
     if (!svg) {
       host.textContent = 'Falha ao carregar SVG'
@@ -42,11 +44,10 @@ export function GuiaHeroIllustration({
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     if (reduceMotion) {
-      svg.querySelectorAll('animateTransform').forEach((el) => el.remove())
+      svg.classList.remove('guia-hero-svg--motion')
       return
     }
 
-    // Prefer CSS classes for blob/balloons (more reliable than SMIL after inject)
     svg.classList.add('guia-hero-svg--motion')
 
     const pupils = ['pupil-left', 'pupil-right']
