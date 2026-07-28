@@ -217,9 +217,14 @@
 /* Guia illustration */
 .guia-hero {
   overflow: visible;
+  max-width: 100%;
 }
 
 .guia-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
   overflow: visible;
 }
 

@@ -34,8 +34,9 @@ export function BeginnersSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-[72%] max-w-[14rem] justify-self-center overflow-visible pt-2 md:w-[65%] md:max-w-[18rem] md:pt-4">
-          <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
+        {/* Same grid column limits as PartnershipsSection cards */}
+        <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
+          <GuiaHeroIllustration className="guia-hero h-auto w-full max-w-[15rem] overflow-visible md:max-w-[17.5rem]" />
         </div>
       </div>
     </section>

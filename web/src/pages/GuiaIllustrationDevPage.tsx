@@ -7,10 +7,10 @@ export function GuiaIllustrationDevPage() {
       <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
         Dev · ilustração guia (SVG)
       </p>
-      <div className="w-full max-w-[18rem] overflow-visible">
+      <div className="flex w-full max-w-[17.5rem] justify-center overflow-visible">
         <GuiaHeroIllustration
           forceMotion
-          className="guia-hero [&_svg]:h-auto [&_svg]:w-full [&_svg]:overflow-visible"
+          className="guia-hero h-auto w-full overflow-visible"
         />
       </div>
     </main>

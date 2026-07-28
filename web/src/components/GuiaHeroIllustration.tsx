@@ -47,6 +47,15 @@ export function GuiaHeroIllustration({
       return
     }
 
+    // Avoid intrinsic 818px width blowing CSS grid (min-width: auto)
+    svg.removeAttribute('width')
+    svg.removeAttribute('height')
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet')
+    svg.style.width = '100%'
+    svg.style.height = 'auto'
+    svg.style.maxWidth = '100%'
+    svg.style.overflow = 'visible'
+
     const reduceMotion =
       !forceMotion &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
