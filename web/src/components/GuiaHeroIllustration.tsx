@@ -7,11 +7,11 @@ type GuiaHeroIllustrationProps = {
   forceMotion?: boolean
 }
 
-/** Glance: Figma (right) → Miro (up) → Notion (left) — both eyes together */
+/** Glance: Figma (right) → Miro (up) → forward at viewer — both eyes together */
 const GLANCE = [
   { x: 4.2, y: 0.6 },
   { x: 0, y: -3.8 },
-  { x: -22, y: -1.2 },
+  { x: 0, y: 0 },
 ] as const
 
 const STEP_MS = 2200
