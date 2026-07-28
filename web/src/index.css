@@ -214,13 +214,68 @@
   animation: marquee-scroll var(--marquee-duration) linear infinite reverse;
 }
 
-/* Guia illustration — motion lives in SVG SMIL; CSS only handles overflow */
+/* Guia illustration */
 .guia-hero {
   overflow: visible;
 }
 
 .guia-hero svg {
   overflow: visible;
+}
+
+.guia-hero #pupil-left,
+.guia-hero #pupil-right {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.55s ease-in-out;
+}
+
+@keyframes guia-blob-morph {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(6px, -10px) scale(1.03);
+  }
+  70% {
+    transform: translate(-5px, 6px) scale(0.985);
+  }
+}
+
+@keyframes guia-balloon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.guia-hero-svg--motion #blob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guia-blob-morph 9s ease-in-out infinite;
+}
+
+.guia-hero-svg--motion #balloon-figma,
+.guia-hero-svg--motion #balloon-miro,
+.guia-hero-svg--motion #balloon-notion {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.guia-hero-svg--motion #balloon-figma {
+  animation: guia-balloon-float 3.6s ease-in-out infinite;
+}
+
+.guia-hero-svg--motion #balloon-miro {
+  animation: guia-balloon-float 4.1s ease-in-out 0.35s infinite;
+}
+
+.guia-hero-svg--motion #balloon-notion {
+  animation: guia-balloon-float 3.9s ease-in-out 0.7s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

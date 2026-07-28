@@ -3,13 +3,21 @@ import guiaHeroSvg from '@/assets/illustrations/guia-hero.svg?raw'
 
 type GuiaHeroIllustrationProps = {
   className?: string
-  /** Keep SMIL motion even when the OS asks for reduced motion (dev QA). */
+  /** Keep motion even when the OS asks for reduced motion (dev QA). */
   forceMotion?: boolean
 }
 
+const GLANCE = [
+  { x: 4, y: 1 },
+  { x: 0, y: -4 },
+  { x: -4.5, y: 0.5 },
+] as const
+
+const STEP_MS = 1800
+
 /**
- * Guia SVG with reconstructed circular pupils (clipped to eye openings)
- * and SMIL motion on pupils, blob, and tool balloons.
+ * Guia SVG: circular pupils clipped to eye openings; JS/CSS motion for
+ * glance, blob, and tool balloons.
  */
 export function GuiaHeroIllustration({
   className,
@@ -21,9 +29,10 @@ export function GuiaHeroIllustration({
     const host = hostRef.current
     if (!host || host.querySelector('svg')) return
 
-    const parsed = new DOMParser().parseFromString(guiaHeroSvg, 'image/svg+xml')
-    const svg = parsed.documentElement
-    if (svg.querySelector('parsererror')) {
+    // innerHTML keeps SVG CSS/SMIL wiring more reliably than importNode
+    host.innerHTML = guiaHeroSvg
+    const svg = host.querySelector('svg')
+    if (!svg) {
       host.textContent = 'Falha ao carregar SVG'
       return
     }
@@ -31,11 +40,34 @@ export function GuiaHeroIllustration({
     const reduceMotion =
       !forceMotion &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
     if (reduceMotion) {
       svg.querySelectorAll('animateTransform').forEach((el) => el.remove())
+      return
     }
 
-    host.appendChild(document.importNode(svg, true))
+    // Prefer CSS classes for blob/balloons (more reliable than SMIL after inject)
+    svg.classList.add('guia-hero-svg--motion')
+
+    const pupils = ['pupil-left', 'pupil-right']
+      .map((id) => host.querySelector<SVGGElement>(`#${id}`))
+      .filter(Boolean) as SVGGElement[]
+
+    let glanceIndex = 0
+    const applyGlance = () => {
+      const { x, y } = GLANCE[glanceIndex]
+      for (const el of pupils) {
+        el.style.transform = `translate(${x}px, ${y}px)`
+      }
+    }
+    applyGlance()
+
+    const id = window.setInterval(() => {
+      glanceIndex = (glanceIndex + 1) % GLANCE.length
+      applyGlance()
+    }, STEP_MS)
+
+    return () => window.clearInterval(id)
   }, [forceMotion])
 
   return <div ref={hostRef} className={className} />
