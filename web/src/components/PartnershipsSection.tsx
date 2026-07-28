@@ -75,7 +75,7 @@ const partners: PartnerCard[] = [
     name: 'Mais parceiros',
     value: '+25',
     label: 'parceiros ativos',
-    className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
+    className: 'col-span-3 min-h-[5.5rem] md:min-h-[6rem]',
   },
 ]
 
