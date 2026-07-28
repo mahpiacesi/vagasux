@@ -1,3 +1,4 @@
+import { resolveIsInternational, resolveWorkModel } from './labels'
 import type { Job, JobFiltersState } from '../types/job'
 
 function normalize(value: string) {
@@ -11,10 +12,15 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
   const q = normalize(filters.query.trim())
 
   return jobs.filter((job) => {
-    if (filters.market === 'national' && job.is_international === true) return false
-    if (filters.market === 'international' && job.is_international !== true) return false
+    const isInternational = resolveIsInternational(job.is_international, job.location)
 
-    if (filters.workModel !== 'all' && job.work_model !== filters.workModel) return false
+    if (filters.market === 'national' && isInternational === true) return false
+    if (filters.market === 'international' && isInternational !== true) return false
+
+    if (filters.workModel !== 'all') {
+      const workModel = resolveWorkModel(job.work_model, job.location)
+      if (workModel !== filters.workModel) return false
+    }
 
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 

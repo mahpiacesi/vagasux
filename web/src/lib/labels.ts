@@ -30,9 +30,64 @@ function stripDiacritics(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
+function normalizeLocation(value: string) {
+  return stripDiacritics(value).trim().toLowerCase()
+}
+
 function isRemoteLocation(value: string) {
-  const normalized = stripDiacritics(value).trim().toLowerCase()
+  const normalized = normalizeLocation(value)
   return /^(remote|remoto|remota)$/i.test(normalized)
+}
+
+export type ResolvedWorkModel = 'remote' | 'hybrid' | 'onsite'
+
+/** Prefer work_model; infer from location text when collectors leave it empty. */
+export function resolveWorkModel(
+  workModel: string | null | undefined,
+  location: string | null | undefined,
+): ResolvedWorkModel | null {
+  if (workModel && workModel !== 'unknown') {
+    return workModel as ResolvedWorkModel
+  }
+
+  if (!location) return null
+
+  const normalized = normalizeLocation(location)
+
+  if (/^(remote|remoto|remota)$/.test(normalized)) return 'remote'
+  if (/\b(hibrid|hybrid)\w*/.test(normalized)) return 'hybrid'
+  if (/\b(remote|remoto|remota)\b/.test(normalized)) return 'remote'
+  if (/\be regiao\b/.test(normalized)) return 'onsite'
+  if (/\b(presencial|onsite)\b/.test(normalized)) return 'onsite'
+
+  return null
+}
+
+export function resolveIsInternational(
+  isInternational: boolean | null | undefined,
+  location: string | null | undefined,
+): boolean | null {
+  if (isInternational != null) return isInternational
+  if (!location) return null
+
+  const normalized = normalizeLocation(location)
+
+  if (
+    /\b(internacional|international|global|worldwide|eua|usa|europe|latam)\b/.test(
+      normalized,
+    )
+  ) {
+    return true
+  }
+
+  if (
+    /\be regiao\b/.test(normalized) ||
+    /\b(remote|remoto|remota)\b/.test(normalized)
+  ) {
+    return false
+  }
+
+  return null
 }
 
 export function labelSeniority(value: string | null | undefined) {
@@ -50,10 +105,9 @@ export function resolveWorkModelLabel(
   workModel: string | null | undefined,
   location: string | null | undefined,
 ) {
-  const fromField = labelWorkModel(workModel)
-  if (fromField) return fromField
-  if (location && isRemoteLocation(location)) return 'Remota'
-  return null
+  const resolved = resolveWorkModel(workModel, location)
+  if (!resolved) return null
+  return workModelLabels[resolved] ?? null
 }
 
 export function labelSource(value: string | null | undefined) {
