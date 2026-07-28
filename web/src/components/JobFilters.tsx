@@ -119,6 +119,7 @@ function StateFilterSelect({
         {label}
       </p>
       <Select
+        key={value}
         value={value === 'all' ? undefined : value}
         onValueChange={(next) => onChange(next)}
       >
