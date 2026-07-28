@@ -2,7 +2,7 @@ const SUBSTACK_EMBED = 'https://vagasux.substack.com/embed'
 
 export function NewsletterSection() {
   return (
-    <section className="border-b border-neutral-500/10 bg-neutral-100 px-5 py-16 md:px-6 md:py-20">
+    <section className="border-b border-neutral-500/10 bg-[#f3f2f8] px-5 py-16 md:px-6 md:py-20">
       <div className="mx-auto grid max-w-3xl items-center gap-10 md:max-w-4xl md:grid-cols-[1.1fr_auto] md:gap-12">
         <div>
           <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
