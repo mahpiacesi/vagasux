@@ -87,12 +87,12 @@ export function PartnershipsSection() {
             Parcerias
           </p>
           <h2 className="mt-4 max-w-xl text-3xl leading-[1.08] font-black tracking-[-0.03em] text-neutral-500 md:text-5xl">
-            Sua marca perto de quem está{' '}
-            <span className="text-mark">construindo carreira</span> em UX.
+            Faça parte desse <span className="text-mark">impacto</span>
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-neutral-400 md:text-lg">
-            Apoie uma comunidade que abre portas de verdade — e ainda tem espaço
-            pra sua marca.
+            Junte-se às empresas e organizações que acreditam em um mercado mais
+            acessível e ajudam a criar oportunidades para milhares de
+            profissionais.
           </p>
 
           <div className="mt-9">
