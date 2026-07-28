@@ -214,32 +214,135 @@
   animation: marquee-scroll var(--marquee-duration) linear infinite reverse;
 }
 
-@keyframes beginners-float {
+/* Guia / beginners illustration motion */
+@keyframes guia-blob-morph {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
-  50% {
-    transform: translateY(-12px);
+  33% {
+    transform: translate(10px, -14px) scale(1.05) rotate(2deg);
+  }
+  66% {
+    transform: translate(-8px, 8px) scale(0.97) rotate(-1.5deg);
   }
 }
 
-@keyframes beginners-blob {
+@keyframes guia-figure-float {
   0%,
   100% {
-    transform: scale(1) translate(0, 0);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: scale(1.06) translate(4px, -6px);
+    transform: translateY(-10px) rotate(-0.6deg);
   }
 }
 
-.beginners-float {
-  animation: beginners-float 5.5s ease-in-out infinite;
+@keyframes guia-icon-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  40% {
+    transform: translate(6px, -16px) rotate(4deg) scale(1.04);
+  }
+  70% {
+    transform: translate(-4px, -6px) rotate(-3deg) scale(0.98);
+  }
 }
 
-.beginners-blob {
-  animation: beginners-blob 7s ease-in-out infinite;
+@keyframes guia-icon-float-alt {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translate(-8px, -14px) rotate(-5deg) scale(1.05);
+  }
+  65% {
+    transform: translate(5px, -4px) rotate(3deg) scale(0.97);
+  }
+}
+
+@keyframes guia-icon-float-figma {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  45% {
+    transform: translate(8px, -18px) rotate(6deg) scale(1.06);
+  }
+  75% {
+    transform: translate(-6px, -8px) rotate(-4deg) scale(0.98);
+  }
+}
+
+@keyframes guia-spark {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(4px, -10px) scale(1.35);
+    opacity: 1;
+  }
+}
+
+.guia-hero {
+  overflow: visible;
+}
+
+.guia-blob {
+  transform-origin: 380px 280px;
+  animation: guia-blob-morph 9s ease-in-out infinite;
+}
+
+.guia-blob__shape--soft {
+  animation: guia-blob-morph 11s ease-in-out infinite reverse;
+  transform-origin: 380px 280px;
+}
+
+.guia-figure {
+  transform-origin: 360px 320px;
+  animation: guia-figure-float 5.5s ease-in-out infinite;
+}
+
+.guia-icon {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.guia-icon--notion {
+  animation: guia-icon-float 3.6s ease-in-out infinite;
+}
+
+.guia-icon--miro {
+  animation: guia-icon-float-alt 4.2s ease-in-out 0.35s infinite;
+}
+
+.guia-icon--figma {
+  animation: guia-icon-float-figma 3.9s ease-in-out 0.7s infinite;
+}
+
+.guia-spark--a {
+  transform-origin: 70px 48px;
+  animation: guia-spark 2.8s ease-in-out infinite;
+}
+
+.guia-spark--b {
+  transform-origin: 430px 22px;
+  animation: guia-spark 3.4s ease-in-out 0.4s infinite;
+}
+
+.guia-spark--c {
+  transform-origin: 690px 130px;
+  animation: guia-spark 3s ease-in-out 0.9s infinite;
+}
+
+.guia-spark--d {
+  transform-origin: 650px 255px;
+  animation: guia-spark 3.2s ease-in-out 0.2s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -249,8 +352,16 @@
   .marquee-track,
   .testimonials-track,
   .testimonials-track-reverse,
-  .beginners-float,
-  .beginners-blob {
+  .guia-blob,
+  .guia-blob__shape--soft,
+  .guia-figure,
+  .guia-icon--notion,
+  .guia-icon--miro,
+  .guia-icon--figma,
+  .guia-spark--a,
+  .guia-spark--b,
+  .guia-spark--c,
+  .guia-spark--d {
     animation: none;
   }
 }

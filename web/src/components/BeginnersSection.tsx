@@ -1,4 +1,4 @@
-import guiaHero from '@/assets/illustrations/guia-hero-avatar.png'
+import { GuiaHeroIllustration } from '@/components/GuiaHeroIllustration'
 import { Button } from '@/components/ui/button'
 import { superSite } from '@/lib/siteLinks'
 
@@ -35,19 +35,7 @@ export function BeginnersSection() {
         </div>
 
         <div className="relative mx-auto w-full max-w-md md:max-w-none">
-          <div
-            aria-hidden
-            className="beginners-blob absolute inset-[8%] -z-0 rounded-[40%] bg-brand-200/45 blur-2xl"
-          />
-          <img
-            src={guiaHero}
-            alt="Ilustração de uma pessoa apontando para ferramentas de design como Notion, Miro e Figma"
-            className="beginners-float relative z-10 mx-auto h-auto w-full max-w-lg object-contain drop-shadow-sm"
-            width={800}
-            height={800}
-            loading="lazy"
-            decoding="async"
-          />
+          <GuiaHeroIllustration className="guia-hero h-auto w-full" />
         </div>
       </div>
     </section>
