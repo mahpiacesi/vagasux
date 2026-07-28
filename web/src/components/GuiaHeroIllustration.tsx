@@ -14,11 +14,14 @@ const GLANCE_LEFT = [
   { x: -2.4, y: 0.3 },
 ] as const
 
-/** Right orbit is tighter — smaller travel so gaze stays conjugate, not cross-eyed */
+/**
+ * Right orbit is tight. Resting pose is already toward the outer (right)
+ * corner in the SVG; motion stays small so gaze stays conjugate.
+ */
 const GLANCE_RIGHT = [
-  { x: 1.1, y: 0.2 },
-  { x: 0, y: -1.0 },
-  { x: -1.1, y: 0.15 },
+  { x: 0.35, y: 0.15 },
+  { x: -0.5, y: -0.9 },
+  { x: -1.2, y: 0.1 },
 ] as const
 
 const STEP_MS = 2200

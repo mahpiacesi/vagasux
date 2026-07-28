@@ -34,9 +34,9 @@ export function BeginnersSection() {
           </div>
         </div>
 
-        {/* Same grid column as PartnershipsSection cards; art capped inside it */}
-        <div className="flex min-w-0 w-full items-center justify-center md:justify-end">
-          <div className="w-full max-w-[240px] md:max-w-[280px]">
+        {/* Same column as Parcerias cards — art left-aligned so it sits near the copy */}
+        <div className="min-w-0 w-full">
+          <div className="mx-auto w-full max-w-[22rem] md:mx-0 md:max-w-[26rem]">
             <GuiaHeroIllustration className="guia-hero h-auto w-full overflow-visible" />
           </div>
         </div>

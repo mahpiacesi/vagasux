@@ -7,7 +7,7 @@ export function GuiaIllustrationDevPage() {
       <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
         Dev · ilustração guia (SVG)
       </p>
-      <div className="w-full max-w-[280px] overflow-visible">
+      <div className="w-full max-w-[26rem] overflow-visible">
         <GuiaHeroIllustration
           forceMotion
           className="guia-hero h-auto w-full overflow-visible"
