@@ -20,7 +20,7 @@ const badgeBase = 'rounded-md border-transparent font-semibold uppercase trackin
 
 export function JobRow({ job, index, hideSourceBadge = false }: JobRowProps) {
   const seniority = labelSeniority(job.seniority)
-  const workModel = resolveWorkModelLabel(job.work_model, job.location)
+  const workModel = resolveWorkModelLabel(job.work_model, job.location, job.description)
   const source = labelSource(job.source)
   const location = displayLocation(job.location, workModel)
   const capturedLabel = formatCapturedAt(job.captured_at)

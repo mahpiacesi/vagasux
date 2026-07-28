@@ -3,6 +3,7 @@ export type Job = {
   title: string
   company: string
   location: string | null
+  description: string | null
   url: string
   source: string
   seniority: string | null

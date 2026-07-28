@@ -18,7 +18,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
     if (filters.market === 'international' && isInternational !== true) return false
 
     if (filters.workModel !== 'all') {
-      const workModel = resolveWorkModel(job.work_model, job.location)
+      const workModel = resolveWorkModel(job.work_model, job.location, job.description)
       if (workModel !== filters.workModel) return false
     }
 

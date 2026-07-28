@@ -30,35 +30,73 @@ function stripDiacritics(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
-function normalizeLocation(value: string) {
-  return stripDiacritics(value).trim().toLowerCase()
+function normalizeText(value: string) {
+  return stripDiacritics(value).replace(/\s+/g, ' ').trim().toLowerCase()
 }
 
 function isRemoteLocation(value: string) {
-  const normalized = normalizeLocation(value)
+  const normalized = normalizeText(value)
   return /^(remote|remoto|remota)$/i.test(normalized)
 }
 
 export type ResolvedWorkModel = 'remote' | 'hybrid' | 'onsite'
 
-/** Prefer work_model; infer from location text when collectors leave it empty. */
+function inferWorkModelFromText(text: string): ResolvedWorkModel | null {
+  if (!text) return null
+
+  if (/\b(hibrid\w*|hybrid\w*)\b/.test(text)) return 'hybrid'
+  if (/\b\d+\s*x?\s*(no\s+)?escritor/i.test(text)) return 'hybrid'
+  if (/\b(um|uma|\d+)\s+dias?(\s+por\s+semana)?\s+presencial/.test(text)) {
+    return 'hybrid'
+  }
+  if (/\batuacao\s+hibrid/.test(text)) return 'hybrid'
+
+  if (/#\s*remot/i.test(text)) return 'remote'
+  if (
+    /\b(100%\s+)?(trabalho\s+)?(remote|remoto|remota)\b/.test(text) &&
+    !/\b(hibrid\w*|hybrid\w*)\b/.test(text)
+  ) {
+    return 'remote'
+  }
+
+  if (/#\s*presencial\b/.test(text)) return 'onsite'
+  if (/\bpresencial\b/.test(text) && !/\b(hibrid\w*|hybrid\w*)\b/.test(text)) {
+    return 'onsite'
+  }
+
+  return null
+}
+
+function inferWorkModelFromLocation(location: string): ResolvedWorkModel | null {
+  const normalized = normalizeText(location)
+
+  if (/^(remote|remoto|remota)$/.test(normalized)) return 'remote'
+  if (/\b(hibrid\w*|hybrid\w*)\b/.test(normalized)) return 'hybrid'
+  if (/\b(remote|remoto|remota)\b/.test(normalized)) return 'remote'
+  if (/\be regiao\b/.test(normalized)) return 'onsite'
+  if (/\b(presencial|onsite)\b/.test(normalized)) return 'onsite'
+
+  return null
+}
+
+/** Prefer work_model; infer from Notion description and location when empty. */
 export function resolveWorkModel(
   workModel: string | null | undefined,
   location: string | null | undefined,
+  description?: string | null | undefined,
 ): ResolvedWorkModel | null {
   if (workModel && workModel !== 'unknown') {
     return workModel as ResolvedWorkModel
   }
 
-  if (!location) return null
+  if (description) {
+    const fromDescription = inferWorkModelFromText(normalizeText(description))
+    if (fromDescription) return fromDescription
+  }
 
-  const normalized = normalizeLocation(location)
-
-  if (/^(remote|remoto|remota)$/.test(normalized)) return 'remote'
-  if (/\b(hibrid|hybrid)\w*/.test(normalized)) return 'hybrid'
-  if (/\b(remote|remoto|remota)\b/.test(normalized)) return 'remote'
-  if (/\be regiao\b/.test(normalized)) return 'onsite'
-  if (/\b(presencial|onsite)\b/.test(normalized)) return 'onsite'
+  if (location) {
+    return inferWorkModelFromLocation(location)
+  }
 
   return null
 }
@@ -70,7 +108,7 @@ export function resolveIsInternational(
   if (isInternational != null) return isInternational
   if (!location) return null
 
-  const normalized = normalizeLocation(location)
+  const normalized = normalizeText(location)
 
   if (
     /\b(internacional|international|global|worldwide|eua|usa|europe|latam)\b/.test(
@@ -100,12 +138,12 @@ export function labelWorkModel(value: string | null | undefined) {
   return workModelLabels[value] ?? value
 }
 
-/** Prefer work_model; if missing, infer Remota from location "Remote". */
 export function resolveWorkModelLabel(
   workModel: string | null | undefined,
   location: string | null | undefined,
+  description?: string | null | undefined,
 ) {
-  const resolved = resolveWorkModel(workModel, location)
+  const resolved = resolveWorkModel(workModel, location, description)
   if (!resolved) return null
   return workModelLabels[resolved] ?? null
 }

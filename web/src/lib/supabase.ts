@@ -17,6 +17,7 @@ const jobColumns = [
   'title',
   'company',
   'location',
+  'description',
   'url',
   'source',
   'seniority',
