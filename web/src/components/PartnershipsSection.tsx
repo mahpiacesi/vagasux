@@ -6,12 +6,6 @@ import uxconfLogo from '@/assets/partners/uxconf.png'
 import { Button } from '@/components/ui/button'
 import { superSite } from '@/lib/siteLinks'
 
-const highlights = [
-  { value: '+40 mil', label: 'pessoas engajadas' },
-  { value: '+230', label: 'bolsas' },
-  { value: '+30', label: 'contratados' },
-] as const
-
 type PartnerCard =
   | {
       kind: 'logo'
@@ -100,19 +94,6 @@ export function PartnershipsSection() {
             Apoie uma comunidade que abre portas de verdade — e ainda tem espaço
             pra sua marca.
           </p>
-
-          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
-            {highlights.map((item) => (
-              <div key={item.label}>
-                <p className="text-2xl font-black tracking-tight text-brand-500">
-                  {item.value}
-                </p>
-                <p className="mt-0.5 text-sm font-semibold text-neutral-400">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
 
           <div className="mt-9">
             <Button
