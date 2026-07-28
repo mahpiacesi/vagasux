@@ -25,7 +25,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
 
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 
-    if (filters.state !== 'all') {
+    if (filters.state !== 'all' && filters.market !== 'international') {
       const state = parseBrazilianState(job.location)
       if (state !== filters.state) return false
     }
@@ -50,11 +50,15 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
 }
 
 export function hasActiveFilters(filters: JobFiltersState) {
+  const stateActive =
+    filters.state !== 'all' &&
+    (filters.market === 'all' || filters.market === 'national')
+
   return (
     filters.query.trim() !== '' ||
     filters.market !== 'all' ||
     filters.workModel !== 'all' ||
     filters.seniority !== 'all' ||
-    filters.state !== 'all'
+    stateActive
   )
 }

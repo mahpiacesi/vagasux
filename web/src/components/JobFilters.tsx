@@ -118,7 +118,7 @@ function StateFilterSelect({
         <SelectTrigger
           aria-label={label}
           className={cn(
-            'mt-2.5 h-10 w-full rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner',
+            'mt-2.5 h-9 w-full min-w-[9.5rem] rounded-xl border border-neutral-200/80 bg-brand-100/30 px-3 text-sm font-semibold text-neutral-500 shadow-inner sm:w-[11rem]',
             'focus-visible:border-brand-300 focus-visible:ring-3 focus-visible:ring-brand-200/60',
             value === 'all' && 'text-neutral-400',
           )}
@@ -148,9 +148,18 @@ export function JobFilters({
   showStateFilter = true,
 }: JobFiltersProps) {
   const active = hasActiveFilters(value)
+  const showState = showStateFilter && value.market !== 'international'
+
+  function handleMarketChange(market: MarketFilter) {
+    onChange({
+      ...value,
+      market,
+      state: market === 'international' ? 'all' : value.state,
+    })
+  }
 
   return (
-    <div className="mural-fade mural-fade-delay-2 sticky top-[4.5rem] z-40 rounded-2xl border border-neutral-200/70 bg-neutral-100/95 px-4 py-5 shadow-[0_16px_40px_-28px_rgb(7_0_58_/_0.35)] backdrop-blur-md md:px-6 md:py-6">
+    <div className="mural-fade mural-fade-delay-2 sticky top-[4.5rem] z-40 rounded-2xl border border-neutral-200/70 bg-neutral-100/95 px-4 py-4 shadow-[0_16px_40px_-28px_rgb(7_0_58_/_0.35)] backdrop-blur-md md:px-5 md:py-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-xs font-bold tracking-[0.14em] text-brand-400 uppercase">
@@ -174,7 +183,7 @@ export function JobFilters({
         ) : null}
       </div>
 
-      <label className="mt-5 block">
+      <label className="mt-4 block">
         <span className="sr-only">Buscar</span>
         <div className="relative">
           <Search
@@ -203,12 +212,12 @@ export function JobFilters({
         </div>
       </label>
 
-      <div className="mt-5 grid gap-5 md:grid-cols-2 md:gap-6">
+      <div className="mt-4 flex flex-wrap items-end gap-x-5 gap-y-4">
         <FilterRow
           label="Mercado"
           options={marketOptions}
           value={value.market}
-          onChange={(market) => onChange({ ...value, market })}
+          onChange={handleMarketChange}
         />
         <FilterRow
           label="Formato"
@@ -216,7 +225,7 @@ export function JobFilters({
           value={value.workModel}
           onChange={(workModel) => onChange({ ...value, workModel })}
         />
-        {showStateFilter ? (
+        {showState ? (
           <StateFilterSelect
             label="Estado"
             options={BRAZILIAN_STATES}
@@ -235,7 +244,7 @@ export function JobFilters({
       </div>
 
       {!hideSeniority ? (
-        <p className="mt-4 text-xs leading-relaxed text-neutral-400/80">
+        <p className="mt-3 text-xs leading-relaxed text-neutral-400/80">
           Formato e nível ficam mais precisos conforme a IA classifica as vagas.
         </p>
       ) : null}
