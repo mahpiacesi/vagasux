@@ -20,7 +20,8 @@ Ingestão da base **Vagas para iniciantes** no Notion para o Supabase.
 | `Função` | `title` |
 | `Descrição` | `description` |
 | `Link da vaga/empresa` | `url` (normalizada, sem UTM) |
-| `Localização` | `location` |
+| `Localização` | `location` (só geografia: SP e região, Exterior…) |
+| `Formato` | `work_model` (`Remoto`→`remote`, `Híbrido`→`hybrid`, `Presencial`→`onsite`) |
 | `Data da inclusão` | `published_at` |
 
 ## Dedup cross-source

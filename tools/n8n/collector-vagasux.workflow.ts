@@ -103,6 +103,21 @@ function parseDeadline(row) {
   return Number.isNaN(d.getTime()) ? null : d;
 }
 
+function stripDiacritics(value) {
+  return String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');
+}
+
+function mapWorkModel(raw) {
+  const label = stripDiacritics(pickString(raw)).toLowerCase();
+  if (!label || label === 'nao informado' || label === 'não informado' || label === 'unknown') {
+    return null;
+  }
+  if (label === 'remoto' || label === 'remote') return 'remote';
+  if (label.startsWith('hibrid') || label === 'hybrid') return 'hybrid';
+  if (label === 'presencial' || label === 'onsite') return 'onsite';
+  return null;
+}
+
 const out = [];
 for (const item of items) {
   const row = item.json || {};
@@ -123,6 +138,10 @@ for (const item of items) {
     skipReason = skipReason || 'deadline_passed';
   }
 
+  const workModel = mapWorkModel(
+    row.property_formato ?? row.Formato ?? row['Formato de trabalho'] ?? row['Modelo de trabalho'],
+  );
+
   out.push({
     json: {
       source: 'VagasUX',
@@ -132,6 +151,7 @@ for (const item of items) {
       description: pickString(row.property_descri_o ?? row['Descrição'] ?? row.Descricao) || null,
       url,
       location: pickString(row.property_localiza_o ?? row['Localização'] ?? row.Localizacao) || null,
+      work_model: workModel,
       published_at: row.property_data_da_inclus_o ?? row['Data da inclusão'] ?? row.createdTime ?? row.created_time ?? null,
       skip: Boolean(skipReason),
       skip_reason: skipReason,
@@ -201,7 +221,7 @@ const upsertJob = node({
       contentType: 'json',
       specifyBody: 'json',
       jsonBody: expr(
-        "{{ JSON.stringify({ p_source: $json.source, p_source_job_id: String($json.source_job_id), p_company: $json.company, p_title: $json.title, p_description: $json.description || null, p_url: $json.url, p_location: $json.location || null, p_published_at: $json.published_at || null }) }}",
+        "{{ JSON.stringify({ p_source: $json.source, p_source_job_id: String($json.source_job_id), p_company: $json.company, p_title: $json.title, p_description: $json.description || null, p_url: $json.url, p_location: $json.location || null, p_published_at: $json.published_at || null, p_work_model: $json.work_model || null }) }}",
       ),
       options: { timeout: 30000 },
     },
