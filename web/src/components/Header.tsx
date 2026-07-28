@@ -1,8 +1,10 @@
-import { BookOpen, Umbrella } from 'lucide-react'
+import { BookOpen, Umbrella, UmbrellaSimple } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 import { VagasNavMenu } from './VagasNavMenu'
+
+const navIconProps = { size: 16, weight: 'regular' as const }
 
 const linkClass =
   'relative inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -29,7 +31,7 @@ export function Header() {
             rel="noopener noreferrer"
             className={linkClass}
           >
-            <Umbrella className="size-4 shrink-0" aria-hidden />
+            <Umbrella {...navIconProps} className="shrink-0" aria-hidden />
             Comunidade
           </a>
           <VagasNavMenu />
@@ -39,7 +41,7 @@ export function Header() {
             rel="noopener noreferrer"
             className={linkClass}
           >
-            <BookOpen className="size-4 shrink-0" aria-hidden />
+            <BookOpen {...navIconProps} className="shrink-0" aria-hidden />
             Guia
           </a>
           <a
@@ -48,7 +50,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500"
           >
-            <span aria-hidden>🌂</span>
+            <UmbrellaSimple {...navIconProps} aria-hidden />
             Publicar
           </a>
         </nav>
@@ -61,7 +63,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100"
           >
-            <span aria-hidden>🌂</span>
+            <UmbrellaSimple size={14} weight="regular" aria-hidden />
             Publicar
           </a>
         </div>
