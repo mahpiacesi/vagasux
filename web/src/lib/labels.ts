@@ -79,15 +79,14 @@ function inferWorkModelFromLocation(location: string): ResolvedWorkModel | null 
   return null
 }
 
-/** Prefer work_model; infer from Notion description and location when empty. */
+/** Prefer work_model; infer from description/location only when work_model is null (legacy). */
 export function resolveWorkModel(
   workModel: string | null | undefined,
   location: string | null | undefined,
   description?: string | null | undefined,
 ): ResolvedWorkModel | null {
-  if (workModel && workModel !== 'unknown') {
-    return workModel as ResolvedWorkModel
-  }
+  if (workModel === 'unknown') return null
+  if (workModel) return workModel as ResolvedWorkModel
 
   if (description) {
     const fromDescription = inferWorkModelFromText(normalizeText(description))
