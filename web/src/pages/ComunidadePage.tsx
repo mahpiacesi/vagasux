@@ -1,6 +1,6 @@
 import {
-  Crown,
   Heart,
+  Umbrella,
   UsersThree,
 } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
@@ -81,13 +81,13 @@ const participationPaths = [
     title: 'Guilda do Vaguiner',
     hook: 'A experiência completa, com encontros e mentorias.',
     description:
-      'Comunidade exclusiva paga com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e avulsas com desconto.',
+      'Comunidade exclusiva com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e avulsas com desconto.',
     bullets: [
       'Encontros e mentorias em grupo no plano',
       'Mentorias avulsas com profissionais do mercado',
       'Seletivas, descontos e benefícios para membros',
     ],
-    Icon: Crown,
+    Icon: Umbrella,
     tone: 'premium' as const,
     featured: true,
     cta: {
@@ -111,7 +111,7 @@ const toneStyles = {
   },
   premium: {
     card: 'border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-complementary-100/80 to-brand-100/40 shadow-[0_24px_60px_-28px_rgb(7_0_58_/_0.35)] ring-1 ring-complementary-300/40',
-    icon: 'bg-neutral-500 text-complementary-300',
+    icon: 'bg-complementary-300 text-neutral-500',
     eyebrow: 'text-neutral-500',
   },
 } as const
@@ -153,11 +153,11 @@ function ParticipationCard({
       </div>
 
       {featured ? (
-        <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="mt-4 flex items-center gap-2">
           <p className={`text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
             {eyebrow}
           </p>
-          <span className="inline-flex shrink-0 rounded-full bg-neutral-500 px-3 py-1 text-[0.65rem] font-bold tracking-[0.16em] text-complementary-300 uppercase">
+          <span className="inline-flex shrink-0 rounded-full bg-neutral-500 px-2.5 py-0.5 text-[0.65rem] font-bold tracking-[0.14em] text-complementary-300 uppercase">
             EXCLUSIVO
           </span>
         </div>
@@ -192,7 +192,7 @@ function ParticipationCard({
             size="lg"
             className={`h-11 w-full rounded-xl font-bold ${
               featured
-                ? 'bg-neutral-500 text-complementary-300 hover:bg-brand-500 hover:text-neutral-100'
+                ? 'bg-complementary-300 text-neutral-500 hover:bg-complementary-200'
                 : ''
             }`}
           >
