@@ -233,6 +233,14 @@
   );
 }
 
+.text-mark-on-dark {
+  background-image: linear-gradient(
+    180deg,
+    transparent 62%,
+    var(--color-complementary-300) 62%
+  );
+}
+
 .marquee-track {
   animation: marquee-scroll 28s linear infinite;
 }

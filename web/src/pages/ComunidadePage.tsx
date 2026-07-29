@@ -230,13 +230,12 @@ export function ComunidadePage() {
             Faça parte da VagasUX
           </p>
           <h1 className="mural-fade mural-fade-delay-1 mt-6 max-w-4xl text-[2.6rem] leading-[1.02] font-black tracking-[-0.045em] md:text-6xl lg:text-7xl">
-            Você já tem o lugar. Agora escolha{' '}
-            <span className="text-mark text-neutral-100">como participar</span>.
+            A maior comunidade de{' '}
+            <span className="text-mark-on-dark">UX design</span> do Brasil
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
-            Comunidade aberta, apoio voluntário ou Guilda exclusiva — tem
-            espaço para quem está começando, para quem quer ajudar o projeto e
-            para quem busca mentorias, encontros e benefícios de membro.
+            Seja como membro da comunidade, voluntário ou apoiador, sempre
+            existe uma forma de fazer parte.
           </p>
           <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap gap-3">
             <Button
