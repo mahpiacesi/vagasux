@@ -188,7 +188,7 @@ export function VoluntariadoPage() {
             Como fazer parte
           </p>
           <h2 className="mural-fade mural-fade-delay-1 mt-4 text-3xl font-black tracking-[-0.04em] md:text-5xl">
-            Quer ser voluntário(a)?
+            Quer ser pessoa voluntária?
           </h2>
           <p className="mural-fade mural-fade-delay-2 mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
             Conta pra gente como você quer ajudar. Analisamos cada candidatura,
@@ -206,7 +206,7 @@ export function VoluntariadoPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Quero ser voluntário(a)
+                Quero ser pessoa voluntária
               </a>
             </Button>
           </div>
