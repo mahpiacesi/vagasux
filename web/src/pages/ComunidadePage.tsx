@@ -230,9 +230,9 @@ export function ComunidadePage() {
             Faça parte da VagasUX
           </p>
           <h1 className="mural-fade mural-fade-delay-1 mt-6 max-w-4xl text-[2.6rem] leading-[1.02] font-black tracking-[-0.045em] md:text-6xl lg:text-7xl">
-            A maior comunidade de
+            A maior comunidade
             <br />
-            <span className="text-mark-on-dark">UX design</span> do Brasil
+            de <span className="text-mark-on-dark">UX design</span> do Brasil
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
             Seja como membro da comunidade, voluntário ou apoiador, sempre
