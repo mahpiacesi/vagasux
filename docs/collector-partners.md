@@ -61,6 +61,13 @@ Ordem sugerida: Greenhouse + Gupy → Remotar → VagasUX → **Parceiros** → 
 4. Executar manualmente uma vez
 5. Conferir `/parcerias` no site (passa a ler Supabase)
 
+### Sem n8n (trial expirado ou teste local)
+
+Script alternativo: `node tools/seed-partners-from-notion.mjs`
+
+Usa snapshot Notion + assets locais e grava na tabela via RPC (não sobe logos ao Storage).
+Útil para validar o frontend; quando o n8n voltar, a sync diária substitui as URLs por `partner-logos/`.
+
 ## Site
 
 `fetchActivePartners()` em `web/src/lib/supabase.ts` lê `partners` com `is_active = true`, ordenado por `name`.
