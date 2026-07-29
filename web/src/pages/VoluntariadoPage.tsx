@@ -191,9 +191,11 @@ export function VoluntariadoPage() {
             Quer ser uma pessoa voluntária?
           </h2>
           <p className="mural-fade mural-fade-delay-2 mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            Conta pra gente como você quer ajudar. Analisamos cada candidatura,
-            alinhamos expectativas e, se fizer sentido, te recebemos no time com
-            onboarding e apoio das frentes.
+            Toda comunidade cresce com quem escolhe construir junto. Se você
+            quer contribuir com a VagasUX, conte para a gente como gostaria de
+            ajudar. Avaliamos cada aplicação, alinhamos expectativas e, quando
+            surgir uma oportunidade compatível, entraremos em contato para
+            conversar.
           </p>
           <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap justify-center gap-3">
             <Button
@@ -206,7 +208,7 @@ export function VoluntariadoPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Quero ser uma pessoa voluntária
+                Quero contribuir
               </a>
             </Button>
           </div>
