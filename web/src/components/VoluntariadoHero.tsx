@@ -32,8 +32,8 @@ const heroMosaic = [
     className: 'col-start-4 row-start-2',
   },
   {
-    name: 'Rafael Ribeiro',
-    emoji: '🤓',
+    name: 'Jade Simões',
+    emoji: '🥑',
     className: 'col-start-1 col-span-2 row-start-3',
   },
   {
@@ -42,8 +42,8 @@ const heroMosaic = [
     className: 'col-start-1 row-start-4',
   },
   {
-    name: 'Manuela Lacerda',
-    emoji: '🌻',
+    name: 'Natalia Feitosa',
+    emoji: '🦄',
     className: 'col-start-2 row-start-4',
   },
 ] as const
@@ -159,8 +159,8 @@ export function VoluntariadoHero() {
               <p className="text-[0.62rem] font-bold tracking-[0.14em] text-neutral-500 uppercase md:text-[0.65rem]">
                 Projeto coletivo
               </p>
-              <p className="mt-1 text-xs font-black leading-snug text-neutral-500 md:text-sm">
-                Juntos, ampliamos oportunidades.
+              <p className="mt-1 text-[0.7rem] font-black leading-snug text-neutral-500 md:text-xs">
+                Galerinha gente boa demais
               </p>
             </div>
           </div>

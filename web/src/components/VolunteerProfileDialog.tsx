@@ -43,11 +43,11 @@ export function VolunteerProfileDialog({
         >
           <div className="relative w-full shrink-0 overflow-hidden bg-brand-100">
             {volunteer.photo ? (
-              <div className="relative w-full">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
                   src={volunteer.photo}
                   alt=""
-                  className="block w-full max-h-[min(52vh,28rem)] object-contain object-top"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/75 via-neutral-500/15 to-transparent" />
               </div>
