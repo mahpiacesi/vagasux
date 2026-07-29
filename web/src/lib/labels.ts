@@ -2,6 +2,7 @@ import { parseBrazilianState } from './location'
 
 const seniorityLabels: Record<string, string> = {
   intern: 'Estágio',
+  trainee: 'Trainee',
   junior: 'Júnior',
   mid: 'Pleno',
   senior: 'Sênior',
@@ -194,4 +195,15 @@ export function formatCapturedAt(capturedAt: string | null | undefined) {
     month: '2-digit',
     year: 'numeric',
   })
+}
+
+export function formatJobListedAt(
+  job: { captured_at: string; published_at: string | null },
+  variant: 'captured' | 'mapped' = 'captured',
+) {
+  const value =
+    variant === 'mapped'
+      ? job.published_at ?? job.captured_at
+      : job.captured_at
+  return formatCapturedAt(value)
 }

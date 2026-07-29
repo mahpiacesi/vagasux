@@ -36,6 +36,7 @@ const workOptions: Option<WorkModelFilter>[] = [
 const seniorityOptions: Option<SeniorityFilter>[] = [
   { id: 'all', label: 'Todos' },
   { id: 'intern', label: 'Estágio' },
+  { id: 'trainee', label: 'Trainee' },
   { id: 'junior', label: 'Júnior' },
   { id: 'mid', label: 'Pleno' },
   { id: 'senior', label: 'Sênior' },
