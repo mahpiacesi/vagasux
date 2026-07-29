@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import { ArrowUpRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import type { Testimonial, TestimonialTone } from '@/data/testimonials'
 import { testimonials } from '@/data/testimonials'
 
@@ -199,27 +201,47 @@ export function TestimonialsMarquee() {
           <span className="text-mark">comunidade</span> deixa um recado.
         </h2>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-          Relatos reais de eventos, mentorias, vagas, projetos e seletivas —
-          escritos por quem faz parte.
+          Veja como a VagasUX impactou a trajetória de profissionais por meio de
+          vagas, mentorias, eventos e iniciativas dentro da comunidade.
         </p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+          >
+            <a
+              href="https://testimonial.to/vagasux"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Compartilhe um relato
+              <ArrowUpRight className="size-4" aria-hidden />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="link"
+            className="h-auto px-0 text-base font-bold text-brand-500"
+          >
+            <a
+              href="https://testimonial.to/vagasux/all"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver todos os relatos
+              <span aria-hidden>→</span>
+            </a>
+          </Button>
+        </div>
       </div>
 
       <div className="mt-12 flex flex-col gap-4 md:mt-14 md:gap-5">
         <MarqueeRow items={rowA} duration={95} />
         <MarqueeRow items={rowB} reverse duration={105} />
         <MarqueeRow items={rowC} duration={88} />
-      </div>
-
-      <div className="mx-auto mt-10 max-w-3xl px-5 md:mt-12 md:max-w-4xl md:px-6">
-        <a
-          href="https://testimonial.to/vagasux/all"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-base font-bold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400"
-        >
-          Ver todos os relatos
-          <span aria-hidden>→</span>
-        </a>
       </div>
     </section>
   )
