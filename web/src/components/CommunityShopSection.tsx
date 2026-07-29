@@ -69,7 +69,8 @@ export function CommunityShopSection() {
               UmaPenca
             </a>
             . Eles cuidam de toda a produção. Ganhamos uma comissão passiva por
-            cada venda e você sai mais estiloso(a) como todo Vaguiner deve ser.
+            cada venda e você sai um vaguiner mais estiloso levando a palavra
+            da VagasUX em diante.
           </p>
         </div>
 
