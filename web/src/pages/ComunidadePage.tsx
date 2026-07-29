@@ -58,13 +58,13 @@ const participationPaths = [
     index: '02',
     eyebrow: 'Apoio voluntário',
     title: 'Apoia-se',
-    hook: 'Ajude o projeto a continuar existindo.',
+    hook: 'Para quem acredita na comunidade e quer contribuir.',
     description:
-      'Contribua com o que puder para sustentar a comunidade. Quem apoia a partir de R$10 também pode agendar uma mentoria conosco.',
+      'Apoie a VagasUX com o valor que fizer sentido para você. Sua contribuição ajuda a manter vagas, conteúdos e iniciativas gratuitas no ar.',
     bullets: [
       'Campanha de crowdfunding no Apoia.se',
-      'Ajuda a cobrir custos da VagasUX',
-      'Mentoria como forma de agradecimento',
+      'Apoio voluntário, no seu ritmo',
+      'Ajuda a sustentar a comunidade aberta',
     ],
     Icon: Heart,
     tone: 'brand' as const,
@@ -272,19 +272,14 @@ export function ComunidadePage() {
         className="scroll-mt-24 px-5 pb-20 md:px-6 md:pb-28"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="mural-fade mb-10 flex flex-col gap-3 md:mb-12 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-                Três caminhos
-              </p>
-              <h2 className="mt-3 max-w-xl text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-                Escolha o ritmo que faz sentido pra você
-              </h2>
-            </div>
-            <p className="max-w-sm text-sm leading-relaxed text-neutral-400 md:text-base">
-              Compare as modalidades lado a lado e entre por onde fizer mais
-              sentido agora.
+          <div className="mural-fade mb-10 md:mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+              Como participar
             </p>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl lg:whitespace-nowrap">
+              Escolha o ritmo que faz sentido{' '}
+              <span className="whitespace-nowrap">pra você</span>
+            </h2>
           </div>
 
           <div className="grid items-stretch gap-5 lg:grid-cols-3 lg:gap-6">
