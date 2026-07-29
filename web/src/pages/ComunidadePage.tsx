@@ -83,9 +83,9 @@ const participationPaths = [
     description:
       'Comunidade exclusiva com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e avulsas com desconto.',
     bullets: [
-      'Encontros e mentorias em grupo no plano',
-      'Mentorias avulsas com profissionais do mercado',
-      'Seletivas, descontos e benefícios para membros',
+      'Encontros e mentorias em grupo',
+      'Seletivas e descontos para membros',
+      'Mini-desafios e muito mais',
     ],
     Icon: Umbrella,
     tone: 'premium' as const,
