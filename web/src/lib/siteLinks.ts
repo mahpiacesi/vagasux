@@ -31,6 +31,7 @@ export const superSite = {
   parcerias: 'https://vagasux.com.br/parcerias',
   apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
+  termos: 'https://vagasux.com.br/termos-e-polticas',
 } as const
 
 export const communityShops = {
