@@ -3,6 +3,7 @@ import {
   Umbrella,
   UsersThree,
 } from '@phosphor-icons/react'
+import { CommunityShopSection } from '@/components/CommunityShopSection'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
 import { superSite } from '@/lib/siteLinks'
@@ -354,6 +355,8 @@ export function ComunidadePage() {
           </p>
         </div>
       </section>
+
+      <CommunityShopSection />
     </main>
   )
 }

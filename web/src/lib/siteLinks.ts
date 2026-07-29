@@ -22,3 +22,8 @@ export const superSite = {
   apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
 } as const
+
+export const communityShops = {
+  colab55: 'https://www.colab55.com/@vagasux',
+  umapenca: 'https://umapenca.com/vagasux/',
+} as const
