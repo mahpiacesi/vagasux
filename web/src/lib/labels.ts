@@ -6,14 +6,14 @@ const seniorityLabels: Record<string, string> = {
   mid: 'Pleno',
   senior: 'Sênior',
   lead: 'Liderança',
-  unknown: 'Nível —',
+  unknown: 'Nível',
 }
 
 const workModelLabels: Record<string, string> = {
   remote: 'Remota',
   hybrid: 'Híbrida',
   onsite: 'Presencial',
-  unknown: 'Modelo —',
+  unknown: 'Modelo',
 }
 
 const sourceLabels: Record<string, string> = {

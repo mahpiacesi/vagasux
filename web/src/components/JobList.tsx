@@ -20,7 +20,7 @@ export function JobList({
   error,
   onLoadMore,
   emptyTitle = 'Nenhuma vaga por aqui',
-  emptyDescription = 'Tenta limpar a busca ou os filtros — ou volta mais tarde, o mural atualiza todo dia.',
+  emptyDescription = 'Tenta limpar a busca ou os filtros, ou volta mais tarde. O mural atualiza todo dia.',
   hideSourceBadge = false,
 }: JobListProps) {
   if (loading) {

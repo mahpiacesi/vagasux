@@ -2,8 +2,13 @@
 export const routes = {
   home: '/',
   comunidade: '/comunidade',
+  voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
+} as const
+
+export const forms = {
+  voluntarios: 'https://forms.gle/vqyLwPfA42LYv6ZV6',
 } as const
 
 /**

@@ -5,6 +5,7 @@ import { ComunidadePage } from '@/pages/ComunidadePage'
 import { GuiaIllustrationDevPage } from '@/pages/GuiaIllustrationDevPage'
 import { HomePage } from '@/pages/HomePage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
+import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
 import { VagasParaIniciantesPage } from '@/pages/VagasParaIniciantesPage'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route index element={<HomePage />} />
           <Route path={routes.comunidade} element={<ComunidadePage />} />
+          <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.oportunidades} element={<OportunidadesPage />} />
           <Route path={routes.curadoria} element={<VagasParaIniciantesPage />} />
           <Route path="*" element={<Navigate to={routes.home} replace />} />
