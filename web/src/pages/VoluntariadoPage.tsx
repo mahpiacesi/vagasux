@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Icon } from '@phosphor-icons/react'
 import {
   Clock,
@@ -11,7 +12,8 @@ import {
 } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { VoluntariadoHero } from '@/components/VoluntariadoHero'
-import { volunteers } from '@/data/volunteers'
+import { VolunteerProfileDialog } from '@/components/VolunteerProfileDialog'
+import { volunteers, type Volunteer } from '@/data/volunteers'
 import { forms } from '@/lib/siteLinks'
 
 const experienceHighlights: {
@@ -46,84 +48,99 @@ const experienceHighlights: {
 ]
 
 function VolunteerCard({
-  name,
-  emoji,
-  photo,
-  roles,
-  instagram,
-  linkedin,
-}: (typeof volunteers)[number]) {
+  person,
+  onSelect,
+}: {
+  person: Volunteer
+  onSelect: (person: Volunteer) => void
+}) {
+  const { name, emoji, photo, roles, instagram, linkedin } = person
+
   return (
     <article className="comunidade-card group flex h-full flex-col overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100 shadow-[0_16px_48px_-32px_rgb(7_0_58_/_0.35)]">
-      {photo ? (
-        <div className="relative aspect-[4/5] overflow-hidden bg-brand-100">
-          <img
-            src={photo}
-            alt={name}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            loading="lazy"
-            decoding="async"
-          />
-          <span
-            className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-xl bg-neutral-100/90 text-lg shadow-sm backdrop-blur-sm"
-            aria-hidden
-          >
-            {emoji}
-          </span>
-        </div>
-      ) : (
-        <div className="relative flex aspect-[4/5] items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100 text-5xl">
-          <span aria-hidden>{emoji}</span>
-        </div>
-      )}
-
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-base font-black tracking-[-0.02em] text-neutral-500">
-          {name}
-        </h3>
-        <ul className="mt-3 flex flex-wrap gap-1.5">
-          {roles.map((role) => (
-            <li
-              key={role}
-              className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[0.7rem] font-bold tracking-wide text-brand-500 uppercase"
+      <button
+        type="button"
+        onClick={() => onSelect(person)}
+        className="flex flex-1 flex-col text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+        aria-label={`Ver perfil de ${name}`}
+      >
+        {photo ? (
+          <div className="relative aspect-[4/5] overflow-hidden bg-brand-100">
+            <img
+              src={photo}
+              alt=""
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+            <span
+              className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-xl bg-neutral-100/90 text-lg shadow-sm backdrop-blur-sm"
+              aria-hidden
             >
-              {role}
-            </li>
-          ))}
-        </ul>
-
-        {(instagram || linkedin) && (
-          <div className="mt-auto flex flex-wrap gap-2 border-t border-neutral-500/10 pt-4">
-            {instagram ? (
-              <a
-                href={instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Instagram de ${name}`}
-                className="inline-flex size-9 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-brand-100 hover:text-brand-500"
-              >
-                <InstagramLogo size={18} weight="bold" aria-hidden />
-              </a>
-            ) : null}
-            {linkedin ? (
-              <a
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`LinkedIn de ${name}`}
-                className="inline-flex size-9 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-brand-100 hover:text-brand-500"
-              >
-                <LinkedinLogo size={18} weight="bold" aria-hidden />
-              </a>
-            ) : null}
+              {emoji}
+            </span>
+          </div>
+        ) : (
+          <div className="relative flex aspect-[4/5] items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100 text-5xl">
+            <span aria-hidden>{emoji}</span>
           </div>
         )}
-      </div>
+
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="text-base font-black tracking-[-0.02em] text-neutral-500">
+            {name}
+          </h3>
+          <ul className="mt-3 flex flex-wrap gap-1.5">
+            {roles.map((role) => (
+              <li
+                key={role}
+                className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[0.7rem] font-bold tracking-wide text-brand-500 uppercase"
+              >
+                {role}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm font-bold text-brand-400 transition-colors group-hover:text-brand-500">
+            Ver perfil
+          </p>
+        </div>
+      </button>
+
+      {(instagram || linkedin) && (
+        <div className="flex flex-wrap gap-2 border-t border-neutral-500/10 px-5 pb-5">
+          {instagram ? (
+            <a
+              href={instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Instagram de ${name}`}
+              className="inline-flex size-9 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-brand-100 hover:text-brand-500"
+            >
+              <InstagramLogo size={18} weight="bold" aria-hidden />
+            </a>
+          ) : null}
+          {linkedin ? (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`LinkedIn de ${name}`}
+              className="inline-flex size-9 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-brand-100 hover:text-brand-500"
+            >
+              <LinkedinLogo size={18} weight="bold" aria-hidden />
+            </a>
+          ) : null}
+        </div>
+      )}
     </article>
   )
 }
 
 export function VoluntariadoPage() {
+  const [selectedVolunteer, setSelectedVolunteer] = useState<Volunteer | null>(
+    null,
+  )
+
   return (
     <main>
       <VoluntariadoHero />
@@ -188,7 +205,11 @@ export function VoluntariadoPage() {
 
           <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {volunteers.map((person) => (
-              <VolunteerCard key={person.name} {...person} />
+              <VolunteerCard
+                key={person.slug}
+                person={person}
+                onSelect={setSelectedVolunteer}
+              />
             ))}
           </div>
         </div>
@@ -238,6 +259,14 @@ export function VoluntariadoPage() {
           </p>
         </div>
       </section>
+
+      <VolunteerProfileDialog
+        volunteer={selectedVolunteer}
+        open={selectedVolunteer !== null}
+        onOpenChange={(open) => {
+          if (!open) setSelectedVolunteer(null)
+        }}
+      />
     </main>
   )
 }

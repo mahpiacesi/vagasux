@@ -12,9 +12,11 @@ import manuelaPhoto from '@/assets/volunteers/manuela-lacerda.png'
 import nataliaPhoto from '@/assets/volunteers/natalia-feitosa.jpeg'
 import paulaPhoto from '@/assets/volunteers/paula-hollanda.jpg'
 import rafaelPhoto from '@/assets/volunteers/rafael-ribeiro.jpeg'
+import mariannaPhoto from '@/assets/volunteers/marianna-piacesi.jpg'
 import tatianaPhoto from '@/assets/volunteers/tatiana-barbosa.png'
 
 export type Volunteer = {
+  slug: string
   name: string
   emoji: string
   roles: string[]
@@ -26,6 +28,7 @@ export type Volunteer = {
 /** Snapshot from Notion database c4497f3b-3cdd-48dd-8705-1af83cb0ae6d */
 export const volunteers: Volunteer[] = [
   {
+    slug: 'aline-gagliardi',
     name: 'Aline Gagliardi',
     emoji: '❄️',
     photo: alinePhoto,
@@ -34,6 +37,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/alinegagliardi/',
   },
   {
+    slug: 'andre-hiro',
     name: 'Andre Hiro',
     emoji: '⚡',
     photo: andrePhoto,
@@ -42,6 +46,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/andre-hiroyuki-yoshioka/',
   },
   {
+    slug: 'anna-barros',
     name: 'Anna Barros',
     emoji: '👁️‍🗨️',
     photo: annaPhoto,
@@ -50,6 +55,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/annaabarros',
   },
   {
+    slug: 'bruna-david',
     name: 'Bruna David',
     emoji: '🐈‍⬛',
     photo: brunaPhoto,
@@ -58,6 +64,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/brunadavidautora/',
   },
   {
+    slug: 'fernando-lima',
     name: 'Fernando Lima',
     emoji: '👾',
     photo: fernandoPhoto,
@@ -66,6 +73,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/fernando-lima-98b8b11a2/',
   },
   {
+    slug: 'gabriela-peron',
     name: 'Gabriela Peron',
     emoji: '🐝',
     photo: gabrielaPhoto,
@@ -74,6 +82,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/gabrielaperon/',
   },
   {
+    slug: 'iago-de-souza',
     name: 'Iago de Souza',
     emoji: '🦜',
     photo: iagoPhoto,
@@ -82,6 +91,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/iago-d-sousa/',
   },
   {
+    slug: 'jade-simoes',
     name: 'Jade Simões',
     emoji: '🥑',
     photo: jadePhoto,
@@ -90,6 +100,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/jade-simoes/',
   },
   {
+    slug: 'juarez-egildo',
     name: 'Juarez Egildo',
     emoji: '🧙',
     photo: juarezPhoto,
@@ -98,6 +109,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/juarez-egildo-ux/',
   },
   {
+    slug: 'luana-conde',
     name: 'Luana Conde',
     emoji: '🪩',
     photo: luanaPhoto,
@@ -105,6 +117,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/luanaconde/',
   },
   {
+    slug: 'manuela-lacerda',
     name: 'Manuela Lacerda',
     emoji: '🌻',
     photo: manuelaPhoto,
@@ -112,13 +125,16 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/manuela-consorte/',
   },
   {
+    slug: 'marianna-piacesi',
     name: 'Marianna Piacesi',
     emoji: '☂️',
+    photo: mariannaPhoto,
     roles: ['Organização', 'Revisão', 'Parcerias'],
     instagram: 'https://instagram.com/mahpiacesi',
     linkedin: 'https://www.linkedin.com/in/mahpiacesi/',
   },
   {
+    slug: 'natalia-feitosa',
     name: 'Natalia Feitosa',
     emoji: '🦄',
     photo: nataliaPhoto,
@@ -127,6 +143,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/natalia-feitosa/',
   },
   {
+    slug: 'paula-hollanda',
     name: 'Paula Hollanda',
     emoji: '✨',
     photo: paulaPhoto,
@@ -134,6 +151,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/paulahollanda/',
   },
   {
+    slug: 'rafael-ribeiro',
     name: 'Rafael Ribeiro',
     emoji: '🤓',
     photo: rafaelPhoto,
@@ -142,6 +160,7 @@ export const volunteers: Volunteer[] = [
     linkedin: 'https://www.linkedin.com/in/rafael-ribeiro-855b54215/',
   },
   {
+    slug: 'tatiana-barbosa',
     name: 'Tatiana Barbosa',
     emoji: '🐳',
     photo: tatianaPhoto,
