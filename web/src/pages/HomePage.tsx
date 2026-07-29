@@ -92,7 +92,8 @@ export function HomePage() {
             Toda comunidade precisa de quem acredita nela
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            Apoie a VagasUX e ajude a manter uma comunidade que amplia o acesso a
+            Conheça as diferentes formas de fazer parte da VagasUX. Participe da
+            comunidade, fortaleça essa iniciativa e ajude a ampliar o acesso a
             oportunidades em Design.
           </p>
           <div className="mt-10 flex flex-col gap-6">
@@ -102,7 +103,7 @@ export function HomePage() {
               className="h-12 w-fit rounded-xl bg-complementary-300 px-8 text-base font-black text-neutral-500 shadow-md shadow-black/20 hover:bg-complementary-200"
             >
               <a href={superSite.apoie} target="_blank" rel="noopener noreferrer">
-                Apoie a iniciativa
+                Apoie a comunidade
               </a>
             </Button>
             <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
