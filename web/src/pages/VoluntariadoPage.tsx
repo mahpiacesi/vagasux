@@ -1,10 +1,6 @@
-import {
-  HandHeart,
-  InstagramLogo,
-  LinkedinLogo,
-  UsersThree,
-} from '@phosphor-icons/react'
+import { HandHeart, InstagramLogo, LinkedinLogo, UsersThree } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
+import { VoluntariadoHero } from '@/components/VoluntariadoHero'
 import { volunteers } from '@/data/volunteers'
 import { forms } from '@/lib/siteLinks'
 
@@ -97,29 +93,9 @@ function VolunteerCard({
 export function VoluntariadoPage() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-neutral-500 px-5 pt-20 pb-16 text-neutral-100 md:px-6 md:pt-28 md:pb-24">
-        <div className="pointer-events-none absolute inset-0 -z-0">
-          <div className="comunidade-orb absolute -top-24 -left-16 h-80 w-80 rounded-full bg-brand-400/30 blur-3xl" />
-          <div className="comunidade-orb comunidade-orb-delay absolute top-16 -right-20 h-96 w-96 rounded-full bg-complementary-300/20 blur-3xl" />
-        </div>
+      <VoluntariadoHero />
 
-        <div className="relative mx-auto max-w-5xl">
-          <p className="mural-fade text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase md:text-sm">
-            Time voluntário
-          </p>
-          <h1 className="mural-fade mural-fade-delay-1 mt-6 max-w-4xl text-[2.6rem] leading-[1.02] font-black tracking-[-0.045em] md:text-6xl lg:text-7xl">
-            Quem faz a{' '}
-            <span className="text-mark-on-dark">VagasUX</span> acontecer
-          </h1>
-          <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
-            Profissionais voluntários que tiram um tempinho toda semana (ou
-            mais!) para compilar conteúdos, trazer vagas e planejar iniciativas
-            que fazem diferença no mercado de UX.
-          </p>
-        </div>
-      </section>
-
-      <section className="px-5 py-16 md:px-6 md:py-24">
+      <section id="como-e-ser" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mural-fade max-w-3xl">
             <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
@@ -154,7 +130,10 @@ export function VoluntariadoPage() {
         </div>
       </section>
 
-      <section className="border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-20 md:px-6 md:py-24">
+      <section
+        id="time"
+        className="scroll-mt-24 border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-20 md:px-6 md:py-24"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="mural-fade max-w-3xl">
             <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
@@ -177,7 +156,10 @@ export function VoluntariadoPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
+      <section
+        id="como-fazer-parte"
+        className="scroll-mt-24 relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28"
+      >
         <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(93,107,246,0.25),transparent_55%)]" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
