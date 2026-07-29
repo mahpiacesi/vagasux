@@ -317,8 +317,7 @@ export function ComunidadePage() {
                 <span className="text-mark">no dia a dia</span>
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-                Escolha onde prefere receber vagas, conteúdos e novidades. Tudo
-                gratuito, sempre.
+                Escolha onde prefere receber vagas, conteúdos e novidades.
               </p>
             </div>
 
