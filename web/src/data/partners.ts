@@ -1,4 +1,4 @@
-export type Partner = {
+export type FallbackPartner = {
   slug: string
   name: string
   logo: string
@@ -47,7 +47,9 @@ const activePartnerNames: { slug: string; name: string }[] = [
   { slug: 'ux-writing-101', name: 'UX WRITING 101' },
 ]
 
-export const partners: Partner[] = activePartnerNames.map((partner) => ({
-  ...partner,
-  logo: logoForSlug(partner.slug),
-}))
+export const fallbackPartners: FallbackPartner[] = activePartnerNames.map(
+  (partner) => ({
+    ...partner,
+    logo: logoForSlug(partner.slug),
+  }),
+)

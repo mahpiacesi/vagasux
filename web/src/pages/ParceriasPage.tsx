@@ -5,9 +5,10 @@ import {
   Sparkle,
   UsersThree,
 } from '@phosphor-icons/react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ParceriasHero } from '@/components/ParceriasHero'
-import { partners } from '@/data/partners'
+import { loadActivePartners, type PartnerDisplay } from '@/lib/partners'
 import { contact, mediaKit } from '@/lib/siteLinks'
 
 const values = [
@@ -104,7 +105,7 @@ function PartnerLogoCard({
   index,
 }: {
   name: string
-  logo: string
+  logo: string | null
   index: number
 }) {
   return (
@@ -135,9 +136,25 @@ function PartnerLogoCard({
 }
 
 export function ParceriasPage() {
+  const [partners, setPartners] = useState<PartnerDisplay[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function load() {
+      const data = await loadActivePartners()
+      if (!cancelled) setPartners(data)
+    }
+
+    void load()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main>
-      <ParceriasHero />
+      <ParceriasHero partners={partners} />
 
       <section className="px-5 py-14 md:px-6 md:py-20">
         <div className="mx-auto max-w-6xl">

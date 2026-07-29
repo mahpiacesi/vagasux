@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Job } from '../types/job'
+import type { Partner } from '../types/partner'
 
 const url = import.meta.env.VITE_SUPABASE_URL
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -55,4 +56,17 @@ export async function fetchPublishedJobs(
 
   if (error) throw error
   return (data ?? []) as unknown as Job[]
+}
+
+const partnerColumns = ['id', 'slug', 'name', 'logo_url', 'site_url'] as const
+
+export async function fetchActivePartners(): Promise<Partner[]> {
+  const { data, error } = await supabase
+    .from('partners')
+    .select(partnerColumns.join(', '))
+    .eq('is_active', true)
+    .order('name', { ascending: true })
+
+  if (error) throw error
+  return (data ?? []) as unknown as Partner[]
 }
