@@ -101,7 +101,7 @@ export function VoluntariadoHero() {
           </div>
         </div>
 
-        <div className="mural-fade mural-fade-delay-1 relative mx-auto w-full max-w-md lg:max-w-none">
+        <div className="mural-fade mural-fade-delay-1 mx-auto flex w-full max-w-md flex-col gap-4 lg:max-w-none">
           <div className="grid grid-cols-4 grid-rows-4 gap-2 md:gap-3">
             {heroMosaic.map((tile, index) => (
               <div
@@ -122,7 +122,7 @@ export function VoluntariadoHero() {
             ))}
           </div>
 
-          <div className="absolute -bottom-5 -left-3 rounded-2xl border border-complementary-300/50 bg-complementary-300 px-4 py-3 shadow-lg shadow-black/10 md:-left-6">
+          <div className="w-fit rounded-2xl border border-complementary-300/50 bg-complementary-300 px-4 py-3 shadow-lg shadow-black/10">
             <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-500 uppercase">
               Projeto coletivo
             </p>
