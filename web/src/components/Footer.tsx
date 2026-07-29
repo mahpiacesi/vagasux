@@ -4,6 +4,7 @@ import {
   InstagramLogo,
   LinkedinLogo,
   MediumLogo,
+  SpotifyLogo,
   TelegramLogo,
   WhatsappLogo,
   XLogo,
@@ -38,6 +39,11 @@ const socialLinks: { label: string; href: string; Icon: Icon }[] = [
     label: 'YouTube',
     href: 'https://www.youtube.com/c/VagasUX',
     Icon: YoutubeLogo,
+  },
+  {
+    label: 'Spotify — Podvagas',
+    href: 'https://open.spotify.com/show/3XlkhvjZyh425pdRkAtBVs',
+    Icon: SpotifyLogo,
   },
   {
     label: 'X',
