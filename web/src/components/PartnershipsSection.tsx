@@ -3,8 +3,9 @@ import bancoCarrefourLogo from '@/assets/partners/banco-carrefour-white.png'
 import fiapLogo from '@/assets/partners/fiap.svg'
 import thestarterLogo from '@/assets/partners/thestarter.png'
 import uxconfLogo from '@/assets/partners/uxconf.png'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 type PartnerCard =
   | {
@@ -101,13 +102,7 @@ export function PartnershipsSection() {
               size="lg"
               className="h-12 rounded-xl px-8 text-base font-black"
             >
-              <a
-                href={superSite.parcerias}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Seja um parceiro
-              </a>
+              <Link to={routes.parcerias}>Seja um parceiro</Link>
             </Button>
           </div>
         </div>

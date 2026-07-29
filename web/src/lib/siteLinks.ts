@@ -7,6 +7,7 @@ export const routes = {
   curadoria: '/vagas-para-iniciantes',
   codigoDeConduta: '/codigo-de-conduta',
   termosEPoliticas: '/termos-e-politicas',
+  parcerias: '/parcerias',
 } as const
 
 export const contact = {

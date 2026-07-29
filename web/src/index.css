@@ -483,6 +483,51 @@
   animation: umbrella-back-sway-right 7s ease-in-out infinite;
 }
 
+@keyframes parcerias-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 14px) scale(1.04);
+  }
+}
+
+.parcerias-orb {
+  animation: parcerias-orb-float 14s ease-in-out infinite;
+}
+
+.parcerias-orb-delay {
+  animation-delay: -5s;
+}
+
+.parcerias-hero-tile {
+  animation: mural-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.parcerias-logo-card {
+  animation: mural-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.parcerias-logo-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--color-brand-200) 70%, transparent);
+}
+
+.parcerias-tier-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.parcerias-tier-card:hover {
+  transform: translateY(-6px) rotate(-0.4deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
@@ -497,7 +542,12 @@
   .umbrella-hero-svg--motion #umbrella-back-left,
   .umbrella-hero-svg--motion #umbrella-back-right,
   .comunidade-orb,
-  .comunidade-card:hover {
+  .comunidade-card:hover,
+  .parcerias-orb,
+  .parcerias-hero-tile,
+  .parcerias-logo-card,
+  .parcerias-logo-card:hover,
+  .parcerias-tier-card:hover {
     animation: none;
     transform: none;
   }
