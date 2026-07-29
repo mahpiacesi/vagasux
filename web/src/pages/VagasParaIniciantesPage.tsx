@@ -92,6 +92,7 @@ export function VagasParaIniciantesPage() {
             loading={loading}
             error={error}
             hideSourceBadge
+            listingVariant="curated"
             emptyTitle="Nenhuma vaga encontrada"
             emptyDescription="Não encontramos vagas com esses filtros no momento. Tente ajustar a busca ou indique uma oportunidade para fortalecer a curadoria da VagasUX."
             onLoadMore={() => {

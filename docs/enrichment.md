@@ -13,6 +13,17 @@ No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o
 | 4 | Status `enriched` fica reservado para um híbrido futuro (revisão humana), se precisar |
 | 5 | Summary em **inglês** quando `is_international = true`; **PT-BR** quando nacional |
 
+## Curadoria (`source = VagasUX`)
+
+Vagas da base Notion **Vagas para iniciantes** também passam pelo enrichment, com regra extra de senioridade:
+
+- Permitido: **`intern`** ou **`junior`** apenas
+- Estágio/aprendiz no texto → `intern`
+- Trainee/júnior no texto → `junior`
+- Sem nível no título (ex.: só "Product Designer") → **`junior`**, nunca pleno
+
+Implementação: `tools/n8n/curatedSeniority.ts` + node **Apply enrichment** no workflow Enrichment.
+
 ## Fluxo
 
 ```text

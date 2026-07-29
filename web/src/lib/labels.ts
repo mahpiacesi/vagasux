@@ -195,3 +195,14 @@ export function formatCapturedAt(capturedAt: string | null | undefined) {
     year: 'numeric',
   })
 }
+
+export function formatJobListedAt(
+  job: { captured_at: string; published_at: string | null },
+  variant: 'captured' | 'mapped' = 'captured',
+) {
+  const value =
+    variant === 'mapped'
+      ? job.published_at ?? job.captured_at
+      : job.captured_at
+  return formatCapturedAt(value)
+}

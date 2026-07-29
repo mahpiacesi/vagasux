@@ -11,6 +11,7 @@ type JobListProps = {
   emptyTitle?: string
   emptyDescription?: string
   hideSourceBadge?: boolean
+  listingVariant?: 'default' | 'curated'
 }
 
 export function JobList({
@@ -22,6 +23,7 @@ export function JobList({
   emptyTitle = 'Nenhuma vaga por aqui',
   emptyDescription = 'Tenta limpar a busca ou os filtros, ou volta mais tarde. O mural atualiza todo dia.',
   hideSourceBadge = false,
+  listingVariant = 'default',
 }: JobListProps) {
   if (loading) {
     return (
@@ -62,6 +64,7 @@ export function JobList({
             job={job}
             index={index}
             hideSourceBadge={hideSourceBadge}
+            listingVariant={listingVariant}
           />
         ))}
       </div>

@@ -2,7 +2,7 @@ import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import {
   displayLocation,
-  formatCapturedAt,
+  formatJobListedAt,
   isNewJob,
   labelSeniority,
   labelSource,
@@ -14,16 +14,26 @@ type JobRowProps = {
   job: Job
   index: number
   hideSourceBadge?: boolean
+  listingVariant?: 'default' | 'curated'
 }
 
 const badgeBase = 'rounded-md border-transparent font-semibold uppercase tracking-wide'
 
-export function JobRow({ job, index, hideSourceBadge = false }: JobRowProps) {
+export function JobRow({
+  job,
+  index,
+  hideSourceBadge = false,
+  listingVariant = 'default',
+}: JobRowProps) {
   const seniority = labelSeniority(job.seniority)
   const workModel = resolveWorkModelLabel(job.work_model, job.location, job.description)
   const source = labelSource(job.source)
   const location = displayLocation(job.location, workModel)
-  const capturedLabel = formatCapturedAt(job.captured_at)
+  const listedLabel = formatJobListedAt(
+    job,
+    listingVariant === 'curated' ? 'mapped' : 'captured',
+  )
+  const listedPrefix = listingVariant === 'curated' ? 'Mapeada em' : 'Capturada em'
   const showNew = isNewJob(job.captured_at)
 
   return (
@@ -113,9 +123,9 @@ export function JobRow({ job, index, hideSourceBadge = false }: JobRowProps) {
             </div>
           ) : null}
 
-          {capturedLabel ? (
+          {listedLabel ? (
             <p className="mt-3 text-xs text-neutral-400/70">
-              Capturada em {capturedLabel}
+              {listedPrefix} {listedLabel}
             </p>
           ) : null}
         </div>
