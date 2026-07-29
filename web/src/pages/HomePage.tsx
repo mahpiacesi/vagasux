@@ -5,12 +5,7 @@ import { Marquee } from '@/components/Marquee'
 import { NewsletterSection } from '@/components/NewsletterSection'
 import { PartnershipsSection } from '@/components/PartnershipsSection'
 import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
-import { routes, superSite } from '@/lib/siteLinks'
-
-const communityLinks = [
-  { label: 'Conheça a comunidade', href: superSite.comunidade },
-  { label: 'Quem organiza', href: superSite.quemOrganiza },
-] as const
+import { routeHashes, routes, superSite } from '@/lib/siteLinks'
 
 const marqueeItems = [
   'Júnior',
@@ -96,30 +91,29 @@ export function HomePage() {
             comunidade, fortaleça essa iniciativa e ajude a ampliar o acesso a
             oportunidades em Design.
           </p>
-          <div className="mt-10 flex flex-col gap-6">
+          <div className="mt-10 flex flex-wrap gap-3">
             <Button
               asChild
               size="lg"
-              className="h-12 w-fit rounded-xl bg-complementary-300 px-8 text-base font-black text-neutral-500 shadow-md shadow-black/20 hover:bg-complementary-200"
+              className="h-12 rounded-xl bg-complementary-300 px-8 text-base font-black text-neutral-500 shadow-md shadow-black/20 hover:bg-complementary-200"
             >
-              <a href={superSite.apoie} target="_blank" rel="noopener noreferrer">
+              <Link
+                to={{
+                  pathname: routes.comunidade,
+                  hash: routeHashes.formasDeParticipar,
+                }}
+              >
                 Apoie a comunidade
-              </a>
+              </Link>
             </Button>
-            <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
-              {communityLinks.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-neutral-300/80 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200/60"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-neutral-300/35 bg-transparent px-8 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
+            >
+              <Link to={routes.voluntariado}>Voluntariado</Link>
+            </Button>
           </div>
         </div>
       </section>

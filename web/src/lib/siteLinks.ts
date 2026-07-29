@@ -2,8 +2,13 @@
 export const routes = {
   home: '/',
   comunidade: '/comunidade',
+  voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
+} as const
+
+export const routeHashes = {
+  formasDeParticipar: 'formas-de-participar',
 } as const
 
 /**
