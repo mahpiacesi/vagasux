@@ -172,7 +172,7 @@ A VagasUX é:
 
 \* Travessão (—) em textos da marca. Prefira ponto, vírgula ou reestruturar a frase
 
-\* Parênteses de gênero como (a) ou (o). Prefira termos inclusivos: pessoa voluntária, estilosa, etc.
+\* Parênteses de gênero como (a) ou (o). Prefira termos inclusivos: uma pessoa voluntária, estilosa, etc.
 
 
 
