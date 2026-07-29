@@ -56,6 +56,14 @@ export function SectionTitle({ children }: { children: ReactNode }) {
   )
 }
 
+export function SubsectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <h3 className="text-lg font-black tracking-tight text-neutral-500 md:text-xl">
+      {children}
+    </h3>
+  )
+}
+
 export function Callout({ children }: { children: ReactNode }) {
   return (
     <div className="rounded-2xl border border-brand-200/80 bg-brand-100/50 px-5 py-4 text-sm leading-relaxed text-neutral-500 md:text-base">
@@ -84,11 +92,13 @@ export function TextLink({
     )
   }
 
+  const isMailto = href.startsWith('mailto:')
+
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={isMailto ? undefined : '_blank'}
+      rel={isMailto ? undefined : 'noopener noreferrer'}
       className={textLinkClass}
     >
       {children}

@@ -6,6 +6,11 @@ export const routes = {
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
   codigoDeConduta: '/codigo-de-conduta',
+  termosEPoliticas: '/termos-e-politicas',
+} as const
+
+export const contact = {
+  email: 'vagasux@gmail.com',
 } as const
 
 export const routeHashes = {

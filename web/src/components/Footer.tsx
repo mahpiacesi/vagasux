@@ -11,7 +11,7 @@ import {
   YoutubeLogo,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 
 const socialLinks: { label: string; href: string; Icon: Icon }[] = [
@@ -67,7 +67,7 @@ const legalLinkClass =
 
 const legalLinks = [
   { label: 'Código de Conduta', href: routes.codigoDeConduta, internal: true },
-  { label: 'Termos e Políticas', href: superSite.termos, internal: false },
+  { label: 'Termos e Políticas', href: routes.termosEPoliticas, internal: true },
 ] as const
 
 export function Footer() {

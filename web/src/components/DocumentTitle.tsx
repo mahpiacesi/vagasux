@@ -7,6 +7,7 @@ const titles: Record<string, string> = {
   [routes.comunidade]: 'VagasUX · Comunidade',
   [routes.voluntariado]: 'VagasUX · Voluntariado',
   [routes.codigoDeConduta]: 'VagasUX · Código de conduta',
+  [routes.termosEPoliticas]: 'VagasUX · Termos e Políticas',
   [routes.oportunidades]: 'VagasUX · Mural de vagas',
   [routes.curadoria]: 'VagasUX · Curadoria de vagas para iniciantes',
 }
