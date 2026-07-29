@@ -2,6 +2,7 @@ import { parseBrazilianState } from './location'
 
 const seniorityLabels: Record<string, string> = {
   intern: 'Estágio',
+  trainee: 'Trainee',
   junior: 'Júnior',
   mid: 'Pleno',
   senior: 'Sênior',

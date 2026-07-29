@@ -17,9 +17,10 @@ No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o
 
 Vagas da base Notion **Vagas para iniciantes** também passam pelo enrichment, com regra extra de senioridade:
 
-- Permitido: **`intern`** ou **`junior`** apenas
+- Permitido: **`intern`**, **`trainee`** ou **`junior`** apenas
 - Estágio/aprendiz no texto → `intern`
-- Trainee/júnior no texto → `junior`
+- Trainee no texto → `trainee`
+- Júnior no texto → `junior`
 - Sem nível no título (ex.: só "Product Designer") → **`junior`**, nunca pleno
 
 Implementação: `tools/n8n/curatedSeniority.ts` + node **Apply enrichment** no workflow Enrichment.
@@ -41,7 +42,7 @@ Scheduler (após collectors + expire)
 
 Enums:
 
-- `seniority`: intern | junior | mid | senior | lead | unknown  
+- `seniority`: intern | trainee | junior | mid | senior | lead | unknown  
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
 

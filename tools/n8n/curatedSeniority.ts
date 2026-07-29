@@ -10,27 +10,31 @@ export function normalizeJobText(value: unknown): string {
     .replace(/[\u0300-\u036f]/g, '')
 }
 
-const BEGINNER_SENIORITIES = new Set(['intern', 'junior'])
+const BEGINNER_SENIORITIES = new Set(['intern', 'trainee', 'junior'])
 
 /** Curated list is entry-level only — never pleno/sênior/liderança. */
 export function inferCuratedSeniority(input: {
   title?: unknown
   description?: unknown
   aiSeniority?: unknown
-}): 'intern' | 'junior' {
+}): 'intern' | 'trainee' | 'junior' {
   const text = normalizeJobText(`${input.title ?? ''} ${input.description ?? ''}`)
 
   if (/\b(estagi|estagio|internship|jovem aprendiz|aprendiz)\b/.test(text)) {
     return 'intern'
   }
 
-  if (/\b(trainee|junior|jr\.?)\b/.test(text)) {
+  if (/\btrainee\b/.test(text)) {
+    return 'trainee'
+  }
+
+  if (/\b(junior|jr\.?)\b/.test(text)) {
     return 'junior'
   }
 
   const ai = String(input.aiSeniority ?? '')
   if (BEGINNER_SENIORITIES.has(ai)) {
-    return ai as 'intern' | 'junior'
+    return ai as 'intern' | 'trainee' | 'junior'
   }
 
   // Human-curated iniciantes list: default to júnior when level is absent or misclassified.
@@ -43,10 +47,12 @@ if (job.source === 'VagasUX') {
   const curatedText = normalizeJobText(\`\${job.title} \${job.description ?? ''}\`);
   if (/\\b(estagi|estagio|internship|jovem aprendiz|aprendiz)\\b/.test(curatedText)) {
     seniority = 'intern';
-  } else if (/\\b(trainee|junior|jr\\.?)\\b/.test(curatedText)) {
+  } else if (/\\btrainee\\b/.test(curatedText)) {
+    seniority = 'trainee';
+  } else if (/\\b(junior|jr\\.?)\\b/.test(curatedText)) {
     seniority = 'junior';
-  } else if (['intern', 'junior'].includes(seniority)) {
-    // keep AI value when already entry-level
+  } else if (['intern', 'trainee', 'junior'].includes(seniority)) {
+    // keep entry-level AI value
   } else {
     seniority = 'junior';
   }
