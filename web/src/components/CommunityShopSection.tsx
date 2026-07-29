@@ -69,7 +69,7 @@ export function CommunityShopSection() {
             >
               UmaPenca
             </a>
-            . Eles cuidam de toda a produção — ganhamos uma comissão passiva por
+            . Eles cuidam de toda a produção. Ganhamos uma comissão passiva por
             cada venda e você sai mais estiloso(a) como todo{' '}
             <span className="font-bold text-complementary-300">Vaguiner</span>{' '}
             deve ser.
@@ -85,25 +85,19 @@ export function CommunityShopSection() {
               rel="noopener noreferrer"
               className="comunidade-card group block overflow-hidden rounded-3xl border border-white/10 bg-neutral-100/95 shadow-[0_24px_60px_-32px_rgb(0_0_0_/_0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-complementary-300"
             >
-              <div className="aspect-[4/5] overflow-hidden bg-neutral-200/80 p-4">
+              <div className="aspect-[4/5] overflow-hidden bg-neutral-100">
                 <img
                   src={product.image}
                   alt={product.alt}
-                  className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <div className="flex items-center justify-between gap-3 border-t border-neutral-500/10 px-5 py-4">
+              <div className="border-t border-neutral-500/10 px-5 py-4">
                 <p className="text-sm font-bold leading-snug text-neutral-500">
                   {product.name}
                 </p>
-                <span
-                  className="shrink-0 text-sm font-bold text-brand-400 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden
-                >
-                  →
-                </span>
               </div>
             </a>
           ))}
@@ -141,7 +135,7 @@ export function CommunityShopSection() {
 
         <p className="mural-fade mural-fade-delay-3 mt-6 flex items-center gap-2 text-sm text-neutral-400">
           <ShoppingBag size={18} weight="bold" aria-hidden />
-          Compra opcional — mais uma forma de ajudar o projeto a continuar no ar.
+          Compra opcional. Mais uma forma de ajudar o projeto a continuar no ar.
         </p>
       </div>
     </section>
