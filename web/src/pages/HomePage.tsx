@@ -5,7 +5,7 @@ import { Marquee } from '@/components/Marquee'
 import { NewsletterSection } from '@/components/NewsletterSection'
 import { PartnershipsSection } from '@/components/PartnershipsSection'
 import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
-import { routeHashes, routes, superSite } from '@/lib/siteLinks'
+import { routeHashes, routes } from '@/lib/siteLinks'
 
 const marqueeItems = [
   'Júnior',
@@ -48,7 +48,7 @@ export function HomePage() {
               size="lg"
               className="h-12 rounded-xl px-7 text-base font-black"
             >
-              <Link to={routes.oportunidades}>Ver oportunidades</Link>
+              <Link to={routes.curadoria}>Explorar curadoria</Link>
             </Button>
             <Button
               asChild
@@ -56,13 +56,7 @@ export function HomePage() {
               variant="outline"
               className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
             >
-              <a
-                href={superSite.publicar}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Indicar uma vaga
-              </a>
+              <Link to={routes.oportunidades}>Ver todas as vagas</Link>
             </Button>
           </div>
         </div>
