@@ -18,10 +18,7 @@ function LogoRibbon({
   const row = [...items, ...items]
 
   return (
-    <div
-      className="relative overflow-hidden"
-      aria-hidden
-    >
+    <div className="relative overflow-hidden" aria-hidden>
       <div
         className={`parcerias-logo-marquee flex w-max gap-3 py-1 ${reverse ? 'parcerias-logo-marquee-reverse' : ''}`}
       >
@@ -61,20 +58,18 @@ export function ParceriasHero() {
 
       <div className="relative mx-auto max-w-4xl text-center">
         <p className="mural-fade text-xs font-bold tracking-[0.24em] text-complementary-300 uppercase md:text-sm">
-          Parcerias · {partners.length} ativos
+          Parcerias
         </p>
 
-        <h1 className="mural-fade mural-fade-delay-1 mt-8 text-[2.75rem] leading-[0.98] font-black tracking-[-0.05em] md:text-6xl lg:text-7xl">
-          Juntos por um
-          <br />
-          mercado de{' '}
-          <span className="text-mark-on-dark">UX mais acessível</span>
+        <h1 className="mural-fade mural-fade-delay-1 mt-8 text-[2.75rem] leading-[1.02] font-black tracking-[-0.05em] md:text-6xl lg:text-[3.75rem]">
+          Juntos por um mercado{' '}
+          <span className="text-mark-on-dark">mais acessível.</span>
         </h1>
 
         <p className="mural-fade mural-fade-delay-2 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-xl">
-          Escolas, empresas e iniciativas que acreditam na comunidade — e
-          transformam essa crença em descontos, conteúdos e bolsas para
-          milhares de profissionais.
+          Empresas, escolas e iniciativas que ajudam a ampliar o acesso a
+          oportunidades, conhecimento e desenvolvimento para a comunidade
+          VagasUX.
         </p>
 
         <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">

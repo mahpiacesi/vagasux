@@ -24,7 +24,7 @@ const activePartnerNames: { slug: string; name: string }[] = [
   { slug: 'cdx26', name: 'CDX26 Caipira Design Experience' },
   { slug: 'design-dende', name: 'Design & Dendê' },
   { slug: 'design-circuit', name: 'Design Circuit' },
-  { slug: 'design-estrategico', name: 'Design Estratégico — Gabriel Pinheiro' },
+  { slug: 'design-estrategico', name: 'Design Estratégico de Gabriel Pinheiro' },
   { slug: 'designops-lab', name: 'DesignOps Lab' },
   { slug: 'floripa-design-days', name: 'Floripa Design Days' },
   { slug: 'eros-sester', name: 'Eros Sester' },

@@ -1,36 +1,20 @@
 import {
-  Gift,
-  GraduationCap,
   Handshake,
   Heart,
   Medal,
   Sparkle,
   UsersThree,
-  VideoCamera,
 } from '@phosphor-icons/react'
-import type { Icon } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
-import { Marquee } from '@/components/Marquee'
 import { ParceriasHero } from '@/components/ParceriasHero'
 import { partners } from '@/data/partners'
 import { contact, mediaKit } from '@/lib/siteLinks'
-
-const marqueeItems = [
-  'Aberta e inclusiva',
-  'Colaborativa',
-  'Humana',
-  'Descontos',
-  'Conteúdos',
-  'Bolsas',
-  'Seletivas',
-  'Impacto coletivo',
-]
 
 const values = [
   {
     emoji: '🙋🏻‍♀️',
     title: 'Aberta e inclusiva',
-    description: 'Nosso lema é tamo juntos — todos são bem-vindos.',
+    description: 'Nosso lema é tamo juntos e todos são bem-vindos.',
   },
   {
     emoji: '💪',
@@ -56,64 +40,40 @@ type SupportTier = {
   title: string
   subtitle: string
   perks: string[]
-  Icon: Icon
-  accent: 'bronze' | 'silver' | 'gold'
 }
 
 const supportTiers: SupportTier[] = [
   {
     medal: '🥉',
     title: 'Descontos',
-    subtitle: 'Exclusivos para a comunidade',
+    subtitle: 'Benefícios para a comunidade',
     perks: [
-      'Desconto fixo para vaguiners',
+      'Descontos exclusivos para vaguiners',
       'Entre 10% e 50% de benefício',
-      'Destaque na área de Cursos',
+      'Link de afiliado personalizado',
     ],
-    Icon: Gift,
-    accent: 'bronze',
   },
   {
     medal: '🥈',
     title: 'Conteúdos',
-    subtitle: 'Aulas abertas, eventos e compartilhamento',
+    subtitle: 'Compartilhe conhecimento',
     perks: [
-      'Aula aberta exclusiva',
-      'Lives no Insta e YouTube',
-      'Conteúdos acessíveis',
-      'Destaque na área de Cursos',
+      'Aulas, workshops e palestras',
+      'Lives e eventos em parceria',
+      'Posts com conteúdos collab',
     ],
-    Icon: VideoCamera,
-    accent: 'silver',
   },
   {
     medal: '🥇',
     title: 'Bolsas',
-    subtitle: 'Seletivas recorrentes para vaguiners',
+    subtitle: 'Amplie o acesso à educação',
     perks: [
-      'Mensais ou pontuais',
-      'Quantidade à combinar',
+      'Bolsas integrais ou parciais',
+      'Seletivas pontuais ou recorrentes',
       'Destaque na área de Cursos',
     ],
-    Icon: GraduationCap,
-    accent: 'gold',
   },
 ]
-
-const tierStyles = {
-  bronze: {
-    card: 'border-neutral-500/10 bg-gradient-to-b from-neutral-100 to-brand-100/40',
-    icon: 'bg-neutral-500/10 text-neutral-500',
-  },
-  silver: {
-    card: 'border-brand-200/50 bg-gradient-to-b from-brand-100/80 to-neutral-100',
-    icon: 'bg-brand-500 text-neutral-100',
-  },
-  gold: {
-    card: 'border-complementary-300/60 bg-gradient-to-b from-complementary-100 via-complementary-100/90 to-brand-100/30 shadow-[0_24px_60px_-28px_rgb(7_0_58_/_0.3)] ring-1 ring-complementary-300/35',
-    icon: 'bg-complementary-300 text-neutral-500',
-  },
-} as const
 
 const partnerQuotes = [
   {
@@ -124,7 +84,7 @@ const partnerQuotes = [
   },
   {
     quote:
-      'A VagasUX é uma iniciativa necessária e positiva para uma área em ascensão. Seu diferencial é trazer luz aos anseios de uma nova geração ao conectar-se com a comunidade — e estamos muito felizes de contribuir com essa história.',
+      'A VagasUX é uma iniciativa necessária e positiva para uma área em ascensão. Seu diferencial é trazer luz aos anseios de uma nova geração ao conectar-se com a comunidade, e estamos muito felizes de contribuir com essa história.',
     name: 'Luiz Resende',
     role: 'Fundador · UXCO',
   },
@@ -179,8 +139,6 @@ export function ParceriasPage() {
     <main>
       <ParceriasHero />
 
-      <Marquee items={marqueeItems} />
-
       <section className="px-5 py-14 md:px-6 md:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mural-fade grid gap-4 md:grid-cols-3">
@@ -216,7 +174,7 @@ export function ParceriasPage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
               Promovemos curadoria de vagas e conteúdos em UX para todos os
-              níveis — todos mesmo. Somos uma comunidade de design que funciona
+              níveis, todos mesmo. Somos uma comunidade de design que funciona
               como um hub de iniciativas acessíveis para quem está começando na
               área.
             </p>
@@ -255,7 +213,7 @@ export function ParceriasPage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
               Um agradecimento especial a todos os parceiros que nos apoiam até
-              aqui — escolas, eventos, empresas e profissionais que acreditam no
+              aqui: escolas, eventos, empresas e profissionais que acreditam no
               nosso impacto.
             </p>
           </div>
@@ -283,55 +241,45 @@ export function ParceriasPage() {
               Como apoiar
             </p>
             <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] md:text-5xl">
-              Três formas de construir essa ponte
+              Três formas de fortalecer a comunidade
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-300 md:text-lg">
-              Cada parceria é desenhada junto — do desconto pontual à bolsa
-              recorrente. Escolha o formato que faz sentido para a sua
-              iniciativa.
+              Cada parceria é construída em conjunto. Escolha a forma que faz
+              mais sentido para a sua empresa e vamos ampliar o acesso a
+              oportunidades em UX Design.
             </p>
           </div>
 
-          <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-5 lg:grid-cols-3">
-            {supportTiers.map((tier) => {
-              const styles = tierStyles[tier.accent]
-              const TierIcon = tier.Icon
-
-              return (
-                <article
-                  key={tier.title}
-                  className={`parcerias-tier-card flex h-full flex-col rounded-3xl border p-6 md:p-7 ${styles.card}`}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={`inline-flex size-11 items-center justify-center rounded-2xl ${styles.icon}`}
-                    >
-                      <TierIcon size={22} weight="bold" aria-hidden />
-                    </span>
-                    <span className="text-2xl" aria-hidden>
-                      {tier.medal}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-2xl font-black tracking-[-0.03em] text-neutral-500">
+          <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-4 lg:grid-cols-3 lg:gap-5">
+            {supportTiers.map((tier) => (
+              <article
+                key={tier.title}
+                className="flex h-full flex-col rounded-2xl border border-white/15 bg-neutral-100 p-5 text-neutral-500 md:p-6"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xl leading-none" aria-hidden>
+                    {tier.medal}
+                  </span>
+                  <h3 className="text-lg font-black tracking-[-0.02em]">
                     {tier.title}
                   </h3>
-                  <p className="mt-2 text-sm font-bold text-neutral-400">
-                    {tier.subtitle}
-                  </p>
-                  <ul className="mt-6 flex-1 space-y-2.5 border-t border-neutral-500/10 pt-5 text-sm text-neutral-400">
-                    {tier.perks.map((perk) => (
-                      <li key={perk} className="flex gap-2.5">
-                        <span
-                          className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-300"
-                          aria-hidden
-                        />
-                        {perk}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              )
-            })}
+                </div>
+                <p className="mt-2 text-sm font-semibold text-neutral-400">
+                  {tier.subtitle}
+                </p>
+                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-neutral-500">
+                  {tier.perks.map((perk) => (
+                    <li key={perk} className="flex gap-2">
+                      <span
+                        className="mt-2 size-1 shrink-0 rounded-full bg-brand-400"
+                        aria-hidden
+                      />
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -422,7 +370,7 @@ export function ParceriasPage() {
           </h2>
           <p className="mural-fade mural-fade-delay-2 mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
             Tem alguma ideia de parceria? Conte pra gente como gostaria de
-            apoiar a comunidade — respondemos com calma e alinhamos o formato
+            apoiar a comunidade. Respondemos com calma e alinhamos o formato
             ideal para a sua iniciativa.
           </p>
           <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap justify-center gap-3">
