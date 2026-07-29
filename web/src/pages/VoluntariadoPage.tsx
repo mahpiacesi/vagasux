@@ -12,7 +12,7 @@ const experienceHighlights = [
   {
     title: 'Ritmo flexível',
     description:
-      'Cada pessoa contribui no tempo que tem — algumas horas por semana já fazem diferença.',
+      'Cada pessoa contribui no tempo que tem. Algumas horas por semana já fazem diferença.',
   },
   {
     title: 'Impacto coletivo',
@@ -112,8 +112,8 @@ export function VoluntariadoPage() {
             <span className="text-mark-on-dark">VagasUX</span> acontecer
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
-            Profissionais voluntários que tiram um tempinho toda semana — ou
-            mais — para compilar conteúdos, trazer vagas e planejar iniciativas
+            Profissionais voluntários que tiram um tempinho toda semana (ou
+            mais!) para compilar conteúdos, trazer vagas e planejar iniciativas
             que fazem diferença no mercado de UX.
           </p>
         </div>
@@ -129,7 +129,7 @@ export function VoluntariadoPage() {
               Impacto real, no seu ritmo
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
-              Ser voluntário na VagasUX é contribuir com o que você sabe — e
+              Ser voluntário na VagasUX é contribuir com o que você sabe e
               aprender com quem está junto. Não existe jornada única: cada
               pessoa escolhe uma frente, combina com a rotina e ajuda a manter a
               comunidade no ar.
@@ -164,7 +164,7 @@ export function VoluntariadoPage() {
               Conheça o time
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
-              Recomendamos fuxicar a trajetória de cada pessoa — tem várias
+              Recomendamos fuxicar a trajetória de cada pessoa. Tem várias
               curiosidades legais sobre esse povo bonito.
             </p>
           </div>

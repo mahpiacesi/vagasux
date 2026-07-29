@@ -44,7 +44,7 @@ export function Header() {
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-4 md:max-w-4xl md:px-6">
         <NavLink
           to={routes.home}
-          aria-label="VagasUX — início"
+          aria-label="VagasUX início"
           className="shrink-0 transition-opacity hover:opacity-80"
         >
           <Logo />

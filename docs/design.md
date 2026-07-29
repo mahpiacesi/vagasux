@@ -170,6 +170,8 @@ A VagasUX é:
 
 \* Formalidade excessiva
 
+\* Travessão (—) em textos da marca. Prefira ponto, vírgula ou reestruturar a frase
+
 
 
 \---
