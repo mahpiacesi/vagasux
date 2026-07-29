@@ -1,6 +1,7 @@
 /** Internal app routes (this site). */
 export const routes = {
   home: '/',
+  comunidade: '/comunidade',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
 } as const
@@ -18,6 +19,21 @@ export const superSite = {
   publicar: 'https://vagasux.com.br/publicar-vaga',
   mentoria: 'https://vagasux.com.br/iniciantes-em-design/apenas-mentores',
   parcerias: 'https://vagasux.com.br/parcerias',
-  apoie: 'https://vagasux.com.br/apoie-a-iniciativa',
+  apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
+} as const
+
+export const communityShops = {
+  colab55: 'https://www.colab55.com/@vagasux',
+  umapenca: 'https://umapenca.com/vagasux/',
+  products: {
+    canecaChuvaDeVagas:
+      'https://www.colab55.com/@vagasux/mugs/chuva-de-vagas',
+    camisetaLuteJuniorPreta:
+      'https://www.colab55.com/@vagasux/tees/lute-como-um-junior-preta',
+    camisetaJuniorIniciante:
+      'https://www.colab55.com/@vagasux/tees/junior-iniciante',
+    bolsaGuia:
+      'https://www.colab55.com/@vagasux/totebags/guia-do-product-designer',
+  },
 } as const
