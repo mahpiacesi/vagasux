@@ -22,6 +22,11 @@ export const forms = {
   voluntarios: 'https://forms.gle/vqyLwPfA42LYv6ZV6',
 } as const
 
+export const mediaKit = {
+  parcerias:
+    'https://docs.google.com/presentation/d/15Ax1lQu3crbUgSKsmMtS9ChH2Tjx5Jw0HSxvQfR8GKI/edit?usp=sharing',
+} as const
+
 /**
  * Pages that still live on the Super/Notion site.
  * Keep vagasux.com.br intact while we migrate in parallel.

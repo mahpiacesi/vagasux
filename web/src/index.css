@@ -501,8 +501,15 @@
   animation-delay: -5s;
 }
 
-.parcerias-hero-tile {
-  animation: mural-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+.parcerias-logo-marquee {
+  --parcerias-marquee-duration: 42s;
+  animation: marquee-scroll var(--parcerias-marquee-duration) linear infinite;
+}
+
+.parcerias-logo-marquee-reverse {
+  --parcerias-marquee-duration: 48s;
+  animation: marquee-scroll var(--parcerias-marquee-duration) linear infinite
+    reverse;
 }
 
 .parcerias-logo-card {
@@ -544,7 +551,8 @@
   .comunidade-orb,
   .comunidade-card:hover,
   .parcerias-orb,
-  .parcerias-hero-tile,
+  .parcerias-logo-marquee,
+  .parcerias-logo-marquee-reverse,
   .parcerias-logo-card,
   .parcerias-logo-card:hover,
   .parcerias-tier-card:hover {

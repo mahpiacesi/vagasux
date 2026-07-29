@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
 import { ParceriasHero } from '@/components/ParceriasHero'
 import { partners } from '@/data/partners'
-import { contact } from '@/lib/siteLinks'
+import { contact, mediaKit } from '@/lib/siteLinks'
 
 const marqueeItems = [
   'Aberta e inclusiva',
@@ -442,9 +442,13 @@ export function ParceriasPage() {
               variant="outline"
               className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
             >
-              <a href={`mailto:${contact.email}?subject=M%C3%ADdia%20Kit%20VagasUX`}>
+              <a
+                href={mediaKit.parcerias}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
-                Solicitar mídia kit
+                Ver mídia kit
               </a>
             </Button>
           </div>
