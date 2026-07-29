@@ -262,10 +262,39 @@ export function ComunidadePage() {
           <h2 className="mural-fade mural-fade-delay-1 mx-auto mt-4 max-w-3xl text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
             Ninguém deveria construir uma carreira sozinho.
           </h2>
-          <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            A VagasUX nasceu para ampliar o acesso a oportunidades, conhecimento
-            e apoio. Conheça as formas de fazer parte dessa comunidade.
+          <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-3xl text-base leading-relaxed text-neutral-400 md:text-lg">
+            A história da VagasUX começou com a missão de conectar profissionais
+            de Product Design a melhores oportunidades. Em 2020,{' '}
+            <a
+              href="https://avely.me/mahpiacesi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+            >
+              Mah Piacesi
+            </a>{' '}
+            assumiu o projeto e reuniu outras iniciativas que já desenvolvia,
+            como o Guia do Product Designer e a curadoria de vagas para
+            iniciantes. Desde então, a comunidade cresceu, ganhou novos
+            colaboradores e se tornou um hub de conteúdos, oportunidades e
+            apoio para milhares de pessoas.
           </p>
+          <div className="mural-fade mural-fade-delay-3 mt-8 flex justify-center">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
+            >
+              <a
+                href={superSite.quemOrganiza}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conheça quem organiza
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
