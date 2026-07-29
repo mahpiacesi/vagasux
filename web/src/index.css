@@ -237,7 +237,8 @@
   background-image: linear-gradient(
     180deg,
     transparent 62%,
-    var(--color-complementary-300) 62%
+    color-mix(in srgb, var(--color-complementary-300) 88%, var(--color-complementary-400))
+      62%
   );
 }
 

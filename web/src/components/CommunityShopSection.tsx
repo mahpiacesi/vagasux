@@ -1,4 +1,3 @@
-import { ShoppingBag } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { communityShops } from '@/lib/siteLinks'
 import bolsaGuia from '@/assets/shop/bolsa-guia.png'
@@ -44,7 +43,7 @@ export function CommunityShopSection() {
       <div className="relative mx-auto max-w-6xl">
         <div className="mural-fade max-w-3xl">
           <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
-            Contribuição opcional
+            Contribua com estilo
           </p>
           <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] md:text-5xl">
             Lojinha da comunidade
@@ -70,9 +69,7 @@ export function CommunityShopSection() {
               UmaPenca
             </a>
             . Eles cuidam de toda a produção. Ganhamos uma comissão passiva por
-            cada venda e você sai mais estiloso(a) como todo{' '}
-            <span className="font-bold text-complementary-300">Vaguiner</span>{' '}
-            deve ser.
+            cada venda e você sai mais estiloso(a) como todo Vaguiner deve ser.
           </p>
         </div>
 
@@ -130,11 +127,6 @@ export function CommunityShopSection() {
             </a>
           </Button>
         </div>
-
-        <p className="mural-fade mural-fade-delay-3 mt-6 flex items-center gap-2 text-sm text-neutral-400">
-          <ShoppingBag size={18} weight="bold" aria-hidden />
-          Compra opcional. Mais uma forma de ajudar o projeto a continuar no ar.
-        </p>
       </div>
     </section>
   )
