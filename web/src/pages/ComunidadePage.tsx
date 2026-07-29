@@ -262,9 +262,14 @@ export function ComunidadePage() {
           <h2 className="mural-fade mural-fade-delay-1 mx-auto mt-4 max-w-3xl text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
             Ninguém deveria construir uma carreira sozinho.
           </h2>
-          <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            A VagasUX nasceu para ampliar o acesso a oportunidades, conhecimento
-            e apoio. Conheça as formas de fazer parte dessa comunidade.
+          <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-3xl text-base leading-relaxed text-neutral-400 md:text-lg">
+            A história da VagasUX começou com a missão de conectar profissionais
+            de Product Design a melhores oportunidades. Em 2020, Mah Piacesi
+            assumiu o projeto e reuniu outras iniciativas que já desenvolvia,
+            como o Guia do Product Designer e a curadoria de vagas para
+            iniciantes. Desde então, a comunidade cresceu, ganhou novos
+            colaboradores e se tornou um hub de conteúdos, oportunidades e
+            apoio para milhares de pessoas.
           </p>
         </div>
       </section>
