@@ -2,7 +2,7 @@ import { ShoppingBag } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { communityShops } from '@/lib/siteLinks'
 import bolsaGuia from '@/assets/shop/bolsa-guia.png'
-import camisetaJuniorNovato from '@/assets/shop/camiseta-junior-novato.png'
+import camisetaBabylookJuniorNovato from '@/assets/shop/camiseta-babylook-junior-novato.png'
 import camisetaLuteJuniorPreta from '@/assets/shop/camiseta-lute-junior-preta.png'
 import canecaChuvaDeVagas from '@/assets/shop/caneca-chuva-de-vagas.png'
 
@@ -20,10 +20,10 @@ const products = [
     alt: 'Camiseta preta com a frase Lute como um júnior e logo VagasUX',
   },
   {
-    name: 'Camiseta Júnior & Iniciante',
+    name: 'Babylook Júnior & Iniciante',
     href: communityShops.products.camisetaJuniorIniciante,
-    image: camisetaJuniorNovato,
-    alt: 'Camiseta branca com Júnior, Novato, Iniciante e Aprendiz e logo VagasUX',
+    image: camisetaBabylookJuniorNovato,
+    alt: 'Babylook branca com Júnior, Novato, Iniciante e Aprendiz e logo VagasUX',
   },
   {
     name: 'Bolsa Guia do Product Designer',
