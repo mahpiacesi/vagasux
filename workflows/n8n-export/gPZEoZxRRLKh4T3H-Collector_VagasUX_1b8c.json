@@ -1,0 +1,257 @@
+{
+  "name": "Collector VagasUX",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5635afbf-df80-48a6-bfad-9dfc527dbd38",
+      "name": "When clicking Execute workflow",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "kickoff-flag",
+              "name": "ok",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e91e434f-06b9-4d08-8433-04c71b3d735d",
+      "name": "Start VagasUX fetch",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "6849038d-9e37-4ef5-9d69-2e17032414d5",
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "875a7396-c095-474c-9a45-d8543ee03fdb",
+          "cachedResultName": "Vagas para iniciantes"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "bf566708-b5c7-49d4-af7c-ce5b40f6bdab",
+      "name": "Fetch curated jobs",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        96
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "Zb0guQVtMxJXGYg6",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "function pickString(value) {\n  if (value == null) return '';\n  if (typeof value === 'string') return value.trim();\n  if (typeof value === 'number') return String(value);\n  if (Array.isArray(value)) return value.map(pickString).filter(Boolean).join(', ');\n  if (typeof value === 'object') {\n    if (value.name) return String(value.name).trim();\n    if (value.plain_text) return String(value.plain_text).trim();\n  }\n  return String(value).trim();\n}\n\nfunction normalizeUrl(raw) {\n  const url = String(raw || '').trim();\n  if (!url) return '';\n  try {\n    const u = new URL(url);\n    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach((p) => u.searchParams.delete(p));\n    u.hash = '';\n    let out = u.toString();\n    if (out.endsWith('/')) out = out.slice(0, -1);\n    return out;\n  } catch {\n    return url;\n  }\n}\n\nfunction parseDeadline(row) {\n  const raw = row.property_inscri_es_aberta_at ?? row['Inscrições aberta até'] ?? row['Inscricoes aberta ate'];\n  if (!raw) return null;\n  const start = raw.start ?? raw;\n  const d = new Date(start);\n  return Number.isNaN(d.getTime()) ? null : d;\n}\n\nfunction stripDiacritics(value) {\n  return String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\n}\n\nfunction mapWorkModel(raw) {\n  const label = stripDiacritics(pickString(raw)).toLowerCase();\n  if (!label) return null;\n  if (label === 'nao informado' || label === 'unknown') return 'unknown';\n  if (label === 'remoto' || label === 'remote') return 'remote';\n  if (label.startsWith('hibrid') || label === 'hybrid') return 'hybrid';\n  if (label === 'presencial' || label === 'onsite') return 'onsite';\n  return null;\n}\n\nconst out = [];\nfor (const item of items) {\n  const row = item.json || {};\n  const pageId = String(row.id || '').trim();\n  if (!pageId) continue;\n\n  const company = pickString(row.property_empresa ?? row.Empresa ?? row.name);\n  const title = pickString(row.property_fun_o ?? row['Função'] ?? row.Funcao);\n  const url = normalizeUrl(row.property_link_da_vaga_empresa ?? row['Link da vaga/empresa']);\n  let skipReason = null;\n\n  if (!company) skipReason = 'missing_company';\n  else if (!title) skipReason = 'missing_title';\n  else if (!url) skipReason = 'missing_url';\n\n  const deadline = parseDeadline(row);\n  if (deadline && deadline.getTime() < Date.now()) {\n    skipReason = skipReason || 'deadline_passed';\n  }\n\n  const workModel = mapWorkModel(\n    row.property_formato ?? row.Formato ?? row['Formato de trabalho'] ?? row['Modelo de trabalho'],\n  );\n\n  out.push({\n    json: {\n      source: 'VagasUX',\n      source_job_id: pageId,\n      company,\n      title,\n      description: pickString(row.property_descri_o ?? row['Descrição'] ?? row.Descricao) || null,\n      url,\n      location: pickString(row.property_localiza_o ?? row['Localização'] ?? row.Localizacao) || null,\n      work_model: workModel,\n      published_at: row.property_data_da_inclus_o ?? row['Data da inclusão'] ?? row.createdTime ?? row.created_time ?? null,\n      skip: Boolean(skipReason),\n      skip_reason: skipReason,\n    },\n  });\n}\n\nreturn out;"
+      },
+      "id": "165850a6-db58-4fd9-80c0-fbb8509331be",
+      "name": "Map curated jobs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "keep-not-skip",
+              "leftValue": "={{ $json.skip }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "bc231cfd-4d8f-404d-b1c7-44db78653d58",
+      "name": "Keep valid jobs",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        896,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "json",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify({ p_source: $json.source, p_source_job_id: String($json.source_job_id), p_company: $json.company, p_title: $json.title, p_description: $json.description || null, p_url: $json.url, p_location: $json.location || null, p_published_at: $json.published_at || null, p_work_model: $json.work_model || null }) }}",
+        "method": "POST",
+        "nodeCredentialType": "supabaseApi",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/rpc/upsert_collector_job"
+      },
+      "id": "ce751369-e662-4381-98af-2da9948a5933",
+      "name": "Upsert job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1120,
+        96
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "credentials": {
+        "supabaseApi": {
+          "id": "VtBtjog6BXvbtAno",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking Execute workflow": {
+      "main": [
+        [
+          {
+            "node": "Start VagasUX fetch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start VagasUX fetch": {
+      "main": [
+        [
+          {
+            "node": "Fetch curated jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Start VagasUX fetch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch curated jobs": {
+      "main": [
+        [
+          {
+            "node": "Map curated jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map curated jobs": {
+      "main": [
+        [
+          {
+            "node": "Keep valid jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep valid jobs": {
+      "main": [
+        [
+          {
+            "node": "Upsert job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "templateCredsSetupCompleted": true
+  }
+}
