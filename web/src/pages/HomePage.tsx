@@ -8,8 +8,8 @@ import { TestimonialsMarquee } from '@/components/TestimonialsMarquee'
 import { routes, superSite } from '@/lib/siteLinks'
 
 const communityLinks = [
-  { label: 'Conheça a comunidade', href: superSite.comunidade },
-  { label: 'Quem organiza', href: superSite.quemOrganiza },
+  { label: 'Conheça a comunidade', href: routes.comunidade, internal: true },
+  { label: 'Voluntariado', href: routes.voluntariado, internal: true },
 ] as const
 
 const marqueeItems = [
@@ -108,14 +108,23 @@ export function HomePage() {
             <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
               {communityLinks.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-neutral-300/80 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200/60"
-                  >
-                    {item.label}
-                  </a>
+                  {item.internal ? (
+                    <Link
+                      to={item.href}
+                      className="text-sm font-semibold text-neutral-300/80 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200/60"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-neutral-300/80 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-200 hover:decoration-complementary-200/60"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
