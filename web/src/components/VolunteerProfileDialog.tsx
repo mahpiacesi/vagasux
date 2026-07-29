@@ -41,30 +41,25 @@ export function VolunteerProfileDialog({
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           )}
         >
-          <div className="relative w-full shrink-0 overflow-hidden bg-brand-100">
+          <div className="relative h-48 w-full shrink-0 overflow-hidden bg-brand-100 sm:h-52 md:h-56">
             {volunteer.photo ? (
-              <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <>
                 <img
                   src={volunteer.photo}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/75 via-neutral-500/15 to-transparent" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/75 via-neutral-500/20 to-transparent" />
+              </>
             ) : (
-              <div className="flex aspect-[4/5] w-full max-h-[min(52vh,28rem)] items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100">
                 <span className="text-6xl" aria-hidden>
                   {volunteer.emoji}
                 </span>
               </div>
             )}
 
-            <div
-              className={cn(
-                'px-6 pb-5',
-                volunteer.photo ? 'absolute inset-x-0 bottom-0' : 'pt-6',
-              )}
-            >
+            <div className="absolute inset-x-0 bottom-0 px-6 pb-5">
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <Dialog.Title className="text-2xl font-black tracking-[-0.03em] text-neutral-100">
