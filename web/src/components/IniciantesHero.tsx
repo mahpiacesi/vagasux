@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import { HeartHandshake, Sprout, Sparkles } from 'lucide-react'
 import { CurationHeroIllustration } from '@/components/CurationHeroIllustration'
 import { Button } from '@/components/ui/button'
 import { HeroBackdrop } from '@/components/jobs/HeroBackdrop'
 import { PageHighlights } from '@/components/jobs/PageHighlights'
-import { superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 const levelPills = ['Estágio', 'Trainee', 'Júnior'] as const
 
@@ -58,15 +59,21 @@ export function IniciantesHero() {
               ))}
             </div>
 
-            <div className="mural-fade mural-fade-delay-2 mt-8">
+            <div className="mural-fade mural-fade-delay-2 mt-8 flex flex-wrap items-center gap-3">
               <Button
                 asChild
                 size="lg"
                 className="h-12 rounded-xl px-8 text-base font-black shadow-md shadow-brand-500/15"
               >
-                <a href={superSite.publicar} target="_blank" rel="noopener noreferrer">
-                  Indicar uma vaga
-                </a>
+                <a href="#vagas">Ver vagas iniciantes</a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-12 rounded-xl border-neutral-500/20 px-7 text-base font-bold"
+              >
+                <Link to={routes.oportunidades}>Ver vagas gerais</Link>
               </Button>
             </div>
           </div>

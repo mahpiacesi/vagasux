@@ -74,7 +74,7 @@ export function VagasParaIniciantesPage() {
       <IniciantesHero />
       <JobsListingSection>
         <JobsCrossLink variant="curadoria" />
-        <div className="mt-6">
+        <div id="vagas" className="mt-6 scroll-mt-24">
           <JobFilters
             value={filters}
             resultCount={loading ? 0 : filtered.length}
@@ -94,7 +94,7 @@ export function VagasParaIniciantesPage() {
             hideSourceBadge
             listingVariant="curated"
             emptyTitle="Nenhuma vaga encontrada"
-            emptyDescription="Não encontramos vagas com esses filtros no momento. Tente ajustar a busca ou indique uma oportunidade para fortalecer a curadoria da VagasUX."
+            emptyDescription="Não encontramos vagas com esses filtros no momento. Tente ajustar a busca ou volte em breve."
             onLoadMore={() => {
               setVisibleCount((count) => count + PAGE_SIZE)
             }}

@@ -343,6 +343,146 @@
   animation: guia-blob-morph 9s ease-in-out infinite;
 }
 
+/* Oportunidades umbrella illustration */
+.umbrella-hero {
+  overflow: visible;
+}
+
+.umbrella-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.umbrella-hero-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.umbrella-hero-glow {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  z-index: 0;
+  height: 11rem;
+  width: 11rem;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(246 209 110 / 0.45) 0%,
+    rgb(36 46 144 / 0.08) 55%,
+    transparent 72%
+  );
+  filter: blur(18px);
+  animation: umbrella-glow-pulse 5.5s ease-in-out infinite;
+}
+
+.umbrella-hero-rain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.umbrella-hero-raindrop {
+  --rain-left: calc(12% + (var(--rain-index) * 10%));
+  --rain-delay: calc(var(--rain-index) * 0.45s);
+  --rain-duration: calc(2.1s + (var(--rain-index) * 0.18s));
+
+  position: absolute;
+  left: var(--rain-left);
+  top: -8%;
+  height: 0.55rem;
+  width: 0.14rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to bottom,
+    rgb(36 46 144 / 0),
+    rgb(36 46 144 / 0.35),
+    rgb(36 46 144 / 0.08)
+  );
+  opacity: 0;
+  animation: umbrella-rain-fall var(--rain-duration) linear var(--rain-delay) infinite;
+}
+
+@keyframes umbrella-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes umbrella-rain-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleY(0.6);
+  }
+  12% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(11rem) scaleY(1.15);
+  }
+}
+
+@keyframes umbrella-main-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1.2deg);
+  }
+}
+
+@keyframes umbrella-back-sway-left {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.8deg);
+  }
+}
+
+@keyframes umbrella-back-sway-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.6deg);
+  }
+}
+
+.umbrella-hero-svg--motion #umbrella-main {
+  transform-box: fill-box;
+  transform-origin: 50% 92%;
+  animation: umbrella-main-float 4.2s ease-in-out infinite;
+}
+
+.umbrella-hero-svg--motion #umbrella-back-left {
+  transform-box: fill-box;
+  transform-origin: 50% 92%;
+  animation: umbrella-back-sway-left 6.5s ease-in-out 0.4s infinite;
+}
+
+.umbrella-hero-svg--motion #umbrella-back-right {
+  transform-box: fill-box;
+  transform-origin: 50% 92%;
+  animation: umbrella-back-sway-right 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
@@ -351,9 +491,18 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
+  .umbrella-hero-glow,
+  .umbrella-hero-raindrop,
+  .umbrella-hero-svg--motion #umbrella-main,
+  .umbrella-hero-svg--motion #umbrella-back-left,
+  .umbrella-hero-svg--motion #umbrella-back-right,
   .comunidade-orb,
   .comunidade-card:hover {
     animation: none;
     transform: none;
+  }
+
+  .umbrella-hero-raindrop {
+    opacity: 0;
   }
 }

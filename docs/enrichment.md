@@ -13,6 +13,21 @@ No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o
 | 4 | Status `enriched` fica reservado para um híbrido futuro (revisão humana), se precisar |
 | 5 | Summary em **inglês** quando `is_international = true`; **PT-BR** quando nacional |
 
+## Escopo de vagas (design vs. fora do escopo)
+
+A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Design Ops, Visual/Graphic digital** e **Motion Design para produto/interface**.
+
+| Entra | Fica de fora |
+|---|---|
+| Motion Designer, UI animation, Lottie/micro-interação | Editor de vídeo, Videomaker, Analista Audiovisual |
+| Animação para produto/marketing digital | Edição de Reels/TikTok/YouTube como função principal |
+| After Effects ligado a motion de produto | Pós-produção audiovisual pura |
+
+Regras aplicadas em duas camadas:
+
+1. **Prompt Gemini** — rejeita explicitamente edição de vídeo/audiovisual
+2. **Guarda determinística** — `tools/n8n/jobClassification.ts`, replicada no node **Apply enrichment**, para casos em que a IA rotula como "Motion Design"
+
 ## Curadoria (`source = VagasUX`)
 
 Vagas da base Notion **Vagas para iniciantes** também passam pelo enrichment, com regra extra de senioridade:

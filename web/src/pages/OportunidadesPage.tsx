@@ -73,7 +73,7 @@ export function OportunidadesPage() {
       <MuralIntro count={loading ? null : jobs.length} />
       <JobsListingSection>
         <JobsCrossLink variant="oportunidades" />
-        <div className="mt-6">
+        <div id="vagas" className="mt-6 scroll-mt-24">
           <JobFilters
             value={filters}
             resultCount={loading ? 0 : filtered.length}
