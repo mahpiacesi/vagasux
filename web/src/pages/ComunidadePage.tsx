@@ -65,10 +65,10 @@ const participationPaths = [
     title: 'Apoia-se',
     hook: 'Para quem acredita na comunidade e quer contribuir.',
     description:
-      'Apoie a VagasUX com o valor que fizer sentido para você. Sua contribuição ajuda a manter vagas, conteúdos e iniciativas gratuitas no ar.',
+      'Apoie a VagasUX a partir de R$2 ou mais. Sua contribuição ajuda a manter vagas, conteúdos e iniciativas gratuitas no ar.',
     bullets: [
       'Campanha de crowdfunding no Apoia.se',
-      'Apoio voluntário, no seu ritmo',
+      'Apoio mensal voluntário',
       'Ajuda a sustentar a comunidade aberta',
     ],
     Icon: Heart,
