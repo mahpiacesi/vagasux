@@ -1,6 +1,6 @@
 import { InstagramLogo, LinkedinLogo, X } from '@phosphor-icons/react'
 import { Dialog } from 'radix-ui'
-import type { Volunteer } from '@/data/volunteers'
+import { defaultPhotoFocus, type Volunteer } from '@/data/volunteers'
 import { volunteerProfiles } from '@/data/volunteerProfiles'
 import { cn } from '@/lib/utils'
 
@@ -41,13 +41,17 @@ export function VolunteerProfileDialog({
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           )}
         >
-          <div className="relative h-60 w-full shrink-0 overflow-hidden bg-brand-100 sm:h-64 md:h-72">
+          <div className="relative h-64 w-full shrink-0 overflow-hidden bg-brand-100 sm:h-[17rem] md:h-[19rem]">
             {volunteer.photo ? (
               <>
                 <img
                   src={volunteer.photo}
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{
+                    objectPosition:
+                      volunteer.photoFocus ?? defaultPhotoFocus,
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/75 via-neutral-500/20 to-transparent" />
               </>

@@ -21,9 +21,13 @@ export type Volunteer = {
   emoji: string
   roles: string[]
   photo?: string
+  /** CSS object-position for modal header crop */
+  photoFocus?: string
   instagram?: string
   linkedin?: string
 }
+
+export const defaultPhotoFocus = 'center 35%'
 
 /** Snapshot from Notion database c4497f3b-3cdd-48dd-8705-1af83cb0ae6d */
 export const volunteers: Volunteer[] = [
@@ -32,6 +36,7 @@ export const volunteers: Volunteer[] = [
     name: 'Aline Gagliardi',
     emoji: '❄️',
     photo: alinePhoto,
+    photoFocus: 'center 46%',
     roles: ['Edição'],
     instagram: 'https://instagram.com/alinedt_',
     linkedin: 'https://www.linkedin.com/in/alinegagliardi/',
@@ -41,6 +46,7 @@ export const volunteers: Volunteer[] = [
     name: 'Andre Hiro',
     emoji: '⚡',
     photo: andrePhoto,
+    photoFocus: 'center 55%',
     roles: ['Busca por vagas', 'Redes Sociais'],
     instagram: 'https://www.instagram.com/andre.hiro/',
     linkedin: 'https://www.linkedin.com/in/andre-hiroyuki-yoshioka/',
@@ -68,6 +74,7 @@ export const volunteers: Volunteer[] = [
     name: 'Fernando Lima',
     emoji: '👾',
     photo: fernandoPhoto,
+    photoFocus: 'center 52%',
     roles: ['Seletivas', 'Eventos'],
     instagram: 'https://www.instagram.com/paulista_nando/',
     linkedin: 'https://www.linkedin.com/in/fernando-lima-98b8b11a2/',
@@ -77,6 +84,7 @@ export const volunteers: Volunteer[] = [
     name: 'Gabriela Peron',
     emoji: '🐝',
     photo: gabrielaPhoto,
+    photoFocus: 'center 44%',
     roles: ['Seletivas', 'Newsletter', 'Moderação', 'Eventos', 'Medium'],
     instagram: 'https://www.instagram.com/gabrela.ux/',
     linkedin: 'https://www.linkedin.com/in/gabrielaperon/',
@@ -104,6 +112,7 @@ export const volunteers: Volunteer[] = [
     name: 'Juarez Egildo',
     emoji: '🧙',
     photo: juarezPhoto,
+    photoFocus: 'center 50%',
     roles: ['Redes Sociais'],
     instagram: 'https://www.instagram.com/juarez_ju',
     linkedin: 'https://www.linkedin.com/in/juarez-egildo-ux/',
@@ -138,6 +147,7 @@ export const volunteers: Volunteer[] = [
     name: 'Natalia Feitosa',
     emoji: '🦄',
     photo: nataliaPhoto,
+    photoFocus: 'center 38%',
     roles: ['Medium', 'Pesquisa', 'Redes Sociais'],
     instagram: 'https://www.instagram.com/natfeitosa20/',
     linkedin: 'https://www.linkedin.com/in/natalia-feitosa/',
@@ -164,6 +174,7 @@ export const volunteers: Volunteer[] = [
     name: 'Tatiana Barbosa',
     emoji: '🐳',
     photo: tatianaPhoto,
+    photoFocus: 'center 62%',
     roles: ['Parcerias'],
     instagram: 'https://www.instagram.com/tatibrbs/',
     linkedin: 'https://www.linkedin.com/in/tatibrbs/',
