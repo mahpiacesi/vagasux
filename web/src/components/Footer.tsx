@@ -62,6 +62,14 @@ const socialLinks: { label: string; href: string; Icon: Icon }[] = [
   },
 ]
 
+const legalLinkClass =
+  'text-sm text-neutral-300/70 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-300 hover:decoration-complementary-300/50'
+
+const legalLinks = [
+  { label: 'Código de Conduta', href: routes.codigoDeConduta, internal: true },
+  { label: 'Termos e Políticas', href: routes.termosEPoliticas, internal: true },
+] as const
+
 export function Footer() {
   return (
     <footer className="bg-neutral-500 px-5 py-10 text-neutral-100 md:px-6">
@@ -105,9 +113,34 @@ export function Footer() {
           </p>
         </div>
 
-        <p className="text-sm text-neutral-300/70">
-          © {new Date().getFullYear()} VagasUX
-        </p>
+        <div className="flex flex-col gap-4 border-t border-neutral-400/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label="Institucional">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {legalLinks.map((item) => (
+                <li key={item.label}>
+                  {item.internal ? (
+                    <Link to={item.href} className={legalLinkClass}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={legalLinkClass}
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <p className="text-sm text-neutral-300/70">
+            © {new Date().getFullYear()} VagasUX
+          </p>
+        </div>
       </div>
     </footer>
   )

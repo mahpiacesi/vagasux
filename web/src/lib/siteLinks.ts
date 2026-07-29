@@ -5,6 +5,12 @@ export const routes = {
   voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
+  codigoDeConduta: '/codigo-de-conduta',
+  termosEPoliticas: '/termos-e-politicas',
+} as const
+
+export const contact = {
+  email: 'vagasux@gmail.com',
 } as const
 
 export const routeHashes = {
@@ -30,6 +36,7 @@ export const superSite = {
   parcerias: 'https://vagasux.com.br/parcerias',
   apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
+  termos: 'https://vagasux.com.br/termos-e-polticas',
 } as const
 
 export const communityShops = {
