@@ -12,7 +12,7 @@ const marqueeItems = [
   'Comunidade aberta',
   'Mentorias',
   'Encontros quinzenais',
-  'Vagas curadas',
+  'Curadoria',
   'Guilda do Vaguiner',
   'WhatsApp',
   'Discord',
