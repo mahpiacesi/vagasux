@@ -41,18 +41,18 @@ export function VolunteerProfileDialog({
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           )}
         >
-          <div className="relative shrink-0 overflow-hidden bg-brand-100">
+          <div className="relative w-full shrink-0 overflow-hidden bg-brand-100">
             {volunteer.photo ? (
-              <div className="relative aspect-[16/9] max-h-56 sm:max-h-64">
+              <div className="relative w-full">
                 <img
                   src={volunteer.photo}
                   alt=""
-                  className="h-full w-full object-cover"
+                  className="block w-full max-h-[min(52vh,28rem)] object-contain object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/70 via-neutral-500/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-500/75 via-neutral-500/15 to-transparent" />
               </div>
             ) : (
-              <div className="flex aspect-[16/9] max-h-56 items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100 sm:max-h-64">
+              <div className="flex aspect-[4/5] w-full max-h-[min(52vh,28rem)] items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100">
                 <span className="text-6xl" aria-hidden>
                   {volunteer.emoji}
                 </span>

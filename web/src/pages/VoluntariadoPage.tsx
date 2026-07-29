@@ -198,8 +198,8 @@ export function VoluntariadoPage() {
               Conheça o time
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
-              Recomendamos fuxicar a trajetória de cada pessoa. Tem várias
-              curiosidades legais sobre esse povo bonito.
+              Dê uma fuxicada na trajetória de quem ajuda a construir a
+              VagasUX. Tem muita história boa por aqui.
             </p>
           </div>
 

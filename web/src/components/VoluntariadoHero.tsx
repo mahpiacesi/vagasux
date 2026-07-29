@@ -160,7 +160,7 @@ export function VoluntariadoHero() {
                 Projeto coletivo
               </p>
               <p className="mt-1 text-xs font-black leading-snug text-neutral-500 md:text-sm">
-                + milhares de pessoas impactadas
+                Juntos, ampliamos oportunidades.
               </p>
             </div>
           </div>
