@@ -9,13 +9,23 @@ export type PartnerDisplay = {
   siteUrl: string | null
 }
 
+const localLogoBySlug = new Map(
+  fallbackPartners.map((partner) => [partner.slug, partner.logo || null]),
+)
+
+function withLocalLogo(partner: PartnerDisplay): PartnerDisplay {
+  const localLogo = localLogoBySlug.get(partner.slug)
+  if (!localLogo) return partner
+  return { ...partner, logo: localLogo }
+}
+
 function fromSupabase(partner: Partner): PartnerDisplay {
-  return {
+  return withLocalLogo({
     slug: partner.slug,
     name: partner.name,
     logo: partner.logo_url,
     siteUrl: partner.site_url,
-  }
+  })
 }
 
 function fromFallback(): PartnerDisplay[] {

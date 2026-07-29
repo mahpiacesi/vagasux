@@ -63,10 +63,18 @@ Ordem sugerida: Greenhouse + Gupy → Remotar → VagasUX → **Parceiros** → 
 
 ### Sem n8n (trial expirado ou teste local)
 
-Script alternativo: `node tools/seed-partners-from-notion.mjs`
+**Logos novos do Notion → pasta local (dev):**
 
-Usa snapshot Notion + assets locais e grava na tabela via RPC (não sobe logos ao Storage).
-Útil para validar o frontend; quando o n8n voltar, a sync diária substitui as URLs por `partner-logos/`.
+```bash
+NOTION_API_KEY=secret_... node tools/sync-partner-logos.mjs
+cd web && npm run dev   # reinicie o dev server após baixar
+```
+
+O site prioriza logos em `web/src/assets/partners/active/` sobre URLs do Supabase.
+
+**Seed só da tabela (sem Storage):** `node tools/seed-partners-from-notion.mjs`
+
+Usa assets locais como URL temporária. Quando o n8n voltar, a sync diária substitui por `partner-logos/`.
 
 ## Site
 
