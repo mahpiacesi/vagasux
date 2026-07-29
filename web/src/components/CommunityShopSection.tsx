@@ -83,18 +83,16 @@ export function CommunityShopSection() {
               href={product.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="comunidade-card group block overflow-hidden rounded-3xl border border-white/10 bg-neutral-100/95 shadow-[0_24px_60px_-32px_rgb(0_0_0_/_0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-complementary-300"
+              className="comunidade-card group block overflow-hidden rounded-3xl bg-neutral-100 shadow-[0_24px_60px_-32px_rgb(0_0_0_/_0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-complementary-300"
             >
-              <div className="aspect-[4/5] overflow-hidden bg-neutral-100">
-                <img
-                  src={product.image}
-                  alt={product.alt}
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="border-t border-neutral-500/10 px-5 py-4">
+              <img
+                src={product.image}
+                alt={product.alt}
+                className="block aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="px-5 py-4">
                 <p className="text-sm font-bold leading-snug text-neutral-500">
                   {product.name}
                 </p>
