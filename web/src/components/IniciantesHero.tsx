@@ -3,7 +3,6 @@ import { CurationHeroIllustration } from '@/components/CurationHeroIllustration'
 import { Button } from '@/components/ui/button'
 import { HeroBackdrop } from '@/components/jobs/HeroBackdrop'
 import { PageHighlights } from '@/components/jobs/PageHighlights'
-import { superSite } from '@/lib/siteLinks'
 
 const levelPills = ['Estágio', 'Trainee', 'Júnior'] as const
 
@@ -64,9 +63,7 @@ export function IniciantesHero() {
                 size="lg"
                 className="h-12 rounded-xl px-8 text-base font-black shadow-md shadow-brand-500/15"
               >
-                <a href={superSite.publicar} target="_blank" rel="noopener noreferrer">
-                  Indicar uma vaga
-                </a>
+                <a href="#vagas">Ver vagas</a>
               </Button>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { HeroBackdrop } from '@/components/jobs/HeroBackdrop'
 import { PageHighlights } from '@/components/jobs/PageHighlights'
 import { UmbrellaHeroIllustration } from '@/components/UmbrellaHeroIllustration'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 type MuralIntroProps = {
   count: number | null
@@ -40,7 +40,9 @@ export function MuralIntro({ count }: MuralIntroProps) {
               Mural de vagas
             </p>
             <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-4xl text-[2.35rem] leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl lg:text-[3.25rem]">
-              Oportunidades em <span className="text-mark">UX e Design</span>
+              Oportunidades
+              <br />
+              em <span className="text-mark">UX e Design</span>
             </h1>
             <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400 md:text-xl">
               Reunimos vagas de diversas plataformas em um só lugar para facilitar sua busca.
@@ -57,9 +59,7 @@ export function MuralIntro({ count }: MuralIntroProps) {
 
             <div className="mural-fade mural-fade-delay-2 mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg" className="h-12 rounded-xl px-7 text-base font-black">
-                <a href={superSite.publicar} target="_blank" rel="noopener noreferrer">
-                  Indicar uma vaga
-                </a>
+                <a href="#vagas">Ver vagas</a>
               </Button>
               <Button
                 asChild
