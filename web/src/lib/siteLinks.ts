@@ -7,6 +7,10 @@ export const routes = {
   curadoria: '/vagas-para-iniciantes',
 } as const
 
+export const routeHashes = {
+  formasDeParticipar: 'formas-de-participar',
+} as const
+
 export const forms = {
   voluntarios: 'https://forms.gle/vqyLwPfA42LYv6ZV6',
 } as const
