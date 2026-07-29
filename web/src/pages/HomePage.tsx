@@ -112,7 +112,7 @@ export function HomePage() {
               variant="outline"
               className="h-12 rounded-xl border-neutral-300/35 bg-transparent px-8 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
             >
-              <Link to={routes.voluntariado}>Voluntariado</Link>
+              <Link to={routes.voluntariado}>Conheça quem organiza</Link>
             </Button>
           </div>
         </div>

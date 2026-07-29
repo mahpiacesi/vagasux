@@ -41,7 +41,7 @@ const socialLinks: { label: string; href: string; Icon: Icon }[] = [
     Icon: YoutubeLogo,
   },
   {
-    label: 'Spotify — Podvagas',
+    label: 'Podvagas no Spotify',
     href: 'https://open.spotify.com/show/3XlkhvjZyh425pdRkAtBVs',
     Icon: SpotifyLogo,
   },
@@ -68,7 +68,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-3xl flex-col gap-8 md:max-w-4xl">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col items-start gap-4">
-            <Link to={routes.home} aria-label="VagasUX — início">
+            <Link to={routes.home} aria-label="VagasUX início">
               <Logo variant="white" />
             </Link>
             <nav aria-label="Redes sociais da VagasUX">

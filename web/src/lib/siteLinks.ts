@@ -11,6 +11,10 @@ export const routeHashes = {
   formasDeParticipar: 'formas-de-participar',
 } as const
 
+export const forms = {
+  voluntarios: 'https://forms.gle/vqyLwPfA42LYv6ZV6',
+} as const
+
 /**
  * Pages that still live on the Super/Notion site.
  * Keep vagasux.com.br intact while we migrate in parallel.

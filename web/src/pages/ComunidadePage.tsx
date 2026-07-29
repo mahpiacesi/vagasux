@@ -3,10 +3,11 @@ import {
   Umbrella,
   UsersThree,
 } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 import { CommunityShopSection } from '@/components/CommunityShopSection'
 import { Button } from '@/components/ui/button'
 import { Marquee } from '@/components/Marquee'
-import { superSite } from '@/lib/siteLinks'
+import { routes, superSite } from '@/lib/siteLinks'
 
 const marqueeItems = [
   'Comunidade aberta',
@@ -286,13 +287,7 @@ export function ComunidadePage() {
               variant="outline"
               className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
             >
-              <a
-                href={superSite.quemOrganiza}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Conheça quem organiza
-              </a>
+              <Link to={routes.voluntariado}>Conheça quem organiza</Link>
             </Button>
           </div>
         </div>
@@ -366,14 +361,12 @@ export function ComunidadePage() {
 
           <p className="mural-fade mural-fade-delay-2 mt-10 text-sm text-neutral-400">
             Quer saber quem organiza tudo isso?{' '}
-            <a
-              href={superSite.quemOrganiza}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={routes.voluntariado}
               className="font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4"
             >
               Conheça a equipe
-            </a>
+            </Link>
             .
           </p>
         </div>
