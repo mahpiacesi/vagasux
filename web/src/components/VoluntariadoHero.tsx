@@ -155,11 +155,11 @@ export function VoluntariadoHero() {
               </div>
             ))}
 
-            <div className="col-start-4 row-start-3 row-span-2 flex min-h-0 flex-col justify-center rounded-2xl border border-complementary-300/50 bg-complementary-300 px-3 py-3 shadow-lg shadow-black/10 md:px-4">
-              <p className="text-[0.62rem] font-bold tracking-[0.14em] text-neutral-500 uppercase md:text-[0.65rem]">
+            <div className="col-start-4 row-start-3 row-span-2 flex min-h-0 flex-col items-center justify-center rounded-2xl border border-complementary-300/50 bg-complementary-300 p-2 text-center shadow-lg shadow-black/10">
+              <p className="max-w-full text-[0.62rem] font-bold tracking-[0.12em] text-neutral-500 uppercase md:text-[0.65rem]">
                 Projeto coletivo
               </p>
-              <p className="mt-1 text-[0.7rem] font-black leading-snug text-neutral-500 md:text-xs">
+              <p className="mt-1 max-w-full text-[0.62rem] font-bold leading-tight text-neutral-500 md:text-[0.65rem]">
                 Galerinha gente boa demais
               </p>
             </div>

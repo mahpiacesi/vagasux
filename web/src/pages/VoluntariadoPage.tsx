@@ -57,7 +57,7 @@ function VolunteerCard({
   const { name, emoji, photo, roles, instagram, linkedin } = person
 
   return (
-    <article className="comunidade-card group flex h-full flex-col overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100 shadow-[0_16px_48px_-32px_rgb(7_0_58_/_0.35)]">
+    <article className="comunidade-card group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-500/10 bg-neutral-100 shadow-[0_16px_48px_-32px_rgb(7_0_58_/_0.35)]">
       <button
         type="button"
         onClick={() => onSelect(person)}
@@ -65,49 +65,49 @@ function VolunteerCard({
         aria-label={`Ver perfil de ${name}`}
       >
         {photo ? (
-          <div className="relative aspect-[4/5] overflow-hidden bg-brand-100">
+          <div className="relative aspect-square overflow-hidden bg-brand-100">
             <img
               src={photo}
               alt=""
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-full w-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-[1.03]"
               loading="lazy"
               decoding="async"
             />
             <span
-              className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-xl bg-neutral-100/90 text-lg shadow-sm backdrop-blur-sm"
+              className="absolute top-2.5 right-2.5 flex size-8 items-center justify-center rounded-lg bg-neutral-100/90 text-base shadow-sm backdrop-blur-sm"
               aria-hidden
             >
               {emoji}
             </span>
           </div>
         ) : (
-          <div className="relative flex aspect-[4/5] items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100 text-5xl">
+          <div className="relative flex aspect-square items-center justify-center bg-gradient-to-br from-brand-100 to-complementary-100 text-4xl">
             <span aria-hidden>{emoji}</span>
           </div>
         )}
 
-        <div className="flex flex-1 flex-col p-5">
-          <h3 className="text-base font-black tracking-[-0.02em] text-neutral-500">
+        <div className="flex flex-1 flex-col p-4">
+          <h3 className="text-sm font-black tracking-[-0.02em] text-neutral-500">
             {name}
           </h3>
-          <ul className="mt-3 flex flex-wrap gap-1.5">
+          <ul className="mt-2 flex flex-wrap gap-1.5">
             {roles.map((role) => (
               <li
                 key={role}
-                className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[0.7rem] font-bold tracking-wide text-brand-500 uppercase"
+                className="rounded-full bg-brand-100 px-2 py-0.5 text-[0.65rem] font-bold tracking-wide text-brand-500 uppercase"
               >
                 {role}
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm font-bold text-brand-400 transition-colors group-hover:text-brand-500">
+          <p className="mt-3 text-xs font-bold text-brand-400 transition-colors group-hover:text-brand-500">
             Ver perfil
           </p>
         </div>
       </button>
 
       {(instagram || linkedin) && (
-        <div className="flex flex-wrap gap-2 border-t border-neutral-500/10 px-5 pb-5">
+        <div className="flex flex-wrap gap-2 border-t border-neutral-500/10 px-4 pb-4">
           {instagram ? (
             <a
               href={instagram}
@@ -203,7 +203,7 @@ export function VoluntariadoPage() {
             </p>
           </div>
 
-          <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {volunteers.map((person) => (
               <VolunteerCard
                 key={person.slug}
