@@ -1,6 +1,7 @@
 /** Internal app routes (this site). */
 export const routes = {
   home: '/',
+  comunidade: '/comunidade',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
 } as const

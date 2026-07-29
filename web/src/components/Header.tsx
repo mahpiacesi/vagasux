@@ -1,5 +1,5 @@
-import { BookOpen, ChatCircleDots, Handshake, Umbrella } from '@phosphor-icons/react'
-import { NavLink } from 'react-router-dom'
+import { BookOpen, ChatCircleDots, Handshake } from '@phosphor-icons/react'
+import { Link, NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 import { VagasNavMenu } from './VagasNavMenu'
@@ -9,8 +9,13 @@ const navIconProps = { size: 16, weight: 'bold' as const }
 const linkClass =
   'relative inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
 
+const ctaClass =
+  'inline-flex items-center rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500'
+
+const ctaClassMobile =
+  'rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100'
+
 const externalNavLinks = [
-  { label: 'Comunidade', href: superSite.comunidade, Icon: Umbrella },
   { label: 'Guia', href: superSite.guia, Icon: BookOpen },
   { label: 'Mentoria', href: superSite.mentoria, Icon: ChatCircleDots },
   { label: 'Parcerias', href: superSite.parcerias, Icon: Handshake },
@@ -50,31 +55,20 @@ export function Header() {
           aria-label="Principal"
           className="hidden items-center gap-6 md:flex"
         >
-          <ExternalNavLink {...externalNavLinks[0]} />
           <VagasNavMenu />
-          <ExternalNavLink {...externalNavLinks[1]} />
-          <ExternalNavLink {...externalNavLinks[2]} />
-          <ExternalNavLink {...externalNavLinks[3]} />
-          <a
-            href={superSite.apoie}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500"
-          >
-            Apoie
-          </a>
+          {externalNavLinks.map((item) => (
+            <ExternalNavLink key={item.href} {...item} />
+          ))}
+          <Link to={routes.comunidade} className={ctaClass}>
+            Faça parte
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
           <VagasNavMenu variant="mobile" />
-          <a
-            href={superSite.apoie}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100"
-          >
-            Apoie
-          </a>
+          <Link to={routes.comunidade} className={ctaClassMobile}>
+            Faça parte
+          </Link>
         </div>
       </div>
     </header>
