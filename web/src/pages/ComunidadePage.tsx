@@ -264,7 +264,15 @@ export function ComunidadePage() {
           </h2>
           <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-3xl text-base leading-relaxed text-neutral-400 md:text-lg">
             A história da VagasUX começou com a missão de conectar profissionais
-            de Product Design a melhores oportunidades. Em 2020, Mah Piacesi
+            de Product Design a melhores oportunidades. Em 2020,{' '}
+            <a
+              href="https://avely.me/mahpiacesi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+            >
+              Mah Piacesi
+            </a>{' '}
             assumiu o projeto e reuniu outras iniciativas que já desenvolvia,
             como o Guia do Product Designer e a curadoria de vagas para
             iniciantes. Desde então, a comunidade cresceu, ganhou novos
