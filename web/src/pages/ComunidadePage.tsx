@@ -1,5 +1,24 @@
+import {
+  Crown,
+  Heart,
+  UsersThree,
+} from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
+import { Marquee } from '@/components/Marquee'
 import { superSite } from '@/lib/siteLinks'
+
+const marqueeItems = [
+  'Comunidade aberta',
+  'Mentorias',
+  'Encontros quinzenais',
+  'Vagas curadas',
+  'Guilda do Vaguiner',
+  'WhatsApp',
+  'Discord',
+  'Telegram',
+  'Apoia-se',
+  'Vaguiners',
+]
 
 const openCommunityLinks = [
   {
@@ -19,41 +38,54 @@ const openCommunityLinks = [
 const participationPaths = [
   {
     id: 'aberta',
+    index: '01',
     eyebrow: 'Gratuito',
     title: 'Comunidade aberta',
+    hook: 'Comece por aqui, sem custo.',
     description:
-      'Participe dos nossos canais públicos, acompanhe vagas, conteúdos e novidades sem custo. É o ponto de partida para conhecer a VagasUX.',
+      'Acompanhe vagas, conteúdos e novidades nos nossos canais públicos. É a porta de entrada para conhecer a VagasUX.',
     bullets: [
-      'Canal no WhatsApp, Telegram e Discord',
+      'WhatsApp, Telegram e Discord',
       'Newsletter quinzenal gratuita',
       'Curadoria de vagas e conteúdos abertos',
     ],
+    Icon: UsersThree,
+    tone: 'light' as const,
     cta: { label: 'Entrar nos canais', href: '#canais-abertos', external: false },
   },
   {
     id: 'apoie',
+    index: '02',
     eyebrow: 'Apoio voluntário',
     title: 'Apoia-se',
+    hook: 'Ajude o projeto a continuar existindo.',
     description:
-      'Contribua com o que puder para ajudar o projeto a seguir vivo. Quem apoia a partir de R$10 também pode agendar uma mentoria conosco.',
+      'Contribua com o que puder para sustentar a comunidade. Quem apoia a partir de R$10 também pode agendar uma mentoria conosco.',
     bullets: [
       'Campanha de crowdfunding no Apoia.se',
-      'Ajuda a cobrir custos da comunidade',
+      'Ajuda a cobrir custos da VagasUX',
       'Mentoria como forma de agradecimento',
     ],
+    Icon: Heart,
+    tone: 'brand' as const,
     cta: { label: 'Apoiar a iniciativa', href: superSite.apoie, external: true },
   },
   {
     id: 'guilda',
+    index: '03',
     eyebrow: 'Membro',
     title: 'Guilda do Vaguiner',
+    hook: 'A experiência completa, com encontros e mentorias.',
     description:
-      'Comunidade exclusiva paga com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e mentorias avulsas com desconto.',
+      'Comunidade exclusiva paga com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e avulsas com desconto.',
     bullets: [
-      'Encontros e mentorias em grupo inclusos no plano',
+      'Encontros e mentorias em grupo no plano',
       'Mentorias avulsas com profissionais do mercado',
       'Seletivas, descontos e benefícios para membros',
     ],
+    Icon: Crown,
+    tone: 'premium' as const,
+    featured: true,
     cta: {
       label: 'Conheça a Guilda',
       href: 'https://vagasux.framer.website/',
@@ -62,104 +94,251 @@ const participationPaths = [
   },
 ] as const
 
-function ParticipationSection({
+const toneStyles = {
+  light: {
+    card: 'border-neutral-500/10 bg-neutral-100',
+    icon: 'bg-brand-100 text-brand-500',
+    eyebrow: 'text-brand-400',
+  },
+  brand: {
+    card: 'border-brand-200/60 bg-gradient-to-b from-brand-100/90 to-neutral-100',
+    icon: 'bg-brand-500 text-neutral-100',
+    eyebrow: 'text-brand-500',
+  },
+  premium: {
+    card: 'border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-complementary-100/80 to-brand-100/40 shadow-[0_24px_60px_-28px_rgb(7_0_58_/_0.35)] ring-1 ring-complementary-300/40',
+    icon: 'bg-neutral-500 text-complementary-300',
+    eyebrow: 'text-neutral-500',
+  },
+} as const
+
+function ParticipationCard({
+  index,
   eyebrow,
   title,
+  hook,
   description,
   bullets,
+  Icon: PathIcon,
+  tone,
+  featured = false,
   cta,
-}: (typeof participationPaths)[number]) {
+  animationDelay,
+}: (typeof participationPaths)[number] & {
+  featured?: boolean
+  animationDelay: string
+}) {
+  const styles = toneStyles[tone]
+
   return (
-    <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-8">
-      <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
+    <article
+      className={`comunidade-card mural-fade flex h-full flex-col rounded-3xl border p-6 md:p-7 ${styles.card} ${
+        featured ? 'lg:-mt-2 lg:mb-2' : ''
+      }`}
+      style={{ animationDelay }}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <span
+          className={`inline-flex size-11 items-center justify-center rounded-2xl ${styles.icon}`}
+        >
+          <PathIcon size={22} weight="bold" aria-hidden />
+        </span>
+        <span className="text-xs font-black tracking-[0.2em] text-neutral-300 uppercase">
+          {index}
+        </span>
+      </div>
+
+      {featured ? (
+        <span className="mt-4 inline-flex w-fit rounded-full bg-neutral-500 px-3 py-1 text-[0.65rem] font-bold tracking-[0.16em] text-complementary-300 uppercase">
+          Mais completo
+        </span>
+      ) : null}
+
+      <p className={`mt-4 text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-2xl font-black tracking-[-0.03em] text-neutral-500 md:text-3xl">
+      <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-neutral-500">
         {title}
       </h2>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+      <p className="mt-3 text-base font-bold leading-snug text-neutral-500">
+        {hook}
+      </p>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
         {description}
       </p>
-      <ul className="mt-5 space-y-2 text-sm leading-relaxed text-neutral-400">
+
+      <ul className="mt-5 space-y-2.5 border-t border-neutral-500/10 pt-5 text-sm leading-relaxed text-neutral-400">
         {bullets.map((item) => (
-          <li key={item} className="flex gap-2">
-            <span className="text-brand-400" aria-hidden>
-              ·
-            </span>
+          <li key={item} className="flex gap-2.5">
+            <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-300" aria-hidden />
             <span>{item}</span>
           </li>
         ))}
       </ul>
+
       <div className="mt-8">
         {cta.external ? (
-          <Button asChild size="lg" className="h-11 rounded-xl px-6 font-bold">
+          <Button
+            asChild
+            size="lg"
+            className={`h-11 w-full rounded-xl font-bold ${
+              featured
+                ? 'bg-neutral-500 text-complementary-300 hover:bg-brand-500 hover:text-neutral-100'
+                : ''
+            }`}
+          >
             <a href={cta.href} target="_blank" rel="noopener noreferrer">
               {cta.label}
             </a>
           </Button>
         ) : (
-          <Button asChild size="lg" variant="outline" className="h-11 rounded-xl px-6 font-bold">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-11 w-full rounded-xl border-neutral-500/15 font-bold"
+          >
             <a href={cta.href}>{cta.label}</a>
           </Button>
         )}
       </div>
-    </section>
+    </article>
   )
 }
 
 export function ComunidadePage() {
   return (
     <main>
-      <section className="px-5 pt-16 pb-12 md:px-6 md:pt-20 md:pb-16">
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Comunidade
+      <section className="relative overflow-hidden bg-neutral-500 px-5 pt-20 pb-16 text-neutral-100 md:px-6 md:pt-28 md:pb-24">
+        <div className="pointer-events-none absolute inset-0 -z-0">
+          <div className="comunidade-orb absolute -top-24 -left-16 h-80 w-80 rounded-full bg-brand-400/30 blur-3xl" />
+          <div className="comunidade-orb comunidade-orb-delay absolute top-16 -right-20 h-96 w-96 rounded-full bg-complementary-300/20 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-5xl">
+          <p className="mural-fade text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase md:text-sm">
+            Faça parte da VagasUX
           </p>
-          <h1 className="mt-4 max-w-3xl text-4xl leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Escolha como você quer fazer parte da VagasUX
+          <h1 className="mural-fade mural-fade-delay-1 mt-6 max-w-4xl text-[2.6rem] leading-[1.02] font-black tracking-[-0.045em] md:text-6xl lg:text-7xl">
+            Você já tem o lugar. Agora escolha{' '}
+            <span className="text-mark text-neutral-100">como participar</span>.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-400">
-            Tem espaço para quem quer começar de graça, para quem prefere apoiar
-            o projeto e para quem busca a experiência completa na Guilda do
-            Vaguiner.
+          <p className="mural-fade mural-fade-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300 md:text-xl">
+            Comunidade aberta, apoio voluntário ou Guilda exclusiva — tem
+            espaço para quem está começando, para quem quer ajudar o projeto e
+            para quem busca mentorias, encontros e benefícios de membro.
+          </p>
+          <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 shadow-lg shadow-black/20 hover:bg-complementary-200"
+            >
+              <a href="#formas-de-participar">Ver formas de participar</a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
+            >
+              <a href="#canais-abertos">Comunidade aberta</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <Marquee items={marqueeItems} />
+
+      <section className="px-5 py-16 md:px-6 md:py-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="mural-fade text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+            Por que existimos
+          </p>
+          <h2 className="mural-fade mural-fade-delay-1 mx-auto mt-4 max-w-3xl text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+            O mercado de UX não deveria deixar ninguém{' '}
+            <span className="text-mark">perdido ou sozinho</span>.
+          </h2>
+          <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+            A VagasUX nasceu para ampliar acesso a oportunidades, conteúdo e
+            apoio real. Esta página reúne as três formas de caminhar com a
+            gente — do gratuito ao exclusivo.
           </p>
         </div>
       </section>
 
-      <section className="px-5 pb-16 md:px-6 md:pb-24">
-        <div className="mx-auto flex max-w-3xl flex-col gap-6 md:max-w-4xl md:gap-8">
-          {participationPaths.map((path) => (
-            <ParticipationSection key={path.id} {...path} />
-          ))}
+      <section
+        id="formas-de-participar"
+        className="scroll-mt-24 px-5 pb-20 md:px-6 md:pb-28"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mural-fade mb-10 flex flex-col gap-3 md:mb-12 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+                Três caminhos
+              </p>
+              <h2 className="mt-3 max-w-xl text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+                Escolha o ritmo que faz sentido pra você
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-neutral-400 md:text-base">
+              Compare as modalidades lado a lado e entre por onde fizer mais
+              sentido agora.
+            </p>
+          </div>
+
+          <div className="grid items-stretch gap-5 lg:grid-cols-3 lg:gap-6">
+            {participationPaths.map((path, index) => (
+              <ParticipationCard
+                key={path.id}
+                {...path}
+                animationDelay={`${120 + index * 90}ms`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       <section
         id="canais-abertos"
-        className="border-t border-neutral-500/10 bg-brand-50/40 px-5 py-16 md:px-6 md:py-20"
+        className="scroll-mt-24 border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-20 md:px-6 md:py-24"
       >
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <h2 className="text-2xl font-black tracking-[-0.03em] text-neutral-500 md:text-3xl">
-            Canais da comunidade aberta
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
-            Escolha onde prefere acompanhar a VagasUX no dia a dia.
-          </p>
-          <ul className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {openCommunityLinks.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-xl border border-neutral-500/15 bg-neutral-100 px-5 py-3 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-200 hover:text-brand-500"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-sm text-neutral-400">
+        <div className="mx-auto max-w-5xl">
+          <div className="mural-fade grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+                Comunidade aberta
+              </p>
+              <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+                Uma rede que acompanha você{' '}
+                <span className="text-mark">no dia a dia</span>
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
+                Escolha onde prefere receber vagas, conteúdos e novidades. Tudo
+                gratuito, sempre.
+              </p>
+            </div>
+
+            <ul className="mural-fade mural-fade-delay-1 flex flex-col gap-3">
+              {openCommunityLinks.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 text-base font-bold text-neutral-500 shadow-[0_12px_40px_-28px_rgb(7_0_58_/_0.35)] transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:text-brand-500"
+                  >
+                    {item.label}
+                    <span className="text-brand-300 transition-transform group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="mural-fade mural-fade-delay-2 mt-10 text-sm text-neutral-400">
             Quer saber quem organiza tudo isso?{' '}
             <a
               href={superSite.quemOrganiza}

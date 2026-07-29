@@ -177,6 +177,39 @@
   animation-delay: 180ms;
 }
 
+.mural-fade-delay-3 {
+  animation-delay: 270ms;
+}
+
+.comunidade-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.comunidade-card:hover {
+  transform: translateY(-6px);
+}
+
+@keyframes comunidade-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12px, -18px) scale(1.05);
+  }
+}
+
+.comunidade-orb {
+  animation: comunidade-orb-float 12s ease-in-out infinite;
+}
+
+.comunidade-orb-delay {
+  animation-delay: -4s;
+}
+
 .job-row {
   animation: job-row-in 0.45s ease-out both;
 }
@@ -308,7 +341,10 @@
   .marquee-track,
   .testimonials-track,
   .testimonials-track-reverse,
-  .curation-hero-svg--motion #blob {
+  .curation-hero-svg--motion #blob,
+  .comunidade-orb,
+  .comunidade-card:hover {
     animation: none;
+    transform: none;
   }
 }

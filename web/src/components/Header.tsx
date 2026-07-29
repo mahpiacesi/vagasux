@@ -1,4 +1,4 @@
-import { BookOpen, ChatCircleDots, Handshake } from '@phosphor-icons/react'
+import { BookOpen, Handshake } from '@phosphor-icons/react'
 import { Link, NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
 import { Logo } from './Logo'
@@ -17,7 +17,6 @@ const ctaClassMobile =
 
 const externalNavLinks = [
   { label: 'Guia', href: superSite.guia, Icon: BookOpen },
-  { label: 'Mentoria', href: superSite.mentoria, Icon: ChatCircleDots },
   { label: 'Parcerias', href: superSite.parcerias, Icon: Handshake },
 ] as const
 
