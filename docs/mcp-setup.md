@@ -78,11 +78,16 @@ No n8n: **Settings → API → Create API Key**.
 Defina no ambiente (shell, Cursor Secrets, ou Cloud Agent env):
 
 ```bash
-export N8N_API_URL="https://SUA-INSTANCIA.n8n.cloud"
+# Self-hosted (recomendado após migração)
+export N8N_API_URL="https://n8n.vagasux.com.br"
+
+# Cloud (legado)
+# export N8N_API_URL="https://vagasux.app.n8n.cloud"
+
 export N8N_API_KEY="sua-api-key"
 ```
 
-Sem trailing slash na URL.
+Sem trailing slash na URL. Migração Cloud → self-hosted: [n8n-self-hosted.md](n8n-self-hosted.md).
 
 ### Só documentação (sem tocar na instância)
 

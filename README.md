@@ -14,8 +14,16 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 - [enrichment.md](docs/enrichment.md) — classificação e resumo com IA
 - [architecture-decisions.md](docs/architecture-decisions.md) — ADRs do agregador
 - [mcp-setup.md](docs/mcp-setup.md) — MCP Supabase + n8n no Cursor
+- [n8n-self-hosted.md](docs/n8n-self-hosted.md) — migrar n8n Cloud → Community Edition (Docker)
 
 Migrations em `supabase/migrations/` (dedup, status, expiry, enrichment, publish-before-enrich, upsert Remotar, source VagasUX, RLS do mural).
+
+## n8n (collectors + enrichment)
+
+- Workflows versionados: `tools/n8n/`
+- Infra self-hosted: `infra/n8n/` (Docker Compose + Postgres)
+- Export do Cloud: `workflows/n8n-export/` (local, não commitar secrets)
+- Guia de migração: [n8n-self-hosted.md](docs/n8n-self-hosted.md)
 
 ## Site (web)
 
