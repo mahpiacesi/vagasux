@@ -137,9 +137,7 @@ function ParticipationCard({
 
   return (
     <article
-      className={`comunidade-card mural-fade flex h-full flex-col rounded-3xl border p-6 md:p-7 ${styles.card} ${
-        featured ? 'lg:-mt-2 lg:mb-2' : ''
-      }`}
+      className={`comunidade-card mural-fade flex h-full flex-col rounded-3xl border p-6 md:p-7 ${styles.card}`}
       style={{ animationDelay }}
     >
       <div className="flex items-start justify-between gap-4">
@@ -153,20 +151,16 @@ function ParticipationCard({
         </span>
       </div>
 
-      {featured ? (
-        <div className="mt-4 flex items-center gap-2">
-          <p className={`text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
-            {eyebrow}
-          </p>
+      <div className="mt-4 flex min-h-6 items-center gap-2">
+        <p className={`text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
+          {eyebrow}
+        </p>
+        {featured ? (
           <span className="inline-flex shrink-0 rounded-full bg-neutral-500 px-2.5 py-0.5 text-[0.65rem] font-bold tracking-[0.14em] text-complementary-300 uppercase">
             EXCLUSIVO
           </span>
-        </div>
-      ) : (
-        <p className={`mt-4 text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
-          {eyebrow}
-        </p>
-      )}
+        ) : null}
+      </div>
       <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-neutral-500">
         {title}
       </h2>
@@ -186,7 +180,7 @@ function ParticipationCard({
         ))}
       </ul>
 
-      <div className="mt-8">
+      <div className="mt-auto pt-8">
         {cta.external ? (
           <Button
             asChild
@@ -290,13 +284,14 @@ export function ComunidadePage() {
             </h2>
           </div>
 
-          <div className="grid items-stretch gap-5 lg:grid-cols-3 lg:gap-6">
+          <div className="grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
             {participationPaths.map((path, index) => (
-              <ParticipationCard
-                key={path.id}
-                {...path}
-                animationDelay={`${120 + index * 90}ms`}
-              />
+              <div key={path.id} className="flex h-full min-h-0">
+                <ParticipationCard
+                  {...path}
+                  animationDelay={`${120 + index * 90}ms`}
+                />
+              </div>
             ))}
           </div>
         </div>
