@@ -279,6 +279,22 @@ export function ComunidadePage() {
             colaboradores e se tornou um hub de conteúdos, oportunidades e
             apoio para milhares de pessoas.
           </p>
+          <div className="mural-fade mural-fade-delay-3 mt-8 flex justify-center">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
+            >
+              <a
+                href={superSite.quemOrganiza}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conheça quem organiza
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
