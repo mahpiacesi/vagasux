@@ -9,21 +9,25 @@ import canecaChuvaDeVagas from '@/assets/shop/caneca-chuva-de-vagas.png'
 const products = [
   {
     name: 'Caneca Chuva de Vagas',
+    href: communityShops.products.canecaChuvaDeVagas,
     image: canecaChuvaDeVagas,
     alt: 'Caneca branca com padrão de guarda-chuvas amarelos e logo VagasUX',
   },
   {
     name: 'Camiseta Lute como um júnior',
+    href: communityShops.products.camisetaLuteJuniorPreta,
     image: camisetaLuteJuniorPreta,
     alt: 'Camiseta preta com a frase Lute como um júnior e logo VagasUX',
   },
   {
     name: 'Camiseta Júnior & Iniciante',
+    href: communityShops.products.camisetaJuniorIniciante,
     image: camisetaJuniorNovato,
-    alt: 'Camiseta com Júnior, Novato, Iniciante e Aprendiz e logo VagasUX',
+    alt: 'Camiseta branca com Júnior, Novato, Iniciante e Aprendiz e logo VagasUX',
   },
   {
     name: 'Bolsa Guia do Product Designer',
+    href: communityShops.products.bolsaGuia,
     image: bolsaGuia,
     alt: 'Ecobag amarela com ilustração e logo VagasUX',
   },
@@ -74,9 +78,12 @@ export function CommunityShopSection() {
 
         <div className="mural-fade mural-fade-delay-1 mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {products.map((product) => (
-            <article
+            <a
               key={product.name}
-              className="comunidade-card group overflow-hidden rounded-3xl border border-white/10 bg-neutral-100/95 shadow-[0_24px_60px_-32px_rgb(0_0_0_/_0.55)]"
+              href={product.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comunidade-card group block overflow-hidden rounded-3xl border border-white/10 bg-neutral-100/95 shadow-[0_24px_60px_-32px_rgb(0_0_0_/_0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-complementary-300"
             >
               <div className="aspect-[4/5] overflow-hidden bg-neutral-200/80 p-4">
                 <img
@@ -87,12 +94,18 @@ export function CommunityShopSection() {
                   decoding="async"
                 />
               </div>
-              <div className="border-t border-neutral-500/10 px-5 py-4">
+              <div className="flex items-center justify-between gap-3 border-t border-neutral-500/10 px-5 py-4">
                 <p className="text-sm font-bold leading-snug text-neutral-500">
                   {product.name}
                 </p>
+                <span
+                  className="shrink-0 text-sm font-bold text-brand-400 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden
+                >
+                  →
+                </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
 

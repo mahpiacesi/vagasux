@@ -26,4 +26,14 @@ export const superSite = {
 export const communityShops = {
   colab55: 'https://www.colab55.com/@vagasux',
   umapenca: 'https://umapenca.com/vagasux/',
+  products: {
+    canecaChuvaDeVagas:
+      'https://www.colab55.com/@vagasux/mugs/chuva-de-vagas',
+    camisetaLuteJuniorPreta:
+      'https://www.colab55.com/@vagasux/tees/lute-como-um-junior-preta',
+    camisetaJuniorIniciante:
+      'https://www.colab55.com/@vagasux/tees/junior-iniciante',
+    bolsaGuia:
+      'https://www.colab55.com/@vagasux/totebags/guia-do-product-designer',
+  },
 } as const
