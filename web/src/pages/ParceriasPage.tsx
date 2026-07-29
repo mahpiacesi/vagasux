@@ -326,22 +326,32 @@ export function ParceriasPage() {
         </div>
       </section>
 
-      <section className="border-y border-neutral-500/10 bg-gradient-to-b from-brand-100/40 to-neutral-100 px-5 py-16 md:px-6 md:py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="mural-fade text-center">
-            <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-              Impacto
+      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
+        <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top_right,rgba(93,107,246,0.28),transparent_55%)]" />
+
+        <div className="relative mx-auto max-w-6xl">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            <span className="mural-fade inline-flex size-14 items-center justify-center rounded-2xl bg-complementary-300 text-2xl text-neutral-500">
+              ☂️
+            </span>
+            <p className="mural-fade mural-fade-delay-1 mt-6 text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+              Seja um parceiro
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-              Um pouquinho de como fazemos a diferença
+            <h2 className="mural-fade mural-fade-delay-1 mt-4 text-3xl font-black tracking-[-0.04em] md:text-5xl">
+              Vamos construir impacto juntos?
             </h2>
+            <p className="mural-fade mural-fade-delay-2 mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
+              Tem alguma ideia de parceria? Conte pra gente como gostaria de
+              apoiar a comunidade. Respondemos com calma e alinhamos o formato
+              ideal para a sua iniciativa.
+            </p>
           </div>
 
-          <dl className="mural-fade mural-fade-delay-1 mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <dl className="mural-fade mural-fade-delay-2 mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {impactStats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-neutral-500/10 bg-neutral-100 px-4 py-5 text-center"
+                className="rounded-2xl border border-white/15 bg-neutral-100 px-4 py-5 text-center"
               >
                 <dt className="text-2xl font-black tracking-tight text-brand-500 md:text-3xl">
                   {stat.value}
@@ -352,58 +362,40 @@ export function ParceriasPage() {
               </div>
             ))}
           </dl>
-        </div>
-      </section>
 
-      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
-        <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top_right,rgba(93,107,246,0.28),transparent_55%)]" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <span className="mural-fade inline-flex size-14 items-center justify-center rounded-2xl bg-complementary-300 text-2xl text-neutral-500">
-            ☂️
-          </span>
-          <p className="mural-fade mural-fade-delay-1 mt-6 text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
-            Seja um parceiro
-          </p>
-          <h2 className="mural-fade mural-fade-delay-1 mt-4 text-3xl font-black tracking-[-0.04em] md:text-5xl">
-            Vamos construir impacto juntos?
-          </h2>
-          <p className="mural-fade mural-fade-delay-2 mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            Tem alguma ideia de parceria? Conte pra gente como gostaria de
-            apoiar a comunidade. Respondemos com calma e alinhamos o formato
-            ideal para a sua iniciativa.
-          </p>
-          <div className="mural-fade mural-fade-delay-3 mt-10 flex flex-wrap justify-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200"
-            >
-              <a href={`mailto:${contact.email}?subject=Parceria%20VagasUX`}>
-                <Handshake size={18} weight="bold" className="mr-1.5" aria-hidden />
-                Entrar em contato
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
-            >
-              <a
-                href={mediaKit.parcerias}
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="mx-auto mt-10 flex max-w-4xl flex-col items-center text-center">
+            <div className="mural-fade mural-fade-delay-3 flex flex-wrap justify-center gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200"
               >
-                <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
-                Ver mídia kit
-              </a>
-            </Button>
+                <a href={`mailto:${contact.email}?subject=Parceria%20VagasUX`}>
+                  <Handshake size={18} weight="bold" className="mr-1.5" aria-hidden />
+                  Entrar em contato
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
+              >
+                <a
+                  href={mediaKit.parcerias}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
+                  Ver mídia kit
+                </a>
+              </Button>
+            </div>
+            <p className="mural-fade mural-fade-delay-3 mt-6 flex items-center justify-center gap-2 text-sm text-neutral-400">
+              <UsersThree size={18} weight="bold" aria-hidden />
+              {partners.length} parceiros ativos hoje
+            </p>
           </div>
-          <p className="mural-fade mural-fade-delay-3 mt-6 flex items-center justify-center gap-2 text-sm text-neutral-400">
-            <UsersThree size={18} weight="bold" aria-hidden />
-            {partners.length} parceiros ativos hoje
-          </p>
         </div>
       </section>
     </main>
