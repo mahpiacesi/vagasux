@@ -159,9 +159,6 @@ export function VoluntariadoHero() {
               <p className="max-w-full text-[0.62rem] font-bold tracking-[0.12em] text-neutral-500 uppercase md:text-[0.65rem]">
                 Projeto coletivo
               </p>
-              <p className="mt-0.5 max-w-full text-[0.62rem] font-bold leading-tight text-neutral-500 md:text-[0.65rem]">
-                Galerinha gente boa demais
-              </p>
             </div>
           </div>
         </div>
