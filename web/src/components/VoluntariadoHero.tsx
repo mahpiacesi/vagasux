@@ -4,14 +4,48 @@ import { volunteers } from '@/data/volunteers'
 import { forms } from '@/lib/siteLinks'
 
 const heroMosaic = [
-  { name: 'Marianna Piacesi', emoji: '☂️', className: 'col-span-2 row-span-2' },
-  { name: 'Gabriela Peron', emoji: '🐝', className: 'col-span-1 row-span-1' },
-  { name: 'Fernando Lima', emoji: '👾', className: 'col-span-1 row-span-1' },
-  { name: 'Bruna David', emoji: '🐈‍⬛', className: 'col-span-1 row-span-2' },
-  { name: 'Andre Hiro', emoji: '⚡', className: 'col-span-1 row-span-1' },
-  { name: 'Manuela Lacerda', emoji: '🌻', className: 'col-span-1 row-span-1' },
-  { name: 'Rafael Ribeiro', emoji: '🤓', className: 'col-span-2 row-span-1' },
-  { name: 'Tatiana Barbosa', emoji: '🐳', className: 'col-span-1 row-span-1' },
+  {
+    name: 'Marianna Piacesi',
+    emoji: '☂️',
+    className: 'col-start-1 col-span-2 row-start-1 row-span-2',
+    large: true,
+  },
+  {
+    name: 'Gabriela Peron',
+    emoji: '🐝',
+    className: 'col-start-3 row-start-1',
+  },
+  {
+    name: 'Fernando Lima',
+    emoji: '👾',
+    className: 'col-start-4 row-start-1',
+  },
+  {
+    name: 'Bruna David',
+    emoji: '🐈‍⬛',
+    className: 'col-start-3 row-start-2 row-span-2',
+    large: true,
+  },
+  {
+    name: 'Andre Hiro',
+    emoji: '⚡',
+    className: 'col-start-4 row-start-2',
+  },
+  {
+    name: 'Rafael Ribeiro',
+    emoji: '🤓',
+    className: 'col-start-1 col-span-2 row-start-3',
+  },
+  {
+    name: 'Tatiana Barbosa',
+    emoji: '🐳',
+    className: 'col-start-1 row-start-4',
+  },
+  {
+    name: 'Manuela Lacerda',
+    emoji: '🌻',
+    className: 'col-start-2 row-start-4',
+  },
 ] as const
 
 const frontCount = new Set(volunteers.flatMap((person) => person.roles)).size
@@ -101,7 +135,7 @@ export function VoluntariadoHero() {
           </div>
         </div>
 
-        <div className="mural-fade mural-fade-delay-1 mx-auto flex w-full max-w-md flex-col gap-4 lg:max-w-none">
+        <div className="mural-fade mural-fade-delay-1 mx-auto w-full max-w-md lg:max-w-none">
           <div className="grid grid-cols-4 grid-rows-4 gap-2 md:gap-3">
             {heroMosaic.map((tile, index) => (
               <div
@@ -110,7 +144,7 @@ export function VoluntariadoHero() {
                 style={{ animationDelay: `${120 + index * 50}ms` }}
               >
                 <span
-                  className={`leading-none ${tile.className.includes('row-span-2') ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl'}`}
+                  className={`leading-none ${'large' in tile && tile.large ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl'}`}
                   aria-hidden
                 >
                   {tile.emoji}
@@ -120,15 +154,15 @@ export function VoluntariadoHero() {
                 </span>
               </div>
             ))}
-          </div>
 
-          <div className="w-fit rounded-2xl border border-complementary-300/50 bg-complementary-300 px-4 py-3 shadow-lg shadow-black/10">
-            <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-500 uppercase">
-              Projeto coletivo
-            </p>
-            <p className="mt-0.5 text-sm font-black text-neutral-500">
-              + milhares de pessoas impactadas
-            </p>
+            <div className="col-start-4 row-start-3 row-span-2 flex min-h-0 flex-col justify-center rounded-2xl border border-complementary-300/50 bg-complementary-300 px-3 py-3 shadow-lg shadow-black/10 md:px-4">
+              <p className="text-[0.62rem] font-bold tracking-[0.14em] text-neutral-500 uppercase md:text-[0.65rem]">
+                Projeto coletivo
+              </p>
+              <p className="mt-1 text-xs font-black leading-snug text-neutral-500 md:text-sm">
+                + milhares de pessoas impactadas
+              </p>
+            </div>
           </div>
         </div>
       </div>
