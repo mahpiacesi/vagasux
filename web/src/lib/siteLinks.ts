@@ -5,6 +5,7 @@ export const routes = {
   voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
+  codigoDeConduta: '/codigo-de-conduta',
 } as const
 
 export const routeHashes = {
