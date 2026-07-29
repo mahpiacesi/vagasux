@@ -22,8 +22,12 @@ const marqueeItems = [
 
 const openCommunityLinks = [
   {
-    label: 'Canal no WhatsApp',
+    label: 'Canal de transmissão no WhatsApp',
     href: 'https://www.whatsapp.com/channel/0029VaolXJkId7nHWZAPTz0P',
+  },
+  {
+    label: 'Grupo no WhatsApp',
+    href: 'https://chat.whatsapp.com/DJwdSS9jmH4FK8iCAH5XG4',
   },
   {
     label: 'Grupo no Telegram',
@@ -149,14 +153,19 @@ function ParticipationCard({
       </div>
 
       {featured ? (
-        <span className="mt-4 inline-flex w-fit rounded-full bg-neutral-500 px-3 py-1 text-[0.65rem] font-bold tracking-[0.16em] text-complementary-300 uppercase">
-          Mais completo
-        </span>
-      ) : null}
-
-      <p className={`mt-4 text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
-        {eyebrow}
-      </p>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <p className={`text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
+            {eyebrow}
+          </p>
+          <span className="inline-flex shrink-0 rounded-full bg-neutral-500 px-3 py-1 text-[0.65rem] font-bold tracking-[0.16em] text-complementary-300 uppercase">
+            EXCLUSIVO
+          </span>
+        </div>
+      ) : (
+        <p className={`mt-4 text-xs font-bold tracking-[0.18em] uppercase ${styles.eyebrow}`}>
+          {eyebrow}
+        </p>
+      )}
       <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-neutral-500">
         {title}
       </h2>
@@ -256,13 +265,11 @@ export function ComunidadePage() {
             Por que existimos
           </p>
           <h2 className="mural-fade mural-fade-delay-1 mx-auto mt-4 max-w-3xl text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            O mercado de UX não deveria deixar ninguém{' '}
-            <span className="text-mark">perdido ou sozinho</span>.
+            Ninguém deveria construir uma carreira sozinho.
           </h2>
           <p className="mural-fade mural-fade-delay-2 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            A VagasUX nasceu para ampliar acesso a oportunidades, conteúdo e
-            apoio real. Esta página reúne as três formas de caminhar com a
-            gente — do gratuito ao exclusivo.
+            A VagasUX nasceu para ampliar o acesso a oportunidades, conhecimento
+            e apoio. Conheça as formas de fazer parte dessa comunidade.
           </p>
         </div>
       </section>

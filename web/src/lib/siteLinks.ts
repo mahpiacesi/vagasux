@@ -19,6 +19,6 @@ export const superSite = {
   publicar: 'https://vagasux.com.br/publicar-vaga',
   mentoria: 'https://vagasux.com.br/iniciantes-em-design/apenas-mentores',
   parcerias: 'https://vagasux.com.br/parcerias',
-  apoie: 'https://vagasux.com.br/apoie-a-iniciativa',
+  apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
 } as const
