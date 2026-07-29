@@ -1,7 +1,7 @@
-import { ArrowDown, HandHeart } from '@phosphor-icons/react'
+import { ArrowDown, Heart } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
-import { forms } from '@/lib/siteLinks'
+import { superSite } from '@/lib/siteLinks'
 
 const heroMosaic = [
   {
@@ -85,9 +85,9 @@ export function VoluntariadoHero() {
           </h1>
 
           <p className="mural-fade mural-fade-delay-2 mt-5 max-w-lg text-base leading-relaxed text-neutral-400 md:text-lg">
-            Profissionais voluntários que tiram um tempinho toda semana (ou
-            mais!) para compilar conteúdos, trazer vagas e planejar iniciativas
-            que fazem diferença no mercado de UX.
+            Por trás da VagasUX existe um time de pessoas voluntárias que
+            dedica um tempinho toda semana para transformar ideias em projetos,
+            organizar iniciativas e fortalecer a comunidade de UX Design.
           </p>
 
           <dl className="mural-fade mural-fade-delay-2 mt-8 grid grid-cols-3 gap-3 max-w-lg">
@@ -113,7 +113,7 @@ export function VoluntariadoHero() {
               className="h-12 rounded-xl px-7 text-base font-black shadow-md shadow-brand-500/15"
             >
               <a href="#time">
-                Conhecer o time
+                Conheça o time
                 <ArrowDown size={16} weight="bold" className="ml-1.5" aria-hidden />
               </a>
             </Button>
@@ -124,12 +124,12 @@ export function VoluntariadoHero() {
               className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
             >
               <a
-                href={forms.voluntarios}
+                href={superSite.apoie}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <HandHeart size={18} weight="bold" className="mr-1.5" aria-hidden />
-                Quero contribuir
+                <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
+                Quero apoiar
               </a>
             </Button>
           </div>
