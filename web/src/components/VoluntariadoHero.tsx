@@ -1,7 +1,7 @@
-import { ArrowDown, Heart } from '@phosphor-icons/react'
+import { ArrowDown } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
-import { superSite } from '@/lib/siteLinks'
+import { voluntariadoHashes } from '@/lib/siteLinks'
 
 const heroMosaic = [
   {
@@ -123,13 +123,8 @@ export function VoluntariadoHero() {
               variant="outline"
               className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
             >
-              <a
-                href={superSite.apoie}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
-                Quero apoiar
+              <a href={`#${voluntariadoHashes.comoFazerParte}`}>
+                Quero ser voluntário
               </a>
             </Button>
           </div>

@@ -1,6 +1,7 @@
 import { BookOpen, Handshake } from '@phosphor-icons/react'
 import { Link, NavLink } from 'react-router-dom'
 import { routes, superSite } from '@/lib/siteLinks'
+import { ComunidadeNavMenu } from './ComunidadeNavMenu'
 import { Logo } from './Logo'
 import { VagasNavMenu } from './VagasNavMenu'
 
@@ -54,6 +55,7 @@ export function Header() {
           aria-label="Principal"
           className="hidden items-center gap-6 md:flex"
         >
+          <ComunidadeNavMenu />
           <VagasNavMenu />
           {externalNavLinks.map((item) => (
             <ExternalNavLink key={item.href} {...item} />
@@ -64,6 +66,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ComunidadeNavMenu variant="mobile" />
           <VagasNavMenu variant="mobile" />
           <Link to={routes.comunidade} className={ctaClassMobile}>
             Faça parte
