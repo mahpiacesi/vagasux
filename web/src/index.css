@@ -565,13 +565,22 @@
 
 .guilda-hero-stamp {
   position: absolute;
-  left: 4%;
-  top: 10%;
+  left: 0;
+  top: 4%;
   z-index: 3;
-  width: 5.75rem;
-  height: 5.75rem;
+  width: clamp(8.5rem, 26vw, 10.75rem);
+  height: clamp(8.5rem, 26vw, 10.75rem);
   pointer-events: none;
   animation: guilda-stamp-float 6.5s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .guilda-hero-stamp {
+    left: -2%;
+    top: 2%;
+    width: clamp(9.5rem, 28vw, 11.5rem);
+    height: clamp(9.5rem, 28vw, 11.5rem);
+  }
 }
 
 .guilda-hero-stamp svg {

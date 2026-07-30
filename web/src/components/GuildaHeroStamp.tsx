@@ -8,8 +8,8 @@ type GuildaHeroStampProps = {
 const STAMP_TEXT = '✦ VAGAS UX ✦ GUILDA DO VAGUINER'
 const CENTER = 104
 const CIRCLE_R = 96
-const CLIP_R = 88
-const RING_R = 52
+const CLIP_R = 90
+const RING_R = 70
 const RING_LENGTH = 2 * Math.PI * RING_R
 
 export function GuildaHeroStamp({
@@ -79,10 +79,10 @@ export function GuildaHeroStamp({
             ) : null}
             <text
               fill="#07003A"
-              fontSize="10.5"
+              fontSize="13"
               fontWeight="800"
               fontFamily="Lato, system-ui, sans-serif"
-              letterSpacing="0"
+              letterSpacing="0.04em"
             >
               <textPath
                 href={`#${pathId}`}
@@ -98,21 +98,21 @@ export function GuildaHeroStamp({
 
         <g className="guilda-hero-stamp-arrow">
           <path
-            d="M92 116L116 92"
+            d="M88 120L120 88"
             stroke="#07003A"
-            strokeWidth="6"
+            strokeWidth="5.5"
             strokeLinecap="round"
           />
           <path
-            d="M116 92H98"
+            d="M120 88H100"
             stroke="#07003A"
-            strokeWidth="6"
+            strokeWidth="5.5"
             strokeLinecap="round"
           />
           <path
-            d="M116 92V110"
+            d="M120 88V112"
             stroke="#07003A"
-            strokeWidth="6"
+            strokeWidth="5.5"
             strokeLinecap="round"
           />
         </g>
