@@ -1,0 +1,346 @@
+{
+  "name": "Collector Greenhouse",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1216,
+        992
+      ],
+      "id": "d282d674-24ac-47e7-a45b-7d3379264539",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3f08ace-0bb9-4e0b-98bb-70f2dc2793bc",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "1ec5b42a-778c-48b9-8980-9386adce1c45",
+              "name": "company",
+              "value": "={{ $json.company_name }}",
+              "type": "string"
+            },
+            {
+              "id": "e3be7930-bd2c-40be-9589-a2308c382819",
+              "name": "url",
+              "value": "={{ $json.absolute_url }}",
+              "type": "string"
+            },
+            {
+              "id": "cd7f5d40-167c-48a3-89de-faf0d5d09384",
+              "name": "published_at",
+              "value": "={{ $json.first_published }}",
+              "type": "string"
+            },
+            {
+              "id": "892efb70-5803-4985-95f2-b038c830c2ff",
+              "name": "location",
+              "value": "={{ $json.location }}",
+              "type": "string"
+            },
+            {
+              "id": "1141f50a-23e2-473b-9c6a-9ba8ca35a72e",
+              "name": "source",
+              "value": "Greenhouse",
+              "type": "string"
+            },
+            {
+              "id": "ec066c1a-fc18-46b3-b5f5-8a0dd7f1b01c",
+              "name": "source_job_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "70cf5abb-85e5-44ff-8535-785a769b4d18",
+              "name": "description",
+              "value": "={{$json.description_text}}",
+              "type": "string"
+            },
+            {
+              "id": "07f1f3e7-b902-4647-9e6e-3f1abc9f0b27",
+              "name": "IsRelevant",
+              "value": "={{$json.isRelevant}}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -592,
+        992
+      ],
+      "id": "e91b3d26-a9aa-4786-bbc9-4ea6d058cb16",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "jobs",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1008,
+        992
+      ],
+      "id": "b76a635c-61a8-40be-90fc-6a4af1880f04",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "90cb0038-b73c-48f4-a4fc-9a92689b21c4",
+              "leftValue": "={{$json.isRelevant}}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        -384,
+        992
+      ],
+      "id": "9c3b5b02-b98d-477b-a378-79fbca3b0f31",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1440,
+        992
+      ],
+      "id": "12e4fffc-3f2f-4745-8b1d-2ca1c40a810d",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "function decodeHtmlEntities(str) {\n  return String(str || '')\n    .replace(/&lt;/g, '<')\n    .replace(/&gt;/g, '>')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&');\n}\n\nfunction cleanHtml(input) {\n  if (!input) return '';\n\n  const decoded = decodeHtmlEntities(input);\n\n  return decoded\n    .replace(/<script[\\s\\S]*?<\\/script>/gi, ' ')\n    .replace(/<style[\\s\\S]*?<\\/style>/gi, ' ')\n    .replace(/<\\/p>|<\\/div>|<\\/li>|<\\/h\\d>|<br\\s*\\/?>/gi, '\\n')\n    .replace(/<li[^>]*>/gi, '- ')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\n\\s*\\n/g, '\\n\\n')\n    .replace(/[ \\t]+/g, ' ')\n    .replace(/\\s+\\n/g, '\\n')\n    .trim();\n}\n\nfunction normalizeText(input) {\n  return cleanHtml(input)\n    .toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nfunction normalizePhrase(phrase) {\n  return String(phrase || '')\n    .toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nfunction findMatches(text, phrases) {\n  return phrases\n    .map((phrase) => normalizePhrase(phrase))\n    .filter((phrase) => phrase && text.includes(phrase));\n}\n\nconst directTitlePhrases = [\n  'product designer',\n  'ux designer',\n  'ui designer',\n  'user experience designer',\n  'interaction designer',\n  'service designer',\n  'content designer',\n  'conversation designer',\n  'visual designer',\n  'graphic designer',\n  'designer grafico',\n  'motion designer',\n  'design technologist',\n  'design manager',\n  'design lead',\n  'head of design',\n  'creative director',\n  'art director',\n  'ux researcher',\n  'user researcher',\n  'design researcher',\n  'product design',\n  'design systems',\n  'design ops'\n];\n\nconst ambiguousTitlePhrases = [\n  'design engineer',\n  'design systems engineer',\n  'design system engineer'\n];\n\nconst negativeTitlePhrases = [\n  'age appropriate design',\n  'safeguards',\n  'enforcement analyst',\n  'trust and safety',\n  'trust safety',\n  'policy',\n  'compliance',\n  'privacy',\n  'legal',\n  'security',\n  'research engineer',\n  'research scientist',\n  'software engineer',\n  'machine learning',\n  'data center',\n  'construction',\n  'infrastructure',\n  'facilities',\n  'industrial',\n  'manufacturing',\n  'operations',\n  'economist',\n  'account executive',\n  'contracts manager',\n  'recruiter',\n  'scientist'\n];\n\nconst descriptionSupportPhrases = [\n  'user experience',\n  'product design',\n  'interaction design',\n  'visual design',\n  'graphic design',\n  'design system',\n  'design systems',\n  'design ops',\n  'content design',\n  'figma',\n  'prototype',\n  'wireframe',\n  'usability',\n  'user centered',\n  'human centered',\n  'portfolio',\n  'motion',\n  'typography',\n  'craft',\n  'frontend',\n  'front end',\n  'ux',\n  'ui'\n];\n\nreturn items.map((item) => {\n  const json = item.json;\n\n  const rawTitle = json.title || '';\n  const rawDescription = json.content || json.description_text || json.description || '';\n\n  const title = normalizeText(rawTitle);\n  const description = normalizeText(rawDescription);\n\n  const directTitleMatches = findMatches(title, directTitlePhrases);\n  const ambiguousTitleMatches = findMatches(title, ambiguousTitlePhrases);\n  const negativeTitleMatches = findMatches(title, negativeTitlePhrases);\n  const descriptionMatches = findMatches(description, descriptionSupportPhrases);\n\n  const isRelevant =\n    negativeTitleMatches.length === 0 &&\n    (\n      directTitleMatches.length > 0 ||\n      (ambiguousTitleMatches.length > 0 && descriptionMatches.length > 0)\n    );\n\n  json.description_text = cleanHtml(rawDescription);\n  json.isRelevant = isRelevant;\n  json.matchReason = {\n    directTitleMatches,\n    ambiguousTitleMatches,\n    negativeTitleMatches,\n    descriptionMatches,\n    isRelevant\n  };\n\n  return item;\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        992
+      ],
+      "id": "dcbe93bb-492c-436a-a646-5727833c2958",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/jobs?on_conflict=source,source_job_id",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "supabaseApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "resolution=merge-duplicates,return=representation"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ (() => { const loc = $json.location; let location = null; if (loc && typeof loc === 'object') location = loc.name || null; else if (typeof loc === 'string') { try { const parsed = JSON.parse(loc); location = (parsed && parsed.name) ? parsed.name : loc; } catch (e) { location = loc; } } return JSON.stringify({ source: $json.source, source_job_id: String($json.source_job_id), company: $json.company, title: $json.title, description: $json.description || null, url: $json.url, location, published_at: $json.published_at || null }); })() }}",
+        "options": {}
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Upsert job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        0,
+        992
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "credentials": {
+        "supabaseApi": {
+          "id": "VtBtjog6BXvbtAno",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "age-60-days-filter-gh",
+              "leftValue": "={{ (() => { const pub = $json.published_at; if (!pub) return true; const t = new Date(pub).getTime(); if (Number.isNaN(t)) return true; return (Date.now() - t) <= (60 * 24 * 60 * 60 * 1000); })() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "name": "Max age 60 days",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        -192,
+        992
+      ]
+    }
+  ],
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Max age 60 days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Max age 60 days": {
+      "main": [
+        [
+          {
+            "node": "Upsert job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp"
+  }
+}

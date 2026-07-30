@@ -1,0 +1,446 @@
+{
+  "name": "Collector Remotar",
+  "nodes": [
+    {
+      "id": "6b0baa09-a550-44be-9e4b-815a9e9807bc",
+      "name": "When clicking Execute workflow",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        96
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "e3a8f47c-a202-4e16-ba25-d25f8dabce66",
+      "name": "Start Remotar fetch",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        192
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "kickoff-flag",
+              "name": "ok",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "7d1682ce-e3a6-4dc5-91ce-7f0d9f1c599f",
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        288
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "c0d50e4c-2083-427a-8c45-c26693be89e4",
+      "name": "Fetch Remotar UX/UI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.remotar.com.br/jobs",
+        "authentication": "none",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "categoryId",
+              "value": "6"
+            },
+            {
+              "name": "per_page",
+              "value": "50"
+            },
+            {
+              "name": "page",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  {
+                    "type": "qs",
+                    "name": "page",
+                    "value": "={{ $response.body.meta.current_page + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.meta.current_page >= $response.body.meta.last_page }}",
+              "limitPagesFetched": true,
+              "maxRequests": 10,
+              "requestInterval": 300
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "4518940a-7fea-48ec-9547-26464d97fbe9",
+      "name": "Combine Remotar categories",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        672,
+        176
+      ],
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 3
+      }
+    },
+    {
+      "id": "22c3045b-f8a6-45c3-8df8-8e857e39a746",
+      "name": "Fetch Remotar Design",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        192
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.remotar.com.br/jobs",
+        "authentication": "none",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "categoryId",
+              "value": "5"
+            },
+            {
+              "name": "per_page",
+              "value": "50"
+            },
+            {
+              "name": "page",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  {
+                    "type": "qs",
+                    "name": "page",
+                    "value": "={{ $response.body.meta.current_page + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.meta.current_page >= $response.body.meta.last_page }}",
+              "limitPagesFetched": true,
+              "maxRequests": 10,
+              "requestInterval": 300
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "f08b16d8-76c4-4918-8ad6-63d0dc9cd23d",
+      "name": "Fetch Remotar Motion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        384
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.remotar.com.br/jobs",
+        "authentication": "none",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "categoryId",
+              "value": "11"
+            },
+            {
+              "name": "per_page",
+              "value": "50"
+            },
+            {
+              "name": "page",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  {
+                    "type": "qs",
+                    "name": "page",
+                    "value": "={{ $response.body.meta.current_page + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.meta.current_page >= $response.body.meta.last_page }}",
+              "limitPagesFetched": true,
+              "maxRequests": 5,
+              "requestInterval": 300
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "8c6f2f4e-c95c-4fc5-877e-088836cf5d21",
+      "name": "Map and dedupe Remotar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        192
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const SKIP_SOURCES = new Set(['gupy', 'solides', 'trampos']);\nconst MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;\nconst byId = new Map();\nfor (const item of items) {\n  const rows = Array.isArray(item.json?.data) ? item.json.data : [];\n  for (const job of rows) {\n    if (!job?.id) continue;\n    byId.set(String(job.id), job);\n  }\n}\nfunction hostOf(url) {\n  try { return new URL(url).hostname.toLowerCase(); } catch { return ''; }\n}\nfunction stripHtml(html) {\n  return String(html || '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\n}\nconst out = [];\nfor (const job of byId.values()) {\n  const integration = String(job.integrationSource || '').toLowerCase();\n  const external = String(job.externalLink || '').trim();\n  const externalHost = hostOf(external);\n  let skipReason = null;\n  if (SKIP_SOURCES.has(integration)) skipReason = 'covered_by_' + integration;\n  else if (externalHost.includes('gupy.io')) skipReason = 'external_gupy';\n  else if (externalHost.includes('solides')) skipReason = 'external_solides';\n  else if (externalHost.includes('trampos.co')) skipReason = 'external_trampos';\n  const publishedAt = job.createdAt || job.updatedAt || null;\n  const publishedMs = publishedAt ? new Date(publishedAt).getTime() : NaN;\n  const withinAge = Number.isNaN(publishedMs) ? true : (Date.now() - publishedMs) <= MAX_AGE_MS;\n  if (!withinAge) skipReason = skipReason || 'older_than_60_days';\n  const company = (job.company && job.company.name) || job.companyDisplayName || 'Empresa ocultada';\n  const title = String(job.title || '').trim();\n  if (!title) continue;\n  const remotarUrl = 'https://remotar.com.br/job/' + job.id;\n  const location = job.type === 'remote'\n    ? 'Remota'\n    : [job.city, job.state].filter(Boolean).join(', ') || 'Remota';\n  out.push({\n    json: {\n      source: 'Remotar',\n      source_job_id: String(job.id),\n      company: String(company).trim(),\n      title,\n      description: stripHtml(job.description) || null,\n      url: remotarUrl,\n      location,\n      published_at: publishedAt,\n      integration_source: integration || null,\n      skip: Boolean(skipReason),\n      skip_reason: skipReason,\n    },\n  });\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "c47832a8-594e-4311-aae0-088cd4f0bc53",
+      "name": "Keep non-overlapping jobs",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1120,
+        192
+      ],
+      "parameters": {
+        "looseTypeValidation": true,
+        "conditions": {
+          "combinator": "and",
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "keep-not-skip",
+              "leftValue": "={{ $json.skip }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "4c1f374c-94be-42aa-8b8c-80c3fab8f787",
+      "name": "Upsert job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1344,
+        192
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/rpc/upsert_collector_job",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "supabaseApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ p_source: $json.source, p_source_job_id: String($json.source_job_id), p_company: $json.company, p_title: $json.title, p_description: $json.description || null, p_url: $json.url, p_location: $json.location || null, p_published_at: $json.published_at || null }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "credentials": {
+        "supabaseApi": {
+          "id": "VtBtjog6BXvbtAno",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking Execute workflow": {
+      "main": [
+        [
+          {
+            "node": "Start Remotar fetch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Remotar fetch": {
+      "main": [
+        [
+          {
+            "node": "Fetch Remotar UX/UI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Remotar Design",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Remotar Motion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Start Remotar fetch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Remotar UX/UI": {
+      "main": [
+        [
+          {
+            "node": "Combine Remotar categories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Remotar categories": {
+      "main": [
+        [
+          {
+            "node": "Map and dedupe Remotar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Remotar Design": {
+      "main": [
+        [
+          {
+            "node": "Combine Remotar categories",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Fetch Remotar Motion": {
+      "main": [
+        [
+          {
+            "node": "Combine Remotar categories",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Map and dedupe Remotar": {
+      "main": [
+        [
+          {
+            "node": "Keep non-overlapping jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep non-overlapping jobs": {
+      "main": [
+        [
+          {
+            "node": "Upsert job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp"
+  }
+}
