@@ -39,13 +39,20 @@ function SectionIntro({
   eyebrow,
   title,
   description,
+  sticky = true,
 }: {
   eyebrow: string
   title: ReactNode
   description: string
+  sticky?: boolean
 }) {
   return (
-    <ScrollReveal className="max-w-xl lg:sticky lg:top-28 lg:self-start">
+    <ScrollReveal
+      className={cn(
+        'max-w-xl',
+        sticky && 'lg:sticky lg:top-28 lg:self-start',
+      )}
+    >
       <SectionEyebrow>{eyebrow}</SectionEyebrow>
       <h2 className="mt-4 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
         {title}
@@ -320,6 +327,7 @@ export function GuildaPage() {
       >
         <div className="mx-auto max-w-6xl">
           <SectionIntro
+            sticky={false}
             eyebrow="Relatos de vaguiners"
             title={
               <>

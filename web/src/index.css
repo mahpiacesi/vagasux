@@ -716,20 +716,34 @@
   color: color-mix(in srgb, var(--color-brand-200) 85%, white);
 }
 
-.guilda-testimonials-grid {
-  perspective: 1200px;
+.guilda-quote-lanes:hover .guilda-quote-lane-track {
+  animation-play-state: paused;
 }
 
-.guilda-testimonial-card--from-left.guilda-reveal:not(.guilda-reveal--visible) {
-  transform: translateY(32px) translateX(-18px);
+.guilda-quote-lane-track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  animation: guilda-quote-lane 42s linear infinite;
 }
 
-.guilda-testimonial-card--from-right.guilda-reveal:not(.guilda-reveal--visible) {
-  transform: translateY(32px) translateX(18px);
+.guilda-quote-lane--reverse .guilda-quote-lane-track {
+  animation-direction: reverse;
+  animation-duration: 48s;
 }
 
-.guilda-testimonial-card.guilda-reveal--visible {
-  transform: translateY(0) translateX(0);
+.guilda-quote-card:hover {
+  transform: translateY(-4px) rotate(0deg) scale(1.02);
+  box-shadow: 0 24px 52px -28px rgb(7 0 58 / 0.38);
+}
+
+@keyframes guilda-quote-lane {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -760,9 +774,8 @@
   .guilda-hero-svg--motion #guilda-sparkle-b,
   .guilda-hero-svg--motion #guilda-wind,
   .guilda-reveal,
-  .guilda-testimonial-card--from-left.guilda-reveal:not(.guilda-reveal--visible),
-  .guilda-testimonial-card--from-right.guilda-reveal:not(.guilda-reveal--visible),
-  .guilda-testimonial-card:hover {
+  .guilda-quote-lane-track,
+  .guilda-quote-card:hover {
     animation: none;
     opacity: 1;
     transform: none;

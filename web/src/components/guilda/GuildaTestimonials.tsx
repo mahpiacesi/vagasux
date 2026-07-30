@@ -1,42 +1,121 @@
 import { Quotes } from '@phosphor-icons/react'
 import type { GuildaTestimonial } from '@/data/guilda'
-import { ScrollReveal } from '@/components/guilda/ScrollReveal'
 import { cn } from '@/lib/utils'
 
-const toneClass: Record<GuildaTestimonial['tone'], string> = {
-  cream: 'border border-neutral-500/10 bg-neutral-100 text-neutral-500',
-  indigo: 'bg-brand-100 text-brand-500',
-  mustard: 'bg-complementary-200 text-neutral-500',
-  navy: 'bg-neutral-500 text-neutral-100',
-  lilac: 'bg-brand-200/80 text-brand-500',
-  soft: 'border border-complementary-300/50 bg-complementary-100 text-neutral-500',
+const toneStyles: Record<
+  GuildaTestimonial['tone'],
+  { shell: string; badge: string; quote: string }
+> = {
+  cream: {
+    shell:
+      'border border-neutral-500/10 bg-gradient-to-br from-neutral-100 via-neutral-100 to-brand-100/50 text-neutral-500 shadow-[0_18px_40px_-24px_rgb(7_0_58_/_0.28)]',
+    badge: 'bg-brand-100 text-brand-500',
+    quote: 'text-brand-400/20',
+  },
+  indigo: {
+    shell:
+      'border border-brand-200/60 bg-gradient-to-br from-brand-100 via-brand-100 to-brand-200/40 text-brand-500 shadow-[0_18px_40px_-24px_rgb(36_46_144_/_0.35)]',
+    badge: 'bg-white/70 text-brand-500',
+    quote: 'text-brand-500/15',
+  },
+  mustard: {
+    shell:
+      'border border-complementary-300/50 bg-gradient-to-br from-complementary-100 via-complementary-200 to-complementary-300/60 text-neutral-500 shadow-[0_18px_40px_-24px_rgb(246_209_110_/_0.45)]',
+    badge: 'bg-neutral-500/10 text-neutral-500',
+    quote: 'text-neutral-500/12',
+  },
+  navy: {
+    shell:
+      'border border-neutral-500 bg-gradient-to-br from-neutral-500 via-neutral-500 to-brand-500 text-neutral-100 shadow-[0_22px_48px_-24px_rgb(7_0_58_/_0.55)]',
+    badge: 'bg-complementary-300/20 text-complementary-300',
+    quote: 'text-complementary-300/15',
+  },
+  lilac: {
+    shell:
+      'border border-brand-200/50 bg-gradient-to-br from-brand-100 via-brand-200/70 to-brand-100 text-brand-500 shadow-[0_18px_40px_-24px_rgb(93_107_246_/_0.3)]',
+    badge: 'bg-white/65 text-brand-500',
+    quote: 'text-brand-500/15',
+  },
+  soft: {
+    shell:
+      'border border-complementary-300/40 bg-gradient-to-br from-complementary-100 via-neutral-100 to-brand-100/40 text-neutral-500 shadow-[0_18px_40px_-24px_rgb(7_0_58_/_0.22)]',
+    badge: 'bg-complementary-200 text-complementary-500',
+    quote: 'text-brand-400/18',
+  },
 }
 
-const layoutClass = [
-  'md:col-span-7 md:row-span-2',
-  'md:col-span-5',
-  'md:col-span-4',
-  'md:col-span-4',
-  'md:col-span-4',
-  'md:col-span-6 md:col-start-4',
-] as const
+function QuoteCard({
+  item,
+  tilt,
+}: {
+  item: GuildaTestimonial
+  tilt: 'left' | 'right' | 'none'
+}) {
+  const styles = toneStyles[item.tone]
 
-const sizeClass = {
-  lg: 'min-h-[16rem] p-7 md:min-h-[20rem] md:p-9',
-  md: 'min-h-[12rem] p-6 md:p-7',
-  sm: 'min-h-[11rem] p-6',
-} as const
-
-function cardSize(index: number): keyof typeof sizeClass {
-  if (index === 0) return 'lg'
-  if (index === 1 || index === 5) return 'md'
-  return 'sm'
+  return (
+    <article
+      className={cn(
+        'guilda-quote-card relative w-[16.5rem] shrink-0 overflow-hidden rounded-2xl p-4 backdrop-blur-sm transition-[transform,box-shadow] duration-300 md:w-[18rem] md:p-5',
+        styles.shell,
+        tilt === 'left' && '-rotate-1',
+        tilt === 'right' && 'rotate-1',
+      )}
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/25 to-transparent"
+        aria-hidden
+      />
+      <Quotes
+        size={22}
+        weight="fill"
+        className={cn('absolute top-3.5 right-3.5', styles.quote)}
+        aria-hidden
+      />
+      <p className="relative line-clamp-4 text-[0.8125rem] leading-relaxed md:text-sm">
+        “{item.quote}”
+      </p>
+      <footer className="relative mt-4 flex items-center gap-2">
+        <span
+          className={cn(
+            'rounded-md px-2 py-0.5 text-[0.62rem] font-bold tracking-wide uppercase',
+            styles.badge,
+          )}
+        >
+          {item.name}
+        </span>
+      </footer>
+    </article>
+  )
 }
 
-function quoteSize(index: number) {
-  if (index === 0) return 'text-lg leading-relaxed md:text-xl'
-  if (index === 1 || index === 5) return 'text-[0.95rem] leading-relaxed md:text-base'
-  return 'text-sm leading-relaxed'
+function QuoteLane({
+  items,
+  reverse = false,
+}: {
+  items: readonly GuildaTestimonial[]
+  reverse?: boolean
+}) {
+  const loop = [...items, ...items]
+
+  return (
+    <div
+      className={cn(
+        'guilda-quote-lane overflow-hidden py-1',
+        reverse && 'guilda-quote-lane--reverse',
+      )}
+    >
+      <div className="guilda-quote-lane-track flex w-max gap-3 md:gap-4">
+        {loop.map((item, index) => (
+          <QuoteCard
+            key={`${item.id}-${index}`}
+            item={item}
+            tilt={index % 3 === 0 ? 'left' : index % 3 === 1 ? 'right' : 'none'}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export function GuildaTestimonials({
@@ -44,61 +123,25 @@ export function GuildaTestimonials({
 }: {
   items: readonly GuildaTestimonial[]
 }) {
+  const topRow = items.filter((_, index) => index % 2 === 0)
+  const bottomRow = items.filter((_, index) => index % 2 === 1)
+
   return (
-    <ul
-      className="guilda-testimonials-grid mt-10 grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5"
+    <div
+      className="guilda-quote-lanes relative mt-12 space-y-3 md:mt-14 md:space-y-4"
       aria-label="Depoimentos de membros da Guilda"
     >
-      {items.map((item, index) => (
-        <ScrollReveal
-          key={item.id}
-          as="li"
-          delayMs={index * 90}
-          className={cn(
-            'guilda-testimonial-card',
-            layoutClass[index],
-            index % 2 === 0
-              ? 'guilda-testimonial-card--from-left'
-              : 'guilda-testimonial-card--from-right',
-          )}
-        >
-          <article
-            className={cn(
-              'relative flex h-full flex-col justify-between overflow-hidden rounded-3xl transition-[transform,box-shadow] duration-500 ease-out',
-              sizeClass[cardSize(index)],
-              toneClass[item.tone],
-              'hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgb(7_0_58_/_0.35)]',
-            )}
-          >
-            <Quotes
-              size={index === 0 ? 40 : 28}
-              weight="fill"
-              className={cn(
-                'pointer-events-none absolute top-5 right-5 opacity-[0.14]',
-                item.tone === 'navy' ? 'text-complementary-300' : 'text-brand-400',
-              )}
-              aria-hidden
-            />
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-complementary-100/90 to-transparent md:w-16"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-neutral-100 to-transparent md:w-16"
+        aria-hidden
+      />
 
-            <p className={cn('relative max-w-prose', quoteSize(index))}>
-              “{item.quote}”
-            </p>
-
-            <footer className="relative mt-6 flex items-center gap-3">
-              <span
-                className={cn(
-                  'size-2 shrink-0 rounded-full',
-                  item.tone === 'navy'
-                    ? 'bg-complementary-300'
-                    : 'bg-brand-400',
-                )}
-                aria-hidden
-              />
-              <p className="text-sm font-black tracking-tight">{item.name}</p>
-            </footer>
-          </article>
-        </ScrollReveal>
-      ))}
-    </ul>
+      <QuoteLane items={topRow} />
+      <QuoteLane items={bottomRow} reverse />
+    </div>
   )
 }
