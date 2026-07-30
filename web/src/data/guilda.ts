@@ -22,13 +22,12 @@ export const guildaPainPoints = [
   },
   {
     title: 'Falta de mentoria de verdade',
-    description:
-      'Você estuda, mas sente que está sozinha. Faltam feedbacks, conexões e um espaço seguro para tirar dúvidas ou errar enquanto aprende.',
+    description: 'Você estuda, mas sente que está só.',
   },
   {
     title: 'Insegurança que trava',
     description:
-      'A comparação com quem já está na área paralisa. E começa a dúvida: será que eu sou designer boa o suficiente para UX?',
+      'A comparação com quem já está na área paralisa. E começa a dúvida: será que eu sou designer bom o suficiente para UX?',
   },
 ] as const
 
@@ -58,7 +57,7 @@ export const guildaBenefits: GuildaBenefit[] = [
     Icon: MapTrifold,
   },
   {
-    title: 'Você não está sozinha',
+    title: 'Você não está só',
     description:
       'A comunidade acompanha sua evolução, celebra vitórias e ajuda a seguir quando a jornada fica difícil.',
     Icon: UsersThree,
