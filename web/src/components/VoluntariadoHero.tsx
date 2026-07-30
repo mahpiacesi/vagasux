@@ -123,7 +123,7 @@ export function VoluntariadoHero() {
               variant="outline"
               className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
             >
-              <a href={`#${voluntariadoHashes.comoESer}`}>
+              <a href={`#${voluntariadoHashes.comoFazerParte}`}>
                 Quero ser voluntário
               </a>
             </Button>
