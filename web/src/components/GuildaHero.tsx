@@ -1,4 +1,4 @@
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowDown } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { GuildaHeroIllustration } from '@/components/GuildaHeroIllustration'
 import { guildaJoinUrl } from '@/data/guilda'
@@ -22,7 +22,7 @@ export function GuildaHero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-10">
         <div className="max-w-xl lg:max-w-none">
-          <p className="guilda-hero-badge mural-fade inline-flex items-center rounded-lg border-2 border-neutral-500 bg-complementary-200 px-3.5 py-1.5 text-[0.68rem] font-black tracking-[0.22em] text-neutral-500 uppercase shadow-[3px_3px_0_0_var(--color-neutral-500)] md:text-xs">
+          <p className="mural-fade text-xs font-bold tracking-[0.22em] text-brand-400 uppercase md:text-sm">
             Comunidade exclusiva
           </p>
 
@@ -38,11 +38,11 @@ export function GuildaHero() {
             seletivas e descontos exclusivos para membros.
           </p>
 
-          <div className="mural-fade mural-fade-delay-3 mt-9 flex flex-wrap items-center gap-4">
+          <div className="mural-fade mural-fade-delay-3 mt-9 flex flex-wrap items-center gap-3">
             <Button
               asChild
               size="lg"
-              className="guilda-hero-cta h-12 rounded-xl border-2 border-neutral-500 bg-complementary-300 px-7 text-base font-black text-neutral-500 shadow-[4px_4px_0_0_var(--color-neutral-500)] transition-[transform,box-shadow,background-color] duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-complementary-200 hover:shadow-[2px_2px_0_0_var(--color-neutral-500)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+              className="h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 shadow-md shadow-brand-500/10 hover:bg-complementary-200"
             >
               <a
                 href={guildaJoinUrl}
@@ -52,19 +52,17 @@ export function GuildaHero() {
                 Vem pra Guilda
               </a>
             </Button>
-
-            <a
-              href={`#${guildaHashes.planos}`}
-              className="group inline-flex items-center gap-1.5 text-base font-bold text-neutral-500 transition-colors hover:text-brand-500"
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-xl border-neutral-500/15 px-7 text-base font-bold"
             >
-              Veja os planos
-              <ArrowRight
-                size={18}
-                weight="bold"
-                className="transition-transform duration-200 group-hover:translate-x-0.5"
-                aria-hidden
-              />
-            </a>
+              <a href={`#${guildaHashes.planos}`}>
+                Ver planos
+                <ArrowDown size={16} weight="bold" className="ml-1.5" aria-hidden />
+              </a>
+            </Button>
           </div>
         </div>
 

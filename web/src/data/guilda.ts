@@ -14,17 +14,6 @@ import {
 
 export const guildaJoinUrl = 'https://nas.io/vagasux' as const
 
-export const guildaMarqueeItems = [
-  'Mentorias em grupo',
-  'WhatsApp exclusivo',
-  'Mini-desafios',
-  'Seletivas',
-  'Descontos',
-  'Encontros quinzenais',
-  'Vaguiners',
-  'Portfólio na prática',
-] as const
-
 export const guildaPainPoints = [
   {
     title: 'Cursos caros, portas fechadas',

@@ -701,9 +701,7 @@
   .guilda-hero-svg--motion #guilda-shield,
   .guilda-hero-svg--motion #guilda-sparkle-a,
   .guilda-hero-svg--motion #guilda-sparkle-b,
-  .guilda-hero-svg--motion #guilda-wind,
-  .guilda-hero-cta:hover,
-  .guilda-hero-cta:active {
+  .guilda-hero-svg--motion #guilda-wind {
     animation: none;
     transform: none;
   }

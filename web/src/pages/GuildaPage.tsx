@@ -2,7 +2,6 @@ import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { GuildaHero } from '@/components/GuildaHero'
-import { Marquee } from '@/components/Marquee'
 import { NewsletterSection } from '@/components/NewsletterSection'
 import { Button } from '@/components/ui/button'
 import {
@@ -10,7 +9,6 @@ import {
   guildaFaq,
   guildaHighlights,
   guildaJoinUrl,
-  guildaMarqueeItems,
   guildaPainPoints,
   guildaPlans,
   guildaTestimonials,
@@ -97,8 +95,6 @@ export function GuildaPage() {
   return (
     <main>
       <GuildaHero />
-
-      <Marquee items={[...guildaMarqueeItems]} />
 
       <nav
         aria-label="Seções da Guilda"
