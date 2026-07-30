@@ -565,21 +565,21 @@
 
 .guilda-hero-stamp {
   position: absolute;
-  left: 0;
-  top: 4%;
+  left: 2%;
+  top: 6%;
   z-index: 3;
-  width: clamp(8.5rem, 26vw, 10.75rem);
-  height: clamp(8.5rem, 26vw, 10.75rem);
+  width: clamp(7rem, 22vw, 8.5rem);
+  height: clamp(7rem, 22vw, 8.5rem);
   pointer-events: none;
   animation: guilda-stamp-float 6.5s ease-in-out infinite;
 }
 
 @media (min-width: 768px) {
   .guilda-hero-stamp {
-    left: -2%;
-    top: 2%;
-    width: clamp(9.5rem, 28vw, 11.5rem);
-    height: clamp(9.5rem, 28vw, 11.5rem);
+    left: 0;
+    top: 5%;
+    width: clamp(7.5rem, 24vw, 9rem);
+    height: clamp(7.5rem, 24vw, 9rem);
   }
 }
 

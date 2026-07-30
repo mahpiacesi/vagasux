@@ -60,7 +60,7 @@ export function GuildaHeroStamp({
           cx={CENTER}
           cy={CENTER}
           r={CIRCLE_R}
-          fill="#A8B0FF"
+          fill="#E8EBFF"
           stroke="#07003A"
           strokeWidth="5"
         />
