@@ -1,0 +1,46 @@
+---
+description: Manter resumo visual de sessão em docs/agent-handoff.md para retomadas de Cloud Agent
+alwaysApply: true
+---
+
+# Agent handoff (Cloud Agent)
+
+O chat pode ficar **visualmente vazio** após summarization ou ao retomar no dia seguinte. Compense com um handoff persistente no repo.
+
+## Ao **iniciar ou retomar** uma sessão
+
+1. Leia `docs/agent-handoff.md`.
+2. Na **primeira resposta** ao usuário (mesmo que o chat pareça vazio), **sempre** inclua um bloco **"📋 Handoff"** no topo, antes de responder ao pedido. Formato:
+
+   ```
+   📋 Handoff (atualizado em DD/MM)
+
+   Status: [1 linha — o que está ok / pendente]
+
+   Feito recentemente:
+   - …
+   - …
+
+   Próximo passo:
+   1. …
+
+   Detalhe completo: docs/agent-handoff.md
+   ```
+
+3. Se o usuário só cumprimentar ou retomar sem pedido novo, o Handoff **é** a resposta principal — não deixe a conversa “vazia”.
+
+## Ao **encerrar** ou antes de pausar trabalho relevante
+
+Atualize `docs/agent-handoff.md`:
+
+- `Última atualização` (data)
+- seção **Feito recentemente** (substituir/append — manter só o que importa, ~2 semanas)
+- seção **Próximo passo esperado** (1–3 itens claros)
+- tabela **PRs / branches em aberto**
+- **Blockers conhecidos** se existirem
+
+Commit o handoff junto com o restante do trabalho (mesmo PR ou commit dedicado).
+
+## Tom
+
+Handoff é para **humano retomar contexto**, não dump técnico. Frases curtas, links para PRs/docs, sem jargão desnecessário.
