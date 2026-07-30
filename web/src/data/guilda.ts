@@ -217,32 +217,32 @@ export const guildaFaq = [
   {
     question: 'O que eu recebo ao entrar na Guilda do Vaguiner?',
     answer:
-      'Acesso ao grupo exclusivo no WhatsApp, encontros e mentorias em grupo, gravações, mini-desafios, seletivas com desconto e participação nos bastidores da comunidade. Tudo pensado para quem está migrando ou começando em UX.',
+      'Você tem acesso a lives gravadas, possibilidade de agendar mentorias com profissionais do mercado, simulações de entrevistas em grupo, seletivas e descontos exclusivos em cursos/eventos e participação nos bastidores da VagasUX. Tudo isso em um espaço seguro e colaborativo.',
   },
   {
-    question: 'Preciso já trabalhar com UX para entrar?',
+    question: 'Preciso já trabalhar com UX pra entrar?',
     answer:
-      'Não. A Guilda é para quem está migrando, estudando ou começando na área. O foco é apoiar iniciantes e pessoas em transição — não exigimos experiência prévia formal.',
+      'Nada disso! A Guilda é feita justamente pra quem tá migrando, começando do zero ou tentando organizar o caos de conteúdos. Aqui você aprende no seu ritmo e com apoio de quem já passou pelo mesmo caminho.',
   },
   {
     question: 'Como funcionam as mentorias avulsas?',
     answer:
-      'São sessões individuais ou pontuais com mentores da comunidade, contratadas à parte. Ideal para feedback de portfólio, simulação de entrevista ou direcionamento de carreira.',
+      'Para acessar as mentorias é necessário fazer parte da Guilda, você pode adquirir mentorias individuais de 30min por R$10 sempre que quiser. É só escolher a pauta (portfólio, case, entrevista…) e agendar com o mentor disponível.',
   },
   {
     question: 'E se eu não conseguir acompanhar tudo?',
     answer:
-      'Sem problema. Os encontros ficam gravados e você participa no seu ritmo. A Guilda foi pensada para jornadas reais — com trabalho, estudo e vida acontecendo ao mesmo tempo.',
+      'Pode ficar tranquilo: os conteúdos são sempre gravados e pensados pra serem documentados na guilda. Você participa quando puder, e a comunidade vai estar aqui quando voltar.',
   },
   {
     question: 'Tem certificado?',
     answer:
-      'Não emitimos certificado formal. O valor está na troca, nas mentorias e no apoio da comunidade — não em um papel no fim.',
+      'O foco da Guilda é aprendizado prático. Por enquanto não emitimos certificado, mas garantimos que a troca muitas vezes vale mais que papel!',
   },
   {
     question: 'Posso cancelar quando quiser?',
     answer:
-      'Sim. A assinatura é gerenciada pela plataforma Nas.io. Você pode cancelar conforme as regras do plano escolhido.',
+      'Sim! O plano é mensal e sem fidelidade. Se quiser sair, pode cancelar direto pela plataforma. Mas a gente aposta que você vai querer ficar 💛',
   },
 ] as const
 
