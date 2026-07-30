@@ -10,6 +10,10 @@ export const routes = {
   parcerias: '/parcerias',
 } as const
 
+export const termosHashes = {
+  cookies: 'cookies',
+} as const
+
 export const contact = {
   email: 'vagasux@gmail.com',
 } as const

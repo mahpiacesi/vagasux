@@ -6,7 +6,7 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
-import { analyticsPrivacy, contact } from '@/lib/siteLinks'
+import { analyticsPrivacy, contact, termosHashes } from '@/lib/siteLinks'
 
 const LAST_UPDATED = '30 de julho de 2026'
 
@@ -229,7 +229,7 @@ export function TermosEPoliticasPage() {
         </Prose>
       </div>
 
-      <div className="space-y-6">
+      <div id={termosHashes.cookies} className="scroll-mt-24 space-y-6">
         <SectionTitle>Cookies e análise de uso</SectionTitle>
         <Prose>
           <p>
