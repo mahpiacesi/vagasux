@@ -27,6 +27,21 @@ export const mediaKit = {
     'https://docs.google.com/presentation/d/15Ax1lQu3crbUgSKsmMtS9ChH2Tjx5Jw0HSxvQfR8GKI/edit?usp=sharing',
 } as const
 
+/** External community destinations until in-app routes exist. */
+export const externalCommunity = {
+  guilda: 'https://vagasux.framer.website/',
+} as const
+
+export const communityHashes = {
+  canaisAbertos: 'canais-abertos',
+} as const
+
+export const voluntariadoHashes = {
+  comoESer: 'como-e-ser',
+  time: 'time',
+  comoFazerParte: 'como-fazer-parte',
+} as const
+
 /**
  * Pages that still live on the Super/Notion site.
  * Keep vagasux.com.br intact while we migrate in parallel.
