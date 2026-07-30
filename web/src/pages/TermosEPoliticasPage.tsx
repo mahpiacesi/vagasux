@@ -6,9 +6,9 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
-import { contact } from '@/lib/siteLinks'
+import { analyticsPrivacy, contact } from '@/lib/siteLinks'
 
-const LAST_UPDATED = '29 de julho de 2026'
+const LAST_UPDATED = '30 de julho de 2026'
 
 export function TermosEPoliticasPage() {
   return (
@@ -227,6 +227,105 @@ export function TermosEPoliticasPage() {
             </li>
           </ul>
         </Prose>
+      </div>
+
+      <div className="space-y-6">
+        <SectionTitle>Cookies e análise de uso</SectionTitle>
+        <Prose>
+          <p>
+            A VagasUX utiliza cookies e tecnologias semelhantes para melhorar a
+            experiência de navegação, entender como a plataforma é utilizada e
+            orientar decisões de produto.
+          </p>
+          <p>
+            Essas informações nos ajudam a identificar páginas mais acessadas,
+            fluxos de navegação, problemas de usabilidade e oportunidades de
+            melhoria na experiência da comunidade.
+          </p>
+        </Prose>
+
+        <div className="space-y-4">
+          <SubsectionTitle>Microsoft Clarity</SubsectionTitle>
+          <Prose>
+            <p>
+              Utilizamos o Microsoft Clarity, uma ferramenta de análise de
+              comportamento que nos ajuda a compreender como as pessoas utilizam
+              a plataforma por meio de recursos como:
+            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>mapas de calor (heatmaps);</li>
+              <li>gravações anônimas de sessões;</li>
+              <li>análise de cliques;</li>
+              <li>rolagem de páginas;</li>
+              <li>interação com elementos da interface.</li>
+            </ul>
+            <p>
+              Esses dados são utilizados exclusivamente para melhorar a
+              experiência de navegação, identificar problemas de usabilidade e
+              evoluir os produtos e serviços da VagasUX.
+            </p>
+            <p>
+              Não utilizamos essas informações para identificar usuários
+              individualmente nem para decisões automatizadas.
+            </p>
+            <p>
+              O tratamento dessas informações segue as políticas de privacidade
+              da Microsoft.
+            </p>
+          </Prose>
+        </div>
+
+        <div className="space-y-4">
+          <SubsectionTitle>Google Analytics</SubsectionTitle>
+          <Prose>
+            <p>
+              Também utilizamos o Google Analytics para compreender métricas
+              agregadas de acesso, origem do tráfego, dispositivos utilizados e
+              comportamento geral de navegação.
+            </p>
+            <p>
+              Esses dados nos ajudam a entender o crescimento da comunidade e a
+              priorizar melhorias na plataforma.
+            </p>
+          </Prose>
+        </div>
+
+        <div className="space-y-4">
+          <SubsectionTitle>Consentimento para cookies</SubsectionTitle>
+          <Prose>
+            <p>
+              Ao aceitar os cookies opcionais, você concorda com a utilização
+              dessas ferramentas para análise e melhoria contínua da plataforma.
+            </p>
+            <p>
+              Você pode alterar ou revogar seu consentimento a qualquer momento
+              por meio das configurações do navegador ou das preferências de
+              cookies disponibilizadas pela VagasUX no rodapé do site.
+            </p>
+          </Prose>
+        </div>
+
+        <div className="space-y-4">
+          <SubsectionTitle>Links externos</SubsectionTitle>
+          <Prose>
+            <p>
+              Para saber mais sobre como essas ferramentas tratam informações,
+              consulte:
+            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <TextLink href={analyticsPrivacy.microsoftClarity}>
+                  Política de Privacidade da Microsoft
+                </TextLink>
+              </li>
+              <li>
+                <TextLink href={analyticsPrivacy.googleAnalytics}>
+                  Política de Privacidade do Google
+                </TextLink>
+              </li>
+            </ul>
+          </Prose>
+        </div>
       </div>
 
       <div className="space-y-4">
