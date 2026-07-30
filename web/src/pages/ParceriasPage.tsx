@@ -6,7 +6,7 @@ import {
   UsersThree,
 } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { ParceriasHero } from '@/components/ParceriasHero'
 import { loadActivePartners, type PartnerDisplay } from '@/lib/partners'
 import { mediaKit, parceriasContact, parceriasHashes } from '@/lib/siteLinks'
@@ -388,10 +388,12 @@ export function ParceriasPage() {
             ))}
           </dl>
 
-          <div className="mx-auto mt-10 flex max-w-4xl flex-col items-center text-center">
-            <div className="mural-fade mural-fade-delay-3 flex flex-wrap justify-center gap-3">
+          <div className="relative z-20 mx-auto mt-10 flex max-w-4xl flex-col items-center text-center">
+            <div className="flex flex-wrap justify-center gap-3">
               <a
-                href={parceriasContact.mailto}
+                href={parceriasContact.webCompose}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   buttonVariants({ size: 'lg' }),
                   'h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200',
@@ -400,25 +402,28 @@ export function ParceriasPage() {
                 <Handshake size={18} weight="bold" className="mr-1.5" aria-hidden />
                 Entrar em contato
               </a>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
+              <a
+                href={mediaKit.parcerias}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ size: 'lg', variant: 'outline' }),
+                  'h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100',
+                )}
               >
-                <a
-                  href={mediaKit.parcerias}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
-                  Ver mídia kit
-                </a>
-              </Button>
+                <Heart size={18} weight="bold" className="mr-1.5" aria-hidden />
+                Ver mídia kit
+              </a>
             </div>
-            <p className="mural-fade mural-fade-delay-3 mt-6 flex items-center justify-center gap-2 text-sm text-neutral-400">
+            <p className="mt-6 flex items-center justify-center gap-2 text-sm text-neutral-400">
               <UsersThree size={18} weight="bold" aria-hidden />
-              {partners.length} parceiros ativos hoje
+              {partners.length} parceiros ativos hoje ·{' '}
+              <a
+                href={parceriasContact.mailto}
+                className="font-semibold text-complementary-300 underline decoration-complementary-400/50 underline-offset-4 transition-colors hover:text-complementary-200"
+              >
+                {parceriasContact.email}
+              </a>
             </p>
           </div>
         </div>
