@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { ParceriasHero } from '@/components/ParceriasHero'
 import { loadActivePartners, type PartnerDisplay } from '@/lib/partners'
-import { mediaKit, parceriasContact } from '@/lib/siteLinks'
+import { mediaKit, parceriasContact, parceriasHashes } from '@/lib/siteLinks'
 import { cn } from '@/lib/utils'
 
 const values = [
@@ -349,8 +349,8 @@ export function ParceriasPage() {
       </section>
 
       <section
-        id="contato-parceria"
-        className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28"
+        id={parceriasHashes.contato}
+        className="scroll-mt-24 relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28"
       >
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(93,107,246,0.28),transparent_55%)]" />
 

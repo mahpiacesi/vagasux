@@ -2,7 +2,7 @@ import { ArrowDown, BookOpenText } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 import { Button } from '@/components/ui/button'
 import type { PartnerDisplay } from '@/lib/partners'
-import { mediaKit, parceriasContact } from '@/lib/siteLinks'
+import { mediaKit, parceriasHashes } from '@/lib/siteLinks'
 
 function LogoRibbon({
   items,
@@ -106,7 +106,7 @@ export function ParceriasHero({ partners }: ParceriasHeroProps) {
             variant="outline"
             className="h-12 rounded-xl border-white/20 bg-white/5 px-7 text-base font-bold text-neutral-100 hover:bg-white/10 hover:text-neutral-100"
           >
-            <a href="#parceiros">
+            <a href={`#${parceriasHashes.parceiros}`}>
               Ver parceiros
               <ArrowDown size={16} weight="bold" className="ml-1.5" aria-hidden />
             </a>
@@ -116,7 +116,7 @@ export function ParceriasHero({ partners }: ParceriasHeroProps) {
         <p className="mural-fade mural-fade-delay-3 mt-6 text-sm text-neutral-400">
           Tem uma ideia de parceria?{' '}
           <a
-            href={parceriasContact.mailto}
+            href={`#${parceriasHashes.contato}`}
             className="font-semibold text-complementary-300 underline decoration-complementary-400/50 underline-offset-4 transition-colors hover:text-complementary-200"
           >
             Fale com a gente
