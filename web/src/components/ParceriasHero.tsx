@@ -73,7 +73,9 @@ export function ParceriasHero({ partners }: ParceriasHeroProps) {
         </p>
 
         <h1 className="mural-fade mural-fade-delay-1 mt-8 text-[2.75rem] leading-[1.02] font-black tracking-[-0.05em] md:text-6xl lg:text-[3.75rem]">
-          Juntos por um mercado{' '}
+          Juntos por um
+          <br />
+          mercado{' '}
           <span className="text-mark-on-dark">mais acessível.</span>
         </h1>
 

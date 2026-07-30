@@ -113,17 +113,21 @@ function PartnerLogoCard({
       className="parcerias-logo-card group flex flex-col items-center justify-center rounded-2xl border border-neutral-500/10 bg-neutral-100 p-4 shadow-[0_12px_36px_-28px_rgb(7_0_58_/_0.35)]"
       style={{ animationDelay: `${60 + (index % 12) * 40}ms` }}
     >
-      <div className="flex h-16 w-full items-center justify-center md:h-[4.5rem]">
+      <div className="relative flex h-16 w-full items-center justify-center overflow-hidden rounded-xl md:h-[4.5rem]">
+        <div
+          className="pointer-events-none absolute inset-0 z-10 rounded-xl bg-neutral-500/0 transition-colors duration-300 group-hover:bg-neutral-500/[0.04]"
+          aria-hidden
+        />
         {logo ? (
           <img
             src={logo}
             alt={name}
-            className="max-h-full max-w-[85%] object-contain opacity-85 transition-all duration-300 group-hover:scale-[1.04] group-hover:opacity-100"
+            className="relative z-0 max-h-full max-w-[85%] object-contain opacity-85 transition-all duration-300 group-hover:scale-[1.04] group-hover:opacity-100"
             loading="lazy"
             decoding="async"
           />
         ) : (
-          <span className="text-center text-xs font-bold text-neutral-400">
+          <span className="relative z-0 text-center text-xs font-bold text-neutral-400">
             {name}
           </span>
         )}
