@@ -1,6 +1,5 @@
 import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
 import { useState, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import { GuildaClosingSection } from '@/components/guilda/GuildaClosingSection'
 import { GuildaTestimonialRail } from '@/components/guilda/GuildaTestimonialRail'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
@@ -17,7 +16,7 @@ import {
   guildaWhatsappFeature,
 } from '@/data/guilda'
 import { useActiveSection } from '@/hooks/useActiveSection'
-import { guildaHashes, routes } from '@/lib/siteLinks'
+import { guildaHashes } from '@/lib/siteLinks'
 import { cn } from '@/lib/utils'
 
 const guildaNav = [
@@ -438,13 +437,6 @@ export function GuildaPage() {
             >
               Nas.io
             </a>
-            . Dúvidas?{' '}
-            <Link
-              to={routes.comunidade}
-              className="font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4"
-            >
-              Veja a comunidade aberta
-            </Link>
             .
           </p>
         </div>
