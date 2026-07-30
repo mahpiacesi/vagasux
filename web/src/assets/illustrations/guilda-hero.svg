@@ -1,0 +1,33 @@
+<svg viewBox="0 0 420 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g id="guilda-arch">
+    <path d="M72 168C72 92.9543 132.954 32 208 32C283.046 32 344 92.9543 344 168V392H72V168Z" fill="#A8B0FF"/>
+    <path d="M72 168C72 92.9543 132.954 32 208 32C283.046 32 344 92.9543 344 168V392H72V168Z" stroke="#07003A" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <g id="guilda-shield">
+    <path d="M208 88C248 88 280 120 280 160V248C280 288 248 328 208 352C168 328 136 288 136 248V160C136 120 168 88 208 88Z" fill="#F6D16E"/>
+    <path d="M208 88C248 88 280 120 280 160V248C280 288 248 328 208 352C168 328 136 288 136 248V160C136 120 168 88 208 88Z" stroke="#07003A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M208 128C176 128 152 152 152 184C152 216 176 240 208 240C240 240 264 216 264 184C264 152 240 128 208 128Z" fill="#FADF98" stroke="#07003A" stroke-width="3"/>
+    <path d="M208 248V312" stroke="#07003A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M176 312H240" stroke="#07003A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M208 136V224" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M168 176C184 160 232 160 248 176" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M176 200C188 190 228 190 240 200" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="guilda-wind">
+    <path d="M318 300C334 292 350 296 362 308" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M326 322C342 314 358 318 370 330" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M334 344C350 336 366 340 378 352" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="guilda-stamp">
+    <circle cx="118" cy="118" r="52" fill="#FAF8F8" stroke="#07003A" stroke-width="3"/>
+    <path d="M102 118L128 96" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M128 96L128 118" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M128 118L102 140" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="guilda-sparkle-a" fill="#07003A">
+    <path d="M332 72L334 82L344 84L334 86L332 96L330 86L320 84L330 82L332 72Z"/>
+  </g>
+  <g id="guilda-sparkle-b" fill="#07003A">
+    <path d="M356 108L357.5 114L364 115.5L357.5 117L356 123L354.5 117L348 115.5L354.5 114L356 108Z"/>
+  </g>
+</svg>

@@ -535,6 +535,155 @@
   transform: translateY(-6px) rotate(-0.4deg);
 }
 
+/* Guilda hero illustration */
+.guilda-hero-visual {
+  position: relative;
+  isolation: isolate;
+}
+
+.guilda-hero-visual-glow {
+  position: absolute;
+  inset: 8% 10% 12%;
+  z-index: 0;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(168 176 255 / 0.55) 0%,
+    rgb(246 209 110 / 0.15) 45%,
+    transparent 72%
+  );
+  filter: blur(20px);
+  animation: guilda-hero-glow 8s ease-in-out infinite;
+}
+
+.guilda-hero-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.guilda-hero-stamp-label {
+  position: absolute;
+  left: 14%;
+  top: 18%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 9999px;
+  font-size: 0.48rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.12em;
+  text-align: center;
+  color: var(--color-neutral-500);
+  pointer-events: none;
+}
+
+.guilda-hero-stamp-dot {
+  margin: 0.15rem 0;
+  font-size: 0.55rem;
+  opacity: 0.85;
+}
+
+@keyframes guilda-hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes guilda-hero-shield-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+}
+
+@keyframes guilda-hero-stamp-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes guilda-hero-sparkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes guilda-hero-wind {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+}
+
+@keyframes guilda-hero-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+.guilda-hero-svg--motion #guilda-arch {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: guilda-hero-float 7s ease-in-out infinite;
+}
+
+.guilda-hero-svg--motion #guilda-shield {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guilda-hero-shield-bob 6s ease-in-out infinite;
+}
+
+.guilda-hero-svg--motion #guilda-sparkle-a {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guilda-hero-sparkle 2.8s ease-in-out infinite;
+}
+
+.guilda-hero-svg--motion #guilda-sparkle-b {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guilda-hero-sparkle 3.4s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
+.guilda-hero-svg--motion #guilda-wind {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: guilda-hero-wind 4.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
@@ -555,7 +704,15 @@
   .parcerias-logo-marquee-reverse,
   .parcerias-logo-card,
   .parcerias-logo-card:hover,
-  .parcerias-tier-card:hover {
+  .parcerias-tier-card:hover,
+  .guilda-hero-visual-glow,
+  .guilda-hero-svg--motion #guilda-arch,
+  .guilda-hero-svg--motion #guilda-shield,
+  .guilda-hero-svg--motion #guilda-sparkle-a,
+  .guilda-hero-svg--motion #guilda-sparkle-b,
+  .guilda-hero-svg--motion #guilda-wind,
+  .guilda-hero-cta:hover,
+  .guilda-hero-cta:active {
     animation: none;
     transform: none;
   }
