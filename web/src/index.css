@@ -608,15 +608,6 @@
   }
 }
 
-@keyframes guilda-hero-stamp-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes guilda-hero-sparkle {
   0%,
   100% {
