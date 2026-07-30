@@ -1,7 +1,7 @@
 import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
 import { useState, type ReactNode } from 'react'
 import { GuildaClosingSection } from '@/components/guilda/GuildaClosingSection'
-import { GuildaTestimonialRail } from '@/components/guilda/GuildaTestimonialRail'
+import { GuildaTestimonials } from '@/components/guilda/GuildaTestimonials'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
 import { GuildaHero } from '@/components/GuildaHero'
 import { Button } from '@/components/ui/button'
@@ -319,25 +319,18 @@ export function GuildaPage() {
         className="guilda-bevel scroll-mt-28 bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-end lg:gap-10">
-            <SectionIntro
-              eyebrow="Relatos de vaguiners"
-              title={
-                <>
-                  Histórias reais de quem encontrou{' '}
-                  <span className="text-mark">apoio na Guilda</span>
-                </>
-              }
-              description="Gente como você, migrando, estudando e dando os primeiros passos com mais segurança no mercado de UX."
-            />
-            <p className="hidden text-sm font-semibold text-neutral-400 lg:block lg:pb-2 lg:text-right">
-              Arraste para ver mais →
-            </p>
-          </div>
+          <SectionIntro
+            eyebrow="Relatos de vaguiners"
+            title={
+              <>
+                Histórias reais de quem encontrou{' '}
+                <span className="text-mark">apoio na Guilda</span>
+              </>
+            }
+            description="Gente como você, migrando, estudando e dando os primeiros passos com mais segurança no mercado de UX."
+          />
 
-          <ScrollReveal className="mt-8" delayMs={120}>
-            <GuildaTestimonialRail items={guildaTestimonials} />
-          </ScrollReveal>
+          <GuildaTestimonials items={guildaTestimonials} />
         </div>
       </section>
 

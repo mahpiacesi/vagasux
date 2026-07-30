@@ -716,28 +716,20 @@
   color: color-mix(in srgb, var(--color-brand-200) 85%, white);
 }
 
-.guilda-rail {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(36 46 144 / 0.22) transparent;
+.guilda-testimonials-grid {
+  perspective: 1200px;
 }
 
-.guilda-rail-mask::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 2.5rem;
-  background: linear-gradient(to left, var(--color-neutral-100), transparent);
-  pointer-events: none;
+.guilda-testimonial-card--from-left.guilda-reveal:not(.guilda-reveal--visible) {
+  transform: translateY(32px) translateX(-18px);
 }
 
-.guilda-rail-card {
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+.guilda-testimonial-card--from-right.guilda-reveal:not(.guilda-reveal--visible) {
+  transform: translateY(32px) translateX(18px);
 }
 
-.guilda-rail-card:hover {
-  transform: translateY(-4px);
+.guilda-testimonial-card.guilda-reveal--visible {
+  transform: translateY(0) translateX(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -768,7 +760,9 @@
   .guilda-hero-svg--motion #guilda-sparkle-b,
   .guilda-hero-svg--motion #guilda-wind,
   .guilda-reveal,
-  .guilda-rail-card:hover {
+  .guilda-testimonial-card--from-left.guilda-reveal:not(.guilda-reveal--visible),
+  .guilda-testimonial-card--from-right.guilda-reveal:not(.guilda-reveal--visible),
+  .guilda-testimonial-card:hover {
     animation: none;
     opacity: 1;
     transform: none;
