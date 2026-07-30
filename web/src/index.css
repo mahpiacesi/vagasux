@@ -608,6 +608,32 @@
   }
 }
 
+@keyframes guilda-umbrella-canopy-sway {
+  0%,
+  100% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(0deg);
+  }
+  35% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(2.5deg);
+  }
+  70% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(-2deg);
+  }
+}
+
+@keyframes guilda-umbrella-detail-sway {
+  0%,
+  100% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(0deg);
+  }
+  40% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(1.4deg);
+  }
+  75% {
+    transform: scale(0.39) translate(-239px, -195px) rotate(-1.1deg);
+  }
+}
+
 @keyframes guilda-hero-sparkle {
   0%,
   100% {
@@ -654,6 +680,19 @@
   transform-box: fill-box;
   transform-origin: center;
   animation: guilda-hero-shield-bob 6s ease-in-out infinite;
+}
+
+.guilda-hero-svg--motion #guilda-umbrella-canopy {
+  transform-box: fill-box;
+  transform-origin: 50% 62%;
+  animation: guilda-umbrella-canopy-sway 5.5s ease-in-out infinite;
+}
+
+.guilda-hero-svg--motion #guilda-umbrella-detail {
+  transform-box: fill-box;
+  transform-origin: 50% 62%;
+  animation: guilda-umbrella-detail-sway 5.5s ease-in-out infinite;
+  animation-delay: -0.35s;
 }
 
 .guilda-hero-svg--motion #guilda-sparkle-a {
@@ -770,6 +809,8 @@
   .guilda-hero-visual-glow,
   .guilda-hero-svg--motion #guilda-arch,
   .guilda-hero-svg--motion #guilda-shield,
+  .guilda-hero-svg--motion #guilda-umbrella-canopy,
+  .guilda-hero-svg--motion #guilda-umbrella-detail,
   .guilda-hero-svg--motion #guilda-sparkle-a,
   .guilda-hero-svg--motion #guilda-sparkle-b,
   .guilda-hero-svg--motion #guilda-wind,
