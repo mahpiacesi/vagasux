@@ -675,6 +675,71 @@
   animation: guilda-hero-wind 4.5s ease-in-out infinite;
 }
 
+/* Guilda page — scroll reveal & composition */
+.guilda-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.guilda-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guilda-bevel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-brand-100) 55%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.guilda-bevel {
+  position: relative;
+}
+
+.guilda-stat-index {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--color-brand-200) 85%, white);
+}
+
+.guilda-rail {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(36 46 144 / 0.22) transparent;
+}
+
+.guilda-rail-mask::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2.5rem;
+  background: linear-gradient(to left, var(--color-neutral-100), transparent);
+  pointer-events: none;
+}
+
+.guilda-rail-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.guilda-rail-card:hover {
+  transform: translateY(-4px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
@@ -701,9 +766,13 @@
   .guilda-hero-svg--motion #guilda-shield,
   .guilda-hero-svg--motion #guilda-sparkle-a,
   .guilda-hero-svg--motion #guilda-sparkle-b,
-  .guilda-hero-svg--motion #guilda-wind {
+  .guilda-hero-svg--motion #guilda-wind,
+  .guilda-reveal,
+  .guilda-rail-card:hover {
     animation: none;
+    opacity: 1;
     transform: none;
+    transition: none;
   }
 
   .umbrella-hero-raindrop {

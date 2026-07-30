@@ -1,6 +1,8 @@
 import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { GuildaTestimonialRail } from '@/components/guilda/GuildaTestimonialRail'
+import { ScrollReveal } from '@/components/guilda/ScrollReveal'
 import { GuildaHero } from '@/components/GuildaHero'
 import { NewsletterSection } from '@/components/NewsletterSection'
 import { Button } from '@/components/ui/button'
@@ -13,19 +15,10 @@ import {
   guildaPlans,
   guildaTestimonials,
   guildaWhatsappFeature,
-  type GuildaTestimonial,
 } from '@/data/guilda'
+import { useActiveSection } from '@/hooks/useActiveSection'
 import { guildaHashes, routes } from '@/lib/siteLinks'
 import { cn } from '@/lib/utils'
-
-const toneClass: Record<GuildaTestimonial['tone'], string> = {
-  cream: 'border border-neutral-500/10 bg-neutral-100 text-neutral-500',
-  indigo: 'bg-brand-100 text-brand-500',
-  mustard: 'bg-complementary-200 text-neutral-500',
-  navy: 'bg-neutral-500 text-neutral-100',
-  lilac: 'bg-brand-200/80 text-brand-500',
-  soft: 'border border-complementary-300/50 bg-complementary-100 text-neutral-500',
-}
 
 const guildaNav = [
   { label: 'Benefícios', hash: guildaHashes.beneficios },
@@ -40,6 +33,28 @@ function SectionEyebrow({ children }: { children: ReactNode }) {
     <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
       {children}
     </p>
+  )
+}
+
+function SectionIntro({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string
+  title: ReactNode
+  description: string
+}) {
+  return (
+    <ScrollReveal className="max-w-xl lg:sticky lg:top-28 lg:self-start">
+      <SectionEyebrow>{eyebrow}</SectionEyebrow>
+      <h2 className="mt-4 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+        {title}
+      </h2>
+      <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
+        {description}
+      </p>
+    </ScrollReveal>
   )
 }
 
@@ -69,7 +84,7 @@ function FaqItem({
           size={18}
           weight="bold"
           className={cn(
-            'mt-1 shrink-0 text-brand-400 transition-transform',
+            'mt-1 shrink-0 text-brand-400 transition-transform duration-300',
             open && 'rotate-180',
           )}
           aria-hidden
@@ -77,7 +92,7 @@ function FaqItem({
       </button>
       <div
         className={cn(
-          'grid transition-[grid-template-rows] duration-200',
+          'grid transition-[grid-template-rows] duration-300 ease-out',
           open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
         )}
       >
@@ -92,8 +107,10 @@ function FaqItem({
 }
 
 export function GuildaPage() {
+  const activeSection = useActiveSection(guildaNav.map((item) => item.hash))
+
   return (
-    <main>
+    <main className="guilda-page">
       <GuildaHero />
 
       <nav
@@ -105,7 +122,12 @@ export function GuildaPage() {
             <a
               key={item.hash}
               href={`#${item.hash}`}
-              className="shrink-0 rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wide text-neutral-400 transition-colors hover:bg-brand-100/80 hover:text-brand-500 md:text-sm"
+              className={cn(
+                'shrink-0 rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wide transition-all duration-300 md:text-sm',
+                activeSection === item.hash
+                  ? 'bg-brand-500 text-neutral-100 shadow-md shadow-brand-500/20'
+                  : 'text-neutral-400 hover:bg-brand-100/80 hover:text-brand-500',
+              )}
             >
               {item.label}
             </a>
@@ -113,95 +135,112 @@ export function GuildaPage() {
         </div>
       </nav>
 
-      {/* Problem */}
       <section className="px-5 py-16 md:px-6 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <SectionEyebrow>O grande problema</SectionEyebrow>
-          <h2 className="mt-4 max-w-3xl text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Migrar para UX{' '}
-            <span className="text-mark">não deveria ser confuso</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Você se perde tentando aprender tudo ao mesmo tempo, sem apoio, sem
-            direção e sem saber por onde começar.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-16">
+          <SectionIntro
+            eyebrow="O grande problema"
+            title={
+              <>
+                Migrar para UX{' '}
+                <span className="text-mark">não deveria ser confuso</span>
+              </>
+            }
+            description="Você se perde tentando aprender tudo ao mesmo tempo, sem apoio, sem direção e sem saber por onde começar."
+          />
 
-          <ul className="mt-10 grid gap-4 md:grid-cols-3 md:gap-5">
+          <ul className="space-y-4">
             {guildaPainPoints.map((item, index) => (
-              <li
-                key={item.title}
-                className="mural-fade rounded-2xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-7"
-                style={{ animationDelay: `${index * 80}ms` }}
-              >
-                <span className="text-xs font-black tracking-[0.2em] text-neutral-300 uppercase">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-3 text-lg font-black tracking-tight text-neutral-500">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-                  {item.description}
-                </p>
-              </li>
+              <ScrollReveal key={item.title} as="li" delayMs={index * 90}>
+                <article className="group flex gap-5 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_24px_60px_-36px_rgb(7_0_58_/_0.35)] md:p-7">
+                  <span
+                    className="guilda-stat-index shrink-0 select-none"
+                    aria-hidden
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-black tracking-tight text-neutral-500">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-neutral-400 md:text-base">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Benefits */}
       <section
         id={guildaHashes.beneficios}
-        className="scroll-mt-28 border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/40 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-28 border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
       >
-        <div className="mx-auto max-w-6xl">
-          <SectionEyebrow>Benefícios</SectionEyebrow>
-          <h2 className="mt-4 max-w-3xl text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Tudo para migrar com{' '}
-            <span className="text-mark">confiança</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Da curadoria de conteúdo à troca com mentores, apoio de verdade
-            para construir sua carreira em UX.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <SectionIntro
+            eyebrow="Benefícios"
+            title={
+              <>
+                Tudo para migrar com{' '}
+                <span className="text-mark">confiança</span>
+              </>
+            }
+            description="Da curadoria de conteúdo à troca com mentores, apoio de verdade para construir sua carreira em UX."
+          />
 
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          <ul className="space-y-5">
             {guildaBenefits.map((item, index) => (
-              <li
-                key={item.title}
-                className="mural-fade group rounded-2xl border border-neutral-500/10 bg-neutral-100 p-6 transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_20px_50px_-30px_rgb(7_0_58_/_0.35)] md:p-7"
-                style={{ animationDelay: `${index * 60}ms` }}
-              >
-                <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500 transition-colors group-hover:bg-brand-500 group-hover:text-neutral-100">
-                  <item.Icon size={22} weight="bold" aria-hidden />
-                </span>
-                <h3 className="mt-5 text-lg font-black tracking-tight text-neutral-500">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-                  {item.description}
-                </p>
-              </li>
+              <ScrollReveal key={item.title} as="li" delayMs={index * 70}>
+                <article
+                  className={cn(
+                    'guilda-benefit-row group flex flex-col gap-5 rounded-3xl border border-neutral-500/10 bg-neutral-100/90 p-6 md:flex-row md:items-center md:p-7',
+                    index % 2 === 1 && 'md:flex-row-reverse',
+                  )}
+                >
+                  <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-2xl bg-brand-100 text-brand-500 transition-all duration-300 group-hover:scale-105 group-hover:bg-brand-500 group-hover:text-neutral-100 md:size-16">
+                    <item.Icon size={26} weight="bold" aria-hidden />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-xl font-black tracking-tight text-neutral-500">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-neutral-400 md:text-base">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* WhatsApp + highlights */}
       <section
         id={guildaHashes.comoFunciona}
         className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-            <article className="relative overflow-hidden rounded-3xl bg-neutral-500 p-8 text-neutral-100 md:p-10">
+          <ScrollReveal className="max-w-2xl">
+            <SectionEyebrow>Como funciona</SectionEyebrow>
+            <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+              Conexão, prática e ritmo na mesma jornada
+            </h2>
+          </ScrollReveal>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-12 lg:grid-rows-2">
+            <ScrollReveal
+              as="article"
+              className="relative overflow-hidden rounded-3xl bg-neutral-500 p-8 text-neutral-100 lg:col-span-7 lg:row-span-2 lg:p-10"
+            >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(246,209,110,0.18),transparent_45%)]" />
               <div className="relative">
                 <SectionEyebrow>
                   <span className="text-complementary-300">Conexão</span>
                 </SectionEyebrow>
-                <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] md:text-4xl">
+                <h3 className="mt-4 text-3xl font-black tracking-[-0.04em] md:text-4xl">
                   {guildaWhatsappFeature.title}
-                </h2>
+                </h3>
                 <p className="mt-4 max-w-md text-base leading-relaxed text-neutral-300">
                   {guildaWhatsappFeature.description}
                 </p>
@@ -225,33 +264,35 @@ export function GuildaPage() {
                   </a>
                 </Button>
               </div>
-            </article>
+            </ScrollReveal>
 
-            <div className="flex flex-col gap-5">
-              {guildaHighlights.map((item) => (
-                <article
-                  key={item.title}
-                  className="flex flex-1 flex-col justify-center rounded-3xl border border-neutral-500/10 bg-neutral-100 p-8 md:p-9"
-                >
-                  <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
-                    {item.eyebrow}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-neutral-500">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-400 md:text-base">
-                    {item.description}
-                  </p>
-                </article>
-              ))}
-            </div>
+            {guildaHighlights.map((item, index) => (
+              <ScrollReveal
+                key={item.title}
+                as="article"
+                delayMs={120 + index * 100}
+                className={cn(
+                  'flex flex-col justify-center rounded-3xl border border-neutral-500/10 bg-neutral-100 p-8 md:p-9',
+                  index === 0 ? 'lg:col-span-5' : 'lg:col-span-5 lg:col-start-8',
+                )}
+              >
+                <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
+                  {item.eyebrow}
+                </p>
+                <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-neutral-500">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-400 md:text-base">
+                  {item.description}
+                </p>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Mid CTA */}
       <section className="border-y border-neutral-500/10 bg-gradient-to-r from-brand-500 to-brand-400 px-5 py-14 text-neutral-100 md:px-6 md:py-16">
-        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+        <ScrollReveal className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-black tracking-[-0.03em] md:text-3xl">
               Faça parte com a gente
@@ -271,134 +312,121 @@ export function GuildaPage() {
               <ArrowUpRight className="ml-1 size-4" aria-hidden />
             </a>
           </Button>
-        </div>
+        </ScrollReveal>
       </section>
 
-      {/* Testimonials */}
       <section
         id={guildaHashes.depoimentos}
-        className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-28 bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
-          <SectionEyebrow>Relatos de vaguiners</SectionEyebrow>
-          <h2 className="mt-4 max-w-2xl text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Histórias reais de quem encontrou{' '}
-            <span className="text-mark">apoio na Guilda</span>
-          </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400">
-            Gente como você, migrando, estudando e dando os primeiros passos
-            com mais segurança no mercado de UX.
-          </p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-end lg:gap-10">
+            <SectionIntro
+              eyebrow="Relatos de vaguiners"
+              title={
+                <>
+                  Histórias reais de quem encontrou{' '}
+                  <span className="text-mark">apoio na Guilda</span>
+                </>
+              }
+              description="Gente como você, migrando, estudando e dando os primeiros passos com mais segurança no mercado de UX."
+            />
+            <p className="hidden text-sm font-semibold text-neutral-400 lg:block lg:pb-2 lg:text-right">
+              Arraste para ver mais →
+            </p>
+          </div>
 
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {guildaTestimonials.map((item, index) => (
-              <li
-                key={item.id}
-                className={cn(
-                  'mural-fade flex min-h-[14rem] flex-col justify-between rounded-2xl p-6',
-                  toneClass[item.tone],
-                )}
-                style={{ animationDelay: `${index * 70}ms` }}
-              >
-                <p className="text-sm leading-relaxed md:text-[0.95rem]">
-                  “{item.quote}”
-                </p>
-                <p className="mt-6 text-sm font-black tracking-tight">
-                  {item.name}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <ScrollReveal className="mt-8" delayMs={120}>
+            <GuildaTestimonialRail items={guildaTestimonials} />
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Pricing */}
       <section
         id={guildaHashes.planos}
-        className="scroll-mt-28 border-t border-neutral-500/10 bg-gradient-to-b from-complementary-100/60 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
+        className="scroll-mt-28 border-t border-neutral-500/10 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
-          <SectionEyebrow>Valores</SectionEyebrow>
-          <h2 className="mt-4 max-w-2xl text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Apoie a comunidade e entre na Guilda
-          </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            A partir de R$ 19,90 por mês, com conteúdos exclusivos, mentorias e
-            grupo fechado no WhatsApp.
-          </p>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-16">
+            <SectionIntro
+              eyebrow="Valores"
+              title="Apoie a comunidade e entre na Guilda"
+              description="A partir de R$ 19,90 por mês, com conteúdos exclusivos, mentorias e grupo fechado no WhatsApp."
+            />
 
-          <ul className="mt-12 grid gap-5 lg:grid-cols-3 lg:items-stretch">
-            {guildaPlans.map((plan, index) => (
-              <li
-                key={plan.id}
-                className={cn(
-                  'mural-fade flex flex-col rounded-3xl border p-7 md:p-8',
-                  plan.featured
-                    ? 'border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-neutral-100 to-brand-100/30 shadow-[0_28px_70px_-32px_rgb(7_0_58_/_0.4)] ring-1 ring-complementary-300/40'
-                    : 'border-neutral-500/10 bg-neutral-100',
-                )}
-                style={{ animationDelay: `${index * 90}ms` }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-xl font-black tracking-tight text-neutral-500">
-                      {plan.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-                      {plan.hook}
-                    </p>
-                  </div>
-                  {plan.badge ? (
-                    <span className="shrink-0 rounded-full bg-neutral-500 px-2.5 py-1 text-[0.65rem] font-bold tracking-wide text-complementary-300 uppercase">
-                      {plan.badge}
-                    </span>
-                  ) : null}
-                </div>
-
-                <p className="mt-8 flex items-baseline gap-1">
-                  <span className="text-4xl font-black tracking-tight text-neutral-500">
-                    {plan.price}
-                  </span>
-                  <span className="text-sm font-semibold text-neutral-400">
-                    {plan.period}
-                  </span>
-                </p>
-
-                <p className="mt-6 text-xs font-bold tracking-[0.16em] text-neutral-400 uppercase">
-                  Inclui
-                </p>
-                <ul className="mt-3 flex-1 space-y-2.5 text-sm text-neutral-400">
-                  {plan.perks.map((perk) => (
-                    <li key={perk} className="flex gap-2.5">
-                      <span
-                        className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-300"
-                        aria-hidden
-                      />
-                      <span>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  asChild
-                  size="lg"
-                  className={cn(
-                    'mt-8 h-11 w-full rounded-xl font-bold',
-                    plan.featured &&
-                      'bg-complementary-300 text-neutral-500 hover:bg-complementary-200',
-                  )}
-                >
-                  <a
-                    href={guildaJoinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <ul className="flex flex-col gap-5">
+              {guildaPlans.map((plan, index) => (
+                <ScrollReveal key={plan.id} as="li" delayMs={index * 100}>
+                  <article
+                    className={cn(
+                      'flex h-full flex-col rounded-3xl border p-7 transition-transform duration-300 hover:-translate-y-1 md:p-8',
+                      plan.featured
+                        ? 'border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-neutral-100 to-brand-100/30 shadow-[0_28px_70px_-32px_rgb(7_0_58_/_0.4)] ring-1 ring-complementary-300/40'
+                        : 'border-neutral-500/10 bg-neutral-100',
+                    )}
                   >
-                    Acesse agora
-                  </a>
-                </Button>
-              </li>
-            ))}
-          </ul>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-xl font-black tracking-tight text-neutral-500">
+                          {plan.name}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+                          {plan.hook}
+                        </p>
+                      </div>
+                      {plan.badge ? (
+                        <span className="shrink-0 rounded-full bg-neutral-500 px-2.5 py-1 text-[0.65rem] font-bold tracking-wide text-complementary-300 uppercase">
+                          {plan.badge}
+                        </span>
+                      ) : null}
+                    </div>
+
+                    <p className="mt-8 flex items-baseline gap-1">
+                      <span className="text-4xl font-black tracking-tight text-neutral-500">
+                        {plan.price}
+                      </span>
+                      <span className="text-sm font-semibold text-neutral-400">
+                        {plan.period}
+                      </span>
+                    </p>
+
+                    <p className="mt-6 text-xs font-bold tracking-[0.16em] text-neutral-400 uppercase">
+                      Inclui
+                    </p>
+                    <ul className="mt-3 flex-1 space-y-2.5 text-sm text-neutral-400">
+                      {plan.perks.map((perk) => (
+                        <li key={perk} className="flex gap-2.5">
+                          <span
+                            className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-300"
+                            aria-hidden
+                          />
+                          <span>{perk}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      asChild
+                      size="lg"
+                      className={cn(
+                        'mt-8 h-11 w-full rounded-xl font-bold',
+                        plan.featured &&
+                          'bg-complementary-300 text-neutral-500 hover:bg-complementary-200',
+                      )}
+                    >
+                      <a
+                        href={guildaJoinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Acesse agora
+                      </a>
+                    </Button>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </ul>
+          </div>
 
           <p className="mt-8 text-center text-sm text-neutral-400">
             Pagamento e gestão de assinatura via{' '}
@@ -422,31 +450,29 @@ export function GuildaPage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section
         id={guildaHashes.faq}
-        className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-28 border-t border-neutral-500/10 bg-brand-100/25 px-5 py-16 md:px-6 md:py-24"
       >
-        <div className="mx-auto max-w-3xl md:max-w-4xl">
-          <SectionEyebrow>FAQ</SectionEyebrow>
-          <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-            FAQ da guilda
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-400">
-            As perguntas mais comuns que você pode ter antes de começar sua
-            jornada como Vaguiner.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+          <SectionIntro
+            eyebrow="FAQ"
+            title="FAQ da guilda"
+            description="As perguntas mais comuns que você pode ter antes de começar sua jornada como Vaguiner."
+          />
 
-          <div className="mt-8 rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 md:px-7">
-            {guildaFaq.map((item, index) => (
-              <FaqItem
-                key={item.question}
-                question={item.question}
-                answer={item.answer}
-                defaultOpen={index === 0}
-              />
-            ))}
-          </div>
+          <ScrollReveal delayMs={100}>
+            <div className="rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 md:px-7">
+              {guildaFaq.map((item, index) => (
+                <FaqItem
+                  key={item.question}
+                  question={item.question}
+                  answer={item.answer}
+                  defaultOpen={index === 0}
+                />
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
