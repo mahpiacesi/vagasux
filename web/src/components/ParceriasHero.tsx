@@ -2,7 +2,7 @@ import { ArrowDown, BookOpenText } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 import { Button } from '@/components/ui/button'
 import type { PartnerDisplay } from '@/lib/partners'
-import { contact, mediaKit } from '@/lib/siteLinks'
+import { mediaKit, parceriasContact } from '@/lib/siteLinks'
 
 function LogoRibbon({
   items,
@@ -116,7 +116,7 @@ export function ParceriasHero({ partners }: ParceriasHeroProps) {
         <p className="mural-fade mural-fade-delay-3 mt-6 text-sm text-neutral-400">
           Tem uma ideia de parceria?{' '}
           <a
-            href={`mailto:${contact.email}?subject=Parceria%20VagasUX`}
+            href={parceriasContact.mailto}
             className="font-semibold text-complementary-300 underline decoration-complementary-400/50 underline-offset-4 transition-colors hover:text-complementary-200"
           >
             Fale com a gente

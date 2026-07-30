@@ -6,10 +6,11 @@ import {
   UsersThree,
 } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { ParceriasHero } from '@/components/ParceriasHero'
 import { loadActivePartners, type PartnerDisplay } from '@/lib/partners'
-import { contact, mediaKit } from '@/lib/siteLinks'
+import { mediaKit, parceriasContact } from '@/lib/siteLinks'
+import { cn } from '@/lib/utils'
 
 const values = [
   {
@@ -347,10 +348,13 @@ export function ParceriasPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
-        <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top_right,rgba(93,107,246,0.28),transparent_55%)]" />
+      <section
+        id="contato-parceria"
+        className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28"
+      >
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(93,107,246,0.28),transparent_55%)]" />
 
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <span className="mural-fade inline-flex size-14 items-center justify-center rounded-2xl bg-complementary-300 text-2xl text-neutral-500">
               ☂️
@@ -386,16 +390,16 @@ export function ParceriasPage() {
 
           <div className="mx-auto mt-10 flex max-w-4xl flex-col items-center text-center">
             <div className="mural-fade mural-fade-delay-3 flex flex-wrap justify-center gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200"
+              <a
+                href={parceriasContact.mailto}
+                className={cn(
+                  buttonVariants({ size: 'lg' }),
+                  'h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200',
+                )}
               >
-                <a href={`mailto:${contact.email}?subject=Parceria%20VagasUX`}>
-                  <Handshake size={18} weight="bold" className="mr-1.5" aria-hidden />
-                  Entrar em contato
-                </a>
-              </Button>
+                <Handshake size={18} weight="bold" className="mr-1.5" aria-hidden />
+                Entrar em contato
+              </a>
               <Button
                 asChild
                 size="lg"
