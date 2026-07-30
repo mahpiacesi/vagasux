@@ -237,7 +237,7 @@ export const guildaFaq = [
 export const guildaWhatsappFeature = {
   title: 'Grupo exclusivo no WhatsApp',
   description:
-    'A Guilda acontece num grupo fechado, com apoio e troca real entre vaguiners, longe do ruído dos canais abertos.',
+    'A Guilda rola num grupo fechado, direto no WhatsApp com apoio e troca real entre a comunidade.',
   Icon: WhatsappLogo,
 } as const
 

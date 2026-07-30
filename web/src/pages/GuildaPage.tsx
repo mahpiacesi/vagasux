@@ -262,7 +262,7 @@ export function GuildaPage() {
                   >
                     <guildaWhatsappFeature.Icon
                       size={20}
-                      weight="fill"
+                      weight="regular"
                       className="mr-2"
                       aria-hidden
                     />
