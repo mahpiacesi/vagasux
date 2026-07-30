@@ -282,10 +282,17 @@ export function GuildaPage() {
                   index === 0 ? 'lg:col-span-5' : 'lg:col-span-5 lg:col-start-8',
                 )}
               >
-                <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
-                  {item.eyebrow}
-                </p>
-                <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] text-neutral-500">
+                {item.eyebrow ? (
+                  <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
+                    {item.eyebrow}
+                  </p>
+                ) : null}
+                <h3
+                  className={cn(
+                    'text-2xl font-black tracking-[-0.03em] text-neutral-500',
+                    item.eyebrow ? 'mt-3' : '',
+                  )}
+                >
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-400 md:text-base">
@@ -329,13 +336,8 @@ export function GuildaPage() {
           <SectionIntro
             sticky={false}
             eyebrow="Relatos de vaguiners"
-            title={
-              <>
-                Histórias reais de quem encontrou{' '}
-                <span className="text-mark">apoio na Guilda</span>
-              </>
-            }
-            description="Gente como você, migrando, estudando e dando os primeiros passos com mais segurança no mercado de UX."
+            title="Histórias reais de vaguiners da Guilda"
+            description="Gente como você, que encontrou na comunidade apoio pra começar, trocar, se desenvolver e dar os primeiros passos com mais segurança no mercado de UX."
           />
 
           <GuildaTestimonials items={guildaTestimonials} />

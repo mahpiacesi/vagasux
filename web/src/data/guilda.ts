@@ -78,16 +78,16 @@ export const guildaBenefits: GuildaBenefit[] = [
 
 export const guildaHighlights = [
   {
-    eyebrow: 'Na prática',
-    title: 'Desbloqueie seu portfólio',
+    eyebrow: '',
+    title: 'Desbloqueie seu portfólio na prática',
     description:
-      'Workshops com exercícios reais, dinâmicas e materiais para construir um portfólio com propósito desde o início, não só mais um case genérico.',
+      'Participe de workshops com exercícios reais, dinâmicas e acesso a materiais que te ajudam a construir um portfólio com propósito desde o início.',
   },
   {
-    eyebrow: 'No seu ritmo',
+    eyebrow: '',
     title: 'Foco na sua transição',
     description:
-      'A Guilda respeita seu tempo e oferece apoio contínuo: mentorias, ferramentas e troca para ganhar confiança a cada etapa da migração para UX.',
+      'A Guilda respeita seu ritmo e oferece apoio contínuo com oportunidade de mentorias e ferramentas pra te ajudar a ganhar confiança a cada etapa.',
   },
 ] as const
 
