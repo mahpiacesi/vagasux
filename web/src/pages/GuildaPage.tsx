@@ -434,11 +434,11 @@ export function GuildaPage() {
         <div className="mx-auto max-w-3xl md:max-w-4xl">
           <SectionEyebrow>FAQ</SectionEyebrow>
           <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-            Perguntas frequentes
+            FAQ da guilda
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400">
-            O que muita gente pergunta antes de começar a jornada como
-            vaguiner.
+            As perguntas mais comuns que você pode ter antes de começar sua
+            jornada como Vaguiner.
           </p>
 
           <div className="mt-8 rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 md:px-7">

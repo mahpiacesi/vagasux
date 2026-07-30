@@ -222,7 +222,7 @@ export const guildaFaq = [
   {
     question: 'Preciso já trabalhar com UX para entrar?',
     answer:
-      'Não. A Guilda é para quem está migrando, estudando ou começando na área. O foco é apoiar iniciantes e pessoas em transição. Não exigimos experiência prévia formal.',
+      'Não. A Guilda é para quem está migrando, estudando ou começando na área. O foco é apoiar iniciantes e pessoas em transição — não exigimos experiência prévia formal.',
   },
   {
     question: 'Como funcionam as mentorias avulsas?',
@@ -232,12 +232,12 @@ export const guildaFaq = [
   {
     question: 'E se eu não conseguir acompanhar tudo?',
     answer:
-      'Sem problema. Os encontros ficam gravados e você participa no seu ritmo. A Guilda foi pensada para jornadas reais, com trabalho, estudo e vida acontecendo ao mesmo tempo.',
+      'Sem problema. Os encontros ficam gravados e você participa no seu ritmo. A Guilda foi pensada para jornadas reais — com trabalho, estudo e vida acontecendo ao mesmo tempo.',
   },
   {
     question: 'Tem certificado?',
     answer:
-      'Não emitimos certificado formal. O valor está na troca, nas mentorias e no apoio da comunidade, não em um papel no fim.',
+      'Não emitimos certificado formal. O valor está na troca, nas mentorias e no apoio da comunidade — não em um papel no fim.',
   },
   {
     question: 'Posso cancelar quando quiser?',
