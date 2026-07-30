@@ -132,6 +132,10 @@ function pickLogoFile(row) {
 }
 
 function extFromName(name, url) {
+  const urlSource = String(url || '').toLowerCase();
+  const urlMatch = urlSource.match(/\\.([a-z0-9]+)(?:\\?|$)/);
+  if (urlMatch) return urlMatch[1];
+
   const source = String(name || url || '').toLowerCase();
   const match = source.match(/\\.([a-z0-9]+)(?:\\?|$)/);
   if (match) return match[1];
@@ -316,7 +320,7 @@ const upsertPartner = node({
       contentType: 'json',
       specifyBody: 'json',
       jsonBody: expr(
-        "{{ JSON.stringify({ p_notion_page_id: String($json.notion_page_id), p_slug: $json.slug, p_name: $json.name, p_logo_url: 'https://xbvspzwjjjtkvecseoog.supabase.co/storage/v1/object/public/partner-logos/' + $json.logo_storage_path, p_site_url: $json.site_url || null }) }}",
+        "{{ JSON.stringify({ p_notion_page_id: String($('Download logo').item.json.notion_page_id), p_slug: $('Download logo').item.json.slug, p_name: $('Download logo').item.json.name, p_logo_url: 'https://xbvspzwjjjtkvecseoog.supabase.co/storage/v1/object/public/partner-logos/' + $('Download logo').item.json.logo_storage_path, p_site_url: $('Download logo').item.json.site_url || null }) }}",
       ),
       options: { timeout: 30000 },
     },
@@ -337,8 +341,8 @@ export default workflow('collector-partners', 'Collector Parceiros')
   .add(subworkflowTrigger)
   .to(kickoff)
   .add(kickoff)
+  .to(deactivateAll)
   .to(fetchPartners)
   .to(mapPartners)
-  .to(deactivateAll)
   .to(keepWithLogo)
   .to(batchPartners.onEachBatch(downloadLogo.to(uploadLogo).to(upsertPartner).to(nextBatch(batchPartners))));
