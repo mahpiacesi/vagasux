@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-07-30
+**Última atualização:** 2026-07-30 (tarde)
 
 ---
 
@@ -13,8 +13,8 @@
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
+| Analytics (Clarity + GA4) | 🔜 PR #42 | Banner de cookies + Termos atualizados |
 | Enrichment (IA) | ⏸ Pausado | Gemini 429 — retry quando quota resetar |
-| Próxima entrega | 🔜 Pendente | Mais páginas e integrações |
 
 ---
 

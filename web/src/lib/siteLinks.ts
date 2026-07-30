@@ -14,6 +14,12 @@ export const contact = {
   email: 'vagasux@gmail.com',
 } as const
 
+export const analyticsPrivacy = {
+  microsoftClarity:
+    'https://privacy.microsoft.com/pt-br/privacystatement',
+  googleAnalytics: 'https://policies.google.com/privacy',
+} as const
+
 export const parceriasContact = {
   subject: 'Parceria VagasUX',
   mailto: `mailto:${contact.email}?subject=${encodeURIComponent('Parceria VagasUX')}`,
