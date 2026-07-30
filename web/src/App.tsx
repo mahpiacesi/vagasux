@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from '@/components/SiteLayout'
 import { routes } from '@/lib/siteLinks'
 import { ComunidadePage } from '@/pages/ComunidadePage'
+import { GuildaPage } from '@/pages/GuildaPage'
 import { GuiaIllustrationDevPage } from '@/pages/GuiaIllustrationDevPage'
 import { HomePage } from '@/pages/HomePage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
@@ -22,6 +23,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route index element={<HomePage />} />
           <Route path={routes.comunidade} element={<ComunidadePage />} />
+          <Route path={routes.guilda} element={<GuildaPage />} />
           <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.parcerias} element={<ParceriasPage />} />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />

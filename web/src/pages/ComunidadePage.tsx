@@ -94,8 +94,8 @@ const participationPaths = [
     featured: true,
     cta: {
       label: 'Conheça a Guilda',
-      href: 'https://vagasux.framer.website/',
-      external: true,
+      href: routes.guilda,
+      external: false,
     },
   },
 ] as const
@@ -182,30 +182,28 @@ function ParticipationCard({
       </ul>
 
       <div className="mt-auto pt-8">
-        {cta.external ? (
-          <Button
-            asChild
-            size="lg"
-            className={`h-11 w-full rounded-xl font-bold ${
-              featured
-                ? 'bg-complementary-300 text-neutral-500 hover:bg-complementary-200'
-                : ''
-            }`}
-          >
+        <Button
+          asChild
+          size="lg"
+          variant={featured || cta.external ? undefined : 'outline'}
+          className={`h-11 w-full rounded-xl font-bold ${
+            featured
+              ? 'bg-complementary-300 text-neutral-500 hover:bg-complementary-200'
+              : cta.external
+                ? ''
+                : 'border-neutral-500/15'
+          }`}
+        >
+          {cta.external ? (
             <a href={cta.href} target="_blank" rel="noopener noreferrer">
               {cta.label}
             </a>
-          </Button>
-        ) : (
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="h-11 w-full rounded-xl border-neutral-500/15 font-bold"
-          >
+          ) : cta.href.startsWith('/') ? (
+            <Link to={cta.href}>{cta.label}</Link>
+          ) : (
             <a href={cta.href}>{cta.label}</a>
-          </Button>
-        )}
+          )}
+        </Button>
       </div>
     </article>
   )
