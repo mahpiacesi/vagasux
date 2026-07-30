@@ -63,9 +63,9 @@ export function CookieConsentBanner() {
               id="cookie-consent-description"
               className="text-sm leading-relaxed text-neutral-400 md:text-[15px]"
             >
-              Ao aceitar, usamos Microsoft Clarity e Google Analytics para
-              entender como a comunidade utiliza a VagasUX e melhorar
-              continuamente a experiência de quem passa por aqui.
+              Ao aceitar, usamos o Microsoft Clarity para entender como a
+              comunidade utiliza a VagasUX e melhorar continuamente a
+              experiência de quem passa por aqui.
             </p>
             <Link
               to={routes.termosEPoliticas}

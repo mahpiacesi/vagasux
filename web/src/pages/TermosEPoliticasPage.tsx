@@ -276,26 +276,11 @@ export function TermosEPoliticasPage() {
         </div>
 
         <div className="space-y-4">
-          <SubsectionTitle>Google Analytics</SubsectionTitle>
-          <Prose>
-            <p>
-              Também utilizamos o Google Analytics para compreender métricas
-              agregadas de acesso, origem do tráfego, dispositivos utilizados e
-              comportamento geral de navegação.
-            </p>
-            <p>
-              Esses dados nos ajudam a entender o crescimento da comunidade e a
-              priorizar melhorias na plataforma.
-            </p>
-          </Prose>
-        </div>
-
-        <div className="space-y-4">
           <SubsectionTitle>Consentimento para cookies</SubsectionTitle>
           <Prose>
             <p>
-              Ao aceitar os cookies opcionais, você concorda com a utilização
-              dessas ferramentas para análise e melhoria contínua da plataforma.
+              Ao aceitar os cookies opcionais, você concorda com a utilização do
+              Microsoft Clarity para análise e melhoria contínua da plataforma.
             </p>
             <p>
               Você pode alterar ou revogar seu consentimento a qualquer momento
@@ -309,21 +294,13 @@ export function TermosEPoliticasPage() {
           <SubsectionTitle>Links externos</SubsectionTitle>
           <Prose>
             <p>
-              Para saber mais sobre como essas ferramentas tratam informações,
-              consulte:
+              Para saber mais sobre como essa ferramenta trata informações,
+              consulte a{' '}
+              <TextLink href={analyticsPrivacy.microsoftClarity}>
+                Política de Privacidade da Microsoft
+              </TextLink>
+              .
             </p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                <TextLink href={analyticsPrivacy.microsoftClarity}>
-                  Política de Privacidade da Microsoft
-                </TextLink>
-              </li>
-              <li>
-                <TextLink href={analyticsPrivacy.googleAnalytics}>
-                  Política de Privacidade do Google
-                </TextLink>
-              </li>
-            </ul>
           </Prose>
         </div>
       </div>
