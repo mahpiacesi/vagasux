@@ -30,6 +30,12 @@ export const communityHashes = {
   canaisAbertos: 'canais-abertos',
 } as const
 
+export const voluntariadoHashes = {
+  comoESer: 'como-e-ser',
+  time: 'time',
+  comoFazerParte: 'como-fazer-parte',
+} as const
+
 /**
  * Pages that still live on the Super/Notion site.
  * Keep vagasux.com.br intact while we migrate in parallel.
