@@ -1,10 +1,10 @@
 import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { GuildaClosingSection } from '@/components/guilda/GuildaClosingSection'
 import { GuildaTestimonialRail } from '@/components/guilda/GuildaTestimonialRail'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
 import { GuildaHero } from '@/components/GuildaHero'
-import { NewsletterSection } from '@/components/NewsletterSection'
 import { Button } from '@/components/ui/button'
 import {
   guildaBenefits,
@@ -476,7 +476,7 @@ export function GuildaPage() {
         </div>
       </section>
 
-      <NewsletterSection />
+      <GuildaClosingSection />
     </main>
   )
 }
