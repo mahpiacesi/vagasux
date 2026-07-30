@@ -76,20 +76,20 @@ export function CookieConsentBanner() {
             </Link>
           </div>
 
-          <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-end">
+          <div className="flex flex-row items-center justify-end gap-2">
             <Button
               type="button"
               variant="outline"
-              size="lg"
-              className="w-full sm:w-auto"
+              size="sm"
+              className="shrink-0 sm:h-9 sm:px-3 sm:text-sm"
               onClick={() => choose('essential')}
             >
               Apenas o necessário
             </Button>
             <Button
               type="button"
-              size="lg"
-              className="w-full sm:w-auto"
+              size="sm"
+              className="shrink-0 sm:h-9 sm:px-3 sm:text-sm"
               onClick={() => choose('analytics')}
             >
               Aceitar
