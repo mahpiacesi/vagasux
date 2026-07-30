@@ -5,9 +5,10 @@ import {
   Sparkle,
   UsersThree,
 } from '@phosphor-icons/react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ParceriasHero } from '@/components/ParceriasHero'
-import { partners } from '@/data/partners'
+import { loadActivePartners, type PartnerDisplay } from '@/lib/partners'
 import { contact, mediaKit } from '@/lib/siteLinks'
 
 const values = [
@@ -104,15 +105,19 @@ function PartnerLogoCard({
   index,
 }: {
   name: string
-  logo: string
+  logo: string | null
   index: number
 }) {
   return (
     <article
-      className="parcerias-logo-card group flex flex-col items-center justify-center rounded-2xl border border-neutral-500/10 bg-neutral-100 p-4 shadow-[0_12px_36px_-28px_rgb(7_0_58_/_0.35)]"
+      className="parcerias-logo-card group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-neutral-500/10 bg-neutral-100 p-4 shadow-[0_12px_36px_-28px_rgb(7_0_58_/_0.35)]"
       style={{ animationDelay: `${60 + (index % 12) * 40}ms` }}
     >
-      <div className="flex h-16 w-full items-center justify-center md:h-[4.5rem]">
+      <div
+        className="pointer-events-none absolute inset-0 z-0 rounded-2xl bg-neutral-500/0 transition-colors duration-300 group-hover:bg-neutral-500/[0.04]"
+        aria-hidden
+      />
+      <div className="relative z-10 flex h-16 w-full items-center justify-center md:h-[4.5rem]">
         {logo ? (
           <img
             src={logo}
@@ -127,7 +132,7 @@ function PartnerLogoCard({
           </span>
         )}
       </div>
-      <p className="mt-3 line-clamp-2 text-center text-[0.7rem] font-bold leading-snug text-neutral-500">
+      <p className="relative z-10 mt-3 line-clamp-2 text-center text-[0.7rem] font-bold leading-snug text-neutral-500">
         {name}
       </p>
     </article>
@@ -135,9 +140,25 @@ function PartnerLogoCard({
 }
 
 export function ParceriasPage() {
+  const [partners, setPartners] = useState<PartnerDisplay[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function load() {
+      const data = await loadActivePartners()
+      if (!cancelled) setPartners(data)
+    }
+
+    void load()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main>
-      <ParceriasHero />
+      <ParceriasHero partners={partners} />
 
       <section className="px-5 py-14 md:px-6 md:py-20">
         <div className="mx-auto max-w-6xl">

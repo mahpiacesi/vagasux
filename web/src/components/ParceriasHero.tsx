@@ -1,20 +1,18 @@
 import { ArrowDown, BookOpenText } from '@phosphor-icons/react'
+import { useMemo } from 'react'
 import { Button } from '@/components/ui/button'
-import { partners } from '@/data/partners'
+import type { PartnerDisplay } from '@/lib/partners'
 import { contact, mediaKit } from '@/lib/siteLinks'
-
-const ribbonRows = [
-  partners.filter((_, index) => index % 2 === 0),
-  partners.filter((_, index) => index % 2 === 1),
-] as const
 
 function LogoRibbon({
   items,
   reverse = false,
 }: {
-  items: typeof partners
+  items: PartnerDisplay[]
   reverse?: boolean
 }) {
+  if (items.length === 0) return null
+
   const row = [...items, ...items]
 
   return (
@@ -47,7 +45,20 @@ function LogoRibbon({
   )
 }
 
-export function ParceriasHero() {
+type ParceriasHeroProps = {
+  partners: PartnerDisplay[]
+}
+
+export function ParceriasHero({ partners }: ParceriasHeroProps) {
+  const ribbonRows = useMemo(
+    () =>
+      [
+        partners.filter((_, index) => index % 2 === 0),
+        partners.filter((_, index) => index % 2 === 1),
+      ] as const,
+    [partners],
+  )
+
   return (
     <section className="relative overflow-hidden bg-neutral-500 px-5 pt-20 pb-0 text-neutral-100 md:px-6 md:pt-28">
       <div className="pointer-events-none absolute inset-0 -z-0">
@@ -62,7 +73,9 @@ export function ParceriasHero() {
         </p>
 
         <h1 className="mural-fade mural-fade-delay-1 mt-8 text-[2.75rem] leading-[1.02] font-black tracking-[-0.05em] md:text-6xl lg:text-[3.75rem]">
-          Juntos por um mercado{' '}
+          Juntos por um
+          <br />
+          mercado{' '}
           <span className="text-mark-on-dark">mais acessível.</span>
         </h1>
 

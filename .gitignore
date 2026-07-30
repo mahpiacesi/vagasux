@@ -15,6 +15,9 @@ tools/carousel/out/*.png
 tools/carousel/out/*.pdf
 tools/carousel/out/_html/
 
+# Partner logos live in Supabase Storage (Notion → n8n sync), not in repo
+web/src/assets/partners/active/
+
 # OS / editor
 .DS_Store
 Thumbs.db
