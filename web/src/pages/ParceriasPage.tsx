@@ -417,13 +417,7 @@ export function ParceriasPage() {
             </div>
             <p className="mt-6 flex items-center justify-center gap-2 text-sm text-neutral-400">
               <UsersThree size={18} weight="bold" aria-hidden />
-              {partners.length} parceiros ativos hoje ·{' '}
-              <a
-                href={parceriasContact.mailto}
-                className="font-semibold text-complementary-300 underline decoration-complementary-400/50 underline-offset-4 transition-colors hover:text-complementary-200"
-              >
-                {parceriasContact.email}
-              </a>
+              {partners.length} parceiros ativos hoje
             </p>
           </div>
         </div>
