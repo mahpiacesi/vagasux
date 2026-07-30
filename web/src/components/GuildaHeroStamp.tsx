@@ -1,15 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 
 type GuildaHeroStampProps = {
   className?: string
   forceMotion?: boolean
 }
 
+const STAMP_TEXT = '✦ VAGAS UX ✦ GUILDA DO VAGUINER'
+const CENTER = 104
+const CIRCLE_R = 96
+const CLIP_R = 88
+const RING_R = 52
+const RING_LENGTH = 2 * Math.PI * RING_R
+
 export function GuildaHeroStamp({
   className,
   forceMotion = false,
 }: GuildaHeroStampProps) {
   const [animate, setAnimate] = useState(forceMotion)
+  const uid = useId().replace(/:/g, '')
+  const clipId = `guilda-stamp-clip-${uid}`
+  const pathId = `guilda-stamp-path-${uid}`
 
   useEffect(() => {
     const reduceMotion = window.matchMedia(
@@ -29,55 +39,82 @@ export function GuildaHeroStamp({
         .join(' ')}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 208 208"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        shapeRendering="geometricPrecision"
+        textRendering="geometricPrecision"
+      >
         <defs>
-          <clipPath id="guilda-stamp-clip">
-            <circle cx="52" cy="52" r="44.5" />
+          <clipPath id={clipId}>
+            <circle cx={CENTER} cy={CENTER} r={CLIP_R} />
           </clipPath>
           <path
-            id="guilda-stamp-circle"
-            d="M 52,52 m -29,0 a 29,29 0 1,1 58,0 a 29,29 0 1,1 -58,0"
+            id={pathId}
+            d={`M ${CENTER} ${CENTER} m -${RING_R},0 a ${RING_R},${RING_R} 0 1,1 ${RING_R * 2},0 a ${RING_R},${RING_R} 0 1,1 -${RING_R * 2},0`}
           />
         </defs>
+
         <circle
-          cx="52"
-          cy="52"
-          r="48"
+          cx={CENTER}
+          cy={CENTER}
+          r={CIRCLE_R}
           fill="#A8B0FF"
           stroke="#07003A"
-          strokeWidth="2.5"
+          strokeWidth="5"
         />
+
+        <g clipPath={`url(#${clipId})`}>
+          <g className="guilda-hero-stamp-ring">
+            {animate ? (
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from={`0 ${CENTER} ${CENTER}`}
+                to={`360 ${CENTER} ${CENTER}`}
+                dur="22s"
+                repeatCount="indefinite"
+              />
+            ) : null}
+            <text
+              fill="#07003A"
+              fontSize="10.5"
+              fontWeight="800"
+              fontFamily="Lato, system-ui, sans-serif"
+              letterSpacing="0"
+            >
+              <textPath
+                href={`#${pathId}`}
+                startOffset="0%"
+                textLength={RING_LENGTH}
+                lengthAdjust="spacing"
+              >
+                {STAMP_TEXT}
+              </textPath>
+            </text>
+          </g>
+        </g>
+
         <g className="guilda-hero-stamp-arrow">
           <path
-            d="M46 58L58 46"
+            d="M92 116L116 92"
             stroke="#07003A"
-            strokeWidth="3"
+            strokeWidth="6"
             strokeLinecap="round"
           />
           <path
-            d="M58 46H49"
+            d="M116 92H98"
             stroke="#07003A"
-            strokeWidth="3"
+            strokeWidth="6"
             strokeLinecap="round"
           />
           <path
-            d="M58 46V55"
+            d="M116 92V110"
             stroke="#07003A"
-            strokeWidth="3"
+            strokeWidth="6"
             strokeLinecap="round"
           />
-        </g>
-        <g className="guilda-hero-stamp-ring" clipPath="url(#guilda-stamp-clip)">
-          <text
-            fill="#07003A"
-            fontSize="6.25"
-            fontWeight="800"
-            letterSpacing="0.05em"
-          >
-            <textPath href="#guilda-stamp-circle" startOffset="0%">
-              ✦ VAGAS UX ✦ GUILDA DO VAGUINER
-            </textPath>
-          </text>
         </g>
       </svg>
     </div>
