@@ -563,29 +563,50 @@
   overflow: visible;
 }
 
-.guilda-hero-stamp-label {
+.guilda-hero-stamp {
   position: absolute;
-  left: 14%;
-  top: 18%;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 5.5rem;
-  height: 5.5rem;
-  border-radius: 9999px;
-  font-size: 0.48rem;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: 0.12em;
-  text-align: center;
-  color: var(--color-neutral-500);
+  left: 4%;
+  top: 10%;
+  z-index: 3;
+  width: 5.75rem;
+  height: 5.75rem;
   pointer-events: none;
+  animation: guilda-stamp-float 6.5s ease-in-out infinite;
 }
 
-.guilda-hero-stamp-dot {
-  margin: 0.15rem 0;
-  font-size: 0.55rem;
-  opacity: 0.85;
+.guilda-hero-stamp svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.guilda-hero-stamp-ring {
+  transform-box: fill-box;
+  transform-origin: 52px 52px;
+}
+
+.guilda-hero-stamp--motion .guilda-hero-stamp-ring {
+  animation: guilda-stamp-spin 22s linear infinite;
+}
+
+@keyframes guilda-stamp-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+}
+
+@keyframes guilda-stamp-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes guilda-hero-float {
@@ -611,26 +632,26 @@
 @keyframes guilda-umbrella-canopy-sway {
   0%,
   100% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(0deg);
+    transform: rotate(0deg);
   }
   35% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(2.5deg);
+    transform: rotate(2.5deg);
   }
   70% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(-2deg);
+    transform: rotate(-2deg);
   }
 }
 
 @keyframes guilda-umbrella-detail-sway {
   0%,
   100% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(0deg);
+    transform: rotate(0deg);
   }
   40% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(1.4deg);
+    transform: rotate(1.4deg);
   }
   75% {
-    transform: scale(0.39) translate(-239px, -195px) rotate(-1.1deg);
+    transform: rotate(-1.1deg);
   }
 }
 
@@ -670,27 +691,21 @@
   }
 }
 
-.guilda-hero-svg--motion #guilda-arch {
+.guilda-hero-svg--motion #guilda-main {
   transform-box: fill-box;
-  transform-origin: center bottom;
+  transform-origin: center 72%;
   animation: guilda-hero-float 7s ease-in-out infinite;
-}
-
-.guilda-hero-svg--motion #guilda-shield {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: guilda-hero-shield-bob 6s ease-in-out infinite;
 }
 
 .guilda-hero-svg--motion #guilda-umbrella-canopy {
   transform-box: fill-box;
-  transform-origin: 50% 62%;
+  transform-origin: 239px 190px;
   animation: guilda-umbrella-canopy-sway 5.5s ease-in-out infinite;
 }
 
 .guilda-hero-svg--motion #guilda-umbrella-detail {
   transform-box: fill-box;
-  transform-origin: 50% 62%;
+  transform-origin: 239px 190px;
   animation: guilda-umbrella-detail-sway 5.5s ease-in-out infinite;
   animation-delay: -0.35s;
 }
@@ -807,8 +822,9 @@
   .parcerias-logo-card:hover,
   .parcerias-tier-card:hover,
   .guilda-hero-visual-glow,
-  .guilda-hero-svg--motion #guilda-arch,
-  .guilda-hero-svg--motion #guilda-shield,
+  .guilda-hero-stamp,
+  .guilda-hero-stamp--motion .guilda-hero-stamp-ring,
+  .guilda-hero-svg--motion #guilda-main,
   .guilda-hero-svg--motion #guilda-umbrella-canopy,
   .guilda-hero-svg--motion #guilda-umbrella-detail,
   .guilda-hero-svg--motion #guilda-sparkle-a,

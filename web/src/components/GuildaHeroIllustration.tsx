@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import guildaHeroSvg from '@/assets/illustrations/guilda-hero.svg?raw'
+import { GuildaHeroStamp } from '@/components/GuildaHeroStamp'
 
 type GuildaHeroIllustrationProps = {
   className?: string
@@ -40,14 +41,8 @@ export function GuildaHeroIllustration({
   return (
     <div className="guilda-hero-visual" aria-hidden="true">
       <div className="guilda-hero-visual-glow" />
+      <GuildaHeroStamp forceMotion={forceMotion} />
       <div ref={hostRef} className={className} />
-      <div className="guilda-hero-stamp-label">
-        <span>GUILDA DO VAGUINER</span>
-        <span className="guilda-hero-stamp-dot" aria-hidden>
-          ✦
-        </span>
-        <span>VAGAS UX</span>
-      </div>
     </div>
   )
 }

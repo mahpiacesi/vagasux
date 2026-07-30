@@ -6,7 +6,7 @@ import { guildaHashes } from '@/lib/siteLinks'
 
 export function GuildaHero() {
   return (
-    <section className="guilda-hero relative overflow-hidden border-b border-neutral-500/10 bg-neutral-100 px-5 pt-16 pb-12 md:px-6 md:pt-24 md:pb-16">
+    <section className="guilda-hero relative overflow-visible border-b border-neutral-500/10 bg-neutral-100 px-5 pt-16 pb-12 md:px-6 md:pt-24 md:pb-16">
       <div className="pointer-events-none absolute inset-0 -z-0">
         <div
           className="absolute inset-0 opacity-[0.45]"
