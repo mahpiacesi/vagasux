@@ -1,23 +1,11 @@
-export type FallbackPartner = {
+/** Name-only fallback when Supabase is unreachable. Logos come from Storage via n8n sync. */
+export type FallbackPartnerName = {
   slug: string
   name: string
-  logo: string
 }
 
-const logoModules = import.meta.glob<string>('@/assets/partners/active/*', {
-  eager: true,
-  import: 'default',
-})
-
-function logoForSlug(slug: string): string {
-  const entry = Object.entries(logoModules).find(([path]) =>
-    path.includes(`/${slug}.`),
-  )
-  return entry?.[1] ?? ''
-}
-
-/** Snapshot from Notion database e3db2f99-fd47-4740-aeac-75524dbd67fd (Status = Ativo) */
-const activePartnerNames: { slug: string; name: string }[] = [
+/** Snapshot from Notion database 6ef3390c137d4e9c9d9a7863f2ada4a6 (Status = Ativo) */
+export const fallbackPartnerNames: FallbackPartnerName[] = [
   { slug: 'akilomba', name: 'Akilomba' },
   { slug: 'banco-carrefour', name: 'Banco Carrefour' },
   { slug: 'beatriz-miranda', name: 'Beatriz Miranda' },
@@ -37,7 +25,6 @@ const activePartnerNames: { slug: string; name: string }[] = [
   { slug: 'mergo', name: 'Mergo' },
   { slug: 'dexconf', name: 'DEXCONF' },
   { slug: 'novatec', name: 'Novatec' },
-  { slug: 'josias-oliveira', name: 'Josias Oliveira' },
   { slug: 'programaria', name: 'PrograMaria' },
   { slug: 'save-me-teacher', name: 'Save me teacher' },
   { slug: 'thestarter', name: 'TheStarter' },
@@ -46,10 +33,3 @@ const activePartnerNames: { slug: string; name: string }[] = [
   { slug: 'uxnow', name: 'UX Design e Research (UXNOW)' },
   { slug: 'ux-writing-101', name: 'UX WRITING 101' },
 ]
-
-export const fallbackPartners: FallbackPartner[] = activePartnerNames.map(
-  (partner) => ({
-    ...partner,
-    logo: logoForSlug(partner.slug),
-  }),
-)

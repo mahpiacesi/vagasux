@@ -1,83 +1,51 @@
 # Collector Parceiros (Notion → Supabase)
 
-Ingestão da base **Parceiros** no Notion para o Supabase (tabela `partners` + bucket `partner-logos`).
+Sincroniza parceiros **ativos** da database Notion **Parceiros** para:
 
-## Fonte
+- **`partner-logos`** (Supabase Storage) — arquivo por slug
+- **`public.partners`** — metadados + URL pública do logo
 
-| Campo | Valor |
-|-------|-------|
-| Notion database (page) | `6ef3390c137d4e9c9d9a7863f2ada4a6` |
-| Notion data source | `e3db2f99-fd47-4740-aeac-75524dbd67fd` |
-| Workflow n8n | **Collector Parceiros** (tag VagasUX) |
+Logos **não** ficam no repo nem no GitHub. O site lê **`logo_url`** do Supabase.
 
-## Campos usados no Notion
+## Notion
 
-| Notion | Supabase |
-|--------|----------|
-| `page.id` | `notion_page_id` |
-| `Name` | `name` + `slug` (gerado) |
-| `Logo` (Files) | `logo_url` (via Storage) |
-| `Site` | `site_url` |
-| `Status = Ativo` | `is_active = true` |
+| Item | Valor |
+|------|--------|
+| Database | `6ef3390c137d4e9c9d9a7863f2ada4a6` |
+| Filtro | `Status = Ativo` + property **Logo** preenchida |
+| Integração | Mesma do Collector VagasUX — dar acesso à database Parceiros |
 
-Parceiros com status diferente de **Ativo** ou sem logo na property **Logo** são ignorados na sync.
+## Fluxo n8n
 
-## Fluxo do collector
+1. Buscar páginas da database Parceiros
+2. Mapear ativos com logo
+3. `deactivate_all_partners()` — marca todos inativos
+4. Para cada parceiro: download logo (URL temporária Notion) → upload Storage → `upsert_partner()`
+5. Parceiros removidos do Notion permanecem `is_active = false`
 
-1. Busca todas as pages da database Parceiros
-2. Filtra `Status = Ativo` e exige property **Logo**
-3. `deactivate_all_partners()` — zera visibilidade pública
-4. Para cada parceiro: download da logo → upload em `partner-logos/{slug}.{ext}` → `upsert_partner()`
-5. Parceiros reativados ficam com `is_active = true`; os que saíram do Notion permanecem inativos
+## Deploy do workflow
 
-## Setup n8n (obrigatório)
+Código versionado: `tools/n8n/collector-partners.workflow.ts`
 
-1. Integration Notion com acesso à database **Parceiros** (mesma do collector VagasUX).
-2. Credencial **Notion API** no node **Fetch partners**.
-3. Credencial **Supabase** (service role) nos nodes HTTP/RPC — mesma do Collector VagasUX.
-4. Compartilhar a database com a integration se ainda não estiver.
-5. Garantir property **Logo** preenchida em todos os parceiros ativos.
+Na instância self-hosted:
 
-## Migration Supabase
+1. Publicar via agente (MCP) ou importar JSON de `workflows/n8n-export/` quando exportado
+2. Credenciais: **Notion account**, **Supabase account** (service role)
+3. **Publish** o workflow
+4. Habilitar em **Instance-level MCP** (opcional)
+5. Adicionar ao **Scheduler** após Collector VagasUX
 
-Arquivo: `supabase/migrations/20260729_partners_notion_sync.sql`
+## Teste manual
 
-- Tabela `public.partners`
-- Bucket público `partner-logos`
-- RPCs `upsert_partner`, `deactivate_all_partners`
-- RLS: leitura pública só de `is_active = true`
+Execute **Collector Parceiros** uma vez e confira:
 
-## Scheduler
+- Supabase → Storage → `partner-logos` — arquivos `{slug}.{ext}`
+- Supabase → Table Editor → `partners` — `logo_url` começa com  
+  `https://xbvspzwjjjtkvecseoog.supabase.co/storage/v1/object/public/partner-logos/`
 
-Rodar **1x por dia**, junto do pipeline de collectors (após ou antes do Collector VagasUX).
+## Site (`/parcerias`)
 
-Ordem sugerida: Greenhouse + Gupy → Remotar → VagasUX → **Parceiros** → expire >60d → enrichment.
+`loadActivePartners()` em `web/src/lib/partners.ts` lê Supabase.  
+Fallback offline: só **nomes** (sem logos locais).
 
-## Primeira execução
-
-1. Aplicar migration no Supabase (se ainda não aplicada)
-2. Publicar workflow **Collector Parceiros** no n8n (`CCccf2S1gpWFX1LF`)
-3. Conferir credenciais Supabase nos nodes HTTP (Deactivate, Upload, Upsert)
-4. Executar manualmente uma vez
-5. Conferir `/parcerias` no site (passa a ler Supabase)
-
-### Sem n8n (trial expirado ou teste local)
-
-**Logos novos do Notion → pasta local (dev):**
-
-```bash
-NOTION_API_KEY=secret_... node tools/sync-partner-logos.mjs
-cd web && npm run dev   # reinicie o dev server após baixar
-```
-
-O site prioriza logos em `web/src/assets/partners/active/` sobre URLs do Supabase.
-
-**Seed só da tabela (sem Storage):** `node tools/seed-partners-from-notion.mjs`
-
-Usa assets locais como URL temporária. Quando o n8n voltar, a sync diária substitui por `partner-logos/`.
-
-## Site
-
-`fetchActivePartners()` em `web/src/lib/supabase.ts` lê `partners` com `is_active = true`, ordenado por `name`.
-
-O snapshot estático (`web/src/data/partners.ts`) permanece como fallback até a primeira sync completar.
+Migration: `supabase/migrations/20260729_partners_notion_sync.sql`

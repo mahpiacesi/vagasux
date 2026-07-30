@@ -1,4 +1,4 @@
-import { fallbackPartners } from '@/data/partners'
+import { fallbackPartnerNames } from '@/data/partners'
 import { fetchActivePartners } from '@/lib/supabase'
 import type { Partner } from '@/types/partner'
 
@@ -9,34 +9,32 @@ export type PartnerDisplay = {
   siteUrl: string | null
 }
 
-const localLogoBySlug = new Map(
-  fallbackPartners.map((partner) => [partner.slug, partner.logo || null]),
-)
+const SUPABASE_LOGO_PREFIX =
+  'https://xbvspzwjjjtkvecseoog.supabase.co/storage/v1/object/public/partner-logos/'
 
-function withLocalLogo(partner: PartnerDisplay): PartnerDisplay {
-  const localLogo = localLogoBySlug.get(partner.slug)
-  if (!localLogo) return partner
-  return { ...partner, logo: localLogo }
+function isSupabaseLogoUrl(url: string | null | undefined): url is string {
+  return Boolean(url?.startsWith(SUPABASE_LOGO_PREFIX))
 }
 
 function fromSupabase(partner: Partner): PartnerDisplay {
-  return withLocalLogo({
+  return {
     slug: partner.slug,
     name: partner.name,
-    logo: partner.logo_url,
+    logo: isSupabaseLogoUrl(partner.logo_url) ? partner.logo_url : null,
     siteUrl: partner.site_url,
-  })
+  }
 }
 
 function fromFallback(): PartnerDisplay[] {
-  return fallbackPartners.map((partner) => ({
+  return fallbackPartnerNames.map((partner) => ({
     slug: partner.slug,
     name: partner.name,
-    logo: partner.logo || null,
+    logo: null,
     siteUrl: null,
   }))
 }
 
+/** Active partners from Supabase (Notion → n8n → Storage). No local logo overrides. */
 export async function loadActivePartners(): Promise<PartnerDisplay[]> {
   try {
     const partners = await fetchActivePartners()
@@ -44,7 +42,7 @@ export async function loadActivePartners(): Promise<PartnerDisplay[]> {
       return partners.map(fromSupabase)
     }
   } catch (error) {
-    console.warn('Failed to load partners from Supabase, using fallback.', error)
+    console.warn('Failed to load partners from Supabase, using name-only fallback.', error)
   }
 
   return fromFallback()

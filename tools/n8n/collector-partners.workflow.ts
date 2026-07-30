@@ -187,7 +187,7 @@ const deactivateAll = node({
   version: 4.4,
   config: {
     name: 'Deactivate all partners',
-    credentials: { supabaseApi: { id: 'VtBtjog6BXvbtAno', name: 'Supabase account' } },
+    credentials: { supabaseApi: newCredential('Supabase account') },
     executeOnce: true,
     parameters: {
       method: 'POST',
@@ -265,7 +265,7 @@ const uploadLogo = node({
   version: 4.4,
   config: {
     name: 'Upload logo',
-    credentials: { supabaseApi: { id: 'VtBtjog6BXvbtAno', name: 'Supabase account' } },
+    credentials: { supabaseApi: newCredential('Supabase account') },
     parameters: {
       method: 'POST',
       url: expr(
@@ -296,7 +296,7 @@ const upsertPartner = node({
   version: 4.4,
   config: {
     name: 'Upsert partner',
-    credentials: { supabaseApi: { id: 'VtBtjog6BXvbtAno', name: 'Supabase account' } },
+    credentials: { supabaseApi: newCredential('Supabase account') },
     retryOnFail: true,
     maxTries: 3,
     waitBetweenTries: 1000,

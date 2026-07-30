@@ -1,4 +1,4 @@
--- Partners synced from Notion database e3db2f99-fd47-4740-aeac-75524dbd67fd
+-- Partners synced from Notion database 6ef3390c137d4e9c9d9a7863f2ada4a6
 
 create table if not exists public.partners (
   id uuid primary key default gen_random_uuid(),
