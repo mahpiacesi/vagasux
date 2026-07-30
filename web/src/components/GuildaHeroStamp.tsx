@@ -30,6 +30,15 @@ export function GuildaHeroStamp({
       aria-hidden="true"
     >
       <svg viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="guilda-stamp-clip">
+            <circle cx="52" cy="52" r="44.5" />
+          </clipPath>
+          <path
+            id="guilda-stamp-circle"
+            d="M 52,52 m -29,0 a 29,29 0 1,1 58,0 a 29,29 0 1,1 -58,0"
+          />
+        </defs>
         <circle
           cx="52"
           cy="52"
@@ -58,18 +67,12 @@ export function GuildaHeroStamp({
             strokeLinecap="round"
           />
         </g>
-        <g className="guilda-hero-stamp-ring">
-          <defs>
-            <path
-              id="guilda-stamp-circle"
-              d="M 52,52 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"
-            />
-          </defs>
+        <g className="guilda-hero-stamp-ring" clipPath="url(#guilda-stamp-clip)">
           <text
             fill="#07003A"
-            fontSize="7.5"
+            fontSize="6.25"
             fontWeight="800"
-            letterSpacing="0.14em"
+            letterSpacing="0.05em"
           >
             <textPath href="#guilda-stamp-circle" startOffset="0%">
               ✦ VAGAS UX ✦ GUILDA DO VAGUINER

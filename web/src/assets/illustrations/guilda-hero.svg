@@ -25,14 +25,14 @@
     </g>
   </g>
   <g id="guilda-sparkle-a" fill="#07003A">
-    <path d="M380 52L382 62L392 64L382 66L380 76L378 66L368 64L378 62L380 52Z"/>
+    <path d="M428 18L430.5 30L442 32.5L430.5 35L428 47L425.5 35L414 32.5L425.5 30L428 18Z"/>
   </g>
   <g id="guilda-sparkle-b" fill="#07003A">
-    <path d="M404 88L405.5 94L412 95.5L405.5 97L404 103L402.5 97L396 95.5L402.5 94L404 88Z"/>
+    <path d="M454 52L456 60L464 62L456 64L454 72L452 64L444 62L452 60L454 52Z"/>
   </g>
-  <g id="guilda-wind">
-    <path d="M366 340C382 332 398 336 410 348" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
-    <path d="M374 362C390 354 406 358 418 370" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
-    <path d="M382 384C398 376 414 380 426 392" stroke="#07003A" stroke-width="3" stroke-linecap="round"/>
+  <g id="guilda-wind" fill="none" stroke="#07003A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M352 342C358 330 364 354 370 342C376 330 382 354 388 342C394 330 400 354 406 342C412 330 418 354 424 342C430 330 436 354 442 342"/>
+    <path d="M360 364C366 352 372 376 378 364C384 352 390 376 396 364C402 352 408 376 414 364C420 352 426 376 432 364C438 352 444 376 450 364"/>
+    <path d="M368 386C374 374 380 398 386 386C392 374 398 398 404 386C410 374 416 398 422 386C428 374 434 398 440 386C446 374 452 398 458 386"/>
   </g>
 </svg>
