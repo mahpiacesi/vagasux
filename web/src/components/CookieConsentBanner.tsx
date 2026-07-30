@@ -43,57 +43,57 @@ export function CookieConsentBanner() {
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
-      className="fixed inset-x-0 bottom-0 z-[100] p-4 md:p-5"
+      className="fixed inset-x-0 bottom-0 z-[100] p-3 md:p-4"
     >
       <div
         className={cn(
-          'mx-auto max-w-3xl rounded-2xl border border-brand-200/80 bg-neutral-100/95 p-5 shadow-xl backdrop-blur-md md:max-w-4xl md:p-6',
+          'mx-auto max-w-3xl rounded-2xl border border-brand-200/80 bg-neutral-100/95 p-4 shadow-xl backdrop-blur-md md:max-w-4xl',
           'mural-fade',
         )}
       >
-        <div className="flex flex-col gap-4 md:gap-5">
-          <div className="space-y-2">
-            <h2
-              id="cookie-consent-title"
-              className="text-base font-black tracking-tight text-neutral-500 md:text-lg"
-            >
-              🍪 Design também se faz com dados. Aceita um biscoito?
-            </h2>
-            <p
-              id="cookie-consent-description"
-              className="text-sm leading-relaxed text-neutral-400 md:text-[15px]"
-            >
-              Ao aceitar, usamos o Microsoft Clarity para entender como a
-              comunidade utiliza a VagasUX e melhorar continuamente a
-              experiência de quem passa por aqui.
-            </p>
+        <div className="flex flex-col gap-2">
+          <h2
+            id="cookie-consent-title"
+            className="text-sm font-black tracking-tight text-neutral-500 md:text-base"
+          >
+            🍪 Design também se faz com dados. Aceita um biscoito?
+          </h2>
+          <p
+            id="cookie-consent-description"
+            className="text-sm leading-snug text-neutral-400"
+          >
+            Ao aceitar, usamos o Microsoft Clarity para entender como a
+            comunidade utiliza a VagasUX e melhorar continuamente a experiência
+            de quem passa por aqui.
+          </p>
+
+          <div className="flex flex-nowrap items-center justify-between gap-2">
             <Link
               to={routes.termosEPoliticas}
-              className="inline-block text-sm font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+              className="shrink-0 text-sm font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
               onClick={() => setVisible(false)}
             >
               Saiba mais
             </Link>
-          </div>
-
-          <div className="flex flex-row items-center justify-end gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              className="shrink-0 sm:h-9 sm:px-3 sm:text-sm"
-              onClick={() => choose('essential')}
-            >
-              Apenas o necessário
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              className="shrink-0 sm:h-9 sm:px-3 sm:text-sm"
-              onClick={() => choose('analytics')}
-            >
-              Aceitar
-            </Button>
+            <div className="flex shrink-0 flex-nowrap items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="xs"
+                className="whitespace-nowrap sm:h-7 sm:px-2.5 sm:text-xs"
+                onClick={() => choose('essential')}
+              >
+                Apenas o necessário
+              </Button>
+              <Button
+                type="button"
+                size="xs"
+                className="whitespace-nowrap sm:h-7 sm:px-2.5 sm:text-xs"
+                onClick={() => choose('analytics')}
+              >
+                Aceitar
+              </Button>
+            </div>
           </div>
         </div>
       </div>
