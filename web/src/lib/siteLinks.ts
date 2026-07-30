@@ -15,7 +15,11 @@ export const contact = {
 } as const
 
 export const parceriasContact = {
+  email: contact.email,
+  subject: 'Parceria VagasUX',
   mailto: `mailto:${contact.email}?subject=${encodeURIComponent('Parceria VagasUX')}`,
+  /** Browser compose — reliable when no local mail client is configured. */
+  webCompose: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}&su=${encodeURIComponent('Parceria VagasUX')}`,
 } as const
 
 export const parceriasHashes = {
