@@ -18,7 +18,10 @@ const ctaClassMobile =
 
 const externalNavLinks = [
   { label: 'Guia', href: superSite.guia, Icon: BookOpen },
-  { label: 'Parcerias', href: superSite.parcerias, Icon: Handshake },
+] as const
+
+const internalNavLinks = [
+  { label: 'Parcerias', to: routes.parcerias, Icon: Handshake },
 ] as const
 
 function ExternalNavLink({
@@ -59,6 +62,12 @@ export function Header() {
           <VagasNavMenu />
           {externalNavLinks.map((item) => (
             <ExternalNavLink key={item.href} {...item} />
+          ))}
+          {internalNavLinks.map(({ label, to, Icon }) => (
+            <Link key={to} to={to} className={linkClass}>
+              <Icon {...navIconProps} className="shrink-0" aria-hidden />
+              {label}
+            </Link>
           ))}
           <Link to={routes.comunidade} className={ctaClass}>
             Faça parte

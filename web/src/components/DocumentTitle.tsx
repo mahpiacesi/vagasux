@@ -10,6 +10,7 @@ const titles: Record<string, string> = {
   [routes.termosEPoliticas]: 'VagasUX · Termos e Políticas',
   [routes.oportunidades]: 'VagasUX · Mural de vagas',
   [routes.curadoria]: 'VagasUX · Curadoria de vagas para iniciantes',
+  [routes.parcerias]: 'VagasUX · Parcerias',
 }
 
 export function DocumentTitle() {

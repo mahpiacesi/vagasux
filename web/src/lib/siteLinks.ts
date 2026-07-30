@@ -7,6 +7,7 @@ export const routes = {
   curadoria: '/vagas-para-iniciantes',
   codigoDeConduta: '/codigo-de-conduta',
   termosEPoliticas: '/termos-e-politicas',
+  parcerias: '/parcerias',
 } as const
 
 export const contact = {
@@ -19,6 +20,11 @@ export const routeHashes = {
 
 export const forms = {
   voluntarios: 'https://forms.gle/vqyLwPfA42LYv6ZV6',
+} as const
+
+export const mediaKit = {
+  parcerias:
+    'https://docs.google.com/presentation/d/15Ax1lQu3crbUgSKsmMtS9ChH2Tjx5Jw0HSxvQfR8GKI/edit?usp=sharing',
 } as const
 
 /** External community destinations until in-app routes exist. */
