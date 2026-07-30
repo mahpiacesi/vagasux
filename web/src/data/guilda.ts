@@ -34,7 +34,7 @@ export const guildaPainPoints = [
   {
     title: 'Falta de mentoria de verdade',
     description:
-      'Você estuda, mas sente que está sozinha. Faltam feedbacks, conexões e um espaço seguro para tirar dúvidas — ou errar enquanto aprende.',
+      'Você estuda, mas sente que está sozinha. Faltam feedbacks, conexões e um espaço seguro para tirar dúvidas ou errar enquanto aprende.',
   },
   {
     title: 'Insegurança que trava',
@@ -53,7 +53,7 @@ export const guildaBenefits: GuildaBenefit[] = [
   {
     title: 'Foco em quem está começando',
     description:
-      'Direcionamento prático do que estudar, como montar portfólio e por onde começar — sem cair no conteúdo infinito.',
+      'Direcionamento prático do que estudar, como montar portfólio e por onde começar, sem cair no conteúdo infinito.',
     Icon: Compass,
   },
   {
@@ -77,7 +77,7 @@ export const guildaBenefits: GuildaBenefit[] = [
   {
     title: 'Seletivas e descontos',
     description:
-      'Benefícios exclusivos para turbinar sua formação sem pesar no bolso — de cursos a mentorias parceiras.',
+      'Benefícios exclusivos para turbinar sua formação sem pesar no bolso, de cursos a mentorias parceiras.',
     Icon: CurrencyCircleDollar,
   },
   {
@@ -93,7 +93,7 @@ export const guildaHighlights = [
     eyebrow: 'Na prática',
     title: 'Desbloqueie seu portfólio',
     description:
-      'Workshops com exercícios reais, dinâmicas e materiais para construir um portfólio com propósito desde o início — não só mais um case genérico.',
+      'Workshops com exercícios reais, dinâmicas e materiais para construir um portfólio com propósito desde o início, não só mais um case genérico.',
   },
   {
     eyebrow: 'No seu ritmo',
@@ -114,7 +114,7 @@ export const guildaTestimonials: GuildaTestimonial[] = [
   {
     id: 'g1',
     quote:
-      'Me guiou para melhorias que nem imaginava que precisava. Super valeu a pena — recomendo demais!',
+      'Me guiou para melhorias que nem imaginava que precisava. Super valeu a pena. Recomendo demais!',
     name: 'Membro da Guilda',
     tone: 'indigo',
   },
@@ -128,7 +128,7 @@ export const guildaTestimonials: GuildaTestimonial[] = [
   {
     id: 'g3',
     quote:
-      'Como iniciante, consegui ter direção no objetivo de trabalhar internacionalmente — antes mesmo de montar o portfólio.',
+      'Como iniciante, consegui ter direção no objetivo de trabalhar internacionalmente, antes mesmo de montar o portfólio.',
     name: 'Membro da Guilda',
     tone: 'mustard',
   },
@@ -149,7 +149,7 @@ export const guildaTestimonials: GuildaTestimonial[] = [
   {
     id: 'g6',
     quote:
-      'As trocas nas sessões — especialmente quando veio uma recrutadora — mudaram minha perspectiva sobre vagas e adaptação.',
+      'As trocas nas sessões, especialmente quando veio uma recrutadora, mudaram minha perspectiva sobre vagas e adaptação.',
     name: 'Membro da Guilda',
     tone: 'navy',
   },
@@ -184,7 +184,7 @@ export const guildaPlans: GuildaPlan[] = [
   {
     id: 'anual',
     name: 'Guilda anual',
-    hook: 'Para quem acredita na jornada e quer construir com a comunidade — com economia.',
+    hook: 'Para quem acredita na jornada e quer construir com a comunidade, com economia.',
     price: 'R$ 199',
     period: '/ ano',
     badge: 'Mais popular',
@@ -222,7 +222,7 @@ export const guildaFaq = [
   {
     question: 'Preciso já trabalhar com UX para entrar?',
     answer:
-      'Não. A Guilda é para quem está migrando, estudando ou começando na área. O foco é apoiar iniciantes e pessoas em transição — não exigimos experiência prévia formal.',
+      'Não. A Guilda é para quem está migrando, estudando ou começando na área. O foco é apoiar iniciantes e pessoas em transição. Não exigimos experiência prévia formal.',
   },
   {
     question: 'Como funcionam as mentorias avulsas?',
@@ -232,12 +232,12 @@ export const guildaFaq = [
   {
     question: 'E se eu não conseguir acompanhar tudo?',
     answer:
-      'Sem problema. Os encontros ficam gravados e você participa no seu ritmo. A Guilda foi pensada para jornadas reais — com trabalho, estudo e vida acontecendo ao mesmo tempo.',
+      'Sem problema. Os encontros ficam gravados e você participa no seu ritmo. A Guilda foi pensada para jornadas reais, com trabalho, estudo e vida acontecendo ao mesmo tempo.',
   },
   {
     question: 'Tem certificado?',
     answer:
-      'Não emitimos certificado formal. O valor está na troca, nas mentorias e no apoio da comunidade — não em um papel no fim.',
+      'Não emitimos certificado formal. O valor está na troca, nas mentorias e no apoio da comunidade, não em um papel no fim.',
   },
   {
     question: 'Posso cancelar quando quiser?',
@@ -249,7 +249,7 @@ export const guildaFaq = [
 export const guildaWhatsappFeature = {
   title: 'Grupo exclusivo no WhatsApp',
   description:
-    'A Guilda acontece num grupo fechado, com apoio e troca real entre vaguiners — longe do ruído dos canais abertos.',
+    'A Guilda acontece num grupo fechado, com apoio e troca real entre vaguiners, longe do ruído dos canais abertos.',
   Icon: WhatsappLogo,
 } as const
 

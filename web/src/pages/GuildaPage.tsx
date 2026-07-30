@@ -126,7 +126,7 @@ export function GuildaPage() {
             <span className="text-mark">não deveria ser confuso</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Você se perde tentando aprender tudo ao mesmo tempo — sem apoio, sem
+            Você se perde tentando aprender tudo ao mesmo tempo, sem apoio, sem
             direção e sem saber por onde começar.
           </p>
 
@@ -164,7 +164,7 @@ export function GuildaPage() {
             <span className="text-mark">confiança</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Da curadoria de conteúdo à troca com mentores — apoio de verdade
+            Da curadoria de conteúdo à troca com mentores, apoio de verdade
             para construir sua carreira em UX.
           </p>
 
@@ -290,7 +290,7 @@ export function GuildaPage() {
             <span className="text-mark">apoio na Guilda</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400">
-            Gente como você — migrando, estudando e dando os primeiros passos
+            Gente como você, migrando, estudando e dando os primeiros passos
             com mais segurança no mercado de UX.
           </p>
 
@@ -327,7 +327,7 @@ export function GuildaPage() {
             Apoie a comunidade e entre na Guilda
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            A partir de R$ 19,90 por mês — conteúdos exclusivos, mentorias e
+            A partir de R$ 19,90 por mês, com conteúdos exclusivos, mentorias e
             grupo fechado no WhatsApp.
           </p>
 

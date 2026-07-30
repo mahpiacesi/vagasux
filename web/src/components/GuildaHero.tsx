@@ -25,7 +25,7 @@ export function GuildaHero() {
           </h1>
 
           <p className="mural-fade mural-fade-delay-2 mt-6 text-base leading-relaxed text-neutral-300 md:text-xl">
-            Para quem está migrando para UX/UI e quer aprender na prática — com
+            Para quem está migrando para UX/UI e quer aprender na prática, com
             mentorias, troca de verdade, seletivas e descontos exclusivos para
             membros.
           </p>
