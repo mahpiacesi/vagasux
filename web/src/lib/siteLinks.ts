@@ -14,6 +14,10 @@ export const contact = {
   email: 'vagasux@gmail.com',
 } as const
 
+export const parceriasContact = {
+  mailto: `mailto:${contact.email}?subject=${encodeURIComponent('Parceria VagasUX')}`,
+} as const
+
 export const routeHashes = {
   formasDeParticipar: 'formas-de-participar',
 } as const
