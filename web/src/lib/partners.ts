@@ -1,3 +1,7 @@
+import {
+  homeFeaturedPartners,
+  type HomeFeaturedPartner,
+} from '@/data/homeFeaturedPartners'
 import { fallbackPartnerNames } from '@/data/partners'
 import { fetchActivePartners } from '@/lib/supabase'
 import type { Partner } from '@/types/partner'
@@ -7,6 +11,11 @@ export type PartnerDisplay = {
   name: string
   logo: string | null
   siteUrl: string | null
+}
+
+export type HomeFeaturedPartnerDisplay = HomeFeaturedPartner & {
+  name: string
+  logo: string
 }
 
 const SUPABASE_LOGO_PREFIX =
@@ -46,4 +55,24 @@ export async function loadActivePartners(): Promise<PartnerDisplay[]> {
   }
 
   return fromFallback()
+}
+
+/** Featured partners for the home grid (curated slugs + Supabase logos). */
+export function pickHomeFeaturedPartners(
+  partners: PartnerDisplay[],
+): HomeFeaturedPartnerDisplay[] {
+  const bySlug = new Map(partners.map((partner) => [partner.slug, partner]))
+
+  return homeFeaturedPartners.flatMap((featured) => {
+    const partner = bySlug.get(featured.slug)
+    if (!partner?.logo) return []
+
+    return [
+      {
+        ...featured,
+        name: partner.name,
+        logo: partner.logo,
+      },
+    ]
+  })
 }

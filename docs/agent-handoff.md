@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-07-31 (tarde)
+**Última atualização:** 2026-07-31 (noite)
 
 ---
 
@@ -15,8 +15,9 @@
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
-| Enrichment (IA) | ⏸ Pausado | Gemini 429 — retry quando quota resetar |
-| Collector VagasUX batch | ✅ Corrigido | RPC batch + Scheduler resiliente (31/07) |
+| Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
+| Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
+| Home logos dinâmicos | 🚧 Em PR | `PartnershipsSection` → Supabase |
 
 ---
 
@@ -38,8 +39,9 @@
 
 ## Próximo passo esperado
 
-1. **Mais páginas e integrações** (combinado para sessões seguintes)
-2. Opcional: retry do **Enrichment** quando quota Gemini resetar
+1. **Home logos dinâmicos** — PR em aberto
+2. **Collector Sólides** — fonte habilitada, sem workflow n8n
+3. **Hardening** — ver `docs/hardening-backlog.md`
 
 ---
 
@@ -56,7 +58,12 @@
 ## Blockers conhecidos
 
 - Chat do Cloud Agent **não mostra histórico** após summarization — usar este arquivo + timeline em [cursor.com/agents](https://cursor.com/agents)
-- Logos da **home** (`PartnershipsSection`) ainda são estáticos no repo — separado do mural `/parcerias`
+
+---
+
+## Backlog
+
+- Hardening pipeline: `docs/hardening-backlog.md`
 
 ---
 
