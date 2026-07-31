@@ -18,7 +18,8 @@
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
 | Home logos dinâmicos | ✅ Mergeado | PR #46 — PartnershipsSection → Supabase |
-| Collector Sólides | 🚧 Em PR | API portal-vacancies-new + Scheduler |
+| Collector Sólides | ✅ Ativo | Exec #35 — 109 vagas; PR #47 mergeado |
+| Collector InfoJobs | ✅ Ativo | Exec #37 — 184 vagas; Scheduler encadeado |
 
 ---
 
@@ -40,9 +41,8 @@
 
 ## Próximo passo esperado
 
-1. **Collector Sólides** — PR em aberto (workflow n8n publicado)
-2. **Collector InfoJobs** — fonte habilitada, sem workflow n8n
-3. **Hardening** — ver `docs/hardening-backlog.md`
+1. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+2. Monitorar Scheduler diário (~8h BRT) com cadeia completa incluindo InfoJobs
 
 ---
 
