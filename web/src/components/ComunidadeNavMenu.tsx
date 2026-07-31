@@ -1,23 +1,23 @@
 import { CaretDown, Umbrella } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import {
-  communityHashes,
-  externalCommunity,
-  routes,
-} from '@/lib/siteLinks'
+import { communityHashes, routes } from '@/lib/siteLinks'
 
 const navIconProps = { weight: 'bold' as const }
 
-const comunidadeItems = [
+type ComunidadeNavItem =
+  | { kind: 'internal'; to: string; label: string }
+  | { kind: 'external'; href: string; label: string }
+
+const comunidadeItems: ComunidadeNavItem[] = [
   {
     kind: 'internal' as const,
     to: `${routes.comunidade}#${communityHashes.canaisAbertos}`,
     label: 'Comunidade aberta',
   },
   {
-    kind: 'external' as const,
-    href: externalCommunity.guilda,
+    kind: 'internal' as const,
+    to: routes.guilda,
     label: 'Guilda do Vaguiner',
   },
   {
@@ -25,7 +25,7 @@ const comunidadeItems = [
     to: routes.voluntariado,
     label: 'Voluntariado',
   },
-] as const
+]
 
 const triggerClass =
   'inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -41,7 +41,7 @@ function ComunidadeMenuItem({
   item,
   onNavigate,
 }: {
-  item: (typeof comunidadeItems)[number]
+  item: ComunidadeNavItem
   onNavigate?: () => void
 }) {
   if (item.kind === 'external') {
@@ -86,7 +86,9 @@ export function ComunidadeNavMenu({
 }) {
   const { pathname } = useLocation()
   const isComunidadeActive =
-    pathname === routes.comunidade || pathname === routes.voluntariado
+    pathname === routes.comunidade ||
+    pathname === routes.guilda ||
+    pathname === routes.voluntariado
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
 

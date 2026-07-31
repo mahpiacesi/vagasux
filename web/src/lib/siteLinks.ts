@@ -2,6 +2,7 @@
 export const routes = {
   home: '/',
   comunidade: '/comunidade',
+  guilda: '/guilda',
   voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
   curadoria: '/vagas-para-iniciantes',
@@ -52,11 +53,20 @@ export const mediaKit = {
 
 /** External community destinations until in-app routes exist. */
 export const externalCommunity = {
-  guilda: 'https://vagasux.framer.website/',
+  guilda: routes.guilda,
 } as const
 
 export const communityHashes = {
   canaisAbertos: 'canais-abertos',
+} as const
+
+export const guildaHashes = {
+  problema: 'problema',
+  beneficios: 'beneficios',
+  comoFunciona: 'como-funciona',
+  depoimentos: 'depoimentos',
+  planos: 'planos',
+  faq: 'faq',
 } as const
 
 export const voluntariadoHashes = {

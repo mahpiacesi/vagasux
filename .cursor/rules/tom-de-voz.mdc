@@ -1,0 +1,22 @@
+---
+description: Tom de voz e copy da marca VagasUX — aplicar em textos de interface, landing pages e conteúdo user-facing.
+globs:
+  - web/src/**/*.tsx
+  - web/src/**/*.ts
+---
+
+# Tom de voz VagasUX
+
+Referência completa: `docs/design.md` (seção Tom de voz).
+
+## Regras obrigatórias em copy user-facing
+
+- **Nunca usar travessão (—)** em textos da marca. Prefira ponto, vírgula ou reestruturar a frase.
+- **Evitar parênteses de gênero** como (a) ou (o). Prefira termos inclusivos: uma pessoa voluntária, estilosa, etc.
+- Tom: conversacional, claro, objetivo, incentivador, didático e humano.
+- Evitar: buzzwords corporativas, linguagem coach, gatekeeping, formalidade excessiva.
+
+## Ao revisar ou escrever copy
+
+1. Busque `—` no diff antes de commitar.
+2. Leia em voz alta: se soa como release de imprensa, simplifique.
