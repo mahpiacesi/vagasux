@@ -195,34 +195,84 @@ const keepValidJobs = node({
   },
 });
 
-const upsertJob = node({
+const buildUpsertBatch = node({
+  type: 'n8n-nodes-base.code',
+  version: 2,
+  config: {
+    name: 'Build upsert batch',
+    parameters: {
+      mode: 'runOnceForAllItems',
+      language: 'javaScript',
+      jsCode: `const jobs = items.map((item) => ({
+  source: item.json.source,
+  source_job_id: String(item.json.source_job_id),
+  company: item.json.company,
+  title: item.json.title,
+  description: item.json.description || null,
+  url: item.json.url,
+  location: item.json.location || null,
+  published_at: item.json.published_at || null,
+  work_model: item.json.work_model || null,
+}));
+
+return [{
+  json: {
+    job_count: jobs.length,
+    jobs,
+  },
+}];`,
+    },
+  },
+});
+
+const upsertJobsBatch = node({
   type: 'n8n-nodes-base.httpRequest',
   version: 4.4,
   config: {
-    name: 'Upsert job',
+    name: 'Upsert jobs batch',
     credentials: { supabaseApi: { id: 'VtBtjog6BXvbtAno', name: 'Supabase account' } },
+    onError: 'continueRegularOutput',
     retryOnFail: true,
-    maxTries: 3,
-    waitBetweenTries: 1000,
+    maxTries: 2,
+    waitBetweenTries: 2000,
     parameters: {
       method: 'POST',
-      url: 'https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/rpc/upsert_collector_job',
+      url: 'https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/rpc/upsert_collector_jobs_batch',
       authentication: 'predefinedCredentialType',
       nodeCredentialType: 'supabaseApi',
       sendHeaders: true,
       headerParameters: {
-        parameters: [
-          { name: 'Content-Type', value: 'application/json' },
-          { name: 'Prefer', value: 'return=representation' },
-        ],
+        parameters: [{ name: 'Content-Type', value: 'application/json' }],
       },
       sendBody: true,
       contentType: 'json',
       specifyBody: 'json',
-      jsonBody: expr(
-        "{{ JSON.stringify({ p_source: $json.source, p_source_job_id: String($json.source_job_id), p_company: $json.company, p_title: $json.title, p_description: $json.description || null, p_url: $json.url, p_location: $json.location || null, p_published_at: $json.published_at || null, p_work_model: $json.work_model || null }) }}",
-      ),
-      options: { timeout: 30000 },
+      jsonBody: expr('{{ JSON.stringify({ p_jobs: $json.jobs }) }}'),
+      options: { timeout: 120000 },
+    },
+  },
+});
+
+const summarizeBatch = node({
+  type: 'n8n-nodes-base.code',
+  version: 2,
+  config: {
+    name: 'Summarize batch',
+    parameters: {
+      mode: 'runOnceForAllItems',
+      language: 'javaScript',
+      jsCode: `const payload = items[0]?.json ?? {};
+const summary = payload.total != null
+  ? payload
+  : (payload.ok != null ? payload : { raw: payload });
+
+return [{
+  json: {
+    source: 'VagasUX',
+    job_count: $('Build upsert batch').first()?.json?.job_count ?? 0,
+    batch: summary,
+  },
+}];`,
     },
   },
 });
@@ -236,4 +286,6 @@ export default workflow('collector-vagasux', 'Collector VagasUX')
   .to(fetchCuratedJobs)
   .to(mapCuratedJobs)
   .to(keepValidJobs)
-  .to(upsertJob);
+  .to(buildUpsertBatch)
+  .to(upsertJobsBatch)
+  .to(summarizeBatch);

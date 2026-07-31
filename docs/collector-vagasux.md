@@ -26,12 +26,23 @@ Ingestão da base **Vagas para iniciantes** no Notion para o Supabase.
 
 ## Dedup cross-source
 
-O collector usa `upsert_collector_job` (mesmo RPC do Remotar):
+O collector usa `upsert_collector_jobs_batch`, que internamente chama `upsert_collector_job` para cada vaga:
 
 - **`source_job_id`** = ID da page no Notion (re-sync da curadoria)
 - **`url`** = link de candidatura → dedup com Gupy/Remotar/Greenhouse
 - Se a URL já existir → `updated_by_url` (sem duplicata; `source` original preservado)
 - Se for vaga exclusiva da curadoria → insert com `source = 'VagasUX'`
+
+Falhas individuais dentro do batch **não abortam** o restante; o RPC devolve `{ total, ok, failed, errors }`.
+
+## Pipeline no n8n
+
+```
+Notion → Map → Filter → Build upsert batch → Upsert jobs batch (1 RPC) → Summarize batch
+```
+
+- Timeout do HTTP: **120s** (antes 30s por vaga)
+- Node `Upsert jobs batch` com `onError: continueRegularOutput`
 
 ## Filtros no collector
 
@@ -50,4 +61,6 @@ Linhas ignoradas (`skip = true`):
 
 ## Scheduler
 
-Ordem diária: Greenhouse + Gupy → Remotar → **VagasUX** → expire >60d → enrichment.
+Ordem diária: Greenhouse + Gupy → Remotar → **VagasUX** → Parceiros → expire >60d → enrichment.
+
+Se VagasUX, Parceiros ou Enrichment falharem, o Scheduler **continua** (`onError: continueRegularOutput` nos nodes de sub-workflow).

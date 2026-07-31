@@ -16,6 +16,7 @@
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ⏸ Pausado | Gemini 429 — retry quando quota resetar |
+| Collector VagasUX batch | ✅ Corrigido | RPC batch + Scheduler resiliente (31/07) |
 
 ---
 
