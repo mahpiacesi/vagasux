@@ -11,7 +11,7 @@ export type HomeFeaturedPartner = {
 export const homeFeaturedPartners: HomeFeaturedPartner[] = [
   {
     slug: 'alura-fiap-pm3',
-    bg: '#052FD3',
+    bg: '#000000',
     className: 'col-span-2 min-h-[7.5rem] md:min-h-[8.5rem]',
     logoClass: 'h-8 w-auto md:h-10',
     logoTone: 'white',
@@ -31,9 +31,9 @@ export const homeFeaturedPartners: HomeFeaturedPartner[] = [
   },
   {
     slug: 'thestarter',
-    bg: '#0A0707',
+    bg: '#FC5B3F',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
-    logoClass: 'h-6 w-auto max-w-[9rem] md:h-7',
+    logoClass: 'h-9 w-auto max-w-[11rem] md:h-11 md:max-w-[13rem]',
     logoTone: 'white',
   },
   {
