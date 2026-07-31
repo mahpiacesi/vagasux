@@ -7,13 +7,18 @@ import {
   type HomeFeaturedPartnerDisplay,
 } from '@/lib/partners'
 import { routes } from '@/lib/siteLinks'
+import { cn } from '@/lib/utils'
 
 function FeaturedPartnerCard({ partner }: { partner: HomeFeaturedPartnerDisplay }) {
   const content = (
     <img
       src={partner.logo}
       alt={partner.name}
-      className={`object-contain ${partner.logoClass}`}
+      className={cn(
+        'object-contain',
+        partner.logoClass,
+        partner.logoTone === 'white' && 'brightness-0 invert',
+      )}
       loading="lazy"
       decoding="async"
     />

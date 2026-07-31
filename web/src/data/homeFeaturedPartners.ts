@@ -4,6 +4,8 @@ export type HomeFeaturedPartner = {
   bg: string
   className: string
   logoClass: string
+  /** Force logo to white for legibility on saturated/dark backgrounds (home only). */
+  logoTone?: 'white'
 }
 
 export const homeFeaturedPartners: HomeFeaturedPartner[] = [
@@ -12,6 +14,7 @@ export const homeFeaturedPartners: HomeFeaturedPartner[] = [
     bg: '#052FD3',
     className: 'col-span-2 min-h-[7.5rem] md:min-h-[8.5rem]',
     logoClass: 'h-8 w-auto md:h-10',
+    logoTone: 'white',
   },
   {
     slug: 'uxconfbr',
@@ -24,16 +27,18 @@ export const homeFeaturedPartners: HomeFeaturedPartner[] = [
     bg: '#004A99',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
     logoClass: 'h-16 w-auto md:h-[4.5rem]',
+    logoTone: 'white',
   },
   {
     slug: 'thestarter',
     bg: '#0A0707',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
     logoClass: 'h-6 w-auto max-w-[9rem] md:h-7',
+    logoTone: 'white',
   },
   {
-    slug: 'uxco',
-    bg: '#1E1B4B',
+    slug: 'pcamp',
+    bg: '#EEF1FF',
     className: 'min-h-[6.5rem] md:min-h-[7.5rem]',
     logoClass: 'h-8 w-auto max-w-[10rem] md:h-9',
   },
