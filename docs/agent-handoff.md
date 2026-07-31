@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-07-31 (manhã)
+**Última atualização:** 2026-07-31 (tarde)
 
 ---
 
@@ -10,7 +10,7 @@
 
 | Área | Estado | Nota |
 |------|--------|------|
-| `/guilda` | 🔜 PR #44 (draft) | Hero, copy, selo, depoimentos — aguardando review/merge |
+| `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
@@ -37,9 +37,8 @@
 
 ## Próximo passo esperado
 
-1. **Review e merge do PR #44** (`/guilda`) — validar visual final do selo e copy com a Mah
-2. **Mais páginas e integrações** (combinado para sessões seguintes)
-3. Opcional: retry do **Enrichment** quando quota Gemini resetar
+1. **Mais páginas e integrações** (combinado para sessões seguintes)
+2. Opcional: retry do **Enrichment** quando quota Gemini resetar
 
 ---
 
@@ -47,7 +46,7 @@
 
 | Item | Status |
 |------|--------|
-| [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | 🔜 Draft, branch `cursor/guilda-page-a8a9` |
+| [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
@@ -57,13 +56,12 @@
 
 - Chat do Cloud Agent **não mostra histórico** após summarization — usar este arquivo + timeline em [cursor.com/agents](https://cursor.com/agents)
 - Logos da **home** (`PartnershipsSection`) ainda são estáticos no repo — separado do mural `/parcerias`
-- **PR #44** não mergear sem aprovação explícita da Mah
 
 ---
 
 ## Links úteis
 
-- Preview Guilda: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
+- Produção Guilda: https://vagasux.com.br/guilda (após deploy Vercel)
 - n8n: `https://n8n-lws1.srv1866525.hstgr.cloud`
 - Supabase project: `xbvspzwjjjtkvecseoog`
 - Runbook collector parceiros: `docs/collector-partners.md`
