@@ -10,6 +10,7 @@ Repositório do projeto **VagasUX** — comunidade e produto para conectar pesso
 - [mural.md](docs/mural.md) — leitura pública das vagas `published`
 - [dedup.md](docs/dedup.md) — chaves únicas e upsert dos collectors
 - [collector-vagasux.md](docs/collector-vagasux.md) — curadoria Notion → Supabase
+- [collector-solides.md](docs/collector-solides.md) — portal Sólides Vagas → Supabase
 - [job-status.md](docs/job-status.md) — ciclo de vida `raw → enriched → published → expired`
 - [enrichment.md](docs/enrichment.md) — classificação e resumo com IA
 - [architecture-decisions.md](docs/architecture-decisions.md) — ADRs do agregador

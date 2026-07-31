@@ -17,7 +17,8 @@
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
-| Home logos dinâmicos | 🚧 Em PR | `PartnershipsSection` → Supabase |
+| Home logos dinâmicos | ✅ Mergeado | PR #46 — PartnershipsSection → Supabase |
+| Collector Sólides | 🚧 Em PR | API portal-vacancies-new + Scheduler |
 
 ---
 
@@ -39,8 +40,8 @@
 
 ## Próximo passo esperado
 
-1. **Home logos dinâmicos** — PR em aberto
-2. **Collector Sólides** — fonte habilitada, sem workflow n8n
+1. **Collector Sólides** — PR em aberto (workflow n8n publicado)
+2. **Collector InfoJobs** — fonte habilitada, sem workflow n8n
 3. **Hardening** — ver `docs/hardening-backlog.md`
 
 ---

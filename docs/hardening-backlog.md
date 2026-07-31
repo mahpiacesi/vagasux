@@ -36,5 +36,5 @@
 ## Relacionado (não hardening, fila próxima)
 
 - **Home logos dinâmicos** — em andamento (`PartnershipsSection` → Supabase).
-- **Collector Sólides** — fonte habilitada, sem workflow n8n.
+- **Collector Sólides** — fonte habilitada, sem workflow n8n..
 - **Collector InfoJobs** — fonte habilitada, sem workflow n8n.
