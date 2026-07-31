@@ -32,8 +32,8 @@ export const homeFeaturedPartners: HomeFeaturedPartner[] = [
   {
     slug: 'thestarter',
     bg: '#FC5B3F',
-    className: 'min-h-[7rem] md:min-h-[8rem]',
-    logoClass: 'h-14 w-auto max-w-[15rem] md:h-[4.75rem] md:max-w-[18rem]',
+    className: 'min-h-[7.5rem] md:min-h-[8.5rem]',
+    logoClass: 'h-16 w-auto max-w-[16rem] md:h-[5.25rem] md:max-w-[20rem]',
     logoTone: 'white',
   },
   {
