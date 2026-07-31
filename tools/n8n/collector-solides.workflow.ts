@@ -4,7 +4,6 @@ import {
   trigger,
   merge,
   expr,
-  newCredential,
 } from '@n8n/workflow-sdk';
 
 const API_URL =
@@ -399,7 +398,7 @@ const upsertJobsBatch = node({
   version: 4.4,
   config: {
     name: 'Upsert jobs batch',
-    credentials: { supabaseApi: newCredential('Supabase account') },
+    credentials: { supabaseApi: { id: '8toznvZZsRHqeeOs', name: 'Supabase account' } },
     onError: 'continueRegularOutput',
     retryOnFail: true,
     maxTries: 2,
