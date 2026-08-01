@@ -108,7 +108,7 @@ export function GuiaTiposSection() {
             </ul>
           ) : (
             <p className="mt-6 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
-              Em breve — curadoria para este tipo de conteúdo.
+              Em breve. Curadoria para este tipo de conteúdo.
             </p>
           )}
         </div>

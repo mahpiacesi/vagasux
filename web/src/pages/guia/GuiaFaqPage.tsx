@@ -4,7 +4,7 @@ export function GuiaFaqPage() {
   return (
     <GuiaPlaceholder
       title="FAQ"
-      description="Perguntas frequentes sobre Product Design, mercado e carreira — tira-dúvidas da comunidade."
+      description="Perguntas frequentes sobre Product Design, mercado e carreira. Tira-dúvidas da comunidade."
     />
   )
 }

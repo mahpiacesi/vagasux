@@ -195,7 +195,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'vid-3',
-    title: 'Teste de usabilidade moderado — passo a passo',
+    title: 'Teste de usabilidade moderado: passo a passo',
     url: 'https://www.youtube.com/@vagasux',
     addedAt: '2026-07-10',
     tipos: ['videos'],
@@ -259,7 +259,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'liv-3',
-    title: 'Sprint — Jake Knapp',
+    title: 'Sprint: Jake Knapp',
     url: 'https://www.amazon.com.br',
     addedAt: '2026-07-05',
     tipos: ['livros'],
@@ -269,7 +269,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'pod-1',
-    title: 'UX Talks — Ep. Design para iniciantes',
+    title: 'UX Talks: design para iniciantes',
     url: 'https://open.spotify.com',
     addedAt: '2026-07-25',
     tipos: ['podcasts'],
@@ -280,7 +280,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'pod-2',
-    title: 'Layers — Carreira em Product Design',
+    title: 'Layers: carreira em Product Design',
     url: 'https://open.spotify.com',
     addedAt: '2026-07-16',
     tipos: ['podcasts'],
@@ -291,7 +291,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'pod-3',
-    title: 'Research em produto — entrevistas que funcionam',
+    title: 'Research em produto: entrevistas que funcionam',
     url: 'https://open.spotify.com',
     addedAt: '2026-07-09',
     tipos: ['podcasts'],
@@ -302,7 +302,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'news-1',
-    title: 'UX Collective — Newsletter semanal',
+    title: 'UX Collective: newsletter semanal',
     url: 'https://uxdesign.cc',
     addedAt: '2026-07-29',
     tipos: ['newsletters'],
@@ -312,7 +312,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'news-2',
-    title: 'Product Talk — Marty Cagan',
+    title: 'Product Talk: Marty Cagan',
     url: 'https://www.svpg.com',
     addedAt: '2026-07-21',
     tipos: ['newsletters'],
@@ -332,7 +332,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'evt-1',
-    title: 'Friends of Figma — São Paulo',
+    title: 'Friends of Figma: São Paulo',
     url: 'https://friends.figma.com',
     addedAt: '2026-07-30',
     tipos: ['eventos'],
@@ -352,7 +352,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'evt-3',
-    title: 'Papo de Vaguiner — Encontro mensal',
+    title: 'Papo de Vaguiner: encontro mensal',
     url: 'https://vagasux.com.br',
     addedAt: '2026-07-17',
     tipos: ['eventos'],
@@ -372,7 +372,7 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
   },
   {
     id: 'can-2',
-    title: 'Grupo Telegram — Guia do PD',
+    title: 'Grupo Telegram: Guia do PD',
     url: 'https://t.me/guiadoproductdesigner',
     addedAt: '2026-07-19',
     tipos: ['canais'],
@@ -411,6 +411,7 @@ export const guiaSearchSuggestions = [
   'UX Research',
   'Primeira vaga',
   'FAQ',
+  'Glossário',
   'Case study',
 ] as const
 

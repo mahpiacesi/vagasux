@@ -80,7 +80,7 @@ export const guiaHashes = {
   trilhas: 'trilhas',
   temas: 'temas',
   tipos: 'tipos',
-  populares: 'populares',
+  ajuda: 'ajuda',
 } as const
 
 /**

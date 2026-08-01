@@ -17,6 +17,10 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       return [{ label: 'Começar' }, { label: 'FAQ' }]
     }
 
+    if (pathname === guiaRoutes.glossario) {
+      return [{ label: 'Começar' }, { label: 'Glossário' }]
+    }
+
     if (!slug) return []
 
     if (pathname.startsWith('/guia/trilhas/')) {

@@ -79,7 +79,7 @@ export function GuiaTrilhasGrid() {
             Escolha um caminho para começar
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Cada trilha reúne conteúdos curados para uma intenção — sem
+            Cada trilha reúne conteúdos curados para uma intenção, sem
             precisar navegar por categorias técnicas.
           </p>
         </div>

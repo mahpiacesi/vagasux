@@ -22,7 +22,7 @@ export function GuiaTemasSection() {
             Explorar por tema
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Todo o material curado sobre cada assunto — UX, UI, ferramentas e
+            Todo o material curado sobre cada assunto: UX, UI, ferramentas e
             mais.
           </p>
         </div>

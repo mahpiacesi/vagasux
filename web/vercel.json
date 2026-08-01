@@ -27,7 +27,7 @@
     },
     {
       "source": "/glossario",
-      "destination": "/guia/comecar/faq",
+      "destination": "/guia/comecar/glossario",
       "permanent": true
     },
     {

@@ -1,5 +1,5 @@
 import { GuiaHero } from '@/components/guia/GuiaHero'
-import { GuiaPopularSection } from '@/components/guia/GuiaPopularSection'
+import { GuiaAjudaSection } from '@/components/guia/GuiaAjudaSection'
 import { GuiaTemasSection } from '@/components/guia/GuiaTemasSection'
 import { GuiaTiposSection } from '@/components/guia/GuiaTiposSection'
 import { GuiaTrilhasGrid } from '@/components/guia/GuiaTrilhasGrid'
@@ -11,7 +11,7 @@ export function GuiaPage() {
       <GuiaTrilhasGrid />
       <GuiaTemasSection />
       <GuiaTiposSection />
-      <GuiaPopularSection />
+      <GuiaAjudaSection />
     </main>
   )
 }
