@@ -768,7 +768,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Versão navegável de um fluxo ou tela, com cliques, transições e caminhos simulados. Product Designers usam protótipo para testar ideias com pessoas usuárias antes do desenvolvimento.',
-      'Pode nascer de wireframe ou mockup e ganhar interação no Figma, ProtoPie ou ferramentas parecidas. Handoff e código ficam na categoria Desenvolvimento.',
+      'Pode evoluir a partir de wireframe ou mockup quando o time adiciona navegação e interação para validar a experiência.',
     ],
     youWillHear: [
       '"Vamos montar um protótipo clicável para o teste de usabilidade."',
