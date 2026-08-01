@@ -77,6 +77,16 @@ Termos: Produto, Produto digital, Problema, Solução, White-label, MVP, Feature
 
 **White-label** (`white-label`, subgrupo `conceitos`): plataforma genérica revendida com a marca do cliente. Mencionado inline em **Cliente** (Fundamentos); verbete completo entra em Produto.
 
+### Interface
+
+| `subgroup` | Título |
+|------------|--------|
+| `prototipos` | Prototipação |
+| `sistema` | Sistema e componentes |
+| `visual` | Elementos visuais |
+
+Termos: Wireframe, Mockup, Design System, Component, Tipografia…
+
 ---
 
 ## Modelo de dados
@@ -87,7 +97,7 @@ GuiaGlossarioEntry {
   term: string
   categoryId: CategoryId
   subgroup?: string
-  originalName?: { english, portuguese, usageNote? }
+  originalName?: { alternate: string; usageNote? }
   whatIs: string[]
   youWillHear: string[]
 }
@@ -126,7 +136,7 @@ GuiaGlossarioEntry {
 
 **Fundamentos:** ver subgrupos acima.
 
-**Interface:** Wireframe, Mockup, Design System, Component, Tipografia…
+**Interface:** Wireframe, Mockup, Design System, Component, Tipografia (ver subgrupos acima).
 
 **Pesquisa:** Entrevista, Teste de usabilidade, Síntese… (Discovery/Hipótese → Produto)
 

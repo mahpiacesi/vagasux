@@ -64,6 +64,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     processo: 'Processo',
     entregas: 'Entregas',
   },
+  interface: {
+    prototipos: 'Prototipação',
+    sistema: 'Sistema e componentes',
+    visual: 'Elementos visuais',
+  },
 }
 
 /**
@@ -123,6 +128,13 @@ export const guiaGlossarioEditorialOrder: Partial<
     // entregas
     'roadmap',
     'prd',
+  ],
+  interface: [
+    'wireframe',
+    'mockup',
+    'design-system',
+    'component',
+    'tipografia',
   ],
 }
 
@@ -688,6 +700,105 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Vamos apresentar essa proposta para os stakeholders."',
       '"O stakeholder pediu prazo menor, precisamos negociar escopo."',
+    ],
+  },
+
+  // Interface: prototipação
+  {
+    id: 'wireframe',
+    term: 'Wireframe',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Esqueleto de tela',
+      usageNote:
+        'Wireframe é o termo mais usado em empresas e ferramentas como Figma, mesmo no Brasil.',
+    },
+    whatIs: [
+      'Representação simples de uma tela ou fluxo, com caixas, rótulos e hierarquia, sem cores finais nem visual polido. Product Designers usam wireframe para validar estrutura antes de investir em detalhe visual.',
+      'Costuma ser preto e branco ou tons de cinza. Pode ser feito no Figma, no papel ou em ferramentas de prototipação.',
+    ],
+    youWillHear: [
+      '"Vamos desenhar o wireframe desse fluxo antes de partir para o visual."',
+      '"O wireframe está aprovado, agora partimos para o mockup."',
+    ],
+  },
+  {
+    id: 'mockup',
+    term: 'Mockup',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Maquete visual',
+      usageNote:
+        'Mockup também aparece como mock-up ou maquete de interface em materiais em português.',
+    },
+    whatIs: [
+      'Representação estática de uma tela com visual mais próximo do produto final: cores, tipografia, imagens e componentes definidos. Ainda sem interação clicável como um protótipo funcional.',
+      'Product Designers usam mockup para alinhar direção visual com o time e stakeholders antes do desenvolvimento.',
+    ],
+    youWillHear: [
+      '"Precisamos fechar o mockup dessa home antes do handoff."',
+      '"O mockup ficou alinhado com a marca, falta validar o fluxo."',
+    ],
+  },
+
+  // Interface: sistema e componentes
+  {
+    id: 'design-system',
+    term: 'Design System',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Sistema de design',
+      usageNote:
+        'Design System continua no original em inglês na maioria das empresas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Conjunto de componentes, padrões, tokens e documentação que guiam como um produto digital se parece e se comporta. Garante consistência entre telas, times e releases.',
+      'Product Designers e UI Designers contribuem ao criar, usar e evoluir o design system. Em squads enxutas, a biblioteca costuma viver no Figma; empresas maiores podem ter time dedicado.',
+    ],
+    youWillHear: [
+      '"Esse botão já existe no design system, vamos reutilizar."',
+      '"Precisamos atualizar o design system antes de lançar essa feature."',
+    ],
+  },
+  {
+    id: 'component',
+    term: 'Component',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Componente',
+      usageNote:
+        'Component e componente aparecem com a mesma ideia; em Figma, vira biblioteca compartilhada.',
+    },
+    whatIs: [
+      'Peça reutilizável de interface: botão, campo de texto, card, modal e outros elementos que se repetem no produto.',
+      'Faz parte do design system. Alterar um componente base reflete em todas as telas que o usam.',
+    ],
+    youWillHear: [
+      '"Usa o componente de input do design system."',
+      '"Esse card precisa virar componente para o time inteiro usar."',
+    ],
+  },
+
+  // Interface: elementos visuais
+  {
+    id: 'tipografia',
+    term: 'Tipografia',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Typography',
+    },
+    whatIs: [
+      'Escolha e uso de fontes, tamanhos, pesos e espaçamento entre letras e linhas na interface. Afeta leitura, hierarquia e sensação da marca na tela.',
+      'Product Designers definem escala tipográfica no design system: título, corpo, legenda e labels.',
+    ],
+    youWillHear: [
+      '"A tipografia dessa tela está pequena demais para mobile."',
+      '"Vamos alinhar a tipografia com o design system."',
     ],
   },
 ]
