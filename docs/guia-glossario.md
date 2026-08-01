@@ -82,10 +82,19 @@ Termos: Produto, Produto digital, Problema, Solução, White-label, MVP, Feature
 | `subgroup` | Título |
 |------------|--------|
 | `prototipos` | Prototipação |
-| `sistema` | Sistema e componentes |
+| `estrutura` | Estrutura e layout |
 | `visual` | Elementos visuais |
+| `sistema` | Sistema e componentes |
 
-Termos: Wireframe, Mockup, Design System, Component, Tipografia…
+**Prototipação:** Wireframe, Mockup, Protótipo
+
+**Estrutura e layout:** Layout, Grid, Auto Layout
+
+**Elementos visuais:** Tipografia, Cor, Iconografia, Espaçamento, Hierarquia visual
+
+**Sistema e componentes:** Component, Variant, Estado, Design System, Design Token, UI Kit, Pattern
+
+Referências informadas (v1 + glossários de UI/PD): backlog editorial v1, trilha Aprender UI, Figma Dictionary e padrões de design system. Termos de implementação (Handoff, Responsivo) ficam em **Desenvolvimento**; papéis (UI Designer, Design Visual) ficam em **Fundamentos**.
 
 ---
 
@@ -136,7 +145,7 @@ GuiaGlossarioEntry {
 
 **Fundamentos:** ver subgrupos acima.
 
-**Interface:** Wireframe, Mockup, Design System, Component, Tipografia (ver subgrupos acima).
+**Interface:** 18 termos (ver subgrupos acima). Fase B do roadmap editorial.
 
 **Pesquisa:** Entrevista, Teste de usabilidade, Síntese… (Discovery/Hipótese → Produto)
 

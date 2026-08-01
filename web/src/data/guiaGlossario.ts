@@ -66,8 +66,9 @@ export const guiaGlossarioSubgroupLabels: Partial<
   },
   interface: {
     prototipos: 'Prototipação',
-    sistema: 'Sistema e componentes',
+    estrutura: 'Estrutura e layout',
     visual: 'Elementos visuais',
+    sistema: 'Sistema e componentes',
   },
 }
 
@@ -132,9 +133,22 @@ export const guiaGlossarioEditorialOrder: Partial<
   interface: [
     'wireframe',
     'mockup',
-    'design-system',
-    'component',
+    'prototipo',
+    'layout',
+    'grid',
+    'auto-layout',
     'tipografia',
+    'cor',
+    'iconografia',
+    'espacamento',
+    'hierarquia-visual',
+    'component',
+    'variant',
+    'estado',
+    'design-system',
+    'design-token',
+    'ui-kit',
+    'pattern',
   ],
 }
 
@@ -742,6 +756,79 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"O mockup ficou alinhado com a marca, falta validar o fluxo."',
     ],
   },
+  {
+    id: 'prototipo',
+    term: 'Protótipo',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Prototype',
+      usageNote:
+        'Protótipo interativo ou clicável também aparece como prototype ou protótipo de alta fidelidade.',
+    },
+    whatIs: [
+      'Versão navegável de um fluxo ou tela, com cliques, transições e caminhos simulados. Product Designers usam protótipo para testar ideias com pessoas usuárias antes do desenvolvimento.',
+      'Pode nascer de wireframe ou mockup e ganhar interação no Figma, ProtoPie ou ferramentas parecidas. Handoff e código ficam na categoria Desenvolvimento.',
+    ],
+    youWillHear: [
+      '"Vamos montar um protótipo clicável para o teste de usabilidade."',
+      '"O protótipo desse fluxo já está linkado no Figma."',
+    ],
+  },
+
+  // Interface: estrutura e layout
+  {
+    id: 'layout',
+    term: 'Layout',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    whatIs: [
+      'Organização dos elementos na tela: onde ficam header, conteúdo, ações e navegação. Define ritmo, alinhamento e prioridade do que a pessoa usuária vê primeiro.',
+      'Product Designers ajustam layout ao pensar em desktop, tablet e mobile. Grid e auto layout ajudam a manter consistência entre telas.',
+    ],
+    youWillHear: [
+      '"O layout dessa listagem está apertado no mobile."',
+      '"Vamos revisar o layout antes de fechar os componentes."',
+    ],
+  },
+  {
+    id: 'grid',
+    term: 'Grid',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    originalName: {
+      alternate: 'Grade de layout',
+      usageNote:
+        'Grid é o termo mais usado em Figma, design system e conversas de UI.',
+    },
+    whatIs: [
+      'Sistema de colunas e margens que alinha elementos na tela. Ajuda a manter consistência entre páginas e breakpoints.',
+      'Product Designers usam grid no Figma e documentam no design system quantas colunas cada tamanho de tela usa.',
+    ],
+    youWillHear: [
+      '"Essa tela segue grid de 12 colunas no desktop."',
+      '"Precisamos alinhar esse bloco ao grid do design system."',
+    ],
+  },
+  {
+    id: 'auto-layout',
+    term: 'Auto Layout',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    originalName: {
+      alternate: 'Layout automático',
+      usageNote:
+        'Recurso do Figma; o nome em inglês é o que aparece na ferramenta e no mercado.',
+    },
+    whatIs: [
+      'Recurso do Figma que organiza elementos em fila ou coluna e redimensiona o container conforme o conteúdo muda. Facilita botões, cards e listas que crescem ou encolhem.',
+      'Product Designers usam auto layout para entregar componentes mais flexíveis e próximos do comportamento real na implementação.',
+    ],
+    youWillHear: [
+      '"Coloca auto layout nesse card para o texto não quebrar o componente."',
+      '"Esse botão precisa de auto layout para funcionar com copy maior."',
+    ],
+  },
 
   // Interface: sistema e componentes
   {
@@ -782,6 +869,101 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Esse card precisa virar componente para o time inteiro usar."',
     ],
   },
+  {
+    id: 'variant',
+    term: 'Variant',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Variante',
+      usageNote:
+        'Variant e variante aparecem no Figma e em design systems para versões de um mesmo componente.',
+    },
+    whatIs: [
+      'Versão de um componente com visual ou comportamento diferente: botão primário e secundário, card compacto e expandido, input com erro e input padrão.',
+      'Product Designers nomeiam variants no Figma para o time escolher a opção certa sem redesenhar do zero.',
+    ],
+    youWillHear: [
+      '"Usa a variant secundária do botão nessa tela."',
+      '"Faltou mapear a variant de erro nesse componente."',
+    ],
+  },
+  {
+    id: 'estado',
+    term: 'Estado',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'State',
+      usageNote:
+        'State também aparece em specs e handoff quando o assunto é comportamento visual do componente.',
+    },
+    whatIs: [
+      'Situação visual de um elemento em um momento de uso: padrão, hover, pressed, disabled, focus, loading e error.',
+      'Product Designers desenham estados para o componente funcionar em condições reais. Estados incompletos geram dúvida na implementação.',
+    ],
+    youWillHear: [
+      '"Faltou o estado disabled nesse botão."',
+      '"Vamos revisar os estados de hover e focus desse input."',
+    ],
+  },
+  {
+    id: 'design-token',
+    term: 'Design Token',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Token de design',
+      usageNote:
+        'Design token continua no original em inglês na maioria dos design systems.',
+    },
+    whatIs: [
+      'Valor nomeado de design: cor, espaçamento, raio de borda, tipografia. Exemplo: color-primary-500 ou spacing-md.',
+      'Product Designers definem tokens no design system; Engenharia traduz para código. A implementação técnica entra na categoria Desenvolvimento.',
+    ],
+    youWillHear: [
+      '"Esse azul precisa virar token no design system."',
+      '"Vamos alinhar spacing com os tokens antes do handoff."',
+    ],
+  },
+  {
+    id: 'ui-kit',
+    term: 'UI Kit',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Kit de interface',
+      usageNote:
+        'UI Kit é o nome mais comum em Figma Community, vagas e materiais de Product Design.',
+    },
+    whatIs: [
+      'Conjunto de componentes e estilos prontos para montar telas de um produto. Pode ser biblioteca interna, arquivo do Figma ou base antes de um design system completo.',
+      'Product Designers reutilizam UI kit para ganhar velocidade. Design system costuma ser a evolução documentada e governada desse conjunto.',
+    ],
+    youWillHear: [
+      '"Vamos partir do UI kit da marca nesse projeto."',
+      '"Esse UI kit já tem input, modal e tabela prontos."',
+    ],
+  },
+  {
+    id: 'pattern',
+    term: 'Pattern',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Padrão de interface',
+      usageNote:
+        'Pattern library ou UI pattern também aparecem em design systems maduros.',
+    },
+    whatIs: [
+      'Solução recorrente para um problema de interface: login, empty state, onboarding, confirmação de exclusão, paginação.',
+      'Product Designers consultam patterns para resolver casos comuns com consistência. Podem virar componentes ou composições no design system.',
+    ],
+    youWillHear: [
+      '"Esse empty state segue o pattern do design system."',
+      '"Precisamos de um pattern de confirmação para ações destrutivas."',
+    ],
+  },
 
   // Interface: elementos visuais
   {
@@ -799,6 +981,75 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A tipografia dessa tela está pequena demais para mobile."',
       '"Vamos alinhar a tipografia com o design system."',
+    ],
+  },
+  {
+    id: 'cor',
+    term: 'Cor',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Color',
+      usageNote:
+        'Paleta de cores e color tokens são expressões comuns no mesmo contexto.',
+    },
+    whatIs: [
+      'Uso de cores na interface: marca, feedback, estados e contraste. Inclui primária, secundária, neutros, sucesso, erro e aviso.',
+      'Product Designers documentam cores como tokens no design system para manter consistência entre telas e plataformas.',
+    ],
+    youWillHear: [
+      '"Essa cor de erro não está no token do design system."',
+      '"Vamos revisar contraste de cor nesse botão."',
+    ],
+  },
+  {
+    id: 'iconografia',
+    term: 'Iconografia',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Iconography',
+    },
+    whatIs: [
+      'Conjunto de ícones usados no produto: navegação, ações, status e reforço de texto. Precisa ser clara, consistente e legível em tamanhos pequenos.',
+      'Product Designers escolhem biblioteca de ícones ou desenham set customizado alinhado ao design system.',
+    ],
+    youWillHear: [
+      '"Esse ícone não comunica a ação, vamos trocar."',
+      '"A iconografia precisa seguir o mesmo stroke do design system."',
+    ],
+  },
+  {
+    id: 'espacamento',
+    term: 'Espaçamento',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Spacing',
+      usageNote:
+        'Spacing scale e spacing token aparecem em specs e design systems.',
+    },
+    whatIs: [
+      'Distâncias entre elementos: padding interno, margin entre blocos e respiro da tela. Escala de espaçamento deixa a interface organizada e previsível.',
+      'Product Designers usam múltiplos de 4 ou 8 px e registram os valores como tokens. Auto layout no Figma ajuda a aplicar spacing com consistência.',
+    ],
+    youWillHear: [
+      '"O spacing entre esses cards está inconsistente."',
+      '"Usa spacing-md do token nesse padding."',
+    ],
+  },
+  {
+    id: 'hierarquia-visual',
+    term: 'Hierarquia visual',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    whatIs: [
+      'Ordem de importância do que aparece na tela, guiada por tamanho, peso, cor, contraste e posição. Mostra o que a pessoa usuária deve ler ou fazer primeiro.',
+      'Product Designers ajustam hierarquia visual com tipografia, spacing e componentes para deixar fluxos mais claros.',
+    ],
+    youWillHear: [
+      '"A hierarquia visual dessa tela está plana, tudo compete por atenção."',
+      '"Precisamos reforçar hierarquia visual no CTA principal."',
     ],
   },
 ]
