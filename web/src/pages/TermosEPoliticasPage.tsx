@@ -479,7 +479,7 @@ export function TermosEPoliticasPage() {
             <p>
               Solicitações de retirada de feedback que estejam dentro da nossa
               política e já estejam aprovados só serão aceitas mediante
-              justificativa a ser analisada pela equipe VagasUX.
+              justificativa a ser analisada pela equipe da VagasUX.
             </p>
             <p>
               Não fazemos revisão de textos já aprovados. Caso necessário, pode
