@@ -794,6 +794,172 @@
   }
 }
 
+/* Guia — FAQ / Glossário spotlight section */
+.guia-ajuda-ambient__orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+}
+
+.guia-ajuda-ambient__orb--brand {
+  top: -12%;
+  right: -4%;
+  width: min(42vw, 22rem);
+  height: min(42vw, 22rem);
+  background: color-mix(in srgb, var(--color-brand-400) 42%, transparent);
+  animation: guia-ajuda-drift-a 16s ease-in-out infinite;
+}
+
+.guia-ajuda-ambient__orb--violet {
+  top: -10%;
+  left: -8%;
+  width: min(36vw, 18rem);
+  height: min(36vw, 18rem);
+  background: color-mix(in srgb, var(--color-brand-300) 22%, transparent);
+  animation: guia-ajuda-drift-c 22s ease-in-out infinite;
+}
+
+@keyframes guia-ajuda-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-28px, 22px, 0) scale(1.08);
+  }
+}
+
+@keyframes guia-ajuda-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, 16px, 0) scale(1.06);
+  }
+}
+
+.guia-ajuda-spotlight {
+  position: relative;
+  display: flex;
+  min-height: 20rem;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.75rem;
+}
+
+.guia-ajuda-spotlight__border {
+  position: absolute;
+  inset: -120%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-brand-300),
+    var(--color-complementary-300),
+    var(--color-brand-400),
+    var(--color-brand-200),
+    var(--color-brand-300)
+  );
+  animation: guia-ajuda-border-spin 7s linear infinite;
+  opacity: 0.45;
+  transition: opacity 0.45s ease;
+}
+
+.guia-ajuda-spotlight--faq .guia-ajuda-spotlight__border {
+  background: conic-gradient(
+    from 0deg,
+    var(--color-brand-200),
+    var(--color-brand-400),
+    var(--color-brand-300),
+    var(--color-brand-200)
+  );
+}
+
+.guia-ajuda-spotlight--glossario .guia-ajuda-spotlight__border {
+  background: conic-gradient(
+    from 0deg,
+    var(--color-complementary-200),
+    var(--color-complementary-300),
+    var(--color-complementary-400),
+    var(--color-complementary-200)
+  );
+}
+
+.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__border,
+.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__border {
+  opacity: 0.95;
+  animation-duration: 4.5s;
+}
+
+@keyframes guia-ajuda-border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.guia-ajuda-spotlight__shine {
+  display: none;
+}
+
+.guia-ajuda-spotlight__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 2px;
+  overflow: hidden;
+  border-radius: calc(1.75rem - 2px);
+  background: var(--color-neutral-100);
+  padding: 1.75rem 1.75rem 1.5rem;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.guia-ajuda-spotlight__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    rgb(255 255 255 / 0.92) 50%,
+    transparent 64%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__inner::after,
+.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__inner::after {
+  transform: translateX(130%);
+}
+
+.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__inner,
+.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__inner {
+  transform: translateY(-6px);
+  background: var(--color-neutral-100);
+  box-shadow: 0 28px 70px -32px rgb(7 0 58 / 0.45);
+}
+
+.guia-ajuda-spotlight__arrow {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__arrow,
+.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__arrow {
+  transform: translateX(6px);
+}
+
+.guia-ajuda-spotlight:focus-visible {
+  outline: 2px solid var(--color-complementary-300);
+  outline-offset: 4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mural-fade,
   .job-row,
@@ -825,7 +991,12 @@
   .guilda-hero-svg--motion #guilda-wind,
   .guilda-reveal,
   .guilda-quote-lane-track,
-  .guilda-quote-card:hover {
+  .guilda-quote-card:hover,
+  .guia-ajuda-ambient__orb,
+  .guia-ajuda-spotlight__border,
+  .guia-ajuda-spotlight__shine,
+  .guia-ajuda-spotlight__inner,
+  .guia-ajuda-spotlight__arrow {
     animation: none;
     opacity: 1;
     transform: none;
