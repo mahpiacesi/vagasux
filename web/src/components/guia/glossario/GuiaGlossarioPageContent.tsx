@@ -120,28 +120,28 @@ export function GuiaGlossarioPageContent() {
         </p>
       </header>
 
-      <div className="relative mt-8 max-w-md">
-        <MagnifyingGlass
-          size={18}
-          weight="bold"
-          className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-brand-400"
-          aria-hidden
-        />
-        <Input
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Buscar termo…"
-          className="h-12 rounded-xl border-neutral-500/15 bg-neutral-100 pl-11"
-          aria-label="Buscar no glossário"
-        />
-      </div>
+      <div className="mt-8 flex items-center justify-between gap-3">
+        <div className="relative min-w-0 w-full max-w-md">
+          <MagnifyingGlass
+            size={18}
+            weight="bold"
+            className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-brand-400"
+            aria-hidden
+          />
+          <Input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Buscar termo…"
+            className="h-12 rounded-xl border-neutral-500/15 bg-neutral-100 pl-11"
+            aria-label="Buscar no glossário"
+          />
+        </div>
 
-      <div className="mt-6">
         <div
           role="group"
           aria-label="Ordenar termos"
-          className="inline-flex rounded-full border border-neutral-500/10 bg-brand-100/20 p-1"
+          className="inline-flex shrink-0 rounded-full border border-neutral-500/10 bg-brand-100/20 p-1"
         >
           {(['recomendada', 'alfabetica'] as const).map((mode) => {
             const isSelected = sortMode === mode
