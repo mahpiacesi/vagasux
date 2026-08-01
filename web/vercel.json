@@ -31,16 +31,6 @@
       "permanent": true
     },
     {
-      "source": "/guia/comecar/glossario",
-      "destination": "/guia/glossario",
-      "permanent": true
-    },
-    {
-      "source": "/guia/comecar/faq",
-      "destination": "/guia/faq",
-      "permanent": true
-    },
-    {
       "source": "/primeiros-passos",
       "destination": "/guia/trilhas/entender-o-basico",
       "permanent": true
