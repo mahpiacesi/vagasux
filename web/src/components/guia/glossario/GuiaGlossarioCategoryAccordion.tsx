@@ -1,6 +1,10 @@
 import { CaretDown } from '@phosphor-icons/react'
 import { GuiaGlossarioEntryArticle } from '@/components/guia/glossario/GuiaGlossarioEntryArticle'
-import type { GuiaGlossarioCategory, GuiaGlossarioEntry } from '@/data/guiaGlossario'
+import {
+  groupGuiaGlossarioEntriesBySubgroup,
+  type GuiaGlossarioCategory,
+  type GuiaGlossarioEntry,
+} from '@/data/guiaGlossario'
 import { cn } from '@/lib/utils'
 
 type GuiaGlossarioCategoryAccordionProps = {
@@ -21,6 +25,11 @@ export function GuiaGlossarioCategoryAccordion({
   const panelId = `glossario-categoria-${category.id}`
 
   if (entries.length === 0) return null
+
+  const subgroupGroups = groupGuiaGlossarioEntriesBySubgroup(
+    entries,
+    category.id,
+  )
 
   return (
     <section className="rounded-2xl border border-neutral-500/10 bg-neutral-100">
@@ -56,7 +65,10 @@ export function GuiaGlossarioCategoryAccordion({
       </h2>
 
       {isOpen ? (
-        <div id={panelId} className="border-t border-neutral-500/10 px-5 pb-6 md:px-6 md:pb-8">
+        <div
+          id={panelId}
+          className="border-t border-neutral-500/10 px-5 pb-6 md:px-6 md:pb-8"
+        >
           <nav
             aria-label={`Termos em ${category.title}`}
             className="mt-5 flex flex-wrap gap-2"
@@ -73,9 +85,20 @@ export function GuiaGlossarioCategoryAccordion({
             ))}
           </nav>
 
-          <div className="mt-8 space-y-12">
-            {entries.map((entry) => (
-              <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
+          <div className="mt-8 space-y-10">
+            {subgroupGroups.map((group) => (
+              <div key={group.subgroupId ?? 'outros'}>
+                {group.label ? (
+                  <h3 className="text-sm font-bold tracking-[0.12em] text-neutral-400 uppercase">
+                    {group.label}
+                  </h3>
+                ) : null}
+                <div className={cn('space-y-10', group.label && 'mt-6')}>
+                  {group.entries.map((entry) => (
+                    <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

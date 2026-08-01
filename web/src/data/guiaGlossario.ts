@@ -16,7 +16,7 @@ export type GuiaGlossarioOriginalName = {
 }
 
 /**
- * Verbete do glossário — espelha a estrutura obrigatória do guia editorial.
+ * Verbete do glossário — template enxuto.
  * @see docs/guia-glossario.md
  */
 export type GuiaGlossarioEntry = {
@@ -25,19 +25,15 @@ export type GuiaGlossarioEntry = {
   /** Título como o mercado utiliza */
   term: string
   categoryId: GuiaGlossarioCategoryId
+  /** Subgrupo dentro da categoria (ex.: areas-disciplinas) */
+  subgroup?: string
   originalName?: GuiaGlossarioOriginalName
-  /** O que é? — 1 a 3 parágrafos */
+  /** O que é? — incluir termos relacionados inline quando fizer sentido */
   whatIs: string[]
-  /** Em outras palavras */
-  inOtherWords: string
-  /** Exemplo prático */
-  example: string
   /** Você provavelmente vai ouvir */
   youWillHear: string[]
-  /** Por que isso importa? */
-  whyItMatters: string
-  /** 3–6 slugs de verbetes relacionados */
-  seeAlso: string[]
+  /** Links opcionais para conceitos distintos (2–4) */
+  seeAlso?: string[]
 }
 
 export type GuiaGlossarioCategory = {
@@ -57,34 +53,71 @@ export const guiaGlossarioCategories: GuiaGlossarioCategory[] = [
   { id: 'ia-para-designers', emoji: '🤖', title: 'IA para Designers' },
 ]
 
-/** Verbete piloto — referência de estrutura editorial */
+/** Rótulos de subgrupos por categoria */
+export const guiaGlossarioSubgroupLabels: Partial<
+  Record<GuiaGlossarioCategoryId, Record<string, string>>
+> = {
+  fundamentos: {
+    'areas-disciplinas': 'Áreas e disciplinas',
+    mentalidade: 'Mentalidade',
+    'pessoas-contexto': 'Pessoas e contexto',
+  },
+  produto: {
+    conceitos: 'Conceitos',
+    processo: 'Processo',
+    entregas: 'Entregas',
+  },
+}
+
 export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
+  {
+    id: 'product-design',
+    term: 'Product Design',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    whatIs: [
+      'Product Design é a disciplina que cria e evolui produtos digitais, unindo estratégia, pesquisa, experiência da pessoa usuária (UX) e interface (UI) para resolver problemas e gerar valor.',
+    ],
+    youWillHear: [
+      '"Vamos envolver Product Design desde o início do projeto."',
+      '"O time de Product Design está trabalhando nessa funcionalidade."',
+    ],
+    seeAlso: ['product-designer', 'ux', 'ui'],
+  },
+  {
+    id: 'product-designer',
+    term: 'Product Designer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    whatIs: [
+      'Product Designer é a pessoa responsável por projetar a experiência de um produto digital. Ela trabalha desde a compreensão do problema até a criação e validação de soluções, colaborando com áreas como Produto, Engenharia e Pesquisa.',
+    ],
+    youWillHear: [
+      '"A pessoa Product Designer vai validar esse fluxo antes do desenvolvimento."',
+      '"Vamos alinhar essa decisão com Product Design."',
+    ],
+    seeAlso: ['product-design', 'ux'],
+  },
   {
     id: 'ux',
     term: 'UX',
     categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
     originalName: {
       english: 'User Experience',
       portuguese: 'Experiência da Pessoa Usuária',
       usageNote:
-        'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso de um produto. Quase ninguém fala "experiência da pessoa usuária" no dia a dia das equipes.',
+        'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso. Quase ninguém fala "experiência da pessoa usuária" no dia a dia das equipes.',
     },
     whatIs: [
-      'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital. Não é só visual: inclui se ela entende o fluxo, se consegue completar uma tarefa, se sente confiança ou frustração.',
-      'Product Designers trabalham UX ao desenhar fluxos, telas, textos e interações pensando na pessoa que vai usar o produto de verdade, não só no layout bonito.',
+      'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital. Não é só visual: inclui se ela entende o fluxo, completa a tarefa ou desiste no meio do caminho. Está ligada à UI (interface), mas vai além da aparência das telas.',
     ],
-    inOtherWords:
-      'UX é o "como é usar" um app, site ou sistema. Se a pessoa se perde, não acha um botão ou desiste no meio do caminho, a UX daquele produto precisa melhorar.',
-    example:
-      'Você abre um app de banco para pagar um boleto. Se em três toques você conclui o pagamento, a UX está funcionando. Se você precisa ligar no suporte porque não achou a opção, algo na UX falhou.',
     youWillHear: [
       '"Precisamos melhorar a UX desse fluxo de cadastro."',
       '"Antes de polir a interface, vamos validar a UX com usuários."',
       '"Essa feature resolve o problema de negócio, mas a UX ainda está confusa."',
     ],
-    whyItMatters:
-      'UX é um dos pilares do Product Design. Entender o termo te ajuda a participar de conversas com produto, engenharia e negócio, e a defender decisões com foco na pessoa usuária, não só no visual.',
-    seeAlso: ['ui', 'usabilidade', 'teste-de-usabilidade'],
+    seeAlso: ['ui', 'product-design'],
   },
 ]
 
@@ -128,13 +161,15 @@ export function searchGuiaGlossarioEntries(query: string): GuiaGlossarioEntry[] 
       entry.term.toLowerCase().includes(normalized) ||
       entry.id.toLowerCase().includes(normalized) ||
       entry.originalName?.english.toLowerCase().includes(normalized) ||
-      entry.originalName?.portuguese.toLowerCase().includes(normalized),
+      entry.originalName?.portuguese.toLowerCase().includes(normalized) ||
+      entry.whatIs.some((p) => p.toLowerCase().includes(normalized)),
   )
 }
 
 export function resolveGuiaGlossarioSeeAlso(
-  slugs: string[],
+  slugs: string[] | undefined,
 ): GuiaGlossarioEntry[] {
+  if (!slugs?.length) return []
   return slugs
     .map((slug) => getGuiaGlossarioEntryById(slug))
     .filter((entry): entry is GuiaGlossarioEntry => entry !== undefined)
@@ -161,4 +196,55 @@ export function groupGuiaGlossarioEntriesByCategory(
   }
 
   return grouped
+}
+
+export type GuiaGlossarioSubgroupGroup = {
+  subgroupId: string | null
+  label: string | null
+  entries: GuiaGlossarioEntry[]
+}
+
+/** Agrupa verbetes por subgrupo dentro de uma categoria, na ordem editorial */
+export function groupGuiaGlossarioEntriesBySubgroup(
+  entries: GuiaGlossarioEntry[],
+  categoryId: GuiaGlossarioCategoryId,
+): GuiaGlossarioSubgroupGroup[] {
+  const labels = guiaGlossarioSubgroupLabels[categoryId]
+  if (!labels) {
+    return [{ subgroupId: null, label: null, entries }]
+  }
+
+  const order = Object.keys(labels)
+  const buckets = new Map<string, GuiaGlossarioEntry[]>()
+  const ungrouped: GuiaGlossarioEntry[] = []
+
+  for (const entry of entries) {
+    if (entry.subgroup && labels[entry.subgroup]) {
+      const list = buckets.get(entry.subgroup) ?? []
+      list.push(entry)
+      buckets.set(entry.subgroup, list)
+    } else {
+      ungrouped.push(entry)
+    }
+  }
+
+  const groups: GuiaGlossarioSubgroupGroup[] = order
+    .filter((id) => buckets.has(id))
+    .map((id) => ({
+      subgroupId: id,
+      label: labels[id] ?? null,
+      entries: (buckets.get(id) ?? []).sort((a, b) =>
+        a.term.localeCompare(b.term, 'pt-BR'),
+      ),
+    }))
+
+  if (ungrouped.length > 0) {
+    groups.push({
+      subgroupId: null,
+      label: null,
+      entries: ungrouped.sort((a, b) => a.term.localeCompare(b.term, 'pt-BR')),
+    })
+  }
+
+  return groups
 }
