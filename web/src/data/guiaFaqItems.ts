@@ -262,8 +262,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'Como criar networking com outros designers pelo LinkedIn?',
     answer: [
-      'Adicionar centenas de pessoas sem conversa vira lista morta. Prefira mensagens personalizadas: comente um artigo dela, pergunte sobre a área da empresa ou peça indicação de conteúdo.',
-      'Conte brevemente quem você é antes de pedir feedback de portfólio. Ofereça troca quando puder. Networking funciona com respeito, sem pressionar por resposta imediata.',
+      'Criar networking no LinkedIn não difere muito do que seria criar networking no mundo físico: estamos lidando com pessoas, apesar de estarmos vendo apenas uma tela. Um costume muito difundido é pesquisar por uma área e ir adicionando profissionais que aparecerem, mas ter muitos contatos não necessariamente é um bom networking. Nestes casos, mesmo que o outro lado sempre aceite, é muito provável que você vire apenas um número dentro da lista de contatos, sem qualquer valor para o dono do perfil.',
+      'A verdade é que não existe uma fórmula única para se criar um bom networking, mas bom senso e educação são sempre bem-vindos: trate os outros como você gostaria de ser tratado.',
+      'Há algumas abordagens que podem ajudar a conseguir engajar uma boa conversa. Pergunte sobre a empresa ou a área em que a pessoa trabalha. Como complemento, peça referências de conteúdo. Comente algum artigo, trabalho ou post que alguém tenha feito, trazendo impressões, questões ou complementos para gerar discussão. Você pode pedir feedback sobre o portfólio. Faça correlações entre experiências suas e da pessoa para trazer pontos de interesse mútuo.',
+      'Independente da forma que resolver abordar um novo contato, lembre-se de contar um pouco da sua própria trajetória para que a pessoa saiba com quem está falando. Ninguém é obrigado a te fazer nenhum favor, então pedidos de feedback de portfólio, por exemplo, devem ser feitos com muito cuidado e nunca cobrar que a pessoa te responda. E não espere só receber: sempre que possível, traga também algo a oferecer aos seus contatos.',
     ],
   },
   {
