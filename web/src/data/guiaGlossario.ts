@@ -1536,7 +1536,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Roadmap continua no original em inglês na maioria das empresas de tecnologia.',
     },
     whatIs: [
-      'Visão de médio prazo do que o produto vai construir e quando: features, melhorias e iniciativas alinhadas a objetivos de negócio. Pode ser trimestral, por tema ou por outcome.',
+      'Visão de médio a longo prazo do que o produto vai construir e quando: features, melhorias e iniciativas alinhadas a objetivos de negócio. Pode ser trimestral, por tema ou por outcome.',
       'Product Designers contribuem ao estimar esforço de UX, dependências de design system e priorizar o que impacta a pessoa usuária.',
     ],
     youWillHear: [
