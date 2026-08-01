@@ -7,18 +7,14 @@ const ajudaItems = [
   {
     id: 'faq',
     title: 'FAQ',
-    description:
-      'Perguntas frequentes sobre Product Design, mercado, carreira e como usar o Guia.',
-    cta: 'Ver perguntas',
+    cta: 'Ver perguntas e respostas',
     to: guiaRoutes.faq,
     Icon: Question,
   },
   {
     id: 'glossario',
     title: 'Glossário',
-    description:
-      'Definições claras dos principais termos de UX, Product Design e produto digital.',
-    cta: 'Consultar termos',
+    cta: 'Explorar termos',
     to: guiaRoutes.glossario,
     Icon: BookBookmark,
   },
@@ -34,22 +30,22 @@ export function GuiaAjudaSection() {
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Ajuda
+            Ajuda e suporte
           </p>
           <h2
             id="guia-ajuda-heading"
             className="mt-4 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl"
           >
-            Ainda com dúvida?
+            Não encontrou o que procurava?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Consulte a FAQ para perguntas gerais ou o glossário para entender
-            siglas e conceitos do universo de UX e produto.
+            Consulte a FAQ para dúvidas frequentes ou explore o Glossário para
+            entender termos, siglas e conceitos do universo de Product Design.
           </p>
         </div>
 
         <ul className="mt-10 grid gap-4 md:grid-cols-2">
-          {ajudaItems.map(({ id, title, description, cta, to, Icon }) => (
+          {ajudaItems.map(({ id, title, cta, to, Icon }) => (
             <li key={id}>
               <Link
                 to={to}
@@ -61,9 +57,6 @@ export function GuiaAjudaSection() {
                 <h3 className="mt-5 text-xl font-black text-neutral-500">
                   {title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-400">
-                  {description}
-                </p>
                 <span className="mt-5 text-[0.65rem] font-bold tracking-[0.14em] text-brand-400 uppercase">
                   {cta}
                 </span>
