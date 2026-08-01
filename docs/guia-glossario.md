@@ -132,6 +132,22 @@ UX Research (disciplina) fica em **Fundamentos**; Discovery, Hipótese e Valida�
 
 Discovery e delivery ficam em **Produto**; squad em **Fundamentos**.
 
+### Desenvolvimento
+
+| `subgroup` | Título |
+|------------|--------|
+| `conceitos` | Conceitos |
+| `entrega` | Design para desenvolvimento |
+| `ciclo` | Ciclo de release |
+
+**Conceitos:** Frontend, Backend, API, Responsivo
+
+**Design para desenvolvimento:** Handoff, Spec, Breakpoint, Edge case
+
+**Ciclo de release:** Deploy, Staging, Bug, Pull Request, QA
+
+Design Token fica em **Interface**; handoff e responsivo ficam aqui na implementação.
+
 ---
 
 ## Modelo de dados
@@ -188,7 +204,7 @@ GuiaGlossarioEntry {
 
 **Métodos Ágeis:** 12 termos (ver subgrupos acima). Scrum, sprint, backlog, kanban e cerimônias do squad.
 
-**Desenvolvimento:** API, Frontend, Handoff, Token…
+**Desenvolvimento:** 13 termos (ver subgrupos acima). Frontend, handoff, responsivo, deploy e ciclo com engenharia.
 
 **Acessibilidade:** WCAG, Contraste, ARIA…
 

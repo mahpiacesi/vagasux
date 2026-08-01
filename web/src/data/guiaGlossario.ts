@@ -80,6 +80,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     artefatos: 'Artefatos',
     cerimonias: 'Cerimônias',
   },
+  desenvolvimento: {
+    conceitos: 'Conceitos',
+    entrega: 'Design para desenvolvimento',
+    ciclo: 'Ciclo de release',
+  },
 }
 
 /**
@@ -196,6 +201,21 @@ export const guiaGlossarioEditorialOrder: Partial<
     'sprint-planning',
     'retrospectiva',
     'sprint-review',
+  ],
+  desenvolvimento: [
+    'frontend',
+    'backend',
+    'api',
+    'responsivo',
+    'handoff',
+    'spec',
+    'breakpoint',
+    'edge-case',
+    'deploy',
+    'staging',
+    'bug',
+    'pull-request',
+    'qa',
   ],
 }
 
@@ -1875,6 +1895,239 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Na sprint review, vamos demoar o novo checkout."',
       '"O feedback da review virou story para o próximo sprint."',
+    ],
+  },
+
+  // Desenvolvimento: conceitos
+  {
+    id: 'frontend',
+    term: 'Frontend',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Front-end',
+    },
+    whatIs: [
+      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Engenharia de frontend implementa o que Product Designers desenham no Figma.',
+      'Product Designers alinham com dev frontend em handoff, estados, responsivo e comportamento de componentes.',
+    ],
+    youWillHear: [
+      '"O frontend desse fluxo ainda não subiu em staging."',
+      '"Precisamos de alinhamento com frontend antes de fechar o spec."',
+    ],
+  },
+  {
+    id: 'backend',
+    term: 'Backend',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Back-end',
+    },
+    whatIs: [
+      'Parte do produto que roda no servidor: regras de negócio, banco de dados, autenticação e integrações. A pessoa usuária não vê diretamente, mas sente no tempo de resposta, segurança e dados corretos.',
+      'Product Designers precisam entender limites de backend ao desenhar fluxos: o que dá para buscar em tempo real e o que depende de processamento ou integração.',
+    ],
+    youWillHear: [
+      '"Backend ainda não expõe esse dado na API."',
+      '"Esse fluxo depende de backend, não dá para prometer só com ajuste de UI."',
+    ],
+  },
+  {
+    id: 'api',
+    term: 'API',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Application Programming Interface',
+      usageNote: 'Interface de programação também aparece em materiais em português.',
+    },
+    whatIs: [
+      'Forma padronizada de um sistema expor dados ou funções para outro sistema consumir. Frontend chama API para buscar informações, enviar formulários ou integrar serviços.',
+      'Product Designers encontram API ao desenhar estados de loading, erro, empty state e fluxos que dependem de dados externos.',
+    ],
+    youWillHear: [
+      '"A API demora, então precisamos de loading nessa tela."',
+      '"Esse campo vem da API de CEP, não é digitado manualmente."',
+    ],
+  },
+  {
+    id: 'responsivo',
+    term: 'Responsivo',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Design responsivo',
+      usageNote: 'Responsive design continua comum em specs e conversas com engenharia.',
+    },
+    whatIs: [
+      'Adaptação da interface a diferentes tamanhos de tela: mobile, tablet e desktop. Layout, tipografia e componentes se reorganizam para manter usabilidade em cada breakpoint.',
+      'Product Designers desenham versões responsivas no Figma e documentam comportamento por breakpoint no handoff.',
+    ],
+    youWillHear: [
+      '"Essa tela quebrou no mobile, o responsivo não ficou alinhado ao Figma."',
+      '"Fecha o responsivo antes do handoff."',
+    ],
+  },
+
+  // Desenvolvimento: design para desenvolvimento
+  {
+    id: 'handoff',
+    term: 'Handoff',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Passagem para desenvolvimento',
+    },
+    whatIs: [
+      'Momento em que design passa para Engenharia: Figma linkado, specs, tokens, estados e critérios de aceite. Objetivo é reduzir dúvida na implementação.',
+      'Product Designers preparam handoff com componentes do design system, medidas quando necessário e alinhamento com dev sobre edge cases.',
+    ],
+    youWillHear: [
+      '"O handoff desse fluxo sai amanhã com todos os estados."',
+      '"Dev pediu handoff mais detalhado no hover e no erro."',
+    ],
+  },
+  {
+    id: 'spec',
+    term: 'Spec',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Especificação',
+    },
+    whatIs: [
+      'Detalhamento do que deve ser construído: fluxos, estados, medidas, tokens, copy e regras de comportamento. Pode viver no Figma, no ticket ou no PRD.',
+      'Product Designers escrevem spec clara para dev entender hover, erro, empty state e responsivo sem adivinhar.',
+    ],
+    youWillHear: [
+      '"A spec desse modal está incompleta, falta estado de loading."',
+      '"Manda a spec no ticket antes da planning."',
+    ],
+  },
+  {
+    id: 'breakpoint',
+    term: 'Breakpoint',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Ponto de quebra',
+      usageNote: 'Breakpoint continua no original em inglês em Figma, CSS e conversas com dev.',
+    },
+    whatIs: [
+      'Largura de tela em que o layout muda de um formato para outro. Exemplo: abaixo de 768 px vira coluna única; acima mantém sidebar.',
+      'Product Designers definem breakpoints com dev e grid, e testam responsivo nos pontos acordados.',
+    ],
+    youWillHear: [
+      '"Qual breakpoint a sidebar some?"',
+      '"Esse componente quebra no breakpoint de tablet."',
+    ],
+  },
+  {
+    id: 'edge-case',
+    term: 'Edge case',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Caso de borda',
+    },
+    whatIs: [
+      'Situação incomum ou extrema no fluxo: nome muito longo, lista vazia, timeout de API, permissão negada. Fácil de esquecer no desenho principal.',
+      'Product Designers mapeiam edge cases antes do handoff para evitar tela quebrada ou comportamento indefinido em produção.',
+    ],
+    youWillHear: [
+      '"Faltou edge case de lista vazia nesse spec."',
+      '"Dev encontrou um edge case que não estava no Figma."',
+    ],
+  },
+
+  // Desenvolvimento: ciclo de release
+  {
+    id: 'deploy',
+    term: 'Deploy',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Implantação',
+    },
+    whatIs: [
+      'Publicação de uma versão do produto em ambiente acessível: staging para teste ou produção para pessoas usuárias finais.',
+      'Product Designers acompanham deploy de features que desenharam e validam se a experiência ficou fiel ao spec.',
+    ],
+    youWillHear: [
+      '"O deploy dessa feature é na sexta à noite."',
+      '"Depois do deploy, confere se o fluxo em produção bate com o Figma."',
+    ],
+  },
+  {
+    id: 'staging',
+    term: 'Staging',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Ambiente de homologação',
+    },
+    whatIs: [
+      'Cópia do produto perto da produção, usada para testar features antes do lançamento final. Time valida fluxo completo sem impactar pessoas usuárias reais.',
+      'Product Designers revisam staging para conferir handoff, responsivo e estados antes do deploy em produção.',
+    ],
+    youWillHear: [
+      '"Já dá para testar esse fluxo em staging."',
+      '"Encontrei divergência entre staging e o Figma."',
+    ],
+  },
+  {
+    id: 'bug',
+    term: 'Bug',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Defeito',
+    },
+    whatIs: [
+      'Comportamento incorreto ou quebrado no produto: botão que não funciona, layout estourado, dado errado. Pode vir de implementação, regressão ou edge case não previsto.',
+      'Product Designers ajudam a reproduzir bug, comparar com Figma e priorizar correção com PM e dev.',
+    ],
+    youWillHear: [
+      '"Abre bug com print e passo a passo de reprodução."',
+      '"Esse bug de alinhamento veio depois do último deploy."',
+    ],
+  },
+  {
+    id: 'pull-request',
+    term: 'Pull Request',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'PR de código',
+      usageNote:
+        'Diferente de PRD (documento de produto). Pull request aparece em GitHub, GitLab e fluxo de engenharia.',
+    },
+    whatIs: [
+      'Pedido de dev para revisar e integrar mudanças de código na base do produto. Outra pessoa revisa qualidade e impacto antes do merge.',
+      'Product Designers podem ser chamados para validar visual e UX em pull request de frontend antes do merge.',
+    ],
+    youWillHear: [
+      '"Revisa esse pull request de frontend antes do merge."',
+      '"O PR de código já está com o layout implementado."',
+    ],
+  },
+  {
+    id: 'qa',
+    term: 'QA',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Quality Assurance',
+      usageNote: 'Garantia de qualidade também aparece em português.',
+    },
+    whatIs: [
+      'Prática de testar o produto antes ou depois do deploy para encontrar bugs e regressões. QA pode ser pessoa dedicada ou responsabilidade compartilhada do squad.',
+      'Product Designers colaboram com QA ao definir cenários de teste, estados esperados e comparar build com spec.',
+    ],
+    youWillHear: [
+      '"QA pegou divergência de spacing nessa tela."',
+      '"Passa os cenários de teste para QA antes do deploy."',
     ],
   },
 ]
