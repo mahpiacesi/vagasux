@@ -17,7 +17,7 @@ export type GuiaGlossarioOriginalName = {
 
 /**
  * Verbete do glossário. Template enxuto.
- * @see docs/guia-glossário.md
+ * @see docs/guia-glossario.md
  */
 export type GuiaGlossarioEntry = {
   /** Âncora HTML na página única (#ux, #mvp…) */
@@ -67,6 +67,87 @@ export const guiaGlossarioSubgroupLabels: Partial<
     processo: 'Processo',
     entregas: 'Entregas',
   },
+}
+
+/**
+ * Ordem de leitura por prioridade de contexto (não alfabética).
+ * Novos verbetes entram no fim do subgrupo correspondente.
+ */
+export const guiaGlossarioEditorialOrder: Partial<
+  Record<GuiaGlossarioCategoryId, readonly string[]>
+> = {
+  fundamentos: [
+    // Áreas e disciplinas: do macro (PD) ao específico
+    'product-design',
+    'product-designer',
+    'ux',
+    'ui',
+    'ux-designer',
+    'ui-designer',
+    'ux-research',
+    'design-de-interacao',
+    'content-design',
+    'arquitetura-da-informacao',
+    'design-visual',
+    'service-design',
+    'customer-experience',
+    'hci',
+    // Mentalidade: base → frameworks → ferramentas de pensamento
+    'hcd',
+    'usabilidade',
+    'interacao',
+    'iteracao',
+    'design-thinking',
+    'double-diamond',
+    'lean-ux',
+    'heuristicas-de-usabilidade',
+    // Pessoas e contexto: quem usa → quem decide
+    'pessoa-usuaria',
+    'publico-alvo',
+    'stakeholder',
+    'cliente',
+    'negocio',
+    'squad',
+  ],
+}
+
+function getGuiaGlossarioEditorialIndex(entry: GuiaGlossarioEntry): number {
+  const order = guiaGlossarioEditorialOrder[entry.categoryId]
+  if (!order) return Number.MAX_SAFE_INTEGER
+  const index = order.indexOf(entry.id)
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index
+}
+
+function getGuiaGlossarioCategoryIndex(
+  categoryId: GuiaGlossarioCategoryId,
+): number {
+  return guiaGlossarioCategories.findIndex(
+    (category) => category.id === categoryId,
+  )
+}
+
+export function compareGuiaGlossarioEntriesEditorially(
+  a: GuiaGlossarioEntry,
+  b: GuiaGlossarioEntry,
+): number {
+  if (a.categoryId !== b.categoryId) {
+    return (
+      getGuiaGlossarioCategoryIndex(a.categoryId) -
+      getGuiaGlossarioCategoryIndex(b.categoryId)
+    )
+  }
+
+  const indexA = getGuiaGlossarioEditorialIndex(a)
+  const indexB = getGuiaGlossarioEditorialIndex(b)
+  if (indexA !== indexB) return indexA - indexB
+
+  return a.term.localeCompare(b.term, 'pt-BR')
+}
+
+export function sortGuiaGlossarioEntriesEditorially(
+  entries: GuiaGlossarioEntry[],
+): GuiaGlossarioEntry[] {
+  return [...entries].sort(compareGuiaGlossarioEntriesEditorially)
 }
 
 export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
@@ -619,7 +700,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     seeAlso: ['cliente', 'negocio', 'pessoa-usuaria'],
   },
 ]
-
 export const guiaGlossarioCategoryLabels: Record<GuiaGlossarioCategoryId, string> =
   Object.fromEntries(
     guiaGlossarioCategories.map((c) => [c.id, c.title]),
@@ -640,15 +720,13 @@ export function getGuiaGlossarioCategoryById(
 export function getGuiaGlossarioEntriesByCategory(
   categoryId: GuiaGlossarioCategoryId,
 ): GuiaGlossarioEntry[] {
-  return guiaGlossarioEntries
-    .filter((entry) => entry.categoryId === categoryId)
-    .sort((a, b) => a.term.localeCompare(b.term, 'pt-BR'))
+  return sortGuiaGlossarioEntriesEditorially(
+    guiaGlossarioEntries.filter((entry) => entry.categoryId === categoryId),
+  )
 }
 
 export function getAllGuiaGlossarioEntriesSorted(): GuiaGlossarioEntry[] {
-  return [...guiaGlossarioEntries].sort((a, b) =>
-    a.term.localeCompare(b.term, 'pt-BR'),
-  )
+  return sortGuiaGlossarioEntriesEditorially(guiaGlossarioEntries)
 }
 
 export function searchGuiaGlossarioEntries(query: string): GuiaGlossarioEntry[] {
@@ -688,10 +766,7 @@ export function groupGuiaGlossarioEntriesByCategory(
   }
 
   for (const [categoryId, list] of grouped) {
-    grouped.set(
-      categoryId,
-      list.sort((a, b) => a.term.localeCompare(b.term, 'pt-BR')),
-    )
+    grouped.set(categoryId, sortGuiaGlossarioEntriesEditorially(list))
   }
 
   return grouped
@@ -732,16 +807,14 @@ export function groupGuiaGlossarioEntriesBySubgroup(
     .map((id) => ({
       subgroupId: id,
       label: labels[id] ?? null,
-      entries: (buckets.get(id) ?? []).sort((a, b) =>
-        a.term.localeCompare(b.term, 'pt-BR'),
-      ),
+      entries: sortGuiaGlossarioEntriesEditorially(buckets.get(id) ?? []),
     }))
 
   if (ungrouped.length > 0) {
     groups.push({
       subgroupId: null,
       label: null,
-      entries: ungrouped.sort((a, b) => a.term.localeCompare(b.term, 'pt-BR')),
+      entries: sortGuiaGlossarioEntriesEditorially(ungrouped),
     })
   }
 
