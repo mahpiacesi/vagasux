@@ -603,7 +603,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Quem usa um produto ou serviço digital no dia a dia. No VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
+      'Quem usa um produto ou serviço digital no dia a dia. Na VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
     ],
     youWillHear: [
       '"Quem é a pessoa usuária principal desse produto?"',

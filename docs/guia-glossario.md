@@ -116,6 +116,7 @@ GuiaGlossarioEntry {
 - Acolhedor, didático, direto
 - Português claro; inglês quando é o que o mercado usa
 - Texto original VagasUX (não copiar NNG, Wikipedia etc.)
+- **VagasUX no feminino:** *a* VagasUX, *na* VagasUX, *da* VagasUX — nunca *o/no/do/pelo* VagasUX
 
 ---
 
