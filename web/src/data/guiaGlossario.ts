@@ -32,8 +32,6 @@ export type GuiaGlossarioEntry = {
   whatIs: string[]
   /** Você provavelmente vai ouvir */
   youWillHear: string[]
-  /** Links opcionais para conceitos distintos (2 a 4) */
-  seeAlso?: string[]
 }
 
 export type GuiaGlossarioCategory = {
@@ -169,7 +167,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos revisar a arquitetura da informação antes de desenhar as telas."',
       '"A pessoa usuária não achou a funcionalidade. Pode ser problema de arquitetura da informação."',
     ],
-    seeAlso: ['ux', 'usabilidade', 'pessoa-usuaria'],
   },
   {
     id: 'content-design',
@@ -191,7 +188,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos passar essas telas com Content Design antes do handoff."',
       '"A vaga pede UX Writing, mas o escopo é bem de Content Design."',
     ],
-    seeAlso: ['ux', 'ui', 'usabilidade'],
   },
   {
     id: 'customer-experience',
@@ -213,7 +209,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"O time de CX quer entender a jornada completa, não só o digital."',
       '"Essa mudança no produto impacta a experiência do cliente como um todo."',
     ],
-    seeAlso: ['ux', 'service-design', 'pessoa-usuaria'],
   },
   {
     id: 'design-de-interacao',
@@ -235,7 +230,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos revisar as interações desse formulário antes de polir o visual."',
       '"A pessoa usuária travou nesse passo. Pode ser problema de interação."',
     ],
-    seeAlso: ['interacao', 'ui', 'ux'],
   },
   {
     id: 'design-visual',
@@ -251,7 +245,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Antes de desenvolver, vamos fechar o design visual dessa tela."',
       '"Essa vaga pede forte em design visual e UI."',
     ],
-    seeAlso: ['ui', 'ui-designer', 'usabilidade'],
   },
   {
     id: 'hci',
@@ -273,7 +266,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Esse paper de HCI fala sobre usabilidade de interfaces."',
       '"A empresa tem um time de pesquisa em HCI."',
     ],
-    seeAlso: ['hcd', 'ux', 'design-de-interacao'],
   },
   {
     id: 'product-design',
@@ -287,7 +279,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos envolver Product Design desde o início do projeto."',
       '"O time de Product Design está trabalhando nessa funcionalidade."',
     ],
-    seeAlso: ['product-designer', 'ux', 'ui'],
   },
   {
     id: 'product-designer',
@@ -301,7 +292,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"A pessoa Product Designer vai validar esse fluxo antes do desenvolvimento."',
       '"Vamos alinhar essa decisão com Product Design."',
     ],
-    seeAlso: ['product-design', 'ux', 'ux-designer'],
   },
   {
     id: 'service-design',
@@ -323,7 +313,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos mapear o serviço ponta a ponta, não apenas o fluxo do app."',
       '"A pessoa de Service Design vai facilitar o workshop de jornada."',
     ],
-    seeAlso: ['customer-experience', 'ux', 'product-design'],
   },
   {
     id: 'ui',
@@ -345,7 +334,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos alinhar UI com o design system antes de entregar."',
       '"Essa vaga pede forte em UI e design visual."',
     ],
-    seeAlso: ['ux', 'design-visual', 'design-de-interacao'],
   },
   {
     id: 'ui-designer',
@@ -367,7 +355,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos de alguém com foco em UI para esse projeto."',
       '"O UI Designer revisou os estados de hover e disabled."',
     ],
-    seeAlso: ['ui', 'design-visual', 'ux-designer'],
   },
   {
     id: 'ux',
@@ -389,7 +376,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Antes de polir a interface, vamos validar a UX com pessoas usuárias."',
       '"Essa feature resolve o problema de negócio, mas a UX ainda está confusa."',
     ],
-    seeAlso: ['ui', 'product-design', 'usabilidade'],
   },
   {
     id: 'ux-designer',
@@ -411,7 +397,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"A vaga é UX Designer, mas pede Figma e UI também."',
       '"Vamos envolver UX Design antes de priorizar essa feature."',
     ],
-    seeAlso: ['ux', 'product-designer', 'ui-designer'],
   },
   {
     id: 'ux-research',
@@ -433,7 +418,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"A pessoa de UX Research vai recrutar participantes para o estudo."',
       '"Esse dado veio de uma rodada de UX Research."',
     ],
-    seeAlso: ['pessoa-usuaria', 'usabilidade', 'product-design'],
   },
 
   // Fundamentos: mentalidade
@@ -451,7 +435,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Essa etapa segue a lógica de design thinking: divergir antes de convergir."',
       '"Design thinking não substitui pesquisa, mas ajuda a organizar ideias."',
     ],
-    seeAlso: ['hcd', 'double-diamond', 'lean-ux'],
   },
   {
     id: 'double-diamond',
@@ -473,7 +456,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Depois de definir, entramos no segundo diamante para explorar soluções."',
       '"O Double Diamond ajuda a explicar a fase do projeto para stakeholders."',
     ],
-    seeAlso: ['design-thinking', 'lean-ux', 'product-design'],
   },
   {
     id: 'hcd',
@@ -495,7 +477,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos de mais pesquisa para manter o processo centrado na pessoa usuária."',
       '"Design centrado no usuário ainda aparece em docs antigos, mas a lógica é a mesma."',
     ],
-    seeAlso: ['design-thinking', 'pessoa-usuaria', 'ux'],
   },
   {
     id: 'heuristicas-de-usabilidade',
@@ -517,7 +498,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos revisar o fluxo com as heurísticas de Nielsen."',
       '"Antes do teste, faz sentido uma checagem heurística rápida."',
     ],
-    seeAlso: ['usabilidade', 'ux', 'ui'],
   },
   {
     id: 'interacao',
@@ -533,7 +513,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Vamos mapear as interações desse fluxo antes de polir o visual."',
       '"O botão precisa de uma interação mais clara."',
     ],
-    seeAlso: ['iteracao', 'design-de-interacao', 'ui'],
   },
   {
     id: 'iteracao',
@@ -549,7 +528,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Na próxima iteração a gente inclui o feedback do teste."',
       '"Lean UX pede iteração rápida com o time."',
     ],
-    seeAlso: ['interacao', 'lean-ux', 'design-thinking'],
   },
   {
     id: 'lean-ux',
@@ -565,7 +543,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Lean UX não significa pular pesquisa, é iterar com foco."',
       '"O time de produto já trabalha com mentalidade Lean UX."',
     ],
-    seeAlso: ['iteracao', 'design-thinking', 'product-design'],
   },
   {
     id: 'usabilidade',
@@ -587,7 +564,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Antes de lançar, vamos checar usabilidade com um teste rápido."',
       '"Essa mudança melhora usabilidade sem alterar o visual todo."',
     ],
-    seeAlso: ['ux', 'heuristicas-de-usabilidade', 'pessoa-usuaria'],
   },
 
   // Fundamentos: pessoas-contexto
@@ -605,7 +581,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos apresentar a proposta para o cliente na sexta."',
       '"Nesse projeto, o cliente é interno, o time de operações."',
     ],
-    seeAlso: ['pessoa-usuaria', 'stakeholder', 'negocio'],
   },
   {
     id: 'negocio',
@@ -621,7 +596,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos alinhar design com objetivos de negócio."',
       '"O time de negócio quer entender o impacto dessa mudança."',
     ],
-    seeAlso: ['stakeholder', 'cliente', 'product-design'],
   },
   {
     id: 'pessoa-usuaria',
@@ -637,7 +611,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"Precisamos recrutar usuários para o teste."',
       '"Essa decisão beneficia o negócio, mas prejudica a pessoa usuária."',
     ],
-    seeAlso: ['publico-alvo', 'stakeholder', 'ux'],
   },
   {
     id: 'publico-alvo',
@@ -653,7 +626,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"O marketing definiu o publico-alvo, agora precisamos validar com pesquisa."',
       '"Essa feature faz sentido para o nosso publico-alvo?"',
     ],
-    seeAlso: ['pessoa-usuaria', 'negocio', 'ux-research'],
   },
   {
     id: 'squad',
@@ -675,7 +647,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"No nosso squad tem Product Designer, dev e PM."',
       '"Vamos alinhar isso no squad antes de subir para a liderança."',
     ],
-    seeAlso: ['stakeholder', 'product-designer', 'negocio'],
   },
   {
     id: 'stakeholder',
@@ -697,7 +668,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       '"O stakeholder pediu prazo menor, precisamos negociar escopo."',
       '"Quem são os stakeholders desse projeto?"',
     ],
-    seeAlso: ['cliente', 'negocio', 'pessoa-usuaria'],
   },
 ]
 export const guiaGlossarioCategoryLabels: Record<GuiaGlossarioCategoryId, string> =
@@ -743,14 +713,6 @@ export function searchGuiaGlossarioEntries(query: string): GuiaGlossarioEntry[] 
   )
 }
 
-export function resolveGuiaGlossarioSeeAlso(
-  slugs: string[] | undefined,
-): GuiaGlossarioEntry[] {
-  if (!slugs?.length) return []
-  return slugs
-    .map((slug) => getGuiaGlossarioEntryById(slug))
-    .filter((entry): entry is GuiaGlossarioEntry => entry !== undefined)
-}
 
 export function groupGuiaGlossarioEntriesByCategory(
   entries: GuiaGlossarioEntry[],

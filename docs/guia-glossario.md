@@ -20,9 +20,8 @@ Cada verbete responde: *"O que isso significa?"* e *"Como aparece no mercado?"*
 | Nome original (siglas / inglês) | `originalName` | Quando aplicável |
 | **O que é?** | `whatIs[]` | Sim |
 | **Você provavelmente vai ouvir** | `youWillHear[]` | Sim |
-| Veja também | `seeAlso[]` | Opcional (2–4 links) |
 
-**Removidos** (v1): Em outras palavras, Exemplo, Por que isso importa?
+**Removidos** (v1): Em outras palavras, Exemplo, Por que isso importa?, Veja também
 
 ### Termos relacionados inline
 
@@ -33,7 +32,7 @@ Sinônimos ou pares próximos entram **dentro de "O que é?"**, não em verbete 
 
 ### Regra de ouro
 
-Antes de criar verbete novo, buscar termo similar. Preferir mencionar no texto ou link em Veja também.
+Antes de criar verbete novo, buscar termo similar. Preferir mencionar no texto inline.
 
 ---
 
@@ -89,7 +88,6 @@ GuiaGlossarioEntry {
   originalName?: { english, portuguese, usageNote? }
   whatIs: string[]
   youWillHear: string[]
-  seeAlso?: string[]      // opcional
 }
 ```
 

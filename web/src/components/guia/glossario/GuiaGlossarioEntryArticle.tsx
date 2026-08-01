@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import {
   guiaGlossarioCategoryLabels,
-  resolveGuiaGlossarioSeeAlso,
   type GuiaGlossarioEntry,
 } from '@/data/guiaGlossario'
 
@@ -27,7 +26,6 @@ export function GuiaGlossarioEntryArticle({
 }: {
   entry: GuiaGlossarioEntry
 }) {
-  const related = resolveGuiaGlossarioSeeAlso(entry.seeAlso)
   const categoryLabel = guiaGlossarioCategoryLabels[entry.categoryId]
 
   return (
@@ -77,24 +75,6 @@ export function GuiaGlossarioEntryArticle({
           ))}
         </ul>
       </GlossarioSection>
-
-      {related.length > 0 ? (
-        <section className="mt-6">
-          <h3 className="text-base font-black text-neutral-500">Veja também</h3>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {related.map((relatedEntry) => (
-              <li key={relatedEntry.id}>
-                <a
-                  href={`#${relatedEntry.id}`}
-                  className="inline-flex rounded-full border border-neutral-500/10 bg-brand-100/30 px-3.5 py-1.5 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
-                >
-                  {relatedEntry.term}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
     </article>
   )
 }
