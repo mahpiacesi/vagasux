@@ -1492,7 +1492,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Discovery fechou, agora entramos em delivery."',
-      '"No delivery, o foco é shippar com qualidade."',
+      '"No delivery, o foco é lançar com qualidade."',
     ],
   },
   {
