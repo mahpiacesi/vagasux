@@ -1,10 +1,5 @@
-import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
+import { GuiaGlossarioIndex } from '@/components/guia/glossario/GuiaGlossarioIndex'
 
 export function GuiaGlossarioPage() {
-  return (
-    <GuiaPlaceholder
-      title="Glossário"
-      description="Termos essenciais de UX, Product Design e produto digital explicados de forma direta, para consultar quando bater aquela dúvida sobre siglas e conceitos."
-    />
-  )
+  return <GuiaGlossarioIndex />
 }

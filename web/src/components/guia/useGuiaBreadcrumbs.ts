@@ -6,6 +6,7 @@ import {
   getGuiaTipoById,
   getGuiaTrilhaById,
 } from '@/data/guia'
+import { getGuiaGlossarioEntryById } from '@/data/guiaGlossario'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
@@ -19,6 +20,15 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
 
     if (pathname === guiaRoutes.glossario) {
       return [{ label: 'Começar' }, { label: 'Glossário' }]
+    }
+
+    if (pathname.startsWith('/guia/comecar/glossario/')) {
+      const entryId = pathname.replace('/guia/comecar/glossario/', '')
+      const entry = getGuiaGlossarioEntryById(entryId)
+      return [
+        { label: 'Glossário', to: guiaRoutes.glossario },
+        { label: entry?.term ?? entryId },
+      ]
     }
 
     if (!slug) return []
