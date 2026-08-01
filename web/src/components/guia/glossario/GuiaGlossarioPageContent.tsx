@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { MagnifyingGlass } from '@phosphor-icons/react'
-import { GuiaGlossarioEntryArticle } from '@/components/guia/glossario/GuiaGlossarioEntryArticle'
+import { GuiaGlossarioCategoryAccordion } from '@/components/guia/glossario/GuiaGlossarioCategoryAccordion'
 import { Input } from '@/components/ui/input'
 import {
-  getGuiaGlossarioEntriesByCategory,
+  getGuiaGlossarioEntryById,
+  groupGuiaGlossarioEntriesByCategory,
   guiaGlossarioCategories,
   searchGuiaGlossarioEntries,
   type GuiaGlossarioCategoryId,
@@ -19,35 +20,115 @@ function isCategoryId(value: string | null): value is GuiaGlossarioCategoryId {
 }
 
 export function GuiaGlossarioPageContent() {
+  const { hash } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState('')
+  const [openCategories, setOpenCategories] = useState<
+    Set<GuiaGlossarioCategoryId>
+  >(() => new Set())
+  const [scrollTargetId, setScrollTargetId] = useState<string | null>(null)
 
-  const activeCategory = isCategoryId(searchParams.get('categoria'))
-    ? searchParams.get('categoria')
+  const categoriaParam = searchParams.get('categoria')
+  const activeCategoryFilter = isCategoryId(categoriaParam)
+    ? categoriaParam
     : null
 
-  const entries = useMemo(() => {
+  const filteredEntries = useMemo(() => {
     const searched = searchGuiaGlossarioEntries(query)
-    if (!activeCategory) return searched
-    return searched.filter((entry) => entry.categoryId === activeCategory)
-  }, [query, activeCategory])
+    if (!activeCategoryFilter) return searched
+    return searched.filter((entry) => entry.categoryId === activeCategoryFilter)
+  }, [query, activeCategoryFilter])
 
-  function setCategory(categoryId: GuiaGlossarioCategoryId | null) {
+  const entriesByCategory = useMemo(
+    () => groupGuiaGlossarioEntriesByCategory(filteredEntries),
+    [filteredEntries],
+  )
+
+  const visibleCategories = useMemo(
+    () =>
+      guiaGlossarioCategories.filter(
+        (category) => (entriesByCategory.get(category.id)?.length ?? 0) > 0,
+      ),
+    [entriesByCategory],
+  )
+
+  const hasActiveSearch = query.trim().length > 0
+
+  const openCategory = useCallback((categoryId: GuiaGlossarioCategoryId) => {
+    setOpenCategories((current) => new Set(current).add(categoryId))
+  }, [])
+
+  const navigateToTerm = useCallback(
+    (termId: string) => {
+      const entry = getGuiaGlossarioEntryById(termId)
+      if (!entry) return
+      openCategory(entry.categoryId)
+      setScrollTargetId(termId)
+    },
+    [openCategory],
+  )
+
+  useEffect(() => {
+    if (!hasActiveSearch) return
+    setOpenCategories(
+      new Set<GuiaGlossarioCategoryId>(
+        visibleCategories.map((category) => category.id),
+      ),
+    )
+  }, [hasActiveSearch, visibleCategories])
+
+  useEffect(() => {
+    if (activeCategoryFilter) {
+      setOpenCategories(new Set<GuiaGlossarioCategoryId>([activeCategoryFilter]))
+    }
+  }, [activeCategoryFilter])
+
+  useEffect(() => {
+    const termId = hash.replace('#', '')
+    if (!termId) return
+    navigateToTerm(termId)
+  }, [hash, navigateToTerm])
+
+  useEffect(() => {
+    if (!scrollTargetId) return
+
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(scrollTargetId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+      setScrollTargetId(null)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [scrollTargetId, openCategories])
+
+  function setCategoryFilter(categoryId: GuiaGlossarioCategoryId | null) {
     const next = new URLSearchParams(searchParams)
     if (categoryId) next.set('categoria', categoryId)
     else next.delete('categoria')
     setSearchParams(next, { replace: true })
+
+    if (categoryId) {
+      setOpenCategories(new Set([categoryId]))
+      return
+    }
+
+    if (!hasActiveSearch) {
+      setOpenCategories(new Set())
+    }
   }
 
-  useEffect(() => {
-    const hash = window.location.hash.replace('#', '')
-    if (!hash) return
+  function toggleCategory(categoryId: GuiaGlossarioCategoryId) {
+    setOpenCategories((current) => {
+      const next = new Set(current)
+      if (next.has(categoryId)) next.delete(categoryId)
+      else next.add(categoryId)
+      return next
+    })
+  }
 
-    const target = document.getElementById(hash)
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }, [entries])
+  const totalVisible = filteredEntries.length
 
   return (
     <div className="mt-8 max-w-2xl">
@@ -57,7 +138,7 @@ export function GuiaGlossarioPageContent() {
         </h1>
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
           Termos, siglas e conceitos de Product Design explicados de forma
-          simples. Use a busca ou pule direto para o termo que precisa.
+          simples. Busque um termo ou abra a categoria que precisa.
         </p>
       </header>
 
@@ -80,26 +161,26 @@ export function GuiaGlossarioPageContent() {
 
       <div
         role="tablist"
-        aria-label="Categorias do glossário"
+        aria-label="Filtrar categorias"
         className="mt-8 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <button
           type="button"
           role="tab"
-          aria-selected={activeCategory === null}
-          onClick={() => setCategory(null)}
+          aria-selected={activeCategoryFilter === null}
+          onClick={() => setCategoryFilter(null)}
           className={cn(
             'shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition-colors',
-            activeCategory === null
+            activeCategoryFilter === null
               ? 'border-brand-300 bg-brand-400 text-neutral-100'
               : 'border-neutral-500/10 bg-brand-100/30 text-neutral-500 hover:border-brand-200',
           )}
         >
-          Todos
+          Todas
         </button>
         {guiaGlossarioCategories.map((category) => {
-          const isSelected = activeCategory === category.id
-          const count = getGuiaGlossarioEntriesByCategory(category.id).length
+          const count = entriesByCategory.get(category.id)?.length ?? 0
+          const isSelected = activeCategoryFilter === category.id
 
           return (
             <button
@@ -107,12 +188,13 @@ export function GuiaGlossarioPageContent() {
               type="button"
               role="tab"
               aria-selected={isSelected}
-              onClick={() => setCategory(category.id)}
+              onClick={() => setCategoryFilter(category.id)}
               className={cn(
                 'shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition-colors',
                 isSelected
                   ? 'border-brand-300 bg-brand-400 text-neutral-100'
                   : 'border-neutral-500/10 bg-brand-100/30 text-neutral-500 hover:border-brand-200',
+                count === 0 && !isSelected && 'opacity-50',
               )}
             >
               <span aria-hidden>{category.emoji} </span>
@@ -125,31 +207,25 @@ export function GuiaGlossarioPageContent() {
         })}
       </div>
 
-      {entries.length > 0 ? (
-        <>
-          <nav
-            aria-label="Índice de termos"
-            className="mt-8 flex flex-wrap gap-2"
-          >
-            {entries.map((entry) => (
-              <a
-                key={entry.id}
-                href={`#${entry.id}`}
-                className="inline-flex rounded-full border border-neutral-500/10 bg-neutral-100 px-3.5 py-2 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/40 hover:text-brand-500"
-              >
-                {entry.term}
-              </a>
-            ))}
-          </nav>
+      {totalVisible > 0 ? (
+        <div className="mt-10 space-y-4">
+          {visibleCategories.map((category) => {
+            const entries = entriesByCategory.get(category.id) ?? []
 
-          <div className="mt-12 space-y-12">
-            {entries.map((entry) => (
-              <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
-            ))}
-          </div>
-        </>
+            return (
+              <GuiaGlossarioCategoryAccordion
+                key={category.id}
+                category={category}
+                entries={entries}
+                isOpen={openCategories.has(category.id)}
+                onToggle={() => toggleCategory(category.id)}
+                onTermLinkClick={navigateToTerm}
+              />
+            )
+          })}
+        </div>
       ) : (
-        <p className="mt-8 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
+        <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
           Nenhum termo encontrado. Novos verbetes serão adicionados em breve.
         </p>
       )}

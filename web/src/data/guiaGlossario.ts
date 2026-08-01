@@ -139,3 +139,26 @@ export function resolveGuiaGlossarioSeeAlso(
     .map((slug) => getGuiaGlossarioEntryById(slug))
     .filter((entry): entry is GuiaGlossarioEntry => entry !== undefined)
 }
+
+export function groupGuiaGlossarioEntriesByCategory(
+  entries: GuiaGlossarioEntry[],
+): Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]> {
+  const grouped = new Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]>()
+
+  for (const category of guiaGlossarioCategories) {
+    grouped.set(category.id, [])
+  }
+
+  for (const entry of entries) {
+    grouped.get(entry.categoryId)?.push(entry)
+  }
+
+  for (const [categoryId, list] of grouped) {
+    grouped.set(
+      categoryId,
+      list.sort((a, b) => a.term.localeCompare(b.term, 'pt-BR')),
+    )
+  }
+
+  return grouped
+}

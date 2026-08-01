@@ -105,10 +105,14 @@ Breadcrumb: `Guia / Começar / Glossário` (termo ativo = hash na URL, sem níve
 | Elemento | Função |
 |----------|--------|
 | Hero | Título + descrição |
-| Busca | Filtra verbetes visíveis |
-| Filtro por categoria | Tabs das 8 categorias |
-| Índice de termos | Pills com links `#id` |
-| Verbetes | `<article id="…">` com template editorial completo |
+| Busca | Filtra verbetes; abre automaticamente categorias com resultado |
+| Filtro por categoria | Tabs; ao selecionar uma, expande só ela |
+| **Accordion por categoria** | 8 seções colapsáveis (~30–40 termos cada no acervo completo) |
+| Índice interno | Pills por categoria (dentro do accordion aberto) |
+| Verbetes | `<article id="…">` renderizados só com accordion aberto |
+| Hash `#termo` | Abre a categoria certa + scroll suave |
+
+Com 250–300 termos, o accordion evita página infinita e mantém âncoras compartilháveis.
 
 ---
 
