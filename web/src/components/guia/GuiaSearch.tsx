@@ -80,6 +80,15 @@ export function GuiaSearch() {
             </ul>
           </div>
 
+          <div className="border-b border-neutral-500/8 px-4 py-3">
+            <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
+              Histórico
+            </p>
+            <p className="mt-2 px-3 py-2 text-sm font-medium text-neutral-300">
+              Em breve — suas buscas recentes aparecerão aqui.
+            </p>
+          </div>
+
           <div className="px-4 py-3">
             <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
               Populares
