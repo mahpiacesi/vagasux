@@ -2,6 +2,31 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 const inlineLinkPattern = /\[([^\]]+)\]\(([^)]+)\)/g
+const linkClassName =
+  'font-bold text-brand-500 transition-colors hover:text-brand-400'
+
+function FaqInlineLink({ href, label }: { href: string; label: string }) {
+  const isExternal = /^https?:\/\//i.test(href)
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClassName}
+      >
+        {label}
+      </a>
+    )
+  }
+
+  return (
+    <Link to={href} className={linkClassName}>
+      {label}
+    </Link>
+  )
+}
 
 export function GuiaFaqParagraph({ text }: { text: string }) {
   const nodes: ReactNode[] = []
@@ -15,15 +40,7 @@ export function GuiaFaqParagraph({ text }: { text: string }) {
       nodes.push(text.slice(lastIndex, start))
     }
 
-    nodes.push(
-      <Link
-        key={start}
-        to={href}
-        className="font-bold text-brand-500 transition-colors hover:text-brand-400"
-      >
-        {label}
-      </Link>,
-    )
+    nodes.push(<FaqInlineLink key={start} href={href} label={label} />)
 
     lastIndex = start + fullMatch.length
   }
