@@ -45,8 +45,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'O que fazer quando não tem demanda de design no momento?',
     answer: [
-      'Antes de ficar parada, veja se alguém do time precisa de apoio. Depois, aproveite para conhecer melhor o produto, revisar entregas anteriores, ler o backlog e conversar com pessoas de atendimento ou suporte, que ouvem dores reais todos os dias.',
-      'Com esses insumos, você pode mapear oportunidades e sugerir melhorias para a próxima sprint. Proatividade conta muito, principalmente no começo da carreira.',
+      'Não precisa virar uma pilha! 🔋 ⚡️ Primeiro veja se alguém precisa de ajuda com alguma coisa, pode ser o seu time ou as pessoas próximas a você. Se estiver tudo tranquila, tire o tempo para conhecer mais sobre o(s) produto(s) e serviços que você está atuando e rever o que já foi feito, possíveis backlogs, tente conversar com algum PO responsável e trocar ideia também com o pessoal do Atendimento e Suporte ao Cliente. Mesmo que não tenha demanda, essa galera sempre tem ótimos insights pois falam diariamente com o usuário e vão saber reportar as principais dores, com isso você já pode mapear e sugerir alguns pontos pra atacar na próxima sprint e por aí vai.',
     ],
     seeAlso: [
       { term: 'Backlog', glossarioId: 'backlog' },
