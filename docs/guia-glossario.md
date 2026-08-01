@@ -108,7 +108,7 @@ Referências informadas (v1 + glossários de UI/PD): backlog editorial v1, trilh
 
 **Métodos de pesquisa:** Entrevista, Teste de usabilidade, Questionário, Card Sorting, Tree Testing, Observação contextual
 
-**Análise e síntese:** Síntese, Insight, Mapa de afinidade, Roteiro de pesquisa, Mapa de jornada
+**Análise e síntese:** Síntese, Insight, Mapa de afinidade, Mapa de empatia, Roteiro de pesquisa, Mapa de jornada
 
 UX Research (disciplina) fica em **Fundamentos**; Discovery, Hipótese e Validação ficam em **Produto**.
 
@@ -162,7 +162,7 @@ GuiaGlossarioEntry {
 
 **Interface:** 18 termos (ver subgrupos acima). Fase B do roadmap editorial.
 
-**Pesquisa:** 15 termos (ver subgrupos acima). Entrevista, teste de usabilidade, síntese e métodos correlatos. Discovery/Hipótese → Produto.
+**Pesquisa:** 16 termos (ver subgrupos acima). Entrevista, teste de usabilidade, síntese e métodos correlatos. Discovery/Hipótese → Produto.
 
 **Produto:** Produto, Produto digital, Problema, Solução, **White-label** (conceitos), MVP, Feature, Discovery, Delivery…
 

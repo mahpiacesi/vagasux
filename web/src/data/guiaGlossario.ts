@@ -169,6 +169,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'sintese',
     'insight',
     'mapa-de-afinidade',
+    'mapa-de-empatia',
     'roteiro-de-pesquisa',
     'mapa-de-jornada',
   ],
@@ -1290,6 +1291,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Vamos montar o affinity map depois das cinco entrevistas."',
       '"No mapa de afinidade, três grupos falavam de confiança no pagamento."',
+    ],
+  },
+  {
+    id: 'mapa-de-empatia',
+    term: 'Mapa de empatia',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'Empathy map',
+      usageNote:
+        'Empathy mapping também aparece em workshops e materiais em inglês.',
+    },
+    whatIs: [
+      'Quadro que organiza o que uma pessoa usuária pensa, sente, diz e faz em torno de um objetivo ou contexto. Ajuda o time a sintetizar pesquisa antes de desenhar soluções.',
+      'Product Designers usam mapa de empatia depois de entrevistas ou observação. Persona, na categoria Fundamentos, resume quem é a pessoa; o mapa de empatia aprofunda motivações e barreiras de um momento específico.',
+    ],
+    youWillHear: [
+      '"Vamos montar um empathy map com o que saiu das entrevistas."',
+      '"O mapa de empatia mostrou medo de errar na hora de pagar."',
     ],
   },
   {
