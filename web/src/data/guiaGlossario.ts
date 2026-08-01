@@ -9,9 +9,8 @@ export type GuiaGlossarioCategoryId =
   | 'ia-para-designers'
 
 export type GuiaGlossarioOriginalName = {
-  english: string
-  portuguese: string
-  /** Por que o mercado mantém o termo em inglês */
+  /** Nome alternativo (outro idioma ou forma expandida da sigla) */
+  alternate: string
   usageNote?: string
 }
 
@@ -196,8 +195,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Information Architecture',
-      portuguese: 'Arquitetura da Informação',
+      alternate: 'Information Architecture',
     },
     whatIs: [
       'Organiza, nomeia e estrutura conteúdos em produtos digitais para que a pessoa usuária encontre o que precisa sem se perder. Pense em menus, categorias, rótulos e hierarquia de telas.',
@@ -214,8 +212,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Content Design',
-      portuguese: 'Design de Conteúdo',
+      alternate: 'Design de Conteúdo',
       usageNote:
         'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
     },
@@ -234,8 +231,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Customer Experience',
-      portuguese: 'Experiência do Cliente',
+      alternate: 'Customer Experience',
       usageNote:
         'CX aparece em empresas que olham a jornada completa da pessoa, incluindo atendimento, loja física e canais fora do app.',
     },
@@ -254,8 +250,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Interaction Design',
-      portuguese: 'Design de Interação',
+      alternate: 'Interaction Design',
       usageNote:
         'Em vagas internacionais, a sigla IxD também aparece, mas no Brasil o termo completo é mais comum.',
     },
@@ -288,8 +283,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Human-Computer Interaction',
-      portuguese: 'Interação Humano-Computador',
+      alternate: 'Interação Humano-Computador',
       usageNote:
         'Frequente em cursos, artigos e empresas com raiz acadêmica. Em vagas e conversas de produto, costuma aparecer como UX ou HCD.',
     },
@@ -333,8 +327,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'Service Design',
-      portuguese: 'Design de Serviços',
+      alternate: 'Design de Serviços',
       usageNote:
         'Em português, Design de Serviços também aparece, mas Service Design continua comum em vagas e materiais da área.',
     },
@@ -353,8 +346,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'User Interface',
-      portuguese: 'Interface da Pessoa Usuária',
+      alternate: 'User Interface',
       usageNote:
         'UI é uma das siglas mais usadas no mercado. Quase sempre aparece junto com UX em vagas e conversas de equipe.',
     },
@@ -373,8 +365,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'UI Designer',
-      portuguese: 'Designer de Interface',
+      alternate: 'Designer de Interface',
       usageNote:
         'Também aparece como Designer de Interfaces ou Designer Visual em algumas vagas.',
     },
@@ -393,8 +384,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'User Experience',
-      portuguese: 'Experiência da Pessoa Usuária',
+      alternate: 'User Experience',
       usageNote:
         'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso.',
     },
@@ -413,8 +403,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'UX Designer',
-      portuguese: 'Designer de Experiência',
+      alternate: 'Designer de Experiência',
       usageNote:
         'Muitas vagas no Brasil pedem UX/UI Designer no mesmo perfil. Quando isso acontece, o escopo costuma ser parecido com o de Product Design.',
     },
@@ -432,8 +421,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     originalName: {
-      english: 'UX Research',
-      portuguese: 'Pesquisa em UX',
+      alternate: 'Pesquisa em UX',
       usageNote:
         'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
     },
@@ -468,10 +456,9 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     originalName: {
-      english: 'Double Diamond',
-      portuguese: 'Duplo Diamante',
+      alternate: 'Duplo Diamante',
       usageNote:
-        'O nome em inglês é o mais usado em empresas e cursos, mesmo no Brasil.',
+        'O nome em português aparece em alguns materiais, mas Double Diamond continua o mais usado em empresas e cursos.',
     },
     whatIs: [
       'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Bons projetos alternam exploração ampla e foco em uma direção.',
@@ -488,8 +475,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     originalName: {
-      english: 'Human-Centered Design',
-      portuguese: 'Design Centrado na Pessoa Usuária',
+      alternate: 'Human-Centered Design',
       usageNote:
         'Também aparece como UCD (User-Centered Design) ou design centrado no usuário em materiais mais antigos.',
     },
@@ -508,8 +494,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     originalName: {
-      english: 'Usability Heuristics',
-      portuguese: 'Heurísticas de Usabilidade',
+      alternate: 'Usability Heuristics',
       usageNote:
         'As dez heurísticas de Jakob Nielsen são a referência mais citada em UX no mundo.',
     },
@@ -569,10 +554,9 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     originalName: {
-      english: 'Usability',
-      portuguese: 'Usabilidade',
+      alternate: 'Usability',
       usageNote:
-        'Usabilidade é um dos conceitos mais citados em conversas de UX e em vagas de Product Design.',
+        'Um dos conceitos mais citados em conversas de UX e em vagas de Product Design.',
     },
     whatIs: [
       'Quão fácil e intuitivo é usar um produto digital. Uma interface usável deixa claro o que fazer, ajuda a pessoa a completar a tarefa e não exige esforço desnecessário.',
@@ -646,8 +630,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     originalName: {
-      english: 'Squad',
-      portuguese: 'Equipe / Squad',
+      alternate: 'Equipe',
       usageNote:
         'Termo popularizado por modelos de organização como o do Spotify. No Brasil, time ou squad aparecem com a mesma ideia.',
     },
@@ -666,10 +649,9 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     originalName: {
-      english: 'Stakeholder',
-      portuguese: 'Parte Interessada',
+      alternate: 'Parte Interessada',
       usageNote:
-        'Stakeholder é usado no original em inglês na maioria das empresas de tecnologia no Brasil.',
+        'No mercado brasileiro de tecnologia, stakeholder costuma aparecer no original em inglês.',
     },
     whatIs: [
       'Qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
@@ -725,8 +707,7 @@ export function searchGuiaGlossarioEntries(
     (entry) =>
       entry.term.toLowerCase().includes(normalized) ||
       entry.id.toLowerCase().includes(normalized) ||
-      entry.originalName?.english.toLowerCase().includes(normalized) ||
-      entry.originalName?.portuguese.toLowerCase().includes(normalized) ||
+      entry.originalName?.alternate.toLowerCase().includes(normalized) ||
       entry.whatIs.some((p) => p.toLowerCase().includes(normalized)),
   )
 }

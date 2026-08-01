@@ -35,10 +35,7 @@ export function GuiaGlossarioEntryArticle({
       {entry.originalName ? (
         <div className="mt-4 w-full rounded-2xl border border-brand-200/60 bg-brand-100/40 px-5 py-4">
           <p className="text-base font-bold text-neutral-500">
-            {entry.originalName.english}
-          </p>
-          <p className="mt-1 text-sm text-neutral-400">
-            ({entry.originalName.portuguese})
+            {entry.originalName.alternate}
           </p>
           {entry.originalName.usageNote ? (
             <p className="mt-3 text-sm leading-relaxed text-neutral-400">
