@@ -1202,7 +1202,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Precisamos de um card sorting antes de redesenhar o menu."',
-      '"No card sort, todo mundo juntou \'Configurações\' com \'Conta\'."',
+      '"No card sort, todo mundo juntou configurações e conta no mesmo grupo."',
     ],
   },
   {
