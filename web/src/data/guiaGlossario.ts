@@ -109,6 +109,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'product-design',
     'product-designer',
     'product-manager',
+    'product-owner',
     'ux',
     'ui',
     'ux-designer',
@@ -137,6 +138,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'cliente',
     'negocio',
     'squad',
+    'scrum-master',
   ],
   produto: [
     // conceitos — modelos e definições de produto
@@ -201,8 +203,6 @@ export const guiaGlossarioEditorialOrder: Partial<
   'metodos-ageis': [
     'agile',
     'scrum',
-    'product-owner',
-    'scrum-master',
     'kanban',
     'backlog',
     'user-story',
@@ -494,6 +494,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O PM quer validar essa hipótese antes de entrar no roadmap."',
       '"Precisamos alinhar com Product Management o escopo dessa release."',
+    ],
+  },
+  {
+    id: 'product-owner',
+    term: 'Product Owner',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'PO',
+      usageNote:
+        'A sigla PO aparece em backlog, planning e conversas de squad no Brasil.',
+    },
+    whatIs: [
+      'Pessoa responsável por representar stakeholders, definir o que o produto precisa entregar e priorizar o backlog. Em times Scrum, garante que o squad entenda os itens no nível necessário para executar a sprint.',
+      'Product Designers trabalham com PO para entender prioridades, refinar histórias e alinhar discovery e entregáveis de design ao que entra no sprint.',
+    ],
+    youWillHear: [
+      '"O PO priorizou essa história para a próxima sprint."',
+      '"Precisamos alinhar com Product Owner antes de fechar o escopo."',
     ],
   },
   {
@@ -816,6 +835,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Qual squad vai pegar essa funcionalidade?"',
       '"No nosso squad tem Product Designer, dev e PM."',
+    ],
+  },
+  {
+    id: 'scrum-master',
+    term: 'Scrum Master',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    originalName: {
+      alternate: 'SM',
+      usageNote:
+        'A sigla SM costuma aparecer em times que rodam Scrum de forma mais formal.',
+    },
+    whatIs: [
+      'Pessoa que facilita o processo ágil no squad: ajuda na priorização do backlog, monitora o andamento da sprint, conduz cerimônias e remove impedimentos do time.',
+      'Product Designers interagem com Scrum Master em refinamento, planning e quando precisam desbloquear dependências entre design, dev e QA.',
+    ],
+    youWillHear: [
+      '"O Scrum Master marcou a retro pra sexta."',
+      '"Passa pro SM se tiver impedimento na sprint."',
     ],
   },
   {
@@ -1767,44 +1805,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O time roda Scrum com sprint de duas semanas."',
       '"No Scrum, o PM cuida do backlog e o squad executa o sprint."',
-    ],
-  },
-  {
-    id: 'product-owner',
-    term: 'Product Owner',
-    categoryId: 'metodos-ageis',
-    subgroup: 'conceitos',
-    originalName: {
-      alternate: 'PO',
-      usageNote:
-        'A sigla PO aparece em backlog, planning e conversas de squad no Brasil.',
-    },
-    whatIs: [
-      'Pessoa responsável por representar stakeholders, definir o que o produto precisa entregar e priorizar o backlog. No Scrum, garante que o time entenda os itens no nível necessário para executar a sprint.',
-      'Product Designers trabalham com PO para entender prioridades, refinar histórias e alinhar discovery e entregáveis de design ao que entra no sprint.',
-    ],
-    youWillHear: [
-      '"O PO priorizou essa história para a próxima sprint."',
-      '"Precisamos alinhar com Product Owner antes de fechar o escopo."',
-    ],
-  },
-  {
-    id: 'scrum-master',
-    term: 'Scrum Master',
-    categoryId: 'metodos-ageis',
-    subgroup: 'conceitos',
-    originalName: {
-      alternate: 'SM',
-      usageNote:
-        'A sigla SM costuma aparecer em times que rodam Scrum de forma mais formal.',
-    },
-    whatIs: [
-      'Pessoa que facilita o processo Scrum no squad: ajuda na priorização do backlog, monitora o andamento da sprint, conduz cerimônias e remove impedimentos do time.',
-      'Product Designers interagem com Scrum Master em refinamento, planning e quando precisam desbloquear dependências entre design, dev e QA.',
-    ],
-    youWillHear: [
-      '"O Scrum Master marcou a retro pra sexta."',
-      '"Passa pro SM se tiver impedimento na sprint."',
     ],
   },
   {
