@@ -436,15 +436,15 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       english: 'UX Research',
       portuguese: 'Pesquisa em UX',
       usageNote:
-        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português.',
+        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
     },
     whatIs: [
       'UX Research é a disciplina que estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
-      'Product Designers colaboram com UX Research, e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
+      'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
     ],
     youWillHear: [
       '"Precisamos de UX Research antes de fechar essa solução."',
-      '"A pessoa de UX Research vai recrutar participantes para o estudo."',
+      '"A UX Researcher vai recrutar participantes para o estudo."',
     ],
   },
 
