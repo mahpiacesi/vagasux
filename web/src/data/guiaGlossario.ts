@@ -106,6 +106,34 @@ export const guiaGlossarioEditorialOrder: Partial<
     'negocio',
     'squad',
   ],
+  produto: [
+    // conceitos — modelos e definições de produto
+    'produto',
+    'produto-digital',
+    'problema',
+    'solucao',
+    'white-label',
+    'mvp',
+    'feature',
+    // processo
+    'discovery',
+    'delivery',
+    'hipotese',
+    'validacao',
+    // entregas
+    'roadmap',
+    'prd',
+  ],
+}
+
+/** Verbetes planejados (sem conteúdo ainda). IDs devem bater com guiaGlossarioEditorialOrder. */
+export const guiaGlossarioBacklogNotes: Partial<
+  Record<GuiaGlossarioCategoryId, Record<string, string>>
+> = {
+  produto: {
+    'white-label':
+      'Plataforma ou produto genérico revendido por outra empresa com marca própria. Relacionado a Cliente e Negócio em Fundamentos.',
+  },
 }
 
 function getGuiaGlossarioEditorialIndex(entry: GuiaGlossarioEntry): number {

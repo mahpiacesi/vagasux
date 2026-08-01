@@ -73,7 +73,9 @@ Termos: Product Design, Product Designer, UX, UI, UX Research, Content Design / 
 | `processo` | Processo |
 | `entregas` | Entregas |
 
-Termos: Produto, Produto digital, Problema, Solução, Discovery, Delivery, Hipótese, Validação, MVP, Feature (funcionalidade), Roadmap, PRD…
+Termos: Produto, Produto digital, Problema, Solução, White-label, MVP, Feature (funcionalidade), Discovery, Delivery, Hipótese, Validação, Roadmap, PRD…
+
+**White-label** (`white-label`, subgrupo `conceitos`): plataforma genérica revendida com a marca do cliente. Mencionado inline em **Cliente** (Fundamentos); verbete completo entra em Produto.
 
 ---
 
@@ -128,7 +130,7 @@ GuiaGlossarioEntry {
 
 **Pesquisa:** Entrevista, Teste de usabilidade, Síntese… (Discovery/Hipótese → Produto)
 
-**Produto:** ver subgrupos acima.
+**Produto:** Produto, Produto digital, Problema, Solução, **White-label** (conceitos), MVP, Feature, Discovery, Delivery…
 
 **Métodos Ágeis:** Scrum, Sprint, Kanban, Backlog, WIP…
 
