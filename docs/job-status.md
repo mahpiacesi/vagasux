@@ -51,6 +51,17 @@ select public.expire_stale_jobs(60);   -- explícito
 
 Roda no **Scheduler** do n8n (node `Expire stale jobs`) depois dos collectors, todo dia.
 
+### Links quebrados
+
+Workflow **Expire broken links** (após `Expire stale jobs`):
+
+- Verifica URLs de vagas `published` dos **últimos 14 dias** (até 250/dia)
+- Expira quando: HTTP **404/410**, DNS não resolve, timeout, conexão recusada
+- RPC: `expire_jobs_by_ids(uuid[])`
+- Código: `tools/n8n/expire-broken-links.workflow.ts`
+
+> **Nota:** vagas Sólides usam subdomínios `*.solides.jobs` que às vezes deixam de existir mesmo com a vaga ainda na API. Por isso a checagem de link é necessária além da expiração por idade.
+
 ## Regras
 
 1. Collectors **não rebaixam** status avançado no upsert (não enviam `status`).

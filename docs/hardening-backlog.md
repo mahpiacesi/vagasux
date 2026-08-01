@@ -31,6 +31,10 @@
 5. **Validação automática pós-Scheduler**
    - Check diário: fontes habilitadas vs. execuções OK; vagas pendentes de enrichment.
 
+6. **Expiração de links quebrados** ✅ (2026-08-01)
+   - Workflow `Expire broken links` no Scheduler — HEAD/GET em vagas recentes, expira 404/unreachable.
+   - RPC `expire_jobs_by_ids`, migration `20260801_expire_jobs_by_ids.sql`.
+
 ---
 
 ## Relacionado (não hardening, fila próxima)
