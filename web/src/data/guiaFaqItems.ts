@@ -67,6 +67,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
       'Saiba o que procura e o que a média do mercado oferece:',
       '• Tenha em mente a média salarial para a posição e nível que você está aplicando. Propostas muito abaixo ou muito acima são indicativos de possíveis problemas.',
       '• Saiba o que o mercado pede para a posição e nível que procura. Tome cuidado com descrições que pedem atividades muito fora do escopo (por exemplo, UX com habilidades de animação 3D) ou que não estejam de acordo com o nível (por exemplo, um Júnior com atividades de liderança).',
+      'E não esquece de acompanhar nossas [Oportunidades](/oportunidades) e [Vagas para iniciantes](/vagas-para-iniciantes).',
     ],
   },
   {
