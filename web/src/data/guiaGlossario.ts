@@ -249,6 +249,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'md',
     'agente-de-ia',
     'skill',
+    'mcp',
     'modelo',
     'janela-de-contexto',
     'alucinacao',
@@ -2482,6 +2483,24 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A skill junta três prompts: contexto, geração e revisão."',
       '"Esse agente puxa a skill de auditoria de acessibilidade."',
+    ],
+  },
+  {
+    id: 'mcp',
+    term: 'MCP',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Model Context Protocol',
+      usageNote: 'Protocolo de contexto do modelo também aparece em português.',
+    },
+    whatIs: [
+      'Padrão aberto que conecta agentes de IA a ferramentas e fontes externas: banco de dados, automações, APIs e serviços. O agente descobre o que pode chamar e recebe dados atualizados no contexto.',
+      'Product Designers encontram MCP ao montar fluxos com agentes que consultam informação viva do produto. Importa definir o que o agente pode acessar, pedir confirmação em ações sensíveis e tratar erro quando a conexão falha.',
+    ],
+    youWillHear: [
+      '"Conecta o MCP do banco pro agente puxar contexto atualizado."',
+      '"Esse agente usa MCP pra chamar ferramenta externa."',
     ],
   },
 
