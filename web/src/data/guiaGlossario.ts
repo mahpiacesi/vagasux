@@ -261,7 +261,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Projeta como a pessoa usuária interage com um produto digital: o que acontece quando ela toca, clica, arrasta ou preenche um campo.',
-      'Foca no comportamento e no fluxo entre as ações: respostas do sistema, transições e sequência de passos, além da aparência visual.',
+      'Foca no comportamento e no fluxo entre as ações: respostas do sistema, transições e sequência de passos.',
     ],
     youWillHear: [
       '"Esse fluxo precisa de um design de interação mais claro."',
@@ -291,7 +291,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       english: 'Human-Computer Interaction',
       portuguese: 'Interação Humano-Computador',
       usageNote:
-        'Termo mais comum em contexto acadêmico e em materiais mais antigos. No dia a dia de produto, UX e HCD aparecem com muito mais frequência.',
+        'Frequente em cursos, artigos e empresas com raiz acadêmica. Em vagas e conversas de produto, costuma aparecer como UX ou HCD.',
     },
     whatIs: [
       'Campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX saíram daqui.',
@@ -474,7 +474,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'O nome em inglês é o mais usado em empresas e cursos, mesmo no Brasil.',
     },
     whatIs: [
-      'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Mostra que bons projetos alternam momentos de abrir possibilidades e momentos de focar em uma direção.',
+      'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Bons projetos alternam exploração ampla e foco em uma direção.',
       'Ajuda a explicar a ordem do trabalho: primeiro se explora o problema, depois se explora a solução.',
     ],
     youWillHear: [
@@ -543,7 +543,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'mentalidade',
     whatIs: [
       'Repetir o trabalho com melhorias a cada rodada: prototipar, testar, ajustar e testar de novo.',
-      'Mentalidade central em Product Design: produtos bons raramente nascem certos na primeira versão. Palavra parecida: interação, o movimento da pessoa usuária na tela.',
+      'Mentalidade central em Product Design: produtos bons raramente nascem certos na primeira versão.',
     ],
     youWillHear: [
       '"Precisamos de mais uma iteração nesse fluxo."',
@@ -556,7 +556,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Forma de trabalhar em Product Design com ciclos curtos: menos documento pesado, mais conversa, protótipo e teste com o time. A ideia é aprender rápido o que funciona antes de investir meses em uma solução errada.',
+      'Forma de trabalhar em Product Design com ciclos curtos de conversa, protótipo e teste com o time. Aprende rápido o que funciona antes de investir meses em uma solução errada.',
     ],
     youWillHear: [
       '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
@@ -633,7 +633,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'pessoas-contexto',
     whatIs: [
       'Grupo de pessoas que um produto ou campanha quer alcançar, descrito por características como idade, região, profissão ou comportamento.',
-      'Persona é um personagem fictício baseado em pesquisa; público-alvo descreve um grupo mais amplo e segmentado. Os dois se complementam.',
+      'Persona é um personagem fictício baseado em pesquisa. Público-alvo descreve um segmento de mercado. Os dois se complementam.',
     ],
     youWillHear: [
       '"Qual é o publico-alvo desse app?"',
@@ -653,7 +653,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Time enxuto e multidisciplinar responsável por uma parte do produto ou por uma entrega. Costuma reunir Product Design, Produto, Engenharia e outras áreas conforme a necessidade.',
-      'Trabalhar em squad significa estar próximo das decisões do dia a dia, com menos distância entre quem pesquisa, desenha, desenvolve e mede resultados.',
+      'Trabalhar em squad significa decidir perto de quem pesquisa, desenha, desenvolve e mede resultados.',
     ],
     youWillHear: [
       '"Qual squad vai pegar essa funcionalidade?"',
@@ -673,7 +673,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
-      'Product Designers alinham expectativas com stakeholders e priorizam o que mais impacta a pessoa usuária.',
+      'Product Designers alinham expectativas com stakeholders e priorizam o que impacta a pessoa usuária.',
     ],
     youWillHear: [
       '"Vamos apresentar essa proposta para os stakeholders."',
