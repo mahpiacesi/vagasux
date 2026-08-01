@@ -92,7 +92,7 @@ Termos: Produto, Produto digital, Problema, Solução, White-label, MVP, Feature
 
 **Elementos visuais:** Tipografia, Cor, Iconografia, Espaçamento, Hierarquia visual
 
-**Sistema e componentes:** Component, Variant, Estado, Design System, Design Token, UI Kit, Pattern
+**Sistema e componentes:** Componente, Variant, Estado, Design System, Design Token, UI Kit, Pattern
 
 Referências informadas (v1 + glossários de UI/PD): backlog editorial v1, trilha Aprender UI, Figma Dictionary e padrões de design system. Termos de implementação (Handoff, Responsivo) ficam em **Desenvolvimento**; papéis (UI Designer, Design Visual) ficam em **Fundamentos**.
 

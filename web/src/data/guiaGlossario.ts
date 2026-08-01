@@ -772,7 +772,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Vamos montar um protótipo clicável para o teste de usabilidade."',
-      '"O protótipo desse fluxo já está linkado no Figma."',
+      '"O protótipo desse fluxo já está com a navegação linkada."',
     ],
   },
 
@@ -852,14 +852,9 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
   },
   {
     id: 'component',
-    term: 'Component',
+    term: 'Componente',
     categoryId: 'interface',
     subgroup: 'sistema',
-    originalName: {
-      alternate: 'Componente',
-      usageNote:
-        'Component e componente aparecem com a mesma ideia; em Figma, vira biblioteca compartilhada.',
-    },
     whatIs: [
       'Peça reutilizável de interface: botão, campo de texto, card, modal e outros elementos que se repetem no produto.',
       'Faz parte do design system. Alterar um componente base reflete em todas as telas que o usam.',
