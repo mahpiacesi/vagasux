@@ -128,7 +128,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     id: 'entregavel-sprint-designer',
     categoryId: 'geral',
     subgroup: 'squads',
-    question: 'Como funciona o entregável de uma sprint para a designer?',
+    question: 'Como funciona o entregável de uma sprint para o designer?',
     answer: [
       'Documente discovery e ideação em ferramenta compartilhada (Miro, Notion, Figma). Wireframes e protótipos evoluem conforme validação; compartilhe versões finais com especificação clara para desenvolvimento.',
       'Registre entregáveis no Jira ou ferramenta similar, amarrando cada item à história da sprint. Depois da implementação, acompanhe se o resultado ficou fiel ao combinado e se a experiência funcionou como esperado.',
@@ -211,7 +211,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Existe restrição para contratar júnior em trabalho remoto?',
     answer: [
       'Não há regra que proíba, mas algumas empresas hesitam porque acham mais difícil acompanhar quem está começando à distância. Outras já têm onboarding remoto maduro e funcionam muito bem.',
-      'Priorize vagas que deixem claro como será a mentoria, a frequência de feedback e os canais de dúvida. Na entrevista, pergunte como designers júniores são integradas ao time virtualmente.',
+      'Priorize vagas que deixem claro como será a mentoria, a frequência de feedback e os canais de dúvida. Na entrevista, pergunte como designers júniores são integrados ao time virtualmente.',
     ],
   },
 
@@ -260,7 +260,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     id: 'networking-linkedin',
     categoryId: 'preparacao',
     subgroup: 'linkedin',
-    question: 'Como criar networking com outras designers pelo LinkedIn?',
+    question: 'Como criar networking com outros designers pelo LinkedIn?',
     answer: [
       'Adicionar centenas de pessoas sem conversa vira lista morta. Prefira mensagens personalizadas: comente um artigo dela, pergunte sobre a área da empresa ou peça indicação de conteúdo.',
       'Conte brevemente quem você é antes de pedir feedback de portfólio. Ofereça troca quando puder. Networking funciona com respeito, sem pressionar por resposta imediata.',
