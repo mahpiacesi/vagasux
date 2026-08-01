@@ -1913,7 +1913,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"O frontend desse fluxo ainda não subiu em staging."',
-      '"Precisamos de alinhamento com frontend antes de fechar o spec."',
+      '"Precisamos de alinhamento com front antes de fechar o spec."',
     ],
   },
   {
