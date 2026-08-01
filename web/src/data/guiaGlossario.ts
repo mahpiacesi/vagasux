@@ -340,7 +340,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Projeta serviços completos, mapeando todas as etapas que a pessoa passa, incluindo momentos fora da tela: fila, atendimento, entrega, suporte.',
-      'Product Designers encontram Service Design em empresas de saúde, bancos, varejo e logística, onde o app é só uma parte da experiência.',
+      'Product Designers encontram Service Design em empresas de saúde, bancos, varejo e logística, em que a experiência vai além do app.',
     ],
     youWillHear: [
       '"Esse projeto envolve service design além da interface do app."',
@@ -529,7 +529,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'mentalidade',
     whatIs: [
       'O que acontece quando a pessoa usuária faz algo no produto: toca, clica, arrasta, preenche um campo ou confirma uma ação.',
-      'Cada tela reúne vários pontos de interação. Design de Interação define como cada um funciona. Palavra parecida: iteração, melhorar o trabalho em rodadas.',
+      'Cada tela reúne vários pontos de interação. Design de Interação define como cada um funciona.',
     ],
     youWillHear: [
       '"Essa interação está confusa, a pessoa usuária não entendeu o próximo passo."',
@@ -606,7 +606,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'pessoas-contexto',
     whatIs: [
       'Neste contexto, a perspectiva de metas, receita, custos, estratégia e viabilidade de um produto digital.',
-      'Product Designers equilibram necessidades da pessoa usuária com objetivos do negócio. Nem toda ideia boa para a experiência faz sentido para a empresa agora.',
+      'Product Designers equilibram necessidades da pessoa usuária com objetivos do negócio e priorizam o que a empresa consegue investir agora.',
     ],
     youWillHear: [
       '"Essa solução é boa para UX, mas o negócio não prioriza agora."',
@@ -673,7 +673,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
-      'Product Designers precisam alinhar expectativas com stakeholders sem perder de vista a pessoa usuária. Nem todo pedido de stakeholder vira prioridade de design.',
+      'Product Designers alinham expectativas com stakeholders e priorizam o que mais impacta a pessoa usuária.',
     ],
     youWillHear: [
       '"Vamos apresentar essa proposta para os stakeholders."',
