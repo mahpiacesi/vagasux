@@ -221,7 +221,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
-      'O foco não é escrever bonito, e sim deixar claro o que fazer, transmitir confiança e ajudar a completar a tarefa sem travar.',
+      'Prioriza clareza, confiança e ajudar a pessoa usuária a completar a tarefa sem travar.',
     ],
     youWillHear: [
       '"Esse botão precisa de um copy mais claro."',
@@ -245,7 +245,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Precisamos alinhar a UX do app com a estratégia de CX da marca."',
-      '"O time de CX quer entender a jornada completa, não só o digital."',
+      '"O time de CX quer entender a jornada completa, incluindo fora do app."',
     ],
   },
   {
@@ -261,7 +261,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Projeta como a pessoa usuária interage com um produto digital: o que acontece quando ela toca, clica, arrasta ou preenche um campo.',
-      'Está ligado à UI, mas o foco aqui é o comportamento e o fluxo entre as ações, não só a aparência visual dos elementos.',
+      'Foca no comportamento e no fluxo entre as ações: respostas do sistema, transições e sequência de passos, além da aparência visual.',
     ],
     youWillHear: [
       '"Esse fluxo precisa de um design de interação mais claro."',
@@ -275,7 +275,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'areas-disciplinas',
     whatIs: [
       'Cria a identidade visual de um produto: cores, tipografia, ícones, espaçamento e hierarquia do que aparece na tela.',
-      'UI Designers e Product Designers usam design visual para deixar interfaces claras, consistentes e alinhadas à marca. Não é enfeite: visual mal resolvido atrapalha a leitura e a usabilidade.',
+      'UI Designers e Product Designers usam design visual para deixar interfaces claras, consistentes e alinhadas à marca. Visual mal resolvido atrapalha a leitura e a usabilidade.',
     ],
     youWillHear: [
       '"O design visual desse componente ainda não está alinhado ao restante do produto."',
@@ -343,8 +343,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       'Product Designers encontram Service Design em empresas de saúde, bancos, varejo e logística, onde o app é só uma parte da experiência.',
     ],
     youWillHear: [
-      '"Esse projeto envolve service design, não é só interface."',
-      '"Precisamos mapear o serviço ponta a ponta, não apenas o fluxo do app."',
+      '"Esse projeto envolve service design além da interface do app."',
+      '"Precisamos mapear o serviço ponta a ponta, do app ao atendimento."',
     ],
   },
   {
@@ -360,7 +360,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Camada visual e interativa de um produto digital: telas, botões, cores, tipografia, ícones e componentes que a pessoa usuária vê e toca.',
-      'Enquanto UX olha a experiência completa, UI foca em como cada tela funciona e se apresenta. Na prática, Product Designers costumam trabalhar os dois juntos.',
+      'Cobre como cada tela funciona e se apresenta. Na prática, Product Designers costumam trabalhar UX e UI juntos.',
     ],
     youWillHear: [
       '"A UX desse fluxo está ok, mas a UI ainda precisa de refinamento."',
@@ -455,7 +455,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'mentalidade',
     whatIs: [
       'Forma de resolver problemas colocando a pessoa usuária no centro, explorando várias ideias antes de fechar uma solução.',
-      'Em empresas, aparece em workshops com post-its, protótipos rápidos e conversas entre áreas diferentes. Não é a única forma de trabalhar, mas é uma mentalidade comum quando o time precisa destravar um desafio complexo.',
+      'Em empresas, aparece em workshops com post-its, protótipos rápidos e conversas entre áreas. Costuma ajudar o time a destravar desafios complexos.',
     ],
     youWillHear: [
       '"Vamos fazer um workshop de design thinking para entender o problema."',
@@ -475,7 +475,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Mostra que bons projetos alternam momentos de abrir possibilidades e momentos de focar em uma direção.',
-      'Ajuda a explicar por que Product Design não começa desenhando tela. Primeiro se explora o problema, depois se explora a solução.',
+      'Ajuda a explicar a ordem do trabalho: primeiro se explora o problema, depois se explora a solução.',
     ],
     youWillHear: [
       '"Estamos no primeiro diamante, ainda descobrindo o problema."',
@@ -529,7 +529,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'mentalidade',
     whatIs: [
       'O que acontece quando a pessoa usuária faz algo no produto: toca, clica, arrasta, preenche um campo ou confirma uma ação.',
-      'Cada tela é um conjunto de pontos de interação. Design de Interação cuida de como esses momentos funcionam. Não confunda com iteração, que é repetir e melhorar o trabalho ao longo do tempo.',
+      'Cada tela reúne vários pontos de interação. Design de Interação define como cada um funciona. Palavra parecida: iteração, melhorar o trabalho em rodadas.',
     ],
     youWillHear: [
       '"Essa interação está confusa, a pessoa usuária não entendeu o próximo passo."',
@@ -543,7 +543,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'mentalidade',
     whatIs: [
       'Repetir o trabalho com melhorias a cada rodada: prototipar, testar, ajustar e testar de novo.',
-      'É uma mentalidade central em Product Design. Produtos bons raramente nascem certos na primeira versão. Não é a mesma coisa que interação, que é o que a pessoa usuária faz na tela.',
+      'Mentalidade central em Product Design: produtos bons raramente nascem certos na primeira versão. Palavra parecida: interação, o movimento da pessoa usuária na tela.',
     ],
     youWillHear: [
       '"Precisamos de mais uma iteração nesse fluxo."',
@@ -560,7 +560,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
-      '"Lean UX não significa pular pesquisa, é iterar com foco."',
+      '"Lean UX pede iterar com foco, com pesquisa envolvida."',
     ],
   },
   {
@@ -591,7 +591,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Quem contrata, paga ou decide pela compra de um produto ou serviço. Em muitos casos, cliente e pessoa usuária são a mesma pessoa. Em outros, não.',
+      'Quem contrata, paga ou decide pela compra de um produto ou serviço. Às vezes coincide com a pessoa usuária; às vezes são pessoas diferentes.',
       'Em produtos B2B, agências ou plataformas white-label, quem usa no dia a dia pode ser diferente de quem assina o contrato. Product Designers precisam entender os dois lados.',
     ],
     youWillHear: [
@@ -633,7 +633,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'pessoas-contexto',
     whatIs: [
       'Grupo de pessoas que um produto ou campanha quer alcançar, descrito por características como idade, região, profissão ou comportamento.',
-      'Diferente de persona, que é um personagem fictício baseado em pesquisa. Público-alvo é mais amplo e segmentado. Os dois conceitos se complementam.',
+      'Persona é um personagem fictício baseado em pesquisa; público-alvo descreve um grupo mais amplo e segmentado. Os dois se complementam.',
     ],
     youWillHear: [
       '"Qual é o publico-alvo desse app?"',
