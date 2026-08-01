@@ -1,0 +1,119 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { ArrowLeft, BookBookmark } from '@phosphor-icons/react'
+import { GuiaFaqCategoryAccordion } from '@/components/guia/faq/GuiaFaqCategoryAccordion'
+import {
+  getGuiaFaqItemById,
+  groupGuiaFaqItemsByCategory,
+  guiaFaqCategories,
+  guiaFaqItems,
+  type GuiaFaqCategoryId,
+} from '@/data/guiaFaq'
+import { guiaRoutes } from '@/lib/guiaRoutes'
+import { cn } from '@/lib/utils'
+
+export function GuiaFaqPageContent() {
+  const { hash } = useLocation()
+  const [openCategories, setOpenCategories] = useState<Set<GuiaFaqCategoryId>>(
+    () => new Set(),
+  )
+  const [scrollTargetId, setScrollTargetId] = useState<string | null>(null)
+
+  const itemsByCategory = useMemo(
+    () => groupGuiaFaqItemsByCategory(guiaFaqItems),
+    [],
+  )
+
+  const openCategory = useCallback((categoryId: GuiaFaqCategoryId) => {
+    setOpenCategories((current) => new Set(current).add(categoryId))
+  }, [])
+
+  const navigateToQuestion = useCallback(
+    (itemId: string) => {
+      const item = getGuiaFaqItemById(itemId)
+      if (!item) return
+      openCategory(item.categoryId)
+      setScrollTargetId(itemId)
+    },
+    [openCategory],
+  )
+
+  useEffect(() => {
+    const itemId = hash.replace('#', '')
+    if (!itemId) return
+    navigateToQuestion(itemId)
+  }, [hash, navigateToQuestion])
+
+  useEffect(() => {
+    if (!scrollTargetId) return
+
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(scrollTargetId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+      setScrollTargetId(null)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [scrollTargetId, openCategories])
+
+  function toggleCategory(categoryId: GuiaFaqCategoryId) {
+    setOpenCategories((current) => {
+      const next = new Set(current)
+      if (next.has(categoryId)) next.delete(categoryId)
+      else next.add(categoryId)
+      return next
+    })
+  }
+
+  return (
+    <div className="mt-8 w-full">
+      <div className="flex flex-wrap items-center gap-3">
+        <Link
+          to={guiaRoutes.home}
+          className={cn(
+            'inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
+          )}
+        >
+          <ArrowLeft size={18} weight="bold" aria-hidden />
+          Voltar ao Guia
+        </Link>
+        <Link
+          to={guiaRoutes.glossario}
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2.5 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
+        >
+          <BookBookmark size={18} weight="bold" aria-hidden />
+          Glossário
+        </Link>
+      </div>
+
+      <header className="mt-8 w-full">
+        <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+          FAQ
+        </h1>
+        <p className="mt-4 max-w-4xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          Compilado da VagasUX com perguntas frequentes da comunidade sobre
+          carreira, preparação, processos seletivos, formação e contratação.
+          São {guiaFaqItems.length} respostas. Abra a categoria que precisa.
+        </p>
+      </header>
+
+      <div className="mt-10 space-y-4">
+        {guiaFaqCategories.map((category) => {
+          const items = itemsByCategory.get(category.id) ?? []
+
+          return (
+            <GuiaFaqCategoryAccordion
+              key={category.id}
+              category={category}
+              items={items}
+              isOpen={openCategories.has(category.id)}
+              onToggle={() => toggleCategory(category.id)}
+            />
+          )
+        })}
+      </div>
+    </div>
+  )
+}

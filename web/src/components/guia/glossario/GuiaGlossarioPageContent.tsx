@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { ArrowLeft, MagnifyingGlass, Question } from '@phosphor-icons/react'
 import { GuiaGlossarioCategoryAccordion } from '@/components/guia/glossario/GuiaGlossarioCategoryAccordion'
 import { Input } from '@/components/ui/input'
 import {
@@ -13,6 +13,7 @@ import {
   type GuiaGlossarioCategoryId,
   type GuiaGlossarioSortMode,
 } from '@/data/guiaGlossario'
+import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
 export function GuiaGlossarioPageContent() {
@@ -110,7 +111,26 @@ export function GuiaGlossarioPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <header className="w-full">
+      <div className="flex flex-wrap items-center gap-3">
+        <Link
+          to={guiaRoutes.home}
+          className={cn(
+            'inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
+          )}
+        >
+          <ArrowLeft size={18} weight="bold" aria-hidden />
+          Voltar ao Guia
+        </Link>
+        <Link
+          to={guiaRoutes.faq}
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2.5 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
+        >
+          <Question size={18} weight="bold" aria-hidden />
+          FAQ
+        </Link>
+      </div>
+
+      <header className="mt-8 w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Glossário do Product Designer
         </h1>

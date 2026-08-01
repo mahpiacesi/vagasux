@@ -1,10 +1,5 @@
-import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
+import { GuiaFaqPageContent } from '@/components/guia/faq/GuiaFaqPageContent'
 
 export function GuiaFaqPage() {
-  return (
-    <GuiaPlaceholder
-      title="FAQ"
-      description="Perguntas frequentes sobre Product Design, mercado e carreira. Tira-dúvidas da comunidade."
-    />
-  )
+  return <GuiaFaqPageContent />
 }

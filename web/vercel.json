@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "/guia-do-product-designer/faq-tira-duvidas",
+      "destination": "/guia/faq",
+      "permanent": true
+    },
+    {
       "source": "/guia-do-product-designer/:path*",
       "destination": "/guia",
       "permanent": true

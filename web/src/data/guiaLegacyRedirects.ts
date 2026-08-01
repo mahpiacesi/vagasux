@@ -11,6 +11,10 @@ export const guiaLegacyRedirects = [
   },
   { source: '/glossario', destination: '/guia/glossario' },
   {
+    source: '/guia-do-product-designer/faq-tira-duvidas',
+    destination: '/guia/faq',
+  },
+  {
     source: '/primeiros-passos',
     destination: '/guia/trilhas/entender-o-basico',
   },
