@@ -18,9 +18,9 @@ const ajudaResources = [
     cta: 'Ver perguntas',
     Icon: Question,
     variantClassName: 'guia-ajuda-spotlight--faq',
-    iconClassName: 'bg-brand-400/20 text-brand-200 ring-brand-300/30',
-    countClassName: 'text-brand-200',
-    ctaClassName: 'text-brand-200',
+    iconClassName: 'bg-brand-100 text-brand-500 ring-brand-200/80',
+    countClassName: 'text-brand-500',
+    ctaClassName: 'text-brand-500',
   },
   {
     id: 'glossario',
@@ -32,9 +32,9 @@ const ajudaResources = [
     cta: 'Ver termos',
     Icon: BookBookmark,
     variantClassName: 'guia-ajuda-spotlight--glossario',
-    iconClassName: 'bg-complementary-300/15 text-complementary-300 ring-complementary-300/25',
-    countClassName: 'text-complementary-300',
-    ctaClassName: 'text-complementary-300',
+    iconClassName: 'bg-complementary-100 text-complementary-500 ring-complementary-300/70',
+    countClassName: 'text-complementary-500',
+    ctaClassName: 'text-complementary-500',
   },
 ] as const
 
@@ -93,7 +93,6 @@ export function GuiaAjudaSection() {
                   className={cn('guia-ajuda-spotlight group', variantClassName)}
                 >
                   <span className="guia-ajuda-spotlight__border" aria-hidden />
-                  <span className="guia-ajuda-spotlight__shine" aria-hidden />
 
                   <span className="guia-ajuda-spotlight__inner">
                     <span className="flex items-start justify-between gap-4">
@@ -115,16 +114,16 @@ export function GuiaAjudaSection() {
                         >
                           {count}
                         </span>
-                        <span className="mt-1 block text-[0.62rem] font-bold tracking-[0.16em] text-neutral-200/55 uppercase">
+                        <span className="mt-1 block text-[0.62rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
                           {countLabel}
                         </span>
                       </span>
                     </span>
 
-                    <span className="mt-10 block text-[2rem] leading-none font-black tracking-[-0.03em] text-neutral-100 md:text-[2.35rem]">
+                    <span className="mt-10 block text-[2rem] leading-none font-black tracking-[-0.03em] text-neutral-500 md:text-[2.35rem]">
                       {title}
                     </span>
-                    <span className="mt-3 block max-w-[16rem] text-sm leading-relaxed text-neutral-200/70 md:text-base">
+                    <span className="mt-3 block max-w-[16rem] text-sm leading-relaxed text-neutral-400 md:text-base">
                       {hint}
                     </span>
 

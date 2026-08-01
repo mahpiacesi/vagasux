@@ -917,22 +917,7 @@
 }
 
 .guia-ajuda-spotlight__shine {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    115deg,
-    transparent 38%,
-    rgb(255 255 255 / 0.14) 50%,
-    transparent 62%
-  );
-  transform: translateX(-130%);
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__shine,
-.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__shine {
-  transform: translateX(130%);
+  display: none;
 }
 
 .guia-ajuda-spotlight__inner {
@@ -941,22 +926,43 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin: 1px;
-  border-radius: calc(1.75rem - 1px);
-  background: color-mix(in srgb, var(--color-neutral-500) 88%, rgb(255 255 255 / 6%));
+  margin: 2px;
+  overflow: hidden;
+  border-radius: calc(1.75rem - 2px);
+  background: var(--color-neutral-100);
   padding: 1.75rem 1.75rem 1.5rem;
-  backdrop-filter: blur(14px);
   transition:
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     background 0.55s ease,
     box-shadow 0.55s ease;
 }
 
+.guia-ajuda-spotlight__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    rgb(255 255 255 / 0.92) 50%,
+    transparent 64%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__inner::after,
+.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__inner::after {
+  transform: translateX(130%);
+}
+
 .guia-ajuda-spotlight:hover .guia-ajuda-spotlight__inner,
 .guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__inner {
   transform: translateY(-6px);
-  background: color-mix(in srgb, var(--color-neutral-500) 78%, rgb(255 255 255 / 10%));
-  box-shadow: 0 28px 70px -34px rgb(7 0 58 / 0.85);
+  background: var(--color-neutral-100);
+  box-shadow: 0 28px 70px -32px rgb(7 0 58 / 0.45);
 }
 
 .guia-ajuda-spotlight__arrow {
