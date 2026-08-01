@@ -1,10 +1,15 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { GuiaLayout } from '@/components/guia/GuiaLayout'
 import { SiteLayout } from '@/components/SiteLayout'
 import { routes } from '@/lib/siteLinks'
 import { ComunidadePage } from '@/pages/ComunidadePage'
 import { GuildaPage } from '@/pages/GuildaPage'
 import { GuiaIllustrationDevPage } from '@/pages/GuiaIllustrationDevPage'
 import { GuiaPage } from '@/pages/GuiaPage'
+import { GuiaFaqPage } from '@/pages/guia/GuiaFaqPage'
+import { GuiaTemaPage } from '@/pages/guia/GuiaTemaPage'
+import { GuiaTipoPage } from '@/pages/guia/GuiaTipoPage'
+import { GuiaTrilhaPage } from '@/pages/guia/GuiaTrilhaPage'
 import { HomePage } from '@/pages/HomePage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
 import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
@@ -27,7 +32,13 @@ export default function App() {
           <Route path={routes.guilda} element={<GuildaPage />} />
           <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.parcerias} element={<ParceriasPage />} />
-          <Route path={routes.guia} element={<GuiaPage />} />
+          <Route path={routes.guia} element={<GuiaLayout />}>
+            <Route index element={<GuiaPage />} />
+            <Route path="trilhas/:slug" element={<GuiaTrilhaPage />} />
+            <Route path="tema/:slug" element={<GuiaTemaPage />} />
+            <Route path="tipo/:slug" element={<GuiaTipoPage />} />
+            <Route path="comecar/faq" element={<GuiaFaqPage />} />
+          </Route>
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
           <Route

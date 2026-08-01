@@ -9,6 +9,51 @@
       "source": "/guia-do-product-designer/:path*",
       "destination": "/guia",
       "permanent": true
+    },
+    {
+      "source": "/cursos",
+      "destination": "/guia/tipo/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/eventos",
+      "destination": "/guia/tipo/eventos",
+      "permanent": true
+    },
+    {
+      "source": "/perfis-para-seguir",
+      "destination": "/guia/tipo/canais",
+      "permanent": true
+    },
+    {
+      "source": "/glossario",
+      "destination": "/guia/comecar/faq",
+      "permanent": true
+    },
+    {
+      "source": "/primeiros-passos",
+      "destination": "/guia/trilhas/entender-o-basico",
+      "permanent": true
+    },
+    {
+      "source": "/trilhas/portfolio-iniciante",
+      "destination": "/guia/trilhas/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/trilhas/ux-research-basics",
+      "destination": "/guia/trilhas/research",
+      "permanent": true
+    },
+    {
+      "source": "/trilhas/design-systems-101",
+      "destination": "/guia/trilhas/content-design",
+      "permanent": true
+    },
+    {
+      "source": "/trilhas/primeiros-passos",
+      "destination": "/guia/trilhas/entender-o-basico",
+      "permanent": true
     }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]

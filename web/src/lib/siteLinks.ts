@@ -77,9 +77,9 @@ export const voluntariadoHashes = {
 } as const
 
 export const guiaHashes = {
-  caminhos: 'caminhos',
   trilhas: 'trilhas',
-  areas: 'areas',
+  temas: 'temas',
+  tipos: 'tipos',
   populares: 'populares',
 } as const
 
