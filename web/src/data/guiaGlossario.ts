@@ -1522,11 +1522,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     term: 'Métrica',
     categoryId: 'produto',
     subgroup: 'conceitos',
-    originalName: {
-      alternate: 'Metric',
-      usageNote:
-        'Product metrics e métricas de produto aparecem em dashboards, PRDs e reviews.',
-    },
     whatIs: [
       'Medida numérica que indica se o produto está funcionando: adoção, retenção, conversão, tempo de tarefa, NPS ou erro em fluxo. Traduz comportamento em dado para decidir próximos passos.',
       'Product Designers usam métricas junto com pesquisa qualitativa: o número mostra escala; entrevistas e testes explicam o porquê. Validação e PRD costumam citar métricas de sucesso.',
