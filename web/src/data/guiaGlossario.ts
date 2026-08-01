@@ -547,7 +547,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"A pessoa UX Designer vai conduzir o teste de usabilidade dessa versão."',
-      '"A vaga é UX Designer, mas pede Figma e UI também."',
+      '"A vaga é UX Designer, mas pede ferramenta de design e UI também."',
     ],
   },
   {
@@ -807,11 +807,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Esqueleto de tela',
       usageNote:
-        'Wireframe é o termo mais usado em empresas e ferramentas como Figma, mesmo no Brasil.',
+        'Wireframe é o termo mais usado em empresas e ferramentas de design, mesmo no Brasil.',
     },
     whatIs: [
       'Representação simples de uma tela ou fluxo, com caixas, rótulos e hierarquia, sem cores finais nem visual polido. Product Designers usam wireframe para validar estrutura antes de investir em detalhe visual.',
-      'Costuma ser preto e branco ou tons de cinza. Pode ser feito no Figma, no papel ou em ferramentas de prototipação.',
+      'Costuma ser preto e branco ou tons de cinza. Pode ser feito na ferramenta de design, no papel ou em ferramentas de prototipação.',
     ],
     youWillHear: [
       '"Vamos desenhar o wireframe desse fluxo antes de partir para o visual."',
@@ -880,11 +880,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Grade de layout',
       usageNote:
-        'Grid é o termo mais usado em Figma, design system e conversas de UI.',
+        'Grid é o termo mais usado em ferramentas de design, design system e conversas de UI.',
     },
     whatIs: [
       'Sistema de colunas e margens que alinha elementos na tela. Ajuda a manter consistência entre páginas e breakpoints.',
-      'Product Designers usam grid no Figma e documentam no design system quantas colunas cada tamanho de tela usa.',
+      'Product Designers usam grid na ferramenta de design e documentam no design system quantas colunas cada tamanho de tela usa.',
     ],
     youWillHear: [
       '"Essa tela segue grid de 12 colunas no desktop."',
@@ -899,10 +899,10 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Layout automático',
       usageNote:
-        'Recurso do Figma; o nome em inglês é o que aparece na ferramenta e no mercado.',
+        'Recurso de ferramentas de design; o nome em inglês é o que aparece na ferramenta e no mercado.',
     },
     whatIs: [
-      'Recurso do Figma que organiza elementos em fila ou coluna e redimensiona o container conforme o conteúdo muda. Facilita botões, cards e listas que crescem ou encolhem.',
+      'Recurso que organiza elementos em fila ou coluna e redimensiona o container conforme o conteúdo muda. Facilita botões, cards e listas que crescem ou encolhem.',
       'Product Designers usam auto layout para entregar componentes mais flexíveis e próximos do comportamento real na implementação.',
     ],
     youWillHear: [
@@ -924,7 +924,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Conjunto de componentes, padrões, tokens e documentação que guiam como um produto digital se parece e se comporta. Garante consistência entre telas, times e releases.',
-      'Product Designers e UI Designers contribuem ao criar, usar e evoluir o design system. Em squads enxutas, a biblioteca costuma viver no Figma; empresas maiores podem ter time dedicado.',
+      'Product Designers e UI Designers contribuem ao criar, usar e evoluir o design system. Em squads enxutas, a biblioteca costuma viver na ferramenta de design; empresas maiores podem ter time dedicado.',
     ],
     youWillHear: [
       '"Esse botão já existe no design system, vamos reutilizar."',
@@ -953,11 +953,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Variante',
       usageNote:
-        'Variant e variante aparecem no Figma e em design systems para versões de um mesmo componente.',
+        'Variant e variante aparecem em ferramentas de design e em design systems para versões de um mesmo componente.',
     },
     whatIs: [
       'Versão de um componente com visual ou comportamento diferente: botão primário e secundário, card compacto e expandido, input com erro e input padrão.',
-      'Product Designers nomeiam variants no Figma para o time escolher a opção certa sem redesenhar do zero.',
+      'Product Designers nomeiam variants na ferramenta de design para o time escolher a opção certa sem redesenhar do zero.',
     ],
     youWillHear: [
       '"Usa a variant secundária do botão nessa tela."',
@@ -1010,10 +1010,10 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Kit de interface',
       usageNote:
-        'UI Kit é o nome mais comum em Figma Community, vagas e materiais de Product Design.',
+        'UI Kit é o nome mais comum em bibliotecas públicas de design, vagas e materiais de Product Design.',
     },
     whatIs: [
-      'Conjunto de componentes e estilos prontos para montar telas de um produto. Pode ser biblioteca interna, arquivo do Figma ou base antes de um design system completo.',
+      'Conjunto de componentes e estilos prontos para montar telas de um produto. Pode ser biblioteca interna, arquivo de design ou base antes de um design system completo.',
       'Product Designers reutilizam UI kit para ganhar velocidade. Design system costuma ser a evolução documentada e governada desse conjunto.',
     ],
     youWillHear: [
@@ -1107,7 +1107,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Distâncias entre elementos: padding interno, margin entre blocos e respiro da tela. Escala de espaçamento deixa a interface organizada e previsível.',
-      'Product Designers usam múltiplos de 4 ou 8 px e registram os valores como tokens. Auto layout no Figma ajuda a aplicar spacing com consistência.',
+      'Product Designers usam múltiplos de 4 ou 8 px e registram os valores como tokens. Auto layout na ferramenta de design ajuda a aplicar spacing com consistência.',
     ],
     youWillHear: [
       '"O spacing entre esses cards está inconsistente."',
@@ -1689,7 +1689,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Documento que descreve o que uma feature ou iniciativa deve fazer: contexto, objetivo, escopo, critérios de sucesso e requisitos. PM costuma liderar; design e engenharia contribuem.',
-      'Product Designers alimentam o PRD com fluxos, estados, edge cases e links para protótipos no Figma. Nem todo time usa PRD formal; em squads enxutas, o spec pode viver no ticket ou no próprio Figma.',
+      'Product Designers alimentam o PRD com fluxos, estados, edge cases e links para protótipos. Nem todo time usa PRD formal; em squads enxutas, o spec pode viver no ticket ou no próprio arquivo de design.',
     ],
     youWillHear: [
       '"Manda o link do PRD antes da planning."',
@@ -1736,7 +1736,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'conceitos',
     whatIs: [
       'Método visual de organizar trabalho em colunas (a fazer, fazendo, feito) com limite de itens em andamento. Fluxo contínuo, sem sprint fixo como no Scrum.',
-      'Product Designers usam kanban no Jira, Linear ou Trello para enxergar status de telas, handoff e dependências.',
+      'Product Designers usam kanban em board de tarefas do squad para enxergar status de telas, handoff e dependências.',
     ],
     youWillHear: [
       '"Vamos mover esse card para doing no kanban."',
@@ -1859,7 +1859,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Na sprint planning, essa story ficou de fora por falta de capacidade."',
-      '"Leva o Figma para a planning de amanhã."',
+      '"Leva o arquivo de design para a planning de amanhã."',
     ],
   },
   {
@@ -1908,7 +1908,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       alternate: 'Front-end',
     },
     whatIs: [
-      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Engenharia de frontend implementa o que Product Designers desenham no Figma.',
+      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Engenharia de frontend implementa o que Product Designers desenham na ferramenta de design.',
       'Product Designers alinham com dev frontend em handoff, estados, responsivo e comportamento de componentes.',
     ],
     youWillHear: [
@@ -1962,10 +1962,10 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Adaptação da interface a diferentes tamanhos de tela: mobile, tablet e desktop. Layout, tipografia e componentes se reorganizam para manter usabilidade em cada breakpoint.',
-      'Product Designers desenham versões responsivas no Figma e documentam comportamento por breakpoint no handoff.',
+      'Product Designers desenham versões responsivas na ferramenta de design e documentam comportamento por breakpoint no handoff.',
     ],
     youWillHear: [
-      '"Essa tela quebrou no mobile, o responsivo não ficou alinhado ao Figma."',
+      '"Essa tela quebrou no mobile, o responsivo não ficou alinhado ao design aprovado."',
       '"Fecha o responsivo antes do handoff."',
     ],
   },
@@ -1980,7 +1980,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       alternate: 'Passagem para desenvolvimento',
     },
     whatIs: [
-      'Momento em que design passa para Engenharia: Figma linkado, specs, tokens, estados e critérios de aceite. Objetivo é reduzir dúvida na implementação.',
+      'Momento em que design passa para Engenharia: arquivo de design linkado, specs, tokens, estados e critérios de aceite. Objetivo é reduzir dúvida na implementação.',
       'Product Designers preparam handoff com componentes do design system, medidas quando necessário e alinhamento com dev sobre edge cases.',
     ],
     youWillHear: [
@@ -1997,7 +1997,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       alternate: 'Especificação',
     },
     whatIs: [
-      'Detalhamento do que deve ser construído: fluxos, estados, medidas, tokens, copy e regras de comportamento. Pode viver no Figma, no ticket ou no PRD.',
+      'Detalhamento do que deve ser construído: fluxos, estados, medidas, tokens, copy e regras de comportamento. Pode viver no arquivo de design, no ticket ou no PRD.',
       'Product Designers escrevem spec clara para dev entender hover, erro, empty state e responsivo sem adivinhar.',
     ],
     youWillHear: [
@@ -2012,7 +2012,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'entrega',
     originalName: {
       alternate: 'Ponto de quebra',
-      usageNote: 'Breakpoint continua no original em inglês em Figma, CSS e conversas com dev.',
+      usageNote: 'Breakpoint continua no original em inglês em specs, código e conversas com dev.',
     },
     whatIs: [
       'Largura de tela em que o layout muda de um formato para outro. Exemplo: abaixo de 768 px vira coluna única; acima mantém sidebar.',
@@ -2037,7 +2037,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Faltou edge case de lista vazia nesse spec."',
-      '"Dev encontrou um edge case que não estava no Figma."',
+      '"Dev encontrou um edge case que não estava no design aprovado."',
     ],
   },
 
@@ -2056,7 +2056,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"O deploy dessa feature é na sexta à noite."',
-      '"Depois do deploy, confere se o fluxo em produção bate com o Figma."',
+      '"Depois do deploy, confere se o fluxo em produção bate com o design aprovado."',
     ],
   },
   {
@@ -2073,7 +2073,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Já dá para testar esse fluxo em staging."',
-      '"Encontrei divergência entre staging e o Figma."',
+      '"Encontrei divergência entre staging e o design aprovado."',
     ],
   },
   {
@@ -2086,7 +2086,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Comportamento incorreto ou quebrado no produto: botão que não funciona, layout estourado, dado errado. Pode vir de implementação, regressão ou edge case não previsto.',
-      'Product Designers ajudam a reproduzir bug, comparar com Figma e priorizar correção com PM e dev.',
+      'Product Designers ajudam a reproduzir bug, comparar com o design aprovado e priorizar correção com PM e dev.',
     ],
     youWillHear: [
       '"Abre bug com print e passo a passo de reprodução."',
@@ -2101,7 +2101,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'PR de código',
       usageNote:
-        'Diferente de PRD (documento de produto). Pull request aparece em GitHub, GitLab e fluxo de engenharia.',
+        'Diferente de PRD (documento de produto). Pull request aparece no repositório de código e no fluxo de engenharia.',
     },
     whatIs: [
       'Pedido de dev para revisar e integrar mudanças de código na base do produto. Outra pessoa revisa qualidade e impacto antes do merge.',
