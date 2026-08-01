@@ -246,7 +246,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'ia-generativa',
     'prompt',
     'engenharia-de-prompt',
-    'copilot',
+    'agente-de-ia',
     'assistente-de-ia',
     'modelo',
     'janela-de-contexto',
@@ -2430,17 +2430,20 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
-    id: 'copilot',
-    term: 'Copilot',
+    id: 'agente-de-ia',
+    term: 'Agente de IA',
     categoryId: 'ia',
     subgroup: 'uso',
+    originalName: {
+      alternate: 'AI agent',
+    },
     whatIs: [
-      'Assistente de IA integrado ao fluxo de trabalho que sugere próximos passos, completa tarefas ou gera conteúdo enquanto a pessoa trabalha. Termo popularizado no mercado de tecnologia para recursos assistidos por IA.',
-      'Product Designers veem copilot em ferramentas de design, documentação e código: sugerir layout, renomear camadas ou gerar variações. A pessoa continua responsável pela decisão final.',
+      'Sistema de IA que executa tarefas com mais autonomia: interpreta objetivo, usa ferramentas, encadeia passos e entrega resultado. Diferente de um chat que só responde, o agente age em nome da pessoa usuária dentro de limites definidos.',
+      'Product Designers desenham agentes de IA com transparência sobre o que vai acontecer, confirmação em ações sensíveis e fallback quando trava. No mercado, copilot costuma nomear agentes ou assistentes integrados ao fluxo de trabalho.',
     ],
     youWillHear: [
-      '"Ativa o copilot para acelerar essa documentação."',
-      '"O copilot sugeriu três versões de microcopy."',
+      '"Esse copilot é um agente que renomeia camadas no arquivo."',
+      '"Precisamos limitar o que o agente pode fazer sozinho."',
     ],
   },
   {
@@ -2452,8 +2455,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       alternate: 'AI assistant',
     },
     whatIs: [
-      'Interface conversacional ou contextual que usa IA para ajudar em tarefas: responder dúvidas, gerar texto, resumir informação ou guiar fluxos no produto.',
-      'Product Designers desenham assistentes de IA com expectativa clara, transparência sobre limites e caminhos quando a IA erra ou não sabe responder.',
+      'Interface conversacional ou contextual que usa IA para ajudar em tarefas: responder dúvidas, gerar texto, resumir informação ou guiar fluxos no produto. A pessoa usuária conduz a interação passo a passo.',
+      'Product Designers desenham assistentes de IA com expectativa clara, transparência sobre limites e caminhos quando a IA erra ou não sabe responder. Assistente responde e sugere; agente de IA tende a executar ações com mais autonomia.',
     ],
     youWillHear: [
       '"O assistente de IA precisa de fallback quando não entende."',
