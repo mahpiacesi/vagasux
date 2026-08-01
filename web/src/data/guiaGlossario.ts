@@ -616,8 +616,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Grupo de pessoas que um produto ou campanha quer alcançar, descrito por características como idade, região, profissão ou comportamento.',
-      'Persona é um personagem fictício baseado em pesquisa. Público-alvo descreve um segmento de mercado. Os dois se complementam.',
+      'Persona é um personagem fictício baseado em pesquisa, com nome, contexto e objetivos. Em Product Design e UX, é a forma usual de representar para quem se projeta o produto.',
+      'Público-alvo descreve o segmento que um produto ou campanha quer alcançar, com características como idade, região, profissão ou comportamento. Persona detalha um perfil dentro desse segmento; os dois se complementam.',
     ],
     youWillHear: [
       '"Qual é o publico-alvo desse app?"',
