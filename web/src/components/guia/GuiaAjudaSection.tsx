@@ -58,7 +58,7 @@ export function GuiaAjudaSection() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-xl">
+        <div className="max-w-3xl">
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Ajuda e suporte
           </p>
@@ -68,7 +68,7 @@ export function GuiaAjudaSection() {
           >
             FAQ e Glossário da comunidade
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg md:whitespace-nowrap">
             Dúvidas de carreira e jargões da área para você consultar sempre que precisar.
           </p>
         </div>
