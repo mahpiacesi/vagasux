@@ -8,8 +8,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'Qual a diferença entre UI Designer, UX Designer e Product Designer?',
     answer: [
-      'UI Designer cuida da camada visual da interface: cores, tipografia, grids, componentes, microinterações e acessibilidade visual. O foco está em traduzir a experiência de forma clara e consistente na tela.',
-      'UX Designer pensa na jornada da pessoa usuária: pesquisa, fluxos, wireframes e protótipos em diferentes níveis de fidelidade. Product Designer costuma unir pesquisa, produto e interface, acompanhando o ciclo de evolução do produto. No mercado brasileiro os títulos se misturam, então vale ler a descrição da vaga com calma.',
+      'UI Designer: responsável pela interface visual de interação, indo muito além de uma tela bonita. Pensa em cores, acessibilidade, microinterações, grids, fontes e tudo que for relacionado a uma interface que traduza a experiência de forma eficiente.',
+      'UX Designer: pensa na melhor experiência para o usuário. No dia a dia pode fazer pesquisas, mas o foco será no desenho da solução, criando fluxos e wireframes, geralmente chegando a protótipos de baixa, média ou alta fidelidade.',
+      'Product Designer: pensa desde a pesquisa até o visual. Foca no desenvolvimento e evolução do produto, acompanhamento e propõe melhorias constantes. Vale rever a [página introdutória do Guia](/guia) e as trilhas sobre a área.',
     ],
     seeAlso: [
       { term: 'UX', glossarioId: 'ux' },
@@ -23,8 +24,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'Como é a rotina de Product Designer em startups, agências e consultorias?',
     answer: [
-      'O que muda mais é o foco e o ritmo. Em agências, o prazo e a entrega para o cliente costumam pesar mais, com menos tempo para pesquisa profunda. Em empresas de produto, você tende a ficar em uma squad focada em um serviço específico.',
-      'Startups podem ser aceleradas e exigir adaptação constante. Consultorias variam: algumas funcionam como agência, outras colocam você dentro do time do cliente por um período. Na entrevista, pergunte como é o dia a dia antes de assumir que o rótulo da empresa define tudo.',
+      'O que varia mais é o foco que você terá dentro do contexto em que foi inserido.',
+      'Agências: no geral costumam focar muito na entrega e não tanto no processo, por conta dos prazos e contratos, então você acaba tendo menos tempo pra pesquisar e validar. Você lida com projetos e clientes diversos, ou seja, não está atrelado a um produto específico.',
+      'Empresas: varia muito dependendo da estrutura do time. No geral você estará dentro de uma squad lidando com um produto ou serviço específico. Startups: o ritmo costuma ser bem frenético e acelerado, pois a necessidade de crescer é gigante, então todo esforço e dedicação será bem visto. Foco contínuo em um produto dentro de uma squad.',
+      'Consultorias: pode ou não funcionar como uma agência, mas existem consultorias especializadas onde você atua como designer fixo dentro de um time, como seria em uma empresa ou startup comum. No fim não tem como rotular sempre. Vale questionar para saber mais sobre o dia a dia de cada empresa e entender se combina com você.',
     ],
     seeAlso: [{ term: 'Squad', glossarioId: 'squad' }],
   },
@@ -34,8 +37,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'Quanto tempo leva, em média, a construção de um projeto de design?',
     answer: [
-      'Para uma funcionalidade nova em um app, o ciclo completo de pesquisa, ideação, validação e refinamento visual costuma levar entre duas e quatro semanas, ou seja, uma a duas sprints, dependendo do time e da complexidade.',
-      'Projetos menores podem fechar em dias; iniciativas maiores se estendem por meses. Contexto, maturidade da squad e quantidade de stakeholders influenciam bastante o calendário real.',
+      'Geralmente, pensando em design, o estudo de uma nova funcionalidade em um app, por exemplo, pode levar por volta de duas a quatro semanas (1 a 2 sprints), levando em conta todo um processo de pesquisa, entrevistas, criação e validação.',
+      'Esses projetos podem ser maiores ou menores dependendo do contexto e da experiência do time e dos profissionais envolvidos.',
     ],
     seeAlso: [{ term: 'Sprint', glossarioId: 'sprint' }],
   },
@@ -47,7 +50,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     answer: [
       'Não precisa virar uma pilha! 🔋 ⚡️ Primeiro veja se alguém do time, ou perto de você, precisa de ajuda com alguma coisa.',
       'Se estiver tudo tranquilo, use o tempo para conhecer melhor o produto ou serviço em que você atua: revise o que já foi feito, olhe o backlog e converse com o PO responsável.',
-      'Vale trocar ideia também com Atendimento e Suporte. Mesmo sem demanda de design, essa galera fala com usuárias todos os dias e costuma trazer dores reais. Com isso, você já pode mapear oportunidades e sugerir pontos para a próxima sprint.',
+      'Vale trocar ideia também com Atendimento e Suporte. Mesmo sem demanda de design, essa galera fala com usuários todos os dias e costuma trazer dores reais. Com isso, você já pode mapear oportunidades e sugerir pontos para a próxima sprint.',
     ],
     seeAlso: [
       { term: 'Backlog', glossarioId: 'backlog' },
@@ -77,8 +80,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'Qual a média salarial para designers iniciantes?',
     answer: [
-      'Varia conforme região, modalidade de contratação e porte da empresa. Como referência ampla, vagas PJ para júnior costumam ficar entre R$ 3 mil e R$ 5,5 mil; em CLT, entre R$ 2 mil e R$ 4,5 mil. Use como ponto de partida, sabendo que cada contexto muda.',
-      'Compare o que fizer sentido para o seu momento profissional usando [Glassdoor: Ux Designer Jr em São Paulo](https://www.glassdoor.com.br/Sal%C3%A1rios/s%C3%A3o-paulo-ux-designer-jr-sal%C3%A1rio-SRCH_IL.0,9_IM1009_KO10,24.htm), [Salário Transparente](https://salariotransparente.com.br/) e o [Panorama UX da VagasUX](https://vagasux.com.br/a-comunidade/panorama).',
+      'O salário de um júnior sempre pode variar porque precisa considerar o tipo de contratação e a região. Para sermos justos e de fato trazer alguma estimativa e orientação pra quem tá perdido: pensando na contratação PJ pode ser entre R$ 3 mil e R$ 5,5 mil, e na contratação CLT entre R$ 2 mil e R$ 4,5 mil. Mas lembrando que é uma estimativa superficial. Quem vai definir isso é você, o contexto da empresa envolvida e a região.',
+      'Por isso é sempre bom comparar referências e ver o que fizer mais sentido pro seu momento profissional: [Glassdoor: Ux Designer Jr em São Paulo](https://www.glassdoor.com.br/Sal%C3%A1rios/s%C3%A3o-paulo-ux-designer-jr-sal%C3%A1rio-SRCH_IL.0,9_IM1009_KO10,24.htm), [Salário Transparente](https://salariotransparente.com.br/) e o [Panorama UX da VagasUX](https://vagasux.com.br/a-comunidade/panorama).',
       'Na negociação, considere benefícios, crescimento e tipo de contrato junto com o valor bruto.',
     ],
   },
@@ -90,8 +93,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'squads',
     question: 'Como funcionam as squads?',
     answer: [
-      'Squad é um time pequeno e multidisciplinar com objetivo claro: produto, design, desenvolvimento, dados e outras funções trabalham juntos com autonomia para entregar valor contínuo.',
-      'Em vez de handoffs longos entre áreas isoladas, a squad compartilha contexto e prioridades. Cada empresa adapta o modelo, mas a ideia central é colaboração próxima em ciclos curtos.',
+      'Squad é o nome do modelo organizacional que separa os funcionários em pequenos grupos multidisciplinares com objetivos específicos. Por exemplo, um profissional de produto atua no mesmo time que um desenvolvedor, assim como um designer com outra pessoa de dados. Juntos, eles têm uma tarefa a cumprir e autonomia suficiente para tomar decisões.',
     ],
     seeAlso: [{ term: 'Squad', glossarioId: 'squad' }],
   },
@@ -101,8 +103,12 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'squads',
     question: 'O que faz cada pessoa da squad no dia a dia?',
     answer: [
-      'Product Owner prioriza backlog e traduz necessidades de negócio. Desenvolvedores implementam front e back. QA valida fluxos antes do release. Designer garante experiência e interface coerentes com o objetivo do produto.',
-      'Scrum Master ou facilitador ajuda o time a manter ritmo e remover bloqueios. Squads maiores podem incluir pesquisa, dados, marketing ou atendimento. Seu papel como designer é conectar pessoa usuária, produto e viabilidade técnica.',
+      'Geralmente em uma squad temos os profissionais abaixo:',
+      'Product Owner (PO): representa os interesses de todos os envolvidos, define as funcionalidades do produto e prioriza os itens do Product Backlog. Garante que o backlog seja visível, transparente e claro para todos, e que o time de desenvolvimento entenda os itens no nível necessário.',
+      'Scrum Master (SM): ajuda o time a analisar a priorização do backlog, monitorar o andamento da sprint e refinar os itens. O Product Owner se compromete a não impor novos requisitos ao time durante a sprint em andamento.',
+      'Desenvolvedores: serão seus aliados para construir uma boa experiência do produto. Vão se dividir em especialidades como front-end e back-end, codar e implementar o que foi definido com o designer e a squad.',
+      'Quality Assurance (QA): responsável por testar e avaliar todo o processo e fluxos criados pra garantir a qualidade final do produto. É muito importante ter essa validação antes de passar para produção.',
+      'Designer (UI/UX): será o seu papel como designer responsável do time para garantir uma boa relação entre experiência, qualidade e visual. Dependendo do tamanho da squad, podem entrar pesquisa, dados, atendimento, financeiro, marketing e por aí vai.',
     ],
     seeAlso: [
       { term: 'Backlog', glossarioId: 'backlog' },
@@ -115,8 +121,11 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'squads',
     question: 'Como funciona a comunicação e as cerimônias da squad?',
     answer: [
-      'Daily: alinhamento rápido sobre progresso e bloqueios. Refinamento: detalha histórias antes da planning. Planning: estima e define o que entra na sprint. Retrospectiva: revisa o que funcionou e o que melhorar.',
-      'Essas reuniões existem para reduzir surpresa e manter todo mundo na mesma página. Participe com clareza sobre suas entregas e peça ajuda cedo quando travar.',
+      'Temos algumas reuniões de alinhamento chamadas cerimônias. Elas funcionam pra facilitar a comunicação frequente entre o time e planejar como será feita a sprint.',
+      'Daily: reunião diária onde o time se reúne por alguns minutos para contar o que anda fazendo. A ideia é deixar claro se alguém precisa de ajuda para não perder tempo e prejudicar a sprint.',
+      'Refinamento: alinhamento prévio para contextualizar as histórias que vão entrar na sprint, explicá-las brevemente e iterar antes da planning, para evitar que a próxima reunião seja muito longa e cansativa.',
+      'Planning: reunião importante da squad, que pode demorar horas, mas a ideia é que fique entre 1 e 2 horas. As histórias são estimadas pelo time de tecnologia e fatiadas durante a cerimônia. Nesse momento será avaliado o que cabe e será implementado na sprint atual.',
+      'Retro: chegando no fim da sprint o time tem uma retrospectiva, que funciona como feedback em grupo para entender o que foi bom, o que pode melhorar e quais ações tomar na próxima sprint. A ideia é ser um ciclo constante de evolução a cada nova rodada.',
     ],
     seeAlso: [
       { term: 'Daily', glossarioId: 'daily' },
@@ -130,8 +139,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'squads',
     question: 'Como funciona o entregável de uma sprint para o designer?',
     answer: [
-      'Documente discovery e ideação em ferramenta compartilhada (Miro, Notion, Figma). Wireframes e protótipos evoluem conforme validação; compartilhe versões finais com especificação clara para desenvolvimento.',
-      'Registre entregáveis no Jira ou ferramenta similar, amarrando cada item à história da sprint. Depois da implementação, acompanhe se o resultado ficou fiel ao combinado e se a experiência funcionou como esperado.',
+      'De forma geral você precisa documentar seu processo de discovery e ideação inicial. Pode ser feito no Miro, Whimsical, Notion ou qualquer outro local compartilhado. Estruture e mapeie suas ideias e desenvolvimento por lá. Isso será bacana de ser compartilhado como um possível entregável de estudo e análise.',
+      'Depois, quando começar a montar wireframes e protótipos, você nem sempre vai precisar detalhar e compartilhar tudo. É importante validar os principais insights do teste de usabilidade e, sendo aprovado, compartilhar o protótipo final para os devs junto com um possível handoff, para que seja possível inspecionar estilos.',
+      'Você provavelmente também vai precisar reunir esses entregáveis dentro de alguma plataforma de gestão de times como o Jira. Lá terão as histórias da sprint e é importante especificar cada entregável para que fique claro para todos do time e de fácil acesso.',
+      'Depois de entregue e aprovado, não deixa de acompanhar o andamento da tarefa após a implementação pra garantir que deu tudo certo e teve uma avaliação positiva.',
     ],
     seeAlso: [
       { term: 'Handoff', glossarioId: 'handoff' },
@@ -147,8 +158,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'Qual a diferença entre júnior, pleno e sênior?',
     answer: [
-      'A distinção passa muito por autonomia e maturidade. Júnior aprende com orientação, faz perguntas e entrega com apoio. Pleno conduz projetos com mais independência e menos supervisão constante.',
-      'Sênior amplia o olhar para o coletivo: compartilha conhecimento, influencia decisões de produto e ajuda o time a evoluir. Todos os níveis entregam valor; o que muda é quanto contexto e direcionamento você precisa para chegar lá.',
+      'Pra mim é uma questão de maturidade. Todos os níveis devem ser capazes de projetar entregáveis válidos para a empresa de alguma forma, mas com a variável de tempo e acompanhamento.',
+      'Um júnior pode não saber como fazer alguma coisa, mas vai perguntar e ser guiado por alguém mais experiente e, com isso, conseguirá fazer algo novo e aprender com essa experiência. Um pleno consegue cuidar de um projeto de forma mais autônoma.',
+      'A linha tênue entre pleno e sênior, ao meu ver, se dá no jeito de pensar. Um sênior deve pensar mais no coletivo de forma abrangente: na visão do time, em compartilhar conhecimento com os demais, pensar no todo.',
     ],
   },
   {
@@ -157,8 +169,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'Qual o nível de cobrança no dia a dia de uma profissional júnior?',
     answer: [
-      'Depende da cultura da empresa, mas a expectativa costuma ser proporcional ao nível: acompanhamento, feedback frequente e entregas dentro do ritmo da squad. Você foi contratada pelo potencial que demonstrou, mesmo ainda em aprendizado.',
-      'Se sentir sobrecarga, converse com sua liderança antes que o prazo estoure. Travar em dúvida faz parte; pesquisar, pedir ajuda e registrar aprendizados mostra maturidade.',
+      'Depende da empresa e da cultura, mas no geral as exigências serão balanceadas de acordo com o nível do profissional. Isso não quer dizer que o júnior não será avaliado, mas a ideia é que ele tenha acompanhamento junto do time e de profissionais mais experientes pra ajudar e orientar nessa jornada.',
+      'Sobre entregáveis e prazos, também depende do ritmo do time. Sua qualificação para ter sido aceito na vaga mostra que você é capaz de entregar com qualidade, porém sob orientação. Então mostre sua presença, aproveita pra aprender, trocar e entregar o que foi pedido.',
+      'Se acha que está ficando sobrecarregado logo no começo, vale avisar e compartilhar seu sentimento. Não aceite algo que você acha que não vai conseguir entregar: seja sincero. Às vezes é mais questão de conversar do que de um prazo específico. E não tem problema travar ou ficar na dúvida de como seguir. Pesquise, tire dúvidas e lembre que estamos aqui pra te ajudar sempre que possível nos [canais oficiais da comunidade](/comunidade).',
     ],
     seeAlso: [{ term: 'Squad', glossarioId: 'squad' }],
   },
@@ -168,8 +181,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'Como lidar quando as expectativas no trabalho diferem do processo seletivo?',
     answer: [
-      'Mapeie o que mudou: escopo, prazo, ferramentas ou postura esperada. Converse com liderança para realinhar o que é razoável no seu nível atual e o que pode ser desenvolvido com tempo.',
-      'Alinhamento resolve muita coisa. Se, mesmo assim, o ambiente não combina com seu momento ou impacta sua saúde, buscar outra oportunidade também é uma decisão válida. Reclamar sem agir raramente melhora o cenário.',
+      'Tente entender quais são os gaps entre as expectativas que foram criadas no processo seletivo e as expectativas que estão surgindo. Entenda quais estão muito fora das suas capacidades ou do escopo de trabalho.',
+      'Converse com sua liderança, coordenação ou supervisão sobre essas expectativas e alinhe o que for necessário. Alinhamento é tudo! Mas caso ainda assim você se sinta insatisfeito, talvez seja hora de procurar uma nova oportunidade e encontrar um local que te motive a continuar crescendo.',
+      'Nem sempre depende só de você. Às vezes a cultura da empresa não ajuda muito e é preciso mudar por você pra não prejudicar sua saúde mental, motivações e dia a dia. Também é bom evitar se tornar aquele profissional que só reclama, mas continua no mesmo ambiente sem fazer nada para reverter o cenário. A gente sabe, ou deveria saber, o que é melhor pra nós mesmos, então bora correr atrás disso!',
     ],
   },
   {
@@ -178,8 +192,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'As empresas investem no aprendizado de profissionais júniores?',
     answer: [
-      'Varia bastante. Empresas que contratam júnior com intenção real tendem a oferecer mentoria interna, acesso a cursos, revisões de design ou budget para formação. Outras esperam que você aprenda sozinha no corre.',
-      'Na entrevista, pergunte como funciona o onboarding e se existe espaço para evolução. Pesquise a cultura da empresa e o que ex-funcionários comentam sobre desenvolvimento de carreira.',
+      'Uma das coisas que varia de empresa pra empresa, dependendo da maturidade e estrutura. No geral, empresas que estão buscando profissionais júniores já mostram um pouco mais de maturidade pelo simples fato de entenderem a necessidade de contribuir com o crescimento saudável do mercado e evitar a sobrecarga de sêniors e leads.',
+      'Quanto maior for essa noção, mais provável que a empresa queira investir em orientação e trazer conhecimentos mais acessíveis para todo o time de design. Por isso sempre vale pesquisar sobre a empresa e buscar saber um pouco mais sobre sua cultura e valores.',
     ],
   },
   {
@@ -188,8 +202,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'O que uma júnior deve evitar no dia a dia?',
     answer: [
-      'Evite virar profissional tarefeira: só executar o pedido sem questionar, sem propor melhorias e sem mostrar interesse pelo produto. Iniciativa equilibrada faz diferença.',
-      'O outro extremo também atrapalha: sumir do radar, não responder mensagens ou não pedir ajuda quando travar. Visibilidade saudável, perguntas frequentes e participação nas conversas do time constroem confiança.',
+      'Se acomodar com a rotina e virar um profissional tarefeiro, ou seja, aquele que só faz o que é pedido, que não tem interesse e falta de iniciativa para puxar alguma coisa sozinho. Você não precisa se mostrar presente o tempo todo, mas o contrário disso, estar ausente demais, pode ser prejudicial pra você sim.',
+      'Visibilidade é muito importante, principalmente pra quem tá começando. A dica é conversar bastante com o time e supervisores, tirar dúvidas e se mostrar participativo sempre que possível.',
     ],
   },
 
@@ -200,8 +214,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'remoto',
     question: 'Como funciona o trabalho remoto?',
     answer: [
-      'Pode ser total, sem previsão de retorno ao escritório, ou híbrido, com alguns dias presenciais. As responsabilidades são as mesmas; o que muda é a comunicação assíncrona, reuniões por videochamada e ferramentas de colaboração online.',
-      'Organize rotina, ambiente de trabalho e limites entre vida pessoal e profissional. Documentar decisões e manter o time informado compensa a falta de conversa informal no corredor.',
+      'Ele pode ser full, ou seja, um trabalho remoto completo sem prazo para acabar, onde você terá que se adaptar com a rotina e comunicação à distância e poderá trabalhar independente da sua localidade. Ou parcial, onde existe home office a cada tantos dias da semana e você precisará comparecer de vez em quando na empresa.',
+      'O trabalho remoto funciona da mesma forma que o trabalho presencial, porém as ferramentas estarão mais presentes no dia a dia, como as de comunicação e co-criação.',
     ],
   },
   {
@@ -210,8 +224,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'remoto',
     question: 'Existe restrição para contratar júnior em trabalho remoto?',
     answer: [
-      'Não há regra que proíba, mas algumas empresas hesitam porque acham mais difícil acompanhar quem está começando à distância. Outras já têm onboarding remoto maduro e funcionam muito bem.',
-      'Priorize vagas que deixem claro como será a mentoria, a frequência de feedback e os canais de dúvida. Na entrevista, pergunte como designers júniores são integrados ao time virtualmente.',
+      'Não existe uma regra que proíba, porém o que acontece é empresas terem receio em contratar profissionais muito iniciantes de forma remota por não terem um controle maior das atividades e por muitas delas ainda não serem amadurecidas o suficiente para gerenciar de forma online.',
+      'Por isso procure por empresas que têm um diálogo aberto, acessível e que realmente estejam dispostas a dedicar algum tempo para te orientar e te ajudar a trilhar essa jornada como iniciante.',
     ],
   },
 
@@ -222,8 +236,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'No LinkedIn, coloco UI, UX ou UI/UX no título?',
     answer: [
-      'Para SEO e clareza, um título focado costuma funcionar melhor: "UI Designer" ou "Product Designer", por exemplo, com detalhes na seção Sobre. Quem está começando pode usar Product Designer e explicar o mix de UX e UI na descrição.',
-      'Evite listar muitas profissões no título ("Designer | Fotógrafa | Editora"). Recrutadores buscam perfis com direção clara.',
+      'Um bom UI designer, por exemplo, também contribui pra experiência e usa esse conhecimento em UX pra criar interfaces que atinjam bons objetivos. No LinkedIn, compensa mais você manter só um título, como UI Designer, e depois complementar que manja de UX também. Isso pensando em SEO pra ser encontrado por recrutadores.',
+      'Agora, pensando para quem está começando e ainda não tem muita noção do foco que deseja seguir, vale colocar Product Designer, que seria um UI e UX, e na descrição especificar com mais detalhes.',
     ],
   },
   {
@@ -232,8 +246,11 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'Como adequar o LinkedIn para transição de carreira?',
     answer: [
-      'Preencha perfil completo: foto, título alinhado ao objetivo, Sobre com sua história e o que busca, experiências anteriores com habilidades transferíveis e competências relevantes em destaque.',
-      'No Sobre, conecte o que você já fez com design: hierarquia visual do gráfico, organização de projetos, contato com cliente. Ative "Open to Work" se quiser mais visibilidade para recrutadores.',
+      'Por via de regra, tenha um perfil completo e preenchido com todas as suas experiências passadas, cursos, formação acadêmica e habilidades. Os pontos-chave que podem ser trabalhados para ajudar na transição são:',
+      'Título: prefira um título único e conciso, foque na posição que você almeja e retire os títulos antigos que você possa ter tido. O título é o seu posicionamento e é uma das primeiras coisas vistas por recrutadores. Alguém com "UX/UI designer | Fotógrafo | Editor de vídeos | Ilustrador" no título vai aparentar falta de foco e provavelmente será deixado de lado.',
+      'Sobre: talvez uma das partes mais difíceis de preencher, mas com certeza uma das que mais faz alguém se destacar. Deixe claro quem você é, seu momento profissional e o que busca no LinkedIn. Este é um bom momento para conectar como suas experiências anteriores podem agregar à nova posição. Por exemplo: "Como designer gráfico aprendi sobre espaçamentos, proporções e usos de fontes que me trarão uma sólida base para atuar como UI designer". Não é necessário fazer um texto muito grande: na medida do possível, tente ser sucinto. Seja íntegro e verdadeiro.',
+      'Destaques: deixe links, posts e documentos que façam sentido com a vaga que procura. Evite deixar portfólios antigos de outras áreas. Em experiências passadas, coloque uma breve descrição sobre o antigo trabalho e quais atribuições você tinha, de preferência em tópicos. Isso dá pistas de habilidades que podem ser úteis para a nova área.',
+      'Competências: deixe em destaque as que fazem sentido para a vaga. Como provavelmente ainda não terá experiência, coloque as três que mais te interessam e que você esteja estudando mais. Deixe a opção "Open to Work" habilitada: isto deixa seu perfil mais encontrável por recrutadores.',
     ],
   },
   {
@@ -242,8 +259,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'Como estruturar um LinkedIn competitivo?',
     answer: [
-      'Quanto mais completo, melhor: experiências, cursos, projetos, link de portfólio e contatos atualizados. Peça recomendações de colegas de curso, hackathon ou trabalhos anteriores quando fizer sentido.',
-      'Siga empresas, escolas e profissionais da área. Comente posts com contribuição real: opinião, pergunta ou experiência. Presença consistente ajuda mais do que perfil bonito e vazio.',
+      'Quanto mais completo, melhor. Não deixe de colocar suas experiências, projetos paralelos, cursos e afins. Você pode contar um pouco de cada projeto, assegurar-se de que seus contatos e informações estão atualizados e ter algum link que leve para o seu portfólio e/ou projeto mais recente.',
+      'Pedir recomendações também é uma boa pedida caso você tenha feito algum projeto colaborativo e/ou já possua experiência anterior. Também é bacana seguir empresas, instituições de ensino e perfis de profissionais relevantes da área pra acompanhar mais de perto o que rola no mercado, além de participar e contribuir com comunidades da área.',
     ],
   },
   {
@@ -252,8 +269,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'O que significa manter portfólio alinhado ao LinkedIn?',
     answer: [
-      'Se você se apresenta como Product Designer, seus cases precisam refletir esse contexto. LinkedIn caprichado com portfólio desatualizado ou de outra área gera desconfiança na triagem.',
-      'Atualize os dois juntos: novo case publicado, link no perfil; mudou foco para research, ajuste título e destaques. Coerência entre canais passa profissionalismo.',
+      'Significa que se você diz que é Product Designer, precisa ter projetos atuais que remetam a esse contexto. Não adianta fazer um LinkedIn todo caprichado e seu portfólio não refletir isso. Mantenha ambos atualizados constantemente.',
     ],
   },
   {
@@ -265,7 +281,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
       'Criar networking no LinkedIn não difere muito do que seria criar networking no mundo físico: estamos lidando com pessoas, apesar de estarmos vendo apenas uma tela. Um costume muito difundido é pesquisar por uma área e ir adicionando profissionais que aparecerem, mas ter muitos contatos não necessariamente é um bom networking. Nestes casos, mesmo que o outro lado sempre aceite, é muito provável que você vire apenas um número dentro da lista de contatos, sem qualquer valor para o dono do perfil.',
       'A verdade é que não existe uma fórmula única para se criar um bom networking, mas bom senso e educação são sempre bem-vindos: trate os outros como você gostaria de ser tratado.',
       'Há algumas abordagens que podem ajudar a conseguir engajar uma boa conversa. Pergunte sobre a empresa ou a área em que a pessoa trabalha. Como complemento, peça referências de conteúdo. Comente algum artigo, trabalho ou post que alguém tenha feito, trazendo impressões, questões ou complementos para gerar discussão. Você pode pedir feedback sobre o portfólio. Faça correlações entre experiências suas e da pessoa para trazer pontos de interesse mútuo.',
-      'Independente da forma que resolver abordar um novo contato, lembre-se de contar um pouco da sua própria trajetória para que a pessoa saiba com quem está falando. Ninguém é obrigado a te fazer nenhum favor, então pedidos de feedback de portfólio, por exemplo, devem ser feitos com muito cuidado e nunca cobrar que a pessoa te responda. E não espere só receber: sempre que possível, traga também algo a oferecer aos seus contatos.',
+      'Independente da forma que resolver abordar um novo contato, lembre-se de contar um pouco da sua própria trajetória para que a pessoa saiba com quem está falando. Ninguém é obrigado a te fazer nenhum favor, então pedidos de feedback de portfólio, por exemplo, devem ser feitos com muito cuidado e nunca cobrar que a pessoa te responda. E não espere só receber: sempre que possível, traga também algo a oferecer aos seus contatos. No final, é como a Viviane Delvequio fala: [Seja uma história](https://medium.com/ux-globo-com/voc%C3%AA-me-adicionou-no-linkedin-nos-%C3%BAltimos-6-meses-ent%C3%A3o-voc%C3%AA-fez-parte-de-um-experimento-20a471399543).',
     ],
   },
   {
@@ -274,8 +290,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'linkedin',
     question: 'Posso incluir projetos de curso, hackathon ou voluntariado no LinkedIn?',
     answer: [
-      'Sim, e vale muito. Use a seção Projetos para cases de curso, hackathon ou ONG, com descrição do desafio, seu papel e link quando houver. Associe ao curso ou evento correspondente.',
-      'Experiência não remunerada ainda é experiência prática. Mostra iniciativa e processo, principalmente para quem está montando os primeiros cases.',
+      'Colocar é preciso! Você pode colocar como experiência por ser algo que está construindo mesmo que não seja de forma remunerada. Projetos de curso, estudos de caso, podem ir na área de Projetos do LinkedIn e linkar com algum dos cursos que fez, dando mais detalhes do andamento do projeto e metodologias utilizadas.',
+      'O mesmo vale para projetos de voluntariado e hackathons. Vá no seu perfil do LinkedIn e clique em Adicionar seção > Projetos. Preencha as especificações do projeto e faça um link atrelado ao curso, workshop ou evento desejado, que precisa ser preenchido previamente para ser possível fazer a associação.',
     ],
   },
 
@@ -286,8 +302,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'O que não pode faltar no currículo?',
     answer: [
-      'Breve apresentação e objetivo, experiências relevantes para a vaga, habilidades (incluindo as que está desenvolvendo), formação, cursos e link de portfólio ou projetos.',
-      'Liste ferramentas que você usa de fato (Figma, Miro, Notion). Informe idiomas além do português. Hierarquia visual clara, fontes legíveis e PDF leve facilitam a leitura rápida do recrutador.',
+      'Um pouco sobre você e suas principais aspirações; suas experiências anteriores, caso tenha, liste as principais que forem válidas mencionar para aquela vaga em específico; suas habilidades e habilidades ainda em progresso; cursos e educação; seus projetos paralelos e voluntariado.',
+      'Deixe destacado o que você já fez com acesso rápido para portfólio e projetos que mostrem seus processos e entregáveis. Comente o que sabe e tem estudado, liste as ferramentas que usa (evite citar as que não usa com frequência), quais cursos fez e se sabe algum idioma. Português fluente não é necessário informar.',
+      'Importante também pensar na hierarquia de informação: espaçamento entre os elementos, tamanho e formato de fontes não exageradas. Um CV simples, bem diagramado e com boas informações já é o suficiente.',
     ],
   },
   {
@@ -296,8 +313,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'O que devo deixar de fora do currículo?',
     answer: [
-      'Evite barras de porcentagem de domínio de ferramentas: parecem precisas, mas quase nunca convencem. Não liste software que você mal conhece ou que não tem relação com a vaga.',
-      'Textos longos e blocos densos cansam na triagem. Seja concisa: menos ruído, mais sinal sobre o que você sabe fazer hoje.',
+      'Vale evitar aquelas barrinhas de porcentagem sobre quanto você manja de alguma ferramenta específica. Pode parecer visualmente bacana, mas na prática não é muito bem visto. Coloque apenas ferramentas que você tem conhecimento e/ou sabe se virar. Se você não se sente seguro com alguma delas, é só não colocar.',
+      'Também não há necessidade de colocar ferramentas que você conheça, mas que não tenham nada a ver com a vaga que está aplicando. Evite textos muito longos ou explicações não muito claras. Tente ser o mais conciso possível: menos é mais.',
     ],
   },
   {
@@ -306,8 +323,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'Currículo simples ou design chamativo para UX?',
     answer: [
-      'Formato simples e bem diagramado costuma performar melhor. Layout muito elaborado pode roubar atenção do conteúdo, que é o que importa: experiência, processo e clareza.',
-      'Seu CV precisa ser legível para quem tria dezenas por dia. Pode ter identidade visual leve, mas priorize leitura rápida sobre firula.',
+      'Polêmico. Ao meu ver, o formato simples funciona muito bem. O design chamativo pode acabar levando a atenção para o que não importa. O foco deve ser o seu conteúdo sempre: experiências e habilidade.',
+      'Isso não significa que o CV não possa ser bonito, mas procure não exagerar nas cores, diagramação e firulas. Afinal, estamos desenhando um CV sobre nós, porém ele precisa agradar antes de tudo outras pessoas, não nós mesmos. Então quanto mais simples, mais chances de se chegar lá.',
     ],
   },
   {
@@ -316,8 +333,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'Carta de apresentação é necessária?',
     answer: [
-      'Quando a vaga oferece campo de mensagem ou você envia candidatura por e-mail, escreva sim. Alguns parágrafos sobre quem você é, por que quer aquela vaga e o que traz de diferente valem mais do que só anexar PDF.',
-      'Personalize por empresa. Texto genérico copiado denuncia falta de interesse. Trate como conversa inicial com a empresa.',
+      'Quando estiver se aplicando em uma vaga que tem a opção de incluir uma carta, sempre vale preencher sim. A "carta" nada mais é do que um textinho pra contar um pouco sobre você de forma mais casual e deixar claro seus objetivos e porque você acredita ser uma boa escolha pra vaga, o famoso vender o peixe.',
+      'O mesmo vale para quando você se aplica pra uma vaga por e-mail e envia seu CV ou portfólio. É muito importante fazer essa apresentação no e-mail e não apenas enviar seus links. Isso deixa você melhor apresentável, as pessoas podem te conhecer um pouquinho melhor e você aproveita pra reforçar seu discurso e se destacar.',
     ],
   },
   {
@@ -326,8 +343,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'Posso colocar mentoria no currículo?',
     answer: [
-      'Programas de mentoria contínua podem entrar em formação ou experiência complementar, com nome do programa e mentora. Mentoria pontual de uma sessão não precisa ocupar espaço no CV.',
-      'Você pode compartilhar aprendizados da mentoria em post no LinkedIn ou no case relacionado. Priorize mostrar evolução concreta em post ou case.',
+      'Se você estiver participando de algum programa de mentoria contínua, pode colocar sim, indicando o nome do programa e a pessoa mentora. Da mesma forma como a pessoa mentora pode indicar que faz mentorias para o programa.',
+      'Se for uma mentoria única, acho que não tem necessidade de citar, mas pode compartilhar como atividade no seu LinkedIn, por exemplo, sobre seus aprendizados e experiência com a mentoria.',
     ],
   },
   {
@@ -336,8 +353,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'cv',
     question: 'Vale indicar eventos inscritos ou participados no currículo?',
     answer: [
-      'Eventos com workshop prático ou trilha aplicável podem aparecer em formação ou projetos, se reforçarem uma habilidade concreta. Lista longa de palestras assistidas raramente muda a triagem.',
-      'Para meetups e conferências, atividades no LinkedIn costumam ser canal melhor. No CV, priorize o que gerou case, certificado ou skill demonstrável.',
+      'Sobre eventos, também podem ser compartilhados nas suas atividades no LinkedIn, mas não acho que faz sentido indicar no CV, a não ser que seja um evento com workshop ou trilhas com aplicação prática.',
     ],
   },
 
@@ -348,8 +364,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Portfólio faz diferença para vagas de iniciante?',
     answer: [
-      'Faz, e muito. Muitas empresas usam portfólio como filtro antes da entrevista. CV sem link ou case desatualizado dificulta o retorno, mesmo com boa formação.',
-      'Invista tempo em poucos cases bem contados em vez de muitas telas soltas. Processo claro pesa mais que visual bonito sem contexto.',
+      'Com certeza! Muita gente acredita que apenas se aplicando para uma vaga e enviando um CV simples já é o suficiente para ser chamado para a entrevista, ou enviando um portfólio desatualizado, mas na prática dificilmente isso vai acontecer e não é recomendado.',
+      'A maioria das empresas pega o portfólio como fator eliminatório e essencial pra decidir se vale a pena entrar em contato contigo ou não. Por isso é muito importante pensar nele com carinho e caprichar nos cases que você vai destacar.',
     ],
   },
   {
@@ -358,8 +374,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Como montar portfólio sem experiência profissional em UX?',
     answer: [
-      'Projetos de curso, redesign de app real, melhoria de fluxo do seu dia a dia e voluntariado contam quando bem documentados. O artigo "Como montar um portfólio de UX se eu ainda não trabalho com UX?" no brasil.uxdesign.cc traz um passo a passo útil.',
-      'Seja honesta sobre a origem do projeto. Recrutadores querem ver como você pensa, pesquisa e decide, além do visual final.',
+      'Essa pergunta sai tanto que tem até artigo só pra ela: [Como montar um portfólio de UX se eu ainda não trabalho com UX?](https://brasil.uxdesign.cc/como-montar-um-portf%C3%B3lio-de-ux-se-eu-ainda-n%C3%A3o-trabalho-com-ux-c5ec6434de20) Vale dar uma olhada.',
+      'A grande maioria dos profissionais de UX que estão hoje no mercado já se depararam com essa situação. É um momento de pânico, de certa forma. Você percebe que, para aplicar para uma vaga de UX, "portfólio" é quase sempre um campo obrigatório. Vale dar uma olhada também na nossa sessão de [Voluntariado](/voluntariado) e nas trilhas de portfólio do [Guia](/guia/trilhas/portfolio).',
     ],
   },
   {
@@ -368,8 +384,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Como estruturar meu primeiro case de portfólio?',
     answer: [
-      'Escolha um problema claro, faça desk research, benchmark, entrevistas ou testes simples, wireframes, protótipo e validação. Documente cada etapa com texto e imagens.',
-      'Conte o que aprendeu e o que faria diferente hoje. Um case completo e modesto supera telas bonitas sem narrativa. Troque feedback nos canais da VagasUX antes de publicar.',
+      'Começa pelo começo: procura seguir um passo a passo de algum curso ou de alguma iniciativa. Pensa no desafio que você vai querer focar, que problema pensa em resolver e começa a pesquisar bastante sobre isso. Quando achar que já tem um mínimo de informações necessárias (Desk Research), procura por referências relacionadas com o seu objetivo e faz uma pesquisa por principais funcionalidades e possíveis insights (Benchmarking).',
+      'Depois você vai precisar pensar em Matriz CSD, Personas, Jornada do Usuário e por aí vai. Muito importante falar com outras pessoas e pensar em pesquisas quanti e quali pra ter mais embasamento no seu estudo. Tendo isso feito, parta para o wireframe em baixa fidelidade e comece a planejar como você imagina a sua solução.',
+      'Você pode criar um protótipo navegável e fazer um teste de usabilidade para validá-lo. Vale compartilhar os insights que você notar com esse estudo. Depois de avaliar tudo, capricha na UI e nos ajustes finais. Não esquece de contar o que você aprendeu com o estudo e quais seriam os próximos passos caso fosse um projeto a ser implementado de fato. Parece simples, mas essas etapas levam tempo e cada vez que você pratica aprende um pouco mais. Se dedique em cada etapa e faça com calma.',
+      'Não esqueça de envolver a [comunidade](/comunidade) para trocar feedbacks e tirar dúvidas sempre que achar válido. Estamos aqui pra isso.',
     ],
     seeAlso: [
       { term: 'Wireframe', glossarioId: 'wireframe' },
@@ -382,8 +400,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Como preparar o portfólio para candidaturas?',
     answer: [
-      'Destaque processo de ponta a ponta: problema, papel, colaborações, entregas e resultado ou aprendizado. Deixe navegação simples e links testados em mobile.',
-      'Pergunte a si mesma: consigo entender o case em cinco minutos? O visual reflete meu nível atual? Cada estudo deve mostrar como você raciocina e toma decisões.',
+      'Destaque sua experiência: inclua estudos de caso que destaquem sua gama de experiências e habilidades. Mostre seu processo de ponta a ponta e com clareza sobre o problema do usuário e a solução final. Isso pode incluir desde esboços, wireframes, protótipos a mockups finais.',
+      'Esclareça sua função: identifique claramente sua função e impacto em cada estudo de caso, principalmente se foi um trabalho em grupo, e destaque quaisquer colaborações multifuncionais.',
+      'Inclua recursos visuais e explicações: compartilhe recursos visuais e texto em cada estudo de caso para descrever todo o seu processo de resolução de problemas. Considere infográficos, diagramas e outros recursos visuais para rapidamente comunicar ideias e contar uma história.',
+      'Forneça contexto: certifique-se de que o portfólio possa ser visto, que a navegação esteja ok e que fique claro o problema e a solução que você trouxe. Pra simplificar, faça algumas perguntas pra si mesmo: meu portfólio é fácil de acompanhar? É amigável? Cada estudo de caso reflete como eu conduzo meu pensamento de design e processo? O estilo visual reflete meu nível de habilidade e atenção aos detalhes?',
     ],
   },
   {
@@ -392,8 +412,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Quantos cases preciso no portfólio?',
     answer: [
-      'Dois ou três cases completos bastam para iniciante. Qualidade e variedade de contexto valem mais que volume. Mais de cinco pode dispersar quem está triando.',
-      'Se só tem um case pronto, aprofunde esse antes de correr para o próximo. Case único excelente já abre conversa.',
+      'Não tem uma regra, mas seria ideal para quem está começando entre dois a três estudos de caso completos para ser possível analisar a forma que você pensa e trabalha em contextos diferentes. Mais de cinco não é muito recomendado para não perder o foco, a não ser que você já seja um profissional experiente e possua muitos projetos relevantes para apresentar.',
     ],
   },
   {
@@ -402,8 +421,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Mantenho projetos antigos ou retiro do portfólio?',
     answer: [
-      'Seja crítica: trabalho de outra área ou case muito abaixo do seu nível atual pode confundir. Em migração de carreira, portfólio focado em UX/UI costuma funcionar melhor que mistura de tudo.',
-      'Um case recente bem feito vale mais que três antigos fracos. Você pode manter portfólio separado para trabalhos anteriores se ainda forem relevantes para networking.',
+      'Depende do projeto, vale ser crítico consigo mesmo. Se você está migrando da Publicidade para UX, por exemplo, não faz muito sentido deixar seus projetos de direção de arte e gráfico pois não irá contribuir em nada com seu novo foco em UX.',
+      'É importante mostrar consistência no seu objetivo profissional. Se você está em migração pode até ter portfólios separados para mostrar suas experiências anteriores caso ache relevante e deixar um reservado apenas para seus novos projetos de UI/UX. Outra dica é aprender a desapegar. Às vezes um único projeto mais recente, bem feito e caprichado seguindo todas as boas práticas de UX já vale muito mais do que um projeto antigo onde você não tinha ainda uma boa visão e todos os conhecimentos necessários da área.',
     ],
   },
   {
@@ -412,7 +431,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Onde hospedar meu portfólio?',
     answer: [
-      'Opções comuns: Notion (grátis e flexível), Behance (bom para apresentação visual), Figma (protótipo navegável), UX Folio, Medium ou site próprio no WordPress/Squarespace.',
+      'Existem diversas plataformas pra você montar seu portfólio. UX Folio é um dos mais utilizados na área, plataforma simples com um case gratuito e planos pagos depois. Notion é uma boa opção: criar uma página personalizada e deixá-la pública, gratuito e com muitas funções.',
+      'Behance é gratuito e útil para apresentações de cases, com embeds, imagens em largura total, carrosséis e apresentação de slides. Medium é uma forma simples de compartilhar cases como artigo. Figma também permite criar protótipo navegável do portfólio e compartilhar o link. Outras opções: Semplice, Adobe Portfolio, Squarespace, Format e Wix.',
       'Escolha onde você consegue manter e atualizar com facilidade. O melhor formato é aquele que você consegue publicar e manter atualizado.',
     ],
   },
@@ -422,7 +442,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Posso divulgar projetos reais no portfólio com NDA?',
     answer: [
-      'Depende do contrato. Muitas empresas permitem case genérico sem dados sensíveis, blur em informações confidenciais ou foco em processo em vez de telas finais. Quando em dúvida, peça autorização por escrito.',
+      'Depende do contrato e das restrições de divulgação. Vale ler sobre o tema neste artigo: [NDA não me deixa ter portfólio](https://deeploy-me.medium.com/nda-n%C3%A3o-me-deixa-ter-portfolio-7266adcc1e10).',
       'Redesign não oficial, projetos pessoais e estudos de curso preenchem portfólio enquanto você negocia o que pode mostrar de trabalho real.',
     ],
   },
@@ -432,8 +452,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'O que recrutadores querem ver em um portfólio?',
     answer: [
-      'Querem entender como você pensa: qual problema atacou, que alternativas considerou, como validou e o que aprendeu. Telas finais ajudam, mas processo manda.',
-      'Conte história com começo, meio e fim. Mencione limitações de prazo ou escopo e como contornou. Honestidade sobre o que ainda está aprendendo também passa confiança.',
+      'Eles querem entender como você pensa, como lida com problemas e desafios e como funciona o seu processo criativo no geral. Por isso é importante detalhar bem todas as etapas do seu case como se estivesse contando uma história para outra pessoa, com começo, meio e fim.',
     ],
   },
   {
@@ -442,8 +461,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Onde encontrar bons exemplos de portfólios?',
     answer: [
-      'Comunidades de design, Medium, LinkedIn e a própria VagasUX são fontes constantes de referência. Quanto mais você participa, mais encontra cases inspiradores.',
-      'Use referências para aprender estrutura de narrativa e adaptar ao seu contexto. O case da Érika e da Thaísa sobre experiência de pais na busca de ajuda médica é um exemplo citado em mentorias por ser completo e bem contado.',
+      'Nos grupos de design e UX, no Medium, no LinkedIn... quanto mais você segue e participa dessas comunidades, mais vai encontrar boas referências pra se inspirar.',
+      'Mas posso mencionar um case que é um dos meus top indicações nas mentorias: o case da Érika e da Thaísa, por estar impecável e bem completo. Se você pensa em montar um case de UI/UX, vale conferir: [Melhorando a experiência dos pais na busca de ajuda médica para seus filhos](https://hidemi-utida.medium.com/melhorando-a-experi%C3%AAncia-dos-pais-na-busca-de-ajuda-m%C3%A9dica-para-seus-filhos-e5f7b3579652).',
     ],
   },
   {
@@ -452,8 +471,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'portfolio',
     question: 'Hackathon vale a pena para quem está montando portfólio?',
     answer: [
-      'Vale muito. Em dois ou três dias você idea, prototipa e apresenta MVP em equipe, muitas vezes com devs. Simula pressão real de prazo e colaboração multidisciplinar.',
-      'Você não precisa saber codar: entre como designer e conecte-se ao time na dinâmica do evento. O case resultante pode virar item forte no portfólio e no LinkedIn.',
+      'Pra você que está criando um portfólio, é muito válido. Um hackathon costuma rolar em curta duração, dentro de 2 a 3 dias, geralmente próximo do final de semana. Você se inscreve na categoria que mais te interessa, geralmente design, dev e negócios. Basicamente a proposta é implementar uma ideia do começo ao fim em grupo.',
+      'Você não precisa saber codar: apenas participe como designer e encontre um grupo que tenha devs. Geralmente a maioria é dev nos hackathons, então não é uma tarefa difícil. Pra formar os times, a própria gestão do hackathon costuma criar dinâmicas logo no começo. Caso você tenha se inscrito e ainda não tenha um time, procure os responsáveis pela organização.',
+      'A experiência é única, vai ser bem puxado porque o prazo é curto e a proposta é dar o melhor em grupo e quebrar a cabeça pra chegar numa solução. O aprendizado é bem relevante pra ter uma ideia de como criar de forma colaborativa e com tempo limite, próximo do que seria uma experiência real na prática.',
     ],
     seeAlso: [{ term: 'MVP', glossarioId: 'mvp' }],
   },
@@ -465,8 +485,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'Como me portar em uma entrevista?',
     answer: [
-      'Seja você mesma. Chegar na entrevista já significa que portfólio ou CV chamaram atenção. Recrutadores querem conhecer sua forma de pensar com autenticidade.',
-      'Treine contar cases em voz alta, prepare respostas sobre motivação, valores e planos de carreira. Quanto mais entrevistas você faz, mais natural fica. Nervosismo é normal.',
+      'Não priemos cânico! Você precisa ser você mesmo antes de tudo. Lembre-se: se você está fazendo entrevista é porque, no mínimo, gostaram do seu portfólio e CV. Esse pensamento vai te deixar um pouco mais tranquilo.',
+      'Segura o nervosismo e pensa que o recrutador só quer te conhecer e saber que você é gente como a gente. Só não vale tentar passar a imagem de alguém que você não é, ter medo e/ou ficar com vergonha. Timidez e insegurança fazem parte de todos nós, cada um com seu grau, mas isso não pode ser uma barreira pra gente deixar de te conhecer e saber como você pensa e aspira, belê?',
+      'E lembre-se, é apenas um papo aberto. Não tem certo ou errado! Uma coisa que ajuda muito também é treinar. Falar em voz alta sobre projetos e como você contaria sobre eles, sobre sua trajetória, como se vê daqui a alguns anos. Vale treinar o seu storytelling, possíveis perguntas que podem rolar como por que gostaria de trabalhar na empresa, com quais valores se identifica, possíveis defeitos e qualidades e por aí vai.',
+      'E a boa notícia é que quanto mais entrevistas você fizer, mais prática vai ganhando com o tempo, aos poucos vai saber o que é mais bacana de falar, ser mais objetivo e se sentir mais confiante. Não desista!',
     ],
   },
   {
@@ -475,8 +497,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'Vale contar experiências fora de UI/UX na entrevista?',
     answer: [
-      'Sim, especialmente em migração de carreira. Design gráfico, atendimento, educação ou tecnologia trazem habilidades transferíveis: hierarquia visual, empatia, organização, comunicação.',
-      'Contextualize sua jornada, explique por que está migrando e conecte o passado ao que você busca agora. História coerente ajuda o recrutador a te enxergar no papel.',
+      'Se você está em processo de migração e passou para uma entrevista, com certeza o recrutador sabe do seu contexto e vai querer ouvir sua história. Então sim, vale contar brevemente suas experiências anteriores, principalmente se identificar alguma relação que possa ser aproveitada para a área nova.',
+      'Por exemplo, se você veio do design gráfico, tem algumas vantagens por ter noções de hierarquia visual, cores e afins. Mas independente, mesmo que não tenha relação, vale contar também pra contextualizar a pessoa sobre quem você é, sua jornada até aqui e deixar claro seus objetivos profissionais, explicar porque está migrando, suas motivações e o que espera na nova função.',
     ],
   },
   {
@@ -485,8 +507,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'O que costumam perguntar nas entrevistas?',
     answer: [
-      'Motivação para a empresa, visão de carreira, pedido para falar sobre você, walkthrough de cases e perguntas sobre colaboração, feedback e aprendizado.',
-      'Você também pode perguntar: desafios do time, expectativa para júnior, processo de design e direção do produto. Entrevista é conversa de mão dupla.',
+      'Porque você quer trabalhar na empresa? Motivações e interesse. Como você se vê daqui a X anos? Expectativas e planejamento. Pedir para falar sobre você ou contar alguma curiosidade.',
+      'Temas interessantes pra conversar: quais desafios a equipe em que você vai entrar enfrenta; pontos fortes e fracos da equipe; quais características e posturas esperam de você ou de um júnior; para onde a empresa pretende ir nos próximos anos.',
     ],
   },
   {
@@ -495,8 +517,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'Como falar sobre mim na entrevista?',
     answer: [
-      'Misture trajetória profissional, estudos atuais, hobbies que mostram personalidade e o que te atraiu na vaga. Três a cinco minutos objetivos funcionam melhor que monólogo longo.',
-      'Conecte fatos a decisões: por que escolheu design, que projeto te marcou, o que quer aprender nos próximos meses. Autenticidade combina com clareza.',
+      'Vale contar um pouco sobre seus hobbies, sua rotina de estudo, como você conheceu a empresa e chegou na vaga, suas aspirações. Abra o coração e se joga.',
     ],
   },
   {
@@ -505,8 +526,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'E se eu não souber responder alguma pergunta?',
     answer: [
-      'Seja honesta. Dizer que nunca passou por aquela situação, mas explicar o que entende do conceito ou como investigaria, mostra maturidade.',
-      'Recrutadores observam como você reage sob incerteza. Ninguém sabe tudo; curiosidade e transparência pesam mais do que inventar resposta.',
+      'Tranquilo ué! É muito mais a forma como você reage do que de fato se sabe responder ou não. Perguntaram algo que você não sabe? Responde assim: "Acho que eu não sei responder essa. Nunca passei por essa situação, mas tenho noção disso, daquilo..." Aproveita pra ser sincero, contextualizar seu cenário e contar o que você entende no geral, mesmo que não tenha experiência sobre ou não entenda 100%.',
+      'Não sabemos de tudo e tá tudo bem.',
     ],
   },
 
@@ -517,8 +538,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'Por que empresas pedem testes práticos além do portfólio?',
     answer: [
-      'Querem ver como você raciocina em contexto novo, com prazo curto e informação incompleta. Avaliam decisões, comunicação e defesa de ideias junto com o visual final.',
-      'Teste complementa portfólio curado. Mostra soft skills em situação controlada parecida com o dia a dia.',
+      'Nem sempre o portfólio é o suficiente pra entrar em uma empresa. Mesmo ele sendo super necessário, muitas ainda exigem algum tipo de teste ou case pra ser feito. Isso se dá pelo fato de as empresas gostarem de ter provações sobre determinadas skills dos candidatos.',
+      'Geralmente querem entender como você lida com um contexto que não está familiarizado, em um prazo curto, sem muitas informações. Muitos vão pedir pra você apresentar esse case e contar quais foram suas decisões. Com isso a empresa vai julgar as escolhas que você fez, qual foi seu foco e como você vai defender suas ideias, não apenas avaliando a solução final. Assim funciona muito pra entender o lado das soft skills também, além do lado técnico e prático.',
     ],
   },
   {
@@ -527,8 +548,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'Qual o prazo médio para fazer um case em processo seletivo?',
     answer: [
-      'Geralmente de três a cinco dias úteis, às vezes até uma semana. Tempo apertado de propósito: priorize o essencial, pesquisa enxuta, solução focada e apresentação clara.',
-      'Planeje desde o dia um o que entrega em cada etapa. Deixar tudo para a véspera compromete qualidade e sono.',
+      'Geralmente entre 3 a 5 dias, no máximo uma semana. É um tempo relativamente curto mesmo pra você priorizar o que importa, conseguir levantar ideias para o desafio proposto, propor alguma melhoria, aplicar e conseguir validar e compilar isso de alguma forma. Ah, e montar a sua apresentação também.',
+      'Não é fácil mesmo, mas você acostuma, viu? Vale lembrar que é importante pensar no tempo que você terá disponível e planejar desde o primeiro dia os entregáveis que vai conseguir atuar em cada dia pra evitar possíveis imprevistos ou deixar tudo pra última hora e não chegar no resultado ideal.',
     ],
   },
   {
@@ -537,8 +558,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'Como apresentar meu case de teste?',
     answer: [
-      'Slides ou PDF com contexto, problema, processo, solução e próximos passos. Protótipo navegável no Figma ajuda muito, mesmo quando não pedem explicitamente.',
-      'Gravação curta no Zoom explicando o case pode destacar sua comunicação. Suba vídeo em link privado no YouTube em vez de anexar arquivo pesado no e-mail.',
+      'Você pode criar uma apresentação simples contando brevemente sobre você, explicando o problema proposto e mostrando o que te levou a chegar na solução proposta. Desde pesquisa, insights, benchs, referências, protótipo. É sempre bom ter algum protótipo navegável, mesmo que não peçam. Vale tudo, desde que esteja claro e que faça sentido com o que foi pedido.',
+      'Além dos slides em PDF e do protótipo, você pode gravar um vídeo fazendo a apresentação do projeto. Isto vai demonstrar a sua capacidade de comunicação. No Zoom é possível gravar a tela, webcam e áudio tudo ao mesmo tempo. Prefira subir o vídeo no YouTube no privado, ou outra plataforma online, para evitar anexar um video pesado no e-mail de quem for te avaliar.',
     ],
   },
   {
@@ -547,8 +568,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'E se eu quiser melhorar uma área que não foi pedida no desafio?',
     answer: [
-      'Entregue primeiro exatamente o que foi solicitado. Prazo curto pune quem refaz escopo por conta própria. Depois, se sobrar tempo, sugira melhorias extras como evolução opcional.',
-      'Mostrar foco e criatividade dentro do brief passa confiança. Ideias fora do escopo só funcionam quando o pedido principal está resolvido.',
+      'Isso costuma ser um erro frequente nos processos seletivos. O desafio pede A e a pessoa entrega B. Concentre-se no que o case está pedindo, principalmente porque você tem tempo curto. Se é uma melhoria na home do site, faça uma melhoria na home do site.',
+      'Ok, você pode propor ideias inovadoras também caso sobre tempo, mas desde que entregue o proposto. Fez a home do site solicitada? Faça o redesign do que quiser depois, desde que tenha argumentos suficientes para defendê-lo. Assim você mostra que sabe respeitar o que foi pedido, mas também consegue sugerir outras linhas de pensamento.',
     ],
   },
   {
@@ -557,8 +578,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'Fiz um case e não fui aprovada. O que faço com ele?',
     answer: [
-      'Não jogue fora. Revise com calma, complete pesquisa e refinamento que faltaram no prazo apertado e transforme em case de portfólio.',
-      'Cada teste é prática real. Muitos "nãos" precedem o "sim". Use feedback da empresa, se vier, e da comunidade para iterar.',
+      'Poxa, não desanima viu! A gente precisa receber muitos nãos até chegar no sonhado sim. Sabemos que fazer um case não é um processo fácil.',
+      'Uma coisa bacana que você pode fazer é pegar os aprendizados desse teste, tentar completar ele e então colocá-lo no seu portfólio. Pensa que todos os estudos são válidos, desde que tenha um processo criativo relevante pra apresentar: desafio, proposta, validação.',
+      'Se você teve que fazer em três dias naquele prazo corrido que ninguém merece, aproveita pra rever cada etapa com calma e se joga nas pesquisas, refinamentos do protótipo e levantamentos finais. Quanto mais caprichado, melhor.',
     ],
   },
 
@@ -569,8 +591,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Enviei meu case e ainda não tive retorno. E agora?',
     answer: [
-      'Aguarde cerca de uma semana. Empresas recebem muitos candidatos e demoram para organizar etapas. Depois desse prazo, mande e-mail educado perguntando status do processo.',
-      'Enquanto isso, siga aplicando e praticando. Um processo parado não precisa parar sua rotina de estudo.',
+      'Primeiro aguarde um tempo mínimo para isso. Eu diria por volta de uma semana! Sim, é bastante tempo, mas é uma média ok levando em consideração que as empresas lidam com muitos profissionais e geralmente demoram mesmo pra se organizar e retornar.',
+      'Depois disso, se ainda assim não houve retorno, você pode entrar em contato por e-mail para saber um status do processo seletivo e solicitar um retorno.',
     ],
   },
   {
@@ -579,8 +601,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Recebi um "não" sem explicação. Vale pedir feedback?',
     answer: [
-      'Vale tentar, com cabeça fria. Agradeça o retorno e pergunte onde poderia evoluir. Nem sempre respondem por volume ou política interna, mas algumas empresas dão orientações valiosas.',
-      'Feedback específico acelera ajuste de portfólio, CV ou postura em entrevista. Trate como dado para evoluir.',
+      'Antes de tudo, tira alguns minutos pra esfriar a cabeça e refletir. Não é fácil receber um não, mas ele faz parte pra que você entenda o que tá faltando pra chegar no sim :) belê?',
+      'Bom, se a empresa não passou nenhum feedback construtivo que possa te ajudar a entender o motivo da recusa, você sempre pode pedir esse retorno! Não significa que vão responder, mas não custa nada tentar. Você pode enviar um e-mail em resposta agradecendo o retorno e perguntando onde eles identificam que você poderia melhorar. Entender o que não agradou é um bom passo pra reconstruir seus passos e estruturar a casa novamente.',
     ],
   },
   {
@@ -589,8 +611,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Não consegui feedback da empresa. Desisto?',
     answer: [
-      'Não. Compartilhe case ou candidatura nos [canais da VagasUX](/comunidade). A comunidade costuma devolver olhar construtivo quando a empresa não devolve.',
-      'Busque também mentorias gratuitas e troca entre pares. Feedback externo revela pontos cegos que você não enxerga sozinha.',
+      'Nunca. Caso a empresa não retorne, não tem problema. Esquece ela! Você pode compartilhar seus estudos com a gente nos [canais oficiais da comunidade](/comunidade) e com certeza alguém vai te dar esse feedback que ficaram te devendo. Tamo aqui pra isso :)',
     ],
   },
   {
@@ -599,8 +620,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Não tive retorno de nenhuma empresa. O que fazer?',
     answer: [
-      'Revise portfólio e CV com alguém da área. Às vezes o bloqueio está na triagem: link quebrado, case confuso ou título genérico. Busque feedback na [comunidade](/comunidade) ou com mentorias da VagasUX.',
-      'Ajuste candidaturas, aumente consistência e documente aprendizados a cada ciclo. Mercado exige paciência; melhorar processo aumenta chance de resposta com o tempo.',
+      'Se você não está tendo retorno algum, talvez seja a hora de conversar com profissionais da área que se disponibilizam a fazer mentorias gratuitas pra tentar entender o que pode estar acontecendo. Às vezes pode ser o seu portfólio ou algo no CV que está afastando esse contato inicial.',
+      'Fique tranquilo(a) que uma hora vai dar certo, só precisa ir com calma e sempre buscar por esse tipo de feedback para aumentar suas chances. A [comunidade](/comunidade) e as mentorias da VagasUX são bons pontos de partida.',
     ],
   },
 
@@ -611,8 +632,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Por que tantas vagas de UX pedem UI?',
     answer: [
-      'Muitas empresas buscam generalistas que contribuam em todo o fluxo, da pesquisa ao visual, por limitação de headcount. Saber wireframe, protótipo e noções de interface amplia onde você consegue entrar.',
-      'Dentro do time, o foco pode migrar para research, conteúdo ou sistema conforme a necessidade. Versatilidade inicial abre porta; especialização pode vir depois.',
+      'O mercado é meio bagunçado, fato. Muitas vagas são mais para generalistas do que especialistas, por isso tem essa forte questão da entrega final. Nem todas as empresas (a maioria) tem uma estrutura que possa ter especialistas em cada área, como UI, Writer, Researcher, etc. Então esse é o mínimo para uma pessoa de UX entrar em uma vaga.',
+      'Entender de toda a cadeia é diferente de cobrar que você saiba programar, entre outros, que seria um universo totalmente diferente e que precisa de dedicação a todo momento. É interessante ter uma noção de wireframes, por exemplo. Protótipo em baixa ou média fidelidade são bem úteis para o UX saber executar para que consiga passar ideias e direcionar a arquitetura da informação e resultados, mas não é um fator tão dominante. Então vai depender muito do contexto da empresa, time e época que se está trabalhando.',
+      'Assim é muito mais fácil você entrar em uma oportunidade. Já dentro da empresa, você pode ser exigido mais para uma área que outra, mas tudo depende da estrutura da empresa. Por isso geralmente é importante que você consiga contribuir com todo o processo mesmo que minimamente.',
     ],
     seeAlso: [
       { term: 'UX', glossarioId: 'ux' },
@@ -626,8 +648,20 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Quais habilidades o mercado exige de uma júnior?',
     answer: [
-      'Soft skills: escuta ativa, feedback, colaboração, comunicação clara, curiosidade, organização e vontade de aprender. Hard skills: Figma ou similar, fluxos, wireframes, noções de pesquisa e acompanhamento de entrega.',
-      'Não precisa dominar tudo. Precisa demonstrar base sólida, abertura para orientação e capacidade de documentar raciocínio.',
+      'Você precisa ter um mix entre soft skills e hard skills pra atender a uma vaga júnior. Vamos lá! 🌻 Soft skills:',
+      '• Escuta ativa: saber ouvir e trocar conhecimentos com o time.',
+      '• Prática de feedback: dar e receber feedbacks de forma construtiva, sem levar para o lado pessoal.',
+      '• Colaboração: trocar conhecimento e experiências com o time, se mostrar disponível para ajudar e se envolver e mostrar interesse.',
+      '• Comunicação: a forma que você fala e se apresenta, a forma que envolve outras pessoas e se engaja; a clareza com que informa um processo/solução, tudo é válido.',
+      '• Aprendizado constante: estamos sempre aprendendo, não deixar de acompanhar a evolução do mercado, se mostrar presente e aperfeiçoar suas habilidades ao longo da sua jornada.',
+      '• Autonomia: ter disposição para sugerir, criticar, criar e implementar processos e ferramentas junto com o time.',
+      '• Organização: não é uma obrigação, mas sempre muito bem-vindo quando temos uma organização pessoal, nos nossos arquivos (e camadas rs), processos e dia a dia.',
+      '💪 Hard skills: vai depender da área de atuação, mas pra responder vamos considerar um Product Designer que engloba UI e UX, ok?',
+      '• Ferramenta: manjar de alguma ferramenta de criação e prototipação (Figma, Adobe XD, Sketch). Não precisa saber 100%, importante já ter usado e ter uma boa noção.',
+      '• Fluxos: ter alguma experiência com criação para web/app (pode ser cases de cursos e voluntariado) e ser capaz de produzir fluxos, wireframes e telas em diferentes níveis de fidelidade.',
+      '• Prioridades: procurar entender e trazer as necessidades dos usuários e desenvolver novas funcionalidades para o produto com base no backlog (pendências) do time.',
+      '• Pesquisas: propor pesquisas pensando no planejamento e execução de entrevistas, testes de usabilidade e métodos quantitativos e envolver o time para participar e acompanhar (sempre quando necessário).',
+      '• Acompanhamento: acompanhar continuamente o que foi entregue e ficar de olho nas métricas do produto junto com o time.',
     ],
   },
   {
@@ -636,8 +670,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Como uma júnior pode se destacar e crescer na empresa?',
     answer: [
-      'Participe das conversas, peça feedback, ajude colegas quando puder e mostre evolução nos entregáveis. Cursos e estudo contínuo complementam, mas presença no time constrói reputação.',
-      'Documente aprendizados, compartilhe referências úteis e proponha melhorias pequenas e factíveis. Crescimento vem de consistência ao longo do tempo, com entregas regulares e aprendizado acumulado.',
+      'Se mostrando interessado e presente com seu time e pessoas próximas a você, praticando as soft skills mencionadas na pergunta anterior e aperfeiçoando sempre que possível suas hard skills, seja com cursos, estudo próprio e desenvolvimento no dia a dia.',
     ],
   },
   {
@@ -646,8 +679,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Existe tempo médio para me adaptar às funções?',
     answer: [
-      'Varia por pessoa, produto e empresa. Muitos times organizam expectativa em ciclos de sprint, com acompanhamento mais próximo nos primeiros meses.',
-      'Permita-se curva de aprendizado. Perguntar cedo, registrar processos e revisar entregas com mentores internos encurta a adaptação.',
+      'Varia muito. Depende de cada pessoa, time e contexto. Mas no geral no dia a dia a empresa costuma definir as funções do time em conjunto e com base na sprint (geralmente dentro de duas semanas). Se você é um designer iniciante, a quantidade de entregáveis será considerada dentro desse prazo pré-estipulado, assim como provavelmente haverá algum tipo de acompanhamento.',
     ],
     seeAlso: [{ term: 'Sprint', glossarioId: 'sprint' }],
   },
@@ -657,8 +689,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Vou saber fazer tudo que me pedirem?',
     answer: [
-      'Provavelmente não, e tudo bem. Júnior aprende fazendo, com apoio. Quando surgir tema novo, diga o que já sabe, peça referências e envolva o time.',
-      'Ansiedade com tarefa inédita é comum. Posicionamento honesto e disposição para investigar contam tanto quanto experiência prévia.',
+      'Nem sempre. E você precisa saber se posicionar e deixar isso claro. Você pode já ter feito alguns projetos de estudo e provado que dá conta, mas não necessariamente tem a experiência de alguém com anos de experiência na área. É normal "travar" em coisas que você nunca fez ou fez pouco.',
+      'Por exemplo, te pedem uma pesquisa de Discovery. Você já fez uma vez em um projeto seu, mas agora precisa implementar junto com sua squad. Vai ser a mesma coisa que você fazendo sozinho(a)? Não. Por isso pode gerar uma ansiedade que é normal. Na prática vai funcionar da mesma forma, mas você vai precisar envolver outras pessoas pra te ajudarem nesse processo. Sejam elas designers, POs ou devs.',
+      'Não tenha medo também de dizer que nunca fez algo. Você pode pedir ajuda, questionar, tirar dúvidas e pesquisar mais sobre o assunto para tentar aplicar. O importante é deixar claro sua disposição para participar e construir uma experiência bacana pro seu usuário final em conjunto com seu time. E sempre tenha em mente que o aprendizado é contínuo, por isso ninguém sabe de tudo (se diz que sabe, está mentindo 👀 ahah).',
     ],
     seeAlso: [{ term: 'Discovery', glossarioId: 'discovery' }],
   },
@@ -668,8 +701,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Estou preparada para integrar uma equipe de design?',
     answer: [
-      'Se você praticou, tem cases que mostram processo e já recebeu feedback externo, pode se candidatar. Prontidão absoluta não existe; o time também espera aprendizado no cargo.',
-      'Candidate-se mesmo quando a vaga pede mais do que você tem hoje, especialmente se cobrir boa parte dos requisitos. Mulheres tendem a se autoexcluir cedo demais. Vá e aprenda no caminho.',
+      'Se você já pesquisou e praticou bastante sobre a área e o que ela exige, tem alguns projetos para mostrar seu processo e já pediu alguns feedbacks sobre eles, então, sim! Você está oficialmente pronto(a) pra se aplicar para vagas e integrar um time. Não deixa a insegurança falar mais alto, nunca vamos estar 100% prontos, e tá tudo bem.',
+      'A ideia é a gente ter praticado bastante mesmo pra ter uma noção boa do básico, mas será no dia a dia que vamos aprender na prática mesmo, entender mais sobre a rotina, squads, produto e por aí vai. Não espere atender todos os requisitos de uma vaga para se aplicar (essa dica vale principalmente pra vocês, viu mulheres 💜💪). Vamos ser menos exigentes com nós mesmos.',
     ],
     seeAlso: [{ term: 'Squad', glossarioId: 'squad' }],
   },
@@ -679,8 +712,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Preciso saber design gráfico para trabalhar com UX/UI?',
     answer: [
-      'Fundamentos visuais ajudam: hierarquia, cor, tipografia, grid. Quem vem do gráfico tem vantagem inicial, mas dá para construir base com material focado em interface digital.',
-      'Estudo contínuo faz parte da área. Priorize conteúdo aplicado a produto digital em vez de tentar dominar todo o universo gráfico de uma vez.',
+      'Isso é muito relativo. Existem princípios de hierarquia visual que vem dessa parte de design gráfico e é sim muito necessário conhecer seus fundamentos, mas é possível ver e ler muito material voltado para interfaces e construção no meio digital que será mais relevante.',
+      'É bacana você buscar conhecimentos sobre, sempre vai facilitar o seu trabalho! Como cores, tipografia, etc, mas no momento que você entrar de cabeça nessa área, você sempre estará estudando um pouco a todo momento e aprendendo sobre esses conceitos.',
     ],
   },
   {
@@ -689,8 +722,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Preciso saber codar para ser Product Designer?',
     answer: [
-      'A maioria das vagas não exige programação, mas entender HTML básico, responsivo e limites de implementação melhora conversa com dev e qualidade do handoff.',
-      'Pense como arquiteta que conhece materiais sem construir a obra. Para júnior, foco em pesquisa, prototipação e raciocínio de produto costuma bastar.',
+      'Definitivamente não. É necessário, porém, entender o contexto de suas aplicações para permitir uma boa comunicação com os desenvolvedores do seu time e para poder tomar melhores decisões.',
+      'Pense que se você fosse um arquiteto projetando uma casa, precisaria entender sobre os materiais e os contextos do ambiente que está construindo, mas não necessariamente irá construir a casa em si.',
     ],
     seeAlso: [{ term: 'Handoff', glossarioId: 'handoff' }],
   },
@@ -702,8 +735,9 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'O mercado aceita profissionais sem formação superior?',
     answer: [
-      'Sim, há relatos de contratação com portfólio forte e experiência prática. Ainda assim, graduação abre portas: estágio, networking, base teórica e credibilidade em algumas triagens.',
-      'Autodidata com estudo consistente entra; faculdade em Design, Computação, Psicologia ou afins pode acelerar. Avalie seu contexto, tempo e recursos.',
+      'Assunto polêmico. Temos muitos relatos de pessoas que conseguiram vagas na área e não possuem ensino superior em áreas relacionadas ou que não possuem ensino superior no geral. Então não, não é uma exigência, porém, sim, é super necessário.',
+      'Uma faculdade te abre portas, te mostra livros, metodologias, contatos. Te ensina a pensar e processar de um jeito diferente. Você pode conhecer diversas pessoas que já estão na área e aprender muito com elas, além de que vagas de estágio exigem alguma faculdade em curso para sua aplicação.',
+      'Em resumo, você não precisa obrigatoriamente da graduação para começar na área, porém sempre será um grande investimento e muito bem visto na carreira pois você será um profissional mais completo, especialista e focado.',
     ],
   },
   {
@@ -712,8 +746,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Já sou formada em outra área. Preciso fazer nova graduação?',
     answer: [
-      'Para migrar, cursos técnicos, bootcamps, projetos de portfólio e networking podem viabilizar a transição sem nova graduação.',
-      'Com o tempo, pós-graduação em UX ou design digital pode complementar, especialmente se quiser aprofundar teoria ou atuar em contextos que valorizam titulação.',
+      'Não é uma exigência do mercado, você pode fazer sua migração desde que estude e pratique bastante, faça cursos técnicos para ter alguma especialização mínima e vá evoluindo isso. Importante também ter uma boa noção de hierarquia visual e princípios gerais de quem já vem da faculdade de design.',
+      'Depois disso, com o passar do tempo e quando achar que já vale a pena investir em novos conhecimentos, você pode fazer alguma pós que seja focada na área para ter uma especialização mais próxima da sua área de atuação.',
     ],
   },
   {
@@ -722,8 +756,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Invisto em pós-graduação ou em curso técnico?',
     answer: [
-      'Curso técnico ou bootcamp tende a ser mais rápido e prático para quem ainda está construindo base e portfólio. Pós faz mais sentido quando você já atua na área e quer especializar.',
-      'Escolha conforme lacuna atual: precisa de projeto guiado e ritmo? Curso. Já trabalha e quer credencial acadêmica aprofundada? Pós.',
+      'Depende muito do seu foco atual. Se você acredita que está muito cru na área ainda, acredito que um curso técnico é o melhor caminho pois ele tem um processo relativamente mais rápido e muito mais prático para aprender e exercer algum aprendizado específico. Cursos são mais focados em determinados assuntos e com isso você pode cada vez mais nichar sua especialização e habilidades que gostaria de desenvolver.',
+      'Já uma pós é algo que leva tempo e exige muita dedicação e é aconselhada pra quem já está na área e quer evoluir ainda mais seus conhecimentos e de fato se especializar e continuar seus estudos já aplicados.',
     ],
   },
   {
@@ -732,8 +766,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Que tipo de curso devo investir para ingressar na área?',
     answer: [
-      'Busque formação que cubra processo completo de UI/UX, com projeto final para portfólio e, idealmente, mentoria ou comunidade. Grade genérica demais ou só ferramenta deixa lacunas.',
-      'Confira syllabus, trabalhos de ex-alunas e transparência sobre carga horária prática. Curso bom te deixa capaz de contar um case com autonomia, além de reproduzir tutorial.',
+      'Você precisa investir em cursos que te darão um norte sobre por onde começar, principais metodologias utilizadas e que passe pelo processo completo de UI/UX. Geralmente cursos e bootcamps que falam sobre "formação em UI/UX" tem essa grade.',
+      'É importante buscar por um curso que tenha um projeto final para que você consiga sair com um projeto/case para o seu portfólio. Também é interessante cursos que oferecem algum tipo de mentoria contínua para que você tenha um acompanhamento guiado ao longo dos seus estudos e não se sinta perdido(a).',
     ],
   },
   {
@@ -742,8 +776,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Quais cursos são referência na área de UI/UX?',
     answer: [
-      'A VagasUX mantém [curadoria de cursos gratuitos e pagos](/guia/tipo/cursos), além de feedbacks da comunidade sobre formações conhecidas.',
-      'Não existe lista única definitiva. Compare objetivo, preço, formato ao vivo ou gravado e alinhamento com seu momento. O melhor curso é o que você consegue terminar e aplicar.',
+      'Temos uma área com sugestões de alguns [cursos gratuitos e pagos](/guia/tipo/cursos). Temos também uma iniciativa da comunidade com alguns feedbacks de cursos renomados da área, vale conferir e decidir com calma.',
     ],
   },
   {
@@ -752,8 +785,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Como escolher o melhor curso de UI/UX?',
     answer: [
-      'Defina orçamento, tempo disponível e se precisa de mentoria. Leia opiniões recentes, veja projetos de egressas e desconfie de promessa de emprego garantido.',
-      'Experimente conteúdo gratuito do instrutor antes de pagar. Curso certo para você depende do seu ponto de partida e das lacunas que precisa fechar.',
+      'Não existe o melhor curso. E sim o melhor curso pra você no momento dentro do seu contexto. Defina orçamento, tempo disponível e se precisa de mentoria. Leia opiniões recentes, veja projetos de egressas e desconfie de promessa de emprego garantido.',
+      'Experimente conteúdo gratuito do instrutor antes de pagar. Curso certo para você depende do seu ponto de partida e das lacunas que precisa fechar, não do hype do momento.',
     ],
   },
 
@@ -764,8 +797,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'clt',
     question: 'O que é CLT?',
     answer: [
-      'CLT significa Consolidação das Leis do Trabalho, o regime formal de contrato de trabalho no Brasil desde 1943. Regula jornada, descanso, férias, direitos trabalhistas e relação entre empregada e empregador.',
-      'Na prática, CLT significa carteira assinada, encargos recolhidos pelo empregador e proteções previstas em lei. É o modelo mais comum em empresas estabelecidas no país.',
+      'CLT é uma sigla para Consolidação das Leis do Trabalho. É o modelo mais tradicional para um contrato de trabalho. A CLT surgiu pelo Decreto-Lei nº 5.452, de 1 de maio de 1943, sancionada pelo então presidente Getúlio Vargas, unificando toda a legislação trabalhista existente no Brasil. Seu principal objetivo é a regulamentação das relações individuais e coletivas do trabalho, nela previstas. A CLT regulamenta as relações trabalhistas, tanto do trabalho urbano quanto do rural.',
+      'Seus principais assuntos são: registro do trabalhador e carteira de trabalho; jornada de trabalho; período de descanso; férias; medicina do trabalho; categorias especiais de trabalhadores; proteção do trabalho da mulher; contratos individuais de trabalho; organização sindical; convenções coletivas; fiscalização; justiça do trabalho e processo trabalhista.',
     ],
   },
   {
@@ -774,8 +807,10 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'clt',
     question: 'Quais são meus principais direitos como CLT?',
     answer: [
-      'Entre os principais: 13º salário, férias remuneradas mais adicional de um terço, FGTS com multa de 40% em demissão sem justa causa, aviso prévio, contribuição ao INSS e licenças previstas em lei.',
-      'Descontos de INSS e IRRF aparecem na folha. Em dúvida sobre contracheque ou rescisão, consulte sindicato da categoria ou profissional de RH de confiança.',
+      'Multa rescisória do FGTS sem justa causa: além do trabalhador poder fazer o saque integral do benefício em caso de demissão sem justa causa, o empregador também deverá arcar com uma multa correspondente ao percentual de 40% sobre o valor depositado para o empregado.',
+      'Aviso prévio indenizado: garantia direcionada ao trabalhador que é demitido sem justa causa, disponibilizado caso o empregador tenha optado pela demissão unilateral, correspondente ao período mínimo de 30 dias de trabalho.',
+      'Férias + ⅓ constitucional: todo trabalhador formal tem o direito de tirar férias remuneradas pelo período máximo de 30 dias após um ano de trabalho. Essa remuneração deve ser paga antecipadamente, além de incluir o percentual de ⅓ constitucional.',
+      '13º salário: remuneração extra destinada ao trabalhador no fim de cada ano, devendo ser pago proporcionalmente pelo tempo de trabalho executado em caso de desligamento do funcionário. Também entram contribuições ao INSS, com acesso a aposentadoria, auxílio-doença, salário-maternidade e demais benefícios previdenciários.',
     ],
   },
 
@@ -786,8 +821,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'O que é MEI?',
     answer: [
-      'MEI (Microempreendedor Individual) é regime para profissional autônoma que formaliza atividade como pequeno empresário. Permite emitir nota fiscal, contribuir para previdência e faturar até o limite anual definido pelo governo (valor atualizado periodicamente no portal oficial).',
-      'Abertura é gratuita e online pelo portal do empreendedor em https://www.gov.br/empresas-e-negocios/pt-br/empreendedor. Verifique sempre limites e regras vigentes no site gov.br.',
+      'Microempreendedor Individual (MEI) é um profissional autônomo que trabalha por conta própria e que se legaliza como pequeno empresário. Permite emitir nota fiscal, contribuir para previdência e faturar até o limite anual definido pelo governo, sem participação em outra empresa como sócio ou titular. O MEI também pode ter um empregado contratado que receba o salário mínimo ou o piso da categoria.',
+      'Com uma MEI aberta, o microempreendedor poderá prestar serviços para empresas, emitindo notas fiscais, o que possibilita o acesso a crédito, além de poder participar de licitações e concorrências e ter acesso a previdência social. Abertura é gratuita e online pelo [portal do empreendedor](https://www.gov.br/empresas-e-negocios/pt-br/empreendedor). Verifique sempre limites e regras vigentes no site gov.br.',
     ],
   },
   {
@@ -796,8 +831,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'Designer pode ser MEI?',
     answer: [
-      'Design como atividade intelectual não está na lista oficial de ocupações MEI. Muitas profissionais usam CNAE adjacente (edição, fotografia, instrutura de informática, entre outras), o que é prática comum, porém com risco fiscal se a atividade real não corresponder ao cadastro.',
-      'Empresas contratantes muitas vezes não questionam, mas você assume responsabilidade sobre enquadramento. Avalie com contador antes de abrir e saiba que multas podem ocorrer se a fiscalização identificar divergência.',
+      'Oficialmente as atividades relacionadas à área de design não se enquadram nas atividades permitidas pela MEI. O que acontece é que esta é a maneira mais fácil e barata de se conseguir abrir uma empresa e ser PJ (Pessoa Jurídica), então muitos profissionais, de diversas áreas, utilizam o artifício de abrir uma MEI e buscar alguma atividade que tenha alguma relação.',
+      'Muito provavelmente as empresas contratantes não se importarão se a atividade está ou não enquadrada na MEI, mas fique sabendo que é algo não regulamentado e que podem ocorrer multas e outros problemas legais, caso alguma autoridade verifique. Ao cadastrar, você pode escolher uma atividade principal (CNAE) e até 15 atividades secundárias. Entre as que podem se adequar às atividades realizadas por designers: fotógrafo independente, editor de jornais/revistas/livros, digitador, instrutor de informática, editor de vídeo, artesão em papel, entre outras.',
     ],
   },
   {
@@ -806,7 +841,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'Quanto custa manter MEI por mês?',
     answer: [
-      'O custo principal é a guia DAS mensal do Simples Nacional, com valor fixo que varia conforme tipo de atividade (comércio, serviço ou ambos). Valores mudam quando o salário mínimo ou regras do Simples são atualizados.',
+      'O microempreendedor individual terá como despesas apenas o pagamento mensal do Simples Nacional, a DAS-MEI. O cálculo do valor do tributo corresponde a 5% do salário mínimo, com acréscimo de R$ 1 de ICMS para comércio e indústria, ou de R$ 5 de ISS para prestadores de serviços. Valores mudam quando o salário mínimo ou regras do Simples são atualizados.',
       'Gere o boleto apenas no portal oficial do empreendedor. Desconfie de cobranças por e-mail ou carta logo após abrir CNPJ.',
     ],
   },
@@ -816,8 +851,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'Vale a pena ser júnior na modalidade PJ?',
     answer: [
-      'Depende do valor oferecido versus custos: DAS mensal, contabilidade (se contratar), impostos e ausência de benefícios CLT. Salário júnior PJ baixo pode ficar menor que CLT depois dos descontos fixos.',
-      'Faça conta comparando proposta PJ com equivalente CLT, incluindo férias, 13º e FGTS que você deixa de ter. MEI costuma ser opção mais simples que ME para começar, mas não elimina a necessidade de calcular.',
+      'Depende do salário porque no nível júnior ele geralmente não é muito alto e não vai compensar pelos custos que você vai ter com a empresa (se for ME). MEI já atende melhor e vale fazer o cálculo certinho pra ver se você realmente terá vantagens ou não está apenas pagando para trabalhar.',
     ],
   },
   {
@@ -826,8 +860,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'A empresa pediu que eu abra MEI. O que preciso saber?',
     answer: [
-      'Documentação varia: cartão CNPJ, inscrição municipal para emitir NFS-e, certidões negativas e dados bancários. Algumas empresas pedem conta PJ, embora MEI não seja obrigada por lei a tê-la.',
-      'Nota fiscal para pessoa jurídica costuma ser obrigatória. Cada município tem processo próprio de emissão; em São Paulo, por exemplo, exige senha web na prefeitura. Organize documentos com validade, pois pedem versão recente.',
+      'Isto varia muito de empresa para empresa. Algumas nem realizam o cadastro do prestador de serviço, enquanto outras podem pedir uma série de documentos. Segue uma lista dos documentos mais solicitados: cartão CNPJ ou certificado MEI, inscrição municipal, certidões negativas de débitos federais, trabalhistas e do INSS, comprovante de situação cadastral do CNPJ, certidão do FGTS (quando aplicável) e dados bancários.',
+      'Por lei o MEI não é obrigado a ter uma conta bancária de pessoa jurídica, mas algumas empresas não aceitam realizar pagamentos de serviços para contas de pessoas físicas. Nota fiscal para pessoa jurídica costuma ser obrigatória. Cada município tem processo próprio de emissão; em São Paulo, por exemplo, exige senha web na prefeitura. Lembrando que muitos destes documentos têm prazo de validade após sua emissão.',
     ],
   },
   {
@@ -836,8 +870,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'mei',
     question: 'Como emitir nota fiscal e evitar golpes de boleto?',
     answer: [
-      'Acesse sempre o sistema da prefeitura ou portal gov.br para emitir NFS-e e pagar DAS. Golpistas enviam boletos falsos por e-mail ou carta logo após abertura do CNPJ. Contribuição sindical, se aparecer, é voluntária.',
-      'Desconfie de cobrança fora dos canais oficiais. Guarde comprovantes de notas emitidas e relatório mensal de receitas, exigência do MEI para manter regularidade.',
+      'NÃO! A única forma de cobrança oficial para MEI é através das guias de pagamento DAS-MEI obtidas diretamente no portal do empreendedor. Inclusive, qualquer outra forma de cobrança é ilegal. Existem muitas tentativas de golpes deste tipo, e eles são comuns de acontecer logo após a abertura do CNPJ. O mesmo vale para boletos de cobrança de sindicatos: qualquer contribuição sindical é voluntária.',
+      'Para emitir nota fiscal, você precisa conseguir acesso ao sistema de emissão de notas fiscais do seu município (senha web). Cada município tem seus procedimentos. Em São Paulo, por exemplo, é necessário solicitar a Senha Web no portal da prefeitura, agendar desbloqueio presencial e depois configurar o sistema de NFS-e. Guarde comprovantes de notas emitidas e relatório mensal de receitas, exigência do MEI para manter regularidade.',
     ],
   },
 
@@ -848,8 +882,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'comparativo',
     question: 'Quais vantagens e riscos da contratação CLT?',
     answer: [
-      'Vantagens: carteira assinada, 13º, férias, FGTS, seguro-desemprego em demissão sem justa causa, licenças e jornada regulada. Previsibilidade de benefícios e proteção trabalhista.',
-      'Riscos ou limitações: descontos na folha, salário base pode parecer menor que PJ bruto, menos flexibilidade de horário em alguns contratos e dificuldade de negociar aumento fora de convenção ou mérito formal.',
+      'Vantagens: registro em carteira, 13º salário, seguro-desemprego, fundo de garantia, férias, licença maternidade/paternidade e proteção trabalhista prevista em lei.',
+      'Desvantagens: desconto de até 20% em folha de pagamento; dificuldades para contestar horas extras trabalhadas sem o acionamento da justiça; remuneração estagnada; carga horária definida por lei (8h diárias, 44h semanais); na maioria das vezes tem que apresentar atestado quando precisa se ausentar durante o horário de trabalho, caso contrário tem essas horas descontadas na folha de pagamento.',
     ],
   },
   {
@@ -858,8 +892,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'comparativo',
     question: 'Quais vantagens e riscos de PJ ou MEI?',
     answer: [
-      'Vantagens: valor hora ou mensalidade bruta costuma ser maior, flexibilidade de horário conforme contrato, impostos enxutos no MEI e possibilidade de atender vários clientes.',
-      'Riscos: sem FGTS, férias ou 13º garantidos, teto de faturamento MEI, responsabilidade fiscal sobre CNAE, aposentadoria proporcional ao que recolher e instabilidade se contrato encerrar. Compare PJ bruto com CLT líquido mais benefícios antes de decidir.',
+      'Vantagens: impostos reduzidos, benefícios previdenciários (auxílio-doença, aposentadoria por invalidez, pensão por morte, etc), flexibilidade de horário de trabalho conforme definido em contrato, isenção dos tributos federais (Imposto de Renda, PIS, Cofins, IPI e CSLL) e possibilidade de atender vários clientes.',
+      'Desvantagens: contribuição mensal fixa enquanto a empresa estiver ativa, aposentadoria limitada, carga tributária reduzida (teto de faturamento MEI), responsabilidade fiscal sobre CNAE e instabilidade se contrato encerrar. Compare PJ bruto com CLT líquido mais benefícios antes de decidir. Para comparar cenários, vale usar uma [calculadora CLT x PJ](https://occam.com.br/conversor-clt-para-pj/).',
     ],
   },
   {
@@ -869,7 +903,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Quando escolher CLT ou PJ/MEI?',
     answer: [
       'CLT tende a compensar quem prioriza estabilidade, benefícios e primeiro emprego formal na área. PJ ou MEI pode valer quando proposta financeira cobre custos fixos, impostos e gap de benefícios com folga.',
-      'Júnior em PJ exige conta honesta: valor baixo com MEI pode ser armadilha. Negocie prazo de experiência, escopo e revisão salarial. Consultoria contábil ajuda a comparar cenários concretos com números reais.',
+      'Júnior em PJ exige conta honesta: valor baixo com MEI pode ser armadilha. Negocie prazo de experiência, escopo e revisão salarial. Consultoria contábil ajuda a comparar cenários concretos com números reais, não só memes de internet sobre "convertedor CLT para PJ".',
     ],
   },
 
@@ -880,8 +914,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'guia',
     question: 'O que é o Guia do Product Designer da VagasUX?',
     answer: [
-      'Curadoria gratuita de trilhas, conteúdos, glossário e FAQ para quem está entrando ou reorganizando estudos em Product Design. A VagasUX reúne o que importa para você não se perder no excesso de link.',
-      'O Guia complementa vagas, comunidade e outros produtos da VagasUX. Funciona como ponto de partida para orientar estudo e linguagem do mercado, com prática e comunidade além.',
+      'Nosso compilado do VagasUX de trilhas, conteúdos, glossário e FAQ para quem está entrando ou reorganizando estudos em Product Design. Feito com a ajuda dos voluntários da comunidade que já atuam na área e têm muito a agregar. A VagasUX reúne o que importa para você não se perder no excesso de link.',
+      'O Guia complementa vagas, comunidade e outros produtos da VagasUX. Funciona como ponto de partida para orientar estudo e linguagem do mercado, com prática e troca na comunidade além.',
     ],
   },
   {
@@ -890,8 +924,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'guia',
     question: 'O Guia substitui um curso?',
     answer: [
-      'O Guia organiza caminhos e traduz termos do mercado. Curso ou mentoria complementam com exercício guiado, feedback individual e ritmo estruturado.',
-      'Use trilhas para sequenciar estudo, glossário para decifrar siglas e FAQ para dúvidas de carreira. Combine com prática e troca na comunidade.',
+      'O Guia organiza caminhos e traduz termos do mercado. Curso ou mentoria traz exercício guiado, feedback individual e ritmo estruturado que conteúdo curado sozinho não substitui.',
+      'Use trilhas para sequenciar estudo, glossário para decifrar siglas e FAQ para dúvidas de carreira. Combine com prática e troca na [comunidade](/comunidade).',
     ],
   },
   {
@@ -901,7 +935,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como usar as trilhas do Guia?',
     answer: [
       'Escolha trilha alinhada ao seu momento: entender o básico, portfólio, research ou content design. Siga ordem sugerida ou pule o que já domina.',
-      'Marque o que leu, aplique em projeto real e volte quando precisar aprofundar. Trilha funciona como roteiro flexível: adapte ordem e ritmo ao que você já domina.',
+      'Marque o que leu, aplique em projeto real e volte quando precisar aprofundar. Trilha é roteiro flexível: adapte ordem e ritmo ao que você já domina, sem virar checklist rígida para marcar no automático.',
     ],
   },
 ]
