@@ -26,8 +26,7 @@ export function GuiaGlossarioCategoryAccordion({
   onTermLinkClick,
 }: GuiaGlossarioCategoryAccordionProps) {
   const panelId = `glossario-categoria-${category.id}`
-
-  if (entries.length === 0) return null
+  const hasEntries = entries.length > 0
 
   const subgroupGroups = groupGuiaGlossarioEntriesBySubgroup(
     entries,
@@ -36,7 +35,12 @@ export function GuiaGlossarioCategoryAccordion({
   )
 
   return (
-    <section className="rounded-2xl border border-neutral-500/10 bg-neutral-100">
+    <section
+      className={cn(
+        'rounded-2xl border border-neutral-500/10 bg-neutral-100',
+        !hasEntries && 'opacity-70',
+      )}
+    >
       <h2>
         <button
           type="button"
@@ -73,38 +77,59 @@ export function GuiaGlossarioCategoryAccordion({
           id={panelId}
           className="border-t border-neutral-500/10 px-5 pb-6 md:px-6 md:pb-8"
         >
-          <nav
-            aria-label={`Termos em ${category.title}`}
-            className="mt-5 flex flex-wrap gap-2"
-          >
-            {entries.map((entry) => (
-              <a
-                key={entry.id}
-                href={`#${entry.id}`}
-                onClick={() => onTermLinkClick(entry.id)}
-                className="inline-flex rounded-full border border-neutral-500/10 bg-brand-100/30 px-3 py-1.5 text-xs font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500 md:text-sm"
-              >
-                {entry.term}
-              </a>
-            ))}
-          </nav>
-
-          <div className="mt-8 space-y-8">
-            {subgroupGroups.map((group) => (
-              <div key={group.subgroupId ?? 'outros'}>
-                {group.label ? (
-                  <h3 className="text-sm font-bold tracking-[0.12em] text-neutral-400 uppercase">
-                    {group.label}
-                  </h3>
-                ) : null}
-                <div className={cn('space-y-8', group.label && 'mt-5')}>
-                  {group.entries.map((entry) => (
-                    <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
-                  ))}
-                </div>
+          {hasEntries ? (
+            <>
+              <div className="sticky top-[4.5rem] z-30 -mx-5 border-b border-neutral-500/10 bg-neutral-100/95 px-5 py-3 backdrop-blur-md md:-mx-6 md:px-6">
+                <p className="flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-brand-400 uppercase">
+                  <span className="text-base normal-case tracking-normal" aria-hidden>
+                    {category.emoji}
+                  </span>
+                  {category.title}
+                </p>
               </div>
-            ))}
-          </div>
+
+              <nav
+                aria-label={`Termos em ${category.title}`}
+                className="mt-5 flex flex-wrap gap-2"
+              >
+                {entries.map((entry) => (
+                  <a
+                    key={entry.id}
+                    href={`#${entry.id}`}
+                    onClick={() => onTermLinkClick(entry.id)}
+                    className="inline-flex rounded-full border border-neutral-500/10 bg-brand-100/30 px-3 py-1.5 text-xs font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500 md:text-sm"
+                  >
+                    {entry.term}
+                  </a>
+                ))}
+              </nav>
+
+              <div className="mt-8 space-y-8">
+                {subgroupGroups.map((group) => (
+                  <div key={group.subgroupId ?? 'outros'}>
+                    {group.label ? (
+                      <h3 className="text-sm font-bold tracking-[0.12em] text-neutral-400 uppercase">
+                        {group.label}
+                      </h3>
+                    ) : null}
+                    <div className={cn('space-y-8', group.label && 'mt-5')}>
+                      {group.entries.map((entry) => (
+                        <GuiaGlossarioEntryArticle
+                          key={entry.id}
+                          entry={entry}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="mt-5 text-sm text-neutral-400">
+              Nenhum termo nesta categoria ainda. Novos verbetes serão
+              adicionados em breve.
+            </p>
+          )}
         </div>
       ) : null}
     </section>

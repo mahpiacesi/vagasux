@@ -48,13 +48,7 @@ export function GuiaGlossarioPageContent() {
     [filteredEntries, sortMode],
   )
 
-  const visibleCategories = useMemo(
-    () =>
-      guiaGlossarioCategories.filter(
-        (category) => (entriesByCategory.get(category.id)?.length ?? 0) > 0,
-      ),
-    [entriesByCategory],
-  )
+  const visibleCategories = guiaGlossarioCategories
 
   const hasActiveSearch = query.trim().length > 0
 
@@ -76,16 +70,20 @@ export function GuiaGlossarioPageContent() {
     if (!hasActiveSearch) return
     setOpenCategories(
       new Set<GuiaGlossarioCategoryId>(
-        visibleCategories.map((category) => category.id),
+        guiaGlossarioCategories
+          .filter(
+            (category) => (entriesByCategory.get(category.id)?.length ?? 0) > 0,
+          )
+          .map((category) => category.id),
       ),
     )
-  }, [hasActiveSearch, visibleCategories])
+  }, [hasActiveSearch, entriesByCategory])
 
   useEffect(() => {
-    if (activeCategoryFilter) {
-      setOpenCategories(new Set<GuiaGlossarioCategoryId>([activeCategoryFilter]))
-    }
-  }, [activeCategoryFilter])
+    if (activeCategoryFilter) return
+    if (hasActiveSearch) return
+    setOpenCategories(new Set())
+  }, [activeCategoryFilter, hasActiveSearch])
 
   useEffect(() => {
     const termId = hash.replace('#', '')
@@ -119,15 +117,6 @@ export function GuiaGlossarioPageContent() {
     if (categoryId) next.set('categoria', categoryId)
     else next.delete('categoria')
     setSearchParams(next, { replace: true })
-
-    if (categoryId) {
-      setOpenCategories(new Set([categoryId]))
-      return
-    }
-
-    if (!hasActiveSearch) {
-      setOpenCategories(new Set())
-    }
   }
 
   function toggleCategory(categoryId: GuiaGlossarioCategoryId) {
@@ -138,8 +127,6 @@ export function GuiaGlossarioPageContent() {
       return next
     })
   }
-
-  const totalVisible = filteredEntries.length
 
   return (
     <div className="mt-8 w-full">
@@ -252,29 +239,29 @@ export function GuiaGlossarioPageContent() {
         })}
       </div>
 
-      {totalVisible > 0 ? (
-        <div className="mt-10 space-y-4">
-          {visibleCategories.map((category) => {
-            const entries = entriesByCategory.get(category.id) ?? []
-
-            return (
-              <GuiaGlossarioCategoryAccordion
-                key={category.id}
-                category={category}
-                entries={entries}
-                sortMode={sortMode}
-                isOpen={openCategories.has(category.id)}
-                onToggle={() => toggleCategory(category.id)}
-                onTermLinkClick={navigateToTerm}
-              />
-            )
-          })}
-        </div>
-      ) : (
+      {hasActiveSearch && filteredEntries.length === 0 ? (
         <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
-          Nenhum termo encontrado. Novos verbetes serão adicionados em breve.
+          Nenhum termo encontrado para essa busca.
         </p>
-      )}
+      ) : null}
+
+      <div className="mt-10 space-y-4">
+        {visibleCategories.map((category) => {
+          const entries = entriesByCategory.get(category.id) ?? []
+
+          return (
+            <GuiaGlossarioCategoryAccordion
+              key={category.id}
+              category={category}
+              entries={entries}
+              sortMode={sortMode}
+              isOpen={openCategories.has(category.id)}
+              onToggle={() => toggleCategory(category.id)}
+              onTermLinkClick={navigateToTerm}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -1,8 +1,5 @@
 import type { ReactNode } from 'react'
-import {
-  guiaGlossarioCategoryLabels,
-  type GuiaGlossarioEntry,
-} from '@/data/guiaGlossario'
+import type { GuiaGlossarioEntry } from '@/data/guiaGlossario'
 
 function GlossarioSection({
   title,
@@ -26,18 +23,12 @@ export function GuiaGlossarioEntryArticle({
 }: {
   entry: GuiaGlossarioEntry
 }) {
-  const categoryLabel = guiaGlossarioCategoryLabels[entry.categoryId]
-
   return (
     <article
       id={entry.id}
-      className="scroll-mt-28 border-t border-neutral-500/10 pt-8 first:border-t-0 first:pt-0"
+      className="scroll-mt-32 border-t border-neutral-500/10 pt-8 first:border-t-0 first:pt-0"
     >
-      <p className="text-xs font-bold tracking-[0.16em] text-brand-400 uppercase">
-        {categoryLabel}
-      </p>
-
-      <h2 className="mt-2 text-2xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-[1.65rem]">
+      <h2 className="text-2xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-[1.65rem]">
         {entry.term}
       </h2>
 
@@ -69,7 +60,7 @@ export function GuiaGlossarioEntryArticle({
             {entry.youWillHear.map((phrase) => (
               <li
                 key={phrase}
-                className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3 text-sm font-medium text-neutral-500"
+                className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3 text-sm font-medium italic text-neutral-500"
               >
                 {phrase}
               </li>
