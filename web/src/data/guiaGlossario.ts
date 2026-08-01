@@ -1116,7 +1116,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'pesquisa',
     subgroup: 'conceitos',
     whatIs: [
-      'Busca entender motivações, contexto e comportamento por meio de conversas, observação e materiais abertos. Respostas costumam ser textuais e interpretativas, não só números.',
+      'Busca entender motivações, contexto e comportamento por meio de conversas, observação e materiais abertos. Respostas costumam ser textuais e interpretativas.',
       'Product Designers usam pesquisa qualitativa em discovery, entrevistas e testes para aprofundar o porquê por trás de uma dor ou decisão.',
     ],
     youWillHear: [
@@ -1452,7 +1452,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Jobs to be Done também aparece por extenso em artigos, cursos e materiais de produto.',
     },
     whatIs: [
-      'Framework que descreve qual tarefa ou progresso a pessoa usuária quer alcançar ao usar um produto, não só quais features ela aciona. Foca no job: o que ela precisa resolver na vida ou no trabalho.',
+      'Framework que descreve qual tarefa ou progresso a pessoa usuária quer alcançar ao usar um produto. Foca no job: o que ela precisa resolver na vida ou no trabalho.',
       'Product Designers usam JTBD para formular problemas e hipóteses com mais clareza. Ajuda a ir além de pedidos soltos de feature e entender a motivação por trás.',
     ],
     youWillHear: [
@@ -1490,7 +1490,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Produto mínimo viável também aparece em português, mas MVP é o termo mais usado em squads e roadmaps.',
     },
     whatIs: [
-      'Versão enxuta de um produto com o mínimo necessário para testar uma hipótese com pessoas usuárias reais e aprender rápido. Escopo intencional, não produto incompleto por falta de planejamento.',
+      'Versão enxuta de um produto com o mínimo necessário para testar uma hipótese com pessoas usuárias reais e aprender rápido, com escopo definido de propósito.',
       'Product Designers ajudam a definir o que entra no MVP e o que fica fora, priorizando o que valida valor antes de expandir funcionalidades.',
     ],
     youWillHear: [
@@ -1561,7 +1561,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Framework de metas em que o time define um objetivo ambicioso (Objective) e resultados mensuráveis (Key Results) para saber se chegou lá. Costuma ser trimestral.',
-      'Product Designers alinham trabalho de UX a OKRs do produto: cada iniciativa de design deve contribuir para mover um key result, não só entregar tela.',
+      'Product Designers alinham trabalho de UX a OKRs do produto: cada iniciativa de design deve contribuir para mover um key result.',
     ],
     youWillHear: [
       '"Esse projeto está ligado ao OKR de retenção do trimestre."',
@@ -1692,7 +1692,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Aqui trabalhamos com metodologia ágil, então o escopo pode mudar no sprint."',
-      '"Agile não é zero documentação, é cadência de aprendizado."',
+      '"Agile combina entregas curtas com aprendizado contínuo."',
     ],
   },
   {
@@ -1852,7 +1852,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       usageNote: 'Sprint retrospective também aparece em materiais de Scrum.',
     },
     whatIs: [
-      'Cerimônia ao fim do sprint para o time refletir o que funcionou, o que atrapalhou e o que vai mudar no próximo ciclo. Foco em processo, não em culpar pessoas.',
+      'Cerimônia ao fim do sprint para o time refletir o que funcionou, o que atrapalhou e o que vai mudar no próximo ciclo. O objetivo é melhorar como o squad trabalha junto.',
       'Product Designers participam da retro para melhorar colaboração com dev, PM e qualidade das entregas de UX.',
     ],
     youWillHear: [
