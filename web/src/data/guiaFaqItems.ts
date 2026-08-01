@@ -111,8 +111,14 @@ export const guiaFaqItems: GuiaFaqItem[] = [
       'Designer (UI/UX): será o seu papel como designer responsável do time para garantir uma boa relação entre experiência, qualidade e visual. Dependendo do tamanho da squad, podem entrar pesquisa, dados, atendimento, financeiro, marketing e por aí vai.',
     ],
     seeAlso: [
-      { term: 'Backlog', glossarioId: 'backlog' },
+      { term: 'Squad', glossarioId: 'squad' },
+      { term: 'Product Owner', glossarioId: 'product-owner' },
+      { term: 'Scrum Master', glossarioId: 'scrum-master' },
+      { term: 'Product Designer', glossarioId: 'product-designer' },
       { term: 'QA', glossarioId: 'qa' },
+      { term: 'Backlog', glossarioId: 'backlog' },
+      { term: 'Frontend', glossarioId: 'frontend' },
+      { term: 'Backend', glossarioId: 'backend' },
     ],
   },
   {
