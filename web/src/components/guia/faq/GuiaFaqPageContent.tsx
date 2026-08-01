@@ -115,7 +115,7 @@ export function GuiaFaqPageContent() {
 
       <header className="mt-8 w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          FAQ do Product Designer
+          FAQ
         </h1>
         <p className="mt-4 max-w-4xl text-base leading-relaxed text-neutral-400 md:text-lg">
           Compilado da VagasUX com perguntas frequentes da comunidade sobre

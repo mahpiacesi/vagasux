@@ -893,14 +893,4 @@ export const guiaFaqItems: GuiaFaqItem[] = [
       'Marque o que leu, aplique em projeto real e volte quando precisar aprofundar. Trilha funciona como roteiro flexível: adapte ordem e ritmo ao que você já domina.',
     ],
   },
-  {
-    id: 'glossario-vs-faq',
-    categoryId: 'guia',
-    subgroup: 'guia',
-    question: 'Qual a diferença entre glossário e FAQ?',
-    answer: [
-      'Glossário traduz termos e siglas do mercado de Product Design. FAQ responde dúvidas de carreira, preparação, processos seletivos, formação e contratação.',
-      'Ouvir sigla nova na entrevista? Glossário em /guia/glossario. Travou em decisão prática? FAQ. Os dois se complementam no dia a dia de estudo.',
-    ],
-  },
 ]
