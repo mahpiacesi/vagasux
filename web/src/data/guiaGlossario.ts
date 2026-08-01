@@ -79,8 +79,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       english: 'Information Architecture',
       portuguese: 'Arquitetura da Informação',
-      usageNote:
-        'No mercado de UX, a sigla AI em inglês vira IA em português, mas muita gente prefere escrever por extenso para não confundir com inteligência artificial.',
     },
     whatIs: [
       'Arquitetura da Informação é a disciplina que organiza, nomeia e estrutura conteúdos em produtos digitais para que a pessoa usuária encontre o que precisa sem se perder. Pense em menus, categorias, rótulos e hierarquia de telas.',
@@ -88,7 +86,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
     youWillHear: [
       '"Precisamos revisar a arquitetura da informação antes de desenhar as telas."',
-      '"Esse menu ficou confuso, vamos olhar a IA do produto."',
       '"A pessoa usuária não achou a funcionalidade. Pode ser problema de arquitetura da informação."',
     ],
     seeAlso: ['ux', 'usabilidade', 'pessoa-usuaria'],
