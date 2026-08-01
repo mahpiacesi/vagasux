@@ -1,10 +1,7 @@
 import { ArrowRight, BookBookmark, Question } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { guiaFaqCategories, guiaFaqItems } from '@/data/guiaFaq'
-import {
-  guiaGlossarioCategories,
-  guiaGlossarioEntries,
-} from '@/data/guiaGlossario'
+import { guiaFaqItems } from '@/data/guiaFaq'
+import { guiaGlossarioEntries } from '@/data/guiaGlossario'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -19,7 +16,6 @@ const ajudaResources = [
     hint: 'Carreira, rotina e processos seletivos',
     cta: 'Ver perguntas',
     Icon: Question,
-    emojis: guiaFaqCategories.slice(0, 4).map((category) => category.emoji),
     cardClassName:
       'bg-brand-400 text-neutral-100 shadow-[0_32px_80px_-32px_rgb(36_46_144_/_0.85)] hover:bg-brand-300',
     asideClassName: 'bg-brand-500/35',
@@ -35,7 +31,6 @@ const ajudaResources = [
     hint: 'Siglas, papéis e conceitos do dia a dia',
     cta: 'Ver termos',
     Icon: BookBookmark,
-    emojis: guiaGlossarioCategories.slice(0, 4).map((category) => category.emoji),
     cardClassName:
       'bg-complementary-300 text-neutral-500 shadow-[0_32px_80px_-32px_rgb(246_209_110_/_0.75)] hover:bg-complementary-200',
     asideClassName: 'bg-neutral-500/8',
@@ -48,20 +43,10 @@ export function GuiaAjudaSection() {
   return (
     <section
       id={guiaHashes.ajuda}
-      className="relative bg-neutral-500 px-5 py-16 md:px-6 md:py-20"
+      className="bg-brand-500 px-5 py-16 md:px-6 md:py-20"
       aria-labelledby="guia-ajuda-heading"
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 h-px w-full bg-gradient-to-r from-transparent via-complementary-300/50 to-transparent" />
-        <div className="absolute top-[-20%] right-[-8%] h-80 w-80 rounded-full bg-brand-400/25 blur-3xl" />
-        <div className="absolute bottom-8 left-[-6%] h-56 w-56 rounded-full bg-brand-400/15 blur-3xl" />
-        <div
-          className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-neutral-500/80 to-neutral-500 md:h-44"
-          aria-hidden
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Ajuda e suporte
@@ -72,7 +57,7 @@ export function GuiaAjudaSection() {
           >
             FAQ e Glossário da comunidade
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg md:whitespace-nowrap">
+          <p className="mt-4 text-base leading-relaxed text-brand-100/90 md:text-lg md:whitespace-nowrap">
             Dúvidas de carreira e jargões da área para você consultar sempre que precisar.
           </p>
         </div>
@@ -88,7 +73,6 @@ export function GuiaAjudaSection() {
               hint,
               cta,
               Icon,
-              emojis,
               cardClassName,
               asideClassName,
               hintClassName,
@@ -104,7 +88,7 @@ export function GuiaAjudaSection() {
                 >
                   <aside
                     className={cn(
-                      'flex w-[6.25rem] shrink-0 flex-col items-center justify-center gap-3 rounded-2xl px-3 py-5 md:w-[7rem] md:py-6',
+                      'flex w-[6.25rem] shrink-0 flex-col items-center justify-center gap-4 rounded-2xl px-3 py-5 md:w-[7rem] md:py-6',
                       asideClassName,
                     )}
                     aria-hidden
@@ -119,11 +103,6 @@ export function GuiaAjudaSection() {
                       <p className="mt-1 text-[0.58rem] font-bold tracking-[0.14em] uppercase opacity-80">
                         {countLabel}
                       </p>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-1 text-base leading-none">
-                      {emojis.map((emoji, index) => (
-                        <span key={index}>{emoji}</span>
-                      ))}
                     </div>
                   </aside>
 

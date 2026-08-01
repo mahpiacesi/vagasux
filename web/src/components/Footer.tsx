@@ -74,11 +74,7 @@ const legalLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-neutral-500 px-5 py-10 text-neutral-100 md:px-6">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
-        aria-hidden
-      />
+    <footer className="bg-neutral-500 px-5 py-10 text-neutral-100 md:px-6">
       <div className="mx-auto flex max-w-3xl flex-col gap-8 md:max-w-4xl">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col items-start gap-4">
