@@ -60,7 +60,7 @@ export function GuiaAjudaSection() {
             id="guia-ajuda-heading"
             className="mt-4 text-[2.1rem] leading-[1.02] font-black tracking-[-0.04em] text-neutral-100 md:text-[2.85rem]"
           >
-            FAQ e Glossário da comunidade
+            Ainda ficou alguma dúvida?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg">
             Dúvidas de carreira e jargões da área para você consultar sempre que precisar.
