@@ -69,8 +69,8 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'rotina',
     question: 'Qual a média salarial para designers iniciantes?',
     answer: [
-      'Varia conforme região, modalidade de contratação e porte da empresa. Como referência ampla, vagas PJ para júnior costumam ficar entre R$ 3 mil e R$ 5,5 mil; em CLT, entre R$ 2 mil e R$ 4,5 mil. São estimativas, não teto nem piso fixos.',
-      'Use Glassdoor, Salário Transparente e materiais da comunidade para calibrar expectativa no seu contexto. Na negociação, leve em conta benefícios, crescimento e tipo de contrato, não só o número bruto.',
+      'Varia conforme região, modalidade de contratação e porte da empresa. Como referência ampla, vagas PJ para júnior costumam ficar entre R$ 3 mil e R$ 5,5 mil; em CLT, entre R$ 2 mil e R$ 4,5 mil. Use como ponto de partida, sabendo que cada contexto muda.',
+      'Use Glassdoor, Salário Transparente e materiais da comunidade para calibrar expectativa no seu contexto. Na negociação, considere benefícios, crescimento e tipo de contrato junto com o valor bruto.',
     ],
   },
 
@@ -148,7 +148,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'junior',
     question: 'Qual o nível de cobrança no dia a dia de uma profissional júnior?',
     answer: [
-      'Depende da cultura da empresa, mas a expectativa costuma ser proporcional ao nível: acompanhamento, feedback frequente e entregas dentro do ritmo da squad. Você foi contratada porque mostrou potencial, não porque já domina tudo.',
+      'Depende da cultura da empresa, mas a expectativa costuma ser proporcional ao nível: acompanhamento, feedback frequente e entregas dentro do ritmo da squad. Você foi contratada pelo potencial que demonstrou, mesmo ainda em aprendizado.',
       'Se sentir sobrecarga, converse com sua liderança antes que o prazo estoure. Travar em dúvida faz parte; pesquisar, pedir ajuda e registrar aprendizados mostra maturidade.',
     ],
     seeAlso: [{ term: 'Squad', glossarioId: 'squad' }],
@@ -234,7 +234,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como estruturar um LinkedIn competitivo?',
     answer: [
       'Quanto mais completo, melhor: experiências, cursos, projetos, link de portfólio e contatos atualizados. Peça recomendações de colegas de curso, hackathon ou trabalhos anteriores quando fizer sentido.',
-      'Siga empresas, escolas e profissionais da área. Comente posts com contribuição real, não só emoji. Presença consistente ajuda mais do que perfil bonito e vazio.',
+      'Siga empresas, escolas e profissionais da área. Comente posts com contribuição real: opinião, pergunta ou experiência. Presença consistente ajuda mais do que perfil bonito e vazio.',
     ],
   },
   {
@@ -254,7 +254,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como criar networking com outras designers pelo LinkedIn?',
     answer: [
       'Adicionar centenas de pessoas sem conversa vira lista morta. Prefira mensagens personalizadas: comente um artigo dela, pergunte sobre a área da empresa ou peça indicação de conteúdo.',
-      'Conte brevemente quem você é antes de pedir feedback de portfólio. Ofereça troca genuína quando puder. Networking funciona quando há respeito, não cobrança de resposta.',
+      'Conte brevemente quem você é antes de pedir feedback de portfólio. Ofereça troca quando puder. Networking funciona com respeito, sem pressionar por resposta imediata.',
     ],
   },
   {
@@ -306,7 +306,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Carta de apresentação é necessária?',
     answer: [
       'Quando a vaga oferece campo de mensagem ou você envia candidatura por e-mail, escreva sim. Alguns parágrafos sobre quem você é, por que quer aquela vaga e o que traz de diferente valem mais do que só anexar PDF.',
-      'Personalize por empresa. Texto genérico copiado denuncia falta de interesse. Trate como conversa inicial, não como formalidade burocrática.',
+      'Personalize por empresa. Texto genérico copiado denuncia falta de interesse. Trate como conversa inicial com a empresa.',
     ],
   },
   {
@@ -316,7 +316,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Posso colocar mentoria no currículo?',
     answer: [
       'Programas de mentoria contínua podem entrar em formação ou experiência complementar, com nome do programa e mentora. Mentoria pontual de uma sessão não precisa ocupar espaço no CV.',
-      'Você pode compartilhar aprendizados da mentoria em post no LinkedIn ou no case relacionado. O importante é mostrar evolução, não acumular selos.',
+      'Você pode compartilhar aprendizados da mentoria em post no LinkedIn ou no case relacionado. Priorize mostrar evolução concreta em post ou case.',
     ],
   },
   {
@@ -348,7 +348,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como montar portfólio sem experiência profissional em UX?',
     answer: [
       'Projetos de curso, redesign de app real, melhoria de fluxo do seu dia a dia e voluntariado contam quando bem documentados. O artigo "Como montar um portfólio de UX se eu ainda não trabalho com UX?" no brasil.uxdesign.cc traz um passo a passo útil.',
-      'Seja honesta sobre a origem do projeto. Recrutadores querem ver como você pensa, pesquisa e decide, não apenas pixels finais.',
+      'Seja honesta sobre a origem do projeto. Recrutadores querem ver como você pensa, pesquisa e decide, além do visual final.',
     ],
   },
   {
@@ -372,7 +372,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como preparar o portfólio para candidaturas?',
     answer: [
       'Destaque processo de ponta a ponta: problema, papel, colaborações, entregas e resultado ou aprendizado. Deixe navegação simples e links testados em mobile.',
-      'Pergunte a si mesma: consigo entender o case em cinco minutos? O visual reflete meu nível atual? Cada estudo deve mostrar como você raciocina, não só como você decora.',
+      'Pergunte a si mesma: consigo entender o case em cinco minutos? O visual reflete meu nível atual? Cada estudo deve mostrar como você raciocina e toma decisões.',
     ],
   },
   {
@@ -402,7 +402,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Onde hospedar meu portfólio?',
     answer: [
       'Opções comuns: Notion (grátis e flexível), Behance (bom para apresentação visual), Figma (protótipo navegável), UX Folio, Medium ou site próprio no WordPress/Squarespace.',
-      'Escolha onde você consegue manter e atualizar com facilidade. O melhor formato é aquele que você publica de verdade, não o que ficou parado por medo de imperfeição.',
+      'Escolha onde você consegue manter e atualizar com facilidade. O melhor formato é aquele que você consegue publicar e manter atualizado.',
     ],
   },
   {
@@ -432,7 +432,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Onde encontrar bons exemplos de portfólios?',
     answer: [
       'Comunidades de design, Medium, LinkedIn e a própria VagasUX são fontes constantes de referência. Quanto mais você participa, mais encontra cases inspiradores.',
-      'Use referências para aprender estrutura de narrativa, não para copiar visual. O case da Érika e da Thaísa sobre experiência de pais na busca de ajuda médica é um exemplo citado em mentorias por ser completo e bem contado.',
+      'Use referências para aprender estrutura de narrativa e adaptar ao seu contexto. O case da Érika e da Thaísa sobre experiência de pais na busca de ajuda médica é um exemplo citado em mentorias por ser completo e bem contado.',
     ],
   },
   {
@@ -454,7 +454,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'entrevistas',
     question: 'Como me portar em uma entrevista?',
     answer: [
-      'Seja você mesma. Chegar na entrevista já significa que portfólio ou CV chamaram atenção. Recrutadores querem conhecer sua forma de pensar, não uma versão artificial.',
+      'Seja você mesma. Chegar na entrevista já significa que portfólio ou CV chamaram atenção. Recrutadores querem conhecer sua forma de pensar com autenticidade.',
       'Treine contar cases em voz alta, prepare respostas sobre motivação, valores e planos de carreira. Quanto mais entrevistas você faz, mais natural fica. Nervosismo é normal.',
     ],
   },
@@ -506,7 +506,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'desafios',
     question: 'Por que empresas pedem testes práticos além do portfólio?',
     answer: [
-      'Querem ver como você raciocina em contexto novo, com prazo curto e informação incompleta. Avaliam decisões, comunicação e defesa de ideias, não só o visual final.',
+      'Querem ver como você raciocina em contexto novo, com prazo curto e informação incompleta. Avaliam decisões, comunicação e defesa de ideias junto com o visual final.',
       'Teste complementa portfólio curado. Mostra soft skills em situação controlada parecida com o dia a dia.',
     ],
   },
@@ -569,7 +569,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Recebi um "não" sem explicação. Vale pedir feedback?',
     answer: [
       'Vale tentar, com cabeça fria. Agradeça o retorno e pergunte onde poderia evoluir. Nem sempre respondem por volume ou política interna, mas algumas empresas dão orientações valiosas.',
-      'Feedback específico acelera ajuste de portfólio, CV ou postura em entrevista. Trate como dado, não como julgamento pessoal.',
+      'Feedback específico acelera ajuste de portfólio, CV ou postura em entrevista. Trate como dado para evoluir.',
     ],
   },
   {
@@ -626,7 +626,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como uma júnior pode se destacar e crescer na empresa?',
     answer: [
       'Participe das conversas, peça feedback, ajude colegas quando puder e mostre evolução nos entregáveis. Cursos e estudo contínuo complementam, mas presença no time constrói reputação.',
-      'Documente aprendizados, compartilhe referências úteis e proponha melhorias pequenas e factíveis. Crescimento vem de consistência, não de um projeto heroico isolado.',
+      'Documente aprendizados, compartilhe referências úteis e proponha melhorias pequenas e factíveis. Crescimento vem de consistência ao longo do tempo, com entregas regulares e aprendizado acumulado.',
     ],
   },
   {
@@ -678,7 +678,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'habilidades',
     question: 'Preciso saber codar para ser Product Designer?',
     answer: [
-      'Código não é requisito universal, mas entender HTML básico, responsivo e limites de implementação melhora conversa com dev e qualidade do handoff.',
+      'A maioria das vagas não exige programação, mas entender HTML básico, responsivo e limites de implementação melhora conversa com dev e qualidade do handoff.',
       'Pense como arquiteta que conhece materiais sem construir a obra. Para júnior, foco em pesquisa, prototipação e raciocínio de produto costuma bastar.',
     ],
     seeAlso: [{ term: 'Handoff', glossarioId: 'handoff' }],
@@ -701,7 +701,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Já sou formada em outra área. Preciso fazer nova graduação?',
     answer: [
-      'Nova graduação não é obrigatória para migrar. Cursos técnicos, bootcamps, projetos de portfólio e networking podem viabilizar a transição.',
+      'Para migrar, cursos técnicos, bootcamps, projetos de portfólio e networking podem viabilizar a transição sem nova graduação.',
       'Com o tempo, pós-graduação em UX ou design digital pode complementar, especialmente se quiser aprofundar teoria ou atuar em contextos que valorizam titulação.',
     ],
   },
@@ -722,7 +722,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Que tipo de curso devo investir para ingressar na área?',
     answer: [
       'Busque formação que cubra processo completo de UI/UX, com projeto final para portfólio e, idealmente, mentoria ou comunidade. Grade genérica demais ou só ferramenta deixa lacunas.',
-      'Confira syllabus, trabalhos de ex-alunas e transparência sobre carga horária prática. Curso bom te deixa capaz de contar um case, não só reproduzir tutorial.',
+      'Confira syllabus, trabalhos de ex-alunas e transparência sobre carga horária prática. Curso bom te deixa capaz de contar um case com autonomia, além de reproduzir tutorial.',
     ],
   },
   {
@@ -742,7 +742,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como escolher o melhor curso de UI/UX?',
     answer: [
       'Defina orçamento, tempo disponível e se precisa de mentoria. Leia opiniões recentes, veja projetos de egressas e desconfie de promessa de emprego garantido.',
-      'Experimente conteúdo gratuito do instrutor antes de pagar. Curso certo para você depende do ponto de partida, não do hype do momento.',
+      'Experimente conteúdo gratuito do instrutor antes de pagar. Curso certo para você depende do seu ponto de partida e das lacunas que precisa fechar.',
     ],
   },
 
@@ -858,7 +858,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Quando escolher CLT ou PJ/MEI?',
     answer: [
       'CLT tende a compensar quem prioriza estabilidade, benefícios e primeiro emprego formal na área. PJ ou MEI pode valer quando proposta financeira cobre custos fixos, impostos e gap de benefícios com folga.',
-      'Júnior em PJ exige conta honesta: valor baixo com MEI pode ser armadilha. Negocie prazo de experiência, escopo e revisão salarial. Consultoria contábil ajuda a comparar cenários concretos, não só memes de internet sobre "convertedor CLT para PJ".',
+      'Júnior em PJ exige conta honesta: valor baixo com MEI pode ser armadilha. Negocie prazo de experiência, escopo e revisão salarial. Consultoria contábil ajuda a comparar cenários concretos com números reais.',
     ],
   },
 
@@ -870,7 +870,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'O que é o Guia do Product Designer da VagasUX?',
     answer: [
       'Curadoria gratuita de trilhas, conteúdos, glossário e FAQ para quem está entrando ou reorganizando estudos em Product Design. A VagasUX reúne o que importa para você não se perder no excesso de link.',
-      'O Guia complementa vagas, comunidade e outros produtos da VagasUX. É ponto de partida para orientar estudo e linguagem do mercado, não fim da jornada.',
+      'O Guia complementa vagas, comunidade e outros produtos da VagasUX. Funciona como ponto de partida para orientar estudo e linguagem do mercado, com prática e comunidade além.',
     ],
   },
   {
@@ -879,7 +879,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'guia',
     question: 'O Guia substitui um curso?',
     answer: [
-      'O Guia organiza caminhos e traduz termos do mercado. Curso ou mentoria traz exercício guiado, feedback individual e ritmo estruturado que conteúdo curado sozinho não substitui.',
+      'O Guia organiza caminhos e traduz termos do mercado. Curso ou mentoria complementam com exercício guiado, feedback individual e ritmo estruturado.',
       'Use trilhas para sequenciar estudo, glossário para decifrar siglas e FAQ para dúvidas de carreira. Combine com prática e troca na comunidade.',
     ],
   },
@@ -890,7 +890,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como usar as trilhas do Guia?',
     answer: [
       'Escolha trilha alinhada ao seu momento: entender o básico, portfólio, research ou content design. Siga ordem sugerida ou pule o que já domina.',
-      'Marque o que leu, aplique em projeto real e volte quando precisar aprofundar. Trilha é roteiro flexível, não checklist rígida para marcar no automático.',
+      'Marque o que leu, aplique em projeto real e volte quando precisar aprofundar. Trilha funciona como roteiro flexível: adapte ordem e ritmo ao que você já domina.',
     ],
   },
   {
