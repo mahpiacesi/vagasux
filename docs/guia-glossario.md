@@ -96,6 +96,22 @@ Termos: Produto, Produto digital, Problema, Solução, White-label, MVP, Feature
 
 Referências informadas (v1 + glossários de UI/PD): backlog editorial v1, trilha Aprender UI, Figma Dictionary e padrões de design system. Termos de implementação (Handoff, Responsivo) ficam em **Desenvolvimento**; papéis (UI Designer, Design Visual) ficam em **Fundamentos**.
 
+### Pesquisa
+
+| `subgroup` | Título |
+|------------|--------|
+| `conceitos` | Conceitos |
+| `metodos` | Métodos de pesquisa |
+| `analise` | Análise e síntese |
+
+**Conceitos:** Pesquisa qualitativa, Pesquisa quantitativa, Recrutamento, Participante
+
+**Métodos de pesquisa:** Entrevista, Teste de usabilidade, Questionário, Card Sorting, Tree Testing, Observação contextual
+
+**Análise e síntese:** Síntese, Insight, Mapa de afinidade, Roteiro de pesquisa, Mapa de jornada
+
+UX Research (disciplina) fica em **Fundamentos**; Discovery, Hipótese e Validação ficam em **Produto**.
+
 ---
 
 ## Modelo de dados
@@ -146,7 +162,7 @@ GuiaGlossarioEntry {
 
 **Interface:** 18 termos (ver subgrupos acima). Fase B do roadmap editorial.
 
-**Pesquisa:** Entrevista, Teste de usabilidade, Síntese… (Discovery/Hipótese → Produto)
+**Pesquisa:** 15 termos (ver subgrupos acima). Entrevista, teste de usabilidade, síntese e métodos correlatos. Discovery/Hipótese → Produto.
 
 **Produto:** Produto, Produto digital, Problema, Solução, **White-label** (conceitos), MVP, Feature, Discovery, Delivery…
 

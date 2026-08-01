@@ -70,6 +70,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     visual: 'Elementos visuais',
     sistema: 'Sistema e componentes',
   },
+  pesquisa: {
+    conceitos: 'Conceitos',
+    metodos: 'Métodos de pesquisa',
+    analise: 'Análise e síntese',
+  },
 }
 
 /**
@@ -149,6 +154,23 @@ export const guiaGlossarioEditorialOrder: Partial<
     'design-token',
     'ui-kit',
     'pattern',
+  ],
+  pesquisa: [
+    'pesquisa-qualitativa',
+    'pesquisa-quantitativa',
+    'recrutamento',
+    'participante',
+    'entrevista',
+    'teste-de-usabilidade',
+    'questionario',
+    'card-sorting',
+    'tree-testing',
+    'observacao-contextual',
+    'sintese',
+    'insight',
+    'mapa-de-afinidade',
+    'roteiro-de-pesquisa',
+    'mapa-de-jornada',
   ],
 }
 
@@ -1045,6 +1067,262 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A hierarquia visual dessa tela está plana, tudo compete por atenção."',
       '"Precisamos reforçar hierarquia visual no CTA principal."',
+    ],
+  },
+
+  // Pesquisa: conceitos
+  {
+    id: 'pesquisa-qualitativa',
+    term: 'Pesquisa qualitativa',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Busca entender motivações, contexto e comportamento por meio de conversas, observação e materiais abertos. Respostas costumam ser textuais e interpretativas, não só números.',
+      'Product Designers usam pesquisa qualitativa em discovery, entrevistas e testes para aprofundar o porquê por trás de uma dor ou decisão.',
+    ],
+    youWillHear: [
+      '"Precisamos de pesquisa qualitativa antes de fechar o escopo."',
+      '"Esse insight veio de uma rodada qualitativa com cinco participantes."',
+    ],
+  },
+  {
+    id: 'pesquisa-quantitativa',
+    term: 'Pesquisa quantitativa',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Coleta dados em escala para medir frequência, preferência ou comportamento com números. Questionários, analytics e surveys entram aqui.',
+      'Product Designers combinam pesquisa quantitativa com qualitativa: números mostram o tamanho do problema; conversas explicam o motivo.',
+    ],
+    youWillHear: [
+      '"Vamos validar essa hipótese com pesquisa quantitativa."',
+      '"O survey mostrou que 60% abandonam nessa etapa."',
+    ],
+  },
+  {
+    id: 'recrutamento',
+    term: 'Recrutamento',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Processo de encontrar e convidar pessoas usuárias certas para participar de um estudo. Define perfil, canal, critérios de inclusão e quantidade de participantes.',
+      'Product Designers e UX Researchers alinham recrutamento ao objetivo da pesquisa: perfil errado distorce o resultado.',
+    ],
+    youWillHear: [
+      '"O recrutamento ainda não fechou, faltam duas pessoas do perfil enterprise."',
+      '"Quem cuida do recrutamento para o teste de usabilidade?"',
+    ],
+  },
+  {
+    id: 'participante',
+    term: 'Participante',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Pessoa usuária convidada a contribuir em um estudo: entrevista, teste, questionário ou observação. Também aparece como respondente em formulários.',
+      'Product Designers tratam participantes com clareza sobre objetivo, tempo e uso dos dados. Recrutamento define quem entra e quantos são necessários.',
+    ],
+    youWillHear: [
+      '"Precisamos de mais um participante com esse perfil."',
+      '"O participante travou na mesma tarefa que vimos na entrevista anterior."',
+    ],
+  },
+
+  // Pesquisa: métodos
+  {
+    id: 'entrevista',
+    term: 'Entrevista',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Entrevista com usuários',
+      usageNote:
+        'User interview também aparece em materiais e vagas em inglês.',
+    },
+    whatIs: [
+      'Conversa guiada para entender contexto, rotina, dores e expectativas de uma pessoa usuária. Pode ser exploratória, de validação ou de aprofundamento.',
+      'Product Designers conduzem entrevistas com roteiro flexível, ouvem mais do que falam e registram citações e padrões para a síntese.',
+    ],
+    youWillHear: [
+      '"Vamos fazer três entrevistas antes de desenhar o fluxo."',
+      '"Na entrevista de ontem, duas pessoas citaram a mesma dificuldade."',
+    ],
+  },
+  {
+    id: 'teste-de-usabilidade',
+    term: 'Teste de usabilidade',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Usability test',
+      usageNote:
+        'Teste moderado e teste não moderado são variações comuns desse método.',
+    },
+    whatIs: [
+      'Sessão em que uma pessoa usuária tenta completar tarefas reais em um protótipo ou produto, enquanto o time observa onde trava, erra ou hesita.',
+      'Product Designers preparam tarefas, conduzem ou moderam a sessão e registram achados para priorizar melhorias.',
+    ],
+    youWillHear: [
+      '"Marcamos teste de usabilidade para quinta com cinco participantes."',
+      '"No teste de usabilidade, ninguém achou o botão de salvar."',
+    ],
+  },
+  {
+    id: 'questionario',
+    term: 'Questionário',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Survey',
+      usageNote:
+        'Survey aparece em ferramentas, relatórios e vagas em inglês.',
+    },
+    whatIs: [
+      'Formulário com perguntas fechadas ou abertas aplicado a muitas pessoas usuárias. Serve para medir satisfação, preferência, frequência ou validar hipóteses em escala.',
+      'Product Designers usam questionário quando precisam de volume de respostas. Perguntas claras e objetivas aumentam a qualidade dos dados.',
+    ],
+    youWillHear: [
+      '"Vamos disparar um questionário depois do lançamento."',
+      '"O survey rodou com duzentas respostas na semana passada."',
+    ],
+  },
+  {
+    id: 'card-sorting',
+    term: 'Card Sorting',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Ordenação de cartões',
+      usageNote:
+        'Card sort e card sorting aparecem em ferramentas de pesquisa e em conversas de arquitetura da informação.',
+    },
+    whatIs: [
+      'Método em que pessoas usuárias agrupam rótulos ou itens do produto do jeito que faz sentido para elas. Ajuda a definir menus, categorias e arquitetura da informação.',
+      'Product Designers usam card sorting aberto ou fechado para validar como organizar conteúdo antes de fechar a navegação.',
+    ],
+    youWillHear: [
+      '"Precisamos de um card sorting antes de redesenhar o menu."',
+      '"No card sort, todo mundo juntou \'Configurações\' com \'Conta\'."',
+    ],
+  },
+  {
+    id: 'tree-testing',
+    term: 'Tree Testing',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Teste de árvore',
+      usageNote:
+        'Tree test costuma aparecer em ferramentas de pesquisa em inglês.',
+    },
+    whatIs: [
+      'Teste em que pessoas usuárias navegam por uma estrutura de menus em texto, sem visual da interface, para achar onde ficaria um item. Valida se a arquitetura da informação funciona.',
+      'Product Designers usam tree testing depois de card sorting ou quando a navegação já está definida em outline.',
+    ],
+    youWillHear: [
+      '"O tree test mostrou que ninguém acha Relatórios no menu atual."',
+      '"Vamos rodar tree testing antes de implementar a nova IA."',
+    ],
+  },
+  {
+    id: 'observacao-contextual',
+    term: 'Observação contextual',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Contextual inquiry',
+      usageNote:
+        'Shadowing também aparece quando o foco é acompanhar a rotina real de uso.',
+    },
+    whatIs: [
+      'Acompanhamento de uma pessoa usuária no ambiente real de uso: escritório, loja ou app no dia a dia. Mostra comportamento que entrevista sozinha nem sempre revela.',
+      'Product Designers observam tarefas reais, fazem perguntas no momento certo e capturam fricções que a pessoa nem verbaliza espontaneamente.',
+    ],
+    youWillHear: [
+      '"Na observação contextual, vimos que elas anotam o código em papel."',
+      '"Precisamos de shadowing com operadores de loja, não só entrevista."',
+    ],
+  },
+
+  // Pesquisa: análise e síntese
+  {
+    id: 'sintese',
+    term: 'Síntese',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Etapa de organizar dados brutos de pesquisa em padrões, temas e conclusões acionáveis. Inclui agrupar citações, notas de teste e respostas de questionário.',
+      'Product Designers sintetizam para transformar horas de estudo em decisões claras para produto e interface. Mapa de afinidade é uma ferramenta comum nessa fase.',
+    ],
+    youWillHear: [
+      '"A síntese do ciclo de entrevistas fica pronta na sexta."',
+      '"Depois da síntese, ficou claro que o onboarding é o gargalo."',
+    ],
+  },
+  {
+    id: 'insight',
+    term: 'Insight',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Descoberta relevante sobre pessoa usuária, comportamento ou problema, que muda ou reforça uma decisão de produto. Vai além de anedota: costuma aparecer em mais de uma fonte ou sessão.',
+      'Product Designers documentam insights na síntese e ligam cada um a implicações práticas: o que desenhar, priorizar ou testar depois.',
+    ],
+    youWillHear: [
+      '"Esse insight veio de três entrevistas e do teste de usabilidade."',
+      '"Precisamos transformar insight em hipótese testável."',
+    ],
+  },
+  {
+    id: 'mapa-de-afinidade',
+    term: 'Mapa de afinidade',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'Affinity map',
+      usageNote:
+        'Affinity diagram e affinity mapping também aparecem em materiais em inglês.',
+    },
+    whatIs: [
+      'Técnica de agrupar notas, citações e observações em temas comuns, geralmente em mural físico ou digital. Ajuda o time a ver padrões depois de entrevistas e testes.',
+      'Product Designers usam mapa de afinidade na síntese para sair de dados soltos e chegar em clusters que viram insights.',
+    ],
+    youWillHear: [
+      '"Vamos montar o affinity map depois das cinco entrevistas."',
+      '"No mapa de afinidade, três grupos falavam de confiança no pagamento."',
+    ],
+  },
+  {
+    id: 'roteiro-de-pesquisa',
+    term: 'Roteiro de pesquisa',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Guia de perguntas e tópicos para conduzir entrevista ou sessão de pesquisa com consistência entre participantes. Não é script rígido: permite aprofundar respostas interessantes.',
+      'Product Designers preparam roteiro alinhado ao objetivo do estudo e revisam depois de cada sessão para ajustar o que falta explorar.',
+    ],
+    youWillHear: [
+      '"Manda o roteiro de pesquisa antes da entrevista de amanhã."',
+      '"Faltou pergunta sobre contexto de uso no roteiro."',
+    ],
+  },
+  {
+    id: 'mapa-de-jornada',
+    term: 'Mapa de jornada',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'User journey map',
+      usageNote:
+        'Customer journey e journey map também aparecem em materiais de CX e produto.',
+    },
+    whatIs: [
+      'Visualização das etapas que uma pessoa usuária percorre para atingir um objetivo: touchpoints, ações, pensamentos, dores e oportunidades em cada fase.',
+      'Product Designers constroem mapa de jornada com base em pesquisa para alinhar o time sobre onde intervenções de produto e interface fazem mais diferença.',
+    ],
+    youWillHear: [
+      '"O mapa de jornada mostra que a maior fricção é depois do pagamento."',
+      '"Vamos atualizar a journey com o que saiu das entrevistas."',
     ],
   },
 ]
