@@ -75,6 +75,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     metodos: 'Métodos de pesquisa',
     analise: 'Análise e síntese',
   },
+  'metodos-ageis': {
+    conceitos: 'Conceitos',
+    artefatos: 'Artefatos',
+    cerimonias: 'Cerimônias',
+  },
 }
 
 /**
@@ -177,6 +182,20 @@ export const guiaGlossarioEditorialOrder: Partial<
     'mapa-de-empatia',
     'roteiro-de-pesquisa',
     'mapa-de-jornada',
+  ],
+  'metodos-ageis': [
+    'agile',
+    'scrum',
+    'kanban',
+    'backlog',
+    'user-story',
+    'epic',
+    'wip',
+    'sprint',
+    'daily',
+    'sprint-planning',
+    'retrospectiva',
+    'sprint-review',
   ],
 }
 
@@ -1655,6 +1674,207 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Manda o link do PRD antes da planning."',
       '"O PRD ainda não tem critério de aceite para esse fluxo."',
+    ],
+  },
+
+  // Métodos Ágeis: conceitos
+  {
+    id: 'agile',
+    term: 'Agile',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Metodologia ágil',
+    },
+    whatIs: [
+      'Forma de organizar trabalho em ciclos curtos, com feedback frequente e prioridade no que gera valor agora. Times entregam em incrementos e ajustam rota conforme aprendem.',
+      'Product Designers em times ágeis participam de sprint, backlog e cerimônias. Discovery e delivery, na categoria Produto, descrevem etapas de produto; aqui o foco é como o time opera no dia a dia.',
+    ],
+    youWillHear: [
+      '"Aqui trabalhamos com metodologia ágil, então o escopo pode mudar no sprint."',
+      '"Agile não é zero documentação, é cadência de aprendizado."',
+    ],
+  },
+  {
+    id: 'scrum',
+    term: 'Scrum',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Framework ágil mais comum em squads de produto: trabalho organizado em sprints, com backlog priorizado e cerimônias regulares.',
+      'Product Designers em Scrum participam de planning, daily e review, alinhando design ao que o sprint consegue entregar.',
+    ],
+    youWillHear: [
+      '"O time roda Scrum com sprint de duas semanas."',
+      '"No Scrum, o PM cuida do backlog e o squad executa o sprint."',
+    ],
+  },
+  {
+    id: 'kanban',
+    term: 'Kanban',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Método visual de organizar trabalho em colunas (a fazer, fazendo, feito) com limite de itens em andamento. Fluxo contínuo, sem sprint fixo como no Scrum.',
+      'Product Designers usam kanban no Jira, Linear ou Trello para enxergar status de telas, handoff e dependências.',
+    ],
+    youWillHear: [
+      '"Vamos mover esse card para doing no kanban."',
+      '"O board está congestionado na coluna de review."',
+    ],
+  },
+
+  // Métodos Ágeis: artefatos
+  {
+    id: 'backlog',
+    term: 'Backlog',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    whatIs: [
+      'Lista priorizada de tudo que o time pode fazer no produto: features, bugs, melhorias e débitos técnicos. Product backlog é o conjunto; sprint backlog é o recorte do sprint atual.',
+      'Product Designers veem no backlog o que vem depois do sprint e ajudam PM a detalhar itens com fluxos e critérios de pronto.',
+    ],
+    youWillHear: [
+      '"Isso ainda está no backlog, não entrou no sprint."',
+      '"Precisamos refinar o backlog antes da planning."',
+    ],
+  },
+  {
+    id: 'user-story',
+    term: 'User Story',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'História de usuário',
+    },
+    whatIs: [
+      'Descrição curta de uma necessidade do ponto de vista da pessoa usuária, geralmente no formato: como [persona], quero [ação], para [benefício]. Vira item trabalhável no backlog.',
+      'Product Designers usam user stories para amarrar design a valor: cada história deve ter fluxo, estados e critério de aceite claros.',
+    ],
+    youWillHear: [
+      '"Abre uma user story para esse ajuste de onboarding."',
+      '"Essa história está grande demais, vamos quebrar."',
+    ],
+  },
+  {
+    id: 'epic',
+    term: 'Epic',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'Épico',
+    },
+    whatIs: [
+      'Iniciativa grande demais para um sprint, agrupando várias user stories relacionadas. Exemplo: refazer checkout ou lançar app mobile.',
+      'Product Designers usam epics para planejar discovery e entregas parciais antes de quebrar em histórias menores.',
+    ],
+    youWillHear: [
+      '"Esse redesign de checkout é um epic, vai levar vários sprints."',
+      '"Quebra o epic em stories antes da planning."',
+    ],
+  },
+  {
+    id: 'wip',
+    term: 'WIP',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'Work in Progress',
+      usageNote: 'Trabalho em andamento.',
+    },
+    whatIs: [
+      'Sigla para work in progress: quantidade de itens abertos ao mesmo tempo. Limite de WIP evita que o time comece dezenas de tarefas e não finalize nenhuma.',
+      'Product Designers sentem WIP alto quando há muitas telas pela metade, reviews parados ou handoffs acumulados.',
+    ],
+    youWillHear: [
+      '"Estouramos o WIP, precisamos fechar antes de puxar card novo."',
+      '"O limite de WIP dessa coluna é três itens."',
+    ],
+  },
+
+  // Métodos Ágeis: cerimônias
+  {
+    id: 'sprint',
+    term: 'Sprint',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    whatIs: [
+      'Ciclo curto e fixo de trabalho, em geral uma ou duas semanas, em que o squad se compromete a entregar um conjunto de itens do backlog.',
+      'Product Designers planejam o que dá para desenhar, validar e entregar dentro do sprint, alinhando discovery contínuo com capacidade do time.',
+    ],
+    youWillHear: [
+      '"Esse fluxo entra no sprint que começa segunda."',
+      '"O sprint acabou e ainda ficou story pendente."',
+    ],
+  },
+  {
+    id: 'daily',
+    term: 'Daily',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Daily standup',
+      usageNote: 'Daily scrum também aparece em times de Scrum.',
+    },
+    whatIs: [
+      'Reunião curta e recorrente, em geral diária, para o squad alinhar o que fez, o que vai fazer e se há bloqueio. Costuma durar quinze minutos em pé ou no call.',
+      'Product Designers usam a daily para sinalizar dependência de review, teste ou handoff.',
+    ],
+    youWillHear: [
+      '"Na daily de hoje, avisa que o protótipo travou em copy."',
+      '"Depois da daily, a gente refina essa story."',
+    ],
+  },
+  {
+    id: 'sprint-planning',
+    term: 'Sprint Planning',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Planejamento de sprint',
+    },
+    whatIs: [
+      'Cerimônia que abre o sprint: o time escolhe itens do backlog, estima esforço e define o objetivo do ciclo. PM e squad alinham prioridade e capacidade.',
+      'Product Designers entram com contexto de UX, dependências de design system e o que precisa de validação antes de desenvolver.',
+    ],
+    youWillHear: [
+      '"Na sprint planning, essa story ficou de fora por falta de capacidade."',
+      '"Leva o Figma para a planning de amanhã."',
+    ],
+  },
+  {
+    id: 'retrospectiva',
+    term: 'Retrospectiva',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Retro',
+      usageNote: 'Sprint retrospective também aparece em materiais de Scrum.',
+    },
+    whatIs: [
+      'Cerimônia ao fim do sprint para o time refletir o que funcionou, o que atrapalhou e o que vai mudar no próximo ciclo. Foco em processo, não em culpar pessoas.',
+      'Product Designers participam da retro para melhorar colaboração com dev, PM e qualidade das entregas de UX.',
+    ],
+    youWillHear: [
+      '"Na retro, combinamos de reduzir WIP no board."',
+      '"A retrospectiva levantou que o handoff chegou tarde de novo."',
+    ],
+  },
+  {
+    id: 'sprint-review',
+    term: 'Sprint Review',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Review de sprint',
+    },
+    whatIs: [
+      'Cerimônia em que o squad mostra o que entregou no sprint para stakeholders e coleta feedback. Pode incluir demo de feature, protótipo ou incremento de produto.',
+      'Product Designers apresentam fluxos concluídos, explicam decisões de UX e capturam ajustes para o backlog.',
+    ],
+    youWillHear: [
+      '"Na sprint review, vamos demoar o novo checkout."',
+      '"O feedback da review virou story para o próximo sprint."',
     ],
   },
 ]

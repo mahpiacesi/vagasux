@@ -116,6 +116,22 @@ Referências informadas (v1 + glossários de UI/PD): backlog editorial v1, trilh
 
 UX Research (disciplina) fica em **Fundamentos**; Discovery, Hipótese e Validação ficam em **Produto**.
 
+### Métodos Ágeis
+
+| `subgroup` | Título |
+|------------|--------|
+| `conceitos` | Conceitos |
+| `artefatos` | Artefatos |
+| `cerimonias` | Cerimônias |
+
+**Conceitos:** Agile, Scrum, Kanban
+
+**Artefatos:** Backlog, User Story, Epic, WIP
+
+**Cerimônias:** Sprint, Daily, Sprint Planning, Retrospectiva, Sprint Review
+
+Discovery e delivery ficam em **Produto**; squad em **Fundamentos**.
+
 ---
 
 ## Modelo de dados
@@ -170,7 +186,7 @@ GuiaGlossarioEntry {
 
 **Produto:** 16 termos (ver subgrupos acima). Conceitos, processo discovery/delivery, métricas/OKR/JTBD/PMF e entregas de roadmap/PRD.
 
-**Métodos Ágeis:** Scrum, Sprint, Kanban, Backlog, WIP…
+**Métodos Ágeis:** 12 termos (ver subgrupos acima). Scrum, sprint, backlog, kanban e cerimônias do squad.
 
 **Desenvolvimento:** API, Frontend, Handoff, Token…
 
