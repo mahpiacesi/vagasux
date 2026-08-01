@@ -66,8 +66,7 @@ export function GuiaAjudaSection() {
             id="guia-ajuda-heading"
             className="mt-4 text-3xl leading-[1.02] font-black tracking-[-0.04em] text-neutral-100 md:text-4xl"
           >
-            FAQ e Glossário{' '}
-            <span className="text-mark-on-dark">da comunidade</span>
+            FAQ e Glossário da comunidade
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg">
             Dois acervos prontos para consultar — sem precisar caçar link solto.
