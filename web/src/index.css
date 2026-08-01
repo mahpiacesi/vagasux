@@ -795,69 +795,6 @@
 }
 
 /* Guia — FAQ / Glossário spotlight section */
-.guia-ajuda-ambient__orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(72px);
-}
-
-.guia-ajuda-ambient__orb--brand {
-  top: -12%;
-  right: -4%;
-  width: min(42vw, 22rem);
-  height: min(42vw, 22rem);
-  background: color-mix(in srgb, var(--color-brand-400) 42%, transparent);
-  animation: guia-ajuda-drift-a 16s ease-in-out infinite;
-}
-
-.guia-ajuda-ambient__orb--gold {
-  bottom: -18%;
-  left: -8%;
-  width: min(48vw, 26rem);
-  height: min(48vw, 26rem);
-  background: color-mix(in srgb, var(--color-complementary-300) 28%, transparent);
-  animation: guia-ajuda-drift-b 19s ease-in-out infinite;
-}
-
-.guia-ajuda-ambient__orb--violet {
-  top: 42%;
-  left: 38%;
-  width: min(36vw, 18rem);
-  height: min(36vw, 18rem);
-  background: color-mix(in srgb, var(--color-brand-300) 22%, transparent);
-  animation: guia-ajuda-drift-c 22s ease-in-out infinite;
-}
-
-@keyframes guia-ajuda-drift-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-28px, 22px, 0) scale(1.08);
-  }
-}
-
-@keyframes guia-ajuda-drift-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(34px, -18px, 0) scale(1.06);
-  }
-}
-
-@keyframes guia-ajuda-drift-c {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-18px, -26px, 0) scale(1.1);
-  }
-}
-
 .guia-ajuda-spotlight {
   position: relative;
   display: flex;
@@ -1011,7 +948,6 @@
   .guilda-reveal,
   .guilda-quote-lane-track,
   .guilda-quote-card:hover,
-  .guia-ajuda-ambient__orb,
   .guia-ajuda-spotlight__border,
   .guia-ajuda-spotlight__shine,
   .guia-ajuda-spotlight__inner,

@@ -42,16 +42,10 @@ export function GuiaAjudaSection() {
   return (
     <section
       id={guiaHashes.ajuda}
-      className="guia-ajuda relative overflow-hidden bg-neutral-500 px-5 py-20 md:px-6 md:py-28"
+      className="guia-ajuda bg-neutral-500 px-5 py-20 md:px-6 md:py-28"
       aria-labelledby="guia-ajuda-heading"
     >
-      <div className="guia-ajuda-ambient pointer-events-none absolute inset-0" aria-hidden>
-        <span className="guia-ajuda-ambient__orb guia-ajuda-ambient__orb--brand" />
-        <span className="guia-ajuda-ambient__orb guia-ajuda-ambient__orb--gold" />
-        <span className="guia-ajuda-ambient__orb guia-ajuda-ambient__orb--violet" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Ajuda e suporte
