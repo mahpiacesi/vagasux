@@ -41,7 +41,12 @@ export function GuiaGlossarioCategoryAccordion({
         !hasEntries && 'opacity-70',
       )}
     >
-      <h2>
+      <h2
+        className={cn(
+          isOpen &&
+            'sticky top-[4.5rem] z-30 border-b border-neutral-500/10 bg-neutral-100/95 backdrop-blur-md',
+        )}
+      >
         <button
           type="button"
           aria-expanded={isOpen}
@@ -75,19 +80,10 @@ export function GuiaGlossarioCategoryAccordion({
       {isOpen ? (
         <div
           id={panelId}
-          className="border-t border-neutral-500/10 px-5 pb-6 md:px-6 md:pb-8"
+          className="px-5 pb-6 md:px-6 md:pb-8"
         >
           {hasEntries ? (
             <>
-              <div className="sticky top-[4.5rem] z-30 -mx-5 border-b border-neutral-500/10 bg-neutral-100/95 px-5 py-3 backdrop-blur-md md:-mx-6 md:px-6">
-                <p className="flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-brand-400 uppercase">
-                  <span className="text-base normal-case tracking-normal" aria-hidden>
-                    {category.emoji}
-                  </span>
-                  {category.title}
-                </p>
-              </div>
-
               <nav
                 aria-label={`Termos em ${category.title}`}
                 className="mt-5 flex flex-wrap gap-2"
