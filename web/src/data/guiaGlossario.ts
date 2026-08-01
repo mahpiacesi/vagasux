@@ -220,7 +220,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
     },
     whatIs: [
-      'Content Design cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária.',
+      'Content Design cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
       'O foco não é escrever bonito, e sim deixar claro o que fazer, transmitir confiança e ajudar a completar a tarefa sem travar.',
     ],
     youWillHear: [
