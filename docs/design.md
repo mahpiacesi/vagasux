@@ -174,6 +174,8 @@ A VagasUX é:
 
 \* Parênteses de gênero como (a) ou (o). Prefira termos inclusivos: uma pessoa voluntária, estilosa, etc.
 
+\* Artigo masculino com o nome **VagasUX**. A marca é sempre feminina: *a* VagasUX, *na* VagasUX, *da* VagasUX, *pela* VagasUX
+
 
 
 \---

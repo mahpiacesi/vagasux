@@ -30,7 +30,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'luiz-filipe-eventos',
     quote:
-      'Participei de um workshop incrível através do VagasUX sobre Google Analytics e UX Metrics. Reforçou a importância de olhar além do design e compreender o usuário por meio de métricas.',
+      'Participei de um workshop incrível através da VagasUX sobre Google Analytics e UX Metrics. Reforçou a importância de olhar além do design e compreender o usuário por meio de métricas.',
     name: 'Luiz Filipe Cardoso',
     role: 'UX/UI Designer',
     category: 'Eventos',
@@ -75,7 +75,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'mariah-mentoria',
     quote:
-      'Depois de uma demissão em massa, as mentorias do VagasUX fizeram toda a diferença. Um mês depois, ainda arrumando o portfólio, fui convidada para uma entrevista.',
+      'Depois de uma demissão em massa, as mentorias da VagasUX fizeram toda a diferença. Um mês depois, ainda arrumando o portfólio, fui convidada para uma entrevista.',
     name: 'Mariah Carrard',
     role: 'Product Designer',
     category: 'Mentorias',
@@ -165,7 +165,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'luiz-reis-seletivas',
     quote:
-      'Fui contemplado pelo VagasUX com um ano de acesso à TALKNTALK. Foi incrível praticar sem julgamentos, me sentindo acolhido o tempo todo. De verdade, estou muito grato pela oportunidade.',
+      'Fui contemplado pela VagasUX com um ano de acesso à TALKNTALK. Foi incrível praticar sem julgamentos, me sentindo acolhido o tempo todo. De verdade, estou muito grato pela oportunidade.',
     name: 'Luiz Reis',
     role: 'Front-end | UX/UI Designer',
     category: 'Seletivas',

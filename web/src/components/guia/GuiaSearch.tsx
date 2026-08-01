@@ -85,7 +85,7 @@ export function GuiaSearch() {
               Histórico
             </p>
             <p className="mt-2 px-3 py-2 text-sm font-medium text-neutral-300">
-              Em breve — suas buscas recentes aparecerão aqui.
+              Em breve. Suas buscas recentes aparecerão aqui.
             </p>
           </div>
 

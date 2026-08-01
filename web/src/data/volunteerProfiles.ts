@@ -124,7 +124,7 @@ export const volunteerProfiles: Record<string, { about: string; rapidinhas: stri
     ],
   },
   'marianna-piacesi': {
-    about: "Já passei por fintech, startup, consultoria, agência e grandes bancos do mercado. Sou graduada em Comunicação Social e atuo há bastante tempo como Product designer. Hoje estou me especializando em Design Ops na minha experiência atual na Talkdesk. No meu tempo livre, organizo esse projeto lindo do VagasUX com as iniciativas do Guia do Product Designer e Vagas para Iniciantes. Faço parte também da comunidade Friends of Figma (FoF SP) como voluntária e dou mentorias sobre a área através de algumas plataformas.",
+    about: "Já passei por fintech, startup, consultoria, agência e grandes bancos do mercado. Sou graduada em Comunicação Social e atuo há bastante tempo como Product designer. Hoje estou me especializando em Design Ops na minha experiência atual na Talkdesk. No meu tempo livre, organizo esse projeto lindo da VagasUX com as iniciativas do Guia do Product Designer e Vagas para Iniciantes. Faço parte também da comunidade Friends of Figma (FoF SP) como voluntária e dou mentorias sobre a área através de algumas plataformas.",
     rapidinhas: [
       "🍛 Minha comida favorita: Gosto de tudo um pouco, mas me amarro em rodízio japonês 🍣 e pizza 🍕. Difícil escolher!",
       "🏋️‍♂️ Meus Interesses/Hobbies: Sou viciada em videogames 🎮 (PS5, VR, Nintendo Switch) principalmente jogos indie, exploração, aventura e plataforma; jogos de tabuleiro também, amo animações (desenhos, curtas, animações japonesas e por aí vai) e sou cinéfila de carteirinha.",

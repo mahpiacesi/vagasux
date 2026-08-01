@@ -1,0 +1,2712 @@
+export type GuiaGlossarioCategoryId =
+  | 'fundamentos'
+  | 'interface'
+  | 'pesquisa'
+  | 'produto'
+  | 'metodos-ageis'
+  | 'desenvolvimento'
+  | 'acessibilidade'
+  | 'ia'
+
+export type GuiaGlossarioOriginalName = {
+  /** Nome alternativo (outro idioma ou forma expandida da sigla) */
+  alternate: string
+  usageNote?: string
+}
+
+/**
+ * Verbete do glossário. Template enxuto.
+ * @see docs/guia-glossario.md
+ */
+export type GuiaGlossarioEntry = {
+  /** Âncora HTML na página única (#ux, #mvp…) */
+  id: string
+  /** Título como o mercado utiliza */
+  term: string
+  categoryId: GuiaGlossarioCategoryId
+  /** Subgrupo dentro da categoria (ex.: areas-disciplinas) */
+  subgroup?: string
+  originalName?: GuiaGlossarioOriginalName
+  /** O que é? Incluir termos relacionados inline quando fizer sentido */
+  whatIs: string[]
+  /** Você provavelmente vai ouvir */
+  youWillHear: string[]
+}
+
+export type GuiaGlossarioCategory = {
+  id: GuiaGlossarioCategoryId
+  emoji: string
+  title: string
+}
+
+export const guiaGlossarioCategories: GuiaGlossarioCategory[] = [
+  { id: 'fundamentos', emoji: '🚀', title: 'Fundamentos' },
+  { id: 'interface', emoji: '🎨', title: 'Interface' },
+  { id: 'pesquisa', emoji: '🔍', title: 'Pesquisa' },
+  { id: 'produto', emoji: '📈', title: 'Produto' },
+  { id: 'metodos-ageis', emoji: '🤝', title: 'Métodos Ágeis' },
+  { id: 'desenvolvimento', emoji: '💻', title: 'Desenvolvimento' },
+  { id: 'acessibilidade', emoji: '♿', title: 'Acessibilidade' },
+  { id: 'ia', emoji: '🤖', title: 'IA' },
+]
+
+/** Rótulos de subgrupos por categoria */
+export const guiaGlossarioSubgroupLabels: Partial<
+  Record<GuiaGlossarioCategoryId, Record<string, string>>
+> = {
+  fundamentos: {
+    'areas-disciplinas': 'Áreas e disciplinas',
+    mentalidade: 'Mentalidade',
+    'pessoas-contexto': 'Pessoas e contexto',
+  },
+  produto: {
+    conceitos: 'Conceitos',
+    processo: 'Processo',
+    entregas: 'Entregas',
+  },
+  interface: {
+    prototipos: 'Prototipação',
+    estrutura: 'Estrutura e layout',
+    visual: 'Elementos visuais',
+    sistema: 'Sistema e componentes',
+  },
+  pesquisa: {
+    conceitos: 'Conceitos',
+    metodos: 'Métodos de pesquisa',
+    analise: 'Análise e síntese',
+  },
+  'metodos-ageis': {
+    conceitos: 'Conceitos',
+    artefatos: 'Artefatos',
+    cerimonias: 'Cerimônias',
+  },
+  desenvolvimento: {
+    conceitos: 'Conceitos',
+    entrega: 'Design para desenvolvimento',
+    ciclo: 'Ciclo de release',
+  },
+  acessibilidade: {
+    conceitos: 'Conceitos',
+    interface: 'Interface acessível',
+    pratica: 'Prática',
+  },
+  ia: {
+    conceitos: 'Conceitos',
+    uso: 'Uso no dia a dia',
+    pratica: 'Prática e riscos',
+  },
+}
+
+/**
+ * Ordem recomendada de leitura (prioridade para quem está começando).
+ * Novos verbetes entram no fim do subgrupo correspondente.
+ */
+export const guiaGlossarioEditorialOrder: Partial<
+  Record<GuiaGlossarioCategoryId, readonly string[]>
+> = {
+  fundamentos: [
+    // Áreas e disciplinas: do macro (PD) ao específico
+    'product-design',
+    'product-designer',
+    'product-manager',
+    'ux',
+    'ui',
+    'ux-designer',
+    'ui-designer',
+    'ux-research',
+    'design-de-interacao',
+    'content-design',
+    'arquitetura-da-informacao',
+    'design-visual',
+    'service-design',
+    'customer-experience',
+    'hci',
+    // Mentalidade: base → frameworks → ferramentas de pensamento
+    'hcd',
+    'usabilidade',
+    'interacao',
+    'iteracao',
+    'design-thinking',
+    'double-diamond',
+    'lean-ux',
+    'heuristicas-de-usabilidade',
+    // Pessoas e contexto: quem usa → quem decide
+    'pessoa-usuaria',
+    'persona',
+    'stakeholder',
+    'cliente',
+    'negocio',
+    'squad',
+  ],
+  produto: [
+    // conceitos — modelos e definições de produto
+    'produto',
+    'produto-digital',
+    'problema',
+    'solucao',
+    'jtbd',
+    'white-label',
+    'mvp',
+    'product-market-fit',
+    'feature',
+    'metrica',
+    'okr',
+    // processo
+    'discovery',
+    'delivery',
+    'hipotese',
+    'validacao',
+    // entregas
+    'roadmap',
+    'prd',
+  ],
+  interface: [
+    'wireframe',
+    'mockup',
+    'prototipo',
+    'layout',
+    'grid',
+    'auto-layout',
+    'tipografia',
+    'cor',
+    'iconografia',
+    'espacamento',
+    'hierarquia-visual',
+    'component',
+    'variant',
+    'estado',
+    'design-system',
+    'design-token',
+    'ui-kit',
+    'pattern',
+  ],
+  pesquisa: [
+    'pesquisa-qualitativa',
+    'pesquisa-quantitativa',
+    'recrutamento',
+    'participante',
+    'entrevista',
+    'teste-de-usabilidade',
+    'questionario',
+    'card-sorting',
+    'tree-testing',
+    'observacao-contextual',
+    'sintese',
+    'insight',
+    'mapa-de-afinidade',
+    'mapa-de-empatia',
+    'roteiro-de-pesquisa',
+    'mapa-de-jornada',
+  ],
+  'metodos-ageis': [
+    'agile',
+    'scrum',
+    'kanban',
+    'backlog',
+    'user-story',
+    'epic',
+    'wip',
+    'sprint',
+    'daily',
+    'sprint-planning',
+    'retrospectiva',
+    'sprint-review',
+  ],
+  desenvolvimento: [
+    'frontend',
+    'backend',
+    'api',
+    'responsivo',
+    'handoff',
+    'spec',
+    'breakpoint',
+    'edge-case',
+    'deploy',
+    'staging',
+    'bug',
+    'pull-request',
+    'qa',
+  ],
+  acessibilidade: [
+    'acessibilidade-digital',
+    'design-inclusivo',
+    'wcag',
+    'contraste',
+    'texto-alternativo',
+    'foco-visivel',
+    'navegacao-por-teclado',
+    'area-de-toque',
+    'leitor-de-tela',
+    'aria',
+    'auditoria-de-acessibilidade',
+  ],
+  ia: [
+    'ia',
+    'llm',
+    'ia-generativa',
+    'prompt',
+    'engenharia-de-prompt',
+    'md',
+    'agente-de-ia',
+    'skill',
+    'mcp',
+    'modelo',
+    'janela-de-contexto',
+    'alucinacao',
+    'revisao-humana',
+  ],
+}
+
+/** Verbetes planejados (sem conteúdo ainda). IDs devem bater com guiaGlossarioEditorialOrder. */
+export const guiaGlossarioBacklogNotes: Partial<
+  Record<GuiaGlossarioCategoryId, Record<string, string>>
+> = {}
+
+function getGuiaGlossarioEditorialIndex(entry: GuiaGlossarioEntry): number {
+  const order = guiaGlossarioEditorialOrder[entry.categoryId]
+  if (!order) return Number.MAX_SAFE_INTEGER
+  const index = order.indexOf(entry.id)
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index
+}
+
+function getGuiaGlossarioCategoryIndex(
+  categoryId: GuiaGlossarioCategoryId,
+): number {
+  return guiaGlossarioCategories.findIndex(
+    (category) => category.id === categoryId,
+  )
+}
+
+export function compareGuiaGlossarioEntriesEditorially(
+  a: GuiaGlossarioEntry,
+  b: GuiaGlossarioEntry,
+): number {
+  if (a.categoryId !== b.categoryId) {
+    return (
+      getGuiaGlossarioCategoryIndex(a.categoryId) -
+      getGuiaGlossarioCategoryIndex(b.categoryId)
+    )
+  }
+
+  const indexA = getGuiaGlossarioEditorialIndex(a)
+  const indexB = getGuiaGlossarioEditorialIndex(b)
+  if (indexA !== indexB) return indexA - indexB
+
+  return a.term.localeCompare(b.term, 'pt-BR')
+}
+
+export function sortGuiaGlossarioEntriesEditorially(
+  entries: GuiaGlossarioEntry[],
+): GuiaGlossarioEntry[] {
+  return [...entries].sort(compareGuiaGlossarioEntriesEditorially)
+}
+
+export type GuiaGlossarioSortMode = 'recomendada' | 'alfabetica'
+
+export const guiaGlossarioSortModeLabels: Record<GuiaGlossarioSortMode, string> =
+  {
+    recomendada: 'Contextual',
+    alfabetica: 'Alfabética',
+  }
+
+export function parseGuiaGlossarioSortMode(
+  value: string | null,
+): GuiaGlossarioSortMode {
+  return value === 'alfabetica' ? 'alfabetica' : 'recomendada'
+}
+
+export function compareGuiaGlossarioEntriesAlphabetically(
+  a: GuiaGlossarioEntry,
+  b: GuiaGlossarioEntry,
+): number {
+  if (a.categoryId !== b.categoryId) {
+    return (
+      getGuiaGlossarioCategoryIndex(a.categoryId) -
+      getGuiaGlossarioCategoryIndex(b.categoryId)
+    )
+  }
+
+  return a.term.localeCompare(b.term, 'pt-BR')
+}
+
+export function sortGuiaGlossarioEntries(
+  entries: GuiaGlossarioEntry[],
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  const compare =
+    sortMode === 'alfabetica'
+      ? compareGuiaGlossarioEntriesAlphabetically
+      : compareGuiaGlossarioEntriesEditorially
+
+  return [...entries].sort(compare)
+}
+
+export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
+  // Fundamentos: areas-disciplinas
+  {
+    id: 'arquitetura-da-informacao',
+    term: 'Arquitetura da Informação',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Information Architecture',
+    },
+    whatIs: [
+      'Organiza, nomeia e estrutura conteúdos em produtos digitais para que a pessoa usuária encontre o que precisa sem se perder. Pense em menus, categorias, rótulos e hierarquia de telas.',
+      'Product Designers e pessoas de UX Research colaboram nessa área quando definem como um app ou site apresenta informação de forma clara e previsível.',
+    ],
+    youWillHear: [
+      '"Precisamos revisar a arquitetura da informação antes de desenhar as telas."',
+      '"A pessoa usuária não achou a funcionalidade. Pode ser problema de arquitetura da informação."',
+    ],
+  },
+  {
+    id: 'content-design',
+    term: 'Content Design',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Design de Conteúdo',
+      usageNote:
+        'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
+    },
+    whatIs: [
+      'Cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
+      'Prioriza clareza, confiança e ajudar a pessoa usuária a completar a tarefa sem travar.',
+    ],
+    youWillHear: [
+      '"Esse botão precisa de um copy mais claro."',
+      '"Vamos passar essas telas com Content Design antes do handoff."',
+    ],
+  },
+  {
+    id: 'customer-experience',
+    term: 'CX',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Customer Experience',
+      usageNote:
+        'CX aparece em empresas que olham a jornada completa da pessoa, incluindo atendimento, loja física e canais fora do app.',
+    },
+    whatIs: [
+      'A experiência que uma pessoa tem com uma marca ou empresa em todos os pontos de contato. Pode incluir suporte, loja, redes sociais e comunicação pós-venda.',
+      'UX e CX se cruzam quando o produto digital faz parte de uma experiência maior. Em conversas de equipe, CX costuma vir de Marketing, Atendimento ou Estratégia.',
+    ],
+    youWillHear: [
+      '"Precisamos alinhar a UX do app com a estratégia de CX da marca."',
+      '"O time de CX quer entender a jornada completa, incluindo fora do app."',
+    ],
+  },
+  {
+    id: 'design-de-interacao',
+    term: 'Design de Interação',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Interaction Design',
+      usageNote:
+        'Em vagas internacionais, a sigla IxD também aparece, mas no Brasil o termo completo é mais comum.',
+    },
+    whatIs: [
+      'Projeta como a pessoa usuária interage com um produto digital: o que acontece quando ela toca, clica, arrasta ou preenche um campo.',
+      'Foca no comportamento e no fluxo entre as ações: respostas do sistema, transições e sequência de passos.',
+    ],
+    youWillHear: [
+      '"Esse fluxo precisa de um design de interação mais claro."',
+      '"Vamos revisar as interações desse formulário antes de polir o visual."',
+    ],
+  },
+  {
+    id: 'design-visual',
+    term: 'Design Visual',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    whatIs: [
+      'Cria a identidade visual de um produto: cores, tipografia, ícones, espaçamento e hierarquia do que aparece na tela.',
+      'UI Designers e Product Designers usam design visual para deixar interfaces claras, consistentes e alinhadas à marca. Visual mal resolvido atrapalha a leitura e a usabilidade.',
+    ],
+    youWillHear: [
+      '"O design visual desse componente ainda não está alinhado ao restante do produto."',
+      '"Antes de desenvolver, vamos fechar o design visual dessa tela."',
+    ],
+  },
+  {
+    id: 'hci',
+    term: 'HCI',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Interação Humano-Computador',
+      usageNote:
+        'Frequente em cursos, artigos e empresas com raiz acadêmica. Em vagas e conversas de produto, costuma aparecer como UX ou HCD.',
+    },
+    whatIs: [
+      'Campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX saíram daqui.',
+    ],
+    youWillHear: [
+      '"Meu mestrado foi em HCI, mas hoje trabalho como Product Designer."',
+      '"Esse paper de HCI fala sobre usabilidade de interfaces."',
+    ],
+  },
+  {
+    id: 'product-design',
+    term: 'Product Design',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    whatIs: [
+      'Cria e evolui produtos digitais, unindo estratégia, pesquisa, experiência da pessoa usuária (UX) e interface (UI) para resolver problemas e gerar valor.',
+    ],
+    youWillHear: [
+      '"Vamos envolver Product Design desde o início do projeto."',
+      '"O time de Product Design está trabalhando nessa funcionalidade."',
+    ],
+  },
+  {
+    id: 'product-designer',
+    term: 'Product Designer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    whatIs: [
+      'Pessoa responsável por projetar a experiência de um produto digital. Trabalha desde a compreensão do problema até a criação e validação de soluções, colaborando com áreas como Produto, Engenharia e Pesquisa.',
+    ],
+    youWillHear: [
+      '"A pessoa Product Designer vai validar esse fluxo antes do desenvolvimento."',
+      '"Vamos alinhar essa decisão com Product Design."',
+    ],
+  },
+  {
+    id: 'product-manager',
+    term: 'Product Manager',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Gerente de Produto',
+      usageNote:
+        'PM é a sigla mais usada em squads, vagas e conversas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Pessoa responsável por definir o que o produto deve resolver, priorizar iniciativas e alinhar negócio, tecnologia e experiência. Costuma liderar discovery, roadmap e critérios de sucesso.',
+      'Product Designers e PMs trabalham juntos: PM traz contexto de mercado e prioridade; design explora problemas, soluções e validação com pessoas usuárias.',
+    ],
+    youWillHear: [
+      '"O PM quer validar essa hipótese antes de entrar no roadmap."',
+      '"Precisamos alinhar com Product Management o escopo dessa release."',
+    ],
+  },
+  {
+    id: 'service-design',
+    term: 'Service Design',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Design de Serviços',
+      usageNote:
+        'Os dois nomes convivem em vagas e materiais da área.',
+    },
+    whatIs: [
+      'Projeta serviços completos, mapeando todas as etapas que a pessoa passa, incluindo momentos fora da tela: fila, atendimento, entrega, suporte.',
+      'Product Designers encontram Service Design em empresas de saúde, bancos, varejo e logística, em que a experiência vai além do app.',
+    ],
+    youWillHear: [
+      '"Esse projeto envolve service design além da interface do app."',
+      '"Precisamos mapear o serviço ponta a ponta, do app ao atendimento."',
+    ],
+  },
+  {
+    id: 'ui',
+    term: 'UI',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'User Interface',
+      usageNote:
+        'UI é uma das siglas mais usadas no mercado. Quase sempre aparece junto com UX em vagas e conversas de equipe.',
+    },
+    whatIs: [
+      'Camada visual e interativa de um produto digital: telas, botões, cores, tipografia, ícones e componentes que a pessoa usuária vê e toca.',
+      'Cobre como cada tela funciona e se apresenta. Na prática, Product Designers costumam trabalhar UX e UI juntos.',
+    ],
+    youWillHear: [
+      '"A UX desse fluxo está ok, mas a UI ainda precisa de refinamento."',
+      '"Vamos alinhar UI com o design system antes de entregar."',
+    ],
+  },
+  {
+    id: 'ui-designer',
+    term: 'UI Designer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Designer de Interface',
+      usageNote:
+        'Também aparece como Designer de Interfaces ou Designer Visual em algumas vagas.',
+    },
+    whatIs: [
+      'Pessoa especializada em criar interfaces digitais: layout, componentes, estados visuais e consistência com a marca e o design system.',
+      'Ela trabalha próximo de Product Designers, UX Designers e Engenharia para garantir que o visual seja claro, viável de desenvolver e agradável de usar.',
+    ],
+    youWillHear: [
+      '"A pessoa UI Designer vai montar as telas finais desse fluxo."',
+      '"Precisamos de alguém com foco em UI para esse projeto."',
+    ],
+  },
+  {
+    id: 'ux',
+    term: 'UX',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'User Experience',
+      usageNote:
+        'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso.',
+    },
+    whatIs: [
+      'Tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital: se entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
+      'Boas decisões de UX consideram contexto, objetivo da pessoa usuária e limites do negócio. Na prática, Product Designers costumam trabalhar UX e UI juntos.',
+    ],
+    youWillHear: [
+      '"Precisamos melhorar a UX desse fluxo de cadastro."',
+      '"Antes de polir a interface, vamos validar a UX com pessoas usuárias."',
+    ],
+  },
+  {
+    id: 'ux-designer',
+    term: 'UX Designer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Designer de Experiência',
+      usageNote:
+        'Muitas vagas no Brasil pedem UX/UI Designer no mesmo perfil. Quando isso acontece, o escopo costuma ser parecido com o de Product Design.',
+    },
+    whatIs: [
+      'Pessoa focada em projetar a experiência de uso de um produto digital: entender a pessoa usuária, mapear fluxos, testar ideias e melhorar a jornada.',
+    ],
+    youWillHear: [
+      '"A pessoa UX Designer vai conduzir o teste de usabilidade dessa versão."',
+      '"A vaga é UX Designer, mas pede ferramenta de design e UI também."',
+    ],
+  },
+  {
+    id: 'ux-research',
+    term: 'UX Research',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Pesquisa em UX',
+      usageNote:
+        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
+    },
+    whatIs: [
+      'Estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
+      'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
+    ],
+    youWillHear: [
+      '"Precisamos de uma pessoa de UX Research antes de fechar essa solução."',
+      '"A UX Researcher vai recrutar participantes para o estudo."',
+    ],
+  },
+
+  // Fundamentos: mentalidade
+  {
+    id: 'design-thinking',
+    term: 'Design Thinking',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    whatIs: [
+      'Forma de resolver problemas colocando a pessoa usuária no centro, explorando várias ideias antes de fechar uma solução.',
+      'Em empresas, aparece em workshops com post-its, protótipos rápidos e conversas entre áreas. Costuma ajudar o time a destravar desafios complexos.',
+    ],
+    youWillHear: [
+      '"Vamos fazer um workshop de design thinking para entender o problema."',
+      '"Essa etapa segue a lógica de design thinking: divergir antes de convergir."',
+    ],
+  },
+  {
+    id: 'double-diamond',
+    term: 'Double Diamond',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    originalName: {
+      alternate: 'Duplo Diamante',
+      usageNote:
+        'O nome em português aparece em alguns materiais, mas Double Diamond continua o mais usado em empresas e cursos.',
+    },
+    whatIs: [
+      'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Bons projetos alternam exploração ampla e foco em uma direção.',
+      'Ajuda a explicar a ordem do trabalho: primeiro se explora o problema, depois se explora a solução.',
+    ],
+    youWillHear: [
+      '"Estamos no primeiro diamante, ainda descobrindo o problema."',
+      '"Depois de definir, entramos no segundo diamante para explorar soluções."',
+    ],
+  },
+  {
+    id: 'hcd',
+    term: 'HCD',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    originalName: {
+      alternate: 'Human-Centered Design',
+      usageNote:
+        'Também aparece como UCD (User-Centered Design) ou design centrado no usuário em materiais mais antigos.',
+    },
+    whatIs: [
+      'Abordagem de criar produtos a partir das necessidades reais de pessoas usuárias, testando ideias cedo e ajustando com feedback.',
+      'É a base de como Product Designers pensam: entender antes de desenhar, validar antes de escalar.',
+    ],
+    youWillHear: [
+      '"Esse projeto segue uma abordagem HCD."',
+      '"Precisamos de mais pesquisa para manter o processo centrado na pessoa usuária."',
+    ],
+  },
+  {
+    id: 'heuristicas-de-usabilidade',
+    term: 'Heurísticas de usabilidade',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    originalName: {
+      alternate: 'Usability Heuristics',
+      usageNote:
+        'As dez heurísticas de Jakob Nielsen são a referência mais citada em UX no mundo.',
+    },
+    whatIs: [
+      'Princípios que ajudam a avaliar se uma interface é fácil de usar. A lista mais conhecida é a de Jakob Nielsen, com dez regras como dar feedback claro, prevenir erros e manter consistência.',
+      'Product Designers usam essas heurísticas para revisar telas, dar feedback e conversar com o time sobre melhorias.',
+    ],
+    youWillHear: [
+      '"Essa tela quebra a heurística de visibilidade do status do sistema."',
+      '"Vamos revisar o fluxo com as heurísticas de Nielsen."',
+    ],
+  },
+  {
+    id: 'interacao',
+    term: 'Interação',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    whatIs: [
+      'O que acontece quando a pessoa usuária faz algo no produto: toca, clica, arrasta, preenche um campo ou confirma uma ação.',
+      'Cada tela reúne vários pontos de interação. Design de Interação define como cada um funciona.',
+    ],
+    youWillHear: [
+      '"Essa interação está confusa, a pessoa usuária não entendeu o próximo passo."',
+      '"Vamos mapear as interações desse fluxo antes de polir o visual."',
+    ],
+  },
+  {
+    id: 'iteracao',
+    term: 'Iteração',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    whatIs: [
+      'Repetir o trabalho com melhorias a cada rodada: prototipar, testar, ajustar e testar de novo.',
+      'Mentalidade central em Product Design: produtos bons raramente nascem certos na primeira versão.',
+    ],
+    youWillHear: [
+      '"Precisamos de mais uma iteração nesse fluxo."',
+      '"Na próxima iteração a gente inclui o feedback do teste."',
+    ],
+  },
+  {
+    id: 'lean-ux',
+    term: 'Lean UX',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    whatIs: [
+      'Forma de trabalhar em Product Design com ciclos curtos de conversa, protótipo e teste com o time. Aprende rápido o que funciona antes de investir meses em uma solução errada.',
+    ],
+    youWillHear: [
+      '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
+      '"Lean UX pede iterar com foco, com pesquisa envolvida."',
+    ],
+  },
+  {
+    id: 'usabilidade',
+    term: 'Usabilidade',
+    categoryId: 'fundamentos',
+    subgroup: 'mentalidade',
+    originalName: {
+      alternate: 'Usability',
+      usageNote:
+        'Um dos conceitos mais citados em conversas de UX e em vagas de Product Design.',
+    },
+    whatIs: [
+      'Quão fácil e intuitivo é usar um produto digital. Uma interface usável deixa claro o que fazer, ajuda a pessoa a completar a tarefa e não exige esforço desnecessário.',
+      'Product Designers pensam em usabilidade ao desenhar fluxos, rótulos e feedbacks. Testes com pessoas usuárias, na categoria Pesquisa, mostram onde a usabilidade está falhando.',
+    ],
+    youWillHear: [
+      '"A usabilidade desse formulário está ruim, muita gente erra no mesmo campo."',
+      '"Antes de lançar, vamos checar usabilidade com um teste rápido."',
+    ],
+  },
+
+  // Fundamentos: pessoas-contexto
+  {
+    id: 'cliente',
+    term: 'Cliente',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    whatIs: [
+      'Quem contrata, paga ou decide pela compra de um produto ou serviço. Às vezes coincide com a pessoa usuária; às vezes são pessoas diferentes.',
+      'Em produtos B2B, agências ou plataformas white-label, quem usa no dia a dia pode ser diferente de quem assina o contrato. Product Designers precisam entender os dois lados.',
+    ],
+    youWillHear: [
+      '"O cliente pediu essa funcionalidade, mas a pessoa usuária não usa."',
+      '"Precisamos apresentar a proposta para o cliente na sexta."',
+    ],
+  },
+  {
+    id: 'negocio',
+    term: 'Negócio',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    whatIs: [
+      'Neste contexto, a perspectiva de metas, receita, custos, estratégia e viabilidade de um produto digital.',
+      'Product Designers equilibram necessidades da pessoa usuária com objetivos do negócio e priorizam o que a empresa consegue investir agora.',
+    ],
+    youWillHear: [
+      '"Essa solução é boa para UX, mas o negócio não prioriza agora."',
+      '"Precisamos alinhar design com objetivos de negócio."',
+    ],
+  },
+  {
+    id: 'pessoa-usuaria',
+    term: 'Pessoa usuária',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    whatIs: [
+      'Quem usa um produto ou serviço digital no dia a dia. Na VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
+    ],
+    youWillHear: [
+      '"Quem é a pessoa usuária principal desse produto?"',
+      '"Precisamos recrutar usuários para o teste."',
+    ],
+  },
+  {
+    id: 'persona',
+    term: 'Persona',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    whatIs: [
+      'Personagem fictício baseado em pesquisa, com nome, contexto, objetivos e dores de uma pessoa usuária representativa. Product Designers usam persona para alinhar o time sobre para quem projetam e priorizam decisões.',
+      'Público-alvo descreve um segmento amplo de mercado; persona dá rosto e contexto a um perfil dentro dele.',
+    ],
+    youWillHear: [
+      '"Vamos revisar a persona antes de desenhar esse fluxo."',
+      '"Essa decisão faz sentido para a nossa persona principal?"',
+    ],
+  },
+  {
+    id: 'squad',
+    term: 'Squad',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    originalName: {
+      alternate: 'Equipe',
+      usageNote:
+        'Termo popularizado por modelos de organização como o do Spotify. No Brasil, time ou squad aparecem com a mesma ideia.',
+    },
+    whatIs: [
+      'Time enxuto e multidisciplinar responsável por uma parte do produto ou por uma entrega. Costuma reunir Product Design, Produto, Engenharia e outras áreas conforme a necessidade.',
+      'Trabalhar em squad significa decidir perto de quem pesquisa, desenha, desenvolve e mede resultados.',
+    ],
+    youWillHear: [
+      '"Qual squad vai pegar essa funcionalidade?"',
+      '"No nosso squad tem Product Designer, dev e PM."',
+    ],
+  },
+  {
+    id: 'stakeholder',
+    term: 'Stakeholder',
+    categoryId: 'fundamentos',
+    subgroup: 'pessoas-contexto',
+    originalName: {
+      alternate: 'Parte Interessada',
+      usageNote:
+        'No mercado brasileiro de tecnologia, stakeholder costuma aparecer no original em inglês.',
+    },
+    whatIs: [
+      'Qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
+      'Product Designers alinham expectativas com stakeholders e priorizam o que impacta a pessoa usuária.',
+    ],
+    youWillHear: [
+      '"Vamos apresentar essa proposta para os stakeholders."',
+      '"O stakeholder pediu prazo menor, precisamos negociar escopo."',
+    ],
+  },
+
+  // Interface: prototipação
+  {
+    id: 'wireframe',
+    term: 'Wireframe',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Esqueleto de tela',
+      usageNote:
+        'Wireframe é o termo mais usado em empresas e ferramentas de design, mesmo no Brasil.',
+    },
+    whatIs: [
+      'Representação simples de uma tela ou fluxo, com caixas, rótulos e hierarquia, sem cores finais nem visual polido. Product Designers usam wireframe para validar estrutura antes de investir em detalhe visual.',
+      'Costuma ser preto e branco ou tons de cinza. Pode ser feito na ferramenta de design, no papel ou em ferramentas de prototipação.',
+    ],
+    youWillHear: [
+      '"Vamos desenhar o wireframe desse fluxo antes de partir para o visual."',
+      '"O wireframe está aprovado, agora partimos para o mockup."',
+    ],
+  },
+  {
+    id: 'mockup',
+    term: 'Mockup',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Maquete visual',
+      usageNote:
+        'Mockup também aparece como mock-up ou maquete de interface em materiais em português.',
+    },
+    whatIs: [
+      'Representação estática de uma tela com visual mais próximo do produto final: cores, tipografia, imagens e componentes definidos. Ainda sem interação clicável como um protótipo funcional.',
+      'Product Designers usam mockup para alinhar direção visual com o time e stakeholders antes do desenvolvimento.',
+    ],
+    youWillHear: [
+      '"Precisamos fechar o mockup do celular dessa home antes do handoff."',
+      '"O mockup ficou alinhado com a marca, falta validar o fluxo."',
+    ],
+  },
+  {
+    id: 'prototipo',
+    term: 'Protótipo',
+    categoryId: 'interface',
+    subgroup: 'prototipos',
+    originalName: {
+      alternate: 'Prototype',
+      usageNote:
+        'Protótipo interativo ou clicável também aparece como prototype ou protótipo de alta fidelidade.',
+    },
+    whatIs: [
+      'Versão navegável de um fluxo ou tela, com cliques, transições e caminhos simulados. Product Designers usam protótipo para testar ideias com pessoas usuárias antes do desenvolvimento.',
+      'Pode evoluir a partir de wireframe ou mockup quando o time adiciona navegação e interação para validar a experiência.',
+    ],
+    youWillHear: [
+      '"Vamos montar um protótipo clicável para o teste de usabilidade."',
+      '"O protótipo desse fluxo já está com a navegação linkada."',
+    ],
+  },
+
+  // Interface: estrutura e layout
+  {
+    id: 'layout',
+    term: 'Layout',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    whatIs: [
+      'Organização dos elementos na tela: onde ficam header, conteúdo, ações e navegação. Define ritmo, alinhamento e prioridade do que a pessoa usuária vê primeiro.',
+      'Product Designers ajustam layout ao pensar em desktop, tablet e mobile. Grid e auto layout ajudam a manter consistência entre telas.',
+    ],
+    youWillHear: [
+      '"O layout dessa listagem está apertado no mobile."',
+      '"Vamos revisar o layout antes de fechar os componentes."',
+    ],
+  },
+  {
+    id: 'grid',
+    term: 'Grid',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    originalName: {
+      alternate: 'Grade de layout',
+      usageNote:
+        'Grid é o termo mais usado em ferramentas de design, design system e conversas de UI.',
+    },
+    whatIs: [
+      'Sistema de colunas e margens que alinha elementos na tela. Ajuda a manter consistência entre páginas e breakpoints.',
+      'Product Designers usam grid na ferramenta de design e documentam no design system quantas colunas cada tamanho de tela usa.',
+    ],
+    youWillHear: [
+      '"Essa tela segue grid de 12 colunas no desktop."',
+      '"Precisamos alinhar esse bloco ao grid do design system."',
+    ],
+  },
+  {
+    id: 'auto-layout',
+    term: 'Auto Layout',
+    categoryId: 'interface',
+    subgroup: 'estrutura',
+    originalName: {
+      alternate: 'Layout automático',
+      usageNote:
+        'Recurso de ferramentas de design; o nome em inglês é o que aparece na ferramenta e no mercado.',
+    },
+    whatIs: [
+      'Recurso que organiza elementos em fila ou coluna e redimensiona o container conforme o conteúdo muda. Facilita botões, cards e listas que crescem ou encolhem.',
+      'Product Designers usam auto layout para entregar componentes mais flexíveis e próximos do comportamento real na implementação.',
+    ],
+    youWillHear: [
+      '"Coloca auto layout nesse card para o texto não quebrar o componente."',
+      '"Esse botão precisa de auto layout para funcionar com copy maior."',
+    ],
+  },
+
+  // Interface: sistema e componentes
+  {
+    id: 'design-system',
+    term: 'Design System',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Sistema de design',
+      usageNote:
+        'Design System continua no original em inglês na maioria das empresas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Conjunto de componentes, padrões, tokens e documentação que guiam como um produto digital se parece e se comporta. Garante consistência entre telas, times e releases.',
+      'Product Designers e UI Designers contribuem ao criar, usar e evoluir o design system. Em squads enxutas, a biblioteca costuma viver na ferramenta de design; empresas maiores podem ter time dedicado.',
+    ],
+    youWillHear: [
+      '"Esse botão já existe no design system, vamos reutilizar."',
+      '"Precisamos atualizar o design system antes de lançar essa feature."',
+    ],
+  },
+  {
+    id: 'component',
+    term: 'Componente',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    whatIs: [
+      'Peça reutilizável de interface: botão, campo de texto, card, modal e outros elementos que se repetem no produto.',
+      'Faz parte do design system. Alterar um componente base reflete em todas as telas que o usam.',
+    ],
+    youWillHear: [
+      '"Usa o componente de input do design system."',
+      '"Esse card precisa virar componente para o time inteiro usar."',
+    ],
+  },
+  {
+    id: 'variant',
+    term: 'Variant',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Variante',
+      usageNote:
+        'Variant e variante aparecem em ferramentas de design e em design systems para versões de um mesmo componente.',
+    },
+    whatIs: [
+      'Versão de um componente com visual ou comportamento diferente: botão primário e secundário, card compacto e expandido, input com erro e input padrão.',
+      'Product Designers nomeiam variants na ferramenta de design para o time escolher a opção certa sem redesenhar do zero.',
+    ],
+    youWillHear: [
+      '"Usa a variant secundária do botão nessa tela."',
+      '"Faltou mapear a variant de erro nesse componente."',
+    ],
+  },
+  {
+    id: 'estado',
+    term: 'Estado',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'State',
+      usageNote:
+        'State também aparece em specs e handoff quando o assunto é comportamento visual do componente.',
+    },
+    whatIs: [
+      'Situação visual de um elemento em um momento de uso: padrão, hover, pressed, disabled, focus, loading e error.',
+      'Product Designers desenham estados para o componente funcionar em condições reais. Estados incompletos geram dúvida na implementação.',
+    ],
+    youWillHear: [
+      '"Faltou o estado disabled nesse botão."',
+      '"Vamos revisar os estados de hover e focus desse input."',
+    ],
+  },
+  {
+    id: 'design-token',
+    term: 'Design Token',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Token de design',
+      usageNote:
+        'Design token continua no original em inglês na maioria dos design systems.',
+    },
+    whatIs: [
+      'Valor nomeado de design: cor, espaçamento, raio de borda, tipografia. Exemplo: color-primary-500 ou spacing-md.',
+      'Product Designers definem tokens no design system; Engenharia traduz para código. A implementação técnica entra na categoria Desenvolvimento.',
+    ],
+    youWillHear: [
+      '"Esse azul precisa virar token no design system."',
+      '"Vamos alinhar spacing com os tokens antes do handoff."',
+    ],
+  },
+  {
+    id: 'ui-kit',
+    term: 'UI Kit',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Kit de interface',
+      usageNote:
+        'UI Kit é o nome mais comum em bibliotecas públicas de design, vagas e materiais de Product Design.',
+    },
+    whatIs: [
+      'Conjunto de componentes e estilos prontos para montar telas de um produto. Pode ser biblioteca interna, arquivo de design ou base antes de um design system completo.',
+      'Product Designers reutilizam UI kit para ganhar velocidade. Design system costuma ser a evolução documentada e governada desse conjunto.',
+    ],
+    youWillHear: [
+      '"Vamos partir do UI kit da marca nesse projeto."',
+      '"Esse UI kit já tem input, modal e tabela prontos."',
+    ],
+  },
+  {
+    id: 'pattern',
+    term: 'Pattern',
+    categoryId: 'interface',
+    subgroup: 'sistema',
+    originalName: {
+      alternate: 'Padrão de interface',
+      usageNote:
+        'Pattern library ou UI pattern também aparecem em design systems maduros.',
+    },
+    whatIs: [
+      'Solução recorrente para um problema de interface: login, empty state, onboarding, confirmação de exclusão, paginação.',
+      'Product Designers consultam patterns para resolver casos comuns com consistência. Podem virar componentes ou composições no design system.',
+    ],
+    youWillHear: [
+      '"Esse empty state segue o pattern do design system."',
+      '"Precisamos de um pattern de confirmação para ações destrutivas."',
+    ],
+  },
+
+  // Interface: elementos visuais
+  {
+    id: 'tipografia',
+    term: 'Tipografia',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Typography',
+    },
+    whatIs: [
+      'Escolha e uso de fontes, tamanhos, pesos e espaçamento entre letras e linhas na interface. Afeta leitura, hierarquia e sensação da marca na tela.',
+      'Product Designers definem escala tipográfica no design system: título, corpo, legenda e labels.',
+    ],
+    youWillHear: [
+      '"A tipografia dessa tela está pequena demais para mobile."',
+      '"Vamos alinhar a tipografia com o design system."',
+    ],
+  },
+  {
+    id: 'cor',
+    term: 'Cor',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Color',
+      usageNote:
+        'Paleta de cores e color tokens são expressões comuns no mesmo contexto.',
+    },
+    whatIs: [
+      'Uso de cores na interface: marca, feedback, estados e contraste. Inclui primária, secundária, neutros, sucesso, erro e aviso.',
+      'Product Designers documentam cores como tokens no design system para manter consistência entre telas e plataformas.',
+    ],
+    youWillHear: [
+      '"Essa cor de erro não está no token do design system."',
+      '"Vamos revisar contraste de cor nesse botão."',
+    ],
+  },
+  {
+    id: 'iconografia',
+    term: 'Iconografia',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Iconography',
+    },
+    whatIs: [
+      'Conjunto de ícones usados no produto: navegação, ações, status e reforço de texto. Precisa ser clara, consistente e legível em tamanhos pequenos.',
+      'Product Designers escolhem biblioteca de ícones ou desenham set customizado alinhado ao design system.',
+    ],
+    youWillHear: [
+      '"Esse ícone não comunica a ação, vamos trocar."',
+      '"A iconografia precisa seguir o mesmo stroke do design system."',
+    ],
+  },
+  {
+    id: 'espacamento',
+    term: 'Espaçamento',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: {
+      alternate: 'Spacing',
+      usageNote:
+        'Spacing scale e spacing token aparecem em specs e design systems.',
+    },
+    whatIs: [
+      'Distâncias entre elementos: padding interno, margin entre blocos e respiro da tela. Escala de espaçamento deixa a interface organizada e previsível.',
+      'Product Designers usam múltiplos de 4 ou 8 px e registram os valores como tokens. Auto layout na ferramenta de design ajuda a aplicar spacing com consistência.',
+    ],
+    youWillHear: [
+      '"O spacing entre esses cards está inconsistente."',
+      '"Usa spacing-md do token nesse padding."',
+    ],
+  },
+  {
+    id: 'hierarquia-visual',
+    term: 'Hierarquia visual',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    whatIs: [
+      'Ordem de importância do que aparece na tela, guiada por tamanho, peso, cor, contraste e posição. Mostra o que a pessoa usuária deve ler ou fazer primeiro.',
+      'Product Designers ajustam hierarquia visual com tipografia, spacing e componentes para deixar fluxos mais claros.',
+    ],
+    youWillHear: [
+      '"A hierarquia visual dessa tela está plana, tudo compete por atenção."',
+      '"Precisamos reforçar hierarquia visual no CTA principal."',
+    ],
+  },
+
+  // Pesquisa: conceitos
+  {
+    id: 'pesquisa-qualitativa',
+    term: 'Pesquisa qualitativa',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Busca entender motivações, contexto e comportamento por meio de conversas, observação e materiais abertos. Respostas costumam ser textuais e interpretativas.',
+      'Product Designers usam pesquisa qualitativa em discovery, entrevistas e testes para aprofundar o porquê por trás de uma dor ou decisão.',
+    ],
+    youWillHear: [
+      '"Precisamos de pesquisa qualitativa antes de fechar o escopo."',
+      '"Esse insight veio de uma rodada qualitativa com cinco participantes."',
+    ],
+  },
+  {
+    id: 'pesquisa-quantitativa',
+    term: 'Pesquisa quantitativa',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Coleta dados em escala para medir frequência, preferência ou comportamento com números. Questionários, analytics e surveys entram aqui.',
+      'Product Designers combinam pesquisa quantitativa com qualitativa: números mostram o tamanho do problema; conversas explicam o motivo.',
+    ],
+    youWillHear: [
+      '"Vamos validar essa hipótese com pesquisa quantitativa."',
+      '"O survey mostrou que 60% abandonam nessa etapa."',
+    ],
+  },
+  {
+    id: 'recrutamento',
+    term: 'Recrutamento',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Processo de encontrar e convidar pessoas usuárias certas para participar de um estudo. Define perfil, canal, critérios de inclusão e quantidade de participantes.',
+      'Product Designers e UX Researchers alinham recrutamento ao objetivo da pesquisa: perfil errado distorce o resultado.',
+    ],
+    youWillHear: [
+      '"O recrutamento ainda não fechou, faltam duas pessoas do perfil enterprise."',
+      '"Quem cuida do recrutamento para o teste de usabilidade?"',
+    ],
+  },
+  {
+    id: 'participante',
+    term: 'Participante',
+    categoryId: 'pesquisa',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Pessoa usuária convidada a contribuir em um estudo: entrevista, teste, questionário ou observação. Também aparece como respondente em formulários.',
+      'Product Designers tratam participantes com clareza sobre objetivo, tempo e uso dos dados. Recrutamento define quem entra e quantos são necessários.',
+    ],
+    youWillHear: [
+      '"Precisamos de mais um participante com esse perfil."',
+      '"O participante travou na mesma tarefa que vimos na entrevista anterior."',
+    ],
+  },
+
+  // Pesquisa: métodos
+  {
+    id: 'entrevista',
+    term: 'Entrevista',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Entrevista com usuários',
+      usageNote:
+        'User interview também aparece em materiais e vagas em inglês.',
+    },
+    whatIs: [
+      'Conversa guiada para entender contexto, rotina, dores e expectativas de uma pessoa usuária. Pode ser exploratória, de validação ou de aprofundamento.',
+      'Product Designers conduzem entrevistas com roteiro flexível, ouvem mais do que falam e registram citações e padrões para a síntese.',
+    ],
+    youWillHear: [
+      '"Vamos fazer três entrevistas antes de desenhar o fluxo."',
+      '"Na entrevista de ontem, duas pessoas citaram a mesma dificuldade."',
+    ],
+  },
+  {
+    id: 'teste-de-usabilidade',
+    term: 'Teste de usabilidade',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Usability test',
+      usageNote:
+        'Teste moderado e teste não moderado são variações comuns desse método.',
+    },
+    whatIs: [
+      'Sessão em que uma pessoa usuária tenta completar tarefas reais em um protótipo ou produto, enquanto o time observa onde trava, erra ou hesita.',
+      'Product Designers preparam tarefas, conduzem ou moderam a sessão e registram achados para priorizar melhorias.',
+    ],
+    youWillHear: [
+      '"Marcamos teste de usabilidade para quinta com cinco participantes."',
+      '"No teste de usabilidade, ninguém achou o botão de salvar."',
+    ],
+  },
+  {
+    id: 'questionario',
+    term: 'Questionário',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Survey',
+      usageNote:
+        'Survey aparece em ferramentas, relatórios e vagas em inglês.',
+    },
+    whatIs: [
+      'Formulário com perguntas fechadas ou abertas aplicado a muitas pessoas usuárias. Serve para medir satisfação, preferência, frequência ou validar hipóteses em escala.',
+      'Product Designers usam questionário quando precisam de volume de respostas. Perguntas claras e objetivas aumentam a qualidade dos dados.',
+    ],
+    youWillHear: [
+      '"Vamos disparar um questionário depois do lançamento."',
+      '"O survey rodou com duzentas respostas na semana passada."',
+    ],
+  },
+  {
+    id: 'card-sorting',
+    term: 'Card Sorting',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Ordenação de cartões',
+      usageNote:
+        'Card sort e card sorting aparecem em ferramentas de pesquisa e em conversas de arquitetura da informação.',
+    },
+    whatIs: [
+      'Método em que pessoas usuárias agrupam rótulos ou itens do produto do jeito que faz sentido para elas. Ajuda a definir menus, categorias e arquitetura da informação.',
+      'Product Designers usam card sorting aberto ou fechado para validar como organizar conteúdo antes de fechar a navegação.',
+    ],
+    youWillHear: [
+      '"Precisamos de um card sorting antes de redesenhar o menu."',
+      '"No card sort, todo mundo juntou configurações e conta no mesmo grupo."',
+    ],
+  },
+  {
+    id: 'tree-testing',
+    term: 'Tree Testing',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Teste de árvore',
+      usageNote:
+        'Tree test costuma aparecer em ferramentas de pesquisa em inglês.',
+    },
+    whatIs: [
+      'Teste em que pessoas usuárias navegam por uma estrutura de menus em texto, sem visual da interface, para achar onde ficaria um item. Valida se a arquitetura da informação funciona.',
+      'Product Designers usam tree testing depois de card sorting ou quando a navegação já está definida em outline.',
+    ],
+    youWillHear: [
+      '"O tree test mostrou que ninguém acha Relatórios no menu atual."',
+      '"Vamos rodar tree testing antes de implementar a nova IA."',
+    ],
+  },
+  {
+    id: 'observacao-contextual',
+    term: 'Observação contextual',
+    categoryId: 'pesquisa',
+    subgroup: 'metodos',
+    originalName: {
+      alternate: 'Contextual inquiry',
+      usageNote:
+        'Shadowing também aparece quando o foco é acompanhar a rotina real de uso.',
+    },
+    whatIs: [
+      'Acompanhamento de uma pessoa usuária no ambiente real de uso: escritório, loja ou app no dia a dia. Mostra comportamento que entrevista sozinha nem sempre revela.',
+      'Product Designers observam tarefas reais, fazem perguntas no momento certo e capturam fricções que a pessoa nem verbaliza espontaneamente.',
+    ],
+    youWillHear: [
+      '"Na observação contextual, vimos que elas anotam o código em papel."',
+      '"Precisamos de shadowing com operadores de loja, não só entrevista."',
+    ],
+  },
+
+  // Pesquisa: análise e síntese
+  {
+    id: 'sintese',
+    term: 'Síntese',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Etapa de organizar dados brutos de pesquisa em padrões, temas e conclusões acionáveis. Inclui agrupar citações, notas de teste e respostas de questionário.',
+      'Product Designers sintetizam para transformar horas de estudo em decisões claras para produto e interface. Mapa de afinidade é uma ferramenta comum nessa fase.',
+    ],
+    youWillHear: [
+      '"A síntese do ciclo de entrevistas fica pronta na sexta."',
+      '"Depois da síntese, ficou claro que o onboarding é o gargalo."',
+    ],
+  },
+  {
+    id: 'insight',
+    term: 'Insight',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Descoberta relevante sobre pessoa usuária, comportamento ou problema, que muda ou reforça uma decisão de produto. Vai além de anedota: costuma aparecer em mais de uma fonte ou sessão.',
+      'Product Designers documentam insights na síntese e ligam cada um a implicações práticas: o que desenhar, priorizar ou testar depois.',
+    ],
+    youWillHear: [
+      '"Esse insight veio de três entrevistas e do teste de usabilidade."',
+      '"Precisamos transformar insight em hipótese testável."',
+    ],
+  },
+  {
+    id: 'mapa-de-afinidade',
+    term: 'Mapa de afinidade',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'Affinity map',
+      usageNote:
+        'Affinity diagram e affinity mapping também aparecem em materiais em inglês.',
+    },
+    whatIs: [
+      'Técnica de agrupar notas, citações e observações em temas comuns, geralmente em mural físico ou digital. Ajuda o time a ver padrões depois de entrevistas e testes.',
+      'Product Designers usam mapa de afinidade na síntese para sair de dados soltos e chegar em clusters que viram insights.',
+    ],
+    youWillHear: [
+      '"Vamos montar o affinity map depois das cinco entrevistas."',
+      '"No mapa de afinidade, três grupos falavam de confiança no pagamento."',
+    ],
+  },
+  {
+    id: 'mapa-de-empatia',
+    term: 'Mapa de empatia',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'Empathy map',
+      usageNote:
+        'Empathy mapping também aparece em workshops e materiais em inglês.',
+    },
+    whatIs: [
+      'Quadro que organiza o que uma pessoa usuária pensa, sente, diz e faz em torno de um objetivo ou contexto. Ajuda o time a sintetizar pesquisa antes de desenhar soluções.',
+      'Product Designers usam mapa de empatia depois de entrevistas ou observação. Persona, na categoria Fundamentos, resume quem é a pessoa; o mapa de empatia aprofunda motivações e barreiras de um momento específico.',
+    ],
+    youWillHear: [
+      '"Vamos montar um empathy map com o que saiu das entrevistas."',
+      '"O mapa de empatia mostrou medo de errar na hora de pagar."',
+    ],
+  },
+  {
+    id: 'roteiro-de-pesquisa',
+    term: 'Roteiro de pesquisa',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    whatIs: [
+      'Guia de perguntas e tópicos para conduzir entrevista ou sessão de pesquisa com consistência entre participantes. Não é script rígido: permite aprofundar respostas interessantes.',
+      'Product Designers preparam roteiro alinhado ao objetivo do estudo e revisam depois de cada sessão para ajustar o que falta explorar.',
+    ],
+    youWillHear: [
+      '"Manda o roteiro de pesquisa antes da entrevista de amanhã."',
+      '"Faltou pergunta sobre contexto de uso no roteiro."',
+    ],
+  },
+  {
+    id: 'mapa-de-jornada',
+    term: 'Mapa de jornada',
+    categoryId: 'pesquisa',
+    subgroup: 'analise',
+    originalName: {
+      alternate: 'User journey map',
+      usageNote:
+        'Customer journey e journey map também aparecem em materiais de CX e produto.',
+    },
+    whatIs: [
+      'Visualização das etapas que uma pessoa usuária percorre para atingir um objetivo: touchpoints, ações, pensamentos, dores e oportunidades em cada fase.',
+      'Product Designers constroem mapa de jornada com base em pesquisa para alinhar o time sobre onde intervenções de produto e interface fazem mais diferença.',
+    ],
+    youWillHear: [
+      '"O mapa de jornada mostra que a maior fricção é depois do pagamento."',
+      '"Vamos atualizar a journey com o que saiu das entrevistas."',
+    ],
+  },
+
+  // Produto: conceitos
+  {
+    id: 'produto',
+    term: 'Produto',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Algo criado para resolver uma necessidade de pessoas usuárias e gerar valor para um negócio. Pode ser digital, físico ou uma combinação dos dois.',
+      'Product Designers atuam em produto digital: definem problemas, desenham soluções e acompanham se a experiência entrega o prometido.',
+    ],
+    youWillHear: [
+      '"Qual é o produto que estamos construindo aqui?"',
+      '"Essa decisão precisa fazer sentido para produto e negócio."',
+    ],
+  },
+  {
+    id: 'produto-digital',
+    term: 'Produto digital',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Software, app, site ou plataforma online que pessoas usam para completar tarefas. Inclui interfaces, fluxos, dados e regras de negócio acessíveis por tela.',
+      'Product Designers projetam a experiência desse produto: da descoberta do problema até o lançamento e evolução contínua.',
+    ],
+    youWillHear: [
+      '"Estamos evoluindo o produto digital, não só trocando o visual."',
+      '"Essa feature entra no produto digital na próxima release."',
+    ],
+  },
+  {
+    id: 'problema',
+    term: 'Problema',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Dificuldade, fricção ou necessidade real que um produto se propõe a resolver. Bom problema parte de evidência: pesquisa, dados ou padrão recorrente no suporte.',
+      'Product Designers ajudam o time a formular o problema antes de pular para solução. Entrevistas e métodos da categoria Pesquisa alimentam essa etapa.',
+    ],
+    youWillHear: [
+      '"Qual problema estamos resolvendo de verdade?"',
+      '"A solução está bonita, mas o problema ainda não está claro."',
+    ],
+  },
+  {
+    id: 'solucao',
+    term: 'Solução',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Resposta desenhada para um problema identificado: fluxo, tela, funcionalidade ou mudança no produto. Só faz sentido depois de entender a dor e validar se ataca a causa certa.',
+      'Product Designers exploram várias soluções em protótipos e testes antes de o time comprometer engenharia em escala.',
+    ],
+    youWillHear: [
+      '"Essa solução resolve a dor ou só mascara o sintoma?"',
+      '"Vamos comparar duas soluções no teste antes de escolher."',
+    ],
+  },
+  {
+    id: 'jtbd',
+    term: 'JTBD',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Jobs to be Done',
+      usageNote:
+        'Jobs to be Done também aparece por extenso em artigos, cursos e materiais de produto.',
+    },
+    whatIs: [
+      'Framework que descreve qual tarefa ou progresso a pessoa usuária quer alcançar ao usar um produto. Foca no job: o que ela precisa resolver na vida ou no trabalho.',
+      'Product Designers usam JTBD para formular problemas e hipóteses com mais clareza. Ajuda a ir além de pedidos soltos de feature e entender a motivação por trás.',
+    ],
+    youWillHear: [
+      '"Qual é o job to be done dessa pessoa nesse fluxo?"',
+      '"O JTBD aqui é enviar o relatório sem depender do time de TI."',
+    ],
+  },
+  {
+    id: 'white-label',
+    term: 'White-label',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Marca branca',
+      usageNote:
+        'White-label continua no original em inglês em B2B, fintech e plataformas no Brasil.',
+    },
+    whatIs: [
+      'Produto ou plataforma genérica construída por uma empresa e revendida por outras com marca própria. Quem compra personaliza identidade; a base tecnológica costuma ser compartilhada.',
+      'Product Designers em white-label equilibram customização do cliente com consistência da plataforma. Cliente e pessoa usuária, em Fundamentos, ajudam a separar quem compra de quem usa no dia a dia.',
+    ],
+    youWillHear: [
+      '"Esse fluxo é white-label, cada cliente quer a logo deles."',
+      '"A plataforma é white-label, mas a experiência precisa parecer da marca do parceiro."',
+    ],
+  },
+  {
+    id: 'mvp',
+    term: 'MVP',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Minimum Viable Product',
+      usageNote:
+        'Produto mínimo viável também aparece em português, mas MVP é o termo mais usado em squads e roadmaps.',
+    },
+    whatIs: [
+      'Versão enxuta de um produto com o mínimo necessário para testar uma hipótese com pessoas usuárias reais e aprender rápido, com escopo definido de propósito.',
+      'Product Designers ajudam a definir o que entra no MVP e o que fica fora, priorizando o que valida valor antes de expandir funcionalidades.',
+    ],
+    youWillHear: [
+      '"Vamos lançar um MVP em duas semanas para validar demanda."',
+      '"Isso não entra no MVP, fica para a v2."',
+    ],
+  },
+  {
+    id: 'product-market-fit',
+    term: 'Product-market fit',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'PMF',
+      usageNote:
+        'Product-market fit e PMF são as formas mais usadas em conversas de startup e produto, inclusive no Brasil.',
+    },
+    whatIs: [
+      'Momento em que um produto resolve uma necessidade real para um grupo de pessoas usuárias de forma repetível, e o mercado responde com adoção e retenção. Sinal de que problema, solução e modelo de negócio conversam.',
+      'Product Designers contribuem ao testar valor cedo com MVP, protótipos e validação. Métricas de uso e feedback ajudam o time a perceber se está se aproximando de product-market fit.',
+    ],
+    youWillHear: [
+      '"Ainda não temos product-market fit, estamos iterando no core."',
+      '"Depois do PMF, o foco muda para escala e novas features."',
+    ],
+  },
+  {
+    id: 'feature',
+    term: 'Feature',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Funcionalidade',
+      usageNote:
+        'Feature é o termo mais comum em squads, roadmaps e ferramentas de gestão em inglês.',
+    },
+    whatIs: [
+      'Capacidade específica dentro de um produto: login social, exportar PDF, filtro avançado.',
+      'Product Designers desenham a experiência da feature, alinham com PM e Engenharia e validam se resolve o problema antes do release.',
+    ],
+    youWillHear: [
+      '"Essa feature entra no próximo sprint ou no trimestre que vem?"',
+      '"O cliente pediu a funcionalidade, mas precisamos checar impacto em UX."',
+    ],
+  },
+  {
+    id: 'metrica',
+    term: 'Métrica',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Medida numérica que indica se o produto está funcionando: adoção, retenção, conversão, tempo de tarefa, NPS ou erro em fluxo. Traduz comportamento em dado para decidir próximos passos.',
+      'Product Designers usam métricas junto com pesquisa qualitativa: o número mostra escala; entrevistas e testes explicam o porquê. Validação e PRD costumam citar métricas de sucesso.',
+    ],
+    youWillHear: [
+      '"Qual métrica a gente olha para saber se essa feature funcionou?"',
+      '"A métrica de conversão caiu depois da mudança no checkout."',
+    ],
+  },
+  {
+    id: 'okr',
+    term: 'OKR',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Objectives and Key Results',
+      usageNote: 'Objetivos e resultados-chave.',
+    },
+    whatIs: [
+      'Framework de metas em que o time define um objetivo ambicioso (Objective) e resultados mensuráveis (Key Results) para saber se chegou lá. Costuma ser trimestral.',
+      'Product Designers alinham trabalho de UX a OKRs do produto: cada iniciativa de design deve contribuir para mover um key result.',
+    ],
+    youWillHear: [
+      '"Esse projeto está ligado ao OKR de retenção do trimestre."',
+      '"Qual key result essa feature move?"',
+    ],
+  },
+
+  // Produto: processo
+  {
+    id: 'discovery',
+    term: 'Discovery',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    originalName: {
+      alternate: 'Descoberta de produto',
+      usageNote:
+        'Discovery continua no original em inglês na maioria das empresas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Fase em que o time explora o problema, entende contexto e testa direções antes de comprometer escopo grande de desenvolvimento. Inclui pesquisa, síntese e protótipos rápidos.',
+      'Product Designers lideram ou participam forte do discovery. Métodos de pesquisa ficam na categoria Pesquisa; aqui o foco é a etapa do processo de produto.',
+    ],
+    youWillHear: [
+      '"Ainda estamos em discovery, não dá para prometer prazo de entrega."',
+      '"Precisamos de mais discovery antes de priorizar essa feature."',
+    ],
+  },
+  {
+    id: 'delivery',
+    term: 'Delivery',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    originalName: {
+      alternate: 'Entrega de produto',
+      usageNote:
+        'Delivery aparece em contraste com discovery em squads ágeis e materiais de Product Management.',
+    },
+    whatIs: [
+      'Fase em que o time constrói, implementa e lança a solução validada no discovery. Engenharia entra forte; design detalha specs, acompanha qualidade e mede resultado pós-lançamento.',
+      'Product Designers cuidam para a experiência acordada chegar intacta na implementação e acompanham ajustes depois do release.',
+    ],
+    youWillHear: [
+      '"Discovery fechou, agora entramos em delivery."',
+      '"No delivery, o foco é lançar com qualidade."',
+    ],
+  },
+  {
+    id: 'hipotese',
+    term: 'Hipótese',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    whatIs: [
+      'Suposição testável sobre pessoa usuária, problema ou solução. Exemplo: se simplificarmos o checkout, mais pessoas completam a compra.',
+      'Product Designers transformam insights de pesquisa em hipóteses claras e ajudam a definir como validá-las antes de investir escopo grande.',
+    ],
+    youWillHear: [
+      '"Qual é a hipótese que estamos testando nesse protótipo?"',
+      '"A hipótese não se confirmou, voltamos para discovery."',
+    ],
+  },
+  {
+    id: 'validacao',
+    term: 'Validação',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    whatIs: [
+      'Processo de checar se uma ideia, fluxo ou feature resolve o problema de verdade antes ou depois do lançamento. Pode ser teste de usabilidade, MVP, questionário ou métrica de uso.',
+      'Product Designers participam da validação com protótipos e testes. Métodos específicos ficam na categoria Pesquisa; aqui o foco é confirmar ou refutar uma hipótese de produto.',
+    ],
+    youWillHear: [
+      '"Precisamos de validação antes de colocar isso no roadmap."',
+      '"A validação com usuários matou essa direção."',
+    ],
+  },
+
+  // Produto: entregas
+  {
+    id: 'roadmap',
+    term: 'Roadmap',
+    categoryId: 'produto',
+    subgroup: 'entregas',
+    originalName: {
+      alternate: 'Roteiro de produto',
+      usageNote:
+        'Roadmap continua no original em inglês na maioria das empresas de tecnologia.',
+    },
+    whatIs: [
+      'Visão de médio a longo prazo do que o produto vai construir e quando: features, melhorias e iniciativas alinhadas a objetivos de negócio. Pode ser trimestral, por tema ou por outcome.',
+      'Product Designers contribuem ao estimar esforço de UX, dependências de design system e priorizar o que impacta a pessoa usuária.',
+    ],
+    youWillHear: [
+      '"Essa feature está no roadmap do Q3."',
+      '"O roadmap mudou, vamos repriorizar discovery."',
+    ],
+  },
+  {
+    id: 'prd',
+    term: 'PRD',
+    categoryId: 'produto',
+    subgroup: 'entregas',
+    originalName: {
+      alternate: 'Product Requirements Document',
+      usageNote:
+        'Documento de requisitos de produto também aparece em português em empresas maiores.',
+    },
+    whatIs: [
+      'Documento que descreve o que uma feature ou iniciativa deve fazer: contexto, objetivo, escopo, critérios de sucesso e requisitos. PM costuma liderar; design e engenharia contribuem.',
+      'Product Designers alimentam o PRD com fluxos, estados, edge cases e links para protótipos. Nem todo time usa PRD formal; em squads enxutas, o spec pode viver no ticket ou no próprio arquivo de design.',
+    ],
+    youWillHear: [
+      '"Manda o link do PRD antes da planning."',
+      '"O PRD ainda não tem critério de aceite para esse fluxo."',
+    ],
+  },
+
+  // Métodos Ágeis: conceitos
+  {
+    id: 'agile',
+    term: 'Agile',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Metodologia ágil',
+    },
+    whatIs: [
+      'Forma de organizar trabalho em ciclos curtos, com feedback frequente e prioridade no que gera valor agora. Times entregam em incrementos e ajustam rota conforme aprendem.',
+      'Product Designers em times ágeis participam de sprint, backlog e cerimônias. Discovery e delivery, na categoria Produto, descrevem etapas de produto; aqui o foco é como o time opera no dia a dia.',
+    ],
+    youWillHear: [
+      '"Aqui trabalhamos com metodologia ágil, então o escopo pode mudar no sprint."',
+      '"Agile combina entregas curtas com aprendizado contínuo."',
+    ],
+  },
+  {
+    id: 'scrum',
+    term: 'Scrum',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Framework ágil mais comum em squads de produto: trabalho organizado em sprints, com backlog priorizado e cerimônias regulares.',
+      'Product Designers em Scrum participam de planning, daily e review, alinhando design ao que o sprint consegue entregar.',
+    ],
+    youWillHear: [
+      '"O time roda Scrum com sprint de duas semanas."',
+      '"No Scrum, o PM cuida do backlog e o squad executa o sprint."',
+    ],
+  },
+  {
+    id: 'kanban',
+    term: 'Kanban',
+    categoryId: 'metodos-ageis',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Método visual de organizar trabalho em colunas (a fazer, fazendo, feito) com limite de itens em andamento. Fluxo contínuo, sem sprint fixo como no Scrum.',
+      'Product Designers usam kanban em board de tarefas do squad para enxergar status de telas, handoff e dependências.',
+    ],
+    youWillHear: [
+      '"Vamos mover esse card para doing no kanban."',
+      '"O board está congestionado na coluna de review."',
+    ],
+  },
+
+  // Métodos Ágeis: artefatos
+  {
+    id: 'backlog',
+    term: 'Backlog',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    whatIs: [
+      'Lista priorizada de tudo que o time pode fazer no produto: features, bugs, melhorias e débitos técnicos. Product backlog é o conjunto; sprint backlog é o recorte do sprint atual.',
+      'Product Designers veem no backlog o que vem depois do sprint e ajudam PM a detalhar itens com fluxos e critérios de pronto.',
+    ],
+    youWillHear: [
+      '"Isso ainda está no backlog, não entrou no sprint."',
+      '"Precisamos refinar o backlog antes da planning."',
+    ],
+  },
+  {
+    id: 'user-story',
+    term: 'User Story',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'História de usuário',
+    },
+    whatIs: [
+      'Descrição curta de uma necessidade do ponto de vista da pessoa usuária, geralmente no formato: como [persona], quero [ação], para [benefício]. Vira item trabalhável no backlog.',
+      'Product Designers usam user stories para amarrar design a valor: cada história deve ter fluxo, estados e critério de aceite claros.',
+    ],
+    youWillHear: [
+      '"Abre uma user story para esse ajuste de onboarding."',
+      '"Essa história está grande demais, vamos quebrar."',
+    ],
+  },
+  {
+    id: 'epic',
+    term: 'Epic',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'Épico',
+    },
+    whatIs: [
+      'Iniciativa grande demais para um sprint, agrupando várias user stories relacionadas. Exemplo: refazer checkout ou lançar app mobile.',
+      'Product Designers usam epics para planejar discovery e entregas parciais antes de quebrar em histórias menores.',
+    ],
+    youWillHear: [
+      '"Esse redesign de checkout é um epic, vai levar vários sprints."',
+      '"Quebra o epic em stories antes da planning."',
+    ],
+  },
+  {
+    id: 'wip',
+    term: 'WIP',
+    categoryId: 'metodos-ageis',
+    subgroup: 'artefatos',
+    originalName: {
+      alternate: 'Work in Progress',
+      usageNote: 'Trabalho em andamento.',
+    },
+    whatIs: [
+      'Sigla para work in progress: quantidade de itens abertos ao mesmo tempo. Limite de WIP evita que o time comece dezenas de tarefas e não finalize nenhuma.',
+      'Product Designers sentem WIP alto quando há muitas telas pela metade, reviews parados ou handoffs acumulados.',
+    ],
+    youWillHear: [
+      '"Estouramos o WIP, precisamos fechar antes de puxar card novo."',
+      '"O limite de WIP dessa coluna é três itens."',
+    ],
+  },
+
+  // Métodos Ágeis: cerimônias
+  {
+    id: 'sprint',
+    term: 'Sprint',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    whatIs: [
+      'Ciclo curto e fixo de trabalho, em geral uma ou duas semanas, em que o squad se compromete a entregar um conjunto de itens do backlog.',
+      'Product Designers planejam o que dá para desenhar, validar e entregar dentro do sprint, alinhando discovery contínuo com capacidade do time.',
+    ],
+    youWillHear: [
+      '"Esse fluxo entra no sprint que começa segunda."',
+      '"O sprint acabou e ainda ficou story pendente."',
+    ],
+  },
+  {
+    id: 'daily',
+    term: 'Daily',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Daily standup',
+      usageNote: 'Daily scrum também aparece em times de Scrum.',
+    },
+    whatIs: [
+      'Reunião curta e recorrente, em geral diária, para o squad alinhar o que fez, o que vai fazer e se há bloqueio. Costuma durar quinze minutos em pé ou no call.',
+      'Product Designers usam a daily para sinalizar dependência de review, teste ou handoff.',
+    ],
+    youWillHear: [
+      '"Na daily de hoje, avisa que o protótipo travou em copy."',
+      '"Depois da daily, a gente refina essa story."',
+    ],
+  },
+  {
+    id: 'sprint-planning',
+    term: 'Sprint Planning',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Planejamento de sprint',
+    },
+    whatIs: [
+      'Cerimônia que abre o sprint: o time escolhe itens do backlog, estima esforço e define o objetivo do ciclo. PM e squad alinham prioridade e capacidade.',
+      'Product Designers entram com contexto de UX, dependências de design system e o que precisa de validação antes de desenvolver.',
+    ],
+    youWillHear: [
+      '"Na sprint planning, essa story ficou de fora por falta de capacidade."',
+      '"Leva o arquivo de design para a planning de amanhã."',
+    ],
+  },
+  {
+    id: 'retrospectiva',
+    term: 'Retrospectiva',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Retro',
+      usageNote: 'Sprint retrospective também aparece em materiais de Scrum.',
+    },
+    whatIs: [
+      'Cerimônia ao fim do sprint para o time refletir o que funcionou, o que atrapalhou e o que vai mudar no próximo ciclo. O objetivo é melhorar como o squad trabalha junto.',
+      'Product Designers participam da retro para melhorar colaboração com dev, PM e qualidade das entregas de UX.',
+    ],
+    youWillHear: [
+      '"Na retro, combinamos de reduzir WIP no board."',
+      '"A retrospectiva levantou que o handoff chegou tarde de novo."',
+    ],
+  },
+  {
+    id: 'sprint-review',
+    term: 'Sprint Review',
+    categoryId: 'metodos-ageis',
+    subgroup: 'cerimonias',
+    originalName: {
+      alternate: 'Review de sprint',
+    },
+    whatIs: [
+      'Cerimônia em que o squad mostra o que entregou no sprint para stakeholders e coleta feedback. Pode incluir demo de feature, protótipo ou incremento de produto.',
+      'Product Designers apresentam fluxos concluídos, explicam decisões de UX e capturam ajustes para o backlog.',
+    ],
+    youWillHear: [
+      '"Na sprint review, vamos demoar o novo checkout."',
+      '"O feedback da review virou story para o próximo sprint."',
+    ],
+  },
+
+  // Desenvolvimento: conceitos
+  {
+    id: 'frontend',
+    term: 'Frontend',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Front-end',
+    },
+    whatIs: [
+      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Desenvolvedores front implementam o que os designers criam a partir de ferramentas de design.',
+      'Product Designers alinham com dev frontend em handoff, estados, responsivo e comportamento de componentes.',
+    ],
+    youWillHear: [
+      '"O frontend desse fluxo ainda não subiu em staging."',
+      '"Precisamos de alinhamento com front antes de fechar o spec."',
+    ],
+  },
+  {
+    id: 'backend',
+    term: 'Backend',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Back-end',
+    },
+    whatIs: [
+      'Parte do produto que roda no servidor: regras de negócio, banco de dados, autenticação e integrações. A pessoa usuária não vê diretamente, mas sente no tempo de resposta, segurança e dados corretos.',
+      'Product Designers precisam entender limites de backend ao desenhar fluxos: o que dá para buscar em tempo real e o que depende de processamento ou integração.',
+    ],
+    youWillHear: [
+      '"Backend ainda não expõe esse dado na API."',
+      '"Esse fluxo depende de backend, não dá para prometer só com ajuste de UI."',
+    ],
+  },
+  {
+    id: 'api',
+    term: 'API',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Application Programming Interface',
+      usageNote: 'Interface de programação também aparece em materiais em português.',
+    },
+    whatIs: [
+      'Forma padronizada de um sistema expor dados ou funções para outro sistema consumir. Frontend chama API para buscar informações, enviar formulários ou integrar serviços.',
+      'Product Designers encontram API ao desenhar estados de loading, erro, empty state e fluxos que dependem de dados externos.',
+    ],
+    youWillHear: [
+      '"A API demora, então precisamos de loading nessa tela."',
+      '"Esse campo vem da API de CEP, não é digitado manualmente."',
+    ],
+  },
+  {
+    id: 'responsivo',
+    term: 'Responsivo',
+    categoryId: 'desenvolvimento',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Design responsivo',
+      usageNote: 'Responsive design continua comum em specs e conversas com engenharia.',
+    },
+    whatIs: [
+      'Adaptação da interface a diferentes tamanhos de tela: mobile, tablet e desktop. Layout, tipografia e componentes se reorganizam para manter usabilidade em cada breakpoint.',
+      'Product Designers desenham versões responsivas na ferramenta de design e documentam comportamento por breakpoint no handoff.',
+    ],
+    youWillHear: [
+      '"Essa tela quebrou no mobile, o responsivo não ficou alinhado ao design aprovado."',
+      '"Fecha o responsivo antes do handoff."',
+    ],
+  },
+
+  // Desenvolvimento: design para desenvolvimento
+  {
+    id: 'handoff',
+    term: 'Handoff',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Passagem para desenvolvimento',
+    },
+    whatIs: [
+      'Momento em que design passa para Engenharia: arquivo de design linkado, specs, tokens, estados e critérios de aceite. Objetivo é reduzir dúvida na implementação.',
+      'Product Designers preparam handoff com componentes do design system, medidas quando necessário e alinhamento com dev sobre edge cases.',
+    ],
+    youWillHear: [
+      '"O handoff desse fluxo sai amanhã com todos os estados."',
+      '"Dev pediu handoff mais detalhado no hover e no erro."',
+    ],
+  },
+  {
+    id: 'spec',
+    term: 'Spec',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Especificação',
+    },
+    whatIs: [
+      'Detalhamento do que deve ser construído: fluxos, estados, medidas, tokens, copy e regras de comportamento. Pode viver no arquivo de design, no ticket ou no PRD.',
+      'Product Designers escrevem spec clara para dev entender hover, erro, empty state e responsivo sem adivinhar.',
+    ],
+    youWillHear: [
+      '"A spec desse modal está incompleta, falta estado de loading."',
+      '"Manda a spec no ticket antes da planning."',
+    ],
+  },
+  {
+    id: 'breakpoint',
+    term: 'Breakpoint',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Ponto de quebra',
+      usageNote: 'Breakpoint continua no original em inglês em specs, código e conversas com dev.',
+    },
+    whatIs: [
+      'Largura de tela em que o layout muda de um formato para outro. Exemplo: abaixo de 768 px vira coluna única; acima mantém sidebar.',
+      'Product Designers definem breakpoints com dev e grid, e testam responsivo nos pontos acordados.',
+    ],
+    youWillHear: [
+      '"Qual breakpoint a sidebar some?"',
+      '"Esse componente quebra no breakpoint de tablet."',
+    ],
+  },
+  {
+    id: 'edge-case',
+    term: 'Edge case',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Caso de borda',
+    },
+    whatIs: [
+      'Situação incomum ou extrema no fluxo: nome muito longo, lista vazia, timeout de API, permissão negada. Fácil de esquecer no desenho principal.',
+      'Product Designers mapeiam edge cases antes do handoff para evitar tela quebrada ou comportamento indefinido em produção.',
+    ],
+    youWillHear: [
+      '"Faltou edge case de lista vazia nesse spec."',
+      '"Dev encontrou um edge case que não estava no design aprovado."',
+    ],
+  },
+
+  // Desenvolvimento: ciclo de release
+  {
+    id: 'deploy',
+    term: 'Deploy',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Implantação',
+    },
+    whatIs: [
+      'Publicação de uma versão do produto em ambiente acessível: staging para teste ou produção para pessoas usuárias finais.',
+      'Product Designers acompanham deploy de features que desenharam e validam se a experiência ficou fiel ao spec.',
+    ],
+    youWillHear: [
+      '"O deploy dessa feature é na sexta à noite."',
+      '"Depois do deploy, confere se o fluxo em produção bate com o design aprovado."',
+    ],
+  },
+  {
+    id: 'staging',
+    term: 'Staging',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Ambiente de homologação',
+    },
+    whatIs: [
+      'Cópia do produto perto da produção, usada para testar features antes do lançamento final. Time valida fluxo completo sem impactar pessoas usuárias reais.',
+      'Product Designers revisam staging para conferir handoff, responsivo e estados antes do deploy em produção.',
+    ],
+    youWillHear: [
+      '"Já dá para testar esse fluxo em staging."',
+      '"Encontrei divergência entre staging e o design aprovado."',
+    ],
+  },
+  {
+    id: 'bug',
+    term: 'Bug',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Defeito',
+    },
+    whatIs: [
+      'Comportamento incorreto ou quebrado no produto: botão que não funciona, layout estourado, dado errado. Pode vir de implementação, regressão ou edge case não previsto.',
+      'Product Designers ajudam a reproduzir bug, comparar com o design aprovado e priorizar correção com PM e dev.',
+    ],
+    youWillHear: [
+      '"Abre bug com print e passo a passo de reprodução."',
+      '"Esse bug de alinhamento veio depois do último deploy."',
+    ],
+  },
+  {
+    id: 'pull-request',
+    term: 'Pull Request',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'PR de código',
+      usageNote:
+        'Diferente de PRD (documento de produto). Pull request aparece no repositório de código e no fluxo de engenharia.',
+    },
+    whatIs: [
+      'Pedido de dev para revisar e integrar mudanças de código na base do produto. Outra pessoa revisa qualidade e impacto antes do merge.',
+      'Product Designers podem ser chamados para validar visual e UX em pull request de frontend antes do merge.',
+    ],
+    youWillHear: [
+      '"Revisa esse pull request de frontend antes do merge."',
+      '"O PR de código já está com o layout implementado."',
+    ],
+  },
+  {
+    id: 'qa',
+    term: 'QA',
+    categoryId: 'desenvolvimento',
+    subgroup: 'ciclo',
+    originalName: {
+      alternate: 'Quality Assurance',
+      usageNote: 'Garantia de qualidade também aparece em português.',
+    },
+    whatIs: [
+      'Prática de testar o produto antes ou depois do deploy para encontrar bugs e regressões. QA pode ser pessoa dedicada ou responsabilidade compartilhada do squad.',
+      'Product Designers colaboram com QA ao definir cenários de teste, estados esperados e comparar build com spec.',
+    ],
+    youWillHear: [
+      '"QA pegou divergência de spacing nessa tela."',
+      '"Passa os cenários de teste para QA antes do deploy."',
+    ],
+  },
+
+  // Acessibilidade: conceitos
+  {
+    id: 'acessibilidade-digital',
+    term: 'Acessibilidade digital',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Prática de tornar produtos digitais usáveis por pessoas com diferentes capacidades visuais, motoras, auditivas ou cognitivas. Inclui contraste, navegação por teclado, textos claros e compatibilidade com tecnologias assistivas.',
+      'Product Designers consideram acessibilidade desde wireframe: hierarquia, rótulos, estados de foco e copy objetiva. Implementação técnica envolve dev; critérios ficam no spec e no handoff.',
+    ],
+    youWillHear: [
+      '"Essa tela precisa passar por revisão de acessibilidade antes do release."',
+      '"Acessibilidade entra no critério de aceite dessa feature."',
+    ],
+  },
+  {
+    id: 'design-inclusivo',
+    term: 'Design inclusivo',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Abordagem que projeta para a diversidade real de pessoas usuárias, incluindo deficiências permanentes, temporárias ou situacionais. Exemplo: tela legível no sol forte ou uso com uma mão só.',
+      'Product Designers aplicam design inclusivo ao escolher cores, tamanhos de toque, linguagem simples e fluxos que funcionam com leitor de tela.',
+    ],
+    youWillHear: [
+      '"Vamos revisar esse fluxo com olhar de design inclusivo."',
+      '"Design inclusivo aqui significa legibilidade e toque confortável no mobile."',
+    ],
+  },
+  {
+    id: 'wcag',
+    term: 'WCAG',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Web Content Accessibility Guidelines',
+      usageNote: 'Diretrizes de acessibilidade para conteúdo web.',
+    },
+    whatIs: [
+      'Conjunto internacional de recomendações para tornar conteúdo web mais acessível. Organizado em princípios, critérios e níveis A, AA e AAA.',
+      'Product Designers usam WCAG como referência ao revisar contraste, textos alternativos e navegação. AA costuma ser a meta mais comum em produtos.',
+    ],
+    youWillHear: [
+      '"Precisamos atender WCAG AA nesse fluxo."',
+      '"Esse contraste não passa no critério WCAG."',
+    ],
+  },
+
+  // Acessibilidade: interface acessível
+  {
+    id: 'contraste',
+    term: 'Contraste',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Diferença visual entre texto e fundo, ou entre elementos, que permite leitura confortável. Contraste baixo dificulta uso para pessoas com baixa visão ou em ambientes claros.',
+      'Product Designers checam contraste de botões, links e textos com critérios WCAG antes do handoff. Reforçam informação com ícone ou texto além da cor em status e gráficos. Cor, na categoria Interface, trata paleta; aqui o foco é legibilidade.',
+    ],
+    youWillHear: [
+      '"O contraste desse label está abaixo do mínimo."',
+      '"Status de erro precisa de ícone além da cor."',
+    ],
+  },
+  {
+    id: 'texto-alternativo',
+    term: 'Texto alternativo',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    originalName: {
+      alternate: 'Alt text',
+    },
+    whatIs: [
+      'Descrição textual de uma imagem ou ícone para quem usa leitor de tela ou quando a imagem não carrega. Deve ser curta e descrever a função ou informação relevante.',
+      'Product Designers indicam texto alternativo em ícones funcionais, ilustrações informativas e imagens de conteúdo no spec.',
+    ],
+    youWillHear: [
+      '"Faltou alt text nesse ícone de ação."',
+      '"O texto alternativo precisa descrever a função, não a imagem."',
+    ],
+  },
+  {
+    id: 'foco-visivel',
+    term: 'Foco visível',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Indicador claro de qual elemento está selecionado na navegação por teclado. Outline, borda ou mudança de cor mostra onde a pessoa usuária está na tela.',
+      'Product Designers desenham estado de focus em botões, links e campos. Sem foco visível, quem navega sem mouse perde a referência do fluxo.',
+    ],
+    youWillHear: [
+      '"O foco visível desse input sumiu no hover customizado."',
+      '"Precisamos de estado de focus no design system."',
+    ],
+  },
+  {
+    id: 'navegacao-por-teclado',
+    term: 'Navegação por teclado',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Uso do produto apenas com teclado: Tab para avançar, Enter para confirmar, setas em menus. Essencial para muitas pessoas com deficiência motora ou preferência por teclado.',
+      'Product Designers validam ordem de tabulação, atalhos e se fluxos críticos funcionam sem mouse.',
+    ],
+    youWillHear: [
+      '"Testa navegação por teclado nesse modal."',
+      '"A ordem de tabulação desse formulário está confusa."',
+    ],
+  },
+  {
+    id: 'area-de-toque',
+    term: 'Área de toque',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    originalName: {
+      alternate: 'Touch target',
+    },
+    whatIs: [
+      'Tamanho mínimo clicável de botões, links e controles em telas touch. Área pequena aumenta erro de toque, especialmente no mobile.',
+      'Product Designers seguem tamanhos mínimos recomendados e espaçamento entre ações para reduzir clique errado.',
+    ],
+    youWillHear: [
+      '"Esse botão está abaixo do tamanho mínimo de área de toque."',
+      '"Aumenta área de toque do ícone no mobile."',
+    ],
+  },
+
+  // Acessibilidade: prática
+  {
+    id: 'leitor-de-tela',
+    term: 'Leitor de tela',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Screen reader',
+    },
+    whatIs: [
+      'Tecnologia assistiva que lê em voz alta o conteúdo da tela: títulos, botões, campos e mensagens. Pessoas com deficiência visual dependem dela para usar produtos digitais.',
+      'Product Designers testam fluxos com leitor de tela ou pedem validação especializada para checar rótulos, ordem e textos alternativos.',
+    ],
+    youWillHear: [
+      '"Roda esse fluxo no leitor de tela antes do deploy."',
+      '"O leitor de tela não anunciou a mensagem de erro."',
+    ],
+  },
+  {
+    id: 'aria',
+    term: 'ARIA',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Accessible Rich Internet Applications',
+    },
+    whatIs: [
+      'Conjunto de atributos HTML que comunica papel, estado e propriedades de componentes para tecnologias assistivas. Exemplo: marcar um modal como dialog ou indicar que um menu está expandido.',
+      'Product Designers não implementam ARIA, mas precisam saber que componentes customizados exigem spec claro para dev aplicar atributos corretos.',
+    ],
+    youWillHear: [
+      '"Esse accordion precisa de ARIA no handoff."',
+      '"Dev pediu spec de ARIA para o menu customizado."',
+    ],
+  },
+  {
+    id: 'auditoria-de-acessibilidade',
+    term: 'Auditoria de acessibilidade',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    whatIs: [
+      'Revisão sistemática de telas e fluxos contra critérios WCAG: contraste, teclado, textos alternativos, semântica e compatibilidade com leitor de tela. Pode ser manual ou com checklist.',
+      'Product Designers participam de auditorias antes de release e transformam achados em ajustes de design ou tickets para dev.',
+    ],
+    youWillHear: [
+      '"A auditoria de acessibilidade pegou cinco issues nesse fluxo."',
+      '"Precisamos de auditoria antes de lançar para o público amplo."',
+    ],
+  },
+
+  // IA: conceitos
+  {
+    id: 'ia',
+    term: 'IA',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Inteligência artificial',
+    },
+    whatIs: [
+      'Campo da computação que cria sistemas capazes de aprender padrões, gerar conteúdo e apoiar decisões. Em produto digital, aparece em busca, recomendação, chat e automação de tarefas.',
+      'Product Designers encontram IA em assistentes, preenchimento inteligente, geração de copy e protótipos. O foco continua sendo resolver problema da pessoa usuária com clareza e confiança.',
+    ],
+    youWillHear: [
+      '"Essa feature usa IA por trás do recomendador."',
+      '"Precisamos deixar claro na UI quando a resposta veio de IA."',
+    ],
+  },
+  {
+    id: 'llm',
+    term: 'LLM',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Large Language Model',
+      usageNote: 'Modelo de linguagem também aparece em português.',
+    },
+    whatIs: [
+      'Modelo de IA treinado em grande volume de texto para entender e gerar linguagem natural. Responde perguntas, resume conteúdo, sugere copy e ajuda a explorar ideias.',
+      'Product Designers usam LLM em assistentes de escrita, chatbots e ferramentas de brainstorming. Resultado exige revisão humana antes de ir para produto ou cliente.',
+    ],
+    youWillHear: [
+      '"Vamos testar esse fluxo com um LLM mais recente."',
+      '"O LLM entende bem português, mas erra termos técnicos."',
+    ],
+  },
+  {
+    id: 'ia-generativa',
+    term: 'IA generativa',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Generative AI',
+    },
+    whatIs: [
+      'Tipo de IA que cria conteúdo novo: texto, imagem, código ou variações de layout a partir de instruções. Prompt define o que se pede.',
+      'Product Designers usam IA generativa para explorar copy, imagens de apoio e alternativas de interface no processo, validando depois com pesquisa e critério de marca.',
+    ],
+    youWillHear: [
+      '"Usa IA generativa só na fase de exploração, não no asset final."',
+      '"A geração de imagem acelerou o moodboard dessa proposta."',
+    ],
+  },
+
+  // IA: uso no dia a dia
+  {
+    id: 'prompt',
+    term: 'Prompt',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    whatIs: [
+      'Instrução em linguagem natural enviada a um modelo de IA para obter uma resposta ou artefato. Quanto mais contexto, restrições e objetivo claros, melhor o resultado.',
+      'Product Designers escrevem prompts para gerar ideias de microcopy, variar tom de voz ou simular fluxos. Prompt vago gera resposta genérica ou fora do brief.',
+    ],
+    youWillHear: [
+      '"Manda o prompt que você usou para gerar essas variações."',
+      '"Refina o prompt com tom de voz da marca."',
+    ],
+  },
+  {
+    id: 'engenharia-de-prompt',
+    term: 'Engenharia de prompt',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Prompt engineering',
+    },
+    whatIs: [
+      'Prática de estruturar, testar e refinar prompts para obter resultados consistentes de modelos de IA. Inclui dar contexto, exemplos, formato de saída e limites.',
+      'Product Designers aplicam engenharia de prompt ao iterar copy, critérios de componente ou cenários de teste sem tratar a primeira resposta como final.',
+    ],
+    youWillHear: [
+      '"Precisamos de engenharia de prompt melhor nesse assistente."',
+      '"Salva os prompts que funcionaram para reutilizar no time."',
+    ],
+  },
+  {
+    id: 'md',
+    term: 'MD',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Markdown',
+      usageNote: 'Arquivo .md também aparece em README e documentação de repositório.',
+    },
+    whatIs: [
+      'Formato de texto simples com sintaxe leve: títulos, listas, links e blocos de código. Arquivos usam extensão .md. LLMs leem e geram Markdown com facilidade.',
+      'Product Designers usam MD em projetos com agentes de IA: instruções de sistema, contexto de produto, roteiros de pesquisa e specs colados no prompt. Também aparece em README e PRD versionado no repositório.',
+    ],
+    youWillHear: [
+      '"Cola o brief desse fluxo em um .md e manda pro agente."',
+      '"O contexto do produto está num arquivo Markdown na pasta do projeto."',
+    ],
+  },
+  {
+    id: 'agente-de-ia',
+    term: 'Agente de IA',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'AI agent',
+      usageNote: 'Assistente de IA também aparece no mercado.',
+    },
+    whatIs: [
+      'Sistema de IA que ajuda em tarefas dentro do produto ou do fluxo de trabalho: responde perguntas, gera conteúdo, sugere próximos passos e, em alguns casos, executa ações com autonomia. No mercado também aparece como assistente de IA; copilot costuma ser o nome de produto para esse padrão.',
+      'Product Designers desenham agentes de IA com expectativa clara, transparência sobre limites, confirmação em ações sensíveis e fallback quando erra ou não entende.',
+    ],
+    youWillHear: [
+      '"O assistente de IA precisa de fallback quando não entende."',
+      '"Esse copilot renomeia camadas no arquivo de design."',
+    ],
+  },
+  {
+    id: 'skill',
+    term: 'Skill',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Habilidade do agente',
+      usageNote: 'Skill continua em inglês na maioria das ferramentas de agente.',
+    },
+    whatIs: [
+      'Módulo de instruções que ensina um agente de IA a executar um tipo de tarefa. Pode ser um conjunto de prompts organizados, um playbook em MD ou regras fixas de formato, passos e contexto que o agente carrega quando a tarefa combina.',
+      'Product Designers criam skills para padronizar trabalho repetível com IA: revisão de copy, checklist de acessibilidade, roteiro de teste ou template de spec. Skill vai além de um prompt isolado ao empacotar vários prompts e critérios num fluxo reutilizável.',
+    ],
+    youWillHear: [
+      '"A skill junta três prompts: contexto, geração e revisão."',
+      '"Esse agente puxa a skill de auditoria de acessibilidade."',
+    ],
+  },
+  {
+    id: 'mcp',
+    term: 'MCP',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Model Context Protocol',
+      usageNote: 'Protocolo de contexto do modelo também aparece em português.',
+    },
+    whatIs: [
+      'Padrão aberto que conecta agentes de IA a ferramentas e fontes externas: banco de dados, automações, APIs e serviços. O agente descobre o que pode chamar e recebe dados atualizados no contexto.',
+      'Product Designers encontram MCP ao montar fluxos com agentes que consultam informação viva do produto. Importa definir o que o agente pode acessar, pedir confirmação em ações sensíveis e tratar erro quando a conexão falha.',
+    ],
+    youWillHear: [
+      '"Conecta o MCP do banco pro agente puxar contexto atualizado."',
+      '"Esse agente usa MCP pra chamar ferramenta externa."',
+    ],
+  },
+
+  // IA: prática e riscos
+  {
+    id: 'modelo',
+    term: 'Modelo',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Modelo de IA',
+    },
+    whatIs: [
+      'Versão treinada de uma IA com capacidades e limites específicos. Modelos diferentes variam em qualidade, idioma, custo e janela de contexto.',
+      'Product Designers alinham com produto e engenharia qual modelo usar quando IA entra na experiência: velocidade, tom, privacidade e idioma importam.',
+    ],
+    youWillHear: [
+      '"Esse modelo responde mais rápido, mas com menos nuance."',
+      '"Trocamos de modelo e o tom da resposta mudou."',
+    ],
+  },
+  {
+    id: 'janela-de-contexto',
+    term: 'Janela de contexto',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Context window',
+    },
+    whatIs: [
+      'Quantidade de informação que um modelo de IA consegue considerar de uma vez: mensagens anteriores, documentos colados e instruções. Acima do limite, o modelo esquece o início.',
+      'Product Designers levam janela de contexto em conta ao desenhar assistentes longos ou fluxos que dependem de histórico da conversa.',
+    ],
+    youWillHear: [
+      '"A conversa estourou a janela de contexto, começa thread nova."',
+      '"Resume o histórico antes de colar no prompt."',
+    ],
+  },
+  {
+    id: 'alucinacao',
+    term: 'Alucinação',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Hallucination',
+    },
+    whatIs: [
+      'Resposta inventada ou imprecisa que um modelo de IA apresenta com tom confiante. Pode misturar fatos, criar dados ou sugerir padrões inexistentes.',
+      'Product Designers tratam alucinação como risco de UX: mensagens de incerteza, fontes verificáveis e revisão humana antes de decisões críticas.',
+    ],
+    youWillHear: [
+      '"A IA alucinou um dado que não existe no produto."',
+      '"Precisamos de UI que mostre quando a resposta é incerta."',
+    ],
+  },
+  {
+    id: 'revisao-humana',
+    term: 'Revisão humana',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Human in the loop',
+    },
+    whatIs: [
+      'Etapa em que uma pessoa valida, corrige ou aprova saída de IA antes de publicar ou entregar. Essencial quando erro tem impacto em marca, acesso ou decisão de produto.',
+      'Product Designers incluem revisão humana em fluxos com IA generativa: copy, imagens e sugestões de layout passam por critério profissional.',
+    ],
+    youWillHear: [
+      '"Nada de IA direto para cliente, passa por revisão humana."',
+      '"Human in the loop nesse fluxo de suporte."',
+    ],
+  },
+]
+export const guiaGlossarioCategoryLabels: Record<GuiaGlossarioCategoryId, string> =
+  Object.fromEntries(
+    guiaGlossarioCategories.map((c) => [c.id, c.title]),
+  ) as Record<GuiaGlossarioCategoryId, string>
+
+export function getGuiaGlossarioEntryById(
+  id: string,
+): GuiaGlossarioEntry | undefined {
+  return guiaGlossarioEntries.find((entry) => entry.id === id)
+}
+
+export function getGuiaGlossarioCategoryById(
+  id: GuiaGlossarioCategoryId,
+): GuiaGlossarioCategory | undefined {
+  return guiaGlossarioCategories.find((category) => category.id === id)
+}
+
+export function getGuiaGlossarioEntriesByCategory(
+  categoryId: GuiaGlossarioCategoryId,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  return sortGuiaGlossarioEntries(
+    guiaGlossarioEntries.filter((entry) => entry.categoryId === categoryId),
+    sortMode,
+  )
+}
+
+export function getAllGuiaGlossarioEntriesSorted(
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  return sortGuiaGlossarioEntries(guiaGlossarioEntries, sortMode)
+}
+
+export function searchGuiaGlossarioEntries(
+  query: string,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  const normalized = query.trim().toLowerCase()
+  if (!normalized) return getAllGuiaGlossarioEntriesSorted(sortMode)
+
+  return getAllGuiaGlossarioEntriesSorted(sortMode).filter(
+    (entry) =>
+      entry.term.toLowerCase().includes(normalized) ||
+      entry.id.toLowerCase().includes(normalized) ||
+      entry.originalName?.alternate.toLowerCase().includes(normalized) ||
+      entry.whatIs.some((p) => p.toLowerCase().includes(normalized)),
+  )
+}
+
+
+export function groupGuiaGlossarioEntriesByCategory(
+  entries: GuiaGlossarioEntry[],
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]> {
+  const grouped = new Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]>()
+
+  for (const category of guiaGlossarioCategories) {
+    grouped.set(category.id, [])
+  }
+
+  for (const entry of entries) {
+    grouped.get(entry.categoryId)?.push(entry)
+  }
+
+  for (const [categoryId, list] of grouped) {
+    grouped.set(categoryId, sortGuiaGlossarioEntries(list, sortMode))
+  }
+
+  return grouped
+}
+
+export type GuiaGlossarioSubgroupGroup = {
+  subgroupId: string | null
+  label: string | null
+  entries: GuiaGlossarioEntry[]
+}
+
+/** Agrupa verbetes por subgrupo dentro de uma categoria */
+export function groupGuiaGlossarioEntriesBySubgroup(
+  entries: GuiaGlossarioEntry[],
+  categoryId: GuiaGlossarioCategoryId,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioSubgroupGroup[] {
+  if (sortMode === 'alfabetica') {
+    return [
+      {
+        subgroupId: null,
+        label: null,
+        entries: sortGuiaGlossarioEntries(entries, 'alfabetica'),
+      },
+    ]
+  }
+
+  const labels = guiaGlossarioSubgroupLabels[categoryId]
+  if (!labels) {
+    return [
+      {
+        subgroupId: null,
+        label: null,
+        entries: sortGuiaGlossarioEntries(entries, 'recomendada'),
+      },
+    ]
+  }
+
+  const order = Object.keys(labels)
+  const buckets = new Map<string, GuiaGlossarioEntry[]>()
+  const ungrouped: GuiaGlossarioEntry[] = []
+
+  for (const entry of entries) {
+    if (entry.subgroup && labels[entry.subgroup]) {
+      const list = buckets.get(entry.subgroup) ?? []
+      list.push(entry)
+      buckets.set(entry.subgroup, list)
+    } else {
+      ungrouped.push(entry)
+    }
+  }
+
+  const groups: GuiaGlossarioSubgroupGroup[] = order
+    .filter((id) => buckets.has(id))
+    .map((id) => ({
+      subgroupId: id,
+      label: labels[id] ?? null,
+      entries: sortGuiaGlossarioEntries(buckets.get(id) ?? [], 'recomendada'),
+    }))
+
+  if (ungrouped.length > 0) {
+    groups.push({
+      subgroupId: null,
+      label: null,
+      entries: sortGuiaGlossarioEntries(ungrouped, 'recomendada'),
+    })
+  }
+
+  return groups
+}

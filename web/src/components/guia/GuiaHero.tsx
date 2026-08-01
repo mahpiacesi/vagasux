@@ -30,7 +30,7 @@ export function GuiaHero() {
           </h1>
 
           <p className="mural-fade mural-fade-delay-2 mt-5 max-w-lg text-base leading-relaxed text-neutral-400 md:text-lg">
-            Centenas de conteúdos curados para você aprender no seu ritmo — com
+            Centenas de conteúdos curados para você aprender no seu ritmo, com
             trilhas, busca e caminhos pensados para quem está começando.
           </p>
 
