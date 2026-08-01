@@ -20,7 +20,7 @@ export type GuiaGlossarioOriginalName = {
  * @see docs/guia-glossario.md
  */
 export type GuiaGlossarioEntry = {
-  /** Slug único na URL */
+  /** Âncora HTML na página única (#ux, #mvp…) */
   id: string
   /** Título como o mercado utiliza */
   term: string

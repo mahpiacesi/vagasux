@@ -35,12 +35,12 @@ Cada verbete tem **uma** categoria principal (`categoryId`). Relações cruzadas
 
 ## Rotas
 
-| Página | Rota | Arquivo |
-|--------|------|---------|
-| Índice do glossário | `/guia/comecar/glossario` | `GuiaGlossarioPage.tsx` |
-| Verbete | `/guia/comecar/glossario/:slug` | `GuiaGlossarioTermPage.tsx` |
+| Página | Rota | Observação |
+|--------|------|------------|
+| Glossário completo | `/guia/comecar/glossario` | Uma página, todos os verbetes |
+| Termo específico | `/guia/comecar/glossario#ux` | Âncora, não rota separada |
 
-Helpers: `guiaRoutes.glossario`, `guiaRoutes.glossarioTerm(slug)`.
+Helpers: `guiaRoutes.glossario`. Cada verbete usa `id` como âncora HTML (`#ux`, `#mvp`).
 
 Redirect legado: `/glossario` → índice.
 
@@ -50,7 +50,7 @@ Redirect legado: `/glossario` → índice.
 
 ```typescript
 GuiaGlossarioEntry {
-  id: string              // slug único: "ux", "design-system", "mvp"
+  id: string              // âncora única: #ux, #design-system, #mvp
   term: string            // título exibido (como o mercado usa)
   categoryId: CategoryId  // uma categoria apenas
 
@@ -75,7 +75,7 @@ GuiaGlossarioEntry {
 |-------|----------|
 | Nome original para siglas | Se `term` é sigla ou inglês → `originalName` obrigatório |
 | Veja também | `seeAlso.length` entre 3 e 6 quando houver verbetes suficientes no acervo |
-| Slugs únicos | `id` único; `seeAlso` só aponta para `id` existente |
+| Slugs únicos | `id` único como âncora; `seeAlso` aponta para `#id` existente |
 | Regra de ouro | Antes de novo verbete: buscar termo existente; preferir link |
 | Rede, não coleção | Grafo de `seeAlso` conecta Discovery → Pesquisa → Hipótese → MVP |
 
@@ -83,7 +83,7 @@ GuiaGlossarioEntry {
 
 ## Mapeamento bloco editorial → UI
 
-Ordem fixa na página do verbete (`GuiaGlossarioTermView`):
+Ordem fixa dentro de `<article id="{id}">` na mesma página (`GuiaGlossarioEntryArticle`):
 
 | # | Seção editorial | Componente / elemento | Campo |
 |---|-----------------|----------------------|-------|
@@ -94,21 +94,21 @@ Ordem fixa na página do verbete (`GuiaGlossarioTermView`):
 | 3 | Exemplo | `<section>` exemplo prático PD | `example` |
 | 4 | Você provavelmente vai ouvir | `<ul>` citações de mercado | `youWillHear[]` |
 | 5 | Por que isso importa? | `<section>` carreira / relevância | `whyItMatters` |
-| 6 | Veja também | grid de links internos | `seeAlso[]` → rotas |
+| 6 | Veja também | links `#id` internos | `seeAlso[]` |
 
-Breadcrumb: `Guia / Começar / Glossário / {term}`
+Breadcrumb: `Guia / Começar / Glossário` (termo ativo = hash na URL, sem nível extra).
 
 ---
 
-## Índice do glossário (`GuiaGlossarioPage`)
+## Página única (`GuiaGlossarioPageContent`)
 
 | Elemento | Função |
 |----------|--------|
-| Hero | Título, descrição alinhada à seção Ajuda |
-| Busca local | Filtrar por `term` (futuro: full-text nos blocos) |
-| Filtro por categoria | Tabs ou chips das 8 categorias |
-| Lista A–Z | Cards com `term` + categoria; link para verbete |
-| Contagem | Termos por categoria (atualiza conforme acervo cresce) |
+| Hero | Título + descrição |
+| Busca | Filtra verbetes visíveis |
+| Filtro por categoria | Tabs das 8 categorias |
+| Índice de termos | Pills com links `#id` |
+| Verbetes | `<article id="…">` com template editorial completo |
 
 ---
 
@@ -168,12 +168,9 @@ Conceitos informados por NNG, Figma Dictionary, IxDF, Material, HIG, livros clá
 ```
 web/src/data/guiaGlossario.ts          # categorias, verbetes, helpers
 web/src/components/guia/glossario/
-  GuiaGlossarioTermView.tsx            # layout do verbete
-  GuiaGlossarioIndexHero.tsx           # cabeçalho do índice
-  GuiaGlossarioCategoryFilter.tsx      # filtro por categoria
-  GuiaGlossarioTermList.tsx            # lista de termos
-web/src/pages/guia/GuiaGlossarioPage.tsx       # índice
-web/src/pages/guia/GuiaGlossarioTermPage.tsx   # verbete
+  GuiaGlossarioPageContent.tsx         # página única: índice + verbetes
+  GuiaGlossarioEntryArticle.tsx      # bloco de um verbete (âncora)
+web/src/pages/guia/GuiaGlossarioPage.tsx
 docs/guia-glossario.md                 # este mapeamento
 ```
 

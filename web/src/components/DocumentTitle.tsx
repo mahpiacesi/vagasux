@@ -5,7 +5,6 @@ import {
   getGuiaTipoById,
   getGuiaTrilhaById,
 } from '@/data/guia'
-import { getGuiaGlossarioEntryById } from '@/data/guiaGlossario'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { routes } from '@/lib/siteLinks'
 
@@ -47,14 +46,6 @@ function resolveGuiaTitle(pathname: string): string | undefined {
     return tipo
       ? `VagasUX · Guia · ${tipo.title}`
       : 'VagasUX · Guia do Product Designer'
-  }
-
-  const glossarioMatch = pathname.match(/^\/guia\/comecar\/glossario\/([^/]+)$/)
-  if (glossarioMatch) {
-    const entry = getGuiaGlossarioEntryById(glossarioMatch[1])
-    return entry
-      ? `VagasUX · Glossário · ${entry.term}`
-      : 'VagasUX · Guia · Glossário'
   }
 
   return titles[pathname]

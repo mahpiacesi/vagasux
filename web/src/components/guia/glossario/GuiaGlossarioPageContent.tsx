@@ -1,15 +1,14 @@
-import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { MagnifyingGlass } from '@phosphor-icons/react'
+import { GuiaGlossarioEntryArticle } from '@/components/guia/glossario/GuiaGlossarioEntryArticle'
 import { Input } from '@/components/ui/input'
 import {
   getGuiaGlossarioEntriesByCategory,
   guiaGlossarioCategories,
-  guiaGlossarioCategoryLabels,
   searchGuiaGlossarioEntries,
   type GuiaGlossarioCategoryId,
 } from '@/data/guiaGlossario'
-import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
 function isCategoryId(value: string | null): value is GuiaGlossarioCategoryId {
@@ -19,7 +18,7 @@ function isCategoryId(value: string | null): value is GuiaGlossarioCategoryId {
   )
 }
 
-export function GuiaGlossarioIndex() {
+export function GuiaGlossarioPageContent() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState('')
 
@@ -40,17 +39,27 @@ export function GuiaGlossarioIndex() {
     setSearchParams(next, { replace: true })
   }
 
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '')
+    if (!hash) return
+
+    const target = document.getElementById(hash)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [entries])
+
   return (
-    <div className="mt-8">
-      <div className="max-w-2xl">
+    <div className="mt-8 max-w-2xl">
+      <header>
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Glossário
         </h1>
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
           Termos, siglas e conceitos de Product Design explicados de forma
-          simples, para consultar quando bater aquela dúvida.
+          simples. Use a busca ou pule direto para o termo que precisa.
         </p>
-      </div>
+      </header>
 
       <div className="relative mt-8 max-w-md">
         <MagnifyingGlass
@@ -117,28 +126,28 @@ export function GuiaGlossarioIndex() {
       </div>
 
       {entries.length > 0 ? (
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {entries.map((entry) => (
-            <li key={entry.id}>
-              <Link
-                to={guiaRoutes.glossarioTerm(entry.id)}
-                className="flex h-full flex-col rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 transition-colors hover:border-brand-300 hover:bg-brand-100/40"
+        <>
+          <nav
+            aria-label="Índice de termos"
+            className="mt-8 flex flex-wrap gap-2"
+          >
+            {entries.map((entry) => (
+              <a
+                key={entry.id}
+                href={`#${entry.id}`}
+                className="inline-flex rounded-full border border-neutral-500/10 bg-neutral-100 px-3.5 py-2 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/40 hover:text-brand-500"
               >
-                <span className="text-xs font-bold tracking-[0.12em] text-brand-400 uppercase">
-                  {guiaGlossarioCategoryLabels[entry.categoryId]}
-                </span>
-                <span className="mt-2 text-lg font-black text-neutral-500">
-                  {entry.term}
-                </span>
-                {entry.originalName ? (
-                  <span className="mt-1 text-sm text-neutral-400">
-                    {entry.originalName.english}
-                  </span>
-                ) : null}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                {entry.term}
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-12 space-y-12">
+            {entries.map((entry) => (
+              <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
+            ))}
+          </div>
+        </>
       ) : (
         <p className="mt-8 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
           Nenhum termo encontrado. Novos verbetes serão adicionados em breve.
