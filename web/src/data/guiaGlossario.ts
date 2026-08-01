@@ -247,7 +247,6 @@ export const guiaGlossarioEditorialOrder: Partial<
     'prompt',
     'engenharia-de-prompt',
     'agente-de-ia',
-    'assistente-de-ia',
     'modelo',
     'janela-de-contexto',
     'alucinacao',
@@ -2436,31 +2435,15 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'uso',
     originalName: {
       alternate: 'AI agent',
+      usageNote: 'Assistente de IA também aparece no mercado.',
     },
     whatIs: [
-      'Sistema de IA que executa tarefas com mais autonomia: interpreta objetivo, usa ferramentas, encadeia passos e entrega resultado. Diferente de um chat que só responde, o agente age em nome da pessoa usuária dentro de limites definidos.',
-      'Product Designers desenham agentes de IA com transparência sobre o que vai acontecer, confirmação em ações sensíveis e fallback quando trava. No mercado, copilot costuma nomear agentes ou assistentes integrados ao fluxo de trabalho.',
-    ],
-    youWillHear: [
-      '"Esse copilot é um agente que renomeia camadas no arquivo."',
-      '"Precisamos limitar o que o agente pode fazer sozinho."',
-    ],
-  },
-  {
-    id: 'assistente-de-ia',
-    term: 'Assistente de IA',
-    categoryId: 'ia',
-    subgroup: 'uso',
-    originalName: {
-      alternate: 'AI assistant',
-    },
-    whatIs: [
-      'Interface conversacional ou contextual que usa IA para ajudar em tarefas: responder dúvidas, gerar texto, resumir informação ou guiar fluxos no produto. A pessoa usuária conduz a interação passo a passo.',
-      'Product Designers desenham assistentes de IA com expectativa clara, transparência sobre limites e caminhos quando a IA erra ou não sabe responder. Assistente responde e sugere; agente de IA tende a executar ações com mais autonomia.',
+      'Sistema de IA que ajuda em tarefas dentro do produto ou do fluxo de trabalho: responde perguntas, gera conteúdo, sugere próximos passos e, em alguns casos, executa ações com autonomia. No mercado também aparece como assistente de IA; copilot costuma ser o nome de produto para esse padrão.',
+      'Product Designers desenham agentes de IA com expectativa clara, transparência sobre limites, confirmação em ações sensíveis e fallback quando erra ou não entende.',
     ],
     youWillHear: [
       '"O assistente de IA precisa de fallback quando não entende."',
-      '"Vamos testar o assistente com pessoas usuárias reais."',
+      '"Esse copilot renomeia camadas no arquivo de design."',
     ],
   },
 
