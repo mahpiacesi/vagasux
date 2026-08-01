@@ -48,13 +48,17 @@ export function GuiaAjudaSection() {
   return (
     <section
       id={guiaHashes.ajuda}
-      className="relative overflow-hidden bg-neutral-500 px-5 py-16 md:px-6 md:py-20"
+      className="relative bg-neutral-500 px-5 py-16 md:px-6 md:py-20"
       aria-labelledby="guia-ajuda-heading"
     >
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 h-px w-full bg-gradient-to-r from-transparent via-complementary-300/50 to-transparent" />
         <div className="absolute top-[-20%] right-[-8%] h-80 w-80 rounded-full bg-brand-400/25 blur-3xl" />
-        <div className="absolute bottom-[-24%] left-[-10%] h-72 w-72 rounded-full bg-complementary-300/15 blur-3xl" />
+        <div className="absolute bottom-8 left-[-6%] h-56 w-56 rounded-full bg-brand-400/15 blur-3xl" />
+        <div
+          className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-b from-transparent via-neutral-500/80 to-neutral-500 md:h-44"
+          aria-hidden
+        />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
