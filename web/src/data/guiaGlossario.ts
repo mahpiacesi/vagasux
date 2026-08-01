@@ -100,7 +100,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'heuristicas-de-usabilidade',
     // Pessoas e contexto: quem usa → quem decide
     'pessoa-usuaria',
-    'publico-alvo',
+    'persona',
     'stakeholder',
     'cliente',
     'negocio',
@@ -611,17 +611,17 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
-    id: 'publico-alvo',
-    term: 'Público-alvo',
+    id: 'persona',
+    term: 'Persona',
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Persona é um personagem fictício baseado em pesquisa, com nome, contexto e objetivos. Em Product Design e UX, é a forma usual de representar para quem se projeta o produto.',
-      'Público-alvo descreve o segmento que um produto ou campanha quer alcançar, com características como idade, região, profissão ou comportamento. Persona detalha um perfil dentro desse segmento; os dois se complementam.',
+      'Personagem fictício baseado em pesquisa, com nome, contexto, objetivos e dores de uma pessoa usuária representativa. Product Designers usam persona para alinhar o time sobre para quem projetam e priorizam decisões.',
+      'Público-alvo descreve um segmento amplo de mercado; persona dá rosto e contexto a um perfil dentro dele.',
     ],
     youWillHear: [
-      '"Qual é o publico-alvo desse app?"',
-      '"O marketing definiu o publico-alvo, agora precisamos validar com pesquisa."',
+      '"Vamos revisar a persona antes de desenhar esse fluxo."',
+      '"Essa decisão faz sentido para a nossa persona principal?"',
     ],
   },
   {
