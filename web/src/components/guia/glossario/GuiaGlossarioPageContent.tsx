@@ -142,8 +142,8 @@ export function GuiaGlossarioPageContent() {
   const totalVisible = filteredEntries.length
 
   return (
-    <div className="mt-8 max-w-2xl">
-      <header>
+    <div className="mt-8 w-full">
+      <header className="max-w-3xl">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Glossário
         </h1>

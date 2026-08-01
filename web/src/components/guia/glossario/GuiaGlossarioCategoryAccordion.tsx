@@ -89,7 +89,7 @@ export function GuiaGlossarioCategoryAccordion({
             ))}
           </nav>
 
-          <div className="mt-8 space-y-10">
+          <div className="mt-8 space-y-8">
             {subgroupGroups.map((group) => (
               <div key={group.subgroupId ?? 'outros'}>
                 {group.label ? (
@@ -97,7 +97,7 @@ export function GuiaGlossarioCategoryAccordion({
                     {group.label}
                   </h3>
                 ) : null}
-                <div className={cn('space-y-10', group.label && 'mt-6')}>
+                <div className={cn('space-y-8', group.label && 'mt-5')}>
                   {group.entries.map((entry) => (
                     <GuiaGlossarioEntryArticle key={entry.id} entry={entry} />
                   ))}
