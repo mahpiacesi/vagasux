@@ -42,7 +42,7 @@ export function GuiaGlossarioEntryArticle({
       </h2>
 
       {entry.originalName ? (
-        <div className="mt-4 max-w-2xl rounded-2xl border border-brand-200/60 bg-brand-100/40 px-5 py-4">
+        <div className="mt-4 w-full rounded-2xl border border-brand-200/60 bg-brand-100/40 px-5 py-4">
           <p className="text-base font-bold text-neutral-500">
             {entry.originalName.english}
           </p>
