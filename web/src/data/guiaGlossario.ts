@@ -1908,7 +1908,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       alternate: 'Front-end',
     },
     whatIs: [
-      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Engenharia de frontend implementa o que Product Designers desenham na ferramenta de design.',
+      'Parte do produto que a pessoa usuária vê e interage no navegador ou app: telas, botões, animações e fluxos. Desenvolvedores front implementam o que os designers criam a partir de ferramentas de design.',
       'Product Designers alinham com dev frontend em handoff, estados, responsivo e comportamento de componentes.',
     ],
     youWillHear: [
