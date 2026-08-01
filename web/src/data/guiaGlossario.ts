@@ -500,7 +500,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Princípios que ajudam a avaliar se uma interface é fácil de usar. A lista mais conhecida é a de Jakob Nielsen, com dez regras como dar feedback claro, prevenir erros e manter consistência.',
-      'Product Designers usam essas heurísticas para revisar telas, dar feedback e conversar com o time sobre melhorias. A aplicação prática em auditoria de interface fica na categoria Pesquisa.',
+      'Product Designers usam essas heurísticas para revisar telas, dar feedback e conversar com o time sobre melhorias.',
     ],
     youWillHear: [
       '"Essa tela quebra a heurística de visibilidade do status do sistema."',
