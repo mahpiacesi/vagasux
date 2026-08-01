@@ -200,7 +200,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       portuguese: 'Arquitetura da Informação',
     },
     whatIs: [
-      'Arquitetura da Informação é a disciplina que organiza, nomeia e estrutura conteúdos em produtos digitais para que a pessoa usuária encontre o que precisa sem se perder. Pense em menus, categorias, rótulos e hierarquia de telas.',
+      'Organiza, nomeia e estrutura conteúdos em produtos digitais para que a pessoa usuária encontre o que precisa sem se perder. Pense em menus, categorias, rótulos e hierarquia de telas.',
       'Product Designers e pessoas de UX Research colaboram nessa área quando definem como um app ou site apresenta informação de forma clara e previsível.',
     ],
     youWillHear: [
@@ -220,7 +220,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
     },
     whatIs: [
-      'Content Design cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
+      'Cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
       'O foco não é escrever bonito, e sim deixar claro o que fazer, transmitir confiança e ajudar a completar a tarefa sem travar.',
     ],
     youWillHear: [
@@ -240,7 +240,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'CX aparece em empresas que olham a jornada completa da pessoa, incluindo atendimento, loja física e canais fora do app.',
     },
     whatIs: [
-      'CX (Customer Experience) é a experiência que uma pessoa tem com uma marca ou empresa em todos os pontos de contato. Pode incluir suporte, loja, redes sociais e comunicação pós-venda.',
+      'A experiência que uma pessoa tem com uma marca ou empresa em todos os pontos de contato. Pode incluir suporte, loja, redes sociais e comunicação pós-venda.',
       'UX e CX se cruzam quando o produto digital faz parte de uma experiência maior. Em conversas de equipe, CX costuma vir de Marketing, Atendimento ou Estratégia.',
     ],
     youWillHear: [
@@ -260,7 +260,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Em vagas internacionais, a sigla IxD também aparece, mas no Brasil o termo completo é mais comum.',
     },
     whatIs: [
-      'Design de Interação é a disciplina que projeta como a pessoa usuária interage com um produto digital: o que acontece quando ela toca, clica, arrasta ou preenche um campo.',
+      'Projeta como a pessoa usuária interage com um produto digital: o que acontece quando ela toca, clica, arrasta ou preenche um campo.',
       'Está ligado à UI, mas o foco aqui é o comportamento e o fluxo entre as ações, não só a aparência visual dos elementos.',
     ],
     youWillHear: [
@@ -274,7 +274,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     whatIs: [
-      'Design Visual é a competência de criar a identidade visual de um produto: cores, tipografia, ícones, espaçamento e hierarquia do que aparece na tela.',
+      'Cria a identidade visual de um produto: cores, tipografia, ícones, espaçamento e hierarquia do que aparece na tela.',
       'UI Designers e Product Designers usam design visual para deixar interfaces claras, consistentes e alinhadas à marca. Não é enfeite: visual mal resolvido atrapalha a leitura e a usabilidade.',
     ],
     youWillHear: [
@@ -294,7 +294,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Termo mais comum em contexto acadêmico e em materiais mais antigos. No dia a dia de produto, UX e HCD aparecem com muito mais frequência.',
     },
     whatIs: [
-      'HCI (Human-Computer Interaction) é o campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX saíram daqui.',
+      'Campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX saíram daqui.',
     ],
     youWillHear: [
       '"Meu mestrado foi em HCI, mas hoje trabalho como Product Designer."',
@@ -307,7 +307,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     whatIs: [
-      'Product Design é a disciplina que cria e evolui produtos digitais, unindo estratégia, pesquisa, experiência da pessoa usuária (UX) e interface (UI) para resolver problemas e gerar valor.',
+      'Cria e evolui produtos digitais, unindo estratégia, pesquisa, experiência da pessoa usuária (UX) e interface (UI) para resolver problemas e gerar valor.',
     ],
     youWillHear: [
       '"Vamos envolver Product Design desde o início do projeto."',
@@ -320,7 +320,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'areas-disciplinas',
     whatIs: [
-      'Product Designer é a pessoa responsável por projetar a experiência de um produto digital. Ela trabalha desde a compreensão do problema até a criação e validação de soluções, colaborando com áreas como Produto, Engenharia e Pesquisa.',
+      'Pessoa responsável por projetar a experiência de um produto digital. Trabalha desde a compreensão do problema até a criação e validação de soluções, colaborando com áreas como Produto, Engenharia e Pesquisa.',
     ],
     youWillHear: [
       '"A pessoa Product Designer vai validar esse fluxo antes do desenvolvimento."',
@@ -339,7 +339,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Em português, Design de Serviços também aparece, mas Service Design continua comum em vagas e materiais da área.',
     },
     whatIs: [
-      'Service Design é a disciplina que projeta serviços completos, mapeando todas as etapas que a pessoa passa, incluindo momentos fora da tela: fila, atendimento, entrega, suporte.',
+      'Projeta serviços completos, mapeando todas as etapas que a pessoa passa, incluindo momentos fora da tela: fila, atendimento, entrega, suporte.',
       'Product Designers encontram Service Design em empresas de saúde, bancos, varejo e logística, onde o app é só uma parte da experiência.',
     ],
     youWillHear: [
@@ -359,7 +359,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'UI é uma das siglas mais usadas no mercado. Quase sempre aparece junto com UX em vagas e conversas de equipe.',
     },
     whatIs: [
-      'UI (User Interface) é a camada visual e interativa de um produto digital: telas, botões, cores, tipografia, ícones e componentes que a pessoa usuária vê e toca.',
+      'Camada visual e interativa de um produto digital: telas, botões, cores, tipografia, ícones e componentes que a pessoa usuária vê e toca.',
       'Enquanto UX olha a experiência completa, UI foca em como cada tela funciona e se apresenta. Na prática, Product Designers costumam trabalhar os dois juntos.',
     ],
     youWillHear: [
@@ -379,7 +379,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Também aparece como Designer de Interfaces ou Designer Visual em algumas vagas.',
     },
     whatIs: [
-      'UI Designer é a pessoa especializada em criar interfaces digitais: layout, componentes, estados visuais e consistência com a marca e o design system.',
+      'Pessoa especializada em criar interfaces digitais: layout, componentes, estados visuais e consistência com a marca e o design system.',
       'Ela trabalha próximo de Product Designers, UX Designers e Engenharia para garantir que o visual seja claro, viável de desenvolver e agradável de usar.',
     ],
     youWillHear: [
@@ -399,7 +399,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso.',
     },
     whatIs: [
-      'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital: se entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
+      'Tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital: se entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
       'Boas decisões de UX consideram contexto, objetivo da pessoa usuária e limites do negócio. Na prática, Product Designers costumam trabalhar UX e UI juntos.',
     ],
     youWillHear: [
@@ -419,7 +419,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Muitas vagas no Brasil pedem UX/UI Designer no mesmo perfil. Quando isso acontece, o escopo costuma ser parecido com o de Product Design.',
     },
     whatIs: [
-      'UX Designer é a pessoa focada em projetar a experiência de uso de um produto digital: entender a pessoa usuária, mapear fluxos, testar ideias e melhorar a jornada.',
+      'Pessoa focada em projetar a experiência de uso de um produto digital: entender a pessoa usuária, mapear fluxos, testar ideias e melhorar a jornada.',
     ],
     youWillHear: [
       '"A pessoa UX Designer vai conduzir o teste de usabilidade dessa versão."',
@@ -438,7 +438,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
     },
     whatIs: [
-      'UX Research é a disciplina que estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
+      'Estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
       'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
     ],
     youWillHear: [
@@ -454,7 +454,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Design Thinking é uma forma de resolver problemas colocando a pessoa usuária no centro, explorando várias ideias antes de fechar uma solução.',
+      'Forma de resolver problemas colocando a pessoa usuária no centro, explorando várias ideias antes de fechar uma solução.',
       'Em empresas, aparece em workshops com post-its, protótipos rápidos e conversas entre áreas diferentes. Não é a única forma de trabalhar, mas é uma mentalidade comum quando o time precisa destravar um desafio complexo.',
     ],
     youWillHear: [
@@ -474,7 +474,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'O nome em inglês é o mais usado em empresas e cursos, mesmo no Brasil.',
     },
     whatIs: [
-      'Double Diamond é um modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Ele mostra que bons projetos alternam momentos de abrir possibilidades e momentos de focar em uma direção.',
+      'Modelo visual com quatro fases: descobrir, definir, desenvolver e entregar. Mostra que bons projetos alternam momentos de abrir possibilidades e momentos de focar em uma direção.',
       'Ajuda a explicar por que Product Design não começa desenhando tela. Primeiro se explora o problema, depois se explora a solução.',
     ],
     youWillHear: [
@@ -494,7 +494,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Também aparece como UCD (User-Centered Design) ou design centrado no usuário em materiais mais antigos.',
     },
     whatIs: [
-      'HCD (Human-Centered Design) é a abordagem de criar produtos a partir das necessidades reais de pessoas usuárias, testando ideias cedo e ajustando com feedback.',
+      'Abordagem de criar produtos a partir das necessidades reais de pessoas usuárias, testando ideias cedo e ajustando com feedback.',
       'É a base de como Product Designers pensam: entender antes de desenhar, validar antes de escalar.',
     ],
     youWillHear: [
@@ -514,7 +514,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'As dez heurísticas de Jakob Nielsen são a referência mais citada em UX no mundo.',
     },
     whatIs: [
-      'Heurísticas de usabilidade são princípios que ajudam a avaliar se uma interface é fácil de usar. A lista mais conhecida é a de Jakob Nielsen, com dez regras como dar feedback claro, prevenir erros e manter consistência.',
+      'Princípios que ajudam a avaliar se uma interface é fácil de usar. A lista mais conhecida é a de Jakob Nielsen, com dez regras como dar feedback claro, prevenir erros e manter consistência.',
       'Product Designers usam essas heurísticas para revisar telas, dar feedback e conversar com o time sobre melhorias. A aplicação prática em auditoria de interface fica na categoria Pesquisa.',
     ],
     youWillHear: [
@@ -528,7 +528,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Interação é o que acontece quando a pessoa usuária faz algo no produto: toca, clica, arrasta, preenche um campo ou confirma uma ação.',
+      'O que acontece quando a pessoa usuária faz algo no produto: toca, clica, arrasta, preenche um campo ou confirma uma ação.',
       'Cada tela é um conjunto de pontos de interação. Design de Interação cuida de como esses momentos funcionam. Não confunda com iteração, que é repetir e melhorar o trabalho ao longo do tempo.',
     ],
     youWillHear: [
@@ -542,7 +542,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Iteração é repetir o trabalho com melhorias a cada rodada: prototipar, testar, ajustar e testar de novo.',
+      'Repetir o trabalho com melhorias a cada rodada: prototipar, testar, ajustar e testar de novo.',
       'É uma mentalidade central em Product Design. Produtos bons raramente nascem certos na primeira versão. Não é a mesma coisa que interação, que é o que a pessoa usuária faz na tela.',
     ],
     youWillHear: [
@@ -556,7 +556,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Lean UX é uma forma de trabalhar em Product Design com ciclos curtos: menos documento pesado, mais conversa, protótipo e teste com o time. A ideia é aprender rápido o que funciona antes de investir meses em uma solução errada.',
+      'Forma de trabalhar em Product Design com ciclos curtos: menos documento pesado, mais conversa, protótipo e teste com o time. A ideia é aprender rápido o que funciona antes de investir meses em uma solução errada.',
     ],
     youWillHear: [
       '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
@@ -575,7 +575,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Usabilidade é um dos conceitos mais citados em conversas de UX e em vagas de Product Design.',
     },
     whatIs: [
-      'Usabilidade é o quão fácil e intuitivo é usar um produto digital. Uma interface usável deixa claro o que fazer, ajuda a pessoa a completar a tarefa e não exige esforço desnecessário.',
+      'Quão fácil e intuitivo é usar um produto digital. Uma interface usável deixa claro o que fazer, ajuda a pessoa a completar a tarefa e não exige esforço desnecessário.',
       'Product Designers pensam em usabilidade ao desenhar fluxos, rótulos e feedbacks. Testes com pessoas usuárias, na categoria Pesquisa, mostram onde a usabilidade está falhando.',
     ],
     youWillHear: [
@@ -591,7 +591,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Cliente é quem contrata, paga ou decide pela compra de um produto ou serviço. Em muitos casos, cliente e pessoa usuária são a mesma pessoa. Em outros, não.',
+      'Quem contrata, paga ou decide pela compra de um produto ou serviço. Em muitos casos, cliente e pessoa usuária são a mesma pessoa. Em outros, não.',
       'Em produtos B2B, agências ou plataformas white-label, quem usa no dia a dia pode ser diferente de quem assina o contrato. Product Designers precisam entender os dois lados.',
     ],
     youWillHear: [
@@ -605,7 +605,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Negócio, neste contexto, é a perspectiva de metas, receita, custos, estratégia e viabilidade de um produto digital.',
+      'Neste contexto, a perspectiva de metas, receita, custos, estratégia e viabilidade de um produto digital.',
       'Product Designers equilibram necessidades da pessoa usuária com objetivos do negócio. Nem toda ideia boa para a experiência faz sentido para a empresa agora.',
     ],
     youWillHear: [
@@ -619,7 +619,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Pessoa usuária é quem usa um produto ou serviço digital no dia a dia. No VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
+      'Quem usa um produto ou serviço digital no dia a dia. No VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
     ],
     youWillHear: [
       '"Quem é a pessoa usuária principal desse produto?"',
@@ -632,7 +632,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Público-alvo é o grupo de pessoas que um produto ou campanha quer alcançar, descrito por características como idade, região, profissão ou comportamento.',
+      'Grupo de pessoas que um produto ou campanha quer alcançar, descrito por características como idade, região, profissão ou comportamento.',
       'Diferente de persona, que é um personagem fictício baseado em pesquisa. Público-alvo é mais amplo e segmentado. Os dois conceitos se complementam.',
     ],
     youWillHear: [
@@ -652,7 +652,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Termo popularizado por modelos de organização como o do Spotify. No Brasil, time ou squad aparecem com a mesma ideia.',
     },
     whatIs: [
-      'Squad é um time enxuto e multidisciplinar responsável por uma parte do produto ou por uma entrega. Costuma reunir Product Design, Produto, Engenharia e outras áreas conforme a necessidade.',
+      'Time enxuto e multidisciplinar responsável por uma parte do produto ou por uma entrega. Costuma reunir Product Design, Produto, Engenharia e outras áreas conforme a necessidade.',
       'Trabalhar em squad significa estar próximo das decisões do dia a dia, com menos distância entre quem pesquisa, desenha, desenvolve e mede resultados.',
     ],
     youWillHear: [
@@ -672,7 +672,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Stakeholder é usado no original em inglês na maioria das empresas de tecnologia no Brasil.',
     },
     whatIs: [
-      'Stakeholder é qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
+      'Qualquer pessoa ou grupo com interesse ou influência sobre um projeto: liderança, Produto, Engenharia, Marketing, jurídico, suporte ou cliente.',
       'Product Designers precisam alinhar expectativas com stakeholders sem perder de vista a pessoa usuária. Nem todo pedido de stakeholder vira prioridade de design.',
     ],
     youWillHear: [
