@@ -9,6 +9,7 @@ export const routes = {
   codigoDeConduta: '/codigo-de-conduta',
   termosEPoliticas: '/termos-e-politicas',
   parcerias: '/parcerias',
+  guia: '/guia',
 } as const
 
 export const termosHashes = {
@@ -75,13 +76,21 @@ export const voluntariadoHashes = {
   comoFazerParte: 'como-fazer-parte',
 } as const
 
+export const guiaHashes = {
+  caminhos: 'caminhos',
+  trilhas: 'trilhas',
+  areas: 'areas',
+  populares: 'populares',
+} as const
+
 /**
  * Pages that still live on the Super/Notion site.
  * Keep vagasux.com.br intact while we migrate in parallel.
  */
 export const superSite = {
   origin: 'https://vagasux.com.br',
-  guia: 'https://vagasux.com.br/guia-do-product-designer',
+  guia: routes.guia,
+  guiaLegacy: 'https://vagasux.com.br/guia-do-product-designer',
   comunidade: 'https://vagasux.com.br/a-comunidade',
   iniciantes: 'https://vagasux.com.br/vagas-para-iniciantes',
   baseIniciantes: 'https://vagasux.com.br/iniciantes-em-design',
