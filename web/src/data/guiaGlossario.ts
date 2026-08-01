@@ -1485,9 +1485,9 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'produto',
     subgroup: 'conceitos',
     originalName: {
-      alternate: 'Encaixe produto-mercado',
+      alternate: 'PMF',
       usageNote:
-        'PMF é a sigla comum em conversas de startup e produto em inglês.',
+        'Product-market fit e PMF são as formas mais usadas em conversas de startup e produto, inclusive no Brasil.',
     },
     whatIs: [
       'Momento em que um produto resolve uma necessidade real para um grupo de pessoas usuárias de forma repetível, e o mercado responde com adoção e retenção. Sinal de que problema, solução e modelo de negócio conversam.',
