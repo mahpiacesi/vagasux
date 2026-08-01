@@ -1,6 +1,6 @@
 import { BookOpen, Handshake } from '@phosphor-icons/react'
 import { Link, NavLink } from 'react-router-dom'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 import { ComunidadeNavMenu } from './ComunidadeNavMenu'
 import { Logo } from './Logo'
 import { VagasNavMenu } from './VagasNavMenu'
@@ -16,31 +16,10 @@ const ctaClass =
 const ctaClassMobile =
   'rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100'
 
-const externalNavLinks = [
-  { label: 'Guia', href: superSite.guia, Icon: BookOpen },
-] as const
-
 const internalNavLinks = [
+  { label: 'Guia', to: routes.guia, Icon: BookOpen },
   { label: 'Parcerias', to: routes.parcerias, Icon: Handshake },
 ] as const
-
-function ExternalNavLink({
-  label,
-  href,
-  Icon,
-}: (typeof externalNavLinks)[number]) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={linkClass}
-    >
-      <Icon {...navIconProps} className="shrink-0" aria-hidden />
-      {label}
-    </a>
-  )
-}
 
 export function Header() {
   return (
@@ -60,9 +39,6 @@ export function Header() {
         >
           <ComunidadeNavMenu />
           <VagasNavMenu />
-          {externalNavLinks.map((item) => (
-            <ExternalNavLink key={item.href} {...item} />
-          ))}
           {internalNavLinks.map(({ label, to, Icon }) => (
             <Link key={to} to={to} className={linkClass}>
               <Icon {...navIconProps} className="shrink-0" aria-hidden />

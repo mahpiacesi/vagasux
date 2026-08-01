@@ -4,6 +4,7 @@ import { routes } from '@/lib/siteLinks'
 import { ComunidadePage } from '@/pages/ComunidadePage'
 import { GuildaPage } from '@/pages/GuildaPage'
 import { GuiaIllustrationDevPage } from '@/pages/GuiaIllustrationDevPage'
+import { GuiaPage } from '@/pages/GuiaPage'
 import { HomePage } from '@/pages/HomePage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
 import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
@@ -26,6 +27,7 @@ export default function App() {
           <Route path={routes.guilda} element={<GuildaPage />} />
           <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.parcerias} element={<ParceriasPage />} />
+          <Route path={routes.guia} element={<GuiaPage />} />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
           <Route

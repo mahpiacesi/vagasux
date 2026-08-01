@@ -1,3 +1,15 @@
 {
+  "redirects": [
+    {
+      "source": "/guia-do-product-designer",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/:path*",
+      "destination": "/guia",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

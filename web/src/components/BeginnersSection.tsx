@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { GuiaHeroIllustration } from '@/components/GuiaHeroIllustration'
 import { Button } from '@/components/ui/button'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 export function BeginnersSection() {
   return (
@@ -24,13 +24,7 @@ export function BeginnersSection() {
               size="lg"
               className="h-12 rounded-xl px-8 text-base font-black"
             >
-              <a
-                href={superSite.guia}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Acessar o guia
-              </a>
+              <Link to={routes.guia}>Acessar o guia</Link>
             </Button>
             <Button
               asChild

@@ -12,6 +12,7 @@ const titles: Record<string, string> = {
   [routes.oportunidades]: 'VagasUX · Mural de vagas',
   [routes.curadoria]: 'VagasUX · Curadoria de vagas para iniciantes',
   [routes.parcerias]: 'VagasUX · Parcerias',
+  [routes.guia]: 'VagasUX · Guia do Product Designer',
 }
 
 export function DocumentTitle() {
