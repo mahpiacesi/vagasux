@@ -14,11 +14,11 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
 
   return useMemo(() => {
     if (pathname === guiaRoutes.faq) {
-      return [{ label: 'Começar' }, { label: 'FAQ' }]
+      return [{ label: 'FAQ' }]
     }
 
     if (pathname === guiaRoutes.glossario) {
-      return [{ label: 'Começar' }, { label: 'Glossário' }]
+      return [{ label: 'Glossário' }]
     }
 
     if (!slug) return []

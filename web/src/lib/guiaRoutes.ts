@@ -4,8 +4,8 @@ export const guiaRoutes = {
   trilha: (slug: string) => `/guia/trilhas/${slug}`,
   tema: (slug: string) => `/guia/tema/${slug}`,
   tipo: (slug: string) => `/guia/tipo/${slug}`,
-  faq: '/guia/comecar/faq',
-  glossario: '/guia/comecar/glossario',
+  faq: '/guia/faq',
+  glossario: '/guia/glossario',
 } as const
 
-export type GuiaRouteSection = 'trilhas' | 'tema' | 'tipo' | 'comecar'
+export type GuiaRouteSection = 'trilhas' | 'tema' | 'tipo' | 'faq' | 'glossario'

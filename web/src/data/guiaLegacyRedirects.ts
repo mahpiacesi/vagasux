@@ -9,7 +9,7 @@ export const guiaLegacyRedirects = [
     source: '/perfis-para-seguir',
     destination: '/guia/tipo/canais',
   },
-  { source: '/glossario', destination: '/guia/comecar/glossario' },
+  { source: '/glossario', destination: '/guia/glossario' },
   {
     source: '/primeiros-passos',
     destination: '/guia/trilhas/entender-o-basico',

@@ -38,8 +38,8 @@ export default function App() {
             <Route path="trilhas/:slug" element={<GuiaTrilhaPage />} />
             <Route path="tema/:slug" element={<GuiaTemaPage />} />
             <Route path="tipo/:slug" element={<GuiaTipoPage />} />
-            <Route path="comecar/faq" element={<GuiaFaqPage />} />
-            <Route path="comecar/glossario" element={<GuiaGlossarioPage />} />
+            <Route path="faq" element={<GuiaFaqPage />} />
+            <Route path="glossario" element={<GuiaGlossarioPage />} />
           </Route>
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />

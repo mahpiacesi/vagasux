@@ -37,8 +37,8 @@ Cada verbete tem **uma** categoria principal (`categoryId`). Relações cruzadas
 
 | Página | Rota | Observação |
 |--------|------|------------|
-| Glossário completo | `/guia/comecar/glossario` | Uma página, todos os verbetes |
-| Termo específico | `/guia/comecar/glossario#ux` | Âncora, não rota separada |
+| Glossário completo | `/guia/glossario` | Uma página, todos os verbetes |
+| Termo específico | `/guia/glossario#ux` | Âncora, não rota separada |
 
 Helpers: `guiaRoutes.glossario`. Cada verbete usa `id` como âncora HTML (`#ux`, `#mvp`).
 
@@ -96,7 +96,7 @@ Ordem fixa dentro de `<article id="{id}">` na mesma página (`GuiaGlossarioEntry
 | 5 | Por que isso importa? | `<section>` carreira / relevância | `whyItMatters` |
 | 6 | Veja também | links `#id` internos | `seeAlso[]` |
 
-Breadcrumb: `Guia / Começar / Glossário` (termo ativo = hash na URL, sem nível extra).
+Breadcrumb: `Guia / Glossário` (termo ativo = hash na URL).
 
 ---
 
