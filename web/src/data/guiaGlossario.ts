@@ -219,7 +219,6 @@ export const guiaGlossarioEditorialOrder: Partial<
     'responsivo',
     'handoff',
     'spec',
-    'md',
     'breakpoint',
     'edge-case',
     'deploy',
@@ -247,6 +246,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'ia-generativa',
     'prompt',
     'engenharia-de-prompt',
+    'md',
     'agente-de-ia',
     'modelo',
     'janela-de-contexto',
@@ -2042,24 +2042,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
-    id: 'md',
-    term: 'MD',
-    categoryId: 'desenvolvimento',
-    subgroup: 'entrega',
-    originalName: {
-      alternate: 'Markdown',
-      usageNote: 'Arquivo .md também aparece quando o assunto é documentação em repositório.',
-    },
-    whatIs: [
-      'Formato de texto simples para documentação com sintaxe leve: títulos, listas, links e blocos de código. Arquivos usam extensão .md.',
-      'Product Designers encontram MD em README de repositório, PRD versionado, specs de componente e notas de handoff quando o time documenta em texto junto ao código.',
-    ],
-    youWillHear: [
-      '"Atualiza o README.md com o link do design aprovado."',
-      '"A spec desse fluxo está no arquivo .md do repositório."',
-    ],
-  },
-  {
     id: 'breakpoint',
     term: 'Breakpoint',
     categoryId: 'desenvolvimento',
@@ -2445,6 +2427,24 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos de engenharia de prompt melhor nesse assistente."',
       '"Salva os prompts que funcionaram para reutilizar no time."',
+    ],
+  },
+  {
+    id: 'md',
+    term: 'MD',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Markdown',
+      usageNote: 'Arquivo .md também aparece em README e documentação de repositório.',
+    },
+    whatIs: [
+      'Formato de texto simples com sintaxe leve: títulos, listas, links e blocos de código. Arquivos usam extensão .md. LLMs leem e geram Markdown com facilidade.',
+      'Product Designers usam MD em projetos com agentes de IA: instruções de sistema, contexto de produto, roteiros de pesquisa e specs colados no prompt. Também aparece em README e PRD versionado no repositório.',
+    ],
+    youWillHear: [
+      '"Cola o brief desse fluxo em um .md e manda pro agente."',
+      '"O contexto do produto está num arquivo Markdown na pasta do projeto."',
     ],
   },
   {

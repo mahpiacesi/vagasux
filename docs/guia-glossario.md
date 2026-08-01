@@ -142,7 +142,7 @@ Discovery e delivery ficam em **Produto**; squad em **Fundamentos**.
 
 **Conceitos:** Frontend, Backend, API, Responsivo
 
-**Design para desenvolvimento:** Handoff, Spec, MD, Breakpoint, Edge case
+**Design para desenvolvimento:** Handoff, Spec, Breakpoint, Edge case
 
 **Ciclo de release:** Deploy, Staging, Bug, Pull Request, QA
 
@@ -174,11 +174,11 @@ Contraste em **Cor** (Interface) trata paleta; aqui o foco é legibilidade e WCA
 
 **Conceitos:** IA, LLM, IA generativa
 
-**Uso no dia a dia:** Prompt, Engenharia de prompt, Agente de IA
+**Uso no dia a dia:** Prompt, Engenharia de prompt, MD, Agente de IA
 
 **Prática e riscos:** Modelo, Janela de contexto, Alucinação, Revisão humana
 
-Foco em linguagem de produto e UX com IA; implementação de modelos fica com engenharia.
+Foco em linguagem de produto e UX com IA; MD é formato comum para contexto e instruções em projetos com agentes.
 
 ---
 
@@ -236,11 +236,11 @@ GuiaGlossarioEntry {
 
 **Métodos Ágeis:** 12 termos (ver subgrupos acima). Scrum, sprint, backlog, kanban e cerimônias do squad.
 
-**Desenvolvimento:** 14 termos (ver subgrupos acima). Frontend, handoff, MD, responsivo, deploy e ciclo com engenharia.
+**Desenvolvimento:** 13 termos (ver subgrupos acima). Frontend, handoff, responsivo, deploy e ciclo com engenharia.
 
 **Acessibilidade:** 11 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
-**IA:** 10 termos (ver subgrupos acima). LLM, prompt, agente de IA, alucinação e revisão humana.
+**IA:** 11 termos (ver subgrupos acima). LLM, prompt, MD, agente de IA, alucinação e revisão humana.
 
 ---
 
