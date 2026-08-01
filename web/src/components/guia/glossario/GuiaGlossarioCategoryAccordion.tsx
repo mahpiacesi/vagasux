@@ -4,12 +4,14 @@ import {
   groupGuiaGlossarioEntriesBySubgroup,
   type GuiaGlossarioCategory,
   type GuiaGlossarioEntry,
+  type GuiaGlossarioSortMode,
 } from '@/data/guiaGlossario'
 import { cn } from '@/lib/utils'
 
 type GuiaGlossarioCategoryAccordionProps = {
   category: GuiaGlossarioCategory
   entries: GuiaGlossarioEntry[]
+  sortMode: GuiaGlossarioSortMode
   isOpen: boolean
   onToggle: () => void
   onTermLinkClick: (termId: string) => void
@@ -18,6 +20,7 @@ type GuiaGlossarioCategoryAccordionProps = {
 export function GuiaGlossarioCategoryAccordion({
   category,
   entries,
+  sortMode,
   isOpen,
   onToggle,
   onTermLinkClick,
@@ -29,6 +32,7 @@ export function GuiaGlossarioCategoryAccordion({
   const subgroupGroups = groupGuiaGlossarioEntriesBySubgroup(
     entries,
     category.id,
+    sortMode,
   )
 
   return (

@@ -68,7 +68,7 @@ export const guiaGlossarioSubgroupLabels: Partial<
 }
 
 /**
- * Ordem de leitura por prioridade de contexto (não alfabética).
+ * Ordem recomendada de leitura (prioridade para quem está começando).
  * Novos verbetes entram no fim do subgrupo correspondente.
  */
 export const guiaGlossarioEditorialOrder: Partial<
@@ -146,6 +146,46 @@ export function sortGuiaGlossarioEntriesEditorially(
   entries: GuiaGlossarioEntry[],
 ): GuiaGlossarioEntry[] {
   return [...entries].sort(compareGuiaGlossarioEntriesEditorially)
+}
+
+export type GuiaGlossarioSortMode = 'recomendada' | 'alfabetica'
+
+export const guiaGlossarioSortModeLabels: Record<GuiaGlossarioSortMode, string> =
+  {
+    recomendada: 'Recomendada',
+    alfabetica: 'Alfabética',
+  }
+
+export function parseGuiaGlossarioSortMode(
+  value: string | null,
+): GuiaGlossarioSortMode {
+  return value === 'alfabetica' ? 'alfabetica' : 'recomendada'
+}
+
+export function compareGuiaGlossarioEntriesAlphabetically(
+  a: GuiaGlossarioEntry,
+  b: GuiaGlossarioEntry,
+): number {
+  if (a.categoryId !== b.categoryId) {
+    return (
+      getGuiaGlossarioCategoryIndex(a.categoryId) -
+      getGuiaGlossarioCategoryIndex(b.categoryId)
+    )
+  }
+
+  return a.term.localeCompare(b.term, 'pt-BR')
+}
+
+export function sortGuiaGlossarioEntries(
+  entries: GuiaGlossarioEntry[],
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  const compare =
+    sortMode === 'alfabetica'
+      ? compareGuiaGlossarioEntriesAlphabetically
+      : compareGuiaGlossarioEntriesEditorially
+
+  return [...entries].sort(compare)
 }
 
 export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
@@ -689,21 +729,28 @@ export function getGuiaGlossarioCategoryById(
 
 export function getGuiaGlossarioEntriesByCategory(
   categoryId: GuiaGlossarioCategoryId,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
 ): GuiaGlossarioEntry[] {
-  return sortGuiaGlossarioEntriesEditorially(
+  return sortGuiaGlossarioEntries(
     guiaGlossarioEntries.filter((entry) => entry.categoryId === categoryId),
+    sortMode,
   )
 }
 
-export function getAllGuiaGlossarioEntriesSorted(): GuiaGlossarioEntry[] {
-  return sortGuiaGlossarioEntriesEditorially(guiaGlossarioEntries)
+export function getAllGuiaGlossarioEntriesSorted(
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
+  return sortGuiaGlossarioEntries(guiaGlossarioEntries, sortMode)
 }
 
-export function searchGuiaGlossarioEntries(query: string): GuiaGlossarioEntry[] {
+export function searchGuiaGlossarioEntries(
+  query: string,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
+): GuiaGlossarioEntry[] {
   const normalized = query.trim().toLowerCase()
-  if (!normalized) return getAllGuiaGlossarioEntriesSorted()
+  if (!normalized) return getAllGuiaGlossarioEntriesSorted(sortMode)
 
-  return getAllGuiaGlossarioEntriesSorted().filter(
+  return getAllGuiaGlossarioEntriesSorted(sortMode).filter(
     (entry) =>
       entry.term.toLowerCase().includes(normalized) ||
       entry.id.toLowerCase().includes(normalized) ||
@@ -716,6 +763,7 @@ export function searchGuiaGlossarioEntries(query: string): GuiaGlossarioEntry[] 
 
 export function groupGuiaGlossarioEntriesByCategory(
   entries: GuiaGlossarioEntry[],
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
 ): Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]> {
   const grouped = new Map<GuiaGlossarioCategoryId, GuiaGlossarioEntry[]>()
 
@@ -728,7 +776,7 @@ export function groupGuiaGlossarioEntriesByCategory(
   }
 
   for (const [categoryId, list] of grouped) {
-    grouped.set(categoryId, sortGuiaGlossarioEntriesEditorially(list))
+    grouped.set(categoryId, sortGuiaGlossarioEntries(list, sortMode))
   }
 
   return grouped
@@ -740,14 +788,31 @@ export type GuiaGlossarioSubgroupGroup = {
   entries: GuiaGlossarioEntry[]
 }
 
-/** Agrupa verbetes por subgrupo dentro de uma categoria, na ordem editorial */
+/** Agrupa verbetes por subgrupo dentro de uma categoria */
 export function groupGuiaGlossarioEntriesBySubgroup(
   entries: GuiaGlossarioEntry[],
   categoryId: GuiaGlossarioCategoryId,
+  sortMode: GuiaGlossarioSortMode = 'recomendada',
 ): GuiaGlossarioSubgroupGroup[] {
+  if (sortMode === 'alfabetica') {
+    return [
+      {
+        subgroupId: null,
+        label: null,
+        entries: sortGuiaGlossarioEntries(entries, 'alfabetica'),
+      },
+    ]
+  }
+
   const labels = guiaGlossarioSubgroupLabels[categoryId]
   if (!labels) {
-    return [{ subgroupId: null, label: null, entries }]
+    return [
+      {
+        subgroupId: null,
+        label: null,
+        entries: sortGuiaGlossarioEntries(entries, 'recomendada'),
+      },
+    ]
   }
 
   const order = Object.keys(labels)
@@ -769,14 +834,14 @@ export function groupGuiaGlossarioEntriesBySubgroup(
     .map((id) => ({
       subgroupId: id,
       label: labels[id] ?? null,
-      entries: sortGuiaGlossarioEntriesEditorially(buckets.get(id) ?? []),
+      entries: sortGuiaGlossarioEntries(buckets.get(id) ?? [], 'recomendada'),
     }))
 
   if (ungrouped.length > 0) {
     groups.push({
       subgroupId: null,
       label: null,
-      entries: sortGuiaGlossarioEntriesEditorially(ungrouped),
+      entries: sortGuiaGlossarioEntries(ungrouped, 'recomendada'),
     })
   }
 
