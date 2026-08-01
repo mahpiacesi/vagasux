@@ -127,8 +127,7 @@ GuiaGlossarioEntry {
 
 - Accordion por categoria (8)
 - Subgrupos como `<h3>` dentro do accordion aberto
-- Busca + filtro por categoria
-- Hash abre categoria certa + scroll
+- Busca + hash abre categoria certa + scroll
 
 ---
 

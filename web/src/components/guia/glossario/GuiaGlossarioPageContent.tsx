@@ -15,13 +15,6 @@ import {
 } from '@/data/guiaGlossario'
 import { cn } from '@/lib/utils'
 
-function isCategoryId(value: string | null): value is GuiaGlossarioCategoryId {
-  return (
-    value !== null &&
-    guiaGlossarioCategories.some((category) => category.id === value)
-  )
-}
-
 export function GuiaGlossarioPageContent() {
   const { hash } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -31,17 +24,12 @@ export function GuiaGlossarioPageContent() {
   >(() => new Set())
   const [scrollTargetId, setScrollTargetId] = useState<string | null>(null)
 
-  const categoriaParam = searchParams.get('categoria')
-  const activeCategoryFilter = isCategoryId(categoriaParam)
-    ? categoriaParam
-    : null
   const sortMode = parseGuiaGlossarioSortMode(searchParams.get('ordem'))
 
-  const filteredEntries = useMemo(() => {
-    const searched = searchGuiaGlossarioEntries(query, sortMode)
-    if (!activeCategoryFilter) return searched
-    return searched.filter((entry) => entry.categoryId === activeCategoryFilter)
-  }, [query, activeCategoryFilter, sortMode])
+  const filteredEntries = useMemo(
+    () => searchGuiaGlossarioEntries(query, sortMode),
+    [query, sortMode],
+  )
 
   const entriesByCategory = useMemo(
     () => groupGuiaGlossarioEntriesByCategory(filteredEntries, sortMode),
@@ -80,10 +68,9 @@ export function GuiaGlossarioPageContent() {
   }, [hasActiveSearch, entriesByCategory])
 
   useEffect(() => {
-    if (activeCategoryFilter) return
     if (hasActiveSearch) return
     setOpenCategories(new Set())
-  }, [activeCategoryFilter, hasActiveSearch])
+  }, [hasActiveSearch])
 
   useEffect(() => {
     const termId = hash.replace('#', '')
@@ -109,13 +96,6 @@ export function GuiaGlossarioPageContent() {
     const next = new URLSearchParams(searchParams)
     if (nextSortMode === 'recomendada') next.delete('ordem')
     else next.set('ordem', nextSortMode)
-    setSearchParams(next, { replace: true })
-  }
-
-  function setCategoryFilter(categoryId: GuiaGlossarioCategoryId | null) {
-    const next = new URLSearchParams(searchParams)
-    if (categoryId) next.set('categoria', categoryId)
-    else next.delete('categoria')
     setSearchParams(next, { replace: true })
   }
 
@@ -189,54 +169,6 @@ export function GuiaGlossarioPageContent() {
             )
           })}
         </div>
-      </div>
-
-      <div
-        role="tablist"
-        aria-label="Filtrar categorias"
-        className="mt-8 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeCategoryFilter === null}
-          onClick={() => setCategoryFilter(null)}
-          className={cn(
-            'shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition-colors',
-            activeCategoryFilter === null
-              ? 'border-brand-300 bg-brand-400 text-neutral-100'
-              : 'border-neutral-500/10 bg-brand-100/30 text-neutral-500 hover:border-brand-200',
-          )}
-        >
-          Todas
-        </button>
-        {guiaGlossarioCategories.map((category) => {
-          const count = entriesByCategory.get(category.id)?.length ?? 0
-          const isSelected = activeCategoryFilter === category.id
-
-          return (
-            <button
-              key={category.id}
-              type="button"
-              role="tab"
-              aria-selected={isSelected}
-              onClick={() => setCategoryFilter(category.id)}
-              className={cn(
-                'shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition-colors',
-                isSelected
-                  ? 'border-brand-300 bg-brand-400 text-neutral-100'
-                  : 'border-neutral-500/10 bg-brand-100/30 text-neutral-500 hover:border-brand-200',
-                count === 0 && !isSelected && 'opacity-50',
-              )}
-            >
-              <span aria-hidden>{category.emoji} </span>
-              {category.title}
-              {count > 0 ? (
-                <span className="ml-1.5 opacity-80">({count})</span>
-              ) : null}
-            </button>
-          )
-        })}
       </div>
 
       {hasActiveSearch && filteredEntries.length === 0 ? (
