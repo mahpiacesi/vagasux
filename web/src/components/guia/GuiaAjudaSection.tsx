@@ -1,7 +1,10 @@
 import { ArrowRight, BookBookmark, Question } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { guiaFaqItems } from '@/data/guiaFaq'
-import { guiaGlossarioEntries } from '@/data/guiaGlossario'
+import { guiaFaqCategories, guiaFaqItems } from '@/data/guiaFaq'
+import {
+  guiaGlossarioCategories,
+  guiaGlossarioEntries,
+} from '@/data/guiaGlossario'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -11,13 +14,15 @@ const ajudaResources = [
     id: 'faq',
     to: guiaRoutes.faq,
     count: guiaFaqItems.length,
+    countLabel: 'respostas',
     title: 'FAQ',
     hint: 'Carreira, rotina e processos seletivos',
     cta: 'Ver perguntas',
     Icon: Question,
+    emojis: guiaFaqCategories.slice(0, 4).map((category) => category.emoji),
     cardClassName:
       'bg-brand-400 text-neutral-100 shadow-[0_32px_80px_-32px_rgb(36_46_144_/_0.85)] hover:bg-brand-300',
-    countClassName: 'text-neutral-100/12',
+    asideClassName: 'bg-brand-500/35',
     hintClassName: 'text-brand-100/85',
     ctaClassName: 'text-neutral-100',
   },
@@ -25,13 +30,15 @@ const ajudaResources = [
     id: 'glossario',
     to: guiaRoutes.glossario,
     count: guiaGlossarioEntries.length,
+    countLabel: 'termos',
     title: 'Glossário',
     hint: 'Siglas, papéis e conceitos do dia a dia',
-    cta: 'Ver verbetes',
+    cta: 'Ver termos',
     Icon: BookBookmark,
+    emojis: guiaGlossarioCategories.slice(0, 4).map((category) => category.emoji),
     cardClassName:
       'bg-complementary-300 text-neutral-500 shadow-[0_32px_80px_-32px_rgb(246_209_110_/_0.75)] hover:bg-complementary-200',
-    countClassName: 'text-neutral-500/10',
+    asideClassName: 'bg-neutral-500/8',
     hintClassName: 'text-neutral-500/75',
     ctaClassName: 'text-neutral-500',
   },
@@ -73,12 +80,14 @@ export function GuiaAjudaSection() {
               id,
               to,
               count,
+              countLabel,
               title,
               hint,
               cta,
               Icon,
+              emojis,
               cardClassName,
-              countClassName,
+              asideClassName,
               hintClassName,
               ctaClassName,
             }) => (
@@ -86,35 +95,50 @@ export function GuiaAjudaSection() {
                 <Link
                   to={to}
                   className={cn(
-                    'group relative flex min-h-[15.5rem] flex-col overflow-hidden rounded-3xl p-7 transition-colors duration-200 md:min-h-[16.5rem] md:p-8',
+                    'group flex gap-4 rounded-3xl p-5 transition-colors duration-200 md:gap-5 md:p-6',
                     cardClassName,
                   )}
                 >
-                  <span
-                    aria-hidden
+                  <aside
                     className={cn(
-                      'pointer-events-none absolute top-2 right-2 text-[5.5rem] leading-none font-black tracking-[-0.06em] md:text-[6.5rem]',
-                      countClassName,
+                      'flex w-[6.25rem] shrink-0 flex-col items-center justify-center gap-3 rounded-2xl px-3 py-5 md:w-[7rem] md:py-6',
+                      asideClassName,
                     )}
+                    aria-hidden
                   >
-                    {count}
-                  </span>
+                    <span className="inline-flex size-11 items-center justify-center rounded-xl bg-neutral-100/15">
+                      <Icon size={24} weight="bold" />
+                    </span>
+                    <div className="text-center">
+                      <p className="text-2xl leading-none font-black tracking-tight">
+                        {count}
+                      </p>
+                      <p className="mt-1 text-[0.58rem] font-bold tracking-[0.14em] uppercase opacity-80">
+                        {countLabel}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-1 text-base leading-none">
+                      {emojis.map((emoji, index) => (
+                        <span key={index}>{emoji}</span>
+                      ))}
+                    </div>
+                  </aside>
 
-                  <Icon size={36} weight="bold" aria-hidden />
-
-                  <div className="relative mt-auto pt-10">
-                    <p className="text-[0.65rem] font-bold tracking-[0.16em] uppercase opacity-80">
-                      {count} {id === 'faq' ? 'respostas' : 'verbetes'}
-                    </p>
-                    <h3 className="mt-2 text-[2rem] leading-none font-black tracking-[-0.03em] md:text-[2.35rem]">
+                  <div className="flex min-w-0 flex-1 flex-col justify-center py-1">
+                    <h3 className="text-[1.85rem] leading-none font-black tracking-[-0.03em] md:text-[2.1rem]">
                       {title}
                     </h3>
-                    <p className={cn('mt-3 max-w-[16rem] text-sm leading-snug', hintClassName)}>
+                    <p
+                      className={cn(
+                        'mt-3 max-w-[18rem] text-sm leading-snug',
+                        hintClassName,
+                      )}
+                    >
                       {hint}
                     </p>
                     <span
                       className={cn(
-                        'mt-6 inline-flex items-center gap-2 text-sm font-black',
+                        'mt-5 inline-flex items-center gap-2 text-sm font-black',
                         ctaClassName,
                       )}
                     >
