@@ -226,7 +226,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Esse botão precisa de um copy mais claro."',
       '"Vamos passar essas telas com Content Design antes do handoff."',
-      '"A vaga pede UX Writing, mas o escopo é bem de Content Design."',
     ],
   },
   {
@@ -247,7 +246,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos alinhar a UX do app com a estratégia de CX da marca."',
       '"O time de CX quer entender a jornada completa, não só o digital."',
-      '"Essa mudança no produto impacta a experiência do cliente como um todo."',
     ],
   },
   {
@@ -268,7 +266,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Esse fluxo precisa de um design de interação mais claro."',
       '"Vamos revisar as interações desse formulário antes de polir o visual."',
-      '"A pessoa usuária travou nesse passo. Pode ser problema de interação."',
     ],
   },
   {
@@ -283,7 +280,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O design visual desse componente ainda não está alinhado ao restante do produto."',
       '"Antes de desenvolver, vamos fechar o design visual dessa tela."',
-      '"Essa vaga pede forte em design visual e UI."',
     ],
   },
   {
@@ -304,7 +300,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Meu mestrado foi em HCI, mas hoje trabalho como Product Designer."',
       '"Esse paper de HCI fala sobre usabilidade de interfaces."',
-      '"A empresa tem um time de pesquisa em HCI."',
     ],
   },
   {
@@ -351,7 +346,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Esse projeto envolve service design, não é só interface."',
       '"Precisamos mapear o serviço ponta a ponta, não apenas o fluxo do app."',
-      '"A pessoa de Service Design vai facilitar o workshop de jornada."',
     ],
   },
   {
@@ -372,7 +366,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A UX desse fluxo está ok, mas a UI ainda precisa de refinamento."',
       '"Vamos alinhar UI com o design system antes de entregar."',
-      '"Essa vaga pede forte em UI e design visual."',
     ],
   },
   {
@@ -393,7 +386,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A pessoa UI Designer vai montar as telas finais desse fluxo."',
       '"Precisamos de alguém com foco em UI para esse projeto."',
-      '"O UI Designer revisou os estados de hover e disabled."',
     ],
   },
   {
@@ -405,7 +397,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       english: 'User Experience',
       portuguese: 'Experiência da Pessoa Usuária',
       usageNote:
-        'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso. Quase ninguém fala "experiência da pessoa usuária" no dia a dia das equipes.',
+        'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso.',
     },
     whatIs: [
       'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital. Não é só visual: inclui se ela entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
@@ -414,7 +406,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos melhorar a UX desse fluxo de cadastro."',
       '"Antes de polir a interface, vamos validar a UX com pessoas usuárias."',
-      '"Essa feature resolve o problema de negócio, mas a UX ainda está confusa."',
     ],
   },
   {
@@ -435,7 +426,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A pessoa UX Designer vai conduzir o teste de usabilidade dessa versão."',
       '"A vaga é UX Designer, mas pede Figma e UI também."',
-      '"Vamos envolver UX Design antes de priorizar essa feature."',
     ],
   },
   {
@@ -456,7 +446,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos de UX Research antes de fechar essa solução."',
       '"A pessoa de UX Research vai recrutar participantes para o estudo."',
-      '"Esse dado veio de uma rodada de UX Research."',
     ],
   },
 
@@ -473,7 +462,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Vamos fazer um workshop de design thinking para entender o problema."',
       '"Essa etapa segue a lógica de design thinking: divergir antes de convergir."',
-      '"Design thinking não substitui pesquisa, mas ajuda a organizar ideias."',
     ],
   },
   {
@@ -494,7 +482,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Estamos no primeiro diamante, ainda descobrindo o problema."',
       '"Depois de definir, entramos no segundo diamante para explorar soluções."',
-      '"O Double Diamond ajuda a explicar a fase do projeto para stakeholders."',
     ],
   },
   {
@@ -515,7 +502,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Esse projeto segue uma abordagem HCD."',
       '"Precisamos de mais pesquisa para manter o processo centrado na pessoa usuária."',
-      '"Design centrado no usuário ainda aparece em docs antigos, mas a lógica é a mesma."',
     ],
   },
   {
@@ -536,7 +522,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Essa tela quebra a heurística de visibilidade do status do sistema."',
       '"Vamos revisar o fluxo com as heurísticas de Nielsen."',
-      '"Antes do teste, faz sentido uma checagem heurística rápida."',
     ],
   },
   {
@@ -551,7 +536,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Essa interação está confusa, a pessoa usuária não entendeu o próximo passo."',
       '"Vamos mapear as interações desse fluxo antes de polir o visual."',
-      '"O botão precisa de uma interação mais clara."',
     ],
   },
   {
@@ -566,7 +550,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos de mais uma iteração nesse fluxo."',
       '"Na próxima iteração a gente inclui o feedback do teste."',
-      '"Lean UX pede iteração rápida com o time."',
     ],
   },
   {
@@ -581,7 +564,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
       '"Lean UX não significa pular pesquisa, é iterar com foco."',
-      '"O time de produto já trabalha com mentalidade Lean UX."',
     ],
   },
   {
@@ -602,7 +584,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A usabilidade desse formulário está ruim, muita gente erra no mesmo campo."',
       '"Antes de lançar, vamos checar usabilidade com um teste rápido."',
-      '"Essa mudança melhora usabilidade sem alterar o visual todo."',
     ],
   },
 
@@ -619,7 +600,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O cliente pediu essa funcionalidade, mas a pessoa usuária não usa."',
       '"Precisamos apresentar a proposta para o cliente na sexta."',
-      '"Nesse projeto, o cliente é interno, o time de operações."',
     ],
   },
   {
@@ -634,7 +614,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Essa solução é boa para UX, mas o negócio não prioriza agora."',
       '"Precisamos alinhar design com objetivos de negócio."',
-      '"O time de negócio quer entender o impacto dessa mudança."',
     ],
   },
   {
@@ -649,7 +628,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Quem é a pessoa usuária principal desse produto?"',
       '"Precisamos recrutar usuários para o teste."',
-      '"Essa decisão beneficia o negócio, mas prejudica a pessoa usuária."',
     ],
   },
   {
@@ -664,7 +642,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Qual é o publico-alvo desse app?"',
       '"O marketing definiu o publico-alvo, agora precisamos validar com pesquisa."',
-      '"Essa feature faz sentido para o nosso publico-alvo?"',
     ],
   },
   {
@@ -685,7 +662,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Qual squad vai pegar essa funcionalidade?"',
       '"No nosso squad tem Product Designer, dev e PM."',
-      '"Vamos alinhar isso no squad antes de subir para a liderança."',
     ],
   },
   {
@@ -706,7 +682,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Vamos apresentar essa proposta para os stakeholders."',
       '"O stakeholder pediu prazo menor, precisamos negociar escopo."',
-      '"Quem são os stakeholders desse projeto?"',
     ],
   },
 ]
