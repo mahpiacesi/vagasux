@@ -417,11 +417,10 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       english: 'UX Designer',
       portuguese: 'Designer de Experiência',
       usageNote:
-        'Muitas vagas no Brasil pedem UX/UI Designer no mesmo perfil, mesmo quando o escopo é de Product Design.',
+        'Muitas vagas no Brasil pedem UX/UI Designer no mesmo perfil. Quando isso acontece, o escopo costuma ser parecido com o de Product Design.',
     },
     whatIs: [
       'UX Designer é a pessoa focada em projetar a experiência de uso de um produto digital: entender a pessoa usuária, mapear fluxos, testar ideias e melhorar a jornada.',
-      'No mercado brasileiro, vagas de UX Designer muitas vezes pedem também UI no mesmo perfil. Quando isso acontece, o escopo costuma ser parecido com o de Product Designer.',
     ],
     youWillHear: [
       '"A pessoa UX Designer vai conduzir o teste de usabilidade dessa versão."',
