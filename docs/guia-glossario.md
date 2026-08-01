@@ -174,7 +174,7 @@ Contraste em **Cor** (Interface) trata paleta; aqui o foco é legibilidade e WCA
 
 **Conceitos:** IA, LLM, IA generativa
 
-**Uso no dia a dia:** Prompt, Engenharia de prompt, MD, Agente de IA
+**Uso no dia a dia:** Prompt, Engenharia de prompt, MD, Agente de IA, Skill
 
 **Prática e riscos:** Modelo, Janela de contexto, Alucinação, Revisão humana
 
@@ -240,7 +240,7 @@ GuiaGlossarioEntry {
 
 **Acessibilidade:** 11 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
-**IA:** 11 termos (ver subgrupos acima). LLM, prompt, MD, agente de IA, alucinação e revisão humana.
+**IA:** 12 termos (ver subgrupos acima). LLM, prompt, MD, skill, agente de IA, alucinação e revisão humana.
 
 ---
 

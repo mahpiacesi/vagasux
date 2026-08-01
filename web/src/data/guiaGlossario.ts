@@ -248,6 +248,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'engenharia-de-prompt',
     'md',
     'agente-de-ia',
+    'skill',
     'modelo',
     'janela-de-contexto',
     'alucinacao',
@@ -2463,6 +2464,24 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O assistente de IA precisa de fallback quando não entende."',
       '"Esse copilot renomeia camadas no arquivo de design."',
+    ],
+  },
+  {
+    id: 'skill',
+    term: 'Skill',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Habilidade do agente',
+      usageNote: 'Skill continua em inglês na maioria das ferramentas de agente.',
+    },
+    whatIs: [
+      'Módulo de instruções que ensina um agente de IA a executar um tipo de tarefa: formato de saída, passos, restrições e contexto específico. Costuma ser um arquivo de texto, muitas vezes em MD, que o agente carrega quando a tarefa combina.',
+      'Product Designers criam skills para padronizar trabalho repetível com IA: revisão de copy, checklist de acessibilidade, roteiro de teste ou template de spec. Skill complementa prompt pontual com playbook reutilizável.',
+    ],
+    youWillHear: [
+      '"Cria uma skill para gerar variações de microcopy no tom da marca."',
+      '"Esse agente puxa a skill de auditoria de acessibilidade."',
     ],
   },
 
