@@ -246,7 +246,7 @@ function normalizeTitle(title) {
 function isRelevant(title) {
   const t = normalizeTitle(title);
   const excluded =
-    /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas)\\b/.test(t);
+    /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|interior(es)?|design de ambientes|moveis planejados|mobiliario|decorador de interiores)\\b/.test(t);
   const designRole =
     /\\b(designer|design grafico|designer grafico|design de produto|carreira de design|design ops|design system|ux writer|content designer|product designer|visual designer|graphic designer|web designer|motion designer|service designer|interaction designer|art director|diretor de arte|ux|ui|research|pesquisa)\\b/.test(t);
   const leadershipOrSupport =
