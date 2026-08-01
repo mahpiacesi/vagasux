@@ -219,6 +219,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'responsivo',
     'handoff',
     'spec',
+    'md',
     'breakpoint',
     'edge-case',
     'deploy',
@@ -2038,6 +2039,24 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A spec desse modal está incompleta, falta estado de loading."',
       '"Manda a spec no ticket antes da planning."',
+    ],
+  },
+  {
+    id: 'md',
+    term: 'MD',
+    categoryId: 'desenvolvimento',
+    subgroup: 'entrega',
+    originalName: {
+      alternate: 'Markdown',
+      usageNote: 'Arquivo .md também aparece quando o assunto é documentação em repositório.',
+    },
+    whatIs: [
+      'Formato de texto simples para documentação com sintaxe leve: títulos, listas, links e blocos de código. Arquivos usam extensão .md.',
+      'Product Designers encontram MD em README de repositório, PRD versionado, specs de componente e notas de handoff quando o time documenta em texto junto ao código.',
+    ],
+    youWillHear: [
+      '"Atualiza o README.md com o link do design aprovado."',
+      '"A spec desse fluxo está no arquivo .md do repositório."',
     ],
   },
   {

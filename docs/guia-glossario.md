@@ -142,7 +142,7 @@ Discovery e delivery ficam em **Produto**; squad em **Fundamentos**.
 
 **Conceitos:** Frontend, Backend, API, Responsivo
 
-**Design para desenvolvimento:** Handoff, Spec, Breakpoint, Edge case
+**Design para desenvolvimento:** Handoff, Spec, MD, Breakpoint, Edge case
 
 **Ciclo de release:** Deploy, Staging, Bug, Pull Request, QA
 
@@ -236,7 +236,7 @@ GuiaGlossarioEntry {
 
 **Métodos Ágeis:** 12 termos (ver subgrupos acima). Scrum, sprint, backlog, kanban e cerimônias do squad.
 
-**Desenvolvimento:** 13 termos (ver subgrupos acima). Frontend, handoff, responsivo, deploy e ciclo com engenharia.
+**Desenvolvimento:** 14 termos (ver subgrupos acima). Frontend, handoff, MD, responsivo, deploy e ciclo com engenharia.
 
 **Acessibilidade:** 11 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
