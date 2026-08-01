@@ -1447,7 +1447,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Feature é o termo mais comum em squads, roadmaps e ferramentas de gestão em inglês.',
     },
     whatIs: [
-      'Capacidade específica dentro de um produto: login social, exportar PDF, filtro avançado. No dia a dia, muita gente fala funcionalidade em português com o mesmo sentido.',
+      'Capacidade específica dentro de um produto: login social, exportar PDF, filtro avançado.',
       'Product Designers desenham a experiência da feature, alinham com PM e Engenharia e validam se resolve o problema antes do release.',
     ],
     youWillHear: [
