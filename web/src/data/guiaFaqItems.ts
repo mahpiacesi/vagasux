@@ -60,7 +60,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Como me proteger de vagas suspeitas e empresas problemáticas?',
     answer: [
       'Pesquise a empresa antes de avançar: site, LinkedIn, redes sociais, avaliações no Google e no Glassdoor. Desconfie de anúncios sem nome da empresa, descrição vaga ou faixa salarial muito fora da média para o nível.',
-      'Compare o que a vaga pede com o que o mercado costuma exigir. Escopos absurdos para júnior ou benefícios omitidos são sinais de alerta. Confira também a curadoria de vagas para iniciantes da VagasUX (/vagas-para-iniciantes), mas sempre vale fazer sua própria checagem.',
+      'Compare o que a vaga pede com o que o mercado costuma exigir. Escopos absurdos para júnior ou benefícios omitidos são sinais de alerta. Confira também a [curadoria de vagas para iniciantes](/vagas-para-iniciantes) da VagasUX, mas sempre vale fazer sua própria checagem.',
     ],
   },
   {
@@ -578,7 +578,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Não consegui feedback da empresa. Desisto?',
     answer: [
-      'Não. Compartilhe case ou candidatura nos canais da VagasUX (/comunidade). A comunidade costuma devolver olhar construtivo quando a empresa não devolve.',
+      'Não. Compartilhe case ou candidatura nos [canais da VagasUX](/comunidade). A comunidade costuma devolver olhar construtivo quando a empresa não devolve.',
       'Busque também mentorias gratuitas e troca entre pares. Feedback externo revela pontos cegos que você não enxerga sozinha.',
     ],
   },
@@ -588,7 +588,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'feedbacks',
     question: 'Não tive retorno de nenhuma empresa. O que fazer?',
     answer: [
-      'Revise portfólio e CV com alguém da área. Às vezes o bloqueio está na triagem: link quebrado, case confuso ou título genérico. Busque feedback na comunidade (/comunidade) ou com mentorias da VagasUX.',
+      'Revise portfólio e CV com alguém da área. Às vezes o bloqueio está na triagem: link quebrado, case confuso ou título genérico. Busque feedback na [comunidade](/comunidade) ou com mentorias da VagasUX.',
       'Ajuste candidaturas, aumente consistência e documente aprendizados a cada ciclo. Mercado exige paciência; melhorar processo aumenta chance de resposta com o tempo.',
     ],
   },
@@ -731,7 +731,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Quais cursos são referência na área de UI/UX?',
     answer: [
-      'A VagasUX mantém curadoria de cursos gratuitos e pagos em /guia/tipo/cursos, além de feedbacks da comunidade sobre formações conhecidas.',
+      'A VagasUX mantém [curadoria de cursos gratuitos e pagos](/guia/tipo/cursos), além de feedbacks da comunidade sobre formações conhecidas.',
       'Não existe lista única definitiva. Compare objetivo, preço, formato ao vivo ou gravado e alinhamento com seu momento. O melhor curso é o que você consegue terminar e aplicar.',
     ],
   },

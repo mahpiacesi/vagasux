@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { GuiaFaqParagraph } from '@/components/guia/faq/GuiaFaqParagraph'
 import type { GuiaFaqItem } from '@/data/guiaFaq'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
@@ -13,7 +14,7 @@ export function GuiaFaqItemArticle({ item }: { item: GuiaFaqItem }) {
       </h3>
       <div className="mt-3 space-y-3 text-base leading-relaxed text-neutral-400">
         {item.answer.map((paragraph) => (
-          <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          <GuiaFaqParagraph key={paragraph.slice(0, 32)} text={paragraph} />
         ))}
       </div>
       {item.seeAlso && item.seeAlso.length > 0 ? (
