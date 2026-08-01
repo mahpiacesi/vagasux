@@ -220,8 +220,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
     },
     whatIs: [
-      'Content Design é a disciplina que cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. Também é chamado de UX Writing em muitas empresas.',
-      'O objetivo não é escrever bonito, e sim escrever de um jeito que a pessoa entenda o que fazer, confie no produto e complete a tarefa sem travar.',
+      'Content Design cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária.',
+      'O foco não é escrever bonito, e sim deixar claro o que fazer, transmitir confiança e ajudar a completar a tarefa sem travar.',
     ],
     youWillHear: [
       '"Esse botão precisa de um copy mais claro."',
@@ -240,7 +240,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'CX aparece em empresas que olham a jornada completa da pessoa, incluindo atendimento, loja física e canais fora do app.',
     },
     whatIs: [
-      'CX (Customer Experience) é a experiência que uma pessoa tem com uma marca ou empresa em todos os pontos de contato, não só no app ou site. Pode incluir suporte, loja, redes sociais e comunicação pós-venda.',
+      'CX (Customer Experience) é a experiência que uma pessoa tem com uma marca ou empresa em todos os pontos de contato. Pode incluir suporte, loja, redes sociais e comunicação pós-venda.',
       'UX e CX se cruzam quando o produto digital faz parte de uma experiência maior. Em conversas de equipe, CX costuma vir de Marketing, Atendimento ou Estratégia.',
     ],
     youWillHear: [
@@ -294,8 +294,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'Termo mais comum em contexto acadêmico e em materiais mais antigos. No dia a dia de produto, UX e HCD aparecem com muito mais frequência.',
     },
     whatIs: [
-      'HCI (Human-Computer Interaction) é o campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX sairam daqui.',
-      'Se você ouvir HCI em uma conversa hoje, provavelmente é em curso, artigo ou empresa com raiz acadêmica. Para vagas de Product Design, UX e HCD costumam ser os termos do mercado.',
+      'HCI (Human-Computer Interaction) é o campo de estudo sobre como pessoas interagem com computadores e sistemas digitais. Muitos conceitos de UX saíram daqui.',
     ],
     youWillHear: [
       '"Meu mestrado foi em HCI, mas hoje trabalho como Product Designer."',
@@ -400,8 +399,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
         'No mercado de tecnologia, UX é a forma mais comum de se referir à experiência de uso.',
     },
     whatIs: [
-      'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital. Não é só visual: inclui se ela entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
-      'Está ligada à UI (interface), mas vai além da aparência das telas. Boas decisões de UX consideram contexto, objetivo da pessoa usuária e limites do negócio.',
+      'UX (User Experience) é tudo o que a pessoa sente, pensa e consegue fazer ao usar um produto digital: se entende o fluxo, completa a tarefa ou desiste no meio do caminho.',
+      'Boas decisões de UX consideram contexto, objetivo da pessoa usuária e limites do negócio. Na prática, Product Designers costumam trabalhar UX e UI juntos.',
     ],
     youWillHear: [
       '"Precisamos melhorar a UX desse fluxo de cadastro."',
@@ -496,7 +495,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'HCD (Human-Centered Design) é a abordagem de criar produtos a partir das necessidades reais de pessoas usuárias, testando ideias cedo e ajustando com feedback.',
-      'No Brasil, a ideia costuma ser traduzida como design centrado na pessoa usuária. É a base de como Product Designers pensam: entender antes de desenhar, validar antes de escalar.',
+      'É a base de como Product Designers pensam: entender antes de desenhar, validar antes de escalar.',
     ],
     youWillHear: [
       '"Esse projeto segue uma abordagem HCD."',
@@ -557,8 +556,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'mentalidade',
     whatIs: [
-      'Lean UX é uma forma de trabalhar em Product Design com ciclos curtos, menos documento pesado e mais conversa, protótipo e teste com o time.',
-      'Combina mentalidade de aprendizado contínuo com práticas ágeis. A ideia é aprender rápido o que funciona antes de investir meses em uma solução errada.',
+      'Lean UX é uma forma de trabalhar em Product Design com ciclos curtos: menos documento pesado, mais conversa, protótipo e teste com o time. A ideia é aprender rápido o que funciona antes de investir meses em uma solução errada.',
     ],
     youWillHear: [
       '"Nesse projeto vamos seguir Lean UX, com protótipos rápidos."',
@@ -621,8 +619,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'fundamentos',
     subgroup: 'pessoas-contexto',
     whatIs: [
-      'Pessoa usuária é quem usa um produto ou serviço digital no dia a dia. No VagasUX usamos esse termo em vez de "usuário" por ser mais inclusivo e claro.',
-      'No mercado, "usuário" e "user" ainda aparecem o tempo todo em vagas, ferramentas e conversas. Significam a mesma coisa neste contexto.',
+      'Pessoa usuária é quem usa um produto ou serviço digital no dia a dia. No VagasUX preferimos esse termo; no mercado, "usuário" e "user" ainda aparecem o tempo todo e significam a mesma coisa.',
     ],
     youWillHear: [
       '"Quem é a pessoa usuária principal desse produto?"',
