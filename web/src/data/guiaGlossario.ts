@@ -752,7 +752,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       'Product Designers usam mockup para alinhar direção visual com o time e stakeholders antes do desenvolvimento.',
     ],
     youWillHear: [
-      '"Precisamos fechar o mockup dessa home antes do handoff."',
+      '"Precisamos fechar o mockup do celular dessa home antes do handoff."',
       '"O mockup ficou alinhado com a marca, falta validar o fluxo."',
     ],
   },
