@@ -222,7 +222,7 @@ GuiaGlossarioEntry {
 
 **Desenvolvimento:** 13 termos (ver subgrupos acima). Frontend, handoff, responsivo, deploy e ciclo com engenharia.
 
-**Acessibilidade:** 12 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
+**Acessibilidade:** 11 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
 **IA para Designers:** Prompt, LLM, Copilot…
 

@@ -234,7 +234,6 @@ export const guiaGlossarioEditorialOrder: Partial<
     'leitor-de-tela',
     'aria',
     'auditoria-de-acessibilidade',
-    'daltonismo',
   ],
 }
 
@@ -2206,11 +2205,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     subgroup: 'interface',
     whatIs: [
       'Diferença visual entre texto e fundo, ou entre elementos, que permite leitura confortável. Contraste baixo dificulta uso para pessoas com baixa visão ou em ambientes claros.',
-      'Product Designers checam contraste de botões, links e textos com critérios WCAG antes do handoff. Cor, na categoria Interface, trata paleta; aqui o foco é legibilidade.',
+      'Product Designers checam contraste de botões, links e textos com critérios WCAG antes do handoff. Reforçam informação com ícone ou texto além da cor em status e gráficos. Cor, na categoria Interface, trata paleta; aqui o foco é legibilidade.',
     ],
     youWillHear: [
       '"O contraste desse label está abaixo do mínimo."',
-      '"Ajusta contraste do botão secundário antes da auditoria."',
+      '"Status de erro precisa de ícone além da cor."',
     ],
   },
   {
@@ -2323,23 +2322,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A auditoria de acessibilidade pegou cinco issues nesse fluxo."',
       '"Precisamos de auditoria antes de lançar para o público amplo."',
-    ],
-  },
-  {
-    id: 'daltonismo',
-    term: 'Daltonismo',
-    categoryId: 'acessibilidade',
-    subgroup: 'pratica',
-    originalName: {
-      alternate: 'Deficiência de visão de cores',
-    },
-    whatIs: [
-      'Dificuldade em distinguir certas cores, especialmente vermelho e verde. Afeta leitura de gráficos, status e botões que dependem só de cor para comunicar.',
-      'Product Designers reforçam informação com ícone, texto ou padrão além da cor. Estados de erro e sucesso precisam de mais de um canal visual.',
-    ],
-    youWillHear: [
-      '"Esse gráfico não funciona para quem tem daltonismo."',
-      '"Status de erro precisa de ícone além da cor vermelha."',
     ],
   },
 ]
