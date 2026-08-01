@@ -2476,11 +2476,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       usageNote: 'Skill continua em inglês na maioria das ferramentas de agente.',
     },
     whatIs: [
-      'Módulo de instruções que ensina um agente de IA a executar um tipo de tarefa: formato de saída, passos, restrições e contexto específico. Costuma ser um arquivo de texto, muitas vezes em MD, que o agente carrega quando a tarefa combina.',
-      'Product Designers criam skills para padronizar trabalho repetível com IA: revisão de copy, checklist de acessibilidade, roteiro de teste ou template de spec. Skill complementa prompt pontual com playbook reutilizável.',
+      'Módulo de instruções que ensina um agente de IA a executar um tipo de tarefa. Pode ser um conjunto de prompts organizados, um playbook em MD ou regras fixas de formato, passos e contexto que o agente carrega quando a tarefa combina.',
+      'Product Designers criam skills para padronizar trabalho repetível com IA: revisão de copy, checklist de acessibilidade, roteiro de teste ou template de spec. Skill vai além de um prompt isolado ao empacotar vários prompts e critérios num fluxo reutilizável.',
     ],
     youWillHear: [
-      '"Cria uma skill para gerar variações de microcopy no tom da marca."',
+      '"A skill junta três prompts: contexto, geração e revisão."',
       '"Esse agente puxa a skill de auditoria de acessibilidade."',
     ],
   },
