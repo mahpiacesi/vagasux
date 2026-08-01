@@ -6,7 +6,7 @@ export type GuiaGlossarioCategoryId =
   | 'metodos-ageis'
   | 'desenvolvimento'
   | 'acessibilidade'
-  | 'ia-para-designers'
+  | 'ia'
 
 export type GuiaGlossarioOriginalName = {
   /** Nome alternativo (outro idioma ou forma expandida da sigla) */
@@ -47,7 +47,7 @@ export const guiaGlossarioCategories: GuiaGlossarioCategory[] = [
   { id: 'metodos-ageis', emoji: '🤝', title: 'Métodos Ágeis' },
   { id: 'desenvolvimento', emoji: '💻', title: 'Desenvolvimento' },
   { id: 'acessibilidade', emoji: '♿', title: 'Acessibilidade' },
-  { id: 'ia-para-designers', emoji: '🤖', title: 'IA para Designers' },
+  { id: 'ia', emoji: '🤖', title: 'IA' },
 ]
 
 /** Rótulos de subgrupos por categoria */
@@ -89,6 +89,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     conceitos: 'Conceitos',
     interface: 'Interface acessível',
     pratica: 'Prática',
+  },
+  ia: {
+    conceitos: 'Conceitos',
+    uso: 'Uso no dia a dia',
+    pratica: 'Prática e riscos',
   },
 }
 
@@ -234,6 +239,19 @@ export const guiaGlossarioEditorialOrder: Partial<
     'leitor-de-tela',
     'aria',
     'auditoria-de-acessibilidade',
+  ],
+  ia: [
+    'ia',
+    'llm',
+    'ia-generativa',
+    'prompt',
+    'engenharia-de-prompt',
+    'copilot',
+    'assistente-de-ia',
+    'modelo',
+    'janela-de-contexto',
+    'alucinacao',
+    'revisao-humana',
   ],
 }
 
@@ -2322,6 +2340,194 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A auditoria de acessibilidade pegou cinco issues nesse fluxo."',
       '"Precisamos de auditoria antes de lançar para o público amplo."',
+    ],
+  },
+
+  // IA: conceitos
+  {
+    id: 'ia',
+    term: 'IA',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Inteligência artificial',
+    },
+    whatIs: [
+      'Campo da computação que cria sistemas capazes de aprender padrões, gerar conteúdo e apoiar decisões. Em produto digital, aparece em busca, recomendação, chat e automação de tarefas.',
+      'Product Designers encontram IA em assistentes, preenchimento inteligente, geração de copy e protótipos. O foco continua sendo resolver problema da pessoa usuária com clareza e confiança.',
+    ],
+    youWillHear: [
+      '"Essa feature usa IA por trás do recomendador."',
+      '"Precisamos deixar claro na UI quando a resposta veio de IA."',
+    ],
+  },
+  {
+    id: 'llm',
+    term: 'LLM',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Large Language Model',
+      usageNote: 'Modelo de linguagem também aparece em português.',
+    },
+    whatIs: [
+      'Modelo de IA treinado em grande volume de texto para entender e gerar linguagem natural. Responde perguntas, resume conteúdo, sugere copy e ajuda a explorar ideias.',
+      'Product Designers usam LLM em assistentes de escrita, chatbots e ferramentas de brainstorming. Resultado exige revisão humana antes de ir para produto ou cliente.',
+    ],
+    youWillHear: [
+      '"Vamos testar esse fluxo com um LLM mais recente."',
+      '"O LLM entende bem português, mas erra termos técnicos."',
+    ],
+  },
+  {
+    id: 'ia-generativa',
+    term: 'IA generativa',
+    categoryId: 'ia',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Generative AI',
+    },
+    whatIs: [
+      'Tipo de IA que cria conteúdo novo: texto, imagem, código ou variações de layout a partir de instruções. Prompt define o que se pede.',
+      'Product Designers usam IA generativa para explorar copy, imagens de apoio e alternativas de interface no processo, validando depois com pesquisa e critério de marca.',
+    ],
+    youWillHear: [
+      '"Usa IA generativa só na fase de exploração, não no asset final."',
+      '"A geração de imagem acelerou o moodboard dessa proposta."',
+    ],
+  },
+
+  // IA: uso no dia a dia
+  {
+    id: 'prompt',
+    term: 'Prompt',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    whatIs: [
+      'Instrução em linguagem natural enviada a um modelo de IA para obter uma resposta ou artefato. Quanto mais contexto, restrições e objetivo claros, melhor o resultado.',
+      'Product Designers escrevem prompts para gerar ideias de microcopy, variar tom de voz ou simular fluxos. Prompt vago gera resposta genérica ou fora do brief.',
+    ],
+    youWillHear: [
+      '"Manda o prompt que você usou para gerar essas variações."',
+      '"Refina o prompt com tom de voz da marca."',
+    ],
+  },
+  {
+    id: 'engenharia-de-prompt',
+    term: 'Engenharia de prompt',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'Prompt engineering',
+    },
+    whatIs: [
+      'Prática de estruturar, testar e refinar prompts para obter resultados consistentes de modelos de IA. Inclui dar contexto, exemplos, formato de saída e limites.',
+      'Product Designers aplicam engenharia de prompt ao iterar copy, critérios de componente ou cenários de teste sem tratar a primeira resposta como final.',
+    ],
+    youWillHear: [
+      '"Precisamos de engenharia de prompt melhor nesse assistente."',
+      '"Salva os prompts que funcionaram para reutilizar no time."',
+    ],
+  },
+  {
+    id: 'copilot',
+    term: 'Copilot',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    whatIs: [
+      'Assistente de IA integrado ao fluxo de trabalho que sugere próximos passos, completa tarefas ou gera conteúdo enquanto a pessoa trabalha. Termo popularizado no mercado de tecnologia para recursos assistidos por IA.',
+      'Product Designers veem copilot em ferramentas de design, documentação e código: sugerir layout, renomear camadas ou gerar variações. A pessoa continua responsável pela decisão final.',
+    ],
+    youWillHear: [
+      '"Ativa o copilot para acelerar essa documentação."',
+      '"O copilot sugeriu três versões de microcopy."',
+    ],
+  },
+  {
+    id: 'assistente-de-ia',
+    term: 'Assistente de IA',
+    categoryId: 'ia',
+    subgroup: 'uso',
+    originalName: {
+      alternate: 'AI assistant',
+    },
+    whatIs: [
+      'Interface conversacional ou contextual que usa IA para ajudar em tarefas: responder dúvidas, gerar texto, resumir informação ou guiar fluxos no produto.',
+      'Product Designers desenham assistentes de IA com expectativa clara, transparência sobre limites e caminhos quando a IA erra ou não sabe responder.',
+    ],
+    youWillHear: [
+      '"O assistente de IA precisa de fallback quando não entende."',
+      '"Vamos testar o assistente com pessoas usuárias reais."',
+    ],
+  },
+
+  // IA: prática e riscos
+  {
+    id: 'modelo',
+    term: 'Modelo',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Modelo de IA',
+    },
+    whatIs: [
+      'Versão treinada de uma IA com capacidades e limites específicos. Modelos diferentes variam em qualidade, idioma, custo e janela de contexto.',
+      'Product Designers alinham com produto e engenharia qual modelo usar quando IA entra na experiência: velocidade, tom, privacidade e idioma importam.',
+    ],
+    youWillHear: [
+      '"Esse modelo responde mais rápido, mas com menos nuance."',
+      '"Trocamos de modelo e o tom da resposta mudou."',
+    ],
+  },
+  {
+    id: 'janela-de-contexto',
+    term: 'Janela de contexto',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Context window',
+    },
+    whatIs: [
+      'Quantidade de informação que um modelo de IA consegue considerar de uma vez: mensagens anteriores, documentos colados e instruções. Acima do limite, o modelo esquece o início.',
+      'Product Designers levam janela de contexto em conta ao desenhar assistentes longos ou fluxos que dependem de histórico da conversa.',
+    ],
+    youWillHear: [
+      '"A conversa estourou a janela de contexto, começa thread nova."',
+      '"Resume o histórico antes de colar no prompt."',
+    ],
+  },
+  {
+    id: 'alucinacao',
+    term: 'Alucinação',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Hallucination',
+    },
+    whatIs: [
+      'Resposta inventada ou imprecisa que um modelo de IA apresenta com tom confiante. Pode misturar fatos, criar dados ou sugerir padrões inexistentes.',
+      'Product Designers tratam alucinação como risco de UX: mensagens de incerteza, fontes verificáveis e revisão humana antes de decisões críticas.',
+    ],
+    youWillHear: [
+      '"A IA alucinou um dado que não existe no produto."',
+      '"Precisamos de UI que mostre quando a resposta é incerta."',
+    ],
+  },
+  {
+    id: 'revisao-humana',
+    term: 'Revisão humana',
+    categoryId: 'ia',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Human in the loop',
+    },
+    whatIs: [
+      'Etapa em que uma pessoa valida, corrige ou aprova saída de IA antes de publicar ou entregar. Essencial quando erro tem impacto em marca, acesso ou decisão de produto.',
+      'Product Designers incluem revisão humana em fluxos com IA generativa: copy, imagens e sugestões de layout passam por critério profissional.',
+    ],
+    youWillHear: [
+      '"Nada de IA direto para cliente, passa por revisão humana."',
+      '"Human in the loop nesse fluxo de suporte."',
     ],
   },
 ]

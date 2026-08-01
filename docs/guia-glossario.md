@@ -47,7 +47,7 @@ Antes de criar verbete novo, buscar termo similar. Preferir mencionar no texto i
 | 🤝 | Métodos Ágeis | `metodos-ageis` |
 | 💻 | Desenvolvimento | `desenvolvimento` |
 | ♿ | Acessibilidade | `acessibilidade` |
-| 🤖 | IA para Designers | `ia-para-designers` |
+| 🤖 | IA | `ia` |
 
 Um termo = uma categoria. Processo de produto fica em **Produto**, não em Fundamentos.
 
@@ -160,9 +160,25 @@ Design Token fica em **Interface**; handoff e responsivo ficam aqui na implement
 
 **Interface acessível:** Contraste, Texto alternativo, Foco visível, Navegação por teclado, Área de toque
 
-**Prática:** Leitor de tela, ARIA, Auditoria de acessibilidade, Daltonismo
+**Prática:** Leitor de tela, ARIA, Auditoria de acessibilidade
 
 Contraste em **Cor** (Interface) trata paleta; aqui o foco é legibilidade e WCAG.
+
+### IA
+
+| `subgroup` | Título |
+|------------|--------|
+| `conceitos` | Conceitos |
+| `uso` | Uso no dia a dia |
+| `pratica` | Prática e riscos |
+
+**Conceitos:** IA, LLM, IA generativa
+
+**Uso no dia a dia:** Prompt, Engenharia de prompt, Copilot, Assistente de IA
+
+**Prática e riscos:** Modelo, Janela de contexto, Alucinação, Revisão humana
+
+Foco em linguagem de produto e UX com IA; implementação de modelos fica com engenharia.
 
 ---
 
@@ -224,7 +240,7 @@ GuiaGlossarioEntry {
 
 **Acessibilidade:** 11 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
-**IA para Designers:** Prompt, LLM, Copilot…
+**IA:** 11 termos (ver subgrupos acima). LLM, prompt, copilot, alucinação e revisão humana.
 
 ---
 
