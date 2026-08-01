@@ -329,7 +329,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Design de Serviços',
       usageNote:
-        'Em português, Design de Serviços também aparece, mas Service Design continua comum em vagas e materiais da área.',
+        'Os dois nomes convivem em vagas e materiais da área.',
     },
     whatIs: [
       'Projeta serviços completos, mapeando todas as etapas que a pessoa passa, incluindo momentos fora da tela: fila, atendimento, entrega, suporte.',
