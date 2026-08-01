@@ -20,7 +20,7 @@ const titles: Record<string, string> = {
   [routes.parcerias]: 'VagasUX · Parcerias',
   [routes.guia]: 'VagasUX · Guia do Product Designer',
   [guiaRoutes.faq]: 'VagasUX · Guia · FAQ',
-  [guiaRoutes.glossario]: 'VagasUX · Guia · Glossário',
+  [guiaRoutes.glossario]: 'VagasUX · Guia · Glossário do Product Designer',
 }
 
 function resolveGuiaTitle(pathname: string): string | undefined {

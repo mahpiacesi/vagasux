@@ -110,11 +110,11 @@ export function GuiaGlossarioPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <header className="max-w-3xl">
+      <header className="w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          Glossário
+          Glossário do Product Designer
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg md:whitespace-nowrap">
           Termos, siglas e conceitos de Product Design explicados de forma
           simples. Busque um termo ou abra a categoria que precisa.
         </p>
