@@ -137,12 +137,7 @@ export function GuiaGlossarioPageContent() {
         />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-neutral-400">
-          {sortMode === 'recomendada'
-            ? 'Ordem sugerida para quem está começando.'
-            : 'Termos em ordem alfabética.'}
-        </p>
+      <div className="mt-6">
         <div
           role="group"
           aria-label="Ordenar termos"

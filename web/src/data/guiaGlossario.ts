@@ -205,7 +205,7 @@ export type GuiaGlossarioSortMode = 'recomendada' | 'alfabetica'
 
 export const guiaGlossarioSortModeLabels: Record<GuiaGlossarioSortMode, string> =
   {
-    recomendada: 'Recomendada',
+    recomendada: 'Contextual',
     alfabetica: 'Alfabética',
   }
 
