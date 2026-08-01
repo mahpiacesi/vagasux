@@ -69,8 +69,7 @@ export function GuiaAjudaSection() {
             FAQ e Glossário da comunidade
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg">
-            Respostas de carreira e termos do dia a dia, organizados para
-            consultar na hora.
+            Respostas de carreira e termos do dia a dia, organizados para consultar na hora.
           </p>
         </div>
 
