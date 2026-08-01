@@ -443,7 +443,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
       'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
     ],
     youWillHear: [
-      '"Precisamos de UX Research antes de fechar essa solução."',
+      '"Precisamos de uma pessoa de UX Research antes de fechar essa solução."',
       '"A UX Researcher vai recrutar participantes para o estudo."',
     ],
   },
