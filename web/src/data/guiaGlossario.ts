@@ -2171,7 +2171,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'acessibilidade',
     subgroup: 'conceitos',
     whatIs: [
-      'Abordagem que projeta para a diversidade real de pessoas usuárias, incluindo deficiências permanentes, temporárias ou situacionais. Exemplo: tela legível no sol forte ou uso com uma mão só enquanto dirige.',
+      'Abordagem que projeta para a diversidade real de pessoas usuárias, incluindo deficiências permanentes, temporárias ou situacionais. Exemplo: tela legível no sol forte ou uso com uma mão só.',
       'Product Designers aplicam design inclusivo ao escolher cores, tamanhos de toque, linguagem simples e fluxos que funcionam com leitor de tela.',
     ],
     youWillHear: [
