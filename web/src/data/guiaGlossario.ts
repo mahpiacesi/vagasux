@@ -1537,7 +1537,8 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     categoryId: 'produto',
     subgroup: 'conceitos',
     originalName: {
-      alternate: 'Objetivos e resultados-chave',
+      alternate: 'Objectives and Key Results',
+      usageNote: 'Objetivos e resultados-chave.',
     },
     whatIs: [
       'Framework de metas em que o time define um objetivo ambicioso (Objective) e resultados mensuráveis (Key Results) para saber se chegou lá. Costuma ser trimestral.',
