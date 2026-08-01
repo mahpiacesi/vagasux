@@ -63,7 +63,7 @@ Um termo = uma categoria. Processo de produto fica em **Produto**, não em Funda
 | `mentalidade` | Mentalidade |
 | `pessoas-contexto` | Pessoas e contexto |
 
-Termos: Product Design, Product Designer, UX, UI, UX Research, Content Design / UX Writing, Service Design, HCD, Design Thinking, Double Diamond, Pessoa usuária, Stakeholder, Cliente, Negócio…
+Termos: Product Design, Product Designer, Product Manager, UX, UI, UX Research, Content Design / UX Writing, Service Design, HCD, Design Thinking, Double Diamond, Pessoa usuária, Stakeholder, Cliente, Negócio…
 
 ### Produto
 
@@ -73,13 +73,13 @@ Termos: Product Design, Product Designer, UX, UI, UX Research, Content Design / 
 | `processo` | Processo |
 | `entregas` | Entregas |
 
-**Conceitos:** Produto, Produto digital, Problema, Solução, White-label, MVP, Feature
+**Conceitos:** Produto, Produto digital, Problema, Solução, JTBD, White-label, MVP, Product-market fit, Feature, Métrica, OKR
 
 **Processo:** Discovery, Delivery, Hipótese, Validação
 
 **Entregas:** Roadmap, PRD
 
-White-label complementa **Cliente** (Fundamentos). Métodos de pesquisa ficam em **Pesquisa**; discovery e validação ficam aqui como etapas de processo.
+White-label complementa **Cliente** (Fundamentos). **Product Manager** fica em Fundamentos (áreas e disciplinas). Métodos de pesquisa ficam em **Pesquisa**; discovery e validação ficam aqui como etapas de processo.
 
 ### Interface
 
@@ -168,7 +168,7 @@ GuiaGlossarioEntry {
 
 **Pesquisa:** 16 termos (ver subgrupos acima). Entrevista, teste de usabilidade, síntese e métodos correlatos. Discovery/Hipótese → Produto.
 
-**Produto:** 12 termos (ver subgrupos acima). Conceitos, processo discovery/delivery e entregas de roadmap/PRD.
+**Produto:** 16 termos (ver subgrupos acima). Conceitos, processo discovery/delivery, métricas/OKR/JTBD/PMF e entregas de roadmap/PRD.
 
 **Métodos Ágeis:** Scrum, Sprint, Kanban, Backlog, WIP…
 

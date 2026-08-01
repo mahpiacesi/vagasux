@@ -88,6 +88,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     // Áreas e disciplinas: do macro (PD) ao específico
     'product-design',
     'product-designer',
+    'product-manager',
     'ux',
     'ui',
     'ux-designer',
@@ -123,9 +124,13 @@ export const guiaGlossarioEditorialOrder: Partial<
     'produto-digital',
     'problema',
     'solucao',
+    'jtbd',
     'white-label',
     'mvp',
+    'product-market-fit',
     'feature',
+    'metrica',
+    'okr',
     // processo
     'discovery',
     'delivery',
@@ -391,6 +396,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"A pessoa Product Designer vai validar esse fluxo antes do desenvolvimento."',
       '"Vamos alinhar essa decisão com Product Design."',
+    ],
+  },
+  {
+    id: 'product-manager',
+    term: 'Product Manager',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Gerente de Produto',
+      usageNote:
+        'PM é a sigla mais usada em squads, vagas e conversas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Pessoa responsável por definir o que o produto deve resolver, priorizar iniciativas e alinhar negócio, tecnologia e experiência. Costuma liderar discovery, roadmap e critérios de sucesso.',
+      'Product Designers e PMs trabalham juntos: PM traz contexto de mercado e prioridade; design explora problemas, soluções e validação com pessoas usuárias.',
+    ],
+    youWillHear: [
+      '"O PM quer validar essa hipótese antes de entrar no roadmap."',
+      '"Precisamos alinhar com Product Management o escopo dessa release."',
     ],
   },
   {
@@ -1399,6 +1423,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
+    id: 'jtbd',
+    term: 'JTBD',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Jobs to be Done',
+      usageNote:
+        'Jobs to be Done também aparece por extenso em artigos, cursos e materiais de produto.',
+    },
+    whatIs: [
+      'Framework que descreve qual tarefa ou progresso a pessoa usuária quer alcançar ao usar um produto, não só quais features ela aciona. Foca no job: o que ela precisa resolver na vida ou no trabalho.',
+      'Product Designers usam JTBD para formular problemas e hipóteses com mais clareza. Ajuda a ir além de pedidos soltos de feature e entender a motivação por trás.',
+    ],
+    youWillHear: [
+      '"Qual é o job to be done dessa pessoa nesse fluxo?"',
+      '"O JTBD aqui é enviar o relatório sem depender do time de TI."',
+    ],
+  },
+  {
     id: 'white-label',
     term: 'White-label',
     categoryId: 'produto',
@@ -1437,6 +1480,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
+    id: 'product-market-fit',
+    term: 'Product-market fit',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Encaixe produto-mercado',
+      usageNote:
+        'PMF é a sigla comum em conversas de startup e produto em inglês.',
+    },
+    whatIs: [
+      'Momento em que um produto resolve uma necessidade real para um grupo de pessoas usuárias de forma repetível, e o mercado responde com adoção e retenção. Sinal de que problema, solução e modelo de negócio conversam.',
+      'Product Designers contribuem ao testar valor cedo com MVP, protótipos e validação. Métricas de uso e feedback ajudam o time a perceber se está se aproximando de product-market fit.',
+    ],
+    youWillHear: [
+      '"Ainda não temos product-market fit, estamos iterando no core."',
+      '"Depois do PMF, o foco muda para escala e novas features."',
+    ],
+  },
+  {
     id: 'feature',
     term: 'Feature',
     categoryId: 'produto',
@@ -1453,6 +1515,44 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Essa feature entra no próximo sprint ou no trimestre que vem?"',
       '"O cliente pediu a funcionalidade, mas precisamos checar impacto em UX."',
+    ],
+  },
+  {
+    id: 'metrica',
+    term: 'Métrica',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Metric',
+      usageNote:
+        'Product metrics e métricas de produto aparecem em dashboards, PRDs e reviews.',
+    },
+    whatIs: [
+      'Medida numérica que indica se o produto está funcionando: adoção, retenção, conversão, tempo de tarefa, NPS ou erro em fluxo. Traduz comportamento em dado para decidir próximos passos.',
+      'Product Designers usam métricas junto com pesquisa qualitativa: o número mostra escala; entrevistas e testes explicam o porquê. Validação e PRD costumam citar métricas de sucesso.',
+    ],
+    youWillHear: [
+      '"Qual métrica a gente olha para saber se essa feature funcionou?"',
+      '"A métrica de conversão caiu depois da mudança no checkout."',
+    ],
+  },
+  {
+    id: 'okr',
+    term: 'OKR',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Objectives and Key Results',
+      usageNote:
+        'Objetivos e resultados-chave também aparecem em português em empresas maiores.',
+    },
+    whatIs: [
+      'Framework de metas em que o time define um objetivo ambicioso (Objective) e resultados mensuráveis (Key Results) para saber se chegou lá. Costuma ser trimestral.',
+      'Product Designers alinham trabalho de UX a OKRs do produto: cada iniciativa de design deve contribuir para mover um key result, não só entregar tela.',
+    ],
+    youWillHear: [
+      '"Esse projeto está ligado ao OKR de retenção do trimestre."',
+      '"Qual key result essa feature move?"',
     ],
   },
 
