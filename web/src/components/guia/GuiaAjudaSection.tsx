@@ -1,6 +1,5 @@
 import { ArrowRight, BookBookmark, Question } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { ScrollReveal } from '@/components/guilda/ScrollReveal'
 import { guiaFaqItems } from '@/data/guiaFaq'
 import { guiaGlossarioEntries } from '@/data/guiaGlossario'
 import { guiaHashes } from '@/lib/siteLinks'
@@ -21,6 +20,7 @@ const ajudaResources = [
     iconClassName: 'bg-brand-100 text-brand-500 ring-brand-200/80',
     countClassName: 'text-brand-500',
     ctaClassName: 'text-brand-500',
+    revealDelayClassName: 'mural-fade-delay-1',
   },
   {
     id: 'glossario',
@@ -35,6 +35,7 @@ const ajudaResources = [
     iconClassName: 'bg-complementary-100 text-complementary-500 ring-complementary-300/70',
     countClassName: 'text-complementary-500',
     ctaClassName: 'text-complementary-500',
+    revealDelayClassName: 'mural-fade-delay-2',
   },
 ] as const
 
@@ -51,7 +52,7 @@ export function GuiaAjudaSection() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <ScrollReveal className="max-w-2xl">
+        <div className="mural-fade max-w-2xl">
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Ajuda e suporte
           </p>
@@ -64,35 +65,31 @@ export function GuiaAjudaSection() {
           <p className="mt-4 text-base leading-relaxed text-neutral-200/75 md:text-lg">
             Dúvidas de carreira e jargões da área para você consultar sempre que precisar.
           </p>
-        </ScrollReveal>
+        </div>
 
         <ul className="mt-12 grid gap-5 md:mt-14 md:grid-cols-2 md:gap-6">
           {ajudaResources.map(
-            (
-              {
-                id,
-                to,
-                count,
-                countLabel,
-                title,
-                hint,
-                cta,
-                Icon,
-                variantClassName,
-                iconClassName,
-                countClassName,
-                ctaClassName,
-              },
-              index,
-            ) => (
-              <ScrollReveal key={id} as="li" delayMs={120 + index * 140}>
+            ({
+              id,
+              to,
+              count,
+              countLabel,
+              title,
+              hint,
+              cta,
+              Icon,
+              variantClassName,
+              iconClassName,
+              countClassName,
+              ctaClassName,
+              revealDelayClassName,
+            }) => (
+              <li key={id} className={cn('mural-fade', revealDelayClassName)}>
                 <Link
                   to={to}
                   aria-label={`${title}. ${hint}`}
                   className={cn('guia-ajuda-spotlight group', variantClassName)}
                 >
-                  <span className="guia-ajuda-spotlight__border" aria-hidden />
-
                   <span className="guia-ajuda-spotlight__inner">
                     <span className="flex items-start justify-between gap-4">
                       <span
@@ -142,7 +139,7 @@ export function GuiaAjudaSection() {
                     </span>
                   </span>
                 </Link>
-              </ScrollReveal>
+              </li>
             ),
           )}
         </ul>

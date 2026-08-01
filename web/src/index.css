@@ -795,10 +795,17 @@
 }
 
 /* Guia — FAQ / Glossário spotlight section */
+@property --guia-ajuda-angle {
+  syntax: '<angle>';
+  initial-value: 160deg;
+  inherits: false;
+}
+
 .guia-ajuda-ambient__orb {
   position: absolute;
   border-radius: 9999px;
   filter: blur(72px);
+  transform: translate3d(0, 0, 0);
 }
 
 .guia-ajuda-ambient__orb--brand {
@@ -807,7 +814,6 @@
   width: min(42vw, 22rem);
   height: min(42vw, 22rem);
   background: color-mix(in srgb, var(--color-brand-400) 42%, transparent);
-  animation: guia-ajuda-drift-a 16s ease-in-out infinite;
 }
 
 .guia-ajuda-ambient__orb--violet {
@@ -816,68 +822,32 @@
   width: min(36vw, 18rem);
   height: min(36vw, 18rem);
   background: color-mix(in srgb, var(--color-brand-300) 22%, transparent);
-  animation: guia-ajuda-drift-c 22s ease-in-out infinite;
-}
-
-@keyframes guia-ajuda-drift-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-28px, 22px, 0) scale(1.08);
-  }
-}
-
-@keyframes guia-ajuda-drift-c {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(18px, 16px, 0) scale(1.06);
-  }
 }
 
 .guia-ajuda-spotlight {
   position: relative;
   display: flex;
   min-height: 20rem;
-  isolation: isolate;
-  overflow: hidden;
   border-radius: 1.75rem;
-}
-
-.guia-ajuda-spotlight__border {
-  position: absolute;
-  inset: -120%;
-  z-index: 0;
+  padding: 2px;
   background: conic-gradient(
-    from 0deg,
-    var(--color-brand-300),
-    var(--color-complementary-300),
-    var(--color-brand-400),
-    var(--color-brand-200),
-    var(--color-brand-300)
-  );
-  animation: guia-ajuda-border-spin 7s linear infinite;
-  opacity: 0.45;
-  transition: opacity 0.45s ease;
-}
-
-.guia-ajuda-spotlight--faq .guia-ajuda-spotlight__border {
-  background: conic-gradient(
-    from 0deg,
+    from var(--guia-ajuda-angle),
     var(--color-brand-200),
     var(--color-brand-400),
     var(--color-brand-300),
     var(--color-brand-200)
   );
+  transition: box-shadow 0.45s ease;
 }
 
-.guia-ajuda-spotlight--glossario .guia-ajuda-spotlight__border {
+.guia-ajuda-spotlight--faq {
+  --guia-ajuda-angle: 160deg;
+}
+
+.guia-ajuda-spotlight--glossario {
+  --guia-ajuda-angle: 200deg;
   background: conic-gradient(
-    from 0deg,
+    from var(--guia-ajuda-angle),
     var(--color-complementary-200),
     var(--color-complementary-300),
     var(--color-complementary-400),
@@ -885,36 +855,32 @@
   );
 }
 
-.guia-ajuda-spotlight:hover .guia-ajuda-spotlight__border,
-.guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__border {
-  opacity: 0.95;
-  animation-duration: 4.5s;
+.guia-ajuda-spotlight:hover,
+.guia-ajuda-spotlight:focus-visible {
+  animation: guia-ajuda-border-hover 2.8s ease-in-out infinite alternate;
+  box-shadow: 0 24px 60px -32px rgb(7 0 58 / 0.4);
 }
 
-@keyframes guia-ajuda-border-spin {
-  to {
-    transform: rotate(360deg);
+@keyframes guia-ajuda-border-hover {
+  from {
+    --guia-ajuda-angle: 140deg;
   }
-}
-
-.guia-ajuda-spotlight__shine {
-  display: none;
+  to {
+    --guia-ajuda-angle: 220deg;
+  }
 }
 
 .guia-ajuda-spotlight__inner {
   position: relative;
-  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin: 2px;
   overflow: hidden;
   border-radius: calc(1.75rem - 2px);
   background: var(--color-neutral-100);
   padding: 1.75rem 1.75rem 1.5rem;
   transition:
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.55s ease,
     box-shadow 0.55s ease;
 }
 
@@ -941,9 +907,8 @@
 
 .guia-ajuda-spotlight:hover .guia-ajuda-spotlight__inner,
 .guia-ajuda-spotlight:focus-visible .guia-ajuda-spotlight__inner {
-  transform: translateY(-6px);
-  background: var(--color-neutral-100);
-  box-shadow: 0 28px 70px -32px rgb(7 0 58 / 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px -30px rgb(7 0 58 / 0.28);
 }
 
 .guia-ajuda-spotlight__arrow {
@@ -992,9 +957,7 @@
   .guilda-reveal,
   .guilda-quote-lane-track,
   .guilda-quote-card:hover,
-  .guia-ajuda-ambient__orb,
-  .guia-ajuda-spotlight__border,
-  .guia-ajuda-spotlight__shine,
+  .guia-ajuda-spotlight,
   .guia-ajuda-spotlight__inner,
   .guia-ajuda-spotlight__arrow {
     animation: none;
