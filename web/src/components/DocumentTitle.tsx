@@ -19,7 +19,7 @@ const titles: Record<string, string> = {
   [routes.curadoria]: 'VagasUX · Curadoria de vagas para iniciantes',
   [routes.parcerias]: 'VagasUX · Parcerias',
   [routes.guia]: 'VagasUX · Guia do Product Designer',
-  [guiaRoutes.faq]: 'VagasUX · Guia · FAQ',
+  [guiaRoutes.faq]: 'VagasUX · Guia · FAQ do Product Designer',
   [guiaRoutes.glossario]: 'VagasUX · Guia · Glossário do Product Designer',
 }
 
