@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import type { GuiaFaqItem } from '@/data/guiaFaq'
+import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export function GuiaFaqItemArticle({ item }: { item: GuiaFaqItem }) {
   return (
@@ -14,6 +16,22 @@ export function GuiaFaqItemArticle({ item }: { item: GuiaFaqItem }) {
           <p key={paragraph.slice(0, 32)}>{paragraph}</p>
         ))}
       </div>
+      {item.seeAlso && item.seeAlso.length > 0 ? (
+        <p className="mt-4 text-sm text-neutral-400">
+          <span className="font-bold text-neutral-500">No glossário: </span>
+          {item.seeAlso.map((link, index) => (
+            <span key={link.glossarioId}>
+              {index > 0 ? ', ' : ''}
+              <Link
+                to={`${guiaRoutes.glossario}#${link.glossarioId}`}
+                className="font-bold text-brand-500 transition-colors hover:text-brand-400"
+              >
+                {link.term}
+              </Link>
+            </span>
+          ))}
+        </p>
+      ) : null}
     </article>
   )
 }

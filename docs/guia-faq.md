@@ -1,14 +1,14 @@
 # FAQ VagasUX — Guia editorial
 
-Perguntas frequentes sobre carreira, estudos, portfólio e vagas em Product Design.
+Compilado de perguntas frequentes da comunidade sobre carreira em Product Design.
 
 ---
 
 ## Objetivo
 
-Responder dúvidas recorrentes de quem está começando ou reorganizando estudos, com tom acolhedor e direto.
+Responder dúvidas recorrentes de quem está começando ou em migração, com tom acolhedor e direto da VagasUX.
 
-Cada item responde uma pergunta real da comunidade, sem substituir curso ou mentoria.
+Cada item responde uma pergunta real. Reescrever a partir do legado Notion; não copiar texto verbatim.
 
 ---
 
@@ -19,42 +19,53 @@ Cada item responde uma pergunta real da comunidade, sem substituir curso ou ment
 | `id` | Sim (âncora `#slug`) |
 | `question` | Sim |
 | `categoryId` | Sim |
+| `subgroup` | Sim (exceto categoria Guia) |
 | `answer[]` | Sim (1–2 parágrafos) |
+| `seeAlso[]` | Opcional (`term` + `glossarioId`) |
+
+Ferramentas (Figma, LinkedIn, Jira etc.) podem ser citadas na FAQ.
 
 ---
 
-## Categorias (5)
+## Categorias (6)
 
 | Emoji | Categoria | `categoryId` |
 |-------|-----------|--------------|
-| 🚀 | Carreira | `carreira` |
-| 📚 | Estudos | `estudos` |
-| 💼 | Portfólio | `portfolio` |
-| 🎯 | Vagas e entrevistas | `vagas` |
+| ☕ | Geral | `geral` |
+| 🏋️ | Preparação | `preparacao` |
+| 💼 | Processos seletivos | `processos-seletivos` |
+| 📚 | Conhecimentos | `conhecimentos` |
+| 🕵️ | Contratação | `contratacao` |
 | ✨ | Sobre o Guia | `guia` |
+
+### Subgrupos
+
+**Geral:** Rotina · Squads · Nível júnior · Trabalho remoto
+
+**Preparação:** LinkedIn · CV / Currículo · Portfólio
+
+**Processos seletivos:** Entrevistas · Desafios · Feedbacks
+
+**Conhecimentos:** Habilidades · Faculdade e cursos
+
+**Contratação:** CLT · MEI · Comparativo CLT x PJ
 
 ---
 
-## Backlog
+## Backlog migrado (etapa 2)
 
-**Carreira:** o que faz PD, UX vs UI, código, áreas (4)
+**Total:** 83 perguntas (legado FAQ Tira-Dúvidas reescrito).
 
-**Estudos:** faculdade, por onde começar, tempo, curso vs autodidata (4)
-
-**Portfólio:** o que colocar, quantos cases, fictício, narrativa (4)
-
-**Vagas:** primeira vaga, expectativa júnior, entrevista, vaga pede XP (4)
-
-**Guia:** o que é, substitui curso, trilhas, glossário vs FAQ (4)
-
-**Total:** 20 perguntas na etapa 1.
+Distribuição: Geral 17 · Preparação 23 · Processos 14 · Conhecimentos 13 · Contratação 13 · Guia 4.
 
 ---
 
 ## UI
 
-- Mesmo padrão do glossário: accordion por categoria, busca, chips de navegação, hash por pergunta
-- Cabeçalho do accordion sticky quando aberto
+- Botões no topo: **Voltar ao Guia** (primário) e **Glossário** (secundário)
+- Accordion por categoria, subgrupos `<h3>`, busca, chips, hash por pergunta
+- Links «No glossário» quando `seeAlso` estiver preenchido
+- Cabeçalho sticky quando accordion aberto
 
 ---
 
@@ -63,7 +74,13 @@ Cada item responde uma pergunta real da comunidade, sem substituir curso ou ment
 - Mesmas regras do glossário e `docs/design.md`
 - VagasUX no feminino
 - Sem travessão (—)
-- Sem nomes de ferramenta quando genérico basta
+- Evitar estruturas «não é X, é Y»
+
+---
+
+## Redirect legado
+
+`/guia-do-product-designer/faq-tira-duvidas` → `/guia/faq`
 
 ---
 
@@ -71,6 +88,7 @@ Cada item responde uma pergunta real da comunidade, sem substituir curso ou ment
 
 ```
 web/src/data/guiaFaq.ts
+web/src/data/guiaFaqItems.ts
 web/src/components/guia/faq/GuiaFaqPageContent.tsx
 web/src/components/guia/faq/GuiaFaqCategoryAccordion.tsx
 web/src/components/guia/faq/GuiaFaqItemArticle.tsx

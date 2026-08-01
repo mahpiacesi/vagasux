@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { Link, useLocation } from 'react-router-dom'
+import { ArrowLeft, BookBookmark, MagnifyingGlass } from '@phosphor-icons/react'
 import { GuiaFaqCategoryAccordion } from '@/components/guia/faq/GuiaFaqCategoryAccordion'
 import { Input } from '@/components/ui/input'
 import {
   getGuiaFaqItemById,
   groupGuiaFaqItemsByCategory,
   guiaFaqCategories,
+  guiaFaqItems,
   searchGuiaFaqItems,
   type GuiaFaqCategoryId,
 } from '@/data/guiaFaq'
+import { guiaRoutes } from '@/lib/guiaRoutes'
+import { cn } from '@/lib/utils'
 
 export function GuiaFaqPageContent() {
   const { hash } = useLocation()
@@ -91,13 +94,34 @@ export function GuiaFaqPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <header className="w-full">
+      <div className="flex flex-wrap items-center gap-3">
+        <Link
+          to={guiaRoutes.home}
+          className={cn(
+            'inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
+          )}
+        >
+          <ArrowLeft size={18} weight="bold" aria-hidden />
+          Voltar ao Guia
+        </Link>
+        <Link
+          to={guiaRoutes.glossario}
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2.5 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
+        >
+          <BookBookmark size={18} weight="bold" aria-hidden />
+          Glossário
+        </Link>
+      </div>
+
+      <header className="mt-8 w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           FAQ do Product Designer
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg md:whitespace-nowrap">
-          Perguntas frequentes sobre carreira, estudos, portfólio e vagas em
-          Product Design. Busque ou abra a categoria que precisa.
+        <p className="mt-4 max-w-4xl text-base leading-relaxed text-neutral-400 md:text-lg">
+          Compilado da VagasUX com perguntas frequentes da comunidade sobre
+          carreira, preparação, processos seletivos, formação e contratação.
+          São {guiaFaqItems.length} respostas. Busque ou abra a categoria que
+          precisa.
         </p>
       </header>
 

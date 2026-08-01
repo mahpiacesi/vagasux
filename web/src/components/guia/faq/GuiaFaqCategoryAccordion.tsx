@@ -1,6 +1,10 @@
 import { CaretDown } from '@phosphor-icons/react'
 import { GuiaFaqItemArticle } from '@/components/guia/faq/GuiaFaqItemArticle'
-import type { GuiaFaqCategory, GuiaFaqItem } from '@/data/guiaFaq'
+import {
+  groupGuiaFaqItemsBySubgroup,
+  type GuiaFaqCategory,
+  type GuiaFaqItem,
+} from '@/data/guiaFaq'
 import { cn } from '@/lib/utils'
 
 type GuiaFaqCategoryAccordionProps = {
@@ -20,6 +24,8 @@ export function GuiaFaqCategoryAccordion({
 }: GuiaFaqCategoryAccordionProps) {
   const panelId = `faq-categoria-${category.id}`
   const hasItems = items.length > 0
+
+  const subgroupGroups = groupGuiaFaqItemsBySubgroup(items, category.id)
 
   return (
     <section
@@ -84,9 +90,20 @@ export function GuiaFaqCategoryAccordion({
                 ))}
               </nav>
 
-              <div className="mt-8 space-y-8">
-                {items.map((item) => (
-                  <GuiaFaqItemArticle key={item.id} item={item} />
+              <div className="mt-8 space-y-10">
+                {subgroupGroups.map((group) => (
+                  <div key={group.subgroupId ?? 'outros'}>
+                    {group.label ? (
+                      <h3 className="text-sm font-bold tracking-[0.12em] text-neutral-400 uppercase">
+                        {group.label}
+                      </h3>
+                    ) : null}
+                    <div className={cn('space-y-8', group.label && 'mt-5')}>
+                      {group.items.map((item) => (
+                        <GuiaFaqItemArticle key={item.id} item={item} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </>
