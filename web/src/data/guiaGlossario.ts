@@ -178,12 +178,7 @@ export const guiaGlossarioEditorialOrder: Partial<
 /** Verbetes planejados (sem conteúdo ainda). IDs devem bater com guiaGlossarioEditorialOrder. */
 export const guiaGlossarioBacklogNotes: Partial<
   Record<GuiaGlossarioCategoryId, Record<string, string>>
-> = {
-  produto: {
-    'white-label':
-      'Plataforma ou produto genérico revendido por outra empresa com marca própria. Relacionado a Cliente e Negócio em Fundamentos.',
-  },
-}
+> = {}
 
 function getGuiaGlossarioEditorialIndex(entry: GuiaGlossarioEntry): number {
   const order = guiaGlossarioEditorialOrder[entry.categoryId]
@@ -1343,6 +1338,229 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"O mapa de jornada mostra que a maior fricção é depois do pagamento."',
       '"Vamos atualizar a journey com o que saiu das entrevistas."',
+    ],
+  },
+
+  // Produto: conceitos
+  {
+    id: 'produto',
+    term: 'Produto',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Algo criado para resolver uma necessidade de pessoas usuárias e gerar valor para um negócio. Pode ser digital, físico ou uma combinação dos dois.',
+      'Product Designers atuam em produto digital: definem problemas, desenham soluções e acompanham se a experiência entrega o prometido.',
+    ],
+    youWillHear: [
+      '"Qual é o produto que estamos construindo aqui?"',
+      '"Essa decisão precisa fazer sentido para produto e negócio."',
+    ],
+  },
+  {
+    id: 'produto-digital',
+    term: 'Produto digital',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Software, app, site ou plataforma online que pessoas usam para completar tarefas. Inclui interfaces, fluxos, dados e regras de negócio acessíveis por tela.',
+      'Product Designers projetam a experiência desse produto: da descoberta do problema até o lançamento e evolução contínua.',
+    ],
+    youWillHear: [
+      '"Estamos evoluindo o produto digital, não só trocando o visual."',
+      '"Essa feature entra no produto digital na próxima release."',
+    ],
+  },
+  {
+    id: 'problema',
+    term: 'Problema',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Dificuldade, fricção ou necessidade real que um produto se propõe a resolver. Bom problema parte de evidência: pesquisa, dados ou padrão recorrente no suporte.',
+      'Product Designers ajudam o time a formular o problema antes de pular para solução. Entrevistas e métodos da categoria Pesquisa alimentam essa etapa.',
+    ],
+    youWillHear: [
+      '"Qual problema estamos resolvendo de verdade?"',
+      '"A solução está bonita, mas o problema ainda não está claro."',
+    ],
+  },
+  {
+    id: 'solucao',
+    term: 'Solução',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Resposta desenhada para um problema identificado: fluxo, tela, funcionalidade ou mudança no produto. Só faz sentido depois de entender a dor e validar se ataca a causa certa.',
+      'Product Designers exploram várias soluções em protótipos e testes antes de o time comprometer engenharia em escala.',
+    ],
+    youWillHear: [
+      '"Essa solução resolve a dor ou só mascara o sintoma?"',
+      '"Vamos comparar duas soluções no teste antes de escolher."',
+    ],
+  },
+  {
+    id: 'white-label',
+    term: 'White-label',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Marca branca',
+      usageNote:
+        'White-label continua no original em inglês em B2B, fintech e plataformas no Brasil.',
+    },
+    whatIs: [
+      'Produto ou plataforma genérica construída por uma empresa e revendida por outras com marca própria. Quem compra personaliza identidade; a base tecnológica costuma ser compartilhada.',
+      'Product Designers em white-label equilibram customização do cliente com consistência da plataforma. Cliente e pessoa usuária, em Fundamentos, ajudam a separar quem compra de quem usa no dia a dia.',
+    ],
+    youWillHear: [
+      '"Esse fluxo é white-label, cada cliente quer a logo deles."',
+      '"A plataforma é white-label, mas a experiência precisa parecer da marca do parceiro."',
+    ],
+  },
+  {
+    id: 'mvp',
+    term: 'MVP',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Minimum Viable Product',
+      usageNote:
+        'Produto mínimo viável também aparece em português, mas MVP é o termo mais usado em squads e roadmaps.',
+    },
+    whatIs: [
+      'Versão enxuta de um produto com o mínimo necessário para testar uma hipótese com pessoas usuárias reais e aprender rápido. Escopo intencional, não produto incompleto por falta de planejamento.',
+      'Product Designers ajudam a definir o que entra no MVP e o que fica fora, priorizando o que valida valor antes de expandir funcionalidades.',
+    ],
+    youWillHear: [
+      '"Vamos lançar um MVP em duas semanas para validar demanda."',
+      '"Isso não entra no MVP, fica para a v2."',
+    ],
+  },
+  {
+    id: 'feature',
+    term: 'Feature',
+    categoryId: 'produto',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Funcionalidade',
+      usageNote:
+        'Feature é o termo mais comum em squads, roadmaps e ferramentas de gestão em inglês.',
+    },
+    whatIs: [
+      'Capacidade específica dentro de um produto: login social, exportar PDF, filtro avançado. No dia a dia, muita gente fala funcionalidade em português com o mesmo sentido.',
+      'Product Designers desenham a experiência da feature, alinham com PM e Engenharia e validam se resolve o problema antes do release.',
+    ],
+    youWillHear: [
+      '"Essa feature entra no próximo sprint ou no trimestre que vem?"',
+      '"O cliente pediu a funcionalidade, mas precisamos checar impacto em UX."',
+    ],
+  },
+
+  // Produto: processo
+  {
+    id: 'discovery',
+    term: 'Discovery',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    originalName: {
+      alternate: 'Descoberta de produto',
+      usageNote:
+        'Discovery continua no original em inglês na maioria das empresas de tecnologia no Brasil.',
+    },
+    whatIs: [
+      'Fase em que o time explora o problema, entende contexto e testa direções antes de comprometer escopo grande de desenvolvimento. Inclui pesquisa, síntese e protótipos rápidos.',
+      'Product Designers lideram ou participam forte do discovery. Métodos de pesquisa ficam na categoria Pesquisa; aqui o foco é a etapa do processo de produto.',
+    ],
+    youWillHear: [
+      '"Ainda estamos em discovery, não dá para prometer prazo de entrega."',
+      '"Precisamos de mais discovery antes de priorizar essa feature."',
+    ],
+  },
+  {
+    id: 'delivery',
+    term: 'Delivery',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    originalName: {
+      alternate: 'Entrega de produto',
+      usageNote:
+        'Delivery aparece em contraste com discovery em squads ágeis e materiais de Product Management.',
+    },
+    whatIs: [
+      'Fase em que o time constrói, implementa e lança a solução validada no discovery. Engenharia entra forte; design detalha specs, acompanha qualidade e mede resultado pós-lançamento.',
+      'Product Designers cuidam para a experiência acordada chegar intacta na implementação e acompanham ajustes depois do release.',
+    ],
+    youWillHear: [
+      '"Discovery fechou, agora entramos em delivery."',
+      '"No delivery, o foco é shippar com qualidade."',
+    ],
+  },
+  {
+    id: 'hipotese',
+    term: 'Hipótese',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    whatIs: [
+      'Suposição testável sobre pessoa usuária, problema ou solução. Exemplo: se simplificarmos o checkout, mais pessoas completam a compra.',
+      'Product Designers transformam insights de pesquisa em hipóteses claras e ajudam a definir como validá-las antes de investir escopo grande.',
+    ],
+    youWillHear: [
+      '"Qual é a hipótese que estamos testando nesse protótipo?"',
+      '"A hipótese não se confirmou, voltamos para discovery."',
+    ],
+  },
+  {
+    id: 'validacao',
+    term: 'Validação',
+    categoryId: 'produto',
+    subgroup: 'processo',
+    whatIs: [
+      'Processo de checar se uma ideia, fluxo ou feature resolve o problema de verdade antes ou depois do lançamento. Pode ser teste de usabilidade, MVP, questionário ou métrica de uso.',
+      'Product Designers participam da validação com protótipos e testes. Métodos específicos ficam na categoria Pesquisa; aqui o foco é confirmar ou refutar uma hipótese de produto.',
+    ],
+    youWillHear: [
+      '"Precisamos de validação antes de colocar isso no roadmap."',
+      '"A validação com usuários matou essa direção."',
+    ],
+  },
+
+  // Produto: entregas
+  {
+    id: 'roadmap',
+    term: 'Roadmap',
+    categoryId: 'produto',
+    subgroup: 'entregas',
+    originalName: {
+      alternate: 'Roteiro de produto',
+      usageNote:
+        'Roadmap continua no original em inglês na maioria das empresas de tecnologia.',
+    },
+    whatIs: [
+      'Visão de médio prazo do que o produto vai construir e quando: features, melhorias e iniciativas alinhadas a objetivos de negócio. Pode ser trimestral, por tema ou por outcome.',
+      'Product Designers contribuem ao estimar esforço de UX, dependências de design system e priorizar o que impacta a pessoa usuária.',
+    ],
+    youWillHear: [
+      '"Essa feature está no roadmap do Q3."',
+      '"O roadmap mudou, vamos repriorizar discovery."',
+    ],
+  },
+  {
+    id: 'prd',
+    term: 'PRD',
+    categoryId: 'produto',
+    subgroup: 'entregas',
+    originalName: {
+      alternate: 'Product Requirements Document',
+      usageNote:
+        'Documento de requisitos de produto também aparece em português em empresas maiores.',
+    },
+    whatIs: [
+      'Documento que descreve o que uma feature ou iniciativa deve fazer: contexto, objetivo, escopo, critérios de sucesso e requisitos. PM costuma liderar; design e engenharia contribuem.',
+      'Product Designers alimentam o PRD com fluxos, estados, edge cases e links para protótipos no Figma. Nem todo time usa PRD formal; em squads enxutas, o spec pode viver no ticket ou no próprio Figma.',
+    ],
+    youWillHear: [
+      '"Manda o link do PRD antes da planning."',
+      '"O PRD ainda não tem critério de aceite para esse fluxo."',
     ],
   },
 ]
