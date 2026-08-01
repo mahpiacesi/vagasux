@@ -85,6 +85,11 @@ export const guiaGlossarioSubgroupLabels: Partial<
     entrega: 'Design para desenvolvimento',
     ciclo: 'Ciclo de release',
   },
+  acessibilidade: {
+    conceitos: 'Conceitos',
+    interface: 'Interface acessível',
+    pratica: 'Prática',
+  },
 }
 
 /**
@@ -216,6 +221,20 @@ export const guiaGlossarioEditorialOrder: Partial<
     'bug',
     'pull-request',
     'qa',
+  ],
+  acessibilidade: [
+    'acessibilidade-digital',
+    'design-inclusivo',
+    'wcag',
+    'contraste',
+    'texto-alternativo',
+    'foco-visivel',
+    'navegacao-por-teclado',
+    'area-de-toque',
+    'leitor-de-tela',
+    'aria',
+    'auditoria-de-acessibilidade',
+    'daltonismo',
   ],
 }
 
@@ -2128,6 +2147,199 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"QA pegou divergência de spacing nessa tela."',
       '"Passa os cenários de teste para QA antes do deploy."',
+    ],
+  },
+
+  // Acessibilidade: conceitos
+  {
+    id: 'acessibilidade-digital',
+    term: 'Acessibilidade digital',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Prática de tornar produtos digitais usáveis por pessoas com diferentes capacidades visuais, motoras, auditivas ou cognitivas. Inclui contraste, navegação por teclado, textos claros e compatibilidade com tecnologias assistivas.',
+      'Product Designers consideram acessibilidade desde wireframe: hierarquia, rótulos, estados de foco e copy objetiva. Implementação técnica envolve dev; critérios ficam no spec e no handoff.',
+    ],
+    youWillHear: [
+      '"Essa tela precisa passar por revisão de acessibilidade antes do release."',
+      '"Acessibilidade entra no critério de aceite dessa feature."',
+    ],
+  },
+  {
+    id: 'design-inclusivo',
+    term: 'Design inclusivo',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    whatIs: [
+      'Abordagem que projeta para a diversidade real de pessoas usuárias, incluindo deficiências permanentes, temporárias ou situacionais. Exemplo: tela legível no sol forte ou uso com uma mão só.',
+      'Product Designers aplicam design inclusivo ao escolher cores, tamanhos de toque, linguagem simples e fluxos que funcionam com leitor de tela.',
+    ],
+    youWillHear: [
+      '"Vamos revisar esse fluxo com olhar de design inclusivo."',
+      '"Design inclusivo aqui significa legibilidade e toque confortável no mobile."',
+    ],
+  },
+  {
+    id: 'wcag',
+    term: 'WCAG',
+    categoryId: 'acessibilidade',
+    subgroup: 'conceitos',
+    originalName: {
+      alternate: 'Web Content Accessibility Guidelines',
+      usageNote: 'Diretrizes de acessibilidade para conteúdo web.',
+    },
+    whatIs: [
+      'Conjunto internacional de recomendações para tornar conteúdo web mais acessível. Organizado em princípios, critérios e níveis A, AA e AAA.',
+      'Product Designers usam WCAG como referência ao revisar contraste, textos alternativos e navegação. AA costuma ser a meta mais comum em produtos.',
+    ],
+    youWillHear: [
+      '"Precisamos atender WCAG AA nesse fluxo."',
+      '"Esse contraste não passa no critério WCAG."',
+    ],
+  },
+
+  // Acessibilidade: interface acessível
+  {
+    id: 'contraste',
+    term: 'Contraste',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Diferença visual entre texto e fundo, ou entre elementos, que permite leitura confortável. Contraste baixo dificulta uso para pessoas com baixa visão ou em ambientes claros.',
+      'Product Designers checam contraste de botões, links e textos com critérios WCAG antes do handoff. Cor, na categoria Interface, trata paleta; aqui o foco é legibilidade.',
+    ],
+    youWillHear: [
+      '"O contraste desse label está abaixo do mínimo."',
+      '"Ajusta contraste do botão secundário antes da auditoria."',
+    ],
+  },
+  {
+    id: 'texto-alternativo',
+    term: 'Texto alternativo',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    originalName: {
+      alternate: 'Alt text',
+    },
+    whatIs: [
+      'Descrição textual de uma imagem ou ícone para quem usa leitor de tela ou quando a imagem não carrega. Deve ser curta e descrever a função ou informação relevante.',
+      'Product Designers indicam texto alternativo em ícones funcionais, ilustrações informativas e imagens de conteúdo no spec.',
+    ],
+    youWillHear: [
+      '"Faltou alt text nesse ícone de ação."',
+      '"O texto alternativo precisa descrever a função, não a imagem."',
+    ],
+  },
+  {
+    id: 'foco-visivel',
+    term: 'Foco visível',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Indicador claro de qual elemento está selecionado na navegação por teclado. Outline, borda ou mudança de cor mostra onde a pessoa usuária está na tela.',
+      'Product Designers desenham estado de focus em botões, links e campos. Sem foco visível, quem navega sem mouse perde a referência do fluxo.',
+    ],
+    youWillHear: [
+      '"O foco visível desse input sumiu no hover customizado."',
+      '"Precisamos de estado de focus no design system."',
+    ],
+  },
+  {
+    id: 'navegacao-por-teclado',
+    term: 'Navegação por teclado',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    whatIs: [
+      'Uso do produto apenas com teclado: Tab para avançar, Enter para confirmar, setas em menus. Essencial para muitas pessoas com deficiência motora ou preferência por teclado.',
+      'Product Designers validam ordem de tabulação, atalhos e se fluxos críticos funcionam sem mouse.',
+    ],
+    youWillHear: [
+      '"Testa navegação por teclado nesse modal."',
+      '"A ordem de tabulação desse formulário está confusa."',
+    ],
+  },
+  {
+    id: 'area-de-toque',
+    term: 'Área de toque',
+    categoryId: 'acessibilidade',
+    subgroup: 'interface',
+    originalName: {
+      alternate: 'Touch target',
+    },
+    whatIs: [
+      'Tamanho mínimo clicável de botões, links e controles em telas touch. Área pequena aumenta erro de toque, especialmente no mobile.',
+      'Product Designers seguem tamanhos mínimos recomendados e espaçamento entre ações para reduzir clique errado.',
+    ],
+    youWillHear: [
+      '"Esse botão está abaixo do tamanho mínimo de área de toque."',
+      '"Aumenta área de toque do ícone no mobile."',
+    ],
+  },
+
+  // Acessibilidade: prática
+  {
+    id: 'leitor-de-tela',
+    term: 'Leitor de tela',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Screen reader',
+    },
+    whatIs: [
+      'Tecnologia assistiva que lê em voz alta o conteúdo da tela: títulos, botões, campos e mensagens. Pessoas com deficiência visual dependem dela para usar produtos digitais.',
+      'Product Designers testam fluxos com leitor de tela ou pedem validação especializada para checar rótulos, ordem e textos alternativos.',
+    ],
+    youWillHear: [
+      '"Roda esse fluxo no leitor de tela antes do deploy."',
+      '"O leitor de tela não anunciou a mensagem de erro."',
+    ],
+  },
+  {
+    id: 'aria',
+    term: 'ARIA',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Accessible Rich Internet Applications',
+    },
+    whatIs: [
+      'Conjunto de atributos HTML que comunica papel, estado e propriedades de componentes para tecnologias assistivas. Exemplo: marcar um modal como dialog ou indicar que um menu está expandido.',
+      'Product Designers não implementam ARIA, mas precisam saber que componentes customizados exigem spec claro para dev aplicar atributos corretos.',
+    ],
+    youWillHear: [
+      '"Esse accordion precisa de ARIA no handoff."',
+      '"Dev pediu spec de ARIA para o menu customizado."',
+    ],
+  },
+  {
+    id: 'auditoria-de-acessibilidade',
+    term: 'Auditoria de acessibilidade',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    whatIs: [
+      'Revisão sistemática de telas e fluxos contra critérios WCAG: contraste, teclado, textos alternativos, semântica e compatibilidade com leitor de tela. Pode ser manual ou com checklist.',
+      'Product Designers participam de auditorias antes de release e transformam achados em ajustes de design ou tickets para dev.',
+    ],
+    youWillHear: [
+      '"A auditoria de acessibilidade pegou cinco issues nesse fluxo."',
+      '"Precisamos de auditoria antes de lançar para o público amplo."',
+    ],
+  },
+  {
+    id: 'daltonismo',
+    term: 'Daltonismo',
+    categoryId: 'acessibilidade',
+    subgroup: 'pratica',
+    originalName: {
+      alternate: 'Deficiência de visão de cores',
+    },
+    whatIs: [
+      'Dificuldade em distinguir certas cores, especialmente vermelho e verde. Afeta leitura de gráficos, status e botões que dependem só de cor para comunicar.',
+      'Product Designers reforçam informação com ícone, texto ou padrão além da cor. Estados de erro e sucesso precisam de mais de um canal visual.',
+    ],
+    youWillHear: [
+      '"Esse gráfico não funciona para quem tem daltonismo."',
+      '"Status de erro precisa de ícone além da cor vermelha."',
     ],
   },
 ]

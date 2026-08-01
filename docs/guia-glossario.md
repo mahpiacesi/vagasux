@@ -148,6 +148,22 @@ Discovery e delivery ficam em **Produto**; squad em **Fundamentos**.
 
 Design Token fica em **Interface**; handoff e responsivo ficam aqui na implementação.
 
+### Acessibilidade
+
+| `subgroup` | Título |
+|------------|--------|
+| `conceitos` | Conceitos |
+| `interface` | Interface acessível |
+| `pratica` | Prática |
+
+**Conceitos:** Acessibilidade digital, Design inclusivo, WCAG
+
+**Interface acessível:** Contraste, Texto alternativo, Foco visível, Navegação por teclado, Área de toque
+
+**Prática:** Leitor de tela, ARIA, Auditoria de acessibilidade, Daltonismo
+
+Contraste em **Cor** (Interface) trata paleta; aqui o foco é legibilidade e WCAG.
+
 ---
 
 ## Modelo de dados
@@ -206,7 +222,7 @@ GuiaGlossarioEntry {
 
 **Desenvolvimento:** 13 termos (ver subgrupos acima). Frontend, handoff, responsivo, deploy e ciclo com engenharia.
 
-**Acessibilidade:** WCAG, Contraste, ARIA…
+**Acessibilidade:** 12 termos (ver subgrupos acima). WCAG, contraste, teclado, leitor de tela e auditoria.
 
 **IA para Designers:** Prompt, LLM, Copilot…
 
