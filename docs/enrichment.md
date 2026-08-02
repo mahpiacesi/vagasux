@@ -57,7 +57,7 @@ Scheduler (após collectors + expire)
 
 Enums:
 
-- `discipline`: product_design | ux | ui | ux_research | content_design | design_ops | visual_graphic | motion | other  
+- `discipline`: product_design | ux | ui | ux_research | content_design | design_ops | visual_graphic | motion  
 - `seniority`: intern | trainee | junior | mid | senior | lead | unknown  
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  

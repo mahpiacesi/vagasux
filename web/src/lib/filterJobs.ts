@@ -27,7 +27,13 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 
     if (filters.discipline !== 'all') {
-      const discipline = resolveDiscipline(job)
+      const discipline = resolveDiscipline({
+        discipline: job.discipline,
+        title: job.title,
+        area: job.area,
+        role: job.role,
+        description: job.description,
+      })
       if (discipline !== filters.discipline) return false
     }
 

@@ -18,8 +18,7 @@ ALTER TABLE public.jobs
       'content_design',
       'design_ops',
       'visual_graphic',
-      'motion',
-      'other'
+      'motion'
     )
   );
 
@@ -68,7 +67,7 @@ SET discipline = CASE
     coalesce(title, '') || ' ' || coalesce(area, '') || ' ' || coalesce(role, '')
   ) ~ '(product design|product designer|ux/ui|ui/ux|design de produto|designer de produto)'
     THEN 'product_design'
-  ELSE 'other'
+  ELSE 'product_design'
 END
 WHERE discipline IS NULL
   AND status = 'published';

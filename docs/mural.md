@@ -58,9 +58,9 @@ Além da busca por texto, o mural oferece pills para **Mercado**, **Formato**, *
 
 O filtro **Cargo** usa a coluna normalizada `discipline` (enum no banco). Valores:
 
-`product_design`, `ux`, `ui`, `ux_research`, `content_design`, `design_ops`, `visual_graphic`, `motion`, `other`
+`product_design`, `ux`, `ui`, `ux_research`, `content_design`, `design_ops`, `visual_graphic`, `motion`
 
-Labels na UI: Product Design, UX, UI, Pesquisa, Content Design, Design Ops, Gráfico, Motion. (`other` não aparece como pill; entra no backfill/heurística.)
+Labels na UI: Product Design, UX, UI, Pesquisa, Content Design, Design Ops, Gráfico, Motion. Vagas ambíguas caem em `product_design` por padrão (não existe bucket "Outros").
 
 Implementação: `web/src/lib/discipline.ts`, `web/src/lib/filterJobs.ts`, migration `20260803_jobs_discipline.sql`.
 

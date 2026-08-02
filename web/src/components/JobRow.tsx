@@ -104,7 +104,7 @@ export function JobRow({
             </p>
           ) : null}
 
-          {seniority || cargoLabel !== 'Outros' ? (
+          {seniority || cargoLabel ? (
             <div className="mt-3 flex flex-wrap gap-1.5">
               {seniority ? (
                 <Badge
@@ -114,7 +114,7 @@ export function JobRow({
                   {seniority}
                 </Badge>
               ) : null}
-              {cargoLabel !== 'Outros' ? (
+              {cargoLabel ? (
                 <Badge
                   variant="outline"
                   className="rounded-full border-neutral-200/80 font-medium text-neutral-400"
