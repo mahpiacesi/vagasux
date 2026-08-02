@@ -23,10 +23,11 @@ A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Design Ops, Vis
 | Animação para produto/marketing digital | Edição de Reels/TikTok/YouTube como função principal |
 | After Effects ligado a motion de produto | Pós-produção audiovisual pura |
 
-Regras aplicadas em duas camadas:
+Regras aplicadas em três camadas:
 
-1. **Prompt Gemini** — rejeita explicitamente edição de vídeo/audiovisual
-2. **Guarda determinística** — `tools/n8n/jobClassification.ts`, replicada no node **Apply enrichment**, para casos em que a IA rotula como "Motion Design"
+1. **Prompt Gemini** — rejeita explicitamente edição de vídeo/audiovisual e vagas de varejo/loja cujo local contém "Design" (ex.: Rio Design Barra)
+2. **Guarda determinística** — `tools/n8n/jobClassification.ts` no node **Apply enrichment** (vídeo/audiovisual + falso positivo de shopping/gerente de loja)
+3. **Filtro do collector Gupy** — título precisa de cargo de design explícito; `\bdesign\b` sozinho em nome de shopping não entra
 
 ## Curadoria (`source = VagasUX`)
 

@@ -174,9 +174,22 @@ export function inferDisciplineFromJob(input: {
     return 'visual_graphic'
   }
 
+  const explicitDesignCareer =
+    /\b(de design|designer|design ops|design system|design de produto|product design|graphic design|visual design|motion design|ux design|ui design|design lead|head of design|gerente de design|coordenador de design|product designer|ux designer|ui designer|ux|ui|research|pesquisa)\b/.test(
+      text,
+    )
+  const venueOrRetailFalsePositive =
+    (/\b(rio design|shopping .* design|design barra|design leak)\b/.test(text) &&
+      !explicitDesignCareer) ||
+    (/\b(gerente de loja|gerente \| |vendedor|vendedora|operador de loja|supervisor de loja)\b/.test(
+      text,
+    ) &&
+      !explicitDesignCareer)
+
   if (
     /\b(designer|design\b)/.test(text) &&
-    !/\b(interior|industrial|moda|fashion|som|sound|acustico|paisag|lighting)\b/.test(text)
+    !/\b(interior|industrial|moda|fashion|som|sound|acustico|paisag|lighting)\b/.test(text) &&
+    !venueOrRetailFalsePositive
   ) {
     return DEFAULT_DISCIPLINE
   }
