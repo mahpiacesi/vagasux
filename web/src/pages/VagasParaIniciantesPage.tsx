@@ -16,6 +16,7 @@ const initialFilters: JobFiltersState = {
   market: 'all',
   workModel: 'all',
   seniority: 'all',
+  discipline: 'all',
   state: 'all',
 }
 
@@ -62,7 +63,7 @@ export function VagasParaIniciantesPage() {
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
-  }, [filters.market, filters.workModel, filters.seniority, filters.state, deferredQuery])
+  }, [filters.market, filters.workModel, filters.seniority, filters.discipline, filters.state, deferredQuery])
 
   const visibleJobs = useMemo(
     () => filtered.slice(0, visibleCount),

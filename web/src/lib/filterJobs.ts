@@ -1,3 +1,4 @@
+import { resolveDiscipline } from './discipline'
 import { resolveIsInternational, resolveWorkModel } from './labels'
 import { parseBrazilianState } from './location'
 import type { Job, JobFiltersState } from '../types/job'
@@ -24,6 +25,11 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
     }
 
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
+
+    if (filters.discipline !== 'all') {
+      const discipline = resolveDiscipline(job)
+      if (discipline !== filters.discipline) return false
+    }
 
     if (filters.state !== 'all' && filters.market !== 'international') {
       const state = parseBrazilianState(job.location)
@@ -59,6 +65,7 @@ export function hasActiveFilters(filters: JobFiltersState) {
     filters.market !== 'all' ||
     filters.workModel !== 'all' ||
     filters.seniority !== 'all' ||
+    filters.discipline !== 'all' ||
     stateActive
   )
 }

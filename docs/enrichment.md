@@ -53,13 +53,16 @@ Scheduler (após collectors + expire)
 
 ## Campos preenchidos pela IA
 
-`is_design_job`, `is_international`, `ai_confidence`, `area`, `role`, `seniority`, `work_model`, `employment_type`, `skills`, `tools`, `portfolio_required`, `ai_summary`, `ai_reason`, `enriched_at`, `content_hash`
+`is_design_job`, `is_international`, `ai_confidence`, `area`, `role`, `discipline`, `seniority`, `work_model`, `employment_type`, `skills`, `tools`, `portfolio_required`, `ai_summary`, `ai_reason`, `enriched_at`, `content_hash`
 
 Enums:
 
+- `discipline`: product_design | ux | ui | ux_research | content_design | design_ops | visual_graphic | motion | other  
 - `seniority`: intern | trainee | junior | mid | senior | lead | unknown  
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
+
+`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida e faz fallback heurístico (`tools/n8n/jobDiscipline.ts`) a partir de título, `area` e `role`.
 
 ## Contrato JSON da IA
 
@@ -70,6 +73,7 @@ Enums:
   "confidence": 0.92,
   "area": "Product Design",
   "role": "Product Designer",
+  "discipline": "product_design",
   "seniority": "mid",
   "work_model": "remote",
   "employment_type": "clt",
