@@ -121,7 +121,7 @@ export const guiaTipos: GuiaTipo[] = [
     description:
       'Referências essenciais de UX, UI, produto e design, curadas pela comunidade VagasUX.',
   },
-  { id: 'podcasts', title: 'Podcasts' },
+  { id: 'podcasts', title: 'Podcasts', description: 'Podcasts de design, produto e UX para ouvir no dia a dia, curados pela comunidade VagasUX.' },
   {
     id: 'newsletters',
     title: 'Newsletters',

@@ -1,6 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { GuiaLivrosPageContent } from '@/components/guia/GuiaLivrosPageContent'
 import { GuiaNewslettersPageContent } from '@/components/guia/GuiaNewslettersPageContent'
+import { GuiaPodcastsPageContent } from '@/components/guia/GuiaPodcastsPageContent'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { getGuiaTipoById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -32,6 +33,18 @@ export function GuiaTipoPage() {
         description={
           tipo.description ??
           'Newsletters de design, produto e UX para acompanhar no e-mail, curadas pela comunidade VagasUX.'
+        }
+      />
+    )
+  }
+
+  if (slug === 'podcasts') {
+    return (
+      <GuiaPodcastsPageContent
+        title={tipo.title}
+        description={
+          tipo.description ??
+          'Podcasts de design, produto e UX para ouvir no dia a dia, curados pela comunidade VagasUX.'
         }
       />
     )
