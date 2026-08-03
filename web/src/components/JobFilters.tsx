@@ -207,7 +207,8 @@ export function JobFilters({
             aria-hidden
           />
           <Input
-            type="search"
+            type="text"
+            role="searchbox"
             value={value.query}
             onChange={(event) => onChange({ ...value, query: event.target.value })}
             placeholder={searchPlaceholder}
