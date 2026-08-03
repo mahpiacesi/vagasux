@@ -193,7 +193,11 @@ export function inferDisciplineFromJob(input: {
   if (area) {
     if (/research|pesquisa/.test(area)) return 'ux_research'
     if (/content|writing/.test(area)) return 'content_design'
-    if (/ops|operations|strategy|strategic|program/.test(area) && /design/.test(area)) {
+    if (
+      /ops|operations|strategy|strategic|program/.test(area) &&
+      /design/.test(area) &&
+      !/graphic|visual|grafico|brand|marketing|comunicacao/.test(area)
+    ) {
       return 'design_ops'
     }
     if (/product/.test(area)) return 'product_design'
@@ -302,6 +306,7 @@ export function resolveDiscipline(input: {
   // Heuristics override IA (motion inflado; product > graphic em casos híbridos/ambíguos)
   if (parsed === 'motion' && inferred !== 'motion') return inferred
   if (parsed === 'ui' && inferred !== 'ui') return inferred
+  if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
@@ -462,7 +467,12 @@ function isOpsStrategyJob(input) {
 
   if (OPS_STRATEGY_HEADLINE.test(text) || OPS_STRATEGY_HEADLINE.test(headline)) return true
 
-  if (area && /ops|operations|strategy|strategic|program/.test(area) && /design/.test(area)) {
+  if (
+    area &&
+    /ops|operations|strategy|strategic|program/.test(area) &&
+    /design/.test(area) &&
+    !/graphic|visual|grafico|brand|marketing|comunicacao/.test(area)
+  ) {
     return true
   }
 
@@ -554,7 +564,11 @@ function inferDisciplineFromJob(input) {
   if (area) {
     if (/research|pesquisa/.test(area)) return 'ux_research'
     if (/content|writing/.test(area)) return 'content_design'
-    if (/ops|operations|strategy|strategic|program/.test(area) && /design/.test(area)) {
+    if (
+      /ops|operations|strategy|strategic|program/.test(area) &&
+      /design/.test(area) &&
+      !/graphic|visual|grafico|brand|marketing|comunicacao/.test(area)
+    ) {
       return 'design_ops'
     }
     if (/product/.test(area)) return 'product_design'
@@ -657,6 +671,7 @@ function resolveDiscipline(input) {
   // Heuristics override IA (motion inflado; product > graphic em casos híbridos/ambíguos)
   if (parsed === 'motion' && inferred !== 'motion') return inferred
   if (parsed === 'ui' && inferred !== 'ui') return inferred
+  if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
