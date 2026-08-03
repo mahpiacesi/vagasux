@@ -18,8 +18,26 @@ export type JobDiscipline = (typeof JOB_DISCIPLINES)[number]
 
 export type DisciplineFilter = 'all' | JobDiscipline
 
-/** Ambiguous roles default to Product — VagasUX is UX/product focused. */
+/** Ambiguous roles default to Product on most sources; InfoJobs skews graphic/marketing. */
 export const DEFAULT_DISCIPLINE: JobDiscipline = 'product_design'
+
+const INFOJOBS_SOURCE = 'infojobs'
+
+function isInfoJobsSource(source: unknown): boolean {
+  return normalizeJobText(source) === INFOJOBS_SOURCE
+}
+
+/** Fallback when heuristics cannot classify — source-aware prior. */
+function ambiguousDisciplineDefault(input: {
+  source?: unknown
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): JobDiscipline {
+  if (isExclusiveUiUxProductScope(input)) return DEFAULT_DISCIPLINE
+  if (isInfoJobsSource(input.source)) return 'visual_graphic'
+  return DEFAULT_DISCIPLINE
+}
 
 export const disciplineLabels: Record<JobDiscipline, string> = {
   product_design: 'UX',
@@ -492,6 +510,7 @@ export function inferDisciplineFromJob(input: {
   area?: unknown
   role?: unknown
   description?: unknown
+  source?: unknown
 }): JobDiscipline {
   const text = jobText(input)
   const headline = headlineText(input)
@@ -596,7 +615,7 @@ export function inferDisciplineFromJob(input: {
     ) &&
       !/\b(de design|designer|gerente de design|coordenador de design)\b/.test(text))
 
-  if (venueOrRetailFalsePositive) return DEFAULT_DISCIPLINE
+  if (venueOrRetailFalsePositive) return ambiguousDisciplineDefault(input)
 
   const titleNorm = normalizeJobText(input.title).replace(/\s+/g, ' ').trim()
   if (isGenericDesignerTitle(titleNorm) && !isExclusiveUiUxProductScope(input)) {
@@ -607,10 +626,10 @@ export function inferDisciplineFromJob(input: {
     /\b(designer|design\b)/.test(text) &&
     !/\b(interior|industrial|moda|fashion|som|sound|acustico|paisag|lighting)\b/.test(text)
   ) {
-    return DEFAULT_DISCIPLINE
+    return ambiguousDisciplineDefault(input)
   }
 
-  return DEFAULT_DISCIPLINE
+  return ambiguousDisciplineDefault(input)
 }
 
 export function resolveDiscipline(input: {
@@ -619,6 +638,7 @@ export function resolveDiscipline(input: {
   area?: unknown
   role?: unknown
   description?: unknown
+  source?: unknown
 }): JobDiscipline {
   const inferred = inferDisciplineFromJob(input)
   const parsed = parseDiscipline(input.discipline)
@@ -636,6 +656,13 @@ export function resolveDiscipline(input: {
   }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (parsed === 'product_design' && isClearlyGraphicJob(input)) return 'visual_graphic'
+  if (
+    parsed === 'product_design' &&
+    isInfoJobsSource(input.source) &&
+    !isExclusiveUiUxProductScope(input)
+  ) {
+    return 'visual_graphic'
+  }
   if (
     parsed === 'product_design' &&
     (inferred === 'ux' ||
@@ -657,6 +684,43 @@ export function labelDiscipline(input: {
   area?: unknown
   role?: unknown
   description?: unknown
+  source?: unknown
 }): string {
   return disciplineLabels[resolveDiscipline(input)]
+}
+
+const NON_DESIGN_CAREER =
+  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
+
+/** Listing should not appear on VagasUX mural. Keep in sync with tools/n8n/jobClassification.ts */
+export function isNonDesignCareerJob(input: {
+  title?: unknown
+  role?: unknown
+  area?: unknown
+  description?: unknown
+  source?: unknown
+}): boolean {
+  const description =
+    typeof input.description === 'string'
+      ? input.description.slice(0, 4000)
+      : String(input.description ?? '')
+
+  const text = normalizeJobText(
+    [input.title, input.role, input.area, description].filter(Boolean).join(' '),
+  )
+
+  if (NON_DESIGN_CAREER.test(text)) return true
+
+  if (isInfoJobsSource(input.source)) {
+    const title = normalizeJobText(input.title)
+    if (
+      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\b/.test(
+        title,
+      )
+    ) {
+      return true
+    }
+  }
+
+  return false
 }

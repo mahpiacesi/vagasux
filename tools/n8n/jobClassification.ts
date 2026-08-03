@@ -74,6 +74,66 @@ export function isVideoEditingRole(input: {
   return VIDEO_EDITING.test(text)
 }
 
+/** CAD/engineering, beauty, industrial/furniture — not digital product / UX design careers. */
+const NON_DESIGN_CAREER =
+  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
+
+export function isInfoJobsSource(source: unknown): boolean {
+  return normalizeJobText(source) === 'infojobs'
+}
+
+/** Listing should not appear on VagasUX (even if title contains "design"). */
+export function isNonDesignCareerJob(input: {
+  title?: unknown
+  role?: unknown
+  area?: unknown
+  description?: unknown
+  source?: unknown
+}): boolean {
+  const description =
+    typeof input.description === 'string'
+      ? input.description.slice(0, 4000)
+      : String(input.description ?? '')
+
+  const text = normalizeJobText(
+    [input.title, input.role, input.area, description].filter(Boolean).join(' '),
+  )
+
+  if (NON_DESIGN_CAREER.test(text)) return true
+
+  // InfoJobs card snippets often lack body text — title-only CAD/engineering bait.
+  if (isInfoJobsSource(input.source)) {
+    const title = normalizeJobText(input.title)
+    if (
+      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\b/.test(
+        title,
+      )
+    ) {
+      return true
+    }
+  }
+
+  return false
+}
+
+/** n8n-friendly guard for Apply enrichment (non-design career false positives). */
+export const NON_DESIGN_CAREER_GUARD_JS = `
+function normalizeJobText(value) {
+  return String(value ?? '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\\u0300-\\u036f]/g, '');
+}
+
+const nonDesignText = normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.area ?? ''} \${description} \${job.source ?? ''}\`);
+const nonDesignCareer =
+  /\\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\\(nx\\)|\\bnx cad\\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\\bprojetista\\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\\bui\\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\\b/.test(nonDesignText)
+  || (
+    normalizeJobText(job.source) === 'infojobs'
+    && /\\b(product design lead engineer|design engineer|\\(nx\\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\\b/.test(normalizeJobText(job.title))
+  );
+`.trim()
+
 /** Gupy collector: title passes design relevance filter. */
 export function isGupyDesignRelevantTitle(rawTitle: unknown): boolean {
   const title = normalizeJobText(rawTitle)

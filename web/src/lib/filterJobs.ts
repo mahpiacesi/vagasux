@@ -1,4 +1,4 @@
-import { disciplineMatchesFilter, resolveDiscipline } from './discipline'
+import { disciplineMatchesFilter, isNonDesignCareerJob, resolveDiscipline } from './discipline'
 import { displayCompany, resolveIsInternational, resolveWorkModel } from './labels'
 import { parseBrazilianState } from './location'
 import type { Job, JobFiltersState } from '../types/job'
@@ -14,6 +14,8 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
   const q = normalize(filters.query.trim())
 
   return jobs.filter((job) => {
+    if (isNonDesignCareerJob(job)) return false
+
     const isInternational = resolveIsInternational(job.is_international, job.location)
 
     if (filters.market === 'national' && isInternational === true) return false
@@ -33,6 +35,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
         area: job.area,
         role: job.role,
         description: job.description,
+        source: job.source,
       })
       if (!disciplineMatchesFilter(discipline, filters.discipline)) return false
     }
