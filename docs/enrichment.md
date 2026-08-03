@@ -15,7 +15,7 @@ No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o
 
 ## Escopo de vagas (design vs. fora do escopo)
 
-A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Design Ops, Visual/Graphic digital** e **Motion Design para produto/interface**.
+A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Ops & Strategy, Visual & Graphic digital** e **Motion Design para produto/interface**.
 
 | Entra | Fica de fora |
 |---|---|
@@ -63,7 +63,13 @@ Enums:
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
 
-`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`): heurísticas corrigem motion inflado e conflitos product vs graphic. **Gráfico vence product** quando a descrição foca social/print/branding e o escopo não é exclusivamente UI/UX/product (headline híbrida ou genérica).
+`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`):
+
+- **Motion** e **UI** — só com sinal explícito em título/role/área (como motion: área `UX/UI Design` sozinha não vira UI).
+- **UX** — prioridade de título/role sobre área híbrida UX/UI.
+- **Visual & Graphic** — título/role gráfico, área de artes gráficas, descrição com foco social/print/branding, ou título genérico "Designer" quando há descrição gráfica.
+- **Ops & Strategy** — design ops, program manager, strategist, head/director of design.
+- **Product** — default VagasUX; híbridos Product/Visual ambíguos ficam em product.
 
 ## Contrato JSON da IA
 
