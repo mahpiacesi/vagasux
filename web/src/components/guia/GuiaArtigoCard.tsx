@@ -10,15 +10,21 @@ export const GUIA_ARTIGO_VAGASUX_LABEL = 'Canal oficial'
 type GuiaArtigoCardProps = {
   artigo: GuiaArtigo
   className?: string
+  /** Destaque visual para artigo oficial da VagasUX. */
+  featured?: boolean
+  /** Layout horizontal compacto no topo da página de artigos. */
+  spotlight?: boolean
   showVagasuxTag?: boolean
 }
 
 function ArtigoCover({
   artigo,
   className,
+  spotlight = false,
 }: {
   artigo: GuiaArtigo
   className?: string
+  spotlight?: boolean
 }) {
   const [failed, setFailed] = useState(false)
   const coverUrl = resolveArtigoCoverUrl(artigo)
@@ -27,11 +33,12 @@ function ArtigoCover({
     return (
       <div
         className={cn(
-          'flex aspect-video w-full items-center justify-center rounded-xl bg-brand-100/60 text-brand-400',
+          'flex w-full items-center justify-center rounded-xl bg-brand-100/60 text-brand-400',
+          spotlight ? 'aspect-[5/3] max-h-28 sm:max-h-32' : 'aspect-video',
           className,
         )}
       >
-        <ArticleMedium size={40} weight="duotone" aria-hidden />
+        <ArticleMedium size={spotlight ? 32 : 40} weight="duotone" aria-hidden />
       </div>
     )
   }
@@ -44,7 +51,8 @@ function ArtigoCover({
       decoding="async"
       onError={() => setFailed(true)}
       className={cn(
-        'aspect-video w-full rounded-xl border border-neutral-500/5 bg-neutral-100 object-cover object-center shadow-sm',
+        'w-full rounded-xl border border-neutral-500/5 bg-neutral-100 object-cover object-center shadow-sm',
+        spotlight ? 'aspect-[5/3] max-h-28 sm:max-h-32' : 'aspect-video',
         className,
       )}
     />
@@ -67,6 +75,8 @@ function VagasuxLabel({ className }: { className?: string }) {
 export function GuiaArtigoCard({
   artigo,
   className,
+  featured = false,
+  spotlight = false,
   showVagasuxTag = artigo.vagasuxPublication,
 }: GuiaArtigoCardProps) {
   const authorLabel = artigo.authors.join(', ')
@@ -77,16 +87,27 @@ export function GuiaArtigoCard({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'group flex h-full flex-col rounded-2xl border border-neutral-500/10 bg-neutral-100 p-4 transition-colors hover:border-brand-300 hover:bg-brand-100/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
+        'group flex h-full flex-col rounded-2xl border p-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
+        featured
+          ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
+          : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
+        spotlight && 'sm:flex-row sm:items-center sm:gap-5',
         className,
       )}
     >
-      <ArtigoCover artigo={artigo} />
+      <div className={cn(spotlight && 'sm:w-44 sm:shrink-0')}>
+        <ArtigoCover artigo={artigo} spotlight={spotlight} />
+      </div>
 
-      <div className="mt-4 flex flex-1 flex-col">
+      <div className={cn('mt-4 flex flex-1 flex-col', spotlight && 'sm:mt-0')}>
         {showVagasuxTag ? <VagasuxLabel className="mb-2" /> : null}
 
-        <h3 className="text-base leading-snug font-black text-neutral-500 group-hover:text-brand-500">
+        <h3
+          className={cn(
+            'leading-snug font-black text-neutral-500 group-hover:text-brand-500',
+            spotlight ? 'text-lg md:text-xl' : 'text-base',
+          )}
+        >
           {artigo.title}
         </h3>
 

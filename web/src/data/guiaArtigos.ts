@@ -18,6 +18,9 @@ export type GuiaArtigo = {
   vagasuxPublication?: boolean
 }
 
+/** Artigo em destaque — publicação oficial VagasUX no Medium. */
+export const GUIA_FEATURED_ARTIGO_ID = '3b18cbb0d90480199280f8ca24f04d38'
+
 export const guiaArtigos: GuiaArtigo[] = [
   {
     "id": "c8de7c2ff27749fcb623b7728c8d6f6a",
@@ -59,7 +62,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ux-user-experience-design-em-portugues/a-onda-de-layoffs-e-o-risco-para-entrantes-no-mercado-de-tecnologia-e174d850cfdf",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3b18cbb0d904809d9e3ad5b7ab25c81e.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*ep46MZt3dTFDMXwv_16Uow.png",
+    "mediumCover": true
   },
   {
     "id": "7465a0ae379d484c9f662aee7f49f190",
@@ -125,7 +129,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ladies-that-ux-br/como-documentar-pesquisas-de-ux-no-notion-1095a61adfe0",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3212814f55484c4fb58fb4bccfaaa414.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*lL02HgXFOdXiUI_dMQUTXA.png",
+    "mediumCover": true
   },
   {
     "id": "0df0358045fb422db98e72a9608216a4",
@@ -167,7 +172,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/vagas-ux/como-foi-organizar-um-desafio-volunt%C3%A1rio-entre-designers-e-ongs-8c87f07f7740",
     "vagasuxPublication": true,
-    "imageUrl": "/guia/artigos/3b18cbb0d90480ef9856c04db89067a0.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*xXZwe_cBrnZW2wAiCoDVHA.png",
+    "mediumCover": true
   },
   {
     "id": "863481fcfb65445da0b1d88b663caee8",
@@ -233,7 +239,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ifood-tech/organizando-e-documentando-o-trabalho-de-produto-e-design-no-ifood-ca82b32d78ed",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3f693f150ac34619bf22a658e32155bf.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*fFlmwIRcm--3SKn1.jpg",
+    "mediumCover": true
   },
   {
     "id": "2455b2208b4e4689840cad03fdfe9cb5",
@@ -299,7 +306,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/labs-olx-brasil/desenhando-um-novo-chat-para-a-olx-773c3ce10a9f",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/691998f8137a470e92054cf71a76c388.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:3000/1*c-MyxF6qkoZ6mB_p7yZOUQ.jpeg",
+    "mediumCover": true
   },
   {
     "id": "24b8e61054574ab185759136d414fce7",
@@ -321,7 +329,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/meiuca/design-e-o-poder-da-adapta%C3%A7%C3%A3o-2cc380d4e8cf",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/24b8e61054574ab185759136d414fce7.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*y2crguSV_XQVTeKZaoNnRw.png",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d90480f5ad0aec613c6b93e0",
@@ -342,7 +351,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/vagas-ux/documenta%C3%A7%C3%A3o-handoff-e-qa-comunica%C3%A7%C3%A3o-em-product-design-3bf4b34729a3",
     "vagasuxPublication": true,
-    "imageUrl": "/guia/artigos/3b18cbb0d90480f5ad0aec613c6b93e0.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*tHKZpie_vQ-e6xfQ",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d90480238e59cd1bcea2eaa1",
@@ -363,7 +373,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/vagas-ux/e-quando-a-empresa-n%C3%A3o-precisa-de-um-designer-3f847a3fa2fc",
     "vagasuxPublication": true,
-    "imageUrl": "/guia/artigos/3b18cbb0d90480238e59cd1bcea2eaa1.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*Krl67l6ndcHGMq-_",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d90480199280f8ca24f04d38",
@@ -383,7 +394,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/vagas-ux/existe-tabu-em-vestir-a-camisa-de-j%C3%BAnior-ebc907db384",
     "vagasuxPublication": true,
-    "imageUrl": "/guia/artigos/3b18cbb0d90480199280f8ca24f04d38.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*ZwZTWCKR_hRaqFJMHNwG5A.png",
+    "mediumCover": true
   },
   {
     "id": "ecf2cdbcc7b247a5bde5933f1aa5f383",
@@ -404,7 +416,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/aela/gloss%C3%A1rio-do-product-designer-f2644656ccd0",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/ecf2cdbcc7b247a5bde5933f1aa5f383.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:500/1*G8BLsvfRt3K-E3je4Ozp4Q.gif",
+    "mediumCover": true
   },
   {
     "id": "5dd3b024c3864efabb52af819c41a5a6",
@@ -512,7 +525,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/quintoandar-design/nuggets-como-democratizar-pesquisas-de-design-9b1a717879f0",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/0bf0232b14184fc5b75a4eeeac764070.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*e0MuN9JYZiQT768WfAKrXw.png",
+    "mediumCover": true
   },
   {
     "id": "602b19616fee453cafe5ba00e9ee07b9",
@@ -553,7 +567,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/techatquero/ops-evolu%C3%ADmos-nosso-design-system-c7595df0d231",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/ef5e01ed5c5d4681adae93ac5306971d.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*tl4eahdOAOf6jawVWuHMwA.png",
+    "mediumCover": true
   },
   {
     "id": "2e4b215267b045db8aa6222b1ea1640b",
@@ -595,7 +610,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ux-user-experience-design-em-portugues/precisamos-falar-sobre-um-ou-v%C3%A1rios-elefantes-na-%C3%A1rea-de-ux-6a93561b73ca",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3b18cbb0d904805aba16c58f51ce7838.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1280/1*FzJTf3IH0F2s-OW_mC7UxA.png",
+    "mediumCover": true
   },
   {
     "id": "4711d4b232e94d6dbd61e01017efc382",
@@ -740,7 +756,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ux-user-experience-design-em-portugues/voluntariado-hands-on-conectando-a-pr%C3%A1tica-com-a-colabora%C3%A7%C3%A3o-4f1476f37d9c",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3b18cbb0d904807aa044cc98f91b00a4.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*VKnuUStf6EG4ofW1KNF_lQ.png",
+    "mediumCover": true
   }
 ]
 
@@ -759,4 +776,15 @@ export function filterGuiaArtigosByContext(
 ): GuiaArtigo[] {
   if (!contextTag) return articles
   return articles.filter((artigo) => artigo.context.includes(contextTag))
+}
+
+/** Separa o artigo em destaque dos demais, mantendo a ordem original do restante. */
+export function splitGuiaFeaturedArtigo(articles: GuiaArtigo[]): {
+  featured: GuiaArtigo | null
+  rest: GuiaArtigo[]
+} {
+  const featured =
+    articles.find((artigo) => artigo.id === GUIA_FEATURED_ARTIGO_ID) ?? null
+  const rest = articles.filter((artigo) => artigo.id !== GUIA_FEATURED_ARTIGO_ID)
+  return { featured, rest }
 }

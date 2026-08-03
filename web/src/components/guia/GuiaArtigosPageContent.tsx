@@ -5,6 +5,7 @@ import {
   filterGuiaArtigosByContext,
   getGuiaArtigoContextTags,
   guiaArtigos,
+  splitGuiaFeaturedArtigo,
 } from '@/data/guiaArtigos'
 
 type GuiaArtigosPageContentProps = {
@@ -22,6 +23,11 @@ export function GuiaArtigosPageContent({
   const filteredArtigos = useMemo(
     () => filterGuiaArtigosByContext(guiaArtigos, contextFilter),
     [contextFilter],
+  )
+
+  const { featured, rest } = useMemo(
+    () => splitGuiaFeaturedArtigo(filteredArtigos),
+    [filteredArtigos],
   )
 
   const countLabel =
@@ -53,19 +59,25 @@ export function GuiaArtigosPageContent({
         ariaLabel="Filtrar artigos por contexto"
       />
 
-      {filteredArtigos.length > 0 ? (
+      {featured ? (
+        <div className="mt-8">
+          <GuiaArtigoCard artigo={featured} featured spotlight />
+        </div>
+      ) : null}
+
+      {rest.length > 0 ? (
         <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {filteredArtigos.map((artigo) => (
+          {rest.map((artigo) => (
             <li key={artigo.id}>
               <GuiaArtigoCard artigo={artigo} className="h-full" />
             </li>
           ))}
         </ul>
-      ) : (
+      ) : !featured ? (
         <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
           Nenhum artigo encontrado para este contexto.
         </p>
-      )}
+      ) : null}
     </div>
   )
 }
