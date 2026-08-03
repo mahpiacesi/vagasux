@@ -204,24 +204,6 @@ export const guiaVideos: GuiaVideo[] = [
     "imageUrl": "https://i.ytimg.com/vi/sXwgAD7RRXY/hqdefault.jpg"
   },
   {
-    "id": "8bb2433c976344bb857c11520366b8fe",
-    "title": "Deficiência Tech Talk",
-    "authors": [
-      "Deficiência Tech"
-    ],
-    "context": [
-      "UX",
-      "Acessibilidade"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "https://youtu.be/OXBxJ4ex8TQ",
-    "vagasuxChannel": false,
-    "youtubeVideoId": "OXBxJ4ex8TQ",
-    "imageUrl": "https://i.ytimg.com/vi/OXBxJ4ex8TQ/hqdefault.jpg"
-  },
-  {
     "id": "46339e8edf8944f89c9f70cd4ba603a6",
     "title": "Designer precisa de faculdade?",
     "authors": [
