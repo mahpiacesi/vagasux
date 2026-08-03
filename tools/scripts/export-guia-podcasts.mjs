@@ -220,6 +220,10 @@ function mapPodcast(row, imageExtById) {
     url,
   }
 
+  if (row.createdTime) {
+    item.addedAt = String(row.createdTime).trim().replace(' ', 'T')
+  }
+
   if (isSpotifyShowUrl(url)) {
     const spotifyCover = fetchSpotifyCoverUrl(url)
     if (spotifyCover) item.imageUrl = spotifyCover
@@ -253,6 +257,8 @@ export type GuiaPodcast = {
   url: string
   /** Capa: Spotify, Anchor, Apple, SoundCloud (dinâmico) ou Notion local. */
   imageUrl?: string
+  /** Data de criação no Notion — ordenação do preview. */
+  addedAt?: string
 }
 
 /** Podcast oficial da VagasUX — sempre primeiro na listagem. */

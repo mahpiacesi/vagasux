@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import {
@@ -36,8 +37,10 @@ export function GuiaNewslettersPageContent({
       : `${filteredNewsletters.length} de ${guiaNewsletters.length} newsletters`
 
   return (
-    <div className="mt-8">
-      <header className="w-full">
+    <div className="mt-8 w-full">
+      <GuiaBackToGuiaLink tipoId="newsletters" />
+
+      <header className="mt-8 w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           {title}
         </h1>

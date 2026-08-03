@@ -1,6 +1,9 @@
 /** Guia internal routes: trilhas, temas, tipos. */
 export const guiaRoutes = {
   home: '/guia',
+  /** Volta à seção "Por tipo de conteúdo", opcionalmente com aba selecionada. */
+  homeTipos: (tipoId?: string) =>
+    tipoId ? `/guia?tipo=${encodeURIComponent(tipoId)}#tipos` : '/guia#tipos',
   trilha: (slug: string) => `/guia/trilhas/${slug}`,
   tema: (slug: string) => `/guia/tema/${slug}`,
   tipo: (slug: string) => `/guia/tipo/${slug}`,

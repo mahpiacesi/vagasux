@@ -57,7 +57,7 @@ function mapBook(row) {
   const languages = parseJsonArray(row['Língua'])
   const url = row['Onde encontrar?']?.trim() || ''
 
-  return {
+  const item = {
     id,
     title: row.Nome?.trim() || 'Sem título',
     authors,
@@ -65,6 +65,12 @@ function mapBook(row) {
     languages,
     url,
   }
+
+  if (row.createdTime) {
+    item.addedAt = String(row.createdTime).trim().replace(' ', 'T')
+  }
+
+  return item
 }
 
 function emitTs(books) {
@@ -78,6 +84,8 @@ export type GuiaBook = {
   context: string[]
   languages: string[]
   url: string
+  /** Data de criação no Notion — ordenação do preview. */
+  addedAt?: string
 }
 
 export const guiaBooks: GuiaBook[] = `

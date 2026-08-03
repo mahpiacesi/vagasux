@@ -1,7 +1,9 @@
 import { Navigate, useParams } from 'react-router-dom'
+import { GuiaArtigosPageContent } from '@/components/guia/GuiaArtigosPageContent'
 import { GuiaLivrosPageContent } from '@/components/guia/GuiaLivrosPageContent'
 import { GuiaNewslettersPageContent } from '@/components/guia/GuiaNewslettersPageContent'
 import { GuiaPodcastsPageContent } from '@/components/guia/GuiaPodcastsPageContent'
+import { GuiaVideosPageContent } from '@/components/guia/GuiaVideosPageContent'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { getGuiaTipoById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -12,6 +14,18 @@ export function GuiaTipoPage() {
 
   if (!tipo) {
     return <Navigate to={guiaRoutes.home} replace />
+  }
+
+  if (slug === 'artigos') {
+    return (
+      <GuiaArtigosPageContent
+        title={tipo.title}
+        description={
+          tipo.description ??
+          'Artigos de design, produto e UX para ler no seu ritmo, curados pela comunidade VagasUX.'
+        }
+      />
+    )
   }
 
   if (slug === 'livros') {
@@ -45,6 +59,18 @@ export function GuiaTipoPage() {
         description={
           tipo.description ??
           'Podcasts de design, produto e UX para ouvir no dia a dia, curados pela comunidade VagasUX.'
+        }
+      />
+    )
+  }
+
+  if (slug === 'videos') {
+    return (
+      <GuiaVideosPageContent
+        title={tipo.title}
+        description={
+          tipo.description ??
+          'Vídeos de design, produto e UX para assistir no seu ritmo, curados pela comunidade VagasUX.'
         }
       />
     )
