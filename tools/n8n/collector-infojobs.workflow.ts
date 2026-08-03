@@ -135,9 +135,19 @@ function decodeHtml(value) {
 
 function cleanCompanyName(value) {
   return decodeHtml(String(value || 'Empresa'))
-    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs\\.?\\s*Saiba o que isso significa\\.?\\s*$/i, '')
-    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs[^.]*\\.?\\s*$/i, '')
+    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs[^.]*\\.?\\s*(Saiba o que isso significa\\.?\\s*)?/gi, '')
+    .replace(/\\s+/g, ' ')
     .trim() || 'Empresa';
+}
+
+function stripInfojobsVerificationBadgeHtml(html) {
+  return String(html || '')
+    .replace(/<span[^>]*(?:data-bs-title|title)="[^"]*selo indica[^"]*"[^>]*>[\\s\\S]*?<\\/span>/gi, '')
+    .replace(/<span[^>]*>[\\s\\S]*?Este selo indica[\\s\\S]*?<\\/span>/gi, '');
+}
+
+function extractCompanyName(rawHtml) {
+  return cleanCompanyName(stripInfojobsVerificationBadgeHtml(rawHtml).replace(/<[^>]+>/g, ' '));
 }
 
 function normalizeTitle(title) {
@@ -183,7 +193,7 @@ function parseCards(fragmentHtml) {
     const dateMatch = block.match(/class="js_date" data-value="([^"]+)"/);
     const locationMatch = block.match(/<div class="mb-8">\\s*([^<]+)/);
     const companyMatch = block.match(/<div class="text-body">\\s*<a[^>]*>\\s*([\\s\\S]*?)\\s*<\\/a>/);
-    const company = cleanCompanyName(String(companyMatch?.[1] || 'Empresa').replace(/<[^>]+>/g, ' '));
+    const company = extractCompanyName(companyMatch?.[1] || 'Empresa');
     cards.push({
       id,
       href,

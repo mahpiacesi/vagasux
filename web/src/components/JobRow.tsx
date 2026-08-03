@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { labelDiscipline } from '@/lib/discipline'
 import {
   displayLocation,
+  displayCompany,
   formatJobListedAt,
   isNewJob,
   labelSeniority,
@@ -92,7 +93,7 @@ export function JobRow({
             {job.title}
           </h2>
           <p className="mt-1.5 text-sm font-semibold text-neutral-400">
-            {job.company}
+            {displayCompany(job.company)}
             {location ? (
               <span className="font-medium text-neutral-400/80"> · {location}</span>
             ) : null}

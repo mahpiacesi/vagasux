@@ -1,5 +1,5 @@
 import { disciplineMatchesFilter, resolveDiscipline } from './discipline'
-import { resolveIsInternational, resolveWorkModel } from './labels'
+import { displayCompany, resolveIsInternational, resolveWorkModel } from './labels'
 import { parseBrazilianState } from './location'
 import type { Job, JobFiltersState } from '../types/job'
 
@@ -47,7 +47,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
     const haystack = normalize(
       [
         job.title,
-        job.company,
+        displayCompany(job.company),
         job.location ?? '',
         job.area ?? '',
         job.role ?? '',

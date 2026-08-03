@@ -28,7 +28,7 @@ Coleta vagas de design do **InfoJobs Brasil** via fragmento HTML da listagem pú
 |-------|--------|
 | `source` | `'InfoJobs'` |
 | `source_job_id` | `data-id` no card |
-| `company` | link da empresa no card |
+| `company` | link da empresa no card (selo de verificação InfoJobs removido) |
 | `title` | `.js_vacancyTitle` |
 | `description` | `null` (listagem não traz descrição completa) |
 | `url` | `https://www.infojobs.com.br` + `data-href` |
