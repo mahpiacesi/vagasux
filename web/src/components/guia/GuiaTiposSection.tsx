@@ -3,9 +3,11 @@ import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
+import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
 import { guiaBooks } from '@/data/guiaBooks'
+import { guiaNewsletters } from '@/data/guiaNewsletters'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -20,6 +22,7 @@ export function GuiaTiposSection() {
     [selectedTipoId],
   )
   const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
+  const recentNewsletters = useMemo(() => guiaNewsletters.slice(0, 5), [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -106,6 +109,14 @@ export function GuiaTiposSection() {
               {recentBooks.map((book) => (
                 <li key={book.id}>
                   <GuiaBookCard book={book} className="h-full" />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'newsletters' && recentNewsletters.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentNewsletters.map((newsletter) => (
+                <li key={newsletter.id}>
+                  <GuiaNewsletterCard newsletter={newsletter} className="h-full" />
                 </li>
               ))}
             </ul>

@@ -1,18 +1,21 @@
 import { cn } from '@/lib/utils'
 
-type GuiaLivrosContextFilterProps = {
+type GuiaContextFilterProps = {
   tags: string[]
   value: string | null
   onChange: (tag: string | null) => void
   className?: string
+  /** Ex.: "Filtrar livros por contexto" */
+  ariaLabel?: string
 }
 
-export function GuiaLivrosContextFilter({
+export function GuiaContextFilter({
   tags,
   value,
   onChange,
   className,
-}: GuiaLivrosContextFilterProps) {
+  ariaLabel = 'Filtrar por contexto',
+}: GuiaContextFilterProps) {
   return (
     <div className={className}>
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
@@ -21,7 +24,7 @@ export function GuiaLivrosContextFilter({
       <div
         className="mt-3 flex flex-wrap gap-2"
         role="group"
-        aria-label="Filtrar livros por contexto"
+        aria-label={ariaLabel}
       >
         <button
           type="button"

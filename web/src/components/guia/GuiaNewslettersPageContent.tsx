@@ -1,33 +1,33 @@
 import { useMemo, useState } from 'react'
-import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
+import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import {
-  filterGuiaBooksByContext,
-  getGuiaBookContextTags,
-  guiaBooks,
-} from '@/data/guiaBooks'
+  filterGuiaNewslettersByContext,
+  getGuiaNewsletterContextTags,
+  guiaNewsletters,
+} from '@/data/guiaNewsletters'
 
-type GuiaLivrosPageContentProps = {
+type GuiaNewslettersPageContentProps = {
   title: string
   description?: string
 }
 
-export function GuiaLivrosPageContent({
+export function GuiaNewslettersPageContent({
   title,
   description,
-}: GuiaLivrosPageContentProps) {
+}: GuiaNewslettersPageContentProps) {
   const [contextFilter, setContextFilter] = useState<string | null>(null)
-  const contextTags = useMemo(() => getGuiaBookContextTags(), [])
+  const contextTags = useMemo(() => getGuiaNewsletterContextTags(), [])
 
-  const filteredBooks = useMemo(
-    () => filterGuiaBooksByContext(guiaBooks, contextFilter),
+  const filteredNewsletters = useMemo(
+    () => filterGuiaNewslettersByContext(guiaNewsletters, contextFilter),
     [contextFilter],
   )
 
   const countLabel =
     contextFilter === null
-      ? `${guiaBooks.length} livros curados`
-      : `${filteredBooks.length} de ${guiaBooks.length} livros`
+      ? `${guiaNewsletters.length} newsletters curadas`
+      : `${filteredNewsletters.length} de ${guiaNewsletters.length} newsletters`
 
   return (
     <div className="mt-8">
@@ -50,20 +50,20 @@ export function GuiaLivrosPageContent({
         tags={contextTags}
         value={contextFilter}
         onChange={setContextFilter}
-        ariaLabel="Filtrar livros por contexto"
+        ariaLabel="Filtrar newsletters por contexto"
       />
 
-      {filteredBooks.length > 0 ? (
+      {filteredNewsletters.length > 0 ? (
         <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {filteredBooks.map((book) => (
-            <li key={book.id}>
-              <GuiaBookCard book={book} className="h-full" />
+          {filteredNewsletters.map((newsletter) => (
+            <li key={newsletter.id}>
+              <GuiaNewsletterCard newsletter={newsletter} className="h-full" />
             </li>
           ))}
         </ul>
       ) : (
         <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
-          Nenhum livro encontrado para este contexto.
+          Nenhuma newsletter encontrada para este contexto.
         </p>
       )}
     </div>
