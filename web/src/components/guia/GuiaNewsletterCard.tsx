@@ -4,21 +4,25 @@ import { Badge } from '@/components/ui/badge'
 import type { GuiaNewsletter } from '@/data/guiaNewsletters'
 import { cn } from '@/lib/utils'
 
+export const GUIA_NEWSLETTER_FEATURED_LABEL = 'News oficial'
+
 type GuiaNewsletterCardProps = {
   newsletter: GuiaNewsletter
   className?: string
-  /** Destaque visual para a newsletter da comunidade. */
+  /** Destaque visual para a newsletter oficial da VagasUX. */
   featured?: boolean
-  /** Layout horizontal em telas maiores (usado no spotlight da página). */
+  /** Layout horizontal compacto no topo da página de newsletters. */
   spotlight?: boolean
 }
 
 function NewsletterCover({
   newsletter,
   className,
+  spotlight = false,
 }: {
   newsletter: GuiaNewsletter
   className?: string
+  spotlight?: boolean
 }) {
   const [failed, setFailed] = useState(false)
 
@@ -26,11 +30,12 @@ function NewsletterCover({
     return (
       <div
         className={cn(
-          'flex aspect-video w-full items-center justify-center rounded-xl bg-brand-100/60 text-brand-400',
+          'flex w-full items-center justify-center rounded-xl bg-brand-100/60 text-brand-400',
+          spotlight ? 'aspect-[5/3] max-h-28 sm:max-h-32' : 'aspect-video',
           className,
         )}
       >
-        <EnvelopeSimple size={40} weight="duotone" aria-hidden />
+        <EnvelopeSimple size={spotlight ? 32 : 40} weight="duotone" aria-hidden />
       </div>
     )
   }
@@ -43,10 +48,24 @@ function NewsletterCover({
       decoding="async"
       onError={() => setFailed(true)}
       className={cn(
-        'aspect-video w-full rounded-xl border border-neutral-500/5 bg-neutral-100 object-contain object-center shadow-sm',
+        'w-full rounded-xl border border-neutral-500/5 bg-neutral-100 object-contain object-center shadow-sm',
+        spotlight ? 'aspect-[5/3] max-h-28 sm:max-h-32' : 'aspect-video',
         className,
       )}
     />
+  )
+}
+
+function FeaturedLabel({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn(
+        'inline-flex rounded-full bg-brand-400 px-3 py-1 text-[0.65rem] font-bold tracking-[0.14em] text-neutral-100 uppercase',
+        className,
+      )}
+    >
+      {GUIA_NEWSLETTER_FEATURED_LABEL}
+    </span>
   )
 }
 
@@ -66,26 +85,23 @@ export function GuiaNewsletterCard({
       className={cn(
         'group flex h-full flex-col rounded-2xl border p-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
         featured
-          ? 'border-brand-300 bg-gradient-to-br from-brand-100/90 via-brand-100/40 to-neutral-100 shadow-[0_16px_48px_-20px_rgb(61_74_195_/_0.45)] hover:border-brand-400 hover:from-brand-100 hover:to-brand-100/50'
+          ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
           : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
-        spotlight && 'sm:flex-row sm:items-stretch sm:gap-6 sm:p-6',
+        spotlight && 'sm:flex-row sm:items-center sm:gap-5',
         className,
       )}
     >
-      <div className={cn(spotlight && 'sm:w-[min(42%,18rem)] sm:shrink-0')}>
-        {featured ? (
-          <span className="mb-3 inline-flex rounded-full bg-brand-400 px-3 py-1 text-[0.65rem] font-bold tracking-[0.14em] text-neutral-100 uppercase">
-            Newsletter da comunidade
-          </span>
-        ) : null}
-        <NewsletterCover newsletter={newsletter} />
+      <div className={cn(spotlight && 'sm:w-44 sm:shrink-0')}>
+        <NewsletterCover newsletter={newsletter} spotlight={spotlight} />
       </div>
 
-      <div className={cn('mt-4 flex flex-1 flex-col', spotlight && 'sm:mt-0 sm:py-1')}>
+      <div className={cn('mt-4 flex flex-1 flex-col', spotlight && 'sm:mt-0')}>
+        {featured ? <FeaturedLabel className="mb-2" /> : null}
+
         <h3
           className={cn(
             'leading-snug font-black text-neutral-500 group-hover:text-brand-500',
-            spotlight ? 'text-xl md:text-2xl' : 'text-base',
+            spotlight ? 'text-lg md:text-xl' : 'text-base',
           )}
         >
           {newsletter.title}
@@ -94,8 +110,8 @@ export function GuiaNewsletterCard({
         {authorLabel ? (
           <p
             className={cn(
-              'mt-2 font-semibold text-neutral-400',
-              spotlight ? 'text-base' : 'text-sm',
+              'mt-1.5 font-semibold text-neutral-400',
+              spotlight ? 'text-sm' : 'text-sm',
             )}
           >
             {authorLabel}
@@ -103,7 +119,7 @@ export function GuiaNewsletterCard({
         ) : null}
 
         {newsletter.context.length > 0 ? (
-          <div className="mt-3 flex flex-wrap gap-1.5">
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
             {newsletter.context.map((tag) => (
               <Badge
                 key={tag}
@@ -119,7 +135,7 @@ export function GuiaNewsletterCard({
           </div>
         ) : null}
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-4">
+        <div className="mt-auto flex items-center justify-between gap-2 pt-3">
           {newsletter.languages.length > 0 ? (
             <p
               className="text-sm"
@@ -131,7 +147,7 @@ export function GuiaNewsletterCard({
             <span />
           )}
           <ArrowSquareOut
-            size={spotlight ? 20 : 16}
+            size={16}
             weight="bold"
             className="shrink-0 text-brand-400"
             aria-hidden

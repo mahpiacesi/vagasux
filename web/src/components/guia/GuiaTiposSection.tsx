@@ -12,6 +12,11 @@ import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
+function getVerTodosLabel(tipoId: string, title: string): string {
+  if (tipoId === 'newsletters') return 'Ver todas as newsletters'
+  return `Ver todos os ${title.toLowerCase()}`
+}
+
 export function GuiaTiposSection() {
   const [selectedTipoId, setSelectedTipoId] = useState(guiaTipos[0]?.id ?? 'artigos')
   const tablistId = useId()
@@ -102,7 +107,7 @@ export function GuiaTiposSection() {
               className="w-full shrink-0 border-brand-200 bg-brand-100/40 font-bold text-brand-500 hover:bg-brand-100 sm:w-auto"
             >
               <Link to={guiaRoutes.tipo(selectedTipoId)}>
-                Ver todos os {selectedTipo?.title?.toLowerCase()}
+                {getVerTodosLabel(selectedTipoId, selectedTipo?.title ?? '')}
                 <ArrowRight size={16} weight="bold" aria-hidden />
               </Link>
             </Button>

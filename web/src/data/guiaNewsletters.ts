@@ -12,7 +12,7 @@ export type GuiaNewsletter = {
   imageUrl?: string
 }
 
-/** Newsletter da comunidade — sempre primeiro na listagem. */
+/** Newsletter oficial da VagasUX — sempre primeiro na listagem. */
 export const GUIA_FEATURED_NEWSLETTER_ID = 'aa4cb080c5774edda987a7ac45d0a2a3'
 
 export const guiaNewsletters: GuiaNewsletter[] = [
