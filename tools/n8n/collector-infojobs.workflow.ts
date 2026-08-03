@@ -180,6 +180,17 @@ function mapWorkModel(title, location, cardHtml) {
   return 'unknown';
 }
 
+function extractCardDescription(block) {
+  const text = decodeHtml(String(block || '')
+    .replace(/<script[\\s\\S]*?<\\/script>/gi, '')
+    .replace(/<style[\\s\\S]*?<\\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/\\s+/g, ' ')
+    .trim();
+  if (text.length < 50) return null;
+  return text.slice(0, 3000);
+}
+
 function parseCards(fragmentHtml) {
   const html = String(fragmentHtml || '');
   const cards = [];
@@ -239,7 +250,7 @@ for (const card of byId.values()) {
       source_job_id: String(card.id),
       company: cleanCompanyName(String(card.company || 'Empresa').trim()),
       title,
-      description: null,
+      description: extractCardDescription(card.block),
       url,
       location: card.location || null,
       published_at: publishedAt,

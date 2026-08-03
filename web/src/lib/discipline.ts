@@ -86,7 +86,7 @@ const MOTION_HEADLINE =
   /\b(motion designer|motion design|animador ui|ui animation|animacao ui|lottie)\b/
 
 const VISUAL_HEADLINE =
-  /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|midia designer|designer de midia|designer midia|designer de conteudo|designer multimidia|designer mult midia|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes)\b/
+  /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|web designer|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio de design|estagiario de designer|estagio de designer|estagiario designer|estagio designer|producao grafica|designer de producao|arte finalista|estagiario de design|estagio em design|estagiario em design|estagio em comunicacao|material grafico|pecas graficas|midia digital|midia designer|designer de midia|designer midia|designer de conteudo|designer multimidia|designer mult midia|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes|assistente de designer)\b/
 
 const UI_HEADLINE =
   /\b(ui designer|designer de interface|designer ui|ui design|interface designer|designer de ui)\b/
@@ -165,7 +165,9 @@ function isExclusiveUiUxProductScope(input: {
 
 function isGenericDesignerTitle(title: string): boolean {
   const t = title.replace(/\s+/g, ' ').trim()
-  return /^designer(\s*[-–|]\s*(pj|clt|freela|freelance|pleno|pl|junior|jr|senior|sr|júnior|sênior))?\.?\s*$/i.test(t)
+  return /^designer(?:\s*[-–|]?\s*(?:pj|clt|freela|freelance|pleno|pl|junior|jr|senior|sr|júnior|sênior))?\.?\s*$/i.test(
+    t,
+  )
 }
 
 function isContentDesignJob(input: {
@@ -629,8 +631,8 @@ export function resolveDiscipline(input: {
   if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'ux_research' && inferred !== 'ux_research') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') {
-    if (isClearlyGraphicJob(input)) return 'visual_graphic'
-    return 'product_design'
+    if (isExclusiveUiUxProductScope(input)) return 'product_design'
+    return 'visual_graphic'
   }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (parsed === 'product_design' && isClearlyGraphicJob(input)) return 'visual_graphic'
