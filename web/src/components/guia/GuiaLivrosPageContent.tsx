@@ -28,7 +28,7 @@ export function GuiaLivrosPageContent({
         </p>
       </div>
 
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {guiaBooks.map((book) => (
           <li key={book.id}>
             <GuiaBookCard book={book} className="h-full" />

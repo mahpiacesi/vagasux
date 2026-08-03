@@ -8,6 +8,8 @@ export type GuiaBook = {
   context: string[]
   languages: string[]
   url: string
+  /** Capa explícita quando o export do Notion incluir (opcional). Overrides em guiaBookCoverOverrides.ts */
+  coverUrl?: string
 }
 
 export const guiaBooks: GuiaBook[] = [
@@ -463,7 +465,7 @@ export const guiaBooks: GuiaBook[] = [
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://issuu.com/andre-grilo/docs/experienciadousuarioinnterfaces_gri"
+    "url": "https://repositorio.ufrn.br/items/75fa509e-c939-4829-9342-491e0342a802"
   },
   {
     "id": "3b18cbb0d90480c39e98f6913280716e",
@@ -745,24 +747,6 @@ export const guiaBooks: GuiaBook[] = [
       "🇧🇷"
     ],
     "url": "https://educ.rec.br/escoladofuturoemcasa/wp-content/uploads/2021/08/LIVRO-BRANCO-DA-TECNOLOGIA-ASSISTIVA-NO-BRASIL.-Jesus-Carlos-Delgado-Garcia-Org.-ITS-BRASIL-Org..pdf"
-  },
-  {
-    "id": "f941e2670d764b3bba640296d73ec291",
-    "title": "Livros que todo designer deve comprar",
-    "authors": [
-      "Willian Matiola"
-    ],
-    "context": [
-      "UI",
-      "UX",
-      "Produto",
-      "Research",
-      "Writing"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "http://bit.ly/designlivros"
   },
   {
     "id": "74f00778b014479193a3252c9fb53936",

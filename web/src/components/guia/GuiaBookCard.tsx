@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowSquareOut, BookOpen } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import type { GuiaBook } from '@/data/guiaBooks'
-import { amazonCoverUrl } from '@/lib/amazonCover'
+import { resolveBookCoverUrl } from '@/lib/guiaBookCover'
 import { cn } from '@/lib/utils'
 
 type GuiaBookCardProps = {
@@ -12,7 +12,7 @@ type GuiaBookCardProps = {
 
 function BookCover({ book }: { book: GuiaBook }) {
   const [failed, setFailed] = useState(false)
-  const coverSrc = amazonCoverUrl(book.url)
+  const coverSrc = resolveBookCoverUrl(book)
 
   if (!coverSrc || failed) {
     return (

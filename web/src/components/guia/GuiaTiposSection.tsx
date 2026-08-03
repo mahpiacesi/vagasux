@@ -19,7 +19,7 @@ export function GuiaTiposSection() {
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
   )
-  const recentBooks = useMemo(() => guiaBooks.slice(0, 3), [])
+  const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -102,7 +102,7 @@ export function GuiaTiposSection() {
           </div>
 
           {selectedTipoId === 'livros' && recentBooks.length > 0 ? (
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {recentBooks.map((book) => (
                 <li key={book.id}>
                   <GuiaBookCard book={book} className="h-full" />
