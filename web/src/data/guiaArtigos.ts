@@ -151,7 +151,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/magnetis-design/como-fizemos-pesquisa-pelo-whatsapp-cf8efebcda4b",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/0df0358045fb422db98e72a9608216a4.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*sxJMbB1BTzglAxce12IJ9A.jpeg",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d90480ef9856c04db89067a0",
@@ -217,7 +218,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://brasil.uxdesign.cc/como-montar-um-portf%C3%B3lio-de-ux-se-eu-ainda-n%C3%A3o-trabalho-com-ux-c5ec6434de20",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/c4dfe01495ec4f30a3e9e416ad47c14d.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*zyK52ZY99TonbbrtmbYygQ.jpeg",
+    "mediumCover": true
   },
   {
     "id": "3f693f150ac34619bf22a658e32155bf",
@@ -261,7 +263,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://coletivoux.com/como-planejar-uma-pesquisa-de-ux-3a66497ed9be",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/2455b2208b4e4689840cad03fdfe9cb5.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*m6ozr9NsA_thFC5lesFyvg.gif",
+    "mediumCover": true
   },
   {
     "id": "acbeafafb55c4bf0882628bdd780defc",
@@ -460,7 +463,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/ux-user-experience-design-em-portugues/mentorias-pra-quem-t%C3%A1-come%C3%A7ando-como-funcionam-e-por-que-fazer-2dbeb8b9527b",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/3b18cbb0d90480e6acbed6c8101dc2fa.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*gADDjFywTS1zZ9cu50JLWg.png",
+    "mediumCover": true
   },
   {
     "id": "7d94a3b8c6034940b2fe8f7437a36a75",
@@ -506,7 +510,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://brasil.uxdesign.cc/nossa-ind%C3%BAstria-precisa-de-mais-designers-e-o-mais-importante-um-tipo-diferente-de-designer-9e59d0f25060",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/a0b8994b1460434cb223dffe96ec7fc2.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*V2tEz-VDzHocMbwm.jpeg",
+    "mediumCover": true
   },
   {
     "id": "0bf0232b14184fc5b75a4eeeac764070",
@@ -632,7 +637,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://brasil.uxdesign.cc/qual-o-papel-do-ui-designer-na-constru%C3%A7%C3%A3o-de-um-produto-1b07dded5d09",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/4711d4b232e94d6dbd61e01017efc382.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*wE9dfPvQybLn25rML1OjXQ.jpeg",
+    "mediumCover": true
   },
   {
     "id": "d61cb321ee26469abe748ade5283f956",
@@ -653,7 +659,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://brasil.uxdesign.cc/ser-um-ux-generalista-ou-um-ux-especialista-eis-a-quest%C3%A3o-90b39c7a6b1f",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/d61cb321ee26469abe748ade5283f956.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:500/0*Pap14IYogV6ik67C.png",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d904800387b9d71c3077419d",
@@ -694,7 +701,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://coletivoux.com/ux-design-psicanalise-2-38550e8fd941",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/e87ac2cef4d3492792600685f550a327.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*DinSbIXVtNIdc_zBbcGk8g.jpeg",
+    "mediumCover": true
   },
   {
     "id": "39d26cf5c2d24785b866503b5a1cb68a",
@@ -715,7 +723,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/quintoandar-design/ux-writing-em-produto-a-l%C3%B3gica-por-tr%C3%A1s-do-conte%C3%BAdo-2e7aa0de3b9",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/39d26cf5c2d24785b866503b5a1cb68a.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*fMqDoZ_YzJuQzk-lRMTgSA.jpeg",
+    "mediumCover": true
   },
   {
     "id": "8b78a51e463f41478964fc7b0650d205",
@@ -736,7 +745,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://brasil.uxdesign.cc/voc%C3%AA-n%C3%A3o-precisa-saber-tudo-sobre-ux-175e53933f60",
     "vagasuxPublication": false,
-    "imageUrl": "/guia/artigos/8b78a51e463f41478964fc7b0650d205.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*uolQeS3oH07YWIshMSFu1w.jpeg",
+    "mediumCover": true
   },
   {
     "id": "3b18cbb0d904807aa044cc98f91b00a4",

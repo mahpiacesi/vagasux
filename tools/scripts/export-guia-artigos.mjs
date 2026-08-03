@@ -148,6 +148,30 @@ function extractOgImageFromHtml(html) {
   return match?.[1] ?? null
 }
 
+function miroUrlFromImageId(imageId) {
+  if (!imageId) return null
+  if (imageId.startsWith('http')) return imageId
+  return `https://miro.medium.com/v2/resize:fit:1400/${imageId}`
+}
+
+/** Medium lite/SPA: capa em previewImage ou jsonLd quando og:image não vem no HTML. */
+function extractMediumImageFromHtml(html) {
+  const ogImage = extractOgImageFromHtml(html)
+  if (ogImage) return ogImage
+
+  const previewMatch = html.match(
+    /"previewImage":\{"(?:__typename":"ImageMetadata",)?"id":"(1\*[^"]+)"/,
+  )
+  if (previewMatch) return miroUrlFromImageId(previewMatch[1])
+
+  const jsonLdMatch =
+    html.match(/"image":\["https:\\u002F\\u002Fmiro\.medium\.com\\u002F(1\*[^"]+)"/) ??
+    html.match(/"image":\["https:\/\/miro\.medium\.com\/(1\*[^"]+)"/)
+  if (jsonLdMatch) return miroUrlFromImageId(jsonLdMatch[1])
+
+  return null
+}
+
 /** Hero image a partir do markdown do jina.ai (medium.com bloqueia fetch direto). */
 function extractHeroFromJinaMarkdown(text) {
   const urls = [...text.matchAll(/https:\/\/miro\.medium\.com\/[^\s)"']+/g)].map(
@@ -161,39 +185,62 @@ function extractHeroFromJinaMarkdown(text) {
   return hero ?? null
 }
 
-function fetchViaJinaReader(articleUrl) {
-  try {
-    const text = execFileSync(
-      'curl',
-      ['-fsSL', '-A', 'Mozilla/5.0 (compatible; VagasUX-Export/1.0)', `${JINA_READER_PREFIX}${articleUrl}`],
-      { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 },
-    )
-    return extractOgImageFromHtml(text) ?? extractHeroFromJinaMarkdown(text)
-  } catch {
-    return null
+function fetchViaJinaReader(articleUrl, retries = 1) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const text = execFileSync(
+        'curl',
+        [
+          '-fsSL',
+          '-A',
+          'Mozilla/5.0 (compatible; VagasUX-Export/1.0)',
+          `${JINA_READER_PREFIX}${articleUrl}`,
+        ],
+        { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 },
+      )
+      return (
+        extractMediumImageFromHtml(text) ??
+        extractHeroFromJinaMarkdown(text)
+      )
+    } catch {
+      if (attempt < retries) {
+        execFileSync('sleep', ['5'])
+      }
+    }
   }
+  return null
 }
 
-function isMediumHost(url) {
+/** URLs alternativas quando o domínio customizado bloqueia fetch direto. */
+function alternateArticleUrls(articleUrl) {
   try {
-    const host = new URL(url).hostname.toLowerCase()
-    return host === 'medium.com' || host.endsWith('.medium.com')
+    const parsed = new URL(articleUrl)
+    const slug = parsed.pathname.replace(/^\//, '')
+    if (!slug) return []
+
+    if (parsed.hostname === 'coletivoux.com') {
+      return [`https://medium.com/@coletivoux/${slug}`]
+    }
   } catch {
-    return /medium\.com/i.test(url)
+    /* ignore */
   }
+  return []
 }
 
-/** Capa via og:image; medium.com usa jina.ai quando o fetch direto retorna 403. */
+/** Capa via fetch direto; jina.ai como fallback quando falha ou não há og:image. */
 function fetchMediumOgImage(articleUrl) {
-  try {
-    const ogImage = extractOgImageFromHtml(fetchPageHtml(articleUrl))
-    if (ogImage) return ogImage
-  } catch {
-    /* direct fetch failed — try jina for medium.com */
-  }
+  const candidates = [articleUrl, ...alternateArticleUrls(articleUrl)]
 
-  if (isMediumHost(articleUrl)) {
-    return fetchViaJinaReader(articleUrl)
+  for (const url of candidates) {
+    try {
+      const image = extractMediumImageFromHtml(fetchPageHtml(url))
+      if (image) return image
+    } catch {
+      /* direct fetch failed */
+    }
+
+    const jinaImage = fetchViaJinaReader(url)
+    if (jinaImage) return jinaImage
   }
 
   return null
