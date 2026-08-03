@@ -53,7 +53,7 @@ const MOTION_HEADLINE =
   /\b(motion designer|motion design|animador ui|ui animation|animacao ui|lottie)\b/
 
 const VISUAL_HEADLINE =
-  /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|design de comunicacao|design de conteudo criativo)\b/
+  /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|midia designer|designer de midia|designer midia|designer de conteudo|designer multimidia|designer mult midia|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes)\b/
 
 const VISUAL_DESCRIPTION =
   /\b(redes sociais|social media|instagram|stories|reels|tiktok|facebook ads|google ads|midia paga|performance|crm|e-mail marketing|email marketing|material grafico|pecas graficas|comunicacao visual|identidade visual|branding|impresso|print|folder|banner|flyer|catalogo|packaging|embalagem|campanha publicitaria|marketing digital|materiais de marketing)\b/
@@ -156,6 +156,9 @@ function isVisualGraphicJob(input: {
   const headline = headlineText(input)
   const text = jobText(input)
   const area = normalizeJobText(input.area)
+  const titleNorm = normalizeJobText(input.title).replace(/\s+/g, ' ').trim()
+
+  if (isGenericDesignerTitle(titleNorm) && !isExclusiveUiUxProductScope(input)) return true
 
   if (VISUAL_HEADLINE.test(headline)) return true
 
@@ -193,6 +196,8 @@ function isContentDesignJob(input: {
   ) {
     return false
   }
+
+  if (/\bdesigner de conteudo\b/.test(headline)) return false
 
   if (CONTENT_HEADLINE.test(headline)) return true
 
@@ -509,7 +514,7 @@ export function inferDisciplineFromJob(input: {
 
   const titleNorm = normalizeJobText(input.title).replace(/\s+/g, ' ').trim()
   if (isGenericDesignerTitle(titleNorm) && !isExclusiveUiUxProductScope(input)) {
-    return DEFAULT_DISCIPLINE
+    return 'visual_graphic'
   }
 
   if (
@@ -540,10 +545,11 @@ export function resolveDiscipline(input: {
   if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'ux_research' && inferred !== 'ux_research') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') {
-    if (isClearlyGraphicJob(input)) return 'visual_graphic'
+    if (isVisualGraphicJob(input)) return 'visual_graphic'
     return 'product_design'
   }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
+  if (parsed === 'product_design' && isVisualGraphicJob(input)) return 'visual_graphic'
   if (
     parsed === 'product_design' &&
     (inferred === 'ux' ||
@@ -574,7 +580,7 @@ function headlineText(input) {
   return normalizeJobText([input.title, input.area, input.role].filter(Boolean).join(' '));
 }
 const MOTION_HEADLINE = /\b(motion designer|motion design|animador ui|ui animation|animacao ui|lottie)\b/;
-const VISUAL_HEADLINE = /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes)\b/;
+const VISUAL_HEADLINE = /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|midia designer|designer de midia|designer midia|designer de conteudo|designer multimidia|designer mult midia|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes)\b/;
 const VISUAL_DESCRIPTION = /\b(redes sociais|social media|instagram|stories|reels|tiktok|facebook ads|google ads|midia paga|performance|crm|e-mail marketing|email marketing|material grafico|pecas graficas|comunicacao visual|identidade visual|branding|impresso|print|folder|banner|flyer|catalogo|packaging|embalagem|campanha publicitaria|marketing digital|materiais de marketing)\b/;
 const PRODUCT_HEADLINE = /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux|design system|design de experiencia digital)\b/;
 const UI_FOCUS_DESCRIPTION = /\b(forte foco em ui|foco em ui|foco principal em ui|primary focus on ui|strong ui focus|focused on ui|olhar apurado para ui|especializado em ui|especialista em ui|high polish ui|acabamento visual)\b/;
@@ -651,6 +657,8 @@ function isContentDesignJob(input) {
   ) {
     return false
   }
+
+  if (/\bdesigner de conteudo\b/.test(headline)) return false
 
   if (CONTENT_HEADLINE.test(headline)) return true
 
@@ -857,6 +865,11 @@ function isClearlyGraphicJob(input) {
 
   if (isMarketingGraphicHeadline(headline)) return true
 
+  const titleNorm = normalizeJobText(input.title).replace(/\s+/g, ' ').trim()
+  if (isGenericDesignerTitle(titleNorm) && !isExclusiveUiUxProductScope(input)) {
+    return true
+  }
+
   if (VISUAL_HEADLINE.test(headline)) return true
   if (role && /grafico|graphic|visual|brand|marketing|comunicacao|criativo/.test(role)) return true
 
@@ -1008,7 +1021,7 @@ function inferDisciplineFromJob(input) {
 
   const titleNorm = normalizeJobText(input.title).replace(/\s+/g, ' ').trim()
   if (isGenericDesignerTitle(titleNorm) && !isExclusiveUiUxProductScope(input)) {
-    return DEFAULT_DISCIPLINE
+    return 'visual_graphic'
   }
 
   if (
@@ -1037,6 +1050,7 @@ function resolveDiscipline(input) {
     return 'product_design'
   }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
+  if (parsed === 'product_design' && isClearlyGraphicJob(input)) return 'visual_graphic'
   if (
     parsed === 'product_design' &&
     (inferred === 'ux' ||
