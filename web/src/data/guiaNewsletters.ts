@@ -10,6 +10,8 @@ export type GuiaNewsletter = {
   url: string
   /** Capa baixada do Notion (opcional). */
   imageUrl?: string
+  /** Data de criação no Notion — ordenação do preview. */
+  addedAt?: string
 }
 
 /** Newsletter oficial da VagasUX — sempre primeiro na listagem. */
@@ -30,6 +32,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.ideatelabs.co/31-days-of-ui-ux-newsletter",
+    "addedAt": "2021-10-01T02:16:00Z",
     "imageUrl": "/guia/newsletters/1df06144d72a46c2841486c396c8040c.png"
   },
   {
@@ -46,6 +49,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://awariprodutoux.substack.com/about",
+    "addedAt": "2021-05-31T15:42:00Z",
     "imageUrl": "/guia/newsletters/60e58174bd424a8fa3807358cdac2841.png"
   },
   {
@@ -63,6 +67,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://www.bitstobrands.com/",
+    "addedAt": "2020-08-02T19:30:00Z",
     "imageUrl": "/guia/newsletters/2f942b966cdd4c319d15967f72a9841c.png"
   },
   {
@@ -81,6 +86,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://arthurcastro.substack.com/",
+    "addedAt": "2024-10-09T14:46:27Z",
     "imageUrl": "/guia/newsletters/11a8cbb0d90480e8b2bffca3246d9feb.png"
   },
   {
@@ -97,6 +103,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://savemeteacher.substack.com/",
+    "addedAt": "2024-07-03T22:27:00Z",
     "imageUrl": "/guia/newsletters/bf39fc721adf4787b35eaf1896692824.png"
   },
   {
@@ -113,6 +120,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.dailyui.co/",
+    "addedAt": "2020-08-03T22:35:00Z",
     "imageUrl": "/guia/newsletters/0280600fb4e44a6dbb5714a38e4d60d6.png"
   },
   {
@@ -131,6 +139,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://appariciojr.substack.com/",
+    "addedAt": "2025-02-26T21:11:13Z",
     "imageUrl": "/guia/newsletters/1a68cbb0d90480568620d07e83829e3c.png"
   },
   {
@@ -149,6 +158,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://designmodo.com/subscribe/",
+    "addedAt": "2020-08-02T20:01:00Z",
     "imageUrl": "/guia/newsletters/22f34007b71a4b47b002d89459a3c460.gif"
   },
   {
@@ -166,6 +176,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://emanualcriativo.substack.com/",
+    "addedAt": "2024-07-03T22:19:59Z",
     "imageUrl": "/guia/newsletters/6afd910e33164971a6855efa747e769a.png"
   },
   {
@@ -183,6 +194,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://hackdesign.org/",
+    "addedAt": "2020-10-05T03:55:00Z",
     "imageUrl": "/guia/newsletters/6c19156b32574168a44383a15f4b4101.png"
   },
   {
@@ -199,6 +211,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://www.bernarddeluna.com.br/newsletter",
+    "addedAt": "2020-08-04T23:11:00Z",
     "imageUrl": "/guia/newsletters/76af7146218e4d6291056ecee9e87bc6.png"
   },
   {
@@ -216,6 +229,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://mandarefs.substack.com/",
+    "addedAt": "2024-07-03T22:24:10Z",
     "imageUrl": "/guia/newsletters/8641aee0d0604a5bbf3fe9ba3a6527fa.png"
   },
   {
@@ -235,6 +249,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://ninatalks.substack.com/",
+    "addedAt": "2024-03-13T12:45:07Z",
     "imageUrl": "/guia/newsletters/b8b52ba6cbc946518e21390d5e67b78e.png"
   },
   {
@@ -250,6 +265,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://olharcriativo.substack.com/",
+    "addedAt": "2024-07-03T22:18:31Z",
     "imageUrl": "/guia/newsletters/9f8738f3acec4eda95fb88125314dd7c.png"
   },
   {
@@ -268,6 +284,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://www.packlead.com.br/",
+    "addedAt": "2024-07-03T22:30:16Z",
     "imageUrl": "/guia/newsletters/1f2233e63f1343df91c6e33fa1264a3e.png"
   },
   {
@@ -286,6 +303,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://produtosparahumanos.substack.com/",
+    "addedAt": "2024-07-03T21:25:04Z",
     "imageUrl": "/guia/newsletters/4d5744eb94414b76ab762eca00fd0b7c.png"
   },
   {
@@ -303,6 +321,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://reallygoodemails.com/",
+    "addedAt": "2020-08-02T20:08:00Z",
     "imageUrl": "/guia/newsletters/827617993b1c441792e90247b7094f1f.png"
   },
   {
@@ -319,6 +338,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.reallygoodux.io/",
+    "addedAt": "2020-08-03T01:25:00Z",
     "imageUrl": "/guia/newsletters/caf3aaedf6724e29a8be4314bf01d687.png"
   },
   {
@@ -334,6 +354,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.seesaw.website/",
+    "addedAt": "2024-10-09T14:06:00Z",
     "imageUrl": "/guia/newsletters/11a8cbb0d90480de8fc9f2074fc93942.png"
   },
   {
@@ -350,6 +371,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://sidebar.io/",
+    "addedAt": "2020-08-02T19:45:00Z",
     "imageUrl": "/guia/newsletters/f07ffc48fbdf499c96c4e3fd1180bed5.png"
   },
   {
@@ -368,6 +390,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://willianmatiola.substack.com/",
+    "addedAt": "2024-07-03T22:35:10Z",
     "imageUrl": "/guia/newsletters/9653f73d02f64fc591d1b0cf956d4273.png"
   },
   {
@@ -386,6 +409,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://embeds.beehiiv.com/4b1877b0-3a2a-4f0b-a256-33cc66d5f96e",
+    "addedAt": "2020-08-02T19:22:00Z",
     "imageUrl": "/guia/newsletters/245c13622abc4aff9eba77c5be2e9f38.png"
   },
   {
@@ -404,6 +428,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://app.thenewscc.com.br/subscribe?ref=l45vo3m7pb",
+    "addedAt": "2024-03-13T12:35:54Z",
     "imageUrl": "/guia/newsletters/dfc6023216304e789724e063a7bd656d.png"
   },
   {
@@ -423,6 +448,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.smashingmagazine.com/the-smashing-newsletter/",
+    "addedAt": "2020-08-02T19:58:00Z",
     "imageUrl": "/guia/newsletters/b3be919aab4f44d7ae6e341e1f3c39b8.png"
   },
   {
@@ -439,6 +465,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://newsletter.uxdesign.cc/",
+    "addedAt": "2020-08-02T19:37:00Z",
     "imageUrl": "/guia/newsletters/2dfd107d45654434ab2bbb40cb296a27.png"
   },
   {
@@ -457,6 +484,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://twid.fyi/",
+    "addedAt": "2024-07-03T22:38:38Z",
     "imageUrl": "/guia/newsletters/3fe79d8b1dc44ddcb398dd5cefb8f744.png"
   },
   {
@@ -473,6 +501,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://tiradopapel.substack.com/",
+    "addedAt": "2024-07-03T22:12:15Z",
     "imageUrl": "/guia/newsletters/05e62537e52d4afb8d9aa4198cf2bcd2.png"
   },
   {
@@ -490,6 +519,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://trendreport.com.br/",
+    "addedAt": "2025-02-21T12:47:13Z",
     "imageUrl": "/guia/newsletters/1a18cbb0d90480af8732fc261e9c3e78.png"
   },
   {
@@ -507,6 +537,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://ayamadesign.substack.com/",
+    "addedAt": "2024-07-03T21:28:26Z",
     "imageUrl": "/guia/newsletters/0f6965b787464226887125a9fc6abfa9.png"
   },
   {
@@ -523,6 +554,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://brasiluxdesign.substack.com/",
+    "addedAt": "2021-05-31T15:48:00Z",
     "imageUrl": "/guia/newsletters/e2d4e3f2ca7b496baf973ea4358a0ce3.png"
   },
   {
@@ -543,6 +575,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.uxdatabase.io/newsletter",
+    "addedAt": "2022-03-07T03:54:00Z",
     "imageUrl": "/guia/newsletters/3d0b8296ecc34cb8a2024b47e5fcd453.png"
   },
   {
@@ -560,6 +593,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://www.linkedin.com/newsletters/ux-potion-%25E2%259A%2597%25EF%25B8%258F-7233530230617866242/",
+    "addedAt": "2024-12-19T15:37:57Z",
     "imageUrl": "/guia/newsletters/1618cbb0d90480fdb31fd63a4c98e16b.png"
   },
   {
@@ -576,6 +610,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://www.interaction-design.org/newsletter",
+    "addedAt": "2020-08-02T19:41:00Z",
     "imageUrl": "/guia/newsletters/ce02d08ddab14df091554417a246af14.png"
   },
   {
@@ -594,6 +629,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇧🇷"
     ],
     "url": "https://vagasux.substack.com/",
+    "addedAt": "2021-10-01T02:18:00Z",
     "imageUrl": "/guia/newsletters/aa4cb080c5774edda987a7ac45d0a2a3.png"
   },
   {
@@ -610,6 +646,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://web-design-weekly.com/",
+    "addedAt": "2020-08-02T19:43:00Z",
     "imageUrl": "/guia/newsletters/360af52f722b49eab550f936877293be.png"
   },
   {
@@ -627,6 +664,7 @@ export const guiaNewsletters: GuiaNewsletter[] = [
       "🇺🇸"
     ],
     "url": "https://productdesigninterview.com/weekly-ux-product-design-exercise",
+    "addedAt": "2020-10-05T03:24:00Z",
     "imageUrl": "/guia/newsletters/7c433476aae64578a0610a44d9a3584d.png"
   }
 ]

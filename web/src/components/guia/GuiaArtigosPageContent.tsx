@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
+import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
 import {
   filterGuiaArtigosByContext,
@@ -36,8 +37,10 @@ export function GuiaArtigosPageContent({
       : `${filteredArtigos.length} de ${guiaArtigos.length} artigos`
 
   return (
-    <div className="mt-8">
-      <header className="w-full">
+    <div className="mt-8 w-full">
+      <GuiaBackToGuiaLink />
+
+      <header className="mt-8 w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           {title}
         </h1>

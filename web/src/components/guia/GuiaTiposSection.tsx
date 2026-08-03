@@ -6,14 +6,29 @@ import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
+import { GuiaVideoCard } from '@/components/guia/GuiaVideoCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
-import { guiaArtigos, splitGuiaFeaturedArtigo } from '@/data/guiaArtigos'
+import {
+  guiaArtigos,
+  GUIA_FEATURED_ARTIGO_ID,
+} from '@/data/guiaArtigos'
 import { guiaBooks } from '@/data/guiaBooks'
-import { guiaNewsletters, splitGuiaFeaturedNewsletter } from '@/data/guiaNewsletters'
-import { guiaPodcasts, splitGuiaFeaturedPodcast } from '@/data/guiaPodcasts'
+import {
+  guiaNewsletters,
+  GUIA_FEATURED_NEWSLETTER_ID,
+} from '@/data/guiaNewsletters'
+import {
+  guiaPodcasts,
+  GUIA_FEATURED_PODCAST_ID,
+} from '@/data/guiaPodcasts'
+import {
+  guiaVideos,
+  GUIA_FEATURED_VIDEO_YOUTUBE_ID,
+} from '@/data/guiaVideos'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { pickGuiaRecentPreview } from '@/lib/guiaRecentPreview'
 import { cn } from '@/lib/utils'
 
 function getVerTodosLabel(tipoId: string, title: string): string {
@@ -30,21 +45,27 @@ export function GuiaTiposSection() {
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
   )
-  const recentArtigos = useMemo(() => {
-    const { featured, rest } = splitGuiaFeaturedArtigo(guiaArtigos)
-    const preview = rest.slice(0, featured ? 4 : 5)
-    return featured ? [featured, ...preview] : preview
-  }, [])
-  const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
-  const recentNewsletters = useMemo(() => {
-    const { featured, rest } = splitGuiaFeaturedNewsletter(guiaNewsletters)
-    const preview = rest.slice(0, featured ? 4 : 5)
-    return featured ? [featured, ...preview] : preview
-  }, [])
-  const recentPodcasts = useMemo(() => {
-    const { featured, rest } = splitGuiaFeaturedPodcast(guiaPodcasts)
-    const preview = rest.slice(0, featured ? 4 : 5)
-    return featured ? [featured, ...preview] : preview
+  const recentArtigos = useMemo(
+    () => pickGuiaRecentPreview(guiaArtigos, GUIA_FEATURED_ARTIGO_ID),
+    [],
+  )
+  const recentBooks = useMemo(() => pickGuiaRecentPreview(guiaBooks, null), [])
+  const recentNewsletters = useMemo(
+    () => pickGuiaRecentPreview(guiaNewsletters, GUIA_FEATURED_NEWSLETTER_ID),
+    [],
+  )
+  const recentPodcasts = useMemo(
+    () => pickGuiaRecentPreview(guiaPodcasts, GUIA_FEATURED_PODCAST_ID),
+    [],
+  )
+  const recentVideos = useMemo(() => {
+    const featured = guiaVideos.find(
+      (video) => video.youtubeVideoId === GUIA_FEATURED_VIDEO_YOUTUBE_ID,
+    )
+    return pickGuiaRecentPreview(
+      guiaVideos,
+      featured?.id ?? null,
+    )
   }, [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
@@ -166,6 +187,19 @@ export function GuiaTiposSection() {
                   <GuiaPodcastCard
                     podcast={podcast}
                     featured={index === 0}
+                    className="h-full"
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'videos' && recentVideos.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentVideos.map((video, index) => (
+                <li key={video.id}>
+                  <GuiaVideoCard
+                    video={video}
+                    featured={index === 0}
+                    showChannelTag={video.vagasuxChannel}
                     className="h-full"
                   />
                 </li>
