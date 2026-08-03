@@ -1,4 +1,5 @@
 import { parseBrazilianState } from './location'
+import { cleanInfojobsCompany } from './infojobs'
 
 const seniorityLabels: Record<string, string> = {
   intern: 'Estágio',
@@ -153,6 +154,10 @@ export function resolveWorkModelLabel(
 export function labelSource(value: string | null | undefined) {
   if (!value) return null
   return sourceLabels[value] ?? value
+}
+
+export function displayCompany(value: string | null | undefined) {
+  return cleanInfojobsCompany(value)
 }
 
 function isRegionShorthand(location: string) {

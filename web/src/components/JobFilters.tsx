@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { disciplineFilterOptions, type DisciplineFilter } from '@/lib/discipline'
 import { cn } from '@/lib/utils'
 import { BRAZILIAN_STATES } from '@/lib/location'
 import { hasActiveFilters } from '@/lib/filterJobs'
@@ -41,6 +42,11 @@ const seniorityOptions: Option<SeniorityFilter>[] = [
   { id: 'mid', label: 'Pleno' },
   { id: 'senior', label: 'Sênior' },
   { id: 'lead', label: 'Liderança' },
+]
+
+const disciplineOptions: Option<DisciplineFilter>[] = [
+  { id: 'all', label: 'Todos' },
+  ...disciplineFilterOptions.map(({ id, label }) => ({ id, label })),
 ]
 
 type JobFiltersProps = {
@@ -201,7 +207,8 @@ export function JobFilters({
             aria-hidden
           />
           <Input
-            type="search"
+            type="text"
+            role="searchbox"
             value={value.query}
             onChange={(event) => onChange({ ...value, query: event.target.value })}
             placeholder={searchPlaceholder}
@@ -256,6 +263,12 @@ export function JobFilters({
             onChange={(seniority) => onChange({ ...value, seniority })}
           />
         )}
+        <FilterRow
+          label="Cargo"
+          options={disciplineOptions}
+          value={value.discipline}
+          onChange={(discipline) => onChange({ ...value, discipline })}
+        />
       </div>
     </div>
   )

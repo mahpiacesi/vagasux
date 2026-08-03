@@ -1,7 +1,9 @@
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import { labelDiscipline } from '@/lib/discipline'
 import {
   displayLocation,
+  displayCompany,
   formatJobListedAt,
   isNewJob,
   labelSeniority,
@@ -35,6 +37,7 @@ export function JobRow({
   )
   const listedPrefix = listingVariant === 'curated' ? 'Mapeada em' : 'Capturada em'
   const showNew = isNewJob(job.captured_at)
+  const cargoLabel = labelDiscipline(job)
 
   return (
     <a
@@ -90,7 +93,7 @@ export function JobRow({
             {job.title}
           </h2>
           <p className="mt-1.5 text-sm font-semibold text-neutral-400">
-            {job.company}
+            {displayCompany(job.company)}
             {location ? (
               <span className="font-medium text-neutral-400/80"> · {location}</span>
             ) : null}
@@ -102,7 +105,7 @@ export function JobRow({
             </p>
           ) : null}
 
-          {seniority || job.area ? (
+          {seniority || cargoLabel ? (
             <div className="mt-3 flex flex-wrap gap-1.5">
               {seniority ? (
                 <Badge
@@ -112,12 +115,12 @@ export function JobRow({
                   {seniority}
                 </Badge>
               ) : null}
-              {job.area ? (
+              {cargoLabel ? (
                 <Badge
                   variant="outline"
                   className="rounded-full border-neutral-200/80 font-medium text-neutral-400"
                 >
-                  {job.area}
+                  {cargoLabel}
                 </Badge>
               ) : null}
             </div>

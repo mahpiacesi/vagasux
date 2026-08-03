@@ -1,3 +1,5 @@
+import type { DisciplineFilter } from '@/lib/discipline'
+
 export type Job = {
   id: string
   title: string
@@ -12,6 +14,7 @@ export type Job = {
   is_international: boolean | null
   area: string | null
   role: string | null
+  discipline: string | null
   ai_summary: string | null
   skills: string[] | null
   tools: string[] | null
@@ -29,5 +32,6 @@ export type JobFiltersState = {
   market: MarketFilter
   workModel: WorkModelFilter
   seniority: SeniorityFilter
+  discipline: DisciplineFilter
   state: StateFilter
 }

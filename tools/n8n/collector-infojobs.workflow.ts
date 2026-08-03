@@ -133,6 +133,23 @@ function decodeHtml(value) {
     .trim();
 }
 
+function cleanCompanyName(value) {
+  return decodeHtml(String(value || 'Empresa'))
+    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs[^.]*\\.?\\s*(Saiba o que isso significa\\.?\\s*)?/gi, '')
+    .replace(/\\s+/g, ' ')
+    .trim() || 'Empresa';
+}
+
+function stripInfojobsVerificationBadgeHtml(html) {
+  return String(html || '')
+    .replace(/<span[^>]*(?:data-bs-title|title)="[^"]*selo indica[^"]*"[^>]*>[\\s\\S]*?<\\/span>/gi, '')
+    .replace(/<span[^>]*>[\\s\\S]*?Este selo indica[\\s\\S]*?<\\/span>/gi, '');
+}
+
+function extractCompanyName(rawHtml) {
+  return cleanCompanyName(stripInfojobsVerificationBadgeHtml(rawHtml).replace(/<[^>]+>/g, ' '));
+}
+
 function normalizeTitle(title) {
   return decodeHtml(title)
     .toLowerCase()
@@ -140,8 +157,14 @@ function normalizeTitle(title) {
     .replace(/[\\u0300-\\u036f]/g, '');
 }
 
+function isNonDesignTitle(title) {
+  const t = normalizeTitle(title);
+  return /\\b(product design lead engineer|design lead engineer|design engineer|\\(nx\\)|designer de produtos industrial|design de moveis|designer de moveis|projetista e designer|\\bprojetista\\b|desenvolvedor.*front.?end|desenvolvedor.*\\bui\\b|designer de sobrancelh|consultora de beleza|depilador.*designer)\\b/.test(t);
+}
+
 function isRelevant(title) {
   const t = normalizeTitle(title);
+  if (isNonDesignTitle(t)) return false;
   const excluded =
     /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|sobrancelh|unha|barbeir|cabelo|estetic|manicure|pedicure|micropigment|interior(es)?|design de ambientes|moveis planejados|mobiliario|decorador de interiores)\\b/.test(t);
   const designRole =
@@ -163,6 +186,22 @@ function mapWorkModel(title, location, cardHtml) {
   return 'unknown';
 }
 
+function extractCardDescription(block) {
+  let text = decodeHtml(String(block || '')
+    .replace(/<script[\\s\\S]*?<\\/script>/gi, '')
+    .replace(/<style[\\s\\S]*?<\\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/\\s+/g, ' ')
+    .trim();
+  text = text
+    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs[^.]*\\.?\\s*(Saiba o que isso significa\\.?\\s*)?/gi, '')
+    .replace(/\\s*NOVA\\s+/gi, ' ')
+    .replace(/\\s+/g, ' ')
+    .trim();
+  if (text.length < 50) return null;
+  return text.slice(0, 3000);
+}
+
 function parseCards(fragmentHtml) {
   const html = String(fragmentHtml || '');
   const cards = [];
@@ -176,7 +215,7 @@ function parseCards(fragmentHtml) {
     const dateMatch = block.match(/class="js_date" data-value="([^"]+)"/);
     const locationMatch = block.match(/<div class="mb-8">\\s*([^<]+)/);
     const companyMatch = block.match(/<div class="text-body">\\s*<a[^>]*>\\s*([\\s\\S]*?)\\s*<\\/a>/);
-    const company = decodeHtml(String(companyMatch?.[1] || 'Empresa').replace(/<[^>]+>/g, ' '));
+    const company = extractCompanyName(companyMatch?.[1] || 'Empresa');
     cards.push({
       id,
       href,
@@ -220,9 +259,9 @@ for (const card of byId.values()) {
     json: {
       source: 'InfoJobs',
       source_job_id: String(card.id),
-      company: String(card.company || 'Empresa').trim(),
+      company: cleanCompanyName(String(card.company || 'Empresa').trim()),
       title,
-      description: null,
+      description: extractCardDescription(card.block),
       url,
       location: card.location || null,
       published_at: publishedAt,

@@ -27,6 +27,7 @@ const jobColumns = [
   'is_international',
   'area',
   'role',
+  'discipline',
   'ai_summary',
   'skills',
   'tools',

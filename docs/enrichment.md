@@ -15,7 +15,7 @@ No MVP, **não há fila de curadoria**: o que a IA aprova já fica pronto para o
 
 ## Escopo de vagas (design vs. fora do escopo)
 
-A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Design Ops, Visual/Graphic digital** e **Motion Design para produto/interface**.
+A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Ops & Strategy, Visual & Graphic digital** e **Motion Design para produto/interface**.
 
 | Entra | Fica de fora |
 |---|---|
@@ -23,10 +23,11 @@ A VagasUX cobre carreiras em **UX, Product Design, UI, Research, Design Ops, Vis
 | Animação para produto/marketing digital | Edição de Reels/TikTok/YouTube como função principal |
 | After Effects ligado a motion de produto | Pós-produção audiovisual pura |
 
-Regras aplicadas em duas camadas:
+Regras aplicadas em três camadas:
 
-1. **Prompt Gemini** — rejeita explicitamente edição de vídeo/audiovisual
-2. **Guarda determinística** — `tools/n8n/jobClassification.ts`, replicada no node **Apply enrichment**, para casos em que a IA rotula como "Motion Design"
+1. **Prompt Gemini** — rejeita explicitamente edição de vídeo/audiovisual e vagas de varejo/loja cujo local contém "Design" (ex.: Rio Design Barra)
+2. **Guarda determinística** — `tools/n8n/jobClassification.ts` no node **Apply enrichment** (vídeo/audiovisual + falso positivo de shopping/gerente de loja)
+3. **Filtro do collector Gupy** — título precisa de cargo de design explícito; `\bdesign\b` sozinho em nome de shopping não entra
 
 ## Curadoria (`source = VagasUX`)
 
@@ -53,13 +54,25 @@ Scheduler (após collectors + expire)
 
 ## Campos preenchidos pela IA
 
-`is_design_job`, `is_international`, `ai_confidence`, `area`, `role`, `seniority`, `work_model`, `employment_type`, `skills`, `tools`, `portfolio_required`, `ai_summary`, `ai_reason`, `enriched_at`, `content_hash`
+`is_design_job`, `is_international`, `ai_confidence`, `area`, `role`, `discipline`, `seniority`, `work_model`, `employment_type`, `skills`, `tools`, `portfolio_required`, `ai_summary`, `ai_reason`, `enriched_at`, `content_hash`
 
 Enums:
 
+- `discipline`: product_design | ux | ui | ux_research | content_design | design_ops | visual_graphic | motion  
 - `seniority`: intern | trainee | junior | mid | senior | lead | unknown  
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
+
+`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`):
+
+- **Motion** e **UI** — só com sinal explícito em título/role/área (como motion: área `UX/UI Design` sozinha não vira UI).
+- **UX** (filtro unificado) — Product Designer, UX Designer e híbridos generalistas `UX/UI` (`product_design` + `ux` no banco). Títulos como "UX/UI Designer Júnior" ou "Estagiário Em UX/UI Design" ficam em **UX**, não em UI.
+- **UI** — UI Designer, `| UI` no título, ou Product Designer com foco explícito em UI na descrição (ex.: Phiz `SR Product Designer | UI`).
+- **Pesquisa** — UX Researcher, CX Researcher, área UX Research; menção genérica a "pesquisa" na descrição **não** classifica.
+- **Visual & Graphic** — título/role gráfico, área de artes gráficas, descrição com foco social/print/branding, ou título genérico "Designer" quando há descrição gráfica.
+- **Content Design** — UX Writer, Content Designer, Designer Conversacional; área UX Writing. Menção a "UX Writing" na descrição de vaga de Product **não** classifica como Content.
+- **Ops & Strategy** — design ops, program manager, strategist, head/director of design.
+- **Product** — default VagasUX; híbridos Product/Visual ambíguos ficam em product.
 
 ## Contrato JSON da IA
 
@@ -70,6 +83,7 @@ Enums:
   "confidence": 0.92,
   "area": "Product Design",
   "role": "Product Designer",
+  "discipline": "product_design",
   "seniority": "mid",
   "work_model": "remote",
   "employment_type": "clt",

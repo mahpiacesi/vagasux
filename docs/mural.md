@@ -44,13 +44,25 @@ npm run dev
 select
   id, title, company, location, url, source,
   seniority, work_model, employment_type,
-  is_international, area, role,
+  is_international, area, role, discipline,
   ai_summary, skills, tools,
   published_at, captured_at
 from public.jobs
 where status = 'published'
 order by published_at desc nulls last, captured_at desc;
 ```
+
+## Filtros
+
+Além da busca por texto, o mural oferece pills para **Mercado**, **Formato**, **Estado** (Brasil), **Nível** e **Cargo**.
+
+O filtro **Cargo** usa a coluna normalizada `discipline` (enum no banco). Valores:
+
+`product_design`, `ux`, `ui`, `ux_research`, `content_design`, `design_ops`, `visual_graphic`, `motion`
+
+Labels na UI: UX (generalista — inclui Product Design), UI, Pesquisa, Content Design, Ops & Strategy, Visual & Graphic, Motion. No banco, generalistas ficam em `product_design` ou `ux`; o filtro **UX** mostra os dois. UI, Motion e Content exigem sinal explícito no título/role/área.
+
+Implementação: `web/src/lib/discipline.ts`, `web/src/lib/filterJobs.ts`, migration `20260803_jobs_discipline.sql`.
 
 ## Badges no card
 
@@ -60,4 +72,5 @@ Cada vaga pode mostrar:
 - **Remota / Híbrida / Presencial** — quando `work_model` estiver preenchido
 - **Internacional** — quando `is_international = true`
 - **Fonte** — Gupy, Remotar, Greenhouse, etc. (`source`)
+- **Cargo** — label de `discipline` (ex.: Product Design, UX, Visual & Graphic)
 - Data **Capturada em** no rodapé do item
