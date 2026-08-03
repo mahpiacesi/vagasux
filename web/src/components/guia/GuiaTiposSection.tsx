@@ -1,12 +1,21 @@
 import { useId, useMemo, useState } from 'react'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
+import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
+import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
+import { guiaBooks } from '@/data/guiaBooks'
+import { guiaNewsletters, splitGuiaFeaturedNewsletter } from '@/data/guiaNewsletters'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
+
+function getVerTodosLabel(tipoId: string, title: string): string {
+  if (tipoId === 'newsletters') return 'Ver todas as newsletters'
+  return `Ver todos os ${title.toLowerCase()}`
+}
 
 export function GuiaTiposSection() {
   const [selectedTipoId, setSelectedTipoId] = useState(guiaTipos[0]?.id ?? 'artigos')
@@ -17,6 +26,12 @@ export function GuiaTiposSection() {
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
   )
+  const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
+  const recentNewsletters = useMemo(() => {
+    const { featured, rest } = splitGuiaFeaturedNewsletter(guiaNewsletters)
+    const preview = rest.slice(0, featured ? 4 : 5)
+    return featured ? [featured, ...preview] : preview
+  }, [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -92,13 +107,33 @@ export function GuiaTiposSection() {
               className="w-full shrink-0 border-brand-200 bg-brand-100/40 font-bold text-brand-500 hover:bg-brand-100 sm:w-auto"
             >
               <Link to={guiaRoutes.tipo(selectedTipoId)}>
-                Ver todos os {selectedTipo?.title?.toLowerCase()}
+                {getVerTodosLabel(selectedTipoId, selectedTipo?.title ?? '')}
                 <ArrowRight size={16} weight="bold" aria-hidden />
               </Link>
             </Button>
           </div>
 
-          {recentItems.length > 0 ? (
+          {selectedTipoId === 'livros' && recentBooks.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentBooks.map((book) => (
+                <li key={book.id}>
+                  <GuiaBookCard book={book} className="h-full" />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'newsletters' && recentNewsletters.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentNewsletters.map((newsletter, index) => (
+                <li key={newsletter.id}>
+                  <GuiaNewsletterCard
+                    newsletter={newsletter}
+                    featured={index === 0}
+                    className="h-full"
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : recentItems.length > 0 ? (
             <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {recentItems.map((item) => (
                 <li key={item.id}>
