@@ -680,7 +680,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     ],
     "url": "https://medium.com/vagas-ux/sobre-layoffs-recoloca%C3%A7%C3%A3o-e-novas-perspectivas-cffdee613d6e",
     "vagasuxPublication": true,
-    "imageUrl": "/guia/artigos/3b18cbb0d904800387b9d71c3077419d.png"
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*EPphKKuh3Q7zKxrcJpsdQg.png",
+    "mediumCover": true
   },
   {
     "id": "e87ac2cef4d3492792600685f550a327",

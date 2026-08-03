@@ -174,21 +174,37 @@ function extractMediumImageFromHtml(html) {
 
 /** Hero image a partir do markdown do jina.ai (medium.com bloqueia fetch direto). */
 function extractHeroFromJinaMarkdown(text) {
-  const urls = [...text.matchAll(/https:\/\/miro\.medium\.com\/[^\s)"']+/g)].map(
-    (match) => match[0],
-  )
+  const urls = [
+    ...text.matchAll(/https:\/\/miro\.medium\.com\/[^\s)"']+/g),
+    ...text.matchAll(/https:\/\/cdn-images-1\.medium\.com\/[^\s)"']+/g),
+  ].map((match) => match[0])
   const hero = urls.find(
     (url) =>
-      /resize:fit:\d+/i.test(url) &&
+      (/resize:fit:\d+/i.test(url) || /\/max\/\d+\//i.test(url)) &&
       !/resize:fill:(?:32|40|48|56|64|76|120|152|240|304):/i.test(url),
   )
-  return hero ?? null
+  return hero ? normalizeMediumImageUrl(hero) : null
 }
 
-function fetchViaJinaReader(articleUrl, retries = 1) {
+function mediumPostId(url) {
+  const match = url.match(/([a-f0-9]{12})(?:\?|$)/i) ?? url.match(/-([a-f0-9]{12})$/i)
+  return match?.[1]?.toLowerCase() ?? null
+}
+
+function normalizeMediumImageUrl(url) {
+  if (!url) return null
+  if (url.includes('miro.medium.com')) return url
+  const idMatch = url.match(/\/(1\*[^/?]+)/)
+  if (idMatch) return miroUrlFromImageId(idMatch[1])
+  const legacyMatch = url.match(/\/max\/\d+\/(0\*[^/?]+)/)
+  if (legacyMatch) return miroUrlFromImageId(legacyMatch[1])
+  return url
+}
+
+function fetchJinaText(articleUrl, retries = 1) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const text = execFileSync(
+      return execFileSync(
         'curl',
         [
           '-fsSL',
@@ -198,16 +214,60 @@ function fetchViaJinaReader(articleUrl, retries = 1) {
         ],
         { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 },
       )
-      return (
-        extractMediumImageFromHtml(text) ??
-        extractHeroFromJinaMarkdown(text)
-      )
     } catch {
-      if (attempt < retries) {
-        execFileSync('sleep', ['5'])
-      }
+      if (attempt < retries) execFileSync('sleep', ['5'])
     }
   }
+  return ''
+}
+
+function fetchViaJinaReader(articleUrl, retries = 1) {
+  const text = fetchJinaText(articleUrl, retries)
+  if (!text) return { text: '', image: null }
+  return {
+    text,
+    image:
+      extractMediumImageFromHtml(text) ?? extractHeroFromJinaMarkdown(text),
+  }
+}
+
+function findPostItemInRss(xml, postId) {
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((match) => match[1])
+  return items.find((item) => item.includes(postId)) ?? null
+}
+
+/** Capa via RSS (publicação ou @autor) quando og:image/jina não trazem hero. */
+function fetchCoverFromMediumRss(articleUrl, jinaText = '') {
+  const postId = mediumPostId(articleUrl)
+  if (!postId) return null
+
+  const feedUrls = new Set()
+  const pubMatch = articleUrl.match(/medium\.com\/([^/@?]+)\//)
+  if (pubMatch && !['p', 'feed'].includes(pubMatch[1])) {
+    feedUrls.add(`https://medium.com/feed/${pubMatch[1]}`)
+  }
+
+  const authorMatch = jinaText.match(/medium\.com\/@([a-zA-Z0-9._-]+)/)
+  if (authorMatch) {
+    feedUrls.add(`https://medium.com/feed/@${authorMatch[1]}`)
+  }
+
+  for (const feedUrl of feedUrls) {
+    try {
+      const xml = execFileSync(
+        'curl',
+        ['-fsSL', '-A', 'Mozilla/5.0 (compatible; VagasUX-Export/1.0)', feedUrl],
+        { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 },
+      )
+      const item = findPostItemInRss(xml, postId)
+      if (!item) continue
+      const imgMatch = item.match(/<img[^>]+src="([^"]+)"/)
+      if (imgMatch) return normalizeMediumImageUrl(imgMatch[1])
+    } catch {
+      /* try next feed */
+    }
+  }
+
   return null
 }
 
@@ -227,9 +287,10 @@ function alternateArticleUrls(articleUrl) {
   return []
 }
 
-/** Capa via fetch direto; jina.ai como fallback quando falha ou não há og:image. */
+/** Capa via fetch direto; jina.ai e RSS como fallback. */
 function fetchMediumOgImage(articleUrl) {
   const candidates = [articleUrl, ...alternateArticleUrls(articleUrl)]
+  let jinaText = ''
 
   for (const url of candidates) {
     try {
@@ -239,11 +300,12 @@ function fetchMediumOgImage(articleUrl) {
       /* direct fetch failed */
     }
 
-    const jinaImage = fetchViaJinaReader(url)
-    if (jinaImage) return jinaImage
+    const { text, image } = fetchViaJinaReader(url)
+    if (text) jinaText = text
+    if (image) return image
   }
 
-  return null
+  return fetchCoverFromMediumRss(articleUrl, jinaText)
 }
 
 function isVagasuxPublication(url, channels) {
