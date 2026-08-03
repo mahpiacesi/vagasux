@@ -1,5 +1,6 @@
 /** Snapshot from Notion database "Conteúdos em Design" (view Livros). */
 /** Regenerar: node tools/scripts/export-guia-books.mjs <livros.json> */
+/** Capas manuais (Amazon I/…, links externos): web/src/data/guiaBookCoverOverrides.ts */
 
 export type GuiaBook = {
   id: string
@@ -1289,3 +1290,20 @@ export const guiaBooks: GuiaBook[] = [
     "url": "https://www.amazon.com.br/dp/8550807257?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=8550807257&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_mixed_d_asin"
   }
 ]
+
+/** Tags de Contexto únicas, ordenadas (Notion multi_select). */
+export function getGuiaBookContextTags(): string[] {
+  const tags = new Set<string>()
+  for (const book of guiaBooks) {
+    for (const tag of book.context) tags.add(tag)
+  }
+  return [...tags].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }))
+}
+
+export function filterGuiaBooksByContext(
+  books: GuiaBook[],
+  contextTag: string | null,
+): GuiaBook[] {
+  if (!contextTag) return books
+  return books.filter((book) => book.context.includes(contextTag))
+}
