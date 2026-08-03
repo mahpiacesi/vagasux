@@ -40,25 +40,6 @@ export const guiaVideos: GuiaVideo[] = [
     "imageUrl": "https://i.ytimg.com/vi/rfmMwi6ufFo/hqdefault.jpg"
   },
   {
-    "id": "9377d1c6f5654f85b6a8be6ec26a2196",
-    "title": "[Webinar] UX Research",
-    "authors": [
-      "Digital House Brasil"
-    ],
-    "context": [
-      "UX",
-      "Research",
-      "Mulheres"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "https://www.youtube.com/watch?v=Hz3k7TEFMkM",
-    "vagasuxChannel": false,
-    "youtubeVideoId": "Hz3k7TEFMkM",
-    "imageUrl": "https://i.ytimg.com/vi/Hz3k7TEFMkM/hqdefault.jpg"
-  },
-  {
     "id": "9f28a7b9e1ed458cad035c160792a7c8",
     "title": "Acessibilidade em produtos digitais",
     "authors": [
