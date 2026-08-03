@@ -115,6 +115,33 @@ function stripMarkdown(title) {
   return String(title).replace(/\*\*/g, '').trim()
 }
 
+function isSpotifyShowUrl(url) {
+  return /open\.spotify\.com\/show\//i.test(url)
+}
+
+function normalizeSpotifyShowUrl(url) {
+  const match = String(url).match(/open\.spotify\.com\/show\/([a-zA-Z0-9]+)/i)
+  return match ? `https://open.spotify.com/show/${match[1]}` : null
+}
+
+/** Capa dinâmica via og:image da página do show no Spotify. */
+function fetchSpotifyCoverUrl(showUrl) {
+  const canonical = normalizeSpotifyShowUrl(showUrl)
+  if (!canonical) return null
+
+  try {
+    const html = execFileSync('curl', ['-fsSL', canonical], {
+      encoding: 'utf8',
+      maxBuffer: 5 * 1024 * 1024,
+    })
+    const match = html.match(/property="og:image" content="([^"]+)"/)
+    const imageUrl = match?.[1]
+    return imageUrl && /scdn\.co\/image\//i.test(imageUrl) ? imageUrl : null
+  } catch {
+    return null
+  }
+}
+
 function mapPodcast(row, imageExtById) {
   const id = notionPageId(row.url)
   const authors = parseJsonArray(row['Autor(a)'])
@@ -131,9 +158,12 @@ function mapPodcast(row, imageExtById) {
     url,
   }
 
-  const ext = imageExtById.get(id)
-  if (ext) {
-    item.imageUrl = `/guia/podcasts/${id}.${ext}`
+  if (isSpotifyShowUrl(url)) {
+    const spotifyCover = fetchSpotifyCoverUrl(url)
+    if (spotifyCover) item.imageUrl = spotifyCover
+  } else {
+    const ext = imageExtById.get(id)
+    if (ext) item.imageUrl = `/guia/podcasts/${id}.${ext}`
   }
 
   return item
@@ -150,9 +180,12 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa baixada do Notion (opcional). */
+  /** Capa: Spotify i.scdn.co/image/ (dinâmico) ou Notion local. */
   imageUrl?: string
 }
+
+/** Podcast oficial da VagasUX — sempre primeiro na listagem. */
+export const GUIA_FEATURED_PODCAST_ID = 'd6e7427f47554528b60632c419832106'
 
 export const guiaPodcasts: GuiaPodcast[] = `
 
@@ -176,6 +209,17 @@ export function filterGuiaPodcastsByContext(
 ): GuiaPodcast[] {
   if (!contextTag) return podcasts
   return podcasts.filter((podcast) => podcast.context.includes(contextTag))
+}
+
+/** Separa o podcast em destaque dos demais, mantendo a ordem original do restante. */
+export function splitGuiaFeaturedPodcast(podcasts: GuiaPodcast[]): {
+  featured: GuiaPodcast | null
+  rest: GuiaPodcast[]
+} {
+  const featured =
+    podcasts.find((podcast) => podcast.id === GUIA_FEATURED_PODCAST_ID) ?? null
+  const rest = podcasts.filter((podcast) => podcast.id !== GUIA_FEATURED_PODCAST_ID)
+  return { featured, rest }
 }
 `
 

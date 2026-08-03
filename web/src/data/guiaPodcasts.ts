@@ -8,7 +8,7 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa baixada do Notion (opcional). */
+  /** Capa: Spotify i.scdn.co/image/ (dinâmico) ou Notion local. */
   imageUrl?: string
 }
 
@@ -30,7 +30,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/3aSeJ7rfZIO0TpDW0sfOYA?si=CzoRvo9DR2K503ivKPVPEg",
-    "imageUrl": "/guia/podcasts/71e915da631648f88061e1ebe82cb92b.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a43bbf79ae63e685f71266c57"
   },
   {
     "id": "b56fc1fc742042eab7734b6aad18a296",
@@ -64,7 +64,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/3zi7ddIq2xn172zTDHyI2H?si=m5PWN9oiQsGfZB8TXQfDjg",
-    "imageUrl": "/guia/podcasts/223fb3f74bb44a38967267d83c53175d.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8af59397b39790b38d2fd7227a"
   },
   {
     "id": "ce8ad1e5cbf449b894cb3957c3ad7373",
@@ -97,7 +97,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/7ICSs5l1OQnGr62i0xrL5L",
-    "imageUrl": "/guia/podcasts/65500c9dbe7f4c0bbfef07f19083eed3.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a1f87bbe18e8a530bc98d6075"
   },
   {
     "id": "31a6f9eed4084d66961f02ae45ff9990",
@@ -116,7 +116,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/5qQQqlXHQcM6m2BegF9Hdg?si=jX3bUgBDRWKEjZR8xLjILg&nd=1",
-    "imageUrl": "/guia/podcasts/31a6f9eed4084d66961f02ae45ff9990.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a12db66cfac80f6abbc515cc6"
   },
   {
     "id": "d86b19a4650d492ca6cf343598bf3f74",
@@ -135,7 +135,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/3yc1MJPrWIOCY3fcrRS2Ke?si=kWO3o7WJRFC9OnZK2ERgfg",
-    "imageUrl": "/guia/podcasts/d86b19a4650d492ca6cf343598bf3f74.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a606ffe0babc7a813b1a7a56d"
   },
   {
     "id": "ba4d891636ec48fc88e8f7db57e129c2",
@@ -153,7 +153,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/59RliaMdeDAkEgp9nj1Mkj?si=UuEMuSRITp6i4fQ6EwxUkg",
-    "imageUrl": "/guia/podcasts/ba4d891636ec48fc88e8f7db57e129c2.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8aa99a29b86f4c4c053b37c835"
   },
   {
     "id": "fff9efae6e0343019a01becfed5f0c16",
@@ -186,7 +186,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/0yE3kkKCcdPKaMFUfgSED7?si=fxdRLAogR_G8ucLQZJ8mbA",
-    "imageUrl": "/guia/podcasts/dbdb60d18c284cde87538c06b7518a35.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a0b2344074e74a337afbedab2"
   },
   {
     "id": "0f8f56bb3639432cb45ade3db1d8c9f2",
@@ -203,7 +203,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/2QzttrD48jLEFhmKpRzyQJ?si=VGNNzbtdTjSeu2whgtFo5A",
-    "imageUrl": "/guia/podcasts/0f8f56bb3639432cb45ade3db1d8c9f2.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a1e0db243169e979271f898f4"
   },
   {
     "id": "74ac798dd7a64729850e618435a547cc",
@@ -235,7 +235,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/4oJCKGtYrPbcMVb93f30se?si=7vXGL5AVSYK_LImgWxP_Xw&nd=1",
-    "imageUrl": "/guia/podcasts/d2b3ef83dbc344e4ba57dfce1973e43b.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a529d376573072b741ef2782f"
   },
   {
     "id": "83dcec39e9ea40c3818690d2090ef245",
@@ -307,7 +307,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/57a2WoUNyhHLfBHEz2cDVq?si=3pUtK4QnRwO94GhZ9_W0Bw",
-    "imageUrl": "/guia/podcasts/09886e52babc4e89961d308961d1ac1f.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8ab23dd118bb06e10b53a18290"
   },
   {
     "id": "5479266de35b4cb98e01c7bf23ce9310",
@@ -325,7 +325,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/3glT3JlucWcS29IeEh7KY5?si=neFjS71OSAG8AGW7LjCXJA",
-    "imageUrl": "/guia/podcasts/5479266de35b4cb98e01c7bf23ce9310.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a46019c04bc4037b21543957c"
   },
   {
     "id": "d0abd256e0554278b1d578d21bb4a634",
@@ -360,7 +360,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/7AhglTT80I0X2ksdrimLLJ?si=XDhxp0UJS4Cnxt_QIt1f6Q",
-    "imageUrl": "/guia/podcasts/a6891921af5546bb8c4d45fc09714aef.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a60464602f6b31aca46535083"
   },
   {
     "id": "32ba984a22aa4da4992f51394e18c8b8",
@@ -396,7 +396,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/16VEzBdLGk5vjrONXuTs4j?si=VwyC-zr6RLaMPpV5QhSKAg",
-    "imageUrl": "/guia/podcasts/72f172d0b1944e2da4a7c2577b86766f.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a46d918a8638bff22339eb5c0"
   },
   {
     "id": "7f4c9d51d54f427e900eb4163a659981",
@@ -430,7 +430,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/3el9utRfwTkuSwWt781eYv?si=zsOUgDEURkGp7CfaJFIgQQ",
-    "imageUrl": "/guia/podcasts/8dc61caa93284da8b0422da9d4633a32.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a738a6ae42540d4ea6be177b5"
   },
   {
     "id": "ca76cea360f94434baeb5bbd0bbd0f69",
@@ -446,7 +446,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/3tO5oXP7vKBT55WLaVidpM?si=8agdZ5lBQ-aojMV-zLSyDw",
-    "imageUrl": "/guia/podcasts/ca76cea360f94434baeb5bbd0bbd0f69.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a7c28881c7f90beee5f030bc3"
   },
   {
     "id": "1ab41c48d42f4ccf86a5914df0f41bd2",
@@ -480,7 +480,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/1rfUWxL2Ia7kA343ClLya1?si=uBsjNpHkQ3qrGY2zQQ_8WA",
-    "imageUrl": "/guia/podcasts/889f754e73e04de992ce295db2bce07a.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a0a61704580f52515d765a714"
   },
   {
     "id": "ed0c652bbf4f428fa6d38ac9fd98c9d6",
@@ -497,7 +497,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/4sqmNkCAYix2ZclfHLPCAi?si=Qtg2ZXwdTmCB5dG5AjU9dQ",
-    "imageUrl": "/guia/podcasts/ed0c652bbf4f428fa6d38ac9fd98c9d6.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a20422f9eea0c297dc1d56344"
   },
   {
     "id": "ba16e1bc1a5d453da06938ad826953e4",
@@ -553,7 +553,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/32hSv5mp77ocPcd3fPrLjU?si=kLhIhEkCThaCQ-RH58K_tA",
-    "imageUrl": "/guia/podcasts/d330ca89ffb842a4a88147ed10801e27.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a41e6fdb39dd6cbda1db0f609"
   },
   {
     "id": "7b5b496d8a1b4162a81d294aa21e029b",
@@ -572,7 +572,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/5k0Ei0MSg5BuiHshr43aSg?si=NF4tzPUTSsO3_47C3109Uw",
-    "imageUrl": "/guia/podcasts/7b5b496d8a1b4162a81d294aa21e029b.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8adb9478e81e50dc541da296e3"
   },
   {
     "id": "0dc951a3c53d4cc4a074734db40f51eb",
@@ -588,7 +588,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/4OayrY2pkjYXdTqALWl7eB?si=R5vOCF0hSTS7TMK86lohIw",
-    "imageUrl": "/guia/podcasts/0dc951a3c53d4cc4a074734db40f51eb.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8aad6c610f5769bc371f40b441"
   },
   {
     "id": "d6e7427f47554528b60632c419832106",
@@ -662,7 +662,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/3vQiW8r6BQX8S5RdgSe001?si=RQSHzJZOSXySm2THJ3rXGw",
-    "imageUrl": "/guia/podcasts/17a0dd2250904d95a48301692f0c9054.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8ac5ae6a9e3bc964a3677506ec"
   },
   {
     "id": "7cd5c2096d534837a34d419297301122",
@@ -679,7 +679,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/1lGg6hdIocDUp6oPTfbILD?si=eBPsKKruSS-74rcmT6VXQQ",
-    "imageUrl": "/guia/podcasts/7cd5c2096d534837a34d419297301122.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8ac82376047ed9f7dfa67ca45a"
   },
   {
     "id": "eb83ac230b814492bdcf07af9075f2cf",
@@ -696,7 +696,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/5cYtKjFwlRCSZKyV6ZC8Wq?si=106aec9284d244ab",
-    "imageUrl": "/guia/podcasts/eb83ac230b814492bdcf07af9075f2cf.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8aefdbbc860fb928980b45b63e"
   },
   {
     "id": "432f6374ccc349b49f9d197473ac4599",
@@ -713,7 +713,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/1XBrhVLsQOIAv3KFBqnzrX?si=aWAdTUfuQdCqWiDIXnS-RA",
-    "imageUrl": "/guia/podcasts/432f6374ccc349b49f9d197473ac4599.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a9824a3759304e446e03a94ed"
   },
   {
     "id": "4b2525449dbb4741978f917fa7701624",
@@ -747,7 +747,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇺🇸"
     ],
     "url": "https://open.spotify.com/show/1mpwVsWRVGB7SfBWqZJbAb?si=eYP0y2FcTSyII3s598MceQ",
-    "imageUrl": "/guia/podcasts/b4df1e09eb30494897da76c7d1aebb24.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a84a90b6933512e3efd294da8"
   },
   {
     "id": "6c2e903b9650448ba3a0f2ebf6ae29db",
@@ -795,7 +795,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/1oHmxPEpdZVf0nMH8vXazz?si=tu-KKvDJS5-kvBGtnPzJrw",
-    "imageUrl": "/guia/podcasts/d0615941f6994ff8ad5fbc3ff7a5a3b7.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8af0fbf2bc9a14e0fa7867ec86"
   },
   {
     "id": "edb24e6c12e44bb29ab74480bc58d4fc",
@@ -828,7 +828,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://open.spotify.com/show/0f2hoLnZXsD8I8xWPUwFhv?si=ylrIZ-8kTPCPQBHcoY2Izg",
-    "imageUrl": "/guia/podcasts/28a3b5d68a7c411aa64fca1852a09344.png"
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8ad68491553e60515c22a9be75"
   }
 ]
 

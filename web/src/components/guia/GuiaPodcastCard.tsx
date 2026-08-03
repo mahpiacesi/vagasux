@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowSquareOut, Microphone } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import type { GuiaPodcast } from '@/data/guiaPodcasts'
+import {
+  resolvePodcastCoverUrl,
+  resolvePodcastCoverUrlAsync,
+} from '@/lib/guiaPodcastCover'
 import { cn } from '@/lib/utils'
 
 export const GUIA_PODCAST_FEATURED_LABEL = 'Podcast oficial'
@@ -24,9 +28,31 @@ function PodcastCover({
   className?: string
   spotlight?: boolean
 }) {
+  const [coverUrl, setCoverUrl] = useState<string | null>(() =>
+    resolvePodcastCoverUrl(podcast),
+  )
   const [failed, setFailed] = useState(false)
 
-  if (!podcast.imageUrl || failed) {
+  useEffect(() => {
+    setFailed(false)
+    const syncCover = resolvePodcastCoverUrl(podcast)
+    if (syncCover) {
+      setCoverUrl(syncCover)
+      return
+    }
+
+    let cancelled = false
+    setCoverUrl(null)
+    resolvePodcastCoverUrlAsync(podcast).then((url) => {
+      if (!cancelled) setCoverUrl(url)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [podcast])
+
+  if (!coverUrl || failed) {
     return (
       <div
         className={cn(
@@ -42,7 +68,7 @@ function PodcastCover({
 
   return (
     <img
-      src={podcast.imageUrl}
+      src={coverUrl}
       alt=""
       loading="lazy"
       decoding="async"
