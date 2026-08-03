@@ -8,7 +8,7 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa: Spotify i.scdn.co/image/ (dinâmico) ou Notion local. */
+  /** Capa: Spotify i.scdn.co, Anchor cloudfront ou Notion local. */
   imageUrl?: string
 }
 
@@ -80,7 +80,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/carreiraux",
-    "imageUrl": "/guia/podcasts/ce8ad1e5cbf449b894cb3957c3ad7373.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded400/6808929/6808929-1594391282411-e0c616c425dca.jpg"
   },
   {
     "id": "65500c9dbe7f4c0bbfef07f19083eed3",
@@ -220,7 +220,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/odona",
-    "imageUrl": "/guia/podcasts/74ac798dd7a64729850e618435a547cc.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/3225852/3225852-1593540493037-b87262bdc3bb9.jpg"
   },
   {
     "id": "d2b3ef83dbc344e4ba57dfce1973e43b",
@@ -249,7 +249,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/expatria",
-    "imageUrl": "/guia/podcasts/83dcec39e9ea40c3818690d2090ef245.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo400/329989/329989-1697480095209-381b8f5915813.jpg"
   },
   {
     "id": "dd6b7a79cf734bab8f33aefd744703ef",
@@ -379,7 +379,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/jtbdplus",
-    "imageUrl": "/guia/podcasts/32ba984a22aa4da4992f51394e18c8b8.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded400/2384493/2384493-1586982669201-1fe792c2696ae.jpg"
   },
   {
     "id": "72f172d0b1944e2da4a7c2577b86766f",
@@ -534,7 +534,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/papodeproduto",
-    "imageUrl": "/guia/podcasts/4bc7f290137f4b78b77ea8763b5e5e25.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo400/3978977/3978977-1702311475091-b999d4b7ec64e.jpg"
   },
   {
     "id": "d330ca89ffb842a4a88147ed10801e27",
@@ -606,7 +606,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/podvagas",
-    "imageUrl": "/guia/podcasts/d6e7427f47554528b60632c419832106.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/14060900/14060900-1659277510951-f4819ae74e5ca.jpg"
   },
   {
     "id": "bef5d4f38fb64867a1b329ba116418f4",
@@ -626,7 +626,7 @@ export const guiaPodcasts: GuiaPodcast[] = [
       "🇧🇷"
     ],
     "url": "https://anchor.fm/product-gurus",
-    "imageUrl": "/guia/podcasts/bef5d4f38fb64867a1b329ba116418f4.png"
+    "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo400/2164477/2164477-1772396708929-7e65c6edd7c86.jpg"
   },
   {
     "id": "9f0f8fc10025499bbfd700c777587626",

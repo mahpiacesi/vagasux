@@ -124,19 +124,48 @@ function normalizeSpotifyShowUrl(url) {
   return match ? `https://open.spotify.com/show/${match[1]}` : null
 }
 
+function fetchPageHtml(url) {
+  return execFileSync(
+    'curl',
+    ['-fsSL', '-A', 'Mozilla/5.0 (compatible; VagasUX-Export/1.0)', url],
+    { encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 },
+  )
+}
+
 /** Capa dinâmica via og:image da página do show no Spotify. */
 function fetchSpotifyCoverUrl(showUrl) {
   const canonical = normalizeSpotifyShowUrl(showUrl)
   if (!canonical) return null
 
   try {
-    const html = execFileSync('curl', ['-fsSL', canonical], {
-      encoding: 'utf8',
-      maxBuffer: 5 * 1024 * 1024,
-    })
+    const html = fetchPageHtml(canonical)
     const match = html.match(/property="og:image" content="([^"]+)"/)
     const imageUrl = match?.[1]
     return imageUrl && /scdn\.co\/image\//i.test(imageUrl) ? imageUrl : null
+  } catch {
+    return null
+  }
+}
+
+function isAnchorShowUrl(url) {
+  return /anchor\.fm\//i.test(url)
+}
+
+function normalizeAnchorShowUrl(url) {
+  const match = String(url).match(/anchor\.fm\/([a-zA-Z0-9_-]+)/i)
+  return match ? `https://anchor.fm/${match[1]}` : null
+}
+
+/** Capa dinâmica via og:image da página do podcast no Anchor. */
+function fetchAnchorCoverUrl(showUrl) {
+  const canonical = normalizeAnchorShowUrl(showUrl)
+  if (!canonical) return null
+
+  try {
+    const html = fetchPageHtml(canonical)
+    const match = html.match(/property="og:image" content="([^"]+)"/)
+    const imageUrl = match?.[1]
+    return imageUrl && /cloudfront\.net/i.test(imageUrl) ? imageUrl : null
   } catch {
     return null
   }
@@ -161,6 +190,9 @@ function mapPodcast(row, imageExtById) {
   if (isSpotifyShowUrl(url)) {
     const spotifyCover = fetchSpotifyCoverUrl(url)
     if (spotifyCover) item.imageUrl = spotifyCover
+  } else if (isAnchorShowUrl(url)) {
+    const anchorCover = fetchAnchorCoverUrl(url)
+    if (anchorCover) item.imageUrl = anchorCover
   } else {
     const ext = imageExtById.get(id)
     if (ext) item.imageUrl = `/guia/podcasts/${id}.${ext}`
@@ -180,7 +212,7 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa: Spotify i.scdn.co/image/ (dinâmico) ou Notion local. */
+  /** Capa: Spotify i.scdn.co, Anchor cloudfront ou Notion local. */
   imageUrl?: string
 }
 
