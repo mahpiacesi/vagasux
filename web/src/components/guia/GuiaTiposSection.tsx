@@ -1,4 +1,5 @@
-import { useId, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
@@ -37,8 +38,21 @@ function getVerTodosLabel(tipoId: string, title: string): string {
 }
 
 export function GuiaTiposSection() {
-  const [selectedTipoId, setSelectedTipoId] = useState(guiaTipos[0]?.id ?? 'artigos')
+  const [searchParams] = useSearchParams()
+  const tipoFromUrl = searchParams.get('tipo')
+  const [selectedTipoId, setSelectedTipoId] = useState(() => {
+    if (tipoFromUrl && guiaTipos.some((tipo) => tipo.id === tipoFromUrl)) {
+      return tipoFromUrl
+    }
+    return guiaTipos[0]?.id ?? 'artigos'
+  })
   const tablistId = useId()
+
+  useEffect(() => {
+    if (tipoFromUrl && guiaTipos.some((tipo) => tipo.id === tipoFromUrl)) {
+      setSelectedTipoId(tipoFromUrl)
+    }
+  }, [tipoFromUrl])
 
   const selectedTipo = guiaTipos.find((tipo) => tipo.id === selectedTipoId)
   const recentItems = useMemo(
@@ -73,7 +87,7 @@ export function GuiaTiposSection() {
   return (
     <section
       id={guiaHashes.tipos}
-      className="border-b border-neutral-500/10 bg-neutral-100 px-5 py-16 md:px-6 md:py-20"
+      className="scroll-mt-28 border-b border-neutral-500/10 bg-neutral-100 px-5 py-16 md:px-6 md:py-20"
       aria-labelledby="guia-tipos-heading"
     >
       <div className="mx-auto max-w-6xl">

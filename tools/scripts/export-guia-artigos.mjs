@@ -332,6 +332,10 @@ function mapArtigo(row, imageExtById, mediumOgById) {
     vagasuxPublication: isVagasuxPublication(url, channels),
   }
 
+  if (row.createdTime) {
+    item.addedAt = String(row.createdTime).trim().replace(' ', 'T')
+  }
+
   const mediumOg = mediumOgById.get(id)
   if (mediumOg) {
     item.imageUrl = mediumOg
@@ -365,6 +369,8 @@ export type GuiaArtigo = {
   mediumCover?: boolean
   /** Publicado no Medium da VagasUX. */
   vagasuxPublication?: boolean
+  /** Data de criação no Notion — ordenação do preview. */
+  addedAt?: string
 }
 
 /** Artigo em destaque — publicação oficial VagasUX no Medium. */

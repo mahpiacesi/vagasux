@@ -16,6 +16,8 @@ export type GuiaArtigo = {
   mediumCover?: boolean
   /** Publicado no Medium da VagasUX. */
   vagasuxPublication?: boolean
+  /** Data de criação no Notion — ordenação do preview. */
+  addedAt?: string
 }
 
 /** Artigo em destaque — publicação oficial VagasUX no Medium. */
@@ -42,7 +44,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://uxplanet.org/a-complete-list-of-ux-deliverables-d62ccf1de434",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1186/1*9ieZHMy6IgYlRFPalba-Vw.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-03T02:41:00Z"
   },
   {
     "id": "3b18cbb0d904809d9e3ad5b7ab25c81e",
@@ -63,7 +66,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ux-user-experience-design-em-portugues/a-onda-de-layoffs-e-o-risco-para-entrantes-no-mercado-de-tecnologia-e174d850cfdf",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*ep46MZt3dTFDMXwv_16Uow.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:04:43Z"
   },
   {
     "id": "7465a0ae379d484c9f662aee7f49f190",
@@ -86,7 +90,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/a-relacao-entre-ux-e-metricas-o-papel-do-designer-no-emprego-de-metricas-b132ee0bd539",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*WIzYPQ5sTcm_DBPINo5KsQ.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T14:40:00Z"
   },
   {
     "id": "7da9a906ef21470893820bcf0cddda67",
@@ -108,7 +113,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/como-migrar-para-ux-design-comecar-guia-completo-875db7cc3b4",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*aqFh4uCj2cQaZTIuhnvSFg.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T03:41:00Z"
   },
   {
     "id": "3212814f55484c4fb58fb4bccfaaa414",
@@ -130,7 +136,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ladies-that-ux-br/como-documentar-pesquisas-de-ux-no-notion-1095a61adfe0",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*lL02HgXFOdXiUI_dMQUTXA.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T05:55:00Z"
   },
   {
     "id": "0df0358045fb422db98e72a9608216a4",
@@ -152,7 +159,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/magnetis-design/como-fizemos-pesquisa-pelo-whatsapp-cf8efebcda4b",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*sxJMbB1BTzglAxce12IJ9A.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T03:26:00Z"
   },
   {
     "id": "3b18cbb0d90480ef9856c04db89067a0",
@@ -174,7 +182,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/vagas-ux/como-foi-organizar-um-desafio-volunt%C3%A1rio-entre-designers-e-ongs-8c87f07f7740",
     "vagasuxPublication": true,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*xXZwe_cBrnZW2wAiCoDVHA.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:03:52Z"
   },
   {
     "id": "863481fcfb65445da0b1d88b663caee8",
@@ -198,7 +207,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/parcauxcase-9463eda06547",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*qWGLSweCwH7GXQbDsa62oA.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T15:52:00Z"
   },
   {
     "id": "c4dfe01495ec4f30a3e9e416ad47c14d",
@@ -219,7 +229,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/como-montar-um-portf%C3%B3lio-de-ux-se-eu-ainda-n%C3%A3o-trabalho-com-ux-c5ec6434de20",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*zyK52ZY99TonbbrtmbYygQ.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T04:58:00Z"
   },
   {
     "id": "3f693f150ac34619bf22a658e32155bf",
@@ -242,7 +253,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ifood-tech/organizando-e-documentando-o-trabalho-de-produto-e-design-no-ifood-ca82b32d78ed",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*fFlmwIRcm--3SKn1.jpg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:02:00Z"
   },
   {
     "id": "2455b2208b4e4689840cad03fdfe9cb5",
@@ -264,7 +276,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://coletivoux.com/como-planejar-uma-pesquisa-de-ux-3a66497ed9be",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*m6ozr9NsA_thFC5lesFyvg.gif",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:39:00Z"
   },
   {
     "id": "acbeafafb55c4bf0882628bdd780defc",
@@ -286,7 +299,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/como-tabular-testes-de-usabilidade-eb4757d7a65d",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/da:true/resize:fit:640/1*hRPqY0eXhg-wonXwEvmDgQ.gif",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T05:56:00Z"
   },
   {
     "id": "691998f8137a470e92054cf71a76c388",
@@ -310,7 +324,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/labs-olx-brasil/desenhando-um-novo-chat-para-a-olx-773c3ce10a9f",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:3000/1*c-MyxF6qkoZ6mB_p7yZOUQ.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:24:00Z"
   },
   {
     "id": "24b8e61054574ab185759136d414fce7",
@@ -333,7 +348,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/meiuca/design-e-o-poder-da-adapta%C3%A7%C3%A3o-2cc380d4e8cf",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*y2crguSV_XQVTeKZaoNnRw.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T16:15:00Z"
   },
   {
     "id": "3b18cbb0d90480f5ad0aec613c6b93e0",
@@ -355,7 +371,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/vagas-ux/documenta%C3%A7%C3%A3o-handoff-e-qa-comunica%C3%A7%C3%A3o-em-product-design-3bf4b34729a3",
     "vagasuxPublication": true,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*tHKZpie_vQ-e6xfQ",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:07:04Z"
   },
   {
     "id": "3b18cbb0d90480238e59cd1bcea2eaa1",
@@ -377,7 +394,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/vagas-ux/e-quando-a-empresa-n%C3%A3o-precisa-de-um-designer-3f847a3fa2fc",
     "vagasuxPublication": true,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*Krl67l6ndcHGMq-_",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:08:36Z"
   },
   {
     "id": "3b18cbb0d90480199280f8ca24f04d38",
@@ -398,7 +416,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/vagas-ux/existe-tabu-em-vestir-a-camisa-de-j%C3%BAnior-ebc907db384",
     "vagasuxPublication": true,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*ZwZTWCKR_hRaqFJMHNwG5A.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:03:08Z"
   },
   {
     "id": "ecf2cdbcc7b247a5bde5933f1aa5f383",
@@ -420,7 +439,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/aela/gloss%C3%A1rio-do-product-designer-f2644656ccd0",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:500/1*G8BLsvfRt3K-E3je4Ozp4Q.gif",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:08:00Z"
   },
   {
     "id": "5dd3b024c3864efabb52af819c41a5a6",
@@ -442,7 +462,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://uxdesign.cc/good-to-great-ui-animation-tips-7850805c12e5",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*x8wGMNfuh1e5Ew6k0aF_iQ.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-03T00:46:00Z"
   },
   {
     "id": "3b18cbb0d90480e6acbed6c8101dc2fa",
@@ -464,7 +485,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ux-user-experience-design-em-portugues/mentorias-pra-quem-t%C3%A1-come%C3%A7ando-como-funcionam-e-por-que-fazer-2dbeb8b9527b",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*gADDjFywTS1zZ9cu50JLWg.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:00:41Z"
   },
   {
     "id": "7d94a3b8c6034940b2fe8f7437a36a75",
@@ -486,7 +508,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/minhas-maiores-dificuldades-como-product-designer-23159f5a5285",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*UiK25lHl7y2HcLpdmNE8AQ.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:11:00Z"
   },
   {
     "id": "a0b8994b1460434cb223dffe96ec7fc2",
@@ -511,7 +534,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/nossa-ind%C3%BAstria-precisa-de-mais-designers-e-o-mais-importante-um-tipo-diferente-de-designer-9e59d0f25060",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/0*V2tEz-VDzHocMbwm.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T03:18:00Z"
   },
   {
     "id": "0bf0232b14184fc5b75a4eeeac764070",
@@ -531,7 +555,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/quintoandar-design/nuggets-como-democratizar-pesquisas-de-design-9b1a717879f0",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*e0MuN9JYZiQT768WfAKrXw.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:12:00Z"
   },
   {
     "id": "602b19616fee453cafe5ba00e9ee07b9",
@@ -554,7 +579,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/o-tal-do-product-designer-um-pouco-do-que-fazemos-diariamente-3bb7d5dd3fd3",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*lqu3BoXL1JHJ3Guov68Wdg.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T15:00:00Z"
   },
   {
     "id": "ef5e01ed5c5d4681adae93ac5306971d",
@@ -573,7 +599,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/techatquero/ops-evolu%C3%ADmos-nosso-design-system-c7595df0d231",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*tl4eahdOAOf6jawVWuHMwA.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T02:37:00Z"
   },
   {
     "id": "2e4b215267b045db8aa6222b1ea1640b",
@@ -595,7 +622,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/perguntas-para-fazer-quando-for-entrevistado-para-uma-vaga-de-ux-b158fa710489",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1200/1*hfgqYBCjbT6lB21UJTE08g.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T05:17:00Z"
   },
   {
     "id": "3b18cbb0d904805aba16c58f51ce7838",
@@ -616,7 +644,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ux-user-experience-design-em-portugues/precisamos-falar-sobre-um-ou-v%C3%A1rios-elefantes-na-%C3%A1rea-de-ux-6a93561b73ca",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1280/1*FzJTf3IH0F2s-OW_mC7UxA.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:02:18Z"
   },
   {
     "id": "4711d4b232e94d6dbd61e01017efc382",
@@ -638,7 +667,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/qual-o-papel-do-ui-designer-na-constru%C3%A7%C3%A3o-de-um-produto-1b07dded5d09",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*wE9dfPvQybLn25rML1OjXQ.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T14:25:00Z"
   },
   {
     "id": "d61cb321ee26469abe748ade5283f956",
@@ -660,7 +690,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/ser-um-ux-generalista-ou-um-ux-especialista-eis-a-quest%C3%A3o-90b39c7a6b1f",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:500/0*Pap14IYogV6ik67C.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T05:15:00Z"
   },
   {
     "id": "3b18cbb0d904800387b9d71c3077419d",
@@ -681,7 +712,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/vagas-ux/sobre-layoffs-recoloca%C3%A7%C3%A3o-e-novas-perspectivas-cffdee613d6e",
     "vagasuxPublication": true,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*EPphKKuh3Q7zKxrcJpsdQg.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:05:49Z"
   },
   {
     "id": "e87ac2cef4d3492792600685f550a327",
@@ -703,7 +735,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://coletivoux.com/ux-design-psicanalise-2-38550e8fd941",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*DinSbIXVtNIdc_zBbcGk8g.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T15:18:00Z"
   },
   {
     "id": "39d26cf5c2d24785b866503b5a1cb68a",
@@ -725,7 +758,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/quintoandar-design/ux-writing-em-produto-a-l%C3%B3gica-por-tr%C3%A1s-do-conte%C3%BAdo-2e7aa0de3b9",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:700/1*fMqDoZ_YzJuQzk-lRMTgSA.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T15:03:00Z"
   },
   {
     "id": "8b78a51e463f41478964fc7b0650d205",
@@ -747,7 +781,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://brasil.uxdesign.cc/voc%C3%AA-n%C3%A3o-precisa-saber-tudo-sobre-ux-175e53933f60",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/1*uolQeS3oH07YWIshMSFu1w.jpeg",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2020-08-02T05:16:00Z"
   },
   {
     "id": "3b18cbb0d904807aa044cc98f91b00a4",
@@ -768,7 +803,8 @@ export const guiaArtigos: GuiaArtigo[] = [
     "url": "https://medium.com/ux-user-experience-design-em-portugues/voluntariado-hands-on-conectando-a-pr%C3%A1tica-com-a-colabora%C3%A7%C3%A3o-4f1476f37d9c",
     "vagasuxPublication": false,
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/1*VKnuUStf6EG4ofW1KNF_lQ.png",
-    "mediumCover": true
+    "mediumCover": true,
+    "addedAt": "2026-08-03T21:01:34Z"
   }
 ]
 
