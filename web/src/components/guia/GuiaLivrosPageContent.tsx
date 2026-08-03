@@ -27,7 +27,7 @@ export function GuiaLivrosPageContent({
   const countLabel =
     contextFilter === null
       ? `${guiaBooks.length} livros curados`
-      : `${filteredBooks.length} de ${guiaBooks.length} livros · ${contextFilter}`
+      : `${filteredBooks.length} de ${guiaBooks.length} livros`
 
   return (
     <div className="mt-8">

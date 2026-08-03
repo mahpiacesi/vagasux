@@ -18,7 +18,7 @@ export function GuiaTipoPage() {
         title={tipo.title}
         description={
           tipo.description ??
-          'Referências essenciais de UX, UI, produto e design — curadas pela comunidade VagasUX.'
+          'Referências essenciais de UX, UI, produto e design, curadas pela comunidade VagasUX.'
         }
       />
     )
