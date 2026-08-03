@@ -66,8 +66,9 @@ Enums:
 `discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`):
 
 - **Motion** e **UI** — só com sinal explícito em título/role/área (como motion: área `UX/UI Design` sozinha não vira UI).
-- **UX** (filtro unificado) — Product Designer, UX Designer e híbridos generalistas (`product_design` + `ux` no banco).
-- **UI** — UI Designer, Product Designer com foco explícito em UI (ex.: título "| UI", "forte foco em UI" na descrição).
+- **UX** (filtro unificado) — Product Designer, UX Designer e híbridos generalistas `UX/UI` (`product_design` + `ux` no banco). Títulos como "UX/UI Designer Júnior" ou "Estagiário Em UX/UI Design" ficam em **UX**, não em UI.
+- **UI** — UI Designer, `| UI` no título, ou Product Designer com foco explícito em UI na descrição (ex.: Phiz `SR Product Designer | UI`).
+- **Pesquisa** — UX Researcher, CX Researcher, área UX Research; menção genérica a "pesquisa" na descrição **não** classifica.
 - **Visual & Graphic** — título/role gráfico, área de artes gráficas, descrição com foco social/print/branding, ou título genérico "Designer" quando há descrição gráfica.
 - **Content Design** — UX Writer, Content Designer, Designer Conversacional; área UX Writing. Menção a "UX Writing" na descrição de vaga de Product **não** classifica como Content.
 - **Ops & Strategy** — design ops, program manager, strategist, head/director of design.

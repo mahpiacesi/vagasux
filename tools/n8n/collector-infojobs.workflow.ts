@@ -133,6 +133,13 @@ function decodeHtml(value) {
     .trim();
 }
 
+function cleanCompanyName(value) {
+  return decodeHtml(String(value || 'Empresa'))
+    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs\\.?\\s*Saiba o que isso significa\\.?\\s*$/i, '')
+    .replace(/\\s*Este selo indica que a empresa foi verificada pelo Infojobs[^.]*\\.?\\s*$/i, '')
+    .trim() || 'Empresa';
+}
+
 function normalizeTitle(title) {
   return decodeHtml(title)
     .toLowerCase()
@@ -176,7 +183,7 @@ function parseCards(fragmentHtml) {
     const dateMatch = block.match(/class="js_date" data-value="([^"]+)"/);
     const locationMatch = block.match(/<div class="mb-8">\\s*([^<]+)/);
     const companyMatch = block.match(/<div class="text-body">\\s*<a[^>]*>\\s*([\\s\\S]*?)\\s*<\\/a>/);
-    const company = decodeHtml(String(companyMatch?.[1] || 'Empresa').replace(/<[^>]+>/g, ' '));
+    const company = cleanCompanyName(String(companyMatch?.[1] || 'Empresa').replace(/<[^>]+>/g, ' '));
     cards.push({
       id,
       href,
@@ -220,7 +227,7 @@ for (const card of byId.values()) {
     json: {
       source: 'InfoJobs',
       source_job_id: String(card.id),
-      company: String(card.company || 'Empresa').trim(),
+      company: cleanCompanyName(String(card.company || 'Empresa').trim()),
       title,
       description: null,
       url,
