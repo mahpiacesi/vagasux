@@ -180,19 +180,12 @@ export function inferDisciplineFromJob(input: {
     return 'ux_research'
   }
 
-  if (
-    /\b(content design|ux writing|ux writer|content designer|design de conteudo|redator ux|technical writer)\b/.test(
-      text,
-    )
-  ) {
-    return 'content_design'
-  }
+  if (isContentDesignJob(input)) return 'content_design'
 
   if (isOpsStrategyJob(input)) return 'design_ops'
 
   if (area) {
     if (/research|pesquisa/.test(area)) return 'ux_research'
-    if (/content|writing/.test(area)) return 'content_design'
     if (
       /ops|operations|strategy|strategic|program/.test(area) &&
       /design/.test(area) &&
@@ -248,7 +241,6 @@ export function inferDisciplineFromJob(input: {
     }
     if (/\bmotion designer\b|\bmotion design\b/.test(role)) return 'motion'
     if (/research|pesquisa/.test(role)) return 'ux_research'
-    if (/content|writing/.test(role)) return 'content_design'
     if (/design ops|designops|design program|design strategist|head of design|design director/.test(role)) {
       return 'design_ops'
     }
@@ -307,6 +299,7 @@ export function resolveDiscipline(input: {
   if (parsed === 'motion' && inferred !== 'motion') return inferred
   if (parsed === 'ui' && inferred !== 'ui') return inferred
   if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
+  if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
@@ -344,6 +337,7 @@ const VISUAL_DESCRIPTION = /\b(redes sociais|social media|instagram|stories|reel
 const PRODUCT_HEADLINE = /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux|design system|design de experiencia digital)\b/;
 const UI_HEADLINE = /\b(ui designer|designer de interface|designer ui|ui design|interface designer|designer de ui)\b/;
 const UX_HEADLINE = /\b(ux designer|designer de experiencia|user experience designer|ux design|service design|design de servico|designer ux|designer de ux)\b/;
+const CONTENT_HEADLINE = /\b(content design|content designer|ux writing|ux writer|design de conteudo|redator ux|redator de ux|technical writer|writer ux|designer conversacional|conversational designer|conversation designer|design conversacional|chatbot designer|designer de conversacao|content strategist|estrategista de conteudo|copywriter ux|ux copywriter)\b/;
 const OPS_STRATEGY_HEADLINE = /\b(design ops|design operations|designops|design program manager|design strategist|strategic designer|design strategy|estrategista de design|head of design|director of design|design director|chief design officer|design operations manager|design operation specialist|design program lead|design excellence|design governance|design maturity)\b/;
 function parseDiscipline(value) {
   const normalized = String(value ?? '').trim();
@@ -397,6 +391,44 @@ function isExclusiveUiUxProductScope(input) {
 function isGenericDesignerTitle(title: string) {
   const t = title.replace(/\s+/g, ' ').trim()
   return /^designer(\s*[-–|]\s*(pj|clt|freela|freelance|pleno|pl|junior|jr|senior|sr|júnior|sênior))?\.?\s*$/i.test(t)
+}
+
+
+function isContentDesignJob(input) {
+  const headline = headlineText(input)
+  const area = normalizeJobText(input.area)
+  const role = normalizeJobText(input.role)
+
+  if (
+    /\b(product design|product designer|design de produto|designer de produto|design de produtos|coordenador.*design de produto)\b/.test(
+      headline,
+    ) &&
+    !CONTENT_HEADLINE.test(headline)
+  ) {
+    return false
+  }
+
+  if (CONTENT_HEADLINE.test(headline)) return true
+
+  if (
+    area &&
+    /\b(ux writing|content design|content writing|design de conteudo|conversational design|design conversacional)\b/.test(
+      area,
+    )
+  ) {
+    return true
+  }
+
+  if (
+    role &&
+    /\b(ux writer|content designer|technical writer|designer conversacional|conversational designer|redator ux|redator de ux)\b/.test(
+      role,
+    )
+  ) {
+    return true
+  }
+
+  return false
 }
 
 function isUiJob(input) {
@@ -551,19 +583,12 @@ function inferDisciplineFromJob(input) {
     return 'ux_research'
   }
 
-  if (
-    /\b(content design|ux writing|ux writer|content designer|design de conteudo|redator ux|technical writer)\b/.test(
-      text,
-    )
-  ) {
-    return 'content_design'
-  }
+  if (isContentDesignJob(input)) return 'content_design'
 
   if (isOpsStrategyJob(input)) return 'design_ops'
 
   if (area) {
     if (/research|pesquisa/.test(area)) return 'ux_research'
-    if (/content|writing/.test(area)) return 'content_design'
     if (
       /ops|operations|strategy|strategic|program/.test(area) &&
       /design/.test(area) &&
@@ -619,7 +644,6 @@ function inferDisciplineFromJob(input) {
     }
     if (/\bmotion designer\b|\bmotion design\b/.test(role)) return 'motion'
     if (/research|pesquisa/.test(role)) return 'ux_research'
-    if (/content|writing/.test(role)) return 'content_design'
     if (/design ops|designops|design program|design strategist|head of design|design director/.test(role)) {
       return 'design_ops'
     }
@@ -672,6 +696,7 @@ function resolveDiscipline(input) {
   if (parsed === 'motion' && inferred !== 'motion') return inferred
   if (parsed === 'ui' && inferred !== 'ui') return inferred
   if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
+  if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
