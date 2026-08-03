@@ -82,6 +82,54 @@ const VISUAL_DESCRIPTION =
 const PRODUCT_HEADLINE =
   /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux|design system|design de experiencia digital)\b/
 
+function descriptionText(input: { description?: unknown }): string {
+  const description =
+    typeof input.description === 'string'
+      ? input.description.slice(0, 4000)
+      : String(input.description ?? '')
+
+  return normalizeJobText(description)
+}
+
+/** Description mentions social, print, branding, etc. */
+function hasGraphicDescriptionFocus(input: { description?: unknown }): boolean {
+  return VISUAL_DESCRIPTION.test(descriptionText(input))
+}
+
+/** Scope is purely product/UI/UX in headline — not hybrid or generic designer. */
+function isExclusiveUiUxProductScope(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): boolean {
+  const headline = headlineText(input)
+  const area = normalizeJobText(input.area)
+  const role = normalizeJobText(input.role)
+
+  if (/product/.test(headline) && /visual|graphic|grafico|brand|marketing|comunicacao|social/.test(headline)) {
+    return false
+  }
+  if (area && /product/.test(area) && /visual|graphic|grafico|brand|marketing|comunicacao/.test(area)) {
+    return false
+  }
+
+  if (PRODUCT_HEADLINE.test(headline) && !VISUAL_HEADLINE.test(headline)) return true
+  if (
+    /\b(product designer|design de produto|designer de produto)\b/.test(headline) &&
+    !/grafico|graphic|visual|brand|marketing|social/.test(headline)
+  ) {
+    return true
+  }
+  if (area && /\bproduct design\b/.test(area) && !/visual|graphic|grafico|brand|marketing|comunicacao/.test(area)) {
+    return true
+  }
+  if (role && /\bproduct designer\b/.test(role) && !/grafico|graphic|visual|brand|marketing/.test(role)) {
+    return true
+  }
+
+  return false
+}
+
 function isMotionJob(input: {
   title?: unknown
   area?: unknown
@@ -118,11 +166,13 @@ function isVisualGraphicJob(input: {
   if (VISUAL_HEADLINE.test(headline)) return true
 
   if (area) {
-    if (/product/.test(area)) return false
-    if (/graphic|visual|brand|marketing|comunicacao|performance|crm/.test(area)) return true
+    if (/graphic|visual|grafico|brand|marketing|comunicacao|performance|crm/.test(area)) return true
+    if (/product/.test(area) && /visual|graphic|grafico|brand|marketing|comunicacao/.test(area)) return true
   }
 
-  if (VISUAL_DESCRIPTION.test(text) && !PRODUCT_HEADLINE.test(headline)) return true
+  if (hasGraphicDescriptionFocus(input) && !isExclusiveUiUxProductScope(input)) return true
+
+  if (VISUAL_DESCRIPTION.test(text) && !isExclusiveUiUxProductScope(input)) return true
 
   return false
 }
@@ -166,12 +216,22 @@ export function inferDisciplineFromJob(input: {
     return 'design_ops'
   }
 
-  // Area-first: product always wins over graphic when both appear in area
+  // Description with graphic/social/print focus beats product when scope is not exclusive UI/UX
+  if (hasGraphicDescriptionFocus(input) && !isExclusiveUiUxProductScope(input)) {
+    return 'visual_graphic'
+  }
+
   if (area) {
     if (/research|pesquisa/.test(area)) return 'ux_research'
     if (/content|writing/.test(area)) return 'content_design'
     if (/ops|operations/.test(area)) return 'design_ops'
-    if (/product/.test(area)) return 'product_design'
+    if (/product/.test(area)) {
+      if (/visual|graphic|grafico|brand|marketing|comunicacao/.test(area)) return 'visual_graphic'
+      if (hasGraphicDescriptionFocus(input) && !isExclusiveUiUxProductScope(input)) {
+        return 'visual_graphic'
+      }
+      return 'product_design'
+    }
     if (/\bmotion design\b|\bmotion designer\b/.test(area)) {
       return isMotionJob(input) ? 'motion' : 'visual_graphic'
     }
@@ -260,7 +320,13 @@ export function resolveDiscipline(input: {
 
   // Heuristics override IA when buckets conflitam (motion inflado, product vs graphic)
   if (parsed === 'motion' && inferred !== 'motion') return inferred
-  if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
+  if (
+    parsed === 'product_design' &&
+    hasGraphicDescriptionFocus(input) &&
+    !isExclusiveUiUxProductScope(input)
+  ) {
+    return 'visual_graphic'
+  }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
     parsed === 'product_design' &&

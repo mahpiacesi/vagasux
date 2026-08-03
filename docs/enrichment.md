@@ -63,7 +63,7 @@ Enums:
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
 
-`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`): heurísticas a partir de título, `area` e `role` corrigem motion inflado e conflitos product vs graphic (product sempre vence quando ambos aparecem).
+`discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`): heurísticas corrigem motion inflado e conflitos product vs graphic. **Gráfico vence product** quando a descrição foca social/print/branding e o escopo não é exclusivamente UI/UX/product (headline híbrida ou genérica).
 
 ## Contrato JSON da IA
 
