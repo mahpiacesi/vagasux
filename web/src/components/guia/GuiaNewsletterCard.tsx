@@ -60,7 +60,7 @@ function FeaturedLabel({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        'inline-flex rounded-full bg-brand-400 px-3 py-1 text-[0.65rem] font-bold tracking-[0.14em] text-neutral-100 uppercase',
+        'inline-flex w-fit self-start rounded-full bg-brand-400 px-3 py-1 text-[0.65rem] font-bold tracking-[0.14em] text-neutral-100 uppercase',
         className,
       )}
     >
