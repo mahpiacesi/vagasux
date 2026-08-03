@@ -76,7 +76,7 @@ export function isVideoEditingRole(input: {
 
 /** CAD/engineering, beauty, industrial/furniture — not digital product / UX design careers. */
 const NON_DESIGN_CAREER =
-  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
+  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|solid edge|sketchup|autocad|promob|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|ferramental|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
 
 export function isInfoJobsSource(source: unknown): boolean {
   return normalizeJobText(source) === 'infojobs'
