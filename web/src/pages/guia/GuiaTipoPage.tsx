@@ -1,4 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom'
+import { GuiaArtigosPageContent } from '@/components/guia/GuiaArtigosPageContent'
 import { GuiaLivrosPageContent } from '@/components/guia/GuiaLivrosPageContent'
 import { GuiaNewslettersPageContent } from '@/components/guia/GuiaNewslettersPageContent'
 import { GuiaPodcastsPageContent } from '@/components/guia/GuiaPodcastsPageContent'
@@ -12,6 +13,18 @@ export function GuiaTipoPage() {
 
   if (!tipo) {
     return <Navigate to={guiaRoutes.home} replace />
+  }
+
+  if (slug === 'artigos') {
+    return (
+      <GuiaArtigosPageContent
+        title={tipo.title}
+        description={
+          tipo.description ??
+          'Artigos de design, produto e UX para ler no seu ritmo, curados pela comunidade VagasUX.'
+        }
+      />
+    )
   }
 
   if (slug === 'livros') {

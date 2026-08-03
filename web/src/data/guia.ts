@@ -112,7 +112,12 @@ export const guiaTemas: GuiaTema[] = [
 ]
 
 export const guiaTipos: GuiaTipo[] = [
-  { id: 'artigos', title: 'Artigos' },
+  {
+    id: 'artigos',
+    title: 'Artigos',
+    description:
+      'Artigos de design, produto e UX para ler no seu ritmo, curados pela comunidade VagasUX.',
+  },
   { id: 'videos', title: 'Vídeos' },
   { id: 'cursos', title: 'Cursos' },
   {

@@ -1,12 +1,14 @@
 import { useId, useMemo, useState } from 'react'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
+import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
+import { guiaArtigos } from '@/data/guiaArtigos'
 import { guiaBooks } from '@/data/guiaBooks'
 import { guiaNewsletters, splitGuiaFeaturedNewsletter } from '@/data/guiaNewsletters'
 import { guiaPodcasts, splitGuiaFeaturedPodcast } from '@/data/guiaPodcasts'
@@ -28,6 +30,7 @@ export function GuiaTiposSection() {
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
   )
+  const recentArtigos = useMemo(() => guiaArtigos.slice(0, 5), [])
   const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
   const recentNewsletters = useMemo(() => {
     const { featured, rest } = splitGuiaFeaturedNewsletter(guiaNewsletters)
@@ -120,7 +123,15 @@ export function GuiaTiposSection() {
             </Button>
           </div>
 
-          {selectedTipoId === 'livros' && recentBooks.length > 0 ? (
+          {selectedTipoId === 'artigos' && recentArtigos.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentArtigos.map((artigo) => (
+                <li key={artigo.id}>
+                  <GuiaArtigoCard artigo={artigo} className="h-full" />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'livros' && recentBooks.length > 0 ? (
             <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {recentBooks.map((book) => (
                 <li key={book.id}>
