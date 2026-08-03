@@ -31,19 +31,19 @@ export function GuiaLivrosPageContent({
 
   return (
     <div className="mt-8">
-      <div className="max-w-2xl">
+      <header className="w-full">
         <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg md:whitespace-nowrap">
             {description}
           </p>
         ) : null}
 
         <p className="mt-4 text-sm font-semibold text-neutral-400">{countLabel}</p>
-      </div>
+      </header>
 
       <GuiaLivrosContextFilter
         className="mt-8"
