@@ -1,9 +1,11 @@
 import { useId, useMemo, useState } from 'react'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
+import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
+import { guiaBooks } from '@/data/guiaBooks'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -17,6 +19,7 @@ export function GuiaTiposSection() {
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
   )
+  const recentBooks = useMemo(() => guiaBooks.slice(0, 3), [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -98,7 +101,15 @@ export function GuiaTiposSection() {
             </Button>
           </div>
 
-          {recentItems.length > 0 ? (
+          {selectedTipoId === 'livros' && recentBooks.length > 0 ? (
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {recentBooks.map((book) => (
+                <li key={book.id}>
+                  <GuiaBookCard book={book} className="h-full" />
+                </li>
+              ))}
+            </ul>
+          ) : recentItems.length > 0 ? (
             <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {recentItems.map((item) => (
                 <li key={item.id}>

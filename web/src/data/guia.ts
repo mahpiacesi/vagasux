@@ -115,7 +115,12 @@ export const guiaTipos: GuiaTipo[] = [
   { id: 'artigos', title: 'Artigos' },
   { id: 'videos', title: 'Vídeos' },
   { id: 'cursos', title: 'Cursos' },
-  { id: 'livros', title: 'Livros' },
+  {
+    id: 'livros',
+    title: 'Livros',
+    description:
+      'Referências essenciais de UX, UI, produto e design — curadas pela comunidade VagasUX.',
+  },
   { id: 'podcasts', title: 'Podcasts' },
   { id: 'newsletters', title: 'Newsletters' },
   { id: 'eventos', title: 'Eventos' },
