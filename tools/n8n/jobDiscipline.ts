@@ -539,7 +539,10 @@ export function resolveDiscipline(input: {
   if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
   if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'ux_research' && inferred !== 'ux_research') return inferred
-  if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
+  if (parsed === 'visual_graphic' && inferred === 'product_design') {
+    if (isClearlyGraphicJob(input)) return 'visual_graphic'
+    return 'product_design'
+  }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
     parsed === 'product_design' &&
@@ -826,12 +829,33 @@ function isHybridProductGraphicArea(area: string) {
   return /product/.test(area) && /visual|graphic|grafico|brand|marketing|comunicacao/.test(area)
 }
 
+function isMarketingGraphicHeadline(headline) {
+  if (
+    /\b(product design|product designer|design de produto|designer de produto|ux\/ui|ui\/ux|ux designer|ui designer|product ux)\b/.test(
+      headline,
+    )
+  ) {
+    return false
+  }
+
+  if (/\b(publicitario|designer publicitario|designer, publicitario)\b/.test(headline)) return true
+  if (/\bdesigner de marketing\b|\bdesigner de comunicacao\b|\bdesign de marketing\b/.test(headline)) {
+    return true
+  }
+  if (/\b(marketing|comunicacao)\b/.test(headline) && /\bdesigner\b/.test(headline)) return true
+  if (/\bagencia de marketing\b/.test(headline) && /\bdesigner\b/.test(headline)) return true
+
+  return false
+}
+
 /** Clearly graphic — not hybrid/ambiguous product+visual (product wins those for VagasUX). */
 function isClearlyGraphicJob(input) {
   const headline = headlineText(input)
   const area = normalizeJobText(input.area)
   const role = normalizeJobText(input.role)
   const title = normalizeJobText(input.title)
+
+  if (isMarketingGraphicHeadline(headline)) return true
 
   if (VISUAL_HEADLINE.test(headline)) return true
   if (role && /grafico|graphic|visual|brand|marketing|comunicacao|criativo/.test(role)) return true
@@ -1008,7 +1032,10 @@ function resolveDiscipline(input) {
   if (parsed === 'design_ops' && inferred !== 'design_ops') return inferred
   if (parsed === 'content_design' && inferred !== 'content_design') return inferred
   if (parsed === 'ux_research' && inferred !== 'ux_research') return inferred
-  if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
+  if (parsed === 'visual_graphic' && inferred === 'product_design') {
+    if (isClearlyGraphicJob(input)) return 'visual_graphic'
+    return 'product_design'
+  }
   if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
   if (
     parsed === 'product_design' &&
