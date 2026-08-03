@@ -171,6 +171,39 @@ function fetchAnchorCoverUrl(showUrl) {
   }
 }
 
+function isApplePodcastUrl(url) {
+  return /podcasts\.apple\.com\//i.test(url)
+}
+
+function isSoundCloudUrl(url) {
+  return /soundcloud\.com\//i.test(url)
+}
+
+function normalizeSoundCloudShowUrl(url) {
+  const match = String(url).match(/soundcloud\.com\/([a-zA-Z0-9_-]+)/i)
+  return match ? `https://soundcloud.com/${match[1]}` : null
+}
+
+function fetchOgImageCover(pageUrl, validate) {
+  try {
+    const html = fetchPageHtml(pageUrl)
+    const match = html.match(/property="og:image" content="([^"]+)"/)
+    const imageUrl = match?.[1]
+    return imageUrl && validate(imageUrl) ? imageUrl : null
+  } catch {
+    return null
+  }
+}
+
+function fetchApplePodcastCoverUrl(pageUrl) {
+  return fetchOgImageCover(pageUrl, (url) => /mzstatic\.com\/image\//i.test(url))
+}
+
+function fetchSoundCloudCoverUrl(pageUrl) {
+  const canonical = normalizeSoundCloudShowUrl(pageUrl) ?? pageUrl
+  return fetchOgImageCover(canonical, (url) => /sndcdn\.com\//i.test(url))
+}
+
 function mapPodcast(row, imageExtById) {
   const id = notionPageId(row.url)
   const authors = parseJsonArray(row['Autor(a)'])
@@ -193,6 +226,12 @@ function mapPodcast(row, imageExtById) {
   } else if (isAnchorShowUrl(url)) {
     const anchorCover = fetchAnchorCoverUrl(url)
     if (anchorCover) item.imageUrl = anchorCover
+  } else if (isApplePodcastUrl(url)) {
+    const appleCover = fetchApplePodcastCoverUrl(url)
+    if (appleCover) item.imageUrl = appleCover
+  } else if (isSoundCloudUrl(url)) {
+    const soundCloudCover = fetchSoundCloudCoverUrl(url)
+    if (soundCloudCover) item.imageUrl = soundCloudCover
   } else {
     const ext = imageExtById.get(id)
     if (ext) item.imageUrl = `/guia/podcasts/${id}.${ext}`
@@ -212,7 +251,7 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa: Spotify i.scdn.co, Anchor cloudfront ou Notion local. */
+  /** Capa: Spotify, Anchor, Apple, SoundCloud (dinâmico) ou Notion local. */
   imageUrl?: string
 }
 

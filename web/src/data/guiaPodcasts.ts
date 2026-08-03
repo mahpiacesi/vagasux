@@ -8,7 +8,7 @@ export type GuiaPodcast = {
   context: string[]
   languages: string[]
   url: string
-  /** Capa: Spotify i.scdn.co, Anchor cloudfront ou Notion local. */
+  /** Capa: Spotify, Anchor, Apple, SoundCloud (dinâmico) ou Notion local. */
   imageUrl?: string
 }
 
@@ -171,8 +171,8 @@ export const guiaPodcasts: GuiaPodcast[] = [
     "languages": [
       "🇺🇸"
     ],
-    "url": "https://designdetails.fm/",
-    "imageUrl": "/guia/podcasts/fff9efae6e0343019a01becfed5f0c16.png"
+    "url": "https://open.spotify.com/show/7kAx8RJce757LXVoX2FIpf",
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8aa420e38134a63a5c6ef22de0"
   },
   {
     "id": "dbdb60d18c284cde87538c06b7518a35",
@@ -268,8 +268,8 @@ export const guiaPodcasts: GuiaPodcast[] = [
     "languages": [
       "🇺🇸"
     ],
-    "url": "https://www.highresolution.design/",
-    "imageUrl": "/guia/podcasts/dd6b7a79cf734bab8f33aefd744703ef.png"
+    "url": "https://podcasts.apple.com/us/podcast/high-resolution/id1204941994",
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/d1/f0/b6/d1f0b6a1-7311-f7fa-2c9c-f7ea14406d5f/mza_4355877226319634813.jpg/1200x1200bf-60.jpg"
   },
   {
     "id": "2f0ee5a454e44ec2808d605a4366313e",
@@ -286,8 +286,8 @@ export const guiaPodcasts: GuiaPodcast[] = [
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://hipsters.tech/",
-    "imageUrl": "/guia/podcasts/2f0ee5a454e44ec2808d605a4366313e.png"
+    "url": "https://open.spotify.com/show/2p0Vx75OmfsXktyLBuLuSf",
+    "imageUrl": "https://i.scdn.co/image/ab6765630000ba8a31d67b43d27d64414af18f7a"
   },
   {
     "id": "09886e52babc4e89961d308961d1ac1f",
@@ -776,8 +776,8 @@ export const guiaPodcasts: GuiaPodcast[] = [
     "languages": [
       "🇺🇸"
     ],
-    "url": "http://ux-radio.com/",
-    "imageUrl": "/guia/podcasts/307d31586abf4179bf09e8500bf8f644.png"
+    "url": "https://soundcloud.com/ux-radio",
+    "imageUrl": "https://i1.sndcdn.com/avatars-000392692173-x2avpp-t500x500.jpg"
   },
   {
     "id": "d0615941f6994ff8ad5fbc3ff7a5a3b7",

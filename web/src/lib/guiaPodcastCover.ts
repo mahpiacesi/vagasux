@@ -1,5 +1,10 @@
 import type { GuiaPodcast } from '@/data/guiaPodcasts'
 import { isAnchorCoverUrl, isAnchorShowUrl } from '@/lib/anchorCover'
+import { isApplePodcastCoverUrl, isApplePodcastUrl } from '@/lib/applePodcastCover'
+import {
+  isSoundCloudCoverUrl,
+  isSoundCloudUrl,
+} from '@/lib/soundcloudCover'
 import {
   fetchSpotifyShowCoverUrl,
   isSpotifyScdnImageUrl,
@@ -9,7 +14,9 @@ import {
 /**
  * Resolve capa do podcast:
  * - Spotify → i.scdn.co/image/
- * - Anchor → cloudfront.net (Spotify for Creators)
+ * - Anchor → cloudfront.net
+ * - Apple Podcasts → mzstatic.com
+ * - SoundCloud → sndcdn.com
  * - Demais → imagem local do Notion
  */
 export function resolvePodcastCoverUrl(podcast: GuiaPodcast): string | null {
@@ -22,6 +29,20 @@ export function resolvePodcastCoverUrl(podcast: GuiaPodcast): string | null {
 
   if (isAnchorShowUrl(podcast.url)) {
     if (podcast.imageUrl && isAnchorCoverUrl(podcast.imageUrl)) {
+      return podcast.imageUrl
+    }
+    return null
+  }
+
+  if (isApplePodcastUrl(podcast.url)) {
+    if (podcast.imageUrl && isApplePodcastCoverUrl(podcast.imageUrl)) {
+      return podcast.imageUrl
+    }
+    return null
+  }
+
+  if (isSoundCloudUrl(podcast.url)) {
+    if (podcast.imageUrl && isSoundCloudCoverUrl(podcast.imageUrl)) {
       return podcast.imageUrl
     }
     return null
