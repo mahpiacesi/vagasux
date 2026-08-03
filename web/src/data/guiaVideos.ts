@@ -11,6 +11,8 @@ export type GuiaVideo = {
   /** Thumbnail YouTube i.ytimg.com/vi/ quando aplicável. */
   imageUrl?: string
   youtubeVideoId?: string
+  /** Playlist YouTube — thumb via oEmbed (primeiro vídeo da lista). */
+  youtubePlaylistId?: string
   /** Vídeo publicado no canal VagasUX. */
   vagasuxChannel?: boolean
 }
@@ -87,7 +89,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PLx_6W4OtI_rl8_RjmFdpye7yIaVwp66IC",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PLx_6W4OtI_rl8_RjmFdpye7yIaVwp66IC",
+    "imageUrl": "https://i.ytimg.com/vi/_SIaIBDjCKA/hqdefault.jpg",
+    "youtubeVideoId": "_SIaIBDjCKA"
   },
   {
     "id": "3d6c63f1f4714872b2d914082896d1cd",
@@ -373,7 +378,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PL9N8zJ9ukDxQwC5SX9DoVgWBpaKdZEDRI",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PL9N8zJ9ukDxQwC5SX9DoVgWBpaKdZEDRI",
+    "imageUrl": "https://i.ytimg.com/vi/qAZRqwzNMu4/hqdefault.jpg",
+    "youtubeVideoId": "qAZRqwzNMu4"
   },
   {
     "id": "1ecfc5093b16405cbb0e0ffe516b3931",
@@ -390,7 +398,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PL5Ya9DqHANRLjuSZ6leUwUVD9jiYbMZU4",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PL5Ya9DqHANRLjuSZ6leUwUVD9jiYbMZU4",
+    "imageUrl": "https://i.ytimg.com/vi/_qpOXAjcU20/hqdefault.jpg",
+    "youtubeVideoId": "_qpOXAjcU20"
   },
   {
     "id": "2389f7498f8f49d4ab17a7a89dc7ef63",
@@ -405,7 +416,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PL5Ya9DqHANRJnrrffC_QmsdZ6oPVUfuiM",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PL5Ya9DqHANRJnrrffC_QmsdZ6oPVUfuiM",
+    "imageUrl": "https://i.ytimg.com/vi/UVauX7n2eJ4/hqdefault.jpg",
+    "youtubeVideoId": "UVauX7n2eJ4"
   },
   {
     "id": "01c789d02b9b43bd94fcb95ae9d24b3e",
@@ -420,7 +434,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PLx_6W4OtI_rnc1dAoiym-dixHcL5VIJ70",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PLx_6W4OtI_rnc1dAoiym-dixHcL5VIJ70",
+    "imageUrl": "https://i.ytimg.com/vi/WAi6ixIfdd4/hqdefault.jpg",
+    "youtubeVideoId": "WAi6ixIfdd4"
   },
   {
     "id": "abd722c66c444cdc9dcd4e6461187bbe",
@@ -436,7 +453,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PL5Ya9DqHANRLsDtmdSkE1z_twTHALkGXA",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PL5Ya9DqHANRLsDtmdSkE1z_twTHALkGXA",
+    "imageUrl": "https://i.ytimg.com/vi/J-oo9-vz5iQ/hqdefault.jpg",
+    "youtubeVideoId": "J-oo9-vz5iQ"
   },
   {
     "id": "fa9ba936e708453fbbb2c7fe306c1341",
@@ -451,7 +471,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PLx_6W4OtI_rkeSc_2RepxfmnJ3ihAujKr",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PLx_6W4OtI_rkeSc_2RepxfmnJ3ihAujKr",
+    "imageUrl": "https://i.ytimg.com/vi/R-bzA9oV-4w/hqdefault.jpg",
+    "youtubeVideoId": "R-bzA9oV-4w"
   },
   {
     "id": "725958e13b1f4afcb263e0a46c57d31e",
@@ -563,7 +586,10 @@ export const guiaVideos: GuiaVideo[] = [
       "🇧🇷"
     ],
     "url": "https://www.youtube.com/playlist?list=PLR1hL-ocTzxdozhP6xwcsuRrl2o9UAabB",
-    "vagasuxChannel": false
+    "vagasuxChannel": false,
+    "youtubePlaylistId": "PLR1hL-ocTzxdozhP6xwcsuRrl2o9UAabB",
+    "imageUrl": "https://i.ytimg.com/vi/NW3Y30o3vp4/hqdefault.jpg",
+    "youtubeVideoId": "NW3Y30o3vp4"
   },
   {
     "id": "c4577cf9e0ae44d2be819836b59195e7",

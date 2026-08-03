@@ -5,8 +5,20 @@ const YOUTUBE_VIDEO_PATTERNS = [
   /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/i,
 ]
 
+const YOUTUBE_PLAYLIST_PATTERN = /[?&]list=([a-zA-Z0-9_-]+)/i
+
 export function isYoutubeVideoUrl(url: string): boolean {
   return extractYoutubeVideoId(url) !== null
+}
+
+export function isYoutubePlaylistUrl(url: string): boolean {
+  return extractYoutubePlaylistId(url) !== null
+}
+
+export function extractYoutubePlaylistId(url: string): string | null {
+  if (!url) return null
+  const match = url.match(YOUTUBE_PLAYLIST_PATTERN)
+  return match?.[1] ?? null
 }
 
 export function extractYoutubeVideoId(url: string): string | null {

@@ -26,6 +26,8 @@ const YOUTUBE_VIDEO_PATTERNS = [
   /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/i,
 ]
 
+const YOUTUBE_PLAYLIST_PATTERN = /[?&]list=([a-zA-Z0-9_-]+)/i
+
 function parseJsonArray(value) {
   if (!value) return []
   if (Array.isArray(value)) return value
@@ -55,6 +57,40 @@ function extractYoutubeVideoId(url) {
   return null
 }
 
+function extractYoutubePlaylistId(url) {
+  if (!url) return null
+  const match = String(url).match(YOUTUBE_PLAYLIST_PATTERN)
+  return match?.[1] ?? null
+}
+
+function fetchYoutubeOembed(url) {
+  try {
+    const json = execFileSync(
+      'curl',
+      [
+        '-fsSL',
+        `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`,
+      ],
+      { encoding: 'utf8' },
+    )
+    return JSON.parse(json)
+  } catch {
+    return null
+  }
+}
+
+/** Thumbnail de playlist via oEmbed (capa do primeiro vídeo da lista). */
+function fetchYoutubePlaylistThumbnail(playlistId) {
+  const data = fetchYoutubeOembed(
+    `https://www.youtube.com/playlist?list=${playlistId}`,
+  )
+  if (typeof data?.thumbnail_url !== 'string') return null
+
+  const thumb = data.thumbnail_url.replace(/^https:\/\/i\d\.ytimg\.com/, 'https://i.ytimg.com')
+  const firstVideoId = thumb.match(/\/vi\/([a-zA-Z0-9_-]{11})\//)?.[1] ?? null
+  return { imageUrl: thumb, firstVideoId }
+}
+
 function youtubeThumbnailUrl(videoId) {
   return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
 }
@@ -81,20 +117,8 @@ function decodeXml(text) {
 }
 
 function fetchYoutubeOembedTitle(videoId) {
-  try {
-    const json = execFileSync(
-      'curl',
-      [
-        '-fsSL',
-        `https://www.youtube.com/oembed?url=${encodeURIComponent(youtubeWatchUrl(videoId))}&format=json`,
-      ],
-      { encoding: 'utf8' },
-    )
-    const data = JSON.parse(json)
-    return typeof data.title === 'string' ? data.title : `Vídeo VagasUX`
-  } catch {
-    return 'Vídeo VagasUX'
-  }
+  const data = fetchYoutubeOembed(youtubeWatchUrl(videoId))
+  return typeof data?.title === 'string' ? data.title : 'Vídeo VagasUX'
 }
 
 function fetchVagasuxChannelVideos() {
@@ -128,6 +152,7 @@ function mapNotionVideo(row) {
   const languages = parseJsonArray(row['Língua'])
   const url = row['Onde encontrar?']?.trim() || ''
   const youtubeVideoId = extractYoutubeVideoId(url)
+  const youtubePlaylistId = extractYoutubePlaylistId(url)
 
   const item = {
     id,
@@ -142,6 +167,15 @@ function mapNotionVideo(row) {
   if (youtubeVideoId) {
     item.youtubeVideoId = youtubeVideoId
     item.imageUrl = youtubeThumbnailUrl(youtubeVideoId)
+  } else if (youtubePlaylistId) {
+    item.youtubePlaylistId = youtubePlaylistId
+    const playlistThumb = fetchYoutubePlaylistThumbnail(youtubePlaylistId)
+    if (playlistThumb) {
+      item.imageUrl = playlistThumb.imageUrl
+      if (playlistThumb.firstVideoId) {
+        item.youtubeVideoId = playlistThumb.firstVideoId
+      }
+    }
   }
 
   return item
@@ -175,6 +209,8 @@ export type GuiaVideo = {
   /** Thumbnail YouTube i.ytimg.com/vi/ quando aplicável. */
   imageUrl?: string
   youtubeVideoId?: string
+  /** Playlist YouTube — thumb via oEmbed (primeiro vídeo da lista). */
+  youtubePlaylistId?: string
   /** Vídeo publicado no canal VagasUX. */
   vagasuxChannel?: boolean
 }
