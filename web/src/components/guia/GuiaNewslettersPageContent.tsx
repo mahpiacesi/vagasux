@@ -5,6 +5,7 @@ import {
   filterGuiaNewslettersByContext,
   getGuiaNewsletterContextTags,
   guiaNewsletters,
+  splitGuiaFeaturedNewsletter,
 } from '@/data/guiaNewsletters'
 
 type GuiaNewslettersPageContentProps = {
@@ -22,6 +23,11 @@ export function GuiaNewslettersPageContent({
   const filteredNewsletters = useMemo(
     () => filterGuiaNewslettersByContext(guiaNewsletters, contextFilter),
     [contextFilter],
+  )
+
+  const { featured, rest } = useMemo(
+    () => splitGuiaFeaturedNewsletter(filteredNewsletters),
+    [filteredNewsletters],
   )
 
   const countLabel =
@@ -53,19 +59,25 @@ export function GuiaNewslettersPageContent({
         ariaLabel="Filtrar newsletters por contexto"
       />
 
-      {filteredNewsletters.length > 0 ? (
+      {featured ? (
+        <div className="mt-8">
+          <GuiaNewsletterCard newsletter={featured} featured spotlight />
+        </div>
+      ) : null}
+
+      {rest.length > 0 ? (
         <ul className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {filteredNewsletters.map((newsletter) => (
+          {rest.map((newsletter) => (
             <li key={newsletter.id}>
               <GuiaNewsletterCard newsletter={newsletter} className="h-full" />
             </li>
           ))}
         </ul>
-      ) : (
+      ) : !featured ? (
         <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
           Nenhuma newsletter encontrada para este contexto.
         </p>
-      )}
+      ) : null}
     </div>
   )
 }

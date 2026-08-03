@@ -12,6 +12,9 @@ export type GuiaNewsletter = {
   imageUrl?: string
 }
 
+/** Newsletter da comunidade — sempre primeiro na listagem. */
+export const GUIA_FEATURED_NEWSLETTER_ID = 'aa4cb080c5774edda987a7ac45d0a2a3'
+
 export const guiaNewsletters: GuiaNewsletter[] = [
   {
     "id": "1df06144d72a46c2841486c396c8040c",
@@ -643,4 +646,18 @@ export function filterGuiaNewslettersByContext(
 ): GuiaNewsletter[] {
   if (!contextTag) return newsletters
   return newsletters.filter((newsletter) => newsletter.context.includes(contextTag))
+}
+
+/** Separa a newsletter em destaque das demais, mantendo a ordem original do restante. */
+export function splitGuiaFeaturedNewsletter(newsletters: GuiaNewsletter[]): {
+  featured: GuiaNewsletter | null
+  rest: GuiaNewsletter[]
+} {
+  const featured =
+    newsletters.find((newsletter) => newsletter.id === GUIA_FEATURED_NEWSLETTER_ID) ??
+    null
+  const rest = newsletters.filter(
+    (newsletter) => newsletter.id !== GUIA_FEATURED_NEWSLETTER_ID,
+  )
+  return { featured, rest }
 }

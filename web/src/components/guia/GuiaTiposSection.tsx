@@ -7,7 +7,7 @@ import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
 import { guiaBooks } from '@/data/guiaBooks'
-import { guiaNewsletters } from '@/data/guiaNewsletters'
+import { guiaNewsletters, splitGuiaFeaturedNewsletter } from '@/data/guiaNewsletters'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -22,7 +22,11 @@ export function GuiaTiposSection() {
     [selectedTipoId],
   )
   const recentBooks = useMemo(() => guiaBooks.slice(0, 5), [])
-  const recentNewsletters = useMemo(() => guiaNewsletters.slice(0, 5), [])
+  const recentNewsletters = useMemo(() => {
+    const { featured, rest } = splitGuiaFeaturedNewsletter(guiaNewsletters)
+    const preview = rest.slice(0, featured ? 4 : 5)
+    return featured ? [featured, ...preview] : preview
+  }, [])
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -114,9 +118,13 @@ export function GuiaTiposSection() {
             </ul>
           ) : selectedTipoId === 'newsletters' && recentNewsletters.length > 0 ? (
             <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-              {recentNewsletters.map((newsletter) => (
+              {recentNewsletters.map((newsletter, index) => (
                 <li key={newsletter.id}>
-                  <GuiaNewsletterCard newsletter={newsletter} className="h-full" />
+                  <GuiaNewsletterCard
+                    newsletter={newsletter}
+                    featured={index === 0}
+                    className="h-full"
+                  />
                 </li>
               ))}
             </ul>
