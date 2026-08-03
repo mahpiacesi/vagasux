@@ -60,7 +60,7 @@ O filtro **Cargo** usa a coluna normalizada `discipline` (enum no banco). Valore
 
 `product_design`, `ux`, `ui`, `ux_research`, `content_design`, `design_ops`, `visual_graphic`, `motion`
 
-Labels na UI: Product Design, UX, UI, Pesquisa, Content Design, Ops & Strategy, Visual & Graphic, Motion. Vagas ambíguas caem em `product_design` por padrão (não existe bucket "Outros"). UI, Motion e Content exigem sinal explícito no título/role/área — área híbrida UX/UI sozinha não classifica como UI; "UX Writing" na descrição não vira Content.
+Labels na UI: UX (generalista — inclui Product Design), UI, Pesquisa, Content Design, Ops & Strategy, Visual & Graphic, Motion. No banco, generalistas ficam em `product_design` ou `ux`; o filtro **UX** mostra os dois. UI, Motion e Content exigem sinal explícito no título/role/área.
 
 Implementação: `web/src/lib/discipline.ts`, `web/src/lib/filterJobs.ts`, migration `20260803_jobs_discipline.sql`.
 

@@ -1,4 +1,4 @@
-import { resolveDiscipline } from './discipline'
+import { disciplineMatchesFilter, resolveDiscipline } from './discipline'
 import { resolveIsInternational, resolveWorkModel } from './labels'
 import { parseBrazilianState } from './location'
 import type { Job, JobFiltersState } from '../types/job'
@@ -34,7 +34,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
         role: job.role,
         description: job.description,
       })
-      if (discipline !== filters.discipline) return false
+      if (!disciplineMatchesFilter(discipline, filters.discipline)) return false
     }
 
     if (filters.state !== 'all' && filters.market !== 'international') {

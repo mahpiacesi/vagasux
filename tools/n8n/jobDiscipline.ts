@@ -226,6 +226,8 @@ export function inferDisciplineFromJob(input: {
 
   if (isMotionJob(input)) return 'motion'
 
+  if (hasExplicitUiFocus(input)) return 'ui'
+
   if (PRODUCT_HEADLINE.test(headline)) return 'product_design'
 
   if (isVisualGraphicJob(input)) return 'visual_graphic'
@@ -335,6 +337,7 @@ const MOTION_HEADLINE = /\b(motion designer|motion design|animador ui|ui animati
 const VISUAL_HEADLINE = /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|design de comunicacao|design de conteudo criativo|artes graficas|analista em artes)\b/;
 const VISUAL_DESCRIPTION = /\b(redes sociais|social media|instagram|stories|reels|tiktok|facebook ads|google ads|midia paga|performance|crm|e-mail marketing|email marketing|material grafico|pecas graficas|comunicacao visual|identidade visual|branding|impresso|print|folder|banner|flyer|catalogo|packaging|embalagem|campanha publicitaria|marketing digital|materiais de marketing)\b/;
 const PRODUCT_HEADLINE = /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux|design system|design de experiencia digital)\b/;
+const UI_FOCUS_DESCRIPTION = /\b(forte foco em ui|foco em ui|foco principal em ui|primary focus on ui|strong ui focus|focused on ui|olhar apurado para ui|especializado em ui|especialista em ui|high polish ui|acabamento visual)\b/;
 const UI_HEADLINE = /\b(ui designer|designer de interface|designer ui|ui design|interface designer|designer de ui)\b/;
 const UX_HEADLINE = /\b(ux designer|designer de experiencia|user experience designer|ux design|service design|design de servico|designer ux|designer de ux)\b/;
 const CONTENT_HEADLINE = /\b(content design|content designer|ux writing|ux writer|design de conteudo|redator ux|redator de ux|technical writer|writer ux|designer conversacional|conversational designer|conversation designer|design conversacional|chatbot designer|designer de conversacao|content strategist|estrategista de conteudo|copywriter ux|ux copywriter)\b/;
@@ -424,6 +427,27 @@ function isContentDesignJob(input) {
     /\b(ux writer|content designer|technical writer|designer conversacional|conversational designer|redator ux|redator de ux)\b/.test(
       role,
     )
+  ) {
+    return true
+  }
+
+  return false
+}
+
+
+function hasExplicitUiFocus(input) {
+  const headline = headlineText(input)
+  const desc = descriptionText(input)
+
+  if (/\|\s*ui\b|\(\s*ui\s*\)|[-–]\s*ui\s*$|\bui designer\b|\bui design\b|\bdesigner de ui\b/.test(headline)) {
+    return true
+  }
+
+  if (UI_HEADLINE.test(headline)) return true
+
+  if (
+    /\b(product designer|product design|designer de produto|design de produto)\b/.test(headline) &&
+    UI_FOCUS_DESCRIPTION.test(desc)
   ) {
     return true
   }
@@ -628,6 +652,8 @@ function inferDisciplineFromJob(input) {
   }
 
   if (isMotionJob(input)) return 'motion'
+
+  if (hasExplicitUiFocus(input)) return 'ui'
 
   if (PRODUCT_HEADLINE.test(headline)) return 'product_design'
 

@@ -66,9 +66,11 @@ Enums:
 `discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`):
 
 - **Motion** e **UI** — só com sinal explícito em título/role/área (como motion: área `UX/UI Design` sozinha não vira UI).
-- **UX** — prioridade de título/role sobre área híbrida UX/UI.
+- **UX** (filtro unificado) — Product Designer, UX Designer e híbridos generalistas (`product_design` + `ux` no banco).
+- **UI** — UI Designer, Product Designer com foco explícito em UI (ex.: título "| UI", "forte foco em UI" na descrição).
 - **Visual & Graphic** — título/role gráfico, área de artes gráficas, descrição com foco social/print/branding, ou título genérico "Designer" quando há descrição gráfica.
 - **Content Design** — UX Writer, Content Designer, Designer Conversacional; área UX Writing. Menção a "UX Writing" na descrição de vaga de Product **não** classifica como Content.
+- **Ops & Strategy** — design ops, program manager, strategist, head/director of design.
 - **Product** — default VagasUX; híbridos Product/Visual ambíguos ficam em product.
 
 ## Contrato JSON da IA

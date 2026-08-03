@@ -22,7 +22,7 @@ export type DisciplineFilter = 'all' | JobDiscipline
 export const DEFAULT_DISCIPLINE: JobDiscipline = 'product_design'
 
 export const disciplineLabels: Record<JobDiscipline, string> = {
-  product_design: 'Product Design',
+  product_design: 'UX',
   ux: 'UX',
   ui: 'UI',
   ux_research: 'Pesquisa',
@@ -32,11 +32,23 @@ export const disciplineLabels: Record<JobDiscipline, string> = {
   motion: 'Motion',
 }
 
+/** Filtro UX agrupa product_design (generalista) + ux (título explícito). */
+export const GENERALIST_UX_DISCIPLINES: JobDiscipline[] = ['product_design', 'ux']
+
 export const disciplineFilterOptions: { id: JobDiscipline; label: string }[] =
-  JOB_DISCIPLINES.map((id) => ({
+  JOB_DISCIPLINES.filter((id) => id !== 'product_design').map((id) => ({
     id,
     label: disciplineLabels[id],
   }))
+
+export function disciplineMatchesFilter(
+  discipline: JobDiscipline,
+  filter: DisciplineFilter,
+): boolean {
+  if (filter === 'all') return true
+  if (filter === 'ux') return GENERALIST_UX_DISCIPLINES.includes(discipline)
+  return discipline === filter
+}
 
 function normalizeJobText(value: unknown): string {
   return String(value ?? '')
@@ -78,6 +90,10 @@ const VISUAL_HEADLINE =
 
 const UI_HEADLINE =
   /\b(ui designer|designer de interface|designer ui|ui design|interface designer|designer de ui)\b/
+
+/** Strong UI focus in description for product-scoped roles (e.g. "forte foco em UI"). */
+const UI_FOCUS_DESCRIPTION =
+  /\b(forte foco em ui|foco em ui|foco principal em ui|primary focus on ui|strong ui focus|focused on ui|olhar apurado para ui|especializado em ui|especialista em ui|high polish ui|acabamento visual)\b/
 
 const UX_HEADLINE =
   /\b(ux designer|designer de experiencia|user experience designer|ux design|service design|design de servico|designer ux|designer de ux)\b/
@@ -182,6 +198,31 @@ function isContentDesignJob(input: {
     /\b(ux writer|content designer|technical writer|designer conversacional|conversational designer|redator ux|redator de ux)\b/.test(
       role,
     )
+  ) {
+    return true
+  }
+
+  return false
+}
+
+function hasExplicitUiFocus(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+  description?: unknown
+}): boolean {
+  const headline = headlineText(input)
+  const desc = descriptionText(input)
+
+  if (/\|\s*ui\b|\(\s*ui\s*\)|[-–]\s*ui\s*$|\bui designer\b|\bui design\b|\bdesigner de ui\b/.test(headline)) {
+    return true
+  }
+
+  if (UI_HEADLINE.test(headline)) return true
+
+  if (
+    /\b(product designer|product design|designer de produto|design de produto)\b/.test(headline) &&
+    UI_FOCUS_DESCRIPTION.test(desc)
   ) {
     return true
   }
@@ -426,6 +467,8 @@ export function inferDisciplineFromJob(input: {
   }
 
   if (isMotionJob(input)) return 'motion'
+
+  if (hasExplicitUiFocus(input)) return 'ui'
 
   if (PRODUCT_HEADLINE.test(headline)) return 'product_design'
 
