@@ -18,7 +18,8 @@ export type JobDiscipline = (typeof JOB_DISCIPLINES)[number]
 
 export type DisciplineFilter = 'all' | JobDiscipline
 
-export const DEFAULT_DISCIPLINE: JobDiscipline = 'product_design'
+/** Ambiguous generic design roles default to Gráfico (social, print, marketing). */
+export const DEFAULT_DISCIPLINE: JobDiscipline = 'visual_graphic'
 
 export const disciplineLabels: Record<JobDiscipline, string> = {
   product_design: 'Product Design',
@@ -60,6 +61,72 @@ function jobText(input: {
   )
 }
 
+function headlineText(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): string {
+  return normalizeJobText([input.title, input.area, input.role].filter(Boolean).join(' '))
+}
+
+/** Motion only when explicit in title, role or primary area — never from description alone. */
+const MOTION_HEADLINE =
+  /\b(motion designer|motion design|animador ui|ui animation|animacao ui|lottie)\b/
+
+const VISUAL_HEADLINE =
+  /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media|redes sociais|design para midias|performance design|design criativo|designer criativo|designer digital|estagiario de design|estagio em design|material grafico|pecas graficas|midia digital|design de comunicacao|design de conteudo criativo)\b/
+
+const VISUAL_DESCRIPTION =
+  /\b(redes sociais|social media|instagram|stories|reels|tiktok|facebook ads|google ads|midia paga|performance|crm|e-mail marketing|email marketing|material grafico|pecas graficas|comunicacao visual|identidade visual|branding|impresso|print|folder|banner|flyer|catalogo|packaging|embalagem|campanha publicitaria|marketing digital|materiais de marketing)\b/
+
+const PRODUCT_HEADLINE =
+  /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux|design system|design de experiencia digital)\b/
+
+function isMotionJob(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): boolean {
+  const headline = headlineText(input)
+  const area = normalizeJobText(input.area)
+  const title = normalizeJobText(input.title)
+
+  if (!MOTION_HEADLINE.test(headline)) return false
+
+  // Hybrid visual/motion: motion only when title/role says motion designer
+  if (/\bvisual\/motion\b|\bmotion\/visual\b|\bgraphic\/motion\b|\bgr[aá]fico\/motion\b/.test(area)) {
+    return /\bmotion designer\b|\bmotion design\b/.test(title)
+  }
+
+  if (/visual|graphic|brand|marketing|comunicacao/.test(area) && !/\bmotion design\b|\bmotion designer\b/.test(area)) {
+    return /\bmotion designer\b/.test(title) || /\bmotion designer\b/.test(normalizeJobText(input.role))
+  }
+
+  return true
+}
+
+function isVisualGraphicJob(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+  description?: unknown
+}): boolean {
+  const headline = headlineText(input)
+  const text = jobText(input)
+  const area = normalizeJobText(input.area)
+
+  if (VISUAL_HEADLINE.test(headline)) return true
+
+  if (area) {
+    if (/product/.test(area)) return false
+    if (/graphic|visual|brand|marketing|comunicacao|performance|crm/.test(area)) return true
+  }
+
+  if (VISUAL_DESCRIPTION.test(text) && !PRODUCT_HEADLINE.test(headline)) return true
+
+  return false
+}
+
 export function parseDiscipline(value: unknown): JobDiscipline | null {
   const normalized = String(value ?? '').trim()
   if (!normalized || normalized === 'other') return null
@@ -75,6 +142,9 @@ export function inferDisciplineFromJob(input: {
   description?: unknown
 }): JobDiscipline {
   const text = jobText(input)
+  const headline = headlineText(input)
+  const area = normalizeJobText(input.area)
+  const role = normalizeJobText(input.role)
 
   if (
     /\b(user research|ux research|pesquisa com usu|ux researcher|design researcher|research designer|pesquisador)\b/.test(
@@ -96,71 +166,54 @@ export function inferDisciplineFromJob(input: {
     return 'design_ops'
   }
 
-  if (
-    /\b(motion designer|motion design|animador ui|ui animation|animacao ui|lottie|micro-?interac)\b/.test(
-      text,
-    )
-  ) {
-    return 'motion'
+  // Area-first: product always wins over graphic when both appear in area
+  if (area) {
+    if (/research|pesquisa/.test(area)) return 'ux_research'
+    if (/content|writing/.test(area)) return 'content_design'
+    if (/ops|operations/.test(area)) return 'design_ops'
+    if (/product/.test(area)) return 'product_design'
+    if (/\bmotion design\b|\bmotion designer\b/.test(area)) {
+      return isMotionJob(input) ? 'motion' : 'visual_graphic'
+    }
+    if (/graphic|visual|brand|marketing|comunicacao|performance|crm/.test(area)) {
+      return 'visual_graphic'
+    }
+    if (/interface|^ui|\/ui/.test(area)) return 'ui'
+    if (/experience|service|instructional|learning|ux|cx/.test(area) && !/visual|graphic/.test(area)) {
+      return 'ux'
+    }
   }
 
-  if (
-    /\b(designer grafico|design grafico|graphic designer|visual designer|branding designer|designer visual|diretor de arte|design editorial|identidade visual|visual\/graphic|brand design|marketing design|design de marketing|design digital|digital design|web design|design web|comunicacao visual|social media design|design para midias|performance design)\b/.test(
-      text,
-    )
-  ) {
-    return 'visual_graphic'
-  }
+  if (isMotionJob(input)) return 'motion'
+
+  if (PRODUCT_HEADLINE.test(headline)) return 'product_design'
+
+  if (isVisualGraphicJob(input)) return 'visual_graphic'
 
   if (
-    /\b(ui designer|designer de interface|designer ui|ui design|interface designer)\b/.test(
-      text,
-    ) &&
-    !/\b(ux\/ui|ui\/ux|product design|product designer)\b/.test(text)
+    /\b(ui designer|designer de interface|designer ui|ui design|interface designer)\b/.test(headline) &&
+    !/\b(ux\/ui|ui\/ux|product design|product designer)\b/.test(headline)
   ) {
     return 'ui'
   }
 
   if (
-    /\b(ux designer|designer de experiencia|user experience designer|ux design|service design|design de servico|instructional design|design instrucional|learning design)\b/.test(
-      text,
+    /\b(ux designer|designer de experiencia|user experience designer|ux design|service design|design de servico|instructional design|design instrucional|learning design|ux-ui|ux ui|ui-ux|ui ux)\b/.test(
+      headline,
     ) &&
-    !/\b(ux\/ui|ui\/ux|product design|product designer)\b/.test(text)
+    !/\b(ux\/ui|ui\/ux|product design|product designer)\b/.test(headline)
   ) {
     return 'ux'
   }
 
-  if (
-    /\b(product design|product designer|ux\/ui|ui\/ux|design de produto|designer de produto|product ux)\b/.test(
-      text,
-    )
-  ) {
-    return 'product_design'
-  }
-
-  const area = normalizeJobText(input.area)
-  if (area) {
-    if (/product/.test(area)) return 'product_design'
-    if (/research|pesquisa/.test(area)) return 'ux_research'
-    if (/content|writing/.test(area)) return 'content_design'
-    if (/ops|operations/.test(area)) return 'design_ops'
-    if (/motion|animation/.test(area)) return 'motion'
-    if (/graphic|visual|brand|marketing|digital|web|comunicacao|performance/.test(area)) {
-      return 'visual_graphic'
-    }
-    if (/interface|^ui|\/ui/.test(area)) return 'ui'
-    if (/experience|service|instructional|learning|ux|cx/.test(area)) return 'ux'
-  }
-
-  const role = normalizeJobText(input.role)
   if (role) {
-    if (/grafico|graphic|visual|brand|marketing|digital|web/.test(role)) {
+    if (/product/.test(role) && !/visual|graphic|marketing/.test(role)) return 'product_design'
+    if (/grafico|graphic|visual|brand|marketing|digital|web|criativo|comunicacao/.test(role)) {
       return 'visual_graphic'
     }
-    if (/product/.test(role)) return 'product_design'
+    if (/\bmotion designer\b|\bmotion design\b/.test(role)) return 'motion'
     if (/research|pesquisa/.test(role)) return 'ux_research'
     if (/content|writing/.test(role)) return 'content_design'
-    if (/motion/.test(role)) return 'motion'
     if (/interface|^ui/.test(role)) return 'ui'
     if (/ux|experiencia|service/.test(role)) return 'ux'
   }
@@ -169,27 +222,24 @@ export function inferDisciplineFromJob(input: {
     /\b(editor de videos?|video editor|videomaker|audiovisual|edicao de video|producao audiovisual)\b/.test(
       text,
     ) &&
-    !/\b(motion designer|motion design|animador ui|ui animation|animacao ui)\b/.test(text)
+    !MOTION_HEADLINE.test(headline)
   ) {
     return 'visual_graphic'
   }
 
-  const explicitDesignCareer =
-    /\b(de design|designer|design ops|design system|design de produto|product design|graphic design|visual design|motion design|ux design|ui design|design lead|head of design|gerente de design|coordenador de design|product designer|ux designer|ui designer|ux|ui|research|pesquisa)\b/.test(
-      text,
-    )
   const venueOrRetailFalsePositive =
     (/\b(rio design|shopping .* design|design barra|design leak)\b/.test(text) &&
-      !explicitDesignCareer) ||
+      !/\b(de design|designer|gerente de design|coordenador de design)\b/.test(text)) ||
     (/\b(gerente de loja|gerente \| |vendedor|vendedora|operador de loja|supervisor de loja)\b/.test(
       text,
     ) &&
-      !explicitDesignCareer)
+      !/\b(de design|designer|gerente de design|coordenador de design)\b/.test(text))
+
+  if (venueOrRetailFalsePositive) return DEFAULT_DISCIPLINE
 
   if (
     /\b(designer|design\b)/.test(text) &&
-    !/\b(interior|industrial|moda|fashion|som|sound|acustico|paisag|lighting)\b/.test(text) &&
-    !venueOrRetailFalsePositive
+    !/\b(interior|industrial|moda|fashion|som|sound|acustico|paisag|lighting)\b/.test(text)
   ) {
     return DEFAULT_DISCIPLINE
   }
@@ -204,7 +254,27 @@ export function resolveDiscipline(input: {
   role?: unknown
   description?: unknown
 }): JobDiscipline {
-  return parseDiscipline(input.discipline) ?? inferDisciplineFromJob(input)
+  const inferred = inferDisciplineFromJob(input)
+  const parsed = parseDiscipline(input.discipline)
+  if (!parsed) return inferred
+
+  // Heuristics override IA when buckets conflitam (motion inflado, product vs graphic)
+  if (parsed === 'motion' && inferred !== 'motion') return inferred
+  if (parsed === 'visual_graphic' && inferred === 'product_design') return 'product_design'
+  if (parsed === 'product_design' && inferred === 'visual_graphic') return inferred
+  if (
+    parsed === 'product_design' &&
+    (inferred === 'ux' ||
+      inferred === 'ui' ||
+      inferred === 'motion' ||
+      inferred === 'ux_research' ||
+      inferred === 'content_design' ||
+      inferred === 'design_ops')
+  ) {
+    return inferred
+  }
+
+  return parsed
 }
 
 export function labelDiscipline(input: {
