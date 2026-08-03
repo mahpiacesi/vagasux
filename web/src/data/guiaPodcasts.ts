@@ -12,6 +12,9 @@ export type GuiaPodcast = {
   imageUrl?: string
 }
 
+/** Podcast oficial da VagasUX — sempre primeiro na listagem. */
+export const GUIA_FEATURED_PODCAST_ID = 'd6e7427f47554528b60632c419832106'
+
 export const guiaPodcasts: GuiaPodcast[] = [
   {
     "id": "71e915da631648f88061e1ebe82cb92b",
@@ -844,4 +847,15 @@ export function filterGuiaPodcastsByContext(
 ): GuiaPodcast[] {
   if (!contextTag) return podcasts
   return podcasts.filter((podcast) => podcast.context.includes(contextTag))
+}
+
+/** Separa o podcast em destaque dos demais, mantendo a ordem original do restante. */
+export function splitGuiaFeaturedPodcast(podcasts: GuiaPodcast[]): {
+  featured: GuiaPodcast | null
+  rest: GuiaPodcast[]
+} {
+  const featured =
+    podcasts.find((podcast) => podcast.id === GUIA_FEATURED_PODCAST_ID) ?? null
+  const rest = podcasts.filter((podcast) => podcast.id !== GUIA_FEATURED_PODCAST_ID)
+  return { featured, rest }
 }
