@@ -17,7 +17,6 @@ const OUT = join(ROOT, 'web/src/data/guiaVideos.ts')
 const DEFAULT_SNAPSHOT = join(__dirname, 'videos-notion.snapshot.json')
 
 const VAGASUX_CHANNEL_ID = 'UCQZzsXevDF-pdlC7ctGzzIw'
-const VAGASUX_CHANNEL_VIDEOS_URL = 'https://www.youtube.com/@VagasUX/videos'
 const FEATURED_YOUTUBE_VIDEO_ID = '_h94hLBW_D4'
 
 const YOUTUBE_VIDEO_PATTERNS = [
@@ -101,37 +100,18 @@ function fetchYoutubeOembedTitle(videoId) {
 function fetchVagasuxChannelVideos() {
   const byId = new Map()
 
-  try {
-    const rss = fetchPageHtml(
-      `https://www.youtube.com/feeds/videos.xml?channel_id=${VAGASUX_CHANNEL_ID}`,
-    )
-    for (const block of rss.match(/<entry>[\s\S]*?<\/entry>/g) ?? []) {
-      const videoId = block.match(/<yt:videoId>([^<]+)/)?.[1]
-      const title = block.match(/<title>([^<]+)/)?.[1]
-      if (videoId) {
-        byId.set(videoId, {
-          videoId,
-          title: title ? decodeXml(title) : fetchYoutubeOembedTitle(videoId),
-        })
-      }
+  const rss = fetchPageHtml(
+    `https://www.youtube.com/feeds/videos.xml?channel_id=${VAGASUX_CHANNEL_ID}`,
+  )
+  for (const block of rss.match(/<entry>[\s\S]*?<\/entry>/g) ?? []) {
+    const videoId = block.match(/<yt:videoId>([^<]+)/)?.[1]
+    const title = block.match(/<title>([^<]+)/)?.[1]
+    if (videoId) {
+      byId.set(videoId, {
+        videoId,
+        title: title ? decodeXml(title) : fetchYoutubeOembedTitle(videoId),
+      })
     }
-  } catch {
-    /* RSS optional */
-  }
-
-  try {
-    const html = fetchPageHtml(VAGASUX_CHANNEL_VIDEOS_URL)
-    for (const match of html.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)) {
-      const videoId = match[1]
-      if (!byId.has(videoId)) {
-        byId.set(videoId, {
-          videoId,
-          title: fetchYoutubeOembedTitle(videoId),
-        })
-      }
-    }
-  } catch {
-    /* scrape optional */
   }
 
   return [...byId.values()]

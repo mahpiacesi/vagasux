@@ -5,11 +5,13 @@ import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
+import { GuiaVideoCard } from '@/components/guia/GuiaVideoCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
 import { guiaBooks } from '@/data/guiaBooks'
 import { guiaNewsletters, splitGuiaFeaturedNewsletter } from '@/data/guiaNewsletters'
 import { guiaPodcasts, splitGuiaFeaturedPodcast } from '@/data/guiaPodcasts'
+import { guiaVideos, splitGuiaFeaturedVideo } from '@/data/guiaVideos'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
@@ -36,6 +38,11 @@ export function GuiaTiposSection() {
   }, [])
   const recentPodcasts = useMemo(() => {
     const { featured, rest } = splitGuiaFeaturedPodcast(guiaPodcasts)
+    const preview = rest.slice(0, featured ? 4 : 5)
+    return featured ? [featured, ...preview] : preview
+  }, [])
+  const recentVideos = useMemo(() => {
+    const { featured, rest } = splitGuiaFeaturedVideo(guiaVideos)
     const preview = rest.slice(0, featured ? 4 : 5)
     return featured ? [featured, ...preview] : preview
   }, [])
@@ -147,6 +154,19 @@ export function GuiaTiposSection() {
                   <GuiaPodcastCard
                     podcast={podcast}
                     featured={index === 0}
+                    className="h-full"
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'videos' && recentVideos.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {recentVideos.map((video, index) => (
+                <li key={video.id}>
+                  <GuiaVideoCard
+                    video={video}
+                    featured={index === 0}
+                    showChannelTag={video.vagasuxChannel}
                     className="h-full"
                   />
                 </li>
