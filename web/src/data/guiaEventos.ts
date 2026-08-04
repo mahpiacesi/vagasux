@@ -34,7 +34,8 @@ export const guiaEventos: GuiaEvento[] = [
     "location": "Online",
     "cost": "Gratuito",
     "themes": [
-      "UI"
+      "UI",
+      "UX"
     ],
     "languages": [
       "🇺🇸"

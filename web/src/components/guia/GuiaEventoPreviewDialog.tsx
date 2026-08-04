@@ -178,14 +178,10 @@ export function GuiaEventoPreviewDialog({
                   </p>
                 ) : offer?.couponCode ? (
                   <div className="mt-3 flex items-center justify-between gap-4">
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold tracking-[0.14em] text-neutral-400 uppercase">
-                        Cupom VagasUX
-                      </p>
-                      <p className="mt-1 text-sm text-neutral-400">
-                        Copie o código e aplique na inscrição
-                      </p>
-                    </div>
+                    <p className="min-w-0 flex-1 text-sm text-neutral-400">
+                      Copie o código e aplique o desconto da VagasUX na sua
+                      inscrição
+                    </p>
                     <CopyCouponButton code={offer.couponCode} />
                   </div>
                 ) : null}
