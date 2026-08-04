@@ -16,6 +16,8 @@ export type GuiaEvento = {
   themes: string[]
   languages: string[]
   url: string
+  /** Capa baixada do Notion (opcional). */
+  imageUrl?: string
   /** Data de criação no Notion — ordenação do preview. */
   addedAt?: string
 }
@@ -25,6 +27,25 @@ export const GUIA_FEATURED_EVENTO_ID = '1848cbb0d9048002b672cccfe159c293'
 
 export const guiaEventos: GuiaEvento[] = [
   {
+    "id": "3b28cbb0d90480d4a09afed5f20a7d22",
+    "title": "CDX",
+    "organizer": "Lucas Tangi",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Carreira",
+      "Tecnologia"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://cdxconf.com.br/",
+    "addedAt": "2026-08-04T20:34:53Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d90480d4a09afed5f20a7d22.png"
+  },
+  {
     "id": "928d10eca77a477685fab077100324c4",
     "title": "Config - Figma Conference",
     "organizer": "Figma",
@@ -32,13 +53,34 @@ export const guiaEventos: GuiaEvento[] = [
     "location": "Online",
     "cost": "Gratuito",
     "themes": [
-      "UI"
+      "UI",
+      "UX"
+    ],
+    "languages": [
+      "🇺🇸"
+    ],
+    "url": "https://config.figma.com/",
+    "addedAt": "2020-08-25T18:07:00Z",
+    "imageUrl": "/guia/eventos/928d10eca77a477685fab077100324c4.png"
+  },
+  {
+    "id": "3b28cbb0d9048034a623f58bca4ac3f6",
+    "title": "Design&Dendê",
+    "organizer": "Design&Dendê",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Diversidade",
+      "Cultura"
     ],
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://config.figma.com/",
-    "addedAt": "2020-08-25T18:07:00Z"
+    "url": "https://www.designedende.com/",
+    "addedAt": "2026-08-04T20:17:19Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d9048034a623f58bca4ac3f6.png"
   },
   {
     "id": "1848cbb0d90480129300c0e367f9cd10",
@@ -60,7 +102,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.detach.com.br/",
-    "addedAt": "2025-01-23T14:31:02Z"
+    "addedAt": "2025-01-23T14:31:02Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480129300c0e367f9cd10.png"
   },
   {
     "id": "f77dade5afa043bab14c344641b5505b",
@@ -78,7 +121,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.dexconf.com.br/",
-    "addedAt": "2020-07-30T17:14:00Z"
+    "addedAt": "2020-07-30T17:14:00Z",
+    "imageUrl": "/guia/eventos/f77dade5afa043bab14c344641b5505b.png"
   },
   {
     "id": "1848cbb0d9048066adc2c6701377b898",
@@ -97,7 +141,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://dwsemanadedesign.com.br/",
-    "addedAt": "2025-01-23T14:27:58Z"
+    "addedAt": "2025-01-23T14:27:58Z",
+    "imageUrl": "/guia/eventos/1848cbb0d9048066adc2c6701377b898.png"
   },
   {
     "id": "21f5986956494ddcb75c511a72003f2c",
@@ -114,7 +159,27 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://elas.womenleadership.com.br/",
-    "addedAt": "2021-02-11T14:34:00Z"
+    "addedAt": "2021-02-11T14:34:00Z",
+    "imageUrl": "/guia/eventos/21f5986956494ddcb75c511a72003f2c.png"
+  },
+  {
+    "id": "3b28cbb0d90480d2938dcfc54dff1f48",
+    "title": "Festival Akilomba",
+    "organizer": "Akilomba",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Diversidade",
+      "Cultura"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://akilomba.pagtickets.com.br/festival-akilomba-2026__22821/?d=vagasux15",
+    "addedAt": "2026-08-04T20:29:36Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d90480d2938dcfc54dff1f48.png"
   },
   {
     "id": "1848cbb0d904802bae9efca27932b7e8",
@@ -132,7 +197,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://mulheresdeproduto.com/festival-mdp",
-    "addedAt": "2025-01-23T15:17:54Z"
+    "addedAt": "2025-01-23T15:17:54Z",
+    "imageUrl": "/guia/eventos/1848cbb0d904802bae9efca27932b7e8.png"
   },
   {
     "id": "2878cbb0d90480f8ab8fe2f2239beb22",
@@ -150,7 +216,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://floripadesignday.com.br/",
-    "addedAt": "2025-10-09T16:58:03Z"
+    "addedAt": "2025-10-09T16:58:03Z",
+    "imageUrl": "/guia/eventos/2878cbb0d90480f8ab8fe2f2239beb22.png"
   },
   {
     "id": "1848cbb0d90480fb80cbecb064fb53ce",
@@ -168,7 +235,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://friends.figma.com/sao-paulo/",
-    "addedAt": "2025-01-23T14:51:30Z"
+    "addedAt": "2025-01-23T14:51:30Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480fb80cbecb064fb53ce.png"
   },
   {
     "id": "1848cbb0d9048035b051ed9240c3f248",
@@ -188,7 +256,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇵🇹"
     ],
     "url": "https://accessibility.day/",
-    "addedAt": "2025-01-23T14:45:18Z"
+    "addedAt": "2025-01-23T14:45:18Z",
+    "imageUrl": "/guia/eventos/1848cbb0d9048035b051ed9240c3f248.png"
   },
   {
     "id": "1848cbb0d90480c4838ffd827a953979",
@@ -204,7 +273,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://hackathonbrasil.com.br/",
-    "addedAt": "2025-01-23T14:14:32Z"
+    "addedAt": "2025-01-23T14:14:32Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480c4838ffd827a953979.png"
   },
   {
     "id": "17a09b4c6a0244c0a5a63244e3a81def",
@@ -223,7 +293,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://linktr.ee/hackathondasmanas",
-    "addedAt": "2021-03-15T18:26:00Z"
+    "addedAt": "2021-03-15T18:26:00Z",
+    "imageUrl": "/guia/eventos/17a09b4c6a0244c0a5a63244e3a81def.png"
   },
   {
     "id": "21b8cbb0d904801189d4d2843aa3eb10",
@@ -240,7 +311,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://linkfestival.me/",
-    "addedAt": "2025-06-23T17:46:06Z"
+    "addedAt": "2025-06-23T17:46:06Z",
+    "imageUrl": "/guia/eventos/21b8cbb0d904801189d4d2843aa3eb10.png"
   },
   {
     "id": "5c7f60289efc43f5aa6d5dd4211bccf8",
@@ -257,7 +329,27 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.observeux.com.br/",
-    "addedAt": "2021-10-01T02:03:00Z"
+    "addedAt": "2021-10-01T02:03:00Z",
+    "imageUrl": "/guia/eventos/5c7f60289efc43f5aa6d5dd4211bccf8.png"
+  },
+  {
+    "id": "3b28cbb0d90480309523c0d91ba474ba",
+    "title": "PM3 Summit",
+    "organizer": "PM3",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "Produto",
+      "Discovery",
+      "UX"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://pm3summit.com.br/",
+    "addedAt": "2026-08-04T18:59:29Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d90480309523c0d91ba474ba.png"
   },
   {
     "id": "1848cbb0d9048004a4a7d1428ca498b0",
@@ -275,7 +367,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.productcamp.com.br/",
-    "addedAt": "2025-01-23T14:49:18Z"
+    "addedAt": "2025-01-23T14:49:18Z",
+    "imageUrl": "/guia/eventos/1848cbb0d9048004a4a7d1428ca498b0.png"
   },
   {
     "id": "1848cbb0d90480688645f0ab647eaca3",
@@ -294,7 +387,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.startupsummit.com.br/",
-    "addedAt": "2025-01-23T14:47:33Z"
+    "addedAt": "2025-01-23T14:47:33Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480688645f0ab647eaca3.png"
   },
   {
     "id": "1848cbb0d904809abf04e01cb5e3edfe",
@@ -313,7 +407,28 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://thedevconf.com/",
-    "addedAt": "2025-01-23T14:40:42Z"
+    "addedAt": "2025-01-23T14:40:42Z",
+    "imageUrl": "/guia/eventos/1848cbb0d904809abf04e01cb5e3edfe.png"
+  },
+  {
+    "id": "3b28cbb0d9048081b5a0e28c52d45a9c",
+    "title": "Techstars Startup Weekend",
+    "organizer": "Techstars",
+    "eventType": "Hackathon",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "Tecnologia",
+      "Produto",
+      "UX",
+      "Empreendedorismo"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "",
+    "addedAt": "2026-08-04T18:36:40Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d9048081b5a0e28c52d45a9c.png"
   },
   {
     "id": "d5304c9a0bb44509a94df65f56684407",
@@ -331,7 +446,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇺🇸"
     ],
     "url": "https://www.uxconf.com.br/",
-    "addedAt": "2020-08-02T04:55:00Z"
+    "addedAt": "2020-08-02T04:55:00Z",
+    "imageUrl": "/guia/eventos/d5304c9a0bb44509a94df65f56684407.png"
   },
   {
     "id": "1848cbb0d9048002b672cccfe159c293",
@@ -349,8 +465,9 @@ export const guiaEventos: GuiaEvento[] = [
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://www.meetup.com/pt-BR/vagasux/",
-    "addedAt": "2025-01-23T14:35:46Z"
+    "url": "https://avely.me/vagasux",
+    "addedAt": "2025-01-23T14:35:46Z",
+    "imageUrl": "/guia/eventos/1848cbb0d9048002b672cccfe159c293.png"
   },
   {
     "id": "1848cbb0d90480ada00bd0348c691278",
@@ -368,7 +485,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://vtexday.com/",
-    "addedAt": "2025-01-23T14:42:29Z"
+    "addedAt": "2025-01-23T14:42:29Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480ada00bd0348c691278.png"
   },
   {
     "id": "1848cbb0d904800aa868de75d5040908",
@@ -390,7 +508,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇺🇸"
     ],
     "url": "https://rio.websummit.com/",
-    "addedAt": "2025-01-23T14:24:33Z"
+    "addedAt": "2025-01-23T14:24:33Z",
+    "imageUrl": "/guia/eventos/1848cbb0d904800aa868de75d5040908.png"
   },
   {
     "id": "1848cbb0d90480108f41ee73a75fea08",
@@ -407,7 +526,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇺🇸"
     ],
     "url": "https://www.worldiaday.org/",
-    "addedAt": "2025-01-23T14:37:44Z"
+    "addedAt": "2025-01-23T14:37:44Z",
+    "imageUrl": "/guia/eventos/1848cbb0d90480108f41ee73a75fea08.png"
   },
   {
     "id": "b1104ba0f69b47c49ae8133cbd26d0f2",
@@ -423,7 +543,8 @@ export const guiaEventos: GuiaEvento[] = [
       "🇧🇷"
     ],
     "url": "https://www.worldusabilityday.org/",
-    "addedAt": "2021-02-23T15:55:00Z"
+    "addedAt": "2021-02-23T15:55:00Z",
+    "imageUrl": "/guia/eventos/b1104ba0f69b47c49ae8133cbd26d0f2.png"
   }
 ]
 

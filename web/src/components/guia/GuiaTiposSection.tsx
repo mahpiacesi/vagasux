@@ -88,7 +88,7 @@ export function GuiaTiposSection() {
     )
   }, [])
   const recentEventos = useMemo(
-    () => pickGuiaRecentPreview(guiaEventos, GUIA_FEATURED_EVENTO_ID),
+    () => pickGuiaRecentPreview(guiaEventos, GUIA_FEATURED_EVENTO_ID, 4),
     [],
   )
 

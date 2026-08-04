@@ -5,17 +5,29 @@
  *
  * Uso:
  *   node tools/scripts/export-guia-eventos.mjs
- *   node tools/scripts/export-guia-eventos.mjs [snapshot.json]
+ *   node tools/scripts/export-guia-eventos.mjs [snapshot.json] [images-manifest.json]
+ *
+ * images-manifest.json (opcional) — { "pageId32hex": "https://..." }
+ * Imagens já existentes em public/guia/eventos/ também são detectadas automaticamente.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  readdirSync,
+} from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import { dirname, join } from 'node:path'
+import { dirname, join, extname } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '../..')
 const OUT = join(ROOT, 'web/src/data/guiaEventos.ts')
+const IMAGES_DIR = join(ROOT, 'web/public/guia/eventos')
 const DEFAULT_SNAPSHOT = join(__dirname, 'eventos-notion.snapshot.json')
+const DEFAULT_MANIFEST = join(__dirname, 'eventos-images.manifest.json')
 const FEATURED_EVENTO_ID = '1848cbb0d9048002b672cccfe159c293'
 
 function parseJsonArray(value) {
@@ -44,7 +56,75 @@ function normalizeEventType(raw) {
   return value.replace(/^[\p{Emoji}\p{Emoji_Presentation}\p{Extended_Pictographic}\u200d\s]+/gu, '').trim() || 'Evento'
 }
 
-function mapEvento(row) {
+function stripMarkdown(title) {
+  return String(title).replace(/\*\*/g, '').trim()
+}
+
+function extFromUrl(url) {
+  try {
+    const pathname = new URL(url).pathname
+    const ext = extname(pathname).slice(1).toLowerCase()
+    if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext)) return ext
+  } catch {
+    /* ignore */
+  }
+  return 'png'
+}
+
+function extFromContentType(contentType) {
+  const map = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/jpg': 'jpg',
+    'image/gif': 'gif',
+    'image/webp': 'webp',
+    'image/svg+xml': 'svg',
+  }
+  return map[contentType?.split(';')[0]?.trim()] ?? 'png'
+}
+
+function existingImageExt(pageId) {
+  if (!existsSync(IMAGES_DIR)) return null
+  for (const file of readdirSync(IMAGES_DIR)) {
+    const base = file.replace(/\.[^.]+$/, '')
+    if (base === pageId) {
+      return file.slice(base.length + 1)
+    }
+  }
+  return null
+}
+
+function downloadImageWithExt(url, pageId) {
+  const existing = existingImageExt(pageId)
+  if (existing) return existing
+
+  const ext = extFromUrl(url)
+  const dest = join(IMAGES_DIR, `${pageId}.${ext}`)
+  try {
+    const contentType = execFileSync(
+      'curl',
+      ['-fsSL', '-o', dest, '-w', '%{content_type}', url],
+      { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 },
+    ).trim()
+    if (!existsSync(dest) || readFileSync(dest).length === 0) {
+      return null
+    }
+    const resolvedExt = extFromContentType(contentType)
+    if (resolvedExt !== ext) {
+      const renamed = join(IMAGES_DIR, `${pageId}.${resolvedExt}`)
+      if (dest !== renamed) {
+        writeFileSync(renamed, readFileSync(dest))
+        execFileSync('rm', ['-f', dest])
+      }
+      return resolvedExt
+    }
+    return ext
+  } catch {
+    return null
+  }
+}
+
+function mapEvento(row, imageExtById) {
   const id = notionPageId(row.url)
   const themes = parseJsonArray(row.Tema)
   const languages = parseJsonArray(row['Língua'])
@@ -52,7 +132,7 @@ function mapEvento(row) {
 
   const item = {
     id,
-    title: row.Name?.trim() || 'Sem título',
+    title: stripMarkdown(row.Name?.trim() || 'Sem título'),
     organizer: row.Iniciativa?.trim() || '',
     eventType: normalizeEventType(row.Tipo),
     location: row.Localização?.trim() || '',
@@ -64,6 +144,11 @@ function mapEvento(row) {
 
   if (row.createdTime) {
     item.addedAt = String(row.createdTime).trim().replace(' ', 'T')
+  }
+
+  const ext = imageExtById.get(id)
+  if (ext) {
+    item.imageUrl = `/guia/eventos/${id}.${ext}`
   }
 
   return item
@@ -88,6 +173,8 @@ export type GuiaEvento = {
   themes: string[]
   languages: string[]
   url: string
+  /** Capa baixada do Notion (opcional). */
+  imageUrl?: string
   /** Data de criação no Notion — ordenação do preview. */
   addedAt?: string
 }
@@ -135,9 +222,32 @@ export function splitGuiaFeaturedEvento(eventos: GuiaEvento[]): {
 }
 
 const snapshotPath = process.argv[2] || DEFAULT_SNAPSHOT
+const manifestPath = process.argv[3] || DEFAULT_MANIFEST
+
 const raw = JSON.parse(readFileSync(snapshotPath, 'utf8'))
 const rows = raw.results ?? raw
-const eventos = rows.map(mapEvento)
 
+mkdirSync(IMAGES_DIR, { recursive: true })
+
+const imageExtById = new Map()
+
+for (const row of rows) {
+  const id = notionPageId(row.url)
+  const ext = existingImageExt(id)
+  if (ext) imageExtById.set(id, ext)
+}
+
+if (existsSync(manifestPath)) {
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+  for (const [pageId, imageUrl] of Object.entries(manifest)) {
+    if (!imageUrl || typeof imageUrl !== 'string') continue
+    const ext = downloadImageWithExt(imageUrl, pageId)
+    if (ext) imageExtById.set(pageId, ext)
+  }
+}
+
+const eventos = rows.map((row) => mapEvento(row, imageExtById))
 writeFileSync(OUT, emitTs(eventos), 'utf8')
-console.log(`Wrote ${eventos.length} eventos to ${OUT}`)
+
+const withImages = eventos.filter((e) => e.imageUrl).length
+console.log(`Wrote ${eventos.length} eventos (${withImages} with images) to ${OUT}`)

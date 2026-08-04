@@ -6,11 +6,23 @@
       "Iniciativa": "Figma",
       "Inscrição / Acesso": "https://config.figma.com/",
       "Localização": "Online",
-      "Língua": "[\"🇧🇷\"]",
+      "Língua": "[\"🇺🇸\"]",
       "Custo": "Gratuito",
-      "Tema": "[\"UI\"]",
+      "Tema": "[\"UI\",\"UX\"]",
       "Tipo": "🎤Conferência",
       "createdTime": "2020-08-25 18:07:00Z"
+    },
+    {
+      "url": "https://app.notion.com/3b28cbb0d90480d4a09afed5f20a7d22",
+      "Name": "CDX",
+      "Iniciativa": "Lucas Tangi",
+      "Inscrição / Acesso": "https://cdxconf.com.br/",
+      "Localização": "Presencial",
+      "Língua": "[\"🇧🇷\"]",
+      "Custo": "Pago",
+      "Tema": "[\"UX\",\"Carreira\",\"Tecnologia\"]",
+      "Tipo": "🎤Conferência",
+      "createdTime": "2026-08-04 20:34:53Z"
     },
     {
       "url": "https://app.notion.com/1848cbb0d90480129300c0e367f9cd10",
@@ -71,6 +83,18 @@
       "Tema": "[\"Produto\",\"Métricas\",\"Tecnologia\"]",
       "Tipo": "🎤Conferência",
       "createdTime": "2025-01-23 15:17:54Z"
+    },
+    {
+      "url": "https://app.notion.com/3b28cbb0d90480d2938dcfc54dff1f48",
+      "Name": "Festival Akilomba",
+      "Iniciativa": "Akilomba",
+      "Inscrição / Acesso": "https://akilomba.pagtickets.com.br/festival-akilomba-2026__22821/?d=vagasux15",
+      "Localização": "Presencial",
+      "Língua": "[\"🇧🇷\"]",
+      "Custo": "Pago",
+      "Tema": "[\"UX\",\"Diversidade\",\"Cultura\"]",
+      "Tipo": "🎤Conferência",
+      "createdTime": "2026-08-04 20:29:36Z"
     },
     {
       "url": "https://app.notion.com/2878cbb0d90480f8ab8fe2f2239beb22",
@@ -157,6 +181,18 @@
       "createdTime": "2021-10-01 02:03:00Z"
     },
     {
+      "url": "https://app.notion.com/3b28cbb0d90480309523c0d91ba474ba",
+      "Name": "PM3 Summit",
+      "Iniciativa": "PM3",
+      "Inscrição / Acesso": "https://pm3summit.com.br/",
+      "Localização": "Presencial",
+      "Língua": "[\"🇧🇷\"]",
+      "Custo": "Pago",
+      "Tema": "[\"Produto\",\"Discovery\",\"UX\"]",
+      "Tipo": "🎤Conferência",
+      "createdTime": "2026-08-04 18:59:29Z"
+    },
+    {
       "url": "https://app.notion.com/1848cbb0d9048004a4a7d1428ca498b0",
       "Name": "Product Camp",
       "Iniciativa": "PM3",
@@ -193,6 +229,18 @@
       "createdTime": "2025-01-23 14:40:42Z"
     },
     {
+      "url": "https://app.notion.com/3b28cbb0d9048081b5a0e28c52d45a9c",
+      "Name": "Techstars Startup Weekend",
+      "Iniciativa": "Techstars",
+      "Inscrição / Acesso": null,
+      "Localização": "Presencial",
+      "Língua": "[\"🇧🇷\"]",
+      "Custo": "Pago",
+      "Tema": "[\"Tecnologia\",\"Produto\",\"UX\",\"Empreendedorismo\"]",
+      "Tipo": "💻 Hackathon",
+      "createdTime": "2026-08-04 18:36:40Z"
+    },
+    {
       "url": "https://app.notion.com/d5304c9a0bb44509a94df65f56684407",
       "Name": "UXConf BR",
       "Iniciativa": "UXConf BR",
@@ -208,7 +256,7 @@
       "url": "https://app.notion.com/1848cbb0d9048002b672cccfe159c293",
       "Name": "VagasUX",
       "Iniciativa": "VagasUX",
-      "Inscrição / Acesso": "https://www.meetup.com/pt-BR/vagasux/",
+      "Inscrição / Acesso": "https://avely.me/vagasux",
       "Localização": "Presencial",
       "Língua": "[\"🇧🇷\"]",
       "Custo": "Gratuito",
@@ -251,6 +299,18 @@
       "Tema": "[\"Tecnologia\",\"Produto\"]",
       "Tipo": "🎤Conferência",
       "createdTime": "2025-01-23 14:37:44Z"
+    },
+    {
+      "url": "https://app.notion.com/3b28cbb0d9048034a623f58bca4ac3f6",
+      "Name": "Design&Dendê",
+      "Iniciativa": "Design&Dendê",
+      "Inscrição / Acesso": "https://www.designedende.com/",
+      "Localização": "Presencial",
+      "Língua": "[\"🇧🇷\"]",
+      "Custo": "Pago",
+      "Tema": "[\"UX\",\"Diversidade\",\"Cultura\"]",
+      "Tipo": "🎤Conferência",
+      "createdTime": "2026-08-04 20:17:19Z"
     },
     {
       "url": "https://app.notion.com/b1104ba0f69b47c49ae8133cbd26d0f2",
