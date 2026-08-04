@@ -76,6 +76,7 @@ function mapBook(row) {
 function emitTs(books) {
   const header = `/** Snapshot from Notion database "Conteúdos em Design" (view Livros). */
 /** Regenerar: node tools/scripts/export-guia-books.mjs <livros.json> */
+/** Capas manuais (Amazon I/…, links externos): web/src/data/guiaBookCoverOverrides.ts */
 
 export type GuiaBook = {
   id: string
@@ -84,6 +85,8 @@ export type GuiaBook = {
   context: string[]
   languages: string[]
   url: string
+  /** Capa explícita quando o export do Notion incluir (opcional). Overrides em guiaBookCoverOverrides.ts */
+  coverUrl?: string
   /** Data de criação no Notion — ordenação do preview. */
   addedAt?: string
 }
@@ -94,7 +97,26 @@ export const guiaBooks: GuiaBook[] = `
     a.title.localeCompare(b.title, 'pt-BR', { sensitivity: 'base' }),
   )
 
-  return `${header}${JSON.stringify(sorted, null, 2)}\n`
+  const helpers = `
+/** Tags de Contexto únicas, ordenadas (Notion multi_select). */
+export function getGuiaBookContextTags(): string[] {
+  const tags = new Set<string>()
+  for (const book of guiaBooks) {
+    for (const tag of book.context) tags.add(tag)
+  }
+  return [...tags].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }))
+}
+
+export function filterGuiaBooksByContext(
+  books: GuiaBook[],
+  contextTag: string | null,
+): GuiaBook[] {
+  if (!contextTag) return books
+  return books.filter((book) => book.context.includes(contextTag))
+}
+`
+
+  return `${header}${JSON.stringify(sorted, null, 2)}\n${helpers}`
 }
 
 const inputPath = process.argv[2]
