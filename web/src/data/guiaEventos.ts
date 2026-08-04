@@ -45,6 +45,25 @@ export const guiaEventos: GuiaEvento[] = [
     "imageUrl": "/guia/eventos/928d10eca77a477685fab077100324c4.png"
   },
   {
+    "id": "3b28cbb0d9048034a623f58bca4ac3f6",
+    "title": "Design&Dendê",
+    "organizer": "Design&Dendê",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Diversidade",
+      "Cultura"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.designedende.com/",
+    "addedAt": "2026-08-04T20:17:19Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d9048034a623f58bca4ac3f6.png"
+  },
+  {
     "id": "1848cbb0d90480129300c0e367f9cd10",
     "title": "Detach!",
     "organizer": "Glauber Laender",

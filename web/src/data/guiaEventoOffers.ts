@@ -38,6 +38,12 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
     ctaUrl:
       'https://www.sympla.com.br/evento/floripa-design-days-2026-fdd26/2888984',
   },
+  /** Design&Dendê */
+  '3b28cbb0d9048034a623f58bca4ac3f6': {
+    discountLabel: '10% de desconto',
+    couponCode: 'VAGASUX10',
+    ctaUrl: 'https://www.designedende.com/',
+  },
   /** Product Camp — cupom em breve */
   '1848cbb0d9048004a4a7d1428ca498b0': {
     discountLabel: '10% de desconto',
