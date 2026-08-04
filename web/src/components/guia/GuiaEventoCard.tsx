@@ -11,7 +11,7 @@ import {
 import { resolveEventoCoverUrl } from '@/lib/guiaEventoCover'
 import { cn } from '@/lib/utils'
 
-export const GUIA_EVENTO_FEATURED_LABEL = 'Evento oficial'
+export const GUIA_EVENTO_FEATURED_LABEL = 'Meetup oficial'
 
 type GuiaEventoCardProps = {
   evento: GuiaEvento
@@ -20,7 +20,7 @@ type GuiaEventoCardProps = {
   featured?: boolean
   /** Layout horizontal compacto no topo da página de eventos. */
   spotlight?: boolean
-  /** Oculta iniciativa e idiomas (listagem da página de eventos). */
+  /** Oculta iniciativa, idiomas e localização (listagem da página de eventos). */
   hideOrganizerAndLanguages?: boolean
 }
 
@@ -91,7 +91,9 @@ export function GuiaEventoCard({
   hideOrganizerAndLanguages = false,
 }: GuiaEventoCardProps) {
   const [open, setOpen] = useState(false)
-  const meta = eventMetaLine(evento)
+  const meta = hideOrganizerAndLanguages
+    ? evento.cost || ''
+    : eventMetaLine(evento)
 
   return (
     <>

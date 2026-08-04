@@ -9,6 +9,7 @@ import {
 import { Dialog } from 'radix-ui'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { GUIA_EVENTO_FEATURED_LABEL } from '@/components/guia/GuiaEventoCard'
 import type { GuiaEvento } from '@/data/guiaEventos'
 import {
   getGuiaEventoCtaLabel,
@@ -139,7 +140,7 @@ export function GuiaEventoPreviewDialog({
             <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-neutral-400">
               {featured ? (
                 <Badge className="border-brand-300/30 bg-brand-100 text-brand-500">
-                  Evento oficial
+                  {GUIA_EVENTO_FEATURED_LABEL}
                 </Badge>
               ) : null}
               {meta ? <span>{meta}</span> : null}
@@ -176,13 +177,16 @@ export function GuiaEventoPreviewDialog({
                     Cupom de desconto VagasUX: <strong>em breve</strong>
                   </p>
                 ) : offer?.couponCode ? (
-                  <div className="mt-3">
-                    <p className="text-xs font-bold tracking-[0.14em] text-neutral-400 uppercase">
-                      Cupom VagasUX
-                    </p>
-                    <div className="mt-2">
-                      <CopyCouponButton code={offer.couponCode} />
+                  <div className="mt-3 flex items-center justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-bold tracking-[0.14em] text-neutral-400 uppercase">
+                        Cupom VagasUX
+                      </p>
+                      <p className="mt-1 text-sm text-neutral-400">
+                        Copie o código e aplique na inscrição
+                      </p>
                     </div>
+                    <CopyCouponButton code={offer.couponCode} />
                   </div>
                 ) : null}
 
@@ -196,10 +200,7 @@ export function GuiaEventoPreviewDialog({
           </div>
 
           {ctaUrl ? (
-            <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-neutral-500/10 px-6 py-4">
-              <p className="text-sm font-semibold text-neutral-400">
-                {evento.cost === 'Gratuito' ? 'Evento gratuito' : 'Saiba mais'}
-              </p>
+            <div className="flex shrink-0 justify-end border-t border-neutral-500/10 px-6 py-4">
               <Button asChild size="sm" className="gap-1.5">
                 <a href={ctaUrl} target="_blank" rel="noopener noreferrer">
                   {getGuiaEventoCtaLabel(evento.id)}
