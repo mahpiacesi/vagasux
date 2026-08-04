@@ -110,6 +110,9 @@ export function GuiaEventoPreviewDialog({
   const hasOfferBlock = Boolean(
     offer?.discountLabel || offer?.couponCode || offer?.notice,
   )
+  const hasDiscountOrCoupon = Boolean(
+    offer?.discountLabel || offer?.couponCode,
+  )
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -164,7 +167,12 @@ export function GuiaEventoPreviewDialog({
             ) : null}
 
             {hasOfferBlock ? (
-              <section className="mt-5 rounded-2xl border border-brand-200/50 bg-brand-100/35 px-4 py-4">
+              <section
+                className={cn(
+                  'mt-5 rounded-2xl border border-brand-200/50 bg-brand-100/35 px-4 py-4',
+                  'w-fit max-w-full',
+                )}
+              >
                 {offer?.discountLabel ? (
                   <div className="flex items-center gap-2 text-sm font-bold text-brand-500">
                     <Tag size={18} weight="duotone" aria-hidden />
@@ -187,7 +195,12 @@ export function GuiaEventoPreviewDialog({
                 ) : null}
 
                 {offer?.notice ? (
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-400">
+                  <p
+                    className={cn(
+                      'text-sm leading-relaxed text-neutral-400',
+                      hasDiscountOrCoupon && 'mt-3',
+                    )}
+                  >
                     {offer.notice}
                   </p>
                 ) : null}
