@@ -41,7 +41,7 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
   /** Design&Dendê */
   '3b28cbb0d9048034a623f58bca4ac3f6': {
     discountLabel: '10% de desconto',
-    couponCode: 'VAGASUX10',
+    couponCode: 'VAGAS10',
     ctaUrl: 'https://www.designedende.com/',
   },
   /** Product Camp — cupom em breve */
