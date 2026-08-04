@@ -64,7 +64,12 @@ export function GuiaEventosPageContent({
 
       {featured ? (
         <div className="mt-8">
-          <GuiaEventoCard evento={featured} featured spotlight />
+          <GuiaEventoCard
+            evento={featured}
+            featured
+            spotlight
+            hideOrganizerAndLanguages
+          />
         </div>
       ) : null}
 
@@ -72,7 +77,11 @@ export function GuiaEventosPageContent({
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {rest.map((evento) => (
             <li key={evento.id}>
-              <GuiaEventoCard evento={evento} className="h-full" />
+              <GuiaEventoCard
+                evento={evento}
+                className="h-full"
+                hideOrganizerAndLanguages
+              />
             </li>
           ))}
         </ul>

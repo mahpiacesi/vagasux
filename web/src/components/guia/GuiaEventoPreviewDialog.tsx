@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { GuiaEvento } from '@/data/guiaEventos'
 import {
+  getGuiaEventoCtaLabel,
   getGuiaEventoOffer,
   resolveGuiaEventoCtaUrl,
 } from '@/data/guiaEventoOffers'
@@ -201,7 +202,7 @@ export function GuiaEventoPreviewDialog({
               </p>
               <Button asChild size="sm" className="gap-1.5">
                 <a href={ctaUrl} target="_blank" rel="noopener noreferrer">
-                  {offer?.ctaLabel ?? 'Abrir evento'}
+                  {getGuiaEventoCtaLabel(evento.id)}
                   <ArrowSquareOut size={16} weight="bold" aria-hidden />
                 </a>
               </Button>

@@ -20,6 +20,8 @@ type GuiaEventoCardProps = {
   featured?: boolean
   /** Layout horizontal compacto no topo da página de eventos. */
   spotlight?: boolean
+  /** Oculta iniciativa e idiomas (listagem da página de eventos). */
+  hideOrganizerAndLanguages?: boolean
 }
 
 function EventTypeCover({
@@ -86,6 +88,7 @@ export function GuiaEventoCard({
   className,
   featured = false,
   spotlight = false,
+  hideOrganizerAndLanguages = false,
 }: GuiaEventoCardProps) {
   const [open, setOpen] = useState(false)
   const meta = eventMetaLine(evento)
@@ -120,7 +123,7 @@ export function GuiaEventoCard({
             {evento.title}
           </h3>
 
-          {evento.organizer ? (
+          {!hideOrganizerAndLanguages && evento.organizer ? (
             <p className="mt-1.5 text-sm font-semibold text-neutral-400">
               {evento.organizer}
             </p>
@@ -146,7 +149,7 @@ export function GuiaEventoCard({
           <div className="mt-auto flex items-center justify-between gap-2 pt-3">
             <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-neutral-400">
               {meta ? <span>{meta}</span> : null}
-              {evento.languages.length > 0 ? (
+              {!hideOrganizerAndLanguages && evento.languages.length > 0 ? (
                 <span aria-label={`Idiomas: ${evento.languages.join(', ')}`}>
                   {evento.languages.join(' ')}
                 </span>
