@@ -44,6 +44,13 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
     couponCode: 'VAGAS10',
     ctaUrl: 'https://www.designedende.com/',
   },
+  /** Festival Akilomba */
+  '3b28cbb0d90480d2938dcfc54dff1f48': {
+    discountLabel: '15% de desconto',
+    couponCode: 'VAGASUX15',
+    ctaUrl:
+      'https://akilomba.pagtickets.com.br/festival-akilomba-2026__22821/?d=vagasux15',
+  },
   /** Product Camp — cupom em breve */
   '1848cbb0d9048004a4a7d1428ca498b0': {
     discountLabel: '10% de desconto',

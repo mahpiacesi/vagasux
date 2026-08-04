@@ -144,6 +144,25 @@ export const guiaEventos: GuiaEvento[] = [
     "imageUrl": "/guia/eventos/21f5986956494ddcb75c511a72003f2c.png"
   },
   {
+    "id": "3b28cbb0d90480d2938dcfc54dff1f48",
+    "title": "Festival Akilomba",
+    "organizer": "Akilomba",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Diversidade",
+      "Cultura"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://akilomba.pagtickets.com.br/festival-akilomba-2026__22821/?d=vagasux15",
+    "addedAt": "2026-08-04T20:29:36Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d90480d2938dcfc54dff1f48.png"
+  },
+  {
     "id": "1848cbb0d904802bae9efca27932b7e8",
     "title": "Festival MDP",
     "organizer": "Mulheres de Produto",
