@@ -41,6 +41,16 @@
       "createdTime": "2021-03-23 14:49:00Z"
     },
     {
+      "Nome": "Além do Design",
+      "Autor(a)": "[\"Victor Zanini\"]",
+      "Contexto": "[\"Design Ops\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/alem-do-design",
+      "url": "https://app.notion.com/3b28cbb0d90480caad7ee0ea49a4967b",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:34:38Z"
+    },
+    {
       "Nome": "An Introduction to Service Design: Designing the Invisible",
       "Autor(a)": "[\"Lara Penin\"]",
       "Contexto": "[\"Service Design\",\"UX\"]",
@@ -111,11 +121,51 @@
       "createdTime": "2024-04-21 14:58:31Z"
     },
     {
+      "Nome": "Crie. Reinvente. Empreenda",
+      "Autor(a)": "[\"Andressa Siegel\"]",
+      "Contexto": "[\"Design\",\"Negócio\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/crie-reinvente-empreenda",
+      "url": "https://app.notion.com/3b28cbb0d90480db9fe0dbf8e634e8d8",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:28:11Z"
+    },
+    {
+      "Nome": "CX Writing",
+      "Autor(a)": "[\"Bruno Rodrigues\"]",
+      "Contexto": "[\"Writing\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/cx-writing",
+      "url": "https://app.notion.com/3b28cbb0d90480dc9fa8fabe8274f1e3",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:08:47Z"
+    },
+    {
+      "Nome": "Design (i)mutável",
+      "Autor(a)": "[\"UXConf BR\"]",
+      "Contexto": "[\"UX\",\"Produto\"]",
+      "Língua": null,
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/design-imutavel",
+      "url": "https://app.notion.com/3b28cbb0d90480de87acf26c6a12547e",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:17:36Z"
+    },
+    {
+      "Nome": "Design Amazônico",
+      "Autor(a)": "[\"Guto Kawakami\"]",
+      "Contexto": "[\"Design\",\"Cultura\",\"Diversidade\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/design-amazonico",
+      "url": "https://app.notion.com/3b28cbb0d90480cc9c8fd64f041693c9",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:38:35Z"
+    },
+    {
       "Nome": "Design Better Books",
       "Autor(a)": "[\"Invision\"]",
       "Contexto": "[\"UI\",\"UX\"]",
       "Língua": "[\"🇺🇸\"]",
-      "Onde encontrar?": "https://www.designbetter.co/books",
+      "Onde encontrar?": "https://designbetterpodcast.com/s/books/archive",
       "url": "https://app.notion.com/2369710f755049268d2c2c1e4cc47563",
       "Tipo": "Livro",
       "createdTime": "2020-09-22 14:22:00Z"
@@ -139,6 +189,16 @@
       "url": "https://app.notion.com/0b5eff963f4d48a9afe6e12829f1cf6f",
       "Tipo": "Livro",
       "createdTime": "2023-09-09 15:01:26Z"
+    },
+    {
+      "Nome": "Design Comportamental",
+      "Autor(a)": "[\"Alex Soares\"]",
+      "Contexto": "[\"Design Estratégico\",\"UX\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/design-comportamental",
+      "url": "https://app.notion.com/3b28cbb0d90480b28e0cdc6d4f1d5277",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:13:39Z"
     },
     {
       "Nome": "Design de Interação: Além da Interação Humano-Computador",
@@ -169,6 +229,16 @@
       "url": "https://app.notion.com/bfde60c674b740be99fbee450bab39cc",
       "Tipo": "Livro",
       "createdTime": "2020-07-29 19:34:22Z"
+    },
+    {
+      "Nome": "Design orientado a dados",
+      "Autor(a)": "[\"Gabriel Pinheiro\"]",
+      "Contexto": "[\"UX\",\"Métricas\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/design-orientado-a-dados",
+      "url": "https://app.notion.com/3b28cbb0d9048087bf9dea9fd1d57b01",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:23:59Z"
     },
     {
       "Nome": "Design para a internet: Projetando a experiência perfeita",
@@ -219,6 +289,16 @@
       "url": "https://app.notion.com/a3fa155b5a77402499fe8ca32b7d211b",
       "Tipo": "Livro",
       "createdTime": "2021-08-26 14:22:00Z"
+    },
+    {
+      "Nome": "Designer & Líder",
+      "Autor(a)": "[\"Victor Zanini\"]",
+      "Contexto": "[\"Design\",\"Liderança\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/designer-e-lider",
+      "url": "https://app.notion.com/3b28cbb0d904800a8f81c83fc9b90c3f",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:44:23Z"
     },
     {
       "Nome": "Designing Interactions",
@@ -291,11 +371,21 @@
       "createdTime": "2020-08-02 04:25:00Z"
     },
     {
+      "Nome": "Estratégia Jungle",
+      "Autor(a)": "[\"Gabriel Pinheiro\"]",
+      "Contexto": "[\"Negócio\",\"Design Estratégico\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/estrategia-jungle",
+      "url": "https://app.notion.com/3b28cbb0d9048091983cd0cd5bd44041",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:40:37Z"
+    },
+    {
       "Nome": "Experiência do Usuário em Interfaces Digitais",
       "Autor(a)": "[\"André Grilo\"]",
       "Contexto": "[\"UX\"]",
       "Língua": "[\"🇧🇷\"]",
-      "Onde encontrar?": "https://issuu.com/andre-grilo/docs/experienciadousuarioinnterfaces_gri",
+      "Onde encontrar?": "https://repositorio.ufrn.br/items/75fa509e-c939-4829-9342-491e0342a802",
       "url": "https://app.notion.com/5afb13a67cde446299f0666ed371a6e0",
       "Tipo": "Livro",
       "createdTime": "2020-09-15 15:45:00Z"
@@ -339,6 +429,16 @@
       "url": "https://app.notion.com/072b11cb41ae4e7db704d3ee9de8277e",
       "Tipo": "Livro",
       "createdTime": "2020-08-04 22:20:00Z"
+    },
+    {
+      "Nome": "Gambiarra",
+      "Autor(a)": "[\"Dani Amatte\"]",
+      "Contexto": "[\"Design\",\"Criatividade\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/gambiarra",
+      "url": "https://app.notion.com/3b28cbb0d90480419a28f882345ca0b5",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:11:24Z"
     },
     {
       "Nome": "Gamificar: Como a gamificação motiva as pessoas a fazerem coisas extraordinárias",
@@ -475,20 +575,10 @@
       "Autor(a)": "[\"Jesus Carlos Delgado García\"]",
       "Contexto": "[\"Acessibilidade\"]",
       "Língua": "[\"🇧🇷\"]",
-      "Onde encontrar?": "https://educ.rec.br/escoladofuturoemcasa/wp-content/uploads/2021/08/LIVRO-BRANCO-DA-TECNOLOGIA-ASSISTIVA-NO-BRASIL.-Jesus-Carlos-Delgado-Garcia-Org.-ITS-BRASIL-Org..pdf",
+      "Onde encontrar?": "https://educ.rec.br/educarecife/wp-content/uploads/2021/08/13-LIVRO-BRANCO-DA-TECNOLOGIA-ASSISTIVA-NO-BRASIL..pdf",
       "url": "https://app.notion.com/1288cbb0d9048081aefef76d9cde740b",
       "Tipo": "Livro",
       "createdTime": "2024-10-23 22:17:32Z"
-    },
-    {
-      "Nome": "Livros que todo designer deve comprar",
-      "Autor(a)": "[\"Willian Matiola\"]",
-      "Contexto": "[\"UI\",\"UX\",\"Produto\",\"Research\",\"Writing\"]",
-      "Língua": "[\"🇧🇷\"]",
-      "Onde encontrar?": "http://bit.ly/designlivros",
-      "url": "https://app.notion.com/f941e2670d764b3bba640296d73ec291",
-      "Tipo": "Livro",
-      "createdTime": "2020-08-14 16:46:00Z"
     },
     {
       "Nome": "Manual do Game UX",
@@ -641,6 +731,26 @@
       "createdTime": "2026-08-03 18:00:22Z"
     },
     {
+      "Nome": "Princípios de UX",
+      "Autor(a)": "[\"Daniel Furtado\"]",
+      "Contexto": "[\"UX\",\"Fundamentos\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/principios-de-ux",
+      "url": "https://app.notion.com/3b28cbb0d9048028bf88dcf164ea4ee6",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:42:52Z"
+    },
+    {
+      "Nome": "Prompt, Palavra, Ação",
+      "Autor(a)": "[\"Bruno Rodrigues\"]",
+      "Contexto": "[\"Writing\",\"Comunicação\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/prompt-palavra-acao",
+      "url": "https://app.notion.com/3b28cbb0d9048038a0d4d83312739b4f",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:19:10Z"
+    },
+    {
       "Nome": "Psychology for Designers",
       "Autor(a)": "[\"Joe Leech\"]",
       "Contexto": "[\"Psicologia\",\"UX\"]",
@@ -771,6 +881,26 @@
       "createdTime": "2022-06-06 18:31:00Z"
     },
     {
+      "Nome": "Tipografia & Interface",
+      "Autor(a)": "[\"Willian Matiola\"]",
+      "Contexto": "[\"UI\",\"Tipografia\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://link.amazon/B028Cnivh",
+      "url": "https://app.notion.com/3b28cbb0d90480b59d03d8d3d8be4f9a",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:25:37Z"
+    },
+    {
+      "Nome": "Transformação dos negócios através do Design",
+      "Autor(a)": "[\"Érico Fileno\"]",
+      "Contexto": "[\"Design\",\"Negócio\",\"Design Thinking\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/transformacao-dos-negocios-atraves-do-design",
+      "url": "https://app.notion.com/3b28cbb0d90480d598c1c92d52fdcdee",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:20:51Z"
+    },
+    {
       "Nome": "User Experience Design: Como criar produtos digitais com foco nas pessoas",
       "Autor(a)": "[\"Rogério Pereira\"]",
       "Contexto": "[\"UX\",\"Research\",\"Produto\"]",
@@ -789,6 +919,26 @@
       "url": "https://app.notion.com/f2a2644fda6d4ff090b14826862afb9a",
       "Tipo": "Livro",
       "createdTime": "2020-08-02 04:49:00Z"
+    },
+    {
+      "Nome": "UX Decodificado",
+      "Autor(a)": "[\"Rafael Burity\",\"Rodrigo Lemes\"]",
+      "Contexto": "[\"UX\",\"Fundamentos\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/ux-decodificado",
+      "url": "https://app.notion.com/3b28cbb0d9048044beecf5c1aada5874",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:36:54Z"
+    },
+    {
+      "Nome": "UX Design em Grandes Empresas",
+      "Autor(a)": "[\"Bruno Duarte\"]",
+      "Contexto": "[\"UX\",\"Carreira\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://link.amazon/B069OZi1g",
+      "url": "https://app.notion.com/3b28cbb0d90480fd91ebe348da2f5ab2",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:30:26Z"
     },
     {
       "Nome": "UX Design: Guia Definitivo com as Melhores Práticas de UX",
@@ -839,7 +989,16 @@
       "url": "https://app.notion.com/50f3890573794506a627a0f48f70edb9",
       "Tipo": "Livro",
       "createdTime": "2020-08-02 04:15:00Z"
+    },
+    {
+      "Nome": "Visão de produto a partir do discovery",
+      "Autor(a)": "[\"Gabriel Pinheiro\"]",
+      "Contexto": "[\"UX\",\"Produto\"]",
+      "Língua": "[\"🇧🇷\"]",
+      "Onde encontrar?": "https://www.editorabrauer.com.br/livros-de-design/vis%C3%A3o-de-produto-a-partir-do-discovery",
+      "url": "https://app.notion.com/3b28cbb0d90480ad9e2ec5b065fd20d3",
+      "Tipo": "Livro",
+      "createdTime": "2026-08-04 16:22:22Z"
     }
-  ],
-  "has_more": false
+  ]
 }

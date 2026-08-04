@@ -81,6 +81,21 @@ export const guiaBooks: GuiaBook[] = [
     "addedAt": "2021-03-23T14:49:00Z"
   },
   {
+    "id": "3b28cbb0d90480caad7ee0ea49a4967b",
+    "title": "Além do Design",
+    "authors": [
+      "Victor Zanini"
+    ],
+    "context": [
+      "Design Ops"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/alem-do-design",
+    "addedAt": "2026-08-04T16:34:38Z"
+  },
+  {
     "id": "e6cc64e477584cd7a176144b3c82c7b6",
     "title": "An Introduction to Service Design: Designing the Invisible",
     "authors": [
@@ -194,6 +209,68 @@ export const guiaBooks: GuiaBook[] = [
     "addedAt": "2024-04-21T14:58:31Z"
   },
   {
+    "id": "3b28cbb0d90480db9fe0dbf8e634e8d8",
+    "title": "Crie. Reinvente. Empreenda",
+    "authors": [
+      "Andressa Siegel"
+    ],
+    "context": [
+      "Design",
+      "Negócio"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/crie-reinvente-empreenda",
+    "addedAt": "2026-08-04T16:28:11Z"
+  },
+  {
+    "id": "3b28cbb0d90480dc9fa8fabe8274f1e3",
+    "title": "CX Writing",
+    "authors": [
+      "Bruno Rodrigues"
+    ],
+    "context": [
+      "Writing"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/cx-writing",
+    "addedAt": "2026-08-04T16:08:47Z"
+  },
+  {
+    "id": "3b28cbb0d90480de87acf26c6a12547e",
+    "title": "Design (i)mutável",
+    "authors": [
+      "UXConf BR"
+    ],
+    "context": [
+      "UX",
+      "Produto"
+    ],
+    "languages": [],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/design-imutavel",
+    "addedAt": "2026-08-04T16:17:36Z"
+  },
+  {
+    "id": "3b28cbb0d90480cc9c8fd64f041693c9",
+    "title": "Design Amazônico",
+    "authors": [
+      "Guto Kawakami"
+    ],
+    "context": [
+      "Design",
+      "Cultura",
+      "Diversidade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/design-amazonico",
+    "addedAt": "2026-08-04T16:38:35Z"
+  },
+  {
     "id": "2369710f755049268d2c2c1e4cc47563",
     "title": "Design Better Books",
     "authors": [
@@ -206,7 +283,7 @@ export const guiaBooks: GuiaBook[] = [
     "languages": [
       "🇺🇸"
     ],
-    "url": "https://www.designbetter.co/books",
+    "url": "https://designbetterpodcast.com/s/books/archive",
     "addedAt": "2020-09-22T14:22:00Z"
   },
   {
@@ -241,6 +318,22 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/B0BGVTJ693?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=B0BGVTJ693&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_d_asin",
     "addedAt": "2023-09-09T15:01:26Z"
+  },
+  {
+    "id": "3b28cbb0d90480b28e0cdc6d4f1d5277",
+    "title": "Design Comportamental",
+    "authors": [
+      "Alex Soares"
+    ],
+    "context": [
+      "Design Estratégico",
+      "UX"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/design-comportamental",
+    "addedAt": "2026-08-04T16:13:39Z"
   },
   {
     "id": "de09cc7595b44d94916d120fe35396f8",
@@ -293,6 +386,22 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/8532523323?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=8532523323&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_d_asin",
     "addedAt": "2020-07-29T19:34:22Z"
+  },
+  {
+    "id": "3b28cbb0d9048087bf9dea9fd1d57b01",
+    "title": "Design orientado a dados",
+    "authors": [
+      "Gabriel Pinheiro"
+    ],
+    "context": [
+      "UX",
+      "Métricas"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/design-orientado-a-dados",
+    "addedAt": "2026-08-04T16:23:59Z"
   },
   {
     "id": "5f30ebb4335c40048057245dd7b03f8b",
@@ -370,6 +479,22 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/6559390489?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=6559390489&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_d_asin",
     "addedAt": "2021-08-26T14:22:00Z"
+  },
+  {
+    "id": "3b28cbb0d904800a8f81c83fc9b90c3f",
+    "title": "Designer & Líder",
+    "authors": [
+      "Victor Zanini"
+    ],
+    "context": [
+      "Design",
+      "Liderança"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/designer-e-lider",
+    "addedAt": "2026-08-04T16:44:23Z"
   },
   {
     "id": "c47fe1c33fdb434f9f09995ec9acd9eb",
@@ -486,6 +611,22 @@ export const guiaBooks: GuiaBook[] = [
     "addedAt": "2020-08-02T04:25:00Z"
   },
   {
+    "id": "3b28cbb0d9048091983cd0cd5bd44041",
+    "title": "Estratégia Jungle",
+    "authors": [
+      "Gabriel Pinheiro"
+    ],
+    "context": [
+      "Negócio",
+      "Design Estratégico"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/estrategia-jungle",
+    "addedAt": "2026-08-04T16:40:37Z"
+  },
+  {
     "id": "5afb13a67cde446299f0666ed371a6e0",
     "title": "Experiência do Usuário em Interfaces Digitais",
     "authors": [
@@ -565,6 +706,22 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/8547339752?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=8547339752&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_mixed_d_asin",
     "addedAt": "2020-08-04T22:20:00Z"
+  },
+  {
+    "id": "3b28cbb0d90480419a28f882345ca0b5",
+    "title": "Gambiarra",
+    "authors": [
+      "Dani Amatte"
+    ],
+    "context": [
+      "Design",
+      "Criatividade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/gambiarra",
+    "addedAt": "2026-08-04T16:11:24Z"
   },
   {
     "id": "eefd873eabb84927ae4f0adf76b02199",
@@ -796,7 +953,7 @@ export const guiaBooks: GuiaBook[] = [
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://educ.rec.br/escoladofuturoemcasa/wp-content/uploads/2021/08/LIVRO-BRANCO-DA-TECNOLOGIA-ASSISTIVA-NO-BRASIL.-Jesus-Carlos-Delgado-Garcia-Org.-ITS-BRASIL-Org..pdf",
+    "url": "https://educ.rec.br/educarecife/wp-content/uploads/2021/08/13-LIVRO-BRANCO-DA-TECNOLOGIA-ASSISTIVA-NO-BRASIL..pdf",
     "addedAt": "2024-10-23T22:17:32Z"
   },
   {
@@ -1045,6 +1202,38 @@ export const guiaBooks: GuiaBook[] = [
     "addedAt": "2026-08-03T18:00:22Z"
   },
   {
+    "id": "3b28cbb0d9048028bf88dcf164ea4ee6",
+    "title": "Princípios de UX",
+    "authors": [
+      "Daniel Furtado"
+    ],
+    "context": [
+      "UX",
+      "Fundamentos"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/principios-de-ux",
+    "addedAt": "2026-08-04T16:42:52Z"
+  },
+  {
+    "id": "3b28cbb0d9048038a0d4d83312739b4f",
+    "title": "Prompt, Palavra, Ação",
+    "authors": [
+      "Bruno Rodrigues"
+    ],
+    "context": [
+      "Writing",
+      "Comunicação"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/prompt-palavra-acao",
+    "addedAt": "2026-08-04T16:19:10Z"
+  },
+  {
     "id": "5fccad1081794801b5eb37b190ed9325",
     "title": "Psychology for Designers",
     "authors": [
@@ -1258,6 +1447,39 @@ export const guiaBooks: GuiaBook[] = [
     "addedAt": "2022-06-06T18:31:00Z"
   },
   {
+    "id": "3b28cbb0d90480b59d03d8d3d8be4f9a",
+    "title": "Tipografia & Interface",
+    "authors": [
+      "Willian Matiola"
+    ],
+    "context": [
+      "UI",
+      "Tipografia"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://link.amazon/B028Cnivh",
+    "addedAt": "2026-08-04T16:25:37Z"
+  },
+  {
+    "id": "3b28cbb0d90480d598c1c92d52fdcdee",
+    "title": "Transformação dos negócios através do Design",
+    "authors": [
+      "Érico Fileno"
+    ],
+    "context": [
+      "Design",
+      "Negócio",
+      "Design Thinking"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/transformacao-dos-negocios-atraves-do-design",
+    "addedAt": "2026-08-04T16:20:51Z"
+  },
+  {
     "id": "3100e8acc2d441b192a363c8918466c0",
     "title": "User Experience Design: Como criar produtos digitais com foco nas pessoas",
     "authors": [
@@ -1290,6 +1512,39 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/B00NF07FHS?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=B00NF07FHS&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_d_asin",
     "addedAt": "2020-08-02T04:49:00Z"
+  },
+  {
+    "id": "3b28cbb0d9048044beecf5c1aada5874",
+    "title": "UX Decodificado",
+    "authors": [
+      "Rafael Burity",
+      "Rodrigo Lemes"
+    ],
+    "context": [
+      "UX",
+      "Fundamentos"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/ux-decodificado",
+    "addedAt": "2026-08-04T16:36:54Z"
+  },
+  {
+    "id": "3b28cbb0d90480fd91ebe348da2f5ab2",
+    "title": "UX Design em Grandes Empresas",
+    "authors": [
+      "Bruno Duarte"
+    ],
+    "context": [
+      "UX",
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://link.amazon/B069OZi1g",
+    "addedAt": "2026-08-04T16:30:26Z"
   },
   {
     "id": "b5f7b5ae0c9f41cba2864298acbf5430",
@@ -1373,6 +1628,22 @@ export const guiaBooks: GuiaBook[] = [
     ],
     "url": "https://www.amazon.com.br/dp/8550807257?linkCode=ssc&tag=onamzmari020a-20&creativeASIN=8550807257&asc_item-id=amzn1.ideas.RVLS7CINMSW2&ref_=aip_sf_list_spv_ons_mixed_d_asin",
     "addedAt": "2020-08-02T04:15:00Z"
+  },
+  {
+    "id": "3b28cbb0d90480ad9e2ec5b065fd20d3",
+    "title": "Visão de produto a partir do discovery",
+    "authors": [
+      "Gabriel Pinheiro"
+    ],
+    "context": [
+      "UX",
+      "Produto"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.editorabrauer.com.br/livros-de-design/vis%C3%A3o-de-produto-a-partir-do-discovery",
+    "addedAt": "2026-08-04T16:22:22Z"
   }
 ]
 
