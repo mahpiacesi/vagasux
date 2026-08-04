@@ -138,7 +138,7 @@ export const guiaTipos: GuiaTipo[] = [
     description:
       'Newsletters de design, produto e UX para acompanhar no e-mail, curadas pela comunidade VagasUX.',
   },
-  { id: 'eventos', title: 'Eventos' },
+  { id: 'eventos', title: 'Eventos', description: 'Principais eventos anuais de UX, produto e tecnologia, curados pela comunidade VagasUX.' },
   {
     id: 'canais',
     title: 'Canais',

@@ -1,5 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { GuiaArtigosPageContent } from '@/components/guia/GuiaArtigosPageContent'
+import { GuiaEventosPageContent } from '@/components/guia/GuiaEventosPageContent'
 import { GuiaLivrosPageContent } from '@/components/guia/GuiaLivrosPageContent'
 import { GuiaNewslettersPageContent } from '@/components/guia/GuiaNewslettersPageContent'
 import { GuiaPodcastsPageContent } from '@/components/guia/GuiaPodcastsPageContent'
@@ -71,6 +72,18 @@ export function GuiaTipoPage() {
         description={
           tipo.description ??
           'Vídeos de design, produto e UX para assistir no seu ritmo, curados pela comunidade VagasUX.'
+        }
+      />
+    )
+  }
+
+  if (slug === 'eventos') {
+    return (
+      <GuiaEventosPageContent
+        title={tipo.title}
+        description={
+          tipo.description ??
+          'Principais eventos anuais de UX, produto e tecnologia, curados pela comunidade VagasUX.'
         }
       />
     )

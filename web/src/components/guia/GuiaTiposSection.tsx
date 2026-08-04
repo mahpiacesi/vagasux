@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
+import { GuiaEventoCard } from '@/components/guia/GuiaEventoCard'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
 import { GuiaVideoCard } from '@/components/guia/GuiaVideoCard'
@@ -15,6 +16,10 @@ import {
   GUIA_FEATURED_ARTIGO_ID,
 } from '@/data/guiaArtigos'
 import { guiaBooks } from '@/data/guiaBooks'
+import {
+  guiaEventos,
+  GUIA_FEATURED_EVENTO_ID,
+} from '@/data/guiaEventos'
 import {
   guiaNewsletters,
   GUIA_FEATURED_NEWSLETTER_ID,
@@ -34,6 +39,7 @@ import { cn } from '@/lib/utils'
 
 function getVerTodosLabel(tipoId: string, title: string): string {
   if (tipoId === 'newsletters') return 'Ver todas as newsletters'
+  if (tipoId === 'eventos') return 'Ver todos os eventos'
   return `Ver todos os ${title.toLowerCase()}`
 }
 
@@ -81,6 +87,10 @@ export function GuiaTiposSection() {
       featured?.id ?? null,
     )
   }, [])
+  const recentEventos = useMemo(
+    () => pickGuiaRecentPreview(guiaEventos, GUIA_FEATURED_EVENTO_ID),
+    [],
+  )
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -214,6 +224,18 @@ export function GuiaTiposSection() {
                     video={video}
                     featured={index === 0}
                     showChannelTag={video.vagasuxChannel}
+                    className="h-full"
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : selectedTipoId === 'eventos' && recentEventos.length > 0 ? (
+            <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {recentEventos.map((evento, index) => (
+                <li key={evento.id}>
+                  <GuiaEventoCard
+                    evento={evento}
+                    featured={index === 0}
                     className="h-full"
                   />
                 </li>
