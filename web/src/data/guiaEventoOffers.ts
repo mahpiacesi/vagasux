@@ -1,0 +1,81 @@
+/** Configurações de preview/modal por evento (cupom VagasUX, avisos, CTA). */
+
+export type GuiaEventoOffer = {
+  /** Desconto em texto livre, ex.: "10% de desconto". */
+  discountLabel?: string
+  /** Código copiável; omitir ou "pending" para cupom em breve. */
+  couponCode?: string | 'pending'
+  /** Link externo do CTA no modal (afiliado ou inscrição). */
+  ctaUrl?: string
+  /** Rótulo do botão CTA. */
+  ctaLabel?: string
+  /** Aviso exibido no modal (ex.: meetup sem data fixa). */
+  notice?: string
+}
+
+export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
+  /** VagasUX — meetup gratuito, link das redes sociais. */
+  '1848cbb0d9048002b672cccfe159c293': {
+    ctaUrl: 'https://avely.me/vagasux',
+    ctaLabel: 'Acessar redes sociais',
+    notice:
+      'Acesse as redes sociais da VagasUX para conferir se existe algum meetup confirmado vindo aí.',
+  },
+  /** UXConf BR — 10% via link afiliado (sem código explícito). */
+  d5304c9a0bb44509a94df65f56684407: {
+    discountLabel: '10% de desconto',
+    ctaUrl:
+      'https://www.sympla.com.br/uxconf-br-2026__3179226?afid=109196',
+    ctaLabel: 'Garantir ingresso',
+  },
+  /** DEX Conf */
+  f77dade5afa043bab14c344641b5505b: {
+    discountLabel: '10% de desconto',
+    couponCode: 'VAGASUX',
+    ctaUrl:
+      'https://www.sympla.com.br/evento/dexconf-2026/3304679?d=vagasux',
+    ctaLabel: 'Garantir ingresso',
+  },
+  /** Floripa Design Days */
+  '2878cbb0d90480f8ab8fe2f2239beb22': {
+    discountLabel: '10% de desconto',
+    couponCode: 'VAGASUX10',
+    ctaUrl:
+      'https://www.sympla.com.br/evento/floripa-design-days-2026-fdd26/2888984',
+    ctaLabel: 'Garantir ingresso',
+  },
+  /** Product Camp — cupom em breve */
+  '1848cbb0d9048004a4a7d1428ca498b0': {
+    discountLabel: '10% de desconto',
+    couponCode: 'pending',
+    ctaUrl: 'https://www.productcamp.com.br/',
+    ctaLabel: 'Ver evento',
+  },
+  /** Techstars Startup Weekend */
+  '3b28cbb0d9048081b5a0e28c52d45a9c': {
+    discountLabel: '20% de desconto',
+    couponCode: 'VAGASUX20',
+    ctaUrl: 'https://luma.com/7n3ksmv5',
+    ctaLabel: 'Inscrever-se',
+  },
+  /** PM3 Summit */
+  '3b28cbb0d90480309523c0d91ba474ba': {
+    discountLabel: '20% de desconto em ingressos',
+    couponCode: 'VAGASUX',
+    ctaUrl: 'https://pm3summit.com.br/',
+    ctaLabel: 'Garantir ingresso',
+  },
+}
+
+export function getGuiaEventoOffer(eventoId: string): GuiaEventoOffer | null {
+  return guiaEventoOffers[eventoId] ?? null
+}
+
+/** Resolve URL do CTA: override da oferta → url do evento. */
+export function resolveGuiaEventoCtaUrl(
+  eventoId: string,
+  eventoUrl: string,
+): string {
+  const offer = getGuiaEventoOffer(eventoId)
+  return offer?.ctaUrl?.trim() || eventoUrl
+}
