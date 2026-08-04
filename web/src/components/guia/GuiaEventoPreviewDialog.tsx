@@ -170,7 +170,7 @@ export function GuiaEventoPreviewDialog({
               <section
                 className={cn(
                   'mt-5 rounded-2xl border border-brand-200/50 bg-brand-100/35 px-4 py-4',
-                  'w-fit max-w-full',
+                  hasDiscountOrCoupon ? 'w-full' : 'w-fit max-w-full',
                 )}
               >
                 {offer?.discountLabel ? (

@@ -20,7 +20,7 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
   },
   /** UXConf BR — 10% via link afiliado (sem código explícito). */
   d5304c9a0bb44509a94df65f56684407: {
-    discountLabel: '10% de desconto',
+    discountLabel: '10% de desconto com link de afiliado',
     ctaUrl:
       'https://www.sympla.com.br/uxconf-br-2026__3179226?afid=109196',
   },
@@ -52,16 +52,18 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
   },
   /** PM3 Summit */
   '3b28cbb0d90480309523c0d91ba474ba': {
-    discountLabel: '20% de desconto em ingressos',
+    discountLabel: '20% de desconto',
     couponCode: 'VAGASUX',
     ctaUrl: 'https://pm3summit.com.br/',
   },
 }
 
-/** CTA do modal: parceria com desconto → "Garantir desconto"; demais → "Acessar evento". */
+/** CTA do modal: parceria com desconto ativo → "Garantir desconto"; demais → "Acessar evento". */
 export function getGuiaEventoCtaLabel(eventoId: string): string {
   const offer = getGuiaEventoOffer(eventoId)
-  if (offer?.discountLabel) return 'Garantir desconto'
+  if (offer?.discountLabel && offer.couponCode !== 'pending') {
+    return 'Garantir desconto'
+  }
   return 'Acessar evento'
 }
 
