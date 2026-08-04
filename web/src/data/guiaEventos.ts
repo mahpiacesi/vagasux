@@ -27,6 +27,25 @@ export const GUIA_FEATURED_EVENTO_ID = '1848cbb0d9048002b672cccfe159c293'
 
 export const guiaEventos: GuiaEvento[] = [
   {
+    "id": "3b28cbb0d90480d4a09afed5f20a7d22",
+    "title": "CDX",
+    "organizer": "Lucas Tangi",
+    "eventType": "Conferência",
+    "location": "Presencial",
+    "cost": "Pago",
+    "themes": [
+      "UX",
+      "Carreira",
+      "Tecnologia"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://cdxconf.com.br/",
+    "addedAt": "2026-08-04T20:34:53Z",
+    "imageUrl": "/guia/eventos/3b28cbb0d90480d4a09afed5f20a7d22.png"
+  },
+  {
     "id": "928d10eca77a477685fab077100324c4",
     "title": "Config - Figma Conference",
     "organizer": "Figma",

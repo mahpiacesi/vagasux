@@ -18,6 +18,12 @@ export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
     notice:
       'Acesse as redes sociais da VagasUX para conferir se existe algum meetup confirmado vindo aí.',
   },
+  /** CDX */
+  '3b28cbb0d90480d4a09afed5f20a7d22': {
+    discountLabel: '10% de desconto',
+    couponCode: 'VAGAS10',
+    ctaUrl: 'https://cdxconf.com.br/',
+  },
   /** UXConf BR — 10% via link afiliado (sem código explícito). */
   d5304c9a0bb44509a94df65f56684407: {
     discountLabel: '10% de desconto com link de afiliado',
