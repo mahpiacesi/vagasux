@@ -3,7 +3,7 @@
  * Used in vercel.json; keep in sync when adding routes.
  */
 export const guiaLegacyRedirects = [
-  { source: '/cursos', destination: '/guia/tipo/cursos' },
+  { source: '/cursos', destination: '/guia/cursos' },
   { source: '/eventos', destination: '/guia/tipo/eventos' },
   {
     source: '/perfis-para-seguir',

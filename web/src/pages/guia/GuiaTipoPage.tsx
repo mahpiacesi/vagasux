@@ -1,6 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { GuiaArtigosPageContent } from '@/components/guia/GuiaArtigosPageContent'
-import { GuiaCursosPageContent } from '@/components/guia/GuiaCursosPageContent'
 import { GuiaEventosPageContent } from '@/components/guia/GuiaEventosPageContent'
 import { GuiaLivrosPageContent } from '@/components/guia/GuiaLivrosPageContent'
 import { GuiaNewslettersPageContent } from '@/components/guia/GuiaNewslettersPageContent'
@@ -13,6 +12,10 @@ import { guiaRoutes } from '@/lib/guiaRoutes'
 export function GuiaTipoPage() {
   const { slug } = useParams<{ slug: string }>()
   const tipo = slug ? getGuiaTipoById(slug) : undefined
+
+  if (slug === 'cursos') {
+    return <Navigate to={guiaRoutes.cursos} replace />
+  }
 
   if (!tipo) {
     return <Navigate to={guiaRoutes.home} replace />
@@ -85,18 +88,6 @@ export function GuiaTipoPage() {
         description={
           tipo.description ??
           'Principais eventos anuais de UX, produto e tecnologia, curados pela comunidade VagasUX.'
-        }
-      />
-    )
-  }
-
-  if (slug === 'cursos') {
-    return (
-      <GuiaCursosPageContent
-        title={tipo.title}
-        description={
-          tipo.description ??
-          'Cursos de UX, UI, produto e design para estudar no seu ritmo, curados pela comunidade VagasUX.'
         }
       />
     )

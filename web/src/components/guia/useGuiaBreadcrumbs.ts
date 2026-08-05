@@ -39,6 +39,13 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       ]
     }
 
+    if (pathname === guiaRoutes.cursos) {
+      return [
+        { label: 'Cursos', to: guiaRoutes.homeCursos },
+        { label: 'Diretório' },
+      ]
+    }
+
     if (pathname.startsWith('/guia/tipo/')) {
       const tipo = getGuiaTipoById(slug)
       return [

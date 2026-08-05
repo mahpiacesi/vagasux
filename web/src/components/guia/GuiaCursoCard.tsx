@@ -10,6 +10,9 @@ export const GUIA_CURSO_FEEDBACK_LABEL = 'Tem relatos'
 type GuiaCursoCardProps = {
   curso: GuiaCurso
   className?: string
+  /** Abre modal de detalhes em vez de link direto (diretório /guia/cursos). */
+  previewMode?: boolean
+  onPreview?: (curso: GuiaCurso) => void
 }
 
 function CursoCover({ className }: { className?: string }) {
@@ -53,22 +56,17 @@ function FeedbackBadge({ className }: { className?: string }) {
   )
 }
 
-export function GuiaCursoCard({ curso, className }: GuiaCursoCardProps) {
-  const meta = cursoMetaLine(curso)
-
+function CardBody({
+  curso,
+  meta,
+  previewMode,
+}: {
+  curso: GuiaCurso
+  meta: string
+  previewMode: boolean
+}) {
   return (
-    <a
-      href={curso.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        'group flex h-full flex-col rounded-2xl border p-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
-        curso.isPartner
-          ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
-          : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
-        className,
-      )}
-    >
+    <>
       <CursoCover />
 
       <div className="mt-4 flex flex-1 flex-col">
@@ -102,14 +100,55 @@ export function GuiaCursoCard({ curso, className }: GuiaCursoCardProps) {
             ) : null}
             {curso.hasFeedback ? <FeedbackBadge /> : null}
           </div>
-          <ArrowSquareOut
-            size={16}
-            weight="bold"
-            className="shrink-0 text-brand-400"
-            aria-hidden
-          />
+          {previewMode ? (
+            <span className="text-xs font-bold tracking-wide text-brand-400 uppercase">
+              Ver detalhes
+            </span>
+          ) : (
+            <ArrowSquareOut
+              size={16}
+              weight="bold"
+              className="shrink-0 text-brand-400"
+              aria-hidden
+            />
+          )}
         </div>
       </div>
+    </>
+  )
+}
+
+export function GuiaCursoCard({
+  curso,
+  className,
+  previewMode = false,
+  onPreview,
+}: GuiaCursoCardProps) {
+  const meta = cursoMetaLine(curso)
+  const cardClassName = cn(
+    'group flex h-full flex-col rounded-2xl border p-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
+    curso.isPartner
+      ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
+      : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
+    className,
+  )
+
+  if (previewMode && onPreview) {
+    return (
+      <button type="button" onClick={() => onPreview(curso)} className={cn(cardClassName, 'cursor-pointer text-left')}>
+        <CardBody curso={curso} meta={meta} previewMode />
+      </button>
+    )
+  }
+
+  return (
+    <a
+      href={curso.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cardClassName}
+    >
+      <CardBody curso={curso} meta={meta} previewMode={false} />
     </a>
   )
 }

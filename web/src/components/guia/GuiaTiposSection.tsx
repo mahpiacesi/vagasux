@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
-import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
 import { GuiaEventoCard } from '@/components/guia/GuiaEventoCard'
 import { GuiaNewsletterCard } from '@/components/guia/GuiaNewsletterCard'
 import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
@@ -17,7 +16,6 @@ import {
   GUIA_FEATURED_ARTIGO_ID,
 } from '@/data/guiaArtigos'
 import { guiaBooks } from '@/data/guiaBooks'
-import { guiaCursos } from '@/data/guiaCursos'
 import {
   guiaEventos,
   GUIA_FEATURED_EVENTO_ID,
@@ -42,7 +40,6 @@ import { cn } from '@/lib/utils'
 function getVerTodosLabel(tipoId: string, title: string): string {
   if (tipoId === 'newsletters') return 'Ver todas as newsletters'
   if (tipoId === 'eventos') return 'Ver todos os eventos'
-  if (tipoId === 'cursos') return 'Ver todos os cursos'
   return `Ver todos os ${title.toLowerCase()}`
 }
 
@@ -94,10 +91,6 @@ export function GuiaTiposSection() {
     () => pickGuiaRecentPreview(guiaEventos, GUIA_FEATURED_EVENTO_ID, 4),
     [],
   )
-  const recentCursos = useMemo(
-    () => pickGuiaRecentPreview(guiaCursos, null, 5),
-    [],
-  )
 
   const panelId = `${tablistId}-panel-${selectedTipoId}`
 
@@ -119,7 +112,7 @@ export function GuiaTiposSection() {
             Explorar por tipo de conteúdo
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Artigos, vídeos, cursos, livros, podcasts, eventos, canais e mais.
+            Artigos, vídeos, livros, podcasts, eventos, canais e mais.
           </p>
         </div>
 
@@ -245,14 +238,6 @@ export function GuiaTiposSection() {
                     featured={index === 0}
                     className="h-full"
                   />
-                </li>
-              ))}
-            </ul>
-          ) : selectedTipoId === 'cursos' && recentCursos.length > 0 ? (
-            <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {recentCursos.map((curso) => (
-                <li key={curso.id}>
-                  <GuiaCursoCard curso={curso} className="h-full" />
                 </li>
               ))}
             </ul>
