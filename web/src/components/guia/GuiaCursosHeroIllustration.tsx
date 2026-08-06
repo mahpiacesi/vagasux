@@ -8,6 +8,7 @@ type GuiaCursosHeroIllustrationProps = {
 }
 
 type Pivot = { x: number; y: number }
+type Point = { x: number; y: number }
 
 /** Shared pivots (viewBox coords) — shoulder, hip, knee, head base. */
 const PIVOTS = {
@@ -42,8 +43,76 @@ const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'hair',
 ]
 
+/** Unified body path — raised-leg points rotate; crotch + inner thigh stay fixed. */
+const BODY_PATH_ORIGINAL =
+  'M721.2,410.82S626.52,463,589.5,450.5c-51.31,-17.34,-61,-119.38,-82,-151c-8,-1,-59.73,-1.36,-59.73,-1.36V616.75h38.85V377c20.81,41.35,37.64,95.73,78.88,112.55c76,31,181.44,-44.86,181.44,-44.86Z'
+
+const BODY_FIXED = {
+  crotch: { x: 589.5, y: 450.5 },
+  innerThigh: { x: 486.62, y: 377 },
+} as const
+
+const BODY_RAISED_LEG = {
+  outerTop: { x: 721.2, y: 410.82 },
+  sCp2: { x: 626.52, y: 463 },
+  innerCp1: { x: 507.43, y: 418.35 },
+  innerCp2: { x: 524.26, y: 472.73 },
+  innerMid: { x: 565.5, y: 489.55 },
+  outerCp1: { x: 641.5, y: 520.55 },
+  outerCp2: { x: 746.94, y: 444.69 },
+  outerEnd: { x: 746.94, y: 444.69 },
+} as const
+
+const BODY_TORSO =
+  'c-51.31,-17.34,-61,-119.38,-82,-151c-8,-1,-59.73,-1.36,-59.73,-1.36V616.75h38.85V377'
+
+type RaisedLegPoints = { [K in keyof typeof BODY_RAISED_LEG]: Point }
+
 function waveAngle(t: number, cycle: number, amplitude: number, phase: number) {
   return Math.sin(((t + phase) / cycle) * Math.PI * 2) * amplitude
+}
+
+function rotatePoint(p: Point, pivot: Pivot, angleDeg: number): Point {
+  const rad = (angleDeg * Math.PI) / 180
+  const cos = Math.cos(rad)
+  const sin = Math.sin(rad)
+  const dx = p.x - pivot.x
+  const dy = p.y - pivot.y
+  return {
+    x: pivot.x + dx * cos - dy * sin,
+    y: pivot.y + dx * sin + dy * cos,
+  }
+}
+
+function fmt(n: number) {
+  return n.toFixed(2).replace(/\.?0+$/, '').replace(/^-0$/, '0')
+}
+
+function rel(from: Point, to: Point) {
+  return `${fmt(to.x - from.x)},${fmt(to.y - from.y)}`
+}
+
+function buildBodyPath(raised: RaisedLegPoints) {
+  const { crotch, innerThigh } = BODY_FIXED
+  const mid = raised.innerMid
+  return [
+    `M${fmt(raised.outerTop.x)},${fmt(raised.outerTop.y)}`,
+    `S${fmt(raised.sCp2.x)},${fmt(raised.sCp2.y)},${crotch.x},${crotch.y}`,
+    BODY_TORSO,
+    `c${rel(innerThigh, raised.innerCp1)},${rel(innerThigh, raised.innerCp2)},${rel(innerThigh, mid)}`,
+    `c${rel(mid, raised.outerCp1)},${rel(mid, raised.outerCp2)},${rel(mid, raised.outerEnd)}`,
+    'Z',
+  ].join('')
+}
+
+function rotateRaisedLeg(angleDeg: number): RaisedLegPoints {
+  const pivot = PIVOTS['leg-right']
+  return Object.fromEntries(
+    Object.entries(BODY_RAISED_LEG).map(([key, point]) => [
+      key,
+      rotatePoint(point, pivot, angleDeg),
+    ]),
+  ) as RaisedLegPoints
 }
 
 function buildTransform(rotations: Array<{ angleDeg: number; pivot: Pivot }>, base: string) {
@@ -103,6 +172,11 @@ export function GuiaCursosHeroIllustration({
     svg.style.maxWidth = '100%'
     svg.style.overflow = 'visible'
 
+    const bodyEl = host.querySelector<SVGPathElement>('#body')
+    if (bodyEl && !bodyEl.dataset.basePath) {
+      bodyEl.dataset.basePath = bodyEl.getAttribute('d') ?? BODY_PATH_ORIGINAL
+    }
+
     const groups = Object.fromEntries(
       MOTION_GROUP_SELECTORS.map((key) => [
         key,
@@ -122,6 +196,7 @@ export function GuiaCursosHeroIllustration({
     if (reduceMotion) {
       svg.classList.remove('cursos-woman-hero-svg--motion')
       resetTransforms(allAnimated)
+      bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
       return
     }
 
@@ -143,6 +218,10 @@ export function GuiaCursosHeroIllustration({
         MOTION['leg-right-foot'].amplitude,
         MOTION['leg-right-foot'].phase,
       )
+
+      if (bodyEl) {
+        bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
+      }
 
       for (const key of MOTION_GROUP_SELECTORS) {
         if (key === 'leg-right-foot') continue
@@ -177,6 +256,7 @@ export function GuiaCursosHeroIllustration({
     return () => {
       window.cancelAnimationFrame(frame)
       resetTransforms(allAnimated)
+      bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
     }
   }, [forceMotion])
 
