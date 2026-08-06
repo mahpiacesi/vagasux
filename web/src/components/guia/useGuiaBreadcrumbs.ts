@@ -21,6 +21,13 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       return [{ label: 'Glossário' }]
     }
 
+    if (pathname === guiaRoutes.cursos) {
+      return [
+        { label: 'Cursos', to: guiaRoutes.homeCursos },
+        { label: 'Diretório' },
+      ]
+    }
+
     if (!slug) return []
 
     if (pathname.startsWith('/guia/trilhas/')) {
@@ -36,13 +43,6 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       return [
         { label: 'Temas', to: `${guiaRoutes.home}#temas` },
         { label: tema?.title ?? slug },
-      ]
-    }
-
-    if (pathname === guiaRoutes.cursos) {
-      return [
-        { label: 'Cursos', to: guiaRoutes.homeCursos },
-        { label: 'Diretório' },
       ]
     }
 
