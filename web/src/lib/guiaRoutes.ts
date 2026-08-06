@@ -4,6 +4,10 @@ export const guiaRoutes = {
   /** Volta à seção "Por tipo de conteúdo", opcionalmente com aba selecionada. */
   homeTipos: (tipoId?: string) =>
     tipoId ? `/guia?tipo=${encodeURIComponent(tipoId)}#tipos` : '/guia#tipos',
+  /** Volta à seção dedicada de cursos na home do Guia. */
+  homeCursos: '/guia#cursos',
+  cursos: '/guia/cursos',
+  cursosPublicarRelato: '/guia/cursos/publicar-relato',
   trilha: (slug: string) => `/guia/trilhas/${slug}`,
   tema: (slug: string) => `/guia/tema/${slug}`,
   tipo: (slug: string) => `/guia/tipo/${slug}`,
@@ -11,4 +15,4 @@ export const guiaRoutes = {
   glossario: '/guia/glossario',
 } as const
 
-export type GuiaRouteSection = 'trilhas' | 'tema' | 'tipo' | 'faq' | 'glossario'
+export type GuiaRouteSection = 'trilhas' | 'tema' | 'tipo' | 'cursos' | 'faq' | 'glossario'

@@ -13,6 +13,10 @@ export function GuiaTipoPage() {
   const { slug } = useParams<{ slug: string }>()
   const tipo = slug ? getGuiaTipoById(slug) : undefined
 
+  if (slug === 'cursos') {
+    return <Navigate to={guiaRoutes.cursos} replace />
+  }
+
   if (!tipo) {
     return <Navigate to={guiaRoutes.home} replace />
   }

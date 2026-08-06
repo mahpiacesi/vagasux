@@ -21,6 +21,17 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       return [{ label: 'Glossário' }]
     }
 
+    if (pathname === guiaRoutes.cursos) {
+      return [{ label: 'Cursos' }]
+    }
+
+    if (pathname === guiaRoutes.cursosPublicarRelato) {
+      return [
+        { label: 'Cursos', to: guiaRoutes.cursos },
+        { label: 'Publicar relato' },
+      ]
+    }
+
     if (!slug) return []
 
     if (pathname.startsWith('/guia/trilhas/')) {

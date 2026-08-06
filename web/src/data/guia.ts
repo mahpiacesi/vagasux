@@ -124,7 +124,6 @@ export const guiaTipos: GuiaTipo[] = [
     description:
       'Vídeos de design, produto e UX para assistir no seu ritmo, curados pela comunidade VagasUX.',
   },
-  { id: 'cursos', title: 'Cursos' },
   {
     id: 'livros',
     title: 'Livros',

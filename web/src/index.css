@@ -324,6 +324,32 @@
   animation: guia-balloon-float 3.9s ease-in-out 0.7s infinite;
 }
 
+/* Cursos hero — woman illustration */
+.cursos-woman-hero {
+  overflow: visible;
+  width: 100%;
+}
+
+.cursos-woman-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  overflow: visible;
+}
+
+@keyframes cursos-woman-root-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Root float disabled — grounded foot/pants base must stay fixed on the floor line. */
+
 /* Curadoria illustration */
 .curation-hero {
   overflow: visible;
@@ -933,6 +959,7 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
+  .cursos-woman-hero-svg--motion #woman-root,
   .umbrella-hero-glow,
   .umbrella-hero-raindrop,
   .umbrella-hero-svg--motion #umbrella-main,

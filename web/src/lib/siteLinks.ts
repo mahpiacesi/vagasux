@@ -79,6 +79,7 @@ export const voluntariadoHashes = {
 export const guiaHashes = {
   trilhas: 'trilhas',
   temas: 'temas',
+  cursos: 'cursos',
   tipos: 'tipos',
   ajuda: 'ajuda',
 } as const

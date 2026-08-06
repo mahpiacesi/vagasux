@@ -782,7 +782,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     subgroup: 'formacao',
     question: 'Quais cursos são referência na área de UI/UX?',
     answer: [
-      'Temos uma área com sugestões de alguns [cursos gratuitos e pagos](/guia/tipo/cursos). Temos também uma iniciativa da comunidade com alguns feedbacks de cursos renomados da área, vale conferir e decidir com calma.',
+      'Temos uma área com sugestões de alguns [cursos gratuitos e pagos](/guia/cursos). Temos também uma iniciativa da comunidade com alguns feedbacks de cursos renomados da área, vale conferir e decidir com calma.',
     ],
   },
   {

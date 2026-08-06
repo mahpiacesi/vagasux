@@ -17,7 +17,12 @@
     },
     {
       "source": "/cursos",
-      "destination": "/guia/tipo/cursos",
+      "destination": "/guia/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/guia/tipo/cursos",
+      "destination": "/guia/cursos",
       "permanent": true
     },
     {
