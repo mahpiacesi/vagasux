@@ -347,11 +347,7 @@
   }
 }
 
-.cursos-woman-hero-svg--motion #woman-root {
-  transform-box: view-box;
-  transform-origin: 50% 88%;
-  animation: cursos-woman-root-float 6s ease-in-out infinite;
-}
+/* Root float disabled — grounded foot/pants base must stay fixed on the floor line. */
 
 /* Curadoria illustration */
 .curation-hero {
