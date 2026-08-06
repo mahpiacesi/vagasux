@@ -32,14 +32,14 @@ const MOTION: Record<
   head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
 }
 
-/** Ponytail secondary motion — layered lag + head inertia (follow-through). */
+/** Ponytail-only swing — scalp path (#hair) stays completely static. */
 const PONYTAIL_SWING = {
-  root: { amplitude: 8, cycle: 3.1, phase: 0.58, lag: 0.24 },
-  mid: { amplitude: 16, cycle: 2.3, phase: 0.82, lag: 0.46 },
-  tip: { amplitude: 12, cycle: 1.85, phase: 1.05, lag: 0.62 },
+  root: { amplitude: 10, cycle: 3.0, phase: 0.58, lag: 0.24 },
+  mid: { amplitude: 18, cycle: 2.2, phase: 0.82, lag: 0.46 },
+  tip: { amplitude: 14, cycle: 1.8, phase: 1.05, lag: 0.62 },
 } as const
 
-/** Junction where ponytail meets scalp cap — pivot stays glued while tail swings. */
+/** Crown junction — only the tail behind the head rotates here. */
 const PONYTAIL_PIVOT = { x: 514.7, y: 156.74 } as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
@@ -126,12 +126,18 @@ function ponytailSwingAngle(t: number, headAngle: number) {
     MOTION.head.amplitude,
     MOTION.head.phase,
   )
-  const inertia = (headAngle - headLag) * 4.2
+  const inertia = (headAngle - headLag) * 5
   const ambient =
-    ponytailAngle(t, root) * 0.5 +
-    ponytailAngle(t, mid) * 0.85 +
-    ponytailAngle(t, tip) * 0.65
+    ponytailAngle(t, root) * 0.55 +
+    ponytailAngle(t, mid) * 0.9 +
+    ponytailAngle(t, tip) * 0.7
   return ambient + inertia
+}
+
+function applyPonytailSwing(el: SVGGraphicsElement, swing: number) {
+  const base = el.dataset.baseTransform ?? ''
+  const rotate = `rotate(${swing.toFixed(3)}, ${PONYTAIL_PIVOT.x}, ${PONYTAIL_PIVOT.y})`
+  el.setAttribute('transform', base ? `${rotate} ${base}` : rotate)
 }
 
 function rotateRaisedLeg(angleDeg: number): RaisedLegPoints {
@@ -268,18 +274,7 @@ export function GuiaCursosHeroIllustration({
       }
 
       if (ponytailEl) {
-        const swing = ponytailSwingAngle(t, headAngle)
-        const base = ponytailEl.dataset.baseTransform ?? ''
-        ponytailEl.setAttribute(
-          'transform',
-          buildTransform(
-            [
-              { angleDeg: swing, pivot: PONYTAIL_PIVOT },
-              { angleDeg: headAngle, pivot: PIVOTS.head },
-            ],
-            base,
-          ),
-        )
+        applyPonytailSwing(ponytailEl, ponytailSwingAngle(t, headAngle))
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
