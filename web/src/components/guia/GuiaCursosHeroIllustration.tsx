@@ -31,10 +31,6 @@ const MOTION: Record<
   head: { amplitude: 0, cycle: 5.4, phase: 0.35 },
 }
 
-/** Figma Vector layer — crown attachment, only this group rotates. */
-const PONYTAIL_PIVOT = { x: 514.7, y: 156.74 } as const
-const PONYTAIL_SWING = { amplitude: 22, cycle: 2.8, phase: 0.65 } as const
-
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
   'arm-right',
@@ -172,7 +168,6 @@ export function GuiaCursosHeroIllustration({
     svg.style.overflow = 'visible'
 
     const bodyEl = host.querySelector<SVGPathElement>('#body')
-    const ponytailPivot = host.querySelector<SVGGElement>('#hair-ponytail-pivot')
 
     if (bodyEl && !bodyEl.dataset.basePath) {
       bodyEl.dataset.basePath = bodyEl.getAttribute('d') ?? BODY_PATH_ORIGINAL
@@ -198,7 +193,6 @@ export function GuiaCursosHeroIllustration({
     if (reduceMotion) {
       svg.classList.remove('cursos-woman-hero-svg--motion')
       resetTransforms(allAnimated)
-      ponytailPivot?.removeAttribute('transform')
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
       return
     }
@@ -231,13 +225,6 @@ export function GuiaCursosHeroIllustration({
 
       if (bodyEl) {
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
-      }
-
-      if (ponytailPivot) {
-        const { amplitude, cycle, phase } = PONYTAIL_SWING
-        const swing = waveAngle(t, cycle, amplitude, phase)
-        const { x, y } = PONYTAIL_PIVOT
-        ponytailPivot.setAttribute('transform', `rotate(${swing.toFixed(2)}, ${x}, ${y})`)
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
@@ -279,7 +266,6 @@ export function GuiaCursosHeroIllustration({
     return () => {
       window.cancelAnimationFrame(frame)
       resetTransforms(allAnimated)
-      ponytailPivot?.removeAttribute('transform')
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
     }
   }, [forceMotion])
