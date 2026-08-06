@@ -407,6 +407,18 @@
       "Editora/Canal": "[\"Medium\"]",
       "Tipo": "Artigo",
       "createdTime": "2026-08-03 21:01:34Z"
+    },
+    {
+      "id": "3b28cbb0-d904-8098-9705-ebfb4caa7fd6",
+      "url": "https://app.notion.com/3b28cbb0d90480989705ebfb4caa7fd6",
+      "Nome": "How I Validated Design Decisions Before Writing Production Code",
+      "Autor(a)": "[\"Luca Masud\"]",
+      "Contexto": "[\"UX\",\"IA\"]",
+      "Língua": "[\"🇺🇸\"]",
+      "Onde encontrar?": "https://slack.design/articles/how-i-validated-design-decisions-before-writing-production-code/",
+      "Editora/Canal": "[\"Slack Design\"]",
+      "Tipo": "Artigo",
+      "createdTime": "2026-08-04 21:10:53Z"
     }
   ]
 }
