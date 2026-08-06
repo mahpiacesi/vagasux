@@ -39,8 +39,8 @@ export function GuiaCursosSection() {
               Encontrar um curso
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
-              Diretório coletivo para comparar formações de UX, UI e produto —
-              com relatos de quem já passou por elas.
+              Diretório coletivo para comparar formações de UX, UI e produto, com
+              relatos de quem já passou por elas.
             </p>
 
             <div className="mt-8 grid grid-cols-3 gap-3">
@@ -96,15 +96,23 @@ export function GuiaCursosSection() {
               ))}
             </div>
 
-            <Link
-              to={guiaRoutes.cursos}
-              className={cn(
-                'mt-8 inline-flex items-center gap-2 rounded-full bg-brand-400 px-5 py-3 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
-              )}
-            >
-              Explorar diretório de cursos
-              <ArrowRight size={16} weight="bold" aria-hidden />
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to={guiaRoutes.cursos}
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-full bg-brand-400 px-5 py-3 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
+                )}
+              >
+                Explorar diretório
+                <ArrowRight size={16} weight="bold" aria-hidden />
+              </Link>
+              <Link
+                to={guiaRoutes.cursosPublicarRelato}
+                className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-100/40 px-5 py-3 text-sm font-bold text-brand-500 transition-colors hover:bg-brand-100"
+              >
+                Publicar relato
+              </Link>
+            </div>
           </div>
 
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">

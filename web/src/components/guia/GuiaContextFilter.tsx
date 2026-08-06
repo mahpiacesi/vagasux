@@ -7,6 +7,8 @@ type GuiaContextFilterProps = {
   className?: string
   /** Ex.: "Filtrar livros por contexto" */
   ariaLabel?: string
+  /** Oculta o chip "Todos" (ex.: diretório de cursos). */
+  showAllOption?: boolean
 }
 
 export function GuiaContextFilter({
@@ -15,6 +17,7 @@ export function GuiaContextFilter({
   onChange,
   className,
   ariaLabel = 'Filtrar por contexto',
+  showAllOption = true,
 }: GuiaContextFilterProps) {
   return (
     <div className={className}>
@@ -26,19 +29,21 @@ export function GuiaContextFilter({
         role="group"
         aria-label={ariaLabel}
       >
-        <button
-          type="button"
-          aria-pressed={value === null}
-          onClick={() => onChange(null)}
-          className={cn(
-            'rounded-full border px-4 py-2 text-sm font-bold transition-colors',
-            value === null
-              ? 'border-brand-400 bg-brand-400 text-neutral-100 shadow-sm'
-              : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500',
-          )}
-        >
-          Todos
-        </button>
+        {showAllOption ? (
+          <button
+            type="button"
+            aria-pressed={value === null}
+            onClick={() => onChange(null)}
+            className={cn(
+              'rounded-full border px-4 py-2 text-sm font-bold transition-colors',
+              value === null
+                ? 'border-brand-400 bg-brand-400 text-neutral-100 shadow-sm'
+                : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500',
+            )}
+          >
+            Todos
+          </button>
+        ) : null}
         {tags.map((tag) => {
           const active = value === tag
           return (

@@ -6,6 +6,7 @@ import { ComunidadePage } from '@/pages/ComunidadePage'
 import { GuildaPage } from '@/pages/GuildaPage'
 import { GuiaIllustrationDevPage } from '@/pages/GuiaIllustrationDevPage'
 import { GuiaPage } from '@/pages/GuiaPage'
+import { GuiaCursosPublicarRelatoPage } from '@/pages/guia/GuiaCursosPublicarRelatoPage'
 import { GuiaCursosPage } from '@/pages/guia/GuiaCursosPage'
 import { GuiaFaqPage } from '@/pages/guia/GuiaFaqPage'
 import { GuiaGlossarioPage } from '@/pages/guia/GuiaGlossarioPage'
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="trilhas/:slug" element={<GuiaTrilhaPage />} />
             <Route path="tema/:slug" element={<GuiaTemaPage />} />
             <Route path="cursos" element={<GuiaCursosPage />} />
+            <Route path="cursos/publicar-relato" element={<GuiaCursosPublicarRelatoPage />} />
             <Route path="tipo/:slug" element={<GuiaTipoPage />} />
             <Route path="faq" element={<GuiaFaqPage />} />
             <Route path="glossario" element={<GuiaGlossarioPage />} />

@@ -33,19 +33,6 @@ function FilterChipGroup({
         {label}
       </p>
       <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label={`Filtrar por ${label.toLowerCase()}`}>
-        <button
-          type="button"
-          aria-pressed={value === null}
-          onClick={() => onChange(null)}
-          className={cn(
-            'rounded-full border px-3 py-1.5 text-xs font-bold transition-colors',
-            value === null
-              ? 'border-brand-400 bg-brand-400 text-neutral-100'
-              : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
-          )}
-        >
-          Todos
-        </button>
         {tags.map((tag) => {
           const active = value === tag
           return (
@@ -117,6 +104,7 @@ export function GuiaCursosFilters({
         value={filters.theme}
         onChange={(theme) => patch({ theme })}
         ariaLabel="Filtrar cursos por tema"
+        showAllOption={false}
       />
 
       <div className="grid gap-6 lg:grid-cols-3">

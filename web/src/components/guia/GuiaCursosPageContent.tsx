@@ -4,6 +4,7 @@ import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
 import { GuiaCursoPreviewDialog } from '@/components/guia/GuiaCursoPreviewDialog'
 import { GuiaCursosFilters } from '@/components/guia/GuiaCursosFilters'
+import { GuiaCursosHeroSection } from '@/components/guia/GuiaCursosHeroSection'
 import {
   getGuiaCursoThemeTags,
   guiaCursos,
@@ -19,11 +20,6 @@ import {
   GUIA_CURSO_FILTER_DEFAULTS,
   type GuiaCursoFilters,
 } from '@/lib/guiaCursoFilters'
-
-type GuiaCursosPageContentProps = {
-  title: string
-  description?: string
-}
 
 function parseFiltersFromSearchParams(params: URLSearchParams): GuiaCursoFilters {
   return {
@@ -47,10 +43,7 @@ function filtersToSearchParams(filters: GuiaCursoFilters): URLSearchParams {
   return params
 }
 
-export function GuiaCursosPageContent({
-  title,
-  description = 'Mapeamento coletivo de cursos de UX, UI e produto — com filtros e relatos de quem já fez, para você comparar opções antes de decidir.',
-}: GuiaCursosPageContentProps) {
+export function GuiaCursosPageContent() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [filters, setFilters] = useState<GuiaCursoFilters>(() =>
     parseFiltersFromSearchParams(searchParams),
@@ -91,72 +84,58 @@ export function GuiaCursosPageContent({
     <div className="mt-8 w-full">
       <GuiaBackToGuiaLink section="cursos" />
 
-      <header className="mt-8 w-full">
-        <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-          Diretório da comunidade
-        </p>
-        <h1 className="mt-3 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          {title}
-        </h1>
+      <GuiaCursosHeroSection className="mt-8" />
 
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-400 md:text-lg">
-          {description}
-        </p>
-
-        <dl className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-neutral-400">
-          <div className="rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2">
-            <dt className="sr-only">Total de cursos</dt>
-            <dd>{stats.total} cursos</dd>
+      <section className="mt-12" aria-labelledby="guia-cursos-listagem-heading">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2
+              id="guia-cursos-listagem-heading"
+              className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
+            >
+              Explore o diretório
+            </h2>
+            <p className="mt-1 text-sm font-semibold text-neutral-400">{countLabel}</p>
           </div>
-          <div className="rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2">
-            <dt className="sr-only">Com relatos</dt>
-            <dd>{stats.withFeedback} com relatos</dd>
-          </div>
-          <div className="rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2">
-            <dt className="sr-only">Parceiros</dt>
-            <dd>{stats.partners} parceiros VagasUX</dd>
-          </div>
-        </dl>
+        </div>
 
-        <p className="mt-4 text-sm font-semibold text-neutral-400">{countLabel}</p>
-      </header>
+        <GuiaCursosFilters
+          className="mt-8"
+          themeTags={themeTags}
+          modalityTags={modalityTags}
+          costTags={costTags}
+          levelTags={levelTags}
+          filters={filters}
+          onChange={handleFiltersChange}
+          activeCount={activeCount}
+        />
 
-      <GuiaCursosFilters
-        className="mt-10"
-        themeTags={themeTags}
-        modalityTags={modalityTags}
-        costTags={costTags}
-        levelTags={levelTags}
-        filters={filters}
-        onChange={handleFiltersChange}
-        activeCount={activeCount}
-      />
-
-      {filteredCursos.length > 0 ? (
-        <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredCursos.map((curso) => (
-            <li key={curso.id}>
-              <GuiaCursoCard
-                curso={curso}
-                className="h-full"
-                previewMode
-                onPreview={handlePreview}
-              />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
-          Nenhum curso encontrado com estes filtros.
-          <button
-            type="button"
-            className="mt-3 block w-full font-bold text-brand-500 hover:underline"
-            onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
-          >
-            Limpar filtros
-          </button>
-        </p>
-      )}
+        {filteredCursos.length > 0 ? (
+          <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredCursos.map((curso) => (
+              <li key={curso.id}>
+                <GuiaCursoCard
+                  curso={curso}
+                  className="h-full"
+                  previewMode
+                  onPreview={handlePreview}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
+            Nenhum curso encontrado com estes filtros.
+            <button
+              type="button"
+              className="mt-3 block w-full font-bold text-brand-500 hover:underline"
+              onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
+            >
+              Limpar filtros
+            </button>
+          </p>
+        )}
+      </section>
 
       <GuiaCursoPreviewDialog
         curso={previewCurso}

@@ -7,6 +7,7 @@ export const guiaRoutes = {
   /** Volta à seção dedicada de cursos na home do Guia. */
   homeCursos: '/guia#cursos',
   cursos: '/guia/cursos',
+  cursosPublicarRelato: '/guia/cursos/publicar-relato',
   trilha: (slug: string) => `/guia/trilhas/${slug}`,
   tema: (slug: string) => `/guia/tema/${slug}`,
   tipo: (slug: string) => `/guia/tipo/${slug}`,
