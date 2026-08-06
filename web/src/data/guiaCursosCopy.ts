@@ -6,7 +6,6 @@ export const guiaCursosHero = {
   description:
     'Busque informações e relatos de cursos para todos os gostos e cenários — e contribua deixando sua experiência para a comunidade.',
   ctaPublicarRelato: 'Publicar relato',
-  ctaVerComRelatos: 'Ver cursos com relatos',
 } as const
 
 export const guiaCursosComoFunciona = [
