@@ -32,15 +32,14 @@ const MOTION: Record<
   head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
 }
 
-/** Ponytail-only swing — scalp path (#hair) stays completely static. */
 const PONYTAIL_SWING = {
-  root: { amplitude: 10, cycle: 3.0, phase: 0.58, lag: 0.24 },
-  mid: { amplitude: 18, cycle: 2.2, phase: 0.82, lag: 0.46 },
-  tip: { amplitude: 14, cycle: 1.8, phase: 1.05, lag: 0.62 },
+  root: { amplitude: 9, cycle: 3.0, phase: 0.58, lag: 0.24 },
+  mid: { amplitude: 16, cycle: 2.2, phase: 0.82, lag: 0.46 },
+  tip: { amplitude: 12, cycle: 1.8, phase: 1.05, lag: 0.62 },
 } as const
 
-/** Crown junction — only the tail behind the head rotates here. */
-const PONYTAIL_PIVOT = { x: 514.7, y: 156.74 } as const
+/** Attachment at back of skull — scalp points stay here; only tail points swing. */
+const PONYTAIL_PIVOT = { x: 489.35, y: 162 } as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -52,6 +51,35 @@ const MOTION_GROUP_SELECTORS: MotionGroup[] = [
 
 const BODY_PATH_ORIGINAL =
   'M721.2,410.82S626.52,463,589.5,450.5c-51.31,-17.34,-61,-119.38,-82,-151c-8,-1,-59.73,-1.36,-59.73,-1.36V616.75h38.85V377c20.81,41.35,37.64,95.73,78.88,112.55c76,31,181.44,-44.86,181.44,-44.86Z'
+
+const HAIR_PATH_ORIGINAL =
+  'M484.58,166.17c-1.52,-4.64,3.09,-4.63,4.92,-6a25.52,25.52,0,0,1,25.2,-3.43c12.47,5.32,19.43,22.32,2.27,35.59l.53,-4.84s-8.52,-1.89,-17.26,-11.95S489.35,162,489.35,162Z'
+
+const HAIR_SHAPE = {
+  m: { x: 484.58, y: 166.17 },
+  c1cp1: { x: 483.06, y: 161.53 },
+  c1cp2: { x: 487.67, y: 161.54 },
+  c1end: { x: 489.5, y: 160.17 },
+  arcEnd: { x: 514.7, y: 156.74 },
+  c2cp1: { x: 527.17, y: 162.06 },
+  c2cp2: { x: 534.13, y: 179.06 },
+  c2end: { x: 516.97, y: 192.33 },
+  lend: { x: 517.5, y: 187.49 },
+  sCp2: { x: 508.98, y: 185.6 },
+  sEnd: { x: 500.24, y: 175.54 },
+  anchor: { x: 489.35, y: 162 },
+} as const
+
+/** Scalp cap — locked. Ponytail bulge + tail — swing with increasing weight. */
+const PONYTAIL_POINT_WEIGHT: Partial<Record<keyof typeof HAIR_SHAPE, number>> = {
+  c2cp2: 0.5,
+  c2end: 0.68,
+  lend: 0.84,
+  sCp2: 0.95,
+  sEnd: 1,
+}
+
+type HairShape = { [K in keyof typeof HAIR_SHAPE]: Point }
 
 const BODY_FIXED = {
   crotch: { x: 589.5, y: 450.5 },
@@ -126,18 +154,42 @@ function ponytailSwingAngle(t: number, headAngle: number) {
     MOTION.head.amplitude,
     MOTION.head.phase,
   )
-  const inertia = (headAngle - headLag) * 5
-  const ambient =
+  const inertia = (headAngle - headLag) * 4
+  return (
     ponytailAngle(t, root) * 0.55 +
-    ponytailAngle(t, mid) * 0.9 +
-    ponytailAngle(t, tip) * 0.7
-  return ambient + inertia
+    ponytailAngle(t, mid) * 0.95 +
+    ponytailAngle(t, tip) * 0.75 +
+    inertia
+  )
 }
 
-function applyPonytailSwing(el: SVGGraphicsElement, swing: number) {
-  const base = el.dataset.baseTransform ?? ''
-  const rotate = `rotate(${swing.toFixed(3)}, ${PONYTAIL_PIVOT.x}, ${PONYTAIL_PIVOT.y})`
-  el.setAttribute('transform', base ? `${rotate} ${base}` : rotate)
+function morphPonytailPath(swing: number): HairShape {
+  const pivot = PONYTAIL_PIVOT
+  const morphed = Object.fromEntries(
+    Object.entries(HAIR_SHAPE).map(([key, point]) => {
+      const weight = PONYTAIL_POINT_WEIGHT[key as keyof typeof HAIR_SHAPE] ?? 0
+      return [
+        key,
+        weight > 0 ? rotatePoint(point, pivot, swing * weight) : point,
+      ]
+    }),
+  ) as HairShape
+  return morphed
+}
+
+function buildHairPath(shape: HairShape) {
+  const { m, c1cp1, c1cp2, c1end, arcEnd, c2cp1, c2cp2, c2end, lend, sCp2, sEnd, anchor } =
+    shape
+  return [
+    `M${fmt(m.x)},${fmt(m.y)}`,
+    `c${rel(m, c1cp1)},${rel(m, c1cp2)},${rel(m, c1end)}`,
+    `a25.52,25.52,0,0,1,${rel(c1end, arcEnd)}`,
+    `c${rel(arcEnd, c2cp1)},${rel(arcEnd, c2cp2)},${rel(arcEnd, c2end)}`,
+    `l${rel(c2end, lend)}`,
+    `s${rel(lend, sCp2)},${rel(lend, sEnd)}`,
+    `S${fmt(anchor.x)},${fmt(anchor.y)},${fmt(anchor.x)},${fmt(anchor.y)}`,
+    'Z',
+  ].join('')
 }
 
 function rotateRaisedLeg(angleDeg: number): RaisedLegPoints {
@@ -208,10 +260,13 @@ export function GuiaCursosHeroIllustration({
     svg.style.overflow = 'visible'
 
     const bodyEl = host.querySelector<SVGPathElement>('#body')
-    const ponytailEl = host.querySelector<SVGGraphicsElement>('#hair-ponytail')
+    const hairEl = host.querySelector<SVGPathElement>('#hair')
 
     if (bodyEl && !bodyEl.dataset.basePath) {
       bodyEl.dataset.basePath = bodyEl.getAttribute('d') ?? BODY_PATH_ORIGINAL
+    }
+    if (hairEl && !hairEl.dataset.basePath) {
+      hairEl.dataset.basePath = hairEl.getAttribute('d') ?? HAIR_PATH_ORIGINAL
     }
 
     const groups = Object.fromEntries(
@@ -221,11 +276,7 @@ export function GuiaCursosHeroIllustration({
       ]),
     ) as Record<MotionGroup, SVGGraphicsElement[]>
 
-    const ponytailAnimated = ponytailEl ? [ponytailEl] : []
-    const allAnimated = [
-      ...(Object.values(groups) as SVGGraphicsElement[][]).flat(),
-      ...ponytailAnimated,
-    ]
+    const allAnimated = (Object.values(groups) as SVGGraphicsElement[][]).flat()
 
     for (const el of allAnimated) {
       el.dataset.baseTransform = el.getAttribute('transform') ?? ''
@@ -239,6 +290,7 @@ export function GuiaCursosHeroIllustration({
       svg.classList.remove('cursos-woman-hero-svg--motion')
       resetTransforms(allAnimated)
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
+      hairEl?.setAttribute('d', hairEl.dataset.basePath ?? HAIR_PATH_ORIGINAL)
       return
     }
 
@@ -273,8 +325,11 @@ export function GuiaCursosHeroIllustration({
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
       }
 
-      if (ponytailEl) {
-        applyPonytailSwing(ponytailEl, ponytailSwingAngle(t, headAngle))
+      if (hairEl) {
+        hairEl.setAttribute(
+          'd',
+          buildHairPath(morphPonytailPath(ponytailSwingAngle(t, headAngle))),
+        )
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
@@ -317,6 +372,7 @@ export function GuiaCursosHeroIllustration({
       window.cancelAnimationFrame(frame)
       resetTransforms(allAnimated)
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
+      hairEl?.setAttribute('d', hairEl.dataset.basePath ?? HAIR_PATH_ORIGINAL)
     }
   }, [forceMotion])
 
