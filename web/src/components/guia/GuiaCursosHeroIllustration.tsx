@@ -10,7 +10,6 @@ type GuiaCursosHeroIllustrationProps = {
 type Pivot = { x: number; y: number }
 type Point = { x: number; y: number }
 
-/** Shared pivots (viewBox coords) — shoulder, hip, knee, head base. */
 const PIVOTS = {
   'arm-left': { x: 468, y: 248 },
   'arm-right': { x: 558, y: 212 },
@@ -29,11 +28,12 @@ const MOTION: Record<
   'arm-right': { amplitude: 1.8, cycle: 4.8, phase: 0.5 },
   'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
   'leg-right-foot': { amplitude: 0.9, cycle: 5.6, phase: 0.82 },
-  head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
+  head: { amplitude: 0, cycle: 5.4, phase: 0.35 },
 }
 
-/** Ponytail pivot — crown junction where the tail attaches (top of red highlight). */
+/** Figma Vector layer — crown attachment, only this group rotates. */
 const PONYTAIL_PIVOT = { x: 514.7, y: 156.74 } as const
+const PONYTAIL_SWING = { amplitude: 22, cycle: 2.8, phase: 0.65 } as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -173,7 +173,6 @@ export function GuiaCursosHeroIllustration({
 
     const bodyEl = host.querySelector<SVGPathElement>('#body')
     const ponytailPivot = host.querySelector<SVGGElement>('#hair-ponytail-pivot')
-    let ponytailAnim: SVGAnimateTransformElement | null = null
 
     if (bodyEl && !bodyEl.dataset.basePath) {
       bodyEl.dataset.basePath = bodyEl.getAttribute('d') ?? BODY_PATH_ORIGINAL
@@ -186,36 +185,7 @@ export function GuiaCursosHeroIllustration({
       ]),
     ) as Record<MotionGroup, SVGGraphicsElement[]>
 
-    const ponytailAnimated = ponytailPivot ? [ponytailPivot] : []
-    const allAnimated = [
-      ...(Object.values(groups) as SVGGraphicsElement[][]).flat(),
-      ...ponytailAnimated,
-    ]
-
-    function startPonytailAnim() {
-      if (!ponytailPivot || ponytailAnim) return
-      const { x, y } = PONYTAIL_PIVOT
-      const anim = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform')
-      anim.setAttribute('attributeName', 'transform')
-      anim.setAttribute('type', 'rotate')
-      anim.setAttribute(
-        'values',
-        `0 ${x} ${y}; 24 ${x} ${y}; -24 ${x} ${y}; 0 ${x} ${y}`,
-      )
-      anim.setAttribute('dur', '2.8s')
-      anim.setAttribute('repeatCount', 'indefinite')
-      anim.setAttribute('calcMode', 'spline')
-      anim.setAttribute('keyTimes', '0; 0.35; 0.65; 1')
-      anim.setAttribute('keySplines', '0.45 0 0.55 1; 0.45 0 0.55 1; 0.45 0 0.55 1')
-      ponytailPivot.appendChild(anim)
-      ponytailAnim = anim
-    }
-
-    function stopPonytailAnim() {
-      ponytailAnim?.remove()
-      ponytailAnim = null
-      ponytailPivot?.removeAttribute('transform')
-    }
+    const allAnimated = (Object.values(groups) as SVGGraphicsElement[][]).flat()
 
     for (const el of allAnimated) {
       el.dataset.baseTransform = el.getAttribute('transform') ?? ''
@@ -227,14 +197,13 @@ export function GuiaCursosHeroIllustration({
 
     if (reduceMotion) {
       svg.classList.remove('cursos-woman-hero-svg--motion')
-      stopPonytailAnim()
       resetTransforms(allAnimated)
+      ponytailPivot?.removeAttribute('transform')
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
       return
     }
 
     svg.classList.add('cursos-woman-hero-svg--motion')
-    startPonytailAnim()
 
     let frame = 0
     const tick = (now: number) => {
@@ -253,16 +222,22 @@ export function GuiaCursosHeroIllustration({
         MOTION['leg-right-foot'].phase,
       )
 
-      const headMotion = MOTION.head
       const headAngle = waveAngle(
         t,
-        headMotion.cycle,
-        headMotion.amplitude,
-        headMotion.phase,
+        MOTION.head.cycle,
+        MOTION.head.amplitude,
+        MOTION.head.phase,
       )
 
       if (bodyEl) {
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
+      }
+
+      if (ponytailPivot) {
+        const { amplitude, cycle, phase } = PONYTAIL_SWING
+        const swing = waveAngle(t, cycle, amplitude, phase)
+        const { x, y } = PONYTAIL_PIVOT
+        ponytailPivot.setAttribute('transform', `rotate(${swing.toFixed(2)}, ${x}, ${y})`)
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
@@ -303,8 +278,8 @@ export function GuiaCursosHeroIllustration({
 
     return () => {
       window.cancelAnimationFrame(frame)
-      stopPonytailAnim()
       resetTransforms(allAnimated)
+      ponytailPivot?.removeAttribute('transform')
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
     }
   }, [forceMotion])
