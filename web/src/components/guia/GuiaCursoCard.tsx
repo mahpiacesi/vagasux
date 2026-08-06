@@ -13,6 +13,8 @@ type GuiaCursoCardProps = {
   /** Abre modal de detalhes em vez de link direto (diretório /guia/cursos). */
   previewMode?: boolean
   onPreview?: (curso: GuiaCurso) => void
+  /** Oculta tags de tema, meta (custo/modalidade) e badge de relatos. */
+  hideTags?: boolean
 }
 
 function CursoCover({ className }: { className?: string }) {
@@ -60,10 +62,12 @@ function CardBody({
   curso,
   meta,
   previewMode,
+  hideTags,
 }: {
   curso: GuiaCurso
   meta: string
   previewMode: boolean
+  hideTags: boolean
 }) {
   return (
     <>
@@ -76,7 +80,7 @@ function CardBody({
           {curso.title}
         </h3>
 
-        {curso.themes.length > 0 ? (
+        {curso.themes.length > 0 && !hideTags ? (
           <div className="mt-2.5 flex flex-wrap gap-1.5">
             {curso.themes.slice(0, 4).map((tag) => (
               <Badge
@@ -95,10 +99,10 @@ function CardBody({
 
         <div className="mt-auto flex items-center justify-between gap-2 pt-3">
           <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-            {meta ? (
+            {meta && !hideTags ? (
               <p className="text-xs font-semibold text-neutral-400">{meta}</p>
             ) : null}
-            {curso.hasFeedback ? <FeedbackBadge /> : null}
+            {curso.hasFeedback && !hideTags ? <FeedbackBadge /> : null}
           </div>
           {previewMode ? (
             <span className="text-xs font-bold tracking-wide text-brand-400 uppercase">
@@ -123,6 +127,7 @@ export function GuiaCursoCard({
   className,
   previewMode = false,
   onPreview,
+  hideTags = false,
 }: GuiaCursoCardProps) {
   const meta = cursoMetaLine(curso)
   const cardClassName = cn(
@@ -136,7 +141,7 @@ export function GuiaCursoCard({
   if (previewMode && onPreview) {
     return (
       <button type="button" onClick={() => onPreview(curso)} className={cn(cardClassName, 'cursor-pointer text-left')}>
-        <CardBody curso={curso} meta={meta} previewMode />
+        <CardBody curso={curso} meta={meta} previewMode={previewMode} hideTags={hideTags} />
       </button>
     )
   }
@@ -148,7 +153,7 @@ export function GuiaCursoCard({
       rel="noopener noreferrer"
       className={cardClassName}
     >
-      <CardBody curso={curso} meta={meta} previewMode={false} />
+      <CardBody curso={curso} meta={meta} previewMode={false} hideTags={hideTags} />
     </a>
   )
 }

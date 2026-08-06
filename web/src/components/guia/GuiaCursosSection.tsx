@@ -2,23 +2,19 @@ import { ArrowRight, ChatCircleDots, GraduationCap, Umbrella } from '@phosphor-i
 import { Link } from 'react-router-dom'
 import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
 import { Button } from '@/components/ui/button'
+import type { GuiaCurso } from '@/data/guiaCursos'
 import { guiaCursos } from '@/data/guiaCursos'
 import { getGuiaCursoStats } from '@/lib/guiaCursoFilters'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
-const quickLinks = [
-  { label: 'UX', href: `${guiaRoutes.cursos}?tema=UX` },
-  { label: 'Gratuito', href: `${guiaRoutes.cursos}?custo=Gratuito` },
-  { label: 'Parceiros', href: `${guiaRoutes.cursos}?parceiros=1` },
-  { label: 'Com relatos', href: `${guiaRoutes.cursos}?relatos=1` },
-] as const
+const PREVIEW_CURSO_TITLES = ['Alura', 'TheStarter'] as const
 
 export function GuiaCursosSection() {
   const stats = getGuiaCursoStats(guiaCursos)
-  const previewCursos = [...guiaCursos]
-    .filter((curso) => curso.isPartner || curso.hasFeedback)
-    .slice(0, 3)
+  const previewCursos = PREVIEW_CURSO_TITLES.map((title) =>
+    guiaCursos.find((curso) => curso.title === title),
+  ).filter((curso): curso is GuiaCurso => curso != null)
 
   return (
     <section
@@ -84,31 +80,20 @@ export function GuiaCursosSection() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {quickLinks.map((link) => (
-                <Button key={link.label} asChild variant="guia-chip">
-                  <Link to={link.href}>{link.label}</Link>
-                </Button>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8">
               <Button asChild variant="guia">
                 <Link to={guiaRoutes.cursos}>
                   Explorar diretório
                   <ArrowRight size={16} weight="bold" aria-hidden />
                 </Link>
               </Button>
-              <Button asChild variant="guia-outline">
-                <Link to={guiaRoutes.cursosPublicarRelato}>Publicar relato</Link>
-              </Button>
             </div>
           </div>
 
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {previewCursos.map((curso) => (
               <li key={curso.id}>
-                <GuiaCursoCard curso={curso} className="h-full" />
+                <GuiaCursoCard curso={curso} className="h-full" hideTags />
               </li>
             ))}
           </ul>
