@@ -1,5 +1,4 @@
 import { X } from '@phosphor-icons/react'
-import { Button } from '@/components/ui/button'
 import type { GuiaCursoFilters } from '@/lib/guiaCursoFilters'
 import { cn } from '@/lib/utils'
 
@@ -14,10 +13,39 @@ type GuiaCursosFiltersProps = {
   className?: string
 }
 
+const chipClassName = (active: boolean) =>
+  cn(
+    'rounded-full border px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-colors',
+    active
+      ? 'border-brand-400 bg-brand-400 text-neutral-100'
+      : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
+  )
+
 const LEVEL_TAG_ROWS = [
   ['Certificação', 'Curso / Bootcamp', 'Graduação'],
   ['Masterclass', 'Mentoria', 'Pós-Graduação', 'Workshop'],
 ] as const
+
+function FilterChip({
+  tag,
+  active,
+  onClick,
+}: {
+  tag: string
+  active: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={chipClassName(active)}
+    >
+      {tag}
+    </button>
+  )
+}
 
 function FilterChipGroup({
   label,
@@ -52,26 +80,44 @@ function FilterChipGroup({
         {tagRows.map((rowTags, rowIndex) => (
           <div
             key={rowIndex}
-            className={cn('flex flex-wrap gap-1.5', rows ? 'flex-nowrap' : undefined)}
+            className={cn('flex gap-1.5', rows ? 'flex-nowrap' : 'flex-wrap')}
           >
             {rowTags.map((tag) => {
               const active = value === tag
               return (
-                <Button
+                <FilterChip
                   key={tag}
-                  type="button"
-                  variant={active ? 'guia-chip-active' : 'guia-chip'}
-                  aria-pressed={active}
+                  tag={tag}
+                  active={active}
                   onClick={() => onChange(active ? null : tag)}
-                >
-                  {tag}
-                </Button>
+                />
               )
             })}
           </div>
         ))}
       </div>
     </div>
+  )
+}
+
+function ToggleChip({
+  label,
+  active,
+  onClick,
+}: {
+  label: string
+  active: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={chipClassName(active)}
+    >
+      {label}
+    </button>
   )
 }
 
@@ -130,26 +176,19 @@ export function GuiaCursosFilters({
             Destaques
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
-            <Button
-              type="button"
-              variant={filters.partnersOnly ? 'guia-chip-active' : 'guia-chip'}
-              aria-pressed={filters.partnersOnly}
+            <ToggleChip
+              label="☂️ Parceiros VagasUX"
+              active={filters.partnersOnly}
               onClick={() => patch({ partnersOnly: !filters.partnersOnly })}
-            >
-              ☂️ Parceiros VagasUX
-            </Button>
-            <Button
-              type="button"
-              variant={filters.feedbackOnly ? 'guia-chip-active' : 'guia-chip'}
-              aria-pressed={filters.feedbackOnly}
+            />
+            <ToggleChip
+              label="💬 Com relatos"
+              active={filters.feedbackOnly}
               onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
-            >
-              💬 Com relatos
-            </Button>
+            />
             {activeCount > 0 ? (
-              <Button
+              <button
                 type="button"
-                variant="guia-clear"
                 onClick={() =>
                   onChange({
                     theme: null,
@@ -160,10 +199,11 @@ export function GuiaCursosFilters({
                     feedbackOnly: false,
                   })
                 }
+                className="inline-flex items-center gap-1 rounded-full border border-dashed border-neutral-500/20 px-3 py-1.5 text-xs font-bold text-neutral-400 transition-colors hover:border-brand-300 hover:text-brand-500"
               >
                 <X size={12} weight="bold" aria-hidden />
                 Limpar ({activeCount})
-              </Button>
+              </button>
             ) : null}
           </div>
         </div>

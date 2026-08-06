@@ -58,13 +58,13 @@ export function GuiaCursosPublicarRelatoPageContent() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild variant="guia">
+          <Button asChild className="font-bold">
             <a href={guiaCursosRelatoFormUrl} target="_blank" rel="noopener noreferrer">
               Preencher formulário
               <ArrowSquareOut size={16} weight="bold" className="ml-2" aria-hidden />
             </a>
           </Button>
-          <Button asChild variant="guia-outline">
+          <Button asChild variant="outline" className="font-bold">
             <Link to={`${guiaRoutes.cursos}?relatos=1`}>Ver relatos publicados</Link>
           </Button>
         </div>

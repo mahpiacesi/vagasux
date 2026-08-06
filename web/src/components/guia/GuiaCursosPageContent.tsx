@@ -5,7 +5,6 @@ import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
 import { GuiaCursoPreviewDialog } from '@/components/guia/GuiaCursoPreviewDialog'
 import { GuiaCursosFilters } from '@/components/guia/GuiaCursosFilters'
 import { GuiaCursosHeroSection } from '@/components/guia/GuiaCursosHeroSection'
-import { Button } from '@/components/ui/button'
 import {
   getGuiaCursoThemeTags,
   guiaCursos,
@@ -125,19 +124,16 @@ export function GuiaCursosPageContent() {
             ))}
           </ul>
         ) : (
-          <div className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
+          <p className="mt-10 rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-8 text-center text-sm text-neutral-400">
             Nenhum curso encontrado com estes filtros.
-            <div className="mt-3">
-              <Button
-                type="button"
-                variant="link"
-                className="h-auto p-0 font-bold text-brand-500"
-                onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
-              >
-                Limpar filtros
-              </Button>
-            </div>
-          </div>
+            <button
+              type="button"
+              className="mt-3 block w-full font-bold text-brand-500 hover:underline"
+              onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
+            >
+              Limpar filtros
+            </button>
+          </p>
         )}
       </section>
 
