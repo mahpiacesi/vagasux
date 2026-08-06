@@ -324,6 +324,83 @@
   animation: guia-balloon-float 3.9s ease-in-out 0.7s infinite;
 }
 
+/* Cursos hero — woman illustration */
+.cursos-woman-hero {
+  overflow: visible;
+}
+
+.cursos-woman-hero svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+@keyframes cursos-woman-arm-left-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes cursos-woman-arm-right-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3.5deg);
+  }
+}
+
+@keyframes cursos-woman-leg-left-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes cursos-woman-leg-right-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2.5deg);
+  }
+}
+
+.cursos-woman-hero-svg--motion #woman-arm-left {
+  transform-box: fill-box;
+  transform-origin: 470px 280px;
+  animation: cursos-woman-arm-left-sway 3.8s ease-in-out infinite;
+}
+
+.cursos-woman-hero-svg--motion #woman-arm-right {
+  transform-box: fill-box;
+  transform-origin: 545px 173px;
+  animation: cursos-woman-arm-right-sway 4.2s ease-in-out 0.35s infinite;
+}
+
+.cursos-woman-hero-svg--motion #woman-leg-left {
+  transform-box: fill-box;
+  transform-origin: 455px 474px;
+  animation: cursos-woman-leg-left-sway 4.6s ease-in-out 0.2s infinite;
+}
+
+.cursos-woman-hero-svg--motion #woman-leg-right {
+  transform-box: fill-box;
+  transform-origin: 554px 466px;
+  animation: cursos-woman-leg-right-sway 4.9s ease-in-out 0.55s infinite;
+}
+
 /* Curadoria illustration */
 .curation-hero {
   overflow: visible;
@@ -933,6 +1010,10 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
+  .cursos-woman-hero-svg--motion #woman-arm-left,
+  .cursos-woman-hero-svg--motion #woman-arm-right,
+  .cursos-woman-hero-svg--motion #woman-leg-left,
+  .cursos-woman-hero-svg--motion #woman-leg-right,
   .umbrella-hero-glow,
   .umbrella-hero-raindrop,
   .umbrella-hero-svg--motion #umbrella-main,

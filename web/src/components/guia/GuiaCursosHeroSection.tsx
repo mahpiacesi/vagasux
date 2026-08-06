@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { GuiaCursosHeroIllustration } from '@/components/guia/GuiaCursosHeroIllustration'
 import {
   guiaCursosComoFunciona,
   guiaCursosHero,
@@ -53,16 +54,11 @@ export function GuiaCursosHeroSection({ className }: GuiaCursosHeroProps) {
         </div>
 
         <div
-          className="relative mx-auto flex aspect-[4/3] w-full max-w-md items-end justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-100/20 p-6 lg:max-w-none"
+          className="relative mx-auto flex aspect-[4/3] w-full max-w-md items-end justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-100/20 p-4 lg:max-w-none lg:p-6"
           aria-hidden
         >
           <div className="absolute top-6 right-6 size-24 rounded-full bg-brand-200/40 blur-2xl" />
-          <div className="relative text-center">
-            <span className="text-6xl">🎓</span>
-            <p className="mt-3 text-sm font-bold text-brand-500">
-              Mapeamento coletivo desde 2020
-            </p>
-          </div>
+          <GuiaCursosHeroIllustration className="cursos-woman-hero relative w-full max-w-[22rem] lg:max-w-none" />
         </div>
       </div>
 
