@@ -15,8 +15,8 @@ type GuiaCursosFiltersProps = {
 }
 
 const LEVEL_TAG_ROWS = [
-  ['Certificação', 'Curso / Bootcamp', 'Graduação'],
-  ['Masterclass', 'Mentoria', 'Pós-Graduação', 'Workshop'],
+  ['Certificação', 'Curso / Bootcamp', 'Graduação', 'Masterclass'],
+  ['Mentoria', 'Pós-Graduação', 'Workshop'],
 ] as const
 
 function FilterChipGroup({
