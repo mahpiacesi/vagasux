@@ -32,12 +32,15 @@ const MOTION: Record<
   head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
 }
 
-/** Ponytail-only overlap — anchor stays on head; distal points swing more. */
+/** Ponytail secondary motion — layered lag + head inertia (follow-through). */
 const PONYTAIL_SWING = {
-  root: { amplitude: 7, cycle: 3.4, phase: 0.58, lag: 0.18 },
-  mid: { amplitude: 13, cycle: 2.6, phase: 0.82, lag: 0.36 },
-  tip: { amplitude: 9, cycle: 2.1, phase: 1.05, lag: 0.52 },
+  root: { amplitude: 11, cycle: 3.1, phase: 0.58, lag: 0.24 },
+  mid: { amplitude: 22, cycle: 2.3, phase: 0.82, lag: 0.46 },
+  tip: { amplitude: 18, cycle: 1.85, phase: 1.05, lag: 0.62 },
 } as const
+
+/** Scalp attachment — ponytail swings here; fringe stays rigid on head. */
+const HAIR_ANCHOR = { x: 489.35, y: 162 } as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -49,29 +52,6 @@ const MOTION_GROUP_SELECTORS: MotionGroup[] = [
 
 const BODY_PATH_ORIGINAL =
   'M721.2,410.82S626.52,463,589.5,450.5c-51.31,-17.34,-61,-119.38,-82,-151c-8,-1,-59.73,-1.36,-59.73,-1.36V616.75h38.85V377c20.81,41.35,37.64,95.73,78.88,112.55c76,31,181.44,-44.86,181.44,-44.86Z'
-
-const HAIR_PATH_ORIGINAL =
-  'M484.58,166.17c-1.52,-4.64,3.09,-4.63,4.92,-6a25.52,25.52,0,0,1,25.2,-3.43c12.47,5.32,19.43,22.32,2.27,35.59l.53,-4.84s-8.52,-1.89,-17.26,-11.95S489.35,162,489.35,162Z'
-
-/** Scalp attachment — glued to head; only points farther out swing. */
-const HAIR_ANCHOR = { x: 489.35, y: 162 } as const
-
-const HAIR_SHAPE = {
-  m: { x: 484.58, y: 166.17 },
-  c1cp1: { x: 483.06, y: 161.53 },
-  c1cp2: { x: 487.67, y: 161.54 },
-  c1end: { x: 489.5, y: 160.17 },
-  arcEnd: { x: 514.7, y: 156.74 },
-  c2cp1: { x: 527.17, y: 162.06 },
-  c2cp2: { x: 534.13, y: 179.06 },
-  c2end: { x: 516.97, y: 192.33 },
-  lend: { x: 517.5, y: 187.49 },
-  sCp2: { x: 508.98, y: 185.6 },
-  sEnd: { x: 500.24, y: 175.54 },
-  anchor: { x: 489.35, y: 162 },
-} as const
-
-type HairShape = { [K in keyof typeof HAIR_SHAPE]: Point }
 
 const BODY_FIXED = {
   crotch: { x: 589.5, y: 450.5 },
@@ -140,58 +120,18 @@ function ponytailAngle(
 
 function ponytailSwingAngle(t: number, headAngle: number) {
   const { root, mid, tip } = PONYTAIL_SWING
-  const drag = waveAngle(
-    t - 0.28,
+  const headLag = waveAngle(
+    t - 0.42,
     MOTION.head.cycle,
-    MOTION.head.amplitude * 0.35,
+    MOTION.head.amplitude,
     MOTION.head.phase,
   )
-  return (
-    ponytailAngle(t, root) * 0.35 +
-    ponytailAngle(t, mid) * 0.55 +
-    ponytailAngle(t, tip) * 0.45 +
-    drag -
-    headAngle * 0.15
-  )
-}
-
-function hairSwingWeight(base: Point) {
-  const dist = Math.hypot(base.x - HAIR_ANCHOR.x, base.y - HAIR_ANCHOR.y)
-  if (dist < 5) return 0
-  return Math.min(1, (dist - 5) / 28)
-}
-
-function morphHairShape(headAngle: number, swing: number): HairShape {
-  const headPivot = PIVOTS.head
-  const anchor = rotatePoint(HAIR_ANCHOR, headPivot, headAngle)
-
-  const morph = (base: Point): Point => {
-    const glued = rotatePoint(base, headPivot, headAngle)
-    const weight = hairSwingWeight(base)
-    if (weight <= 0) return glued
-    return rotatePoint(glued, anchor, swing * weight)
-  }
-
-  const morphed = Object.fromEntries(
-    Object.entries(HAIR_SHAPE).map(([key, point]) => [key, morph(point)]),
-  ) as HairShape
-
-  return { ...morphed, anchor }
-}
-
-function buildHairPath(shape: HairShape) {
-  const { m, c1cp1, c1cp2, c1end, arcEnd, c2cp1, c2cp2, c2end, lend, sCp2, sEnd, anchor } =
-    shape
-  return [
-    `M${fmt(m.x)},${fmt(m.y)}`,
-    `c${rel(m, c1cp1)},${rel(m, c1cp2)},${rel(m, c1end)}`,
-    `a25.52,25.52,0,0,1,${rel(c1end, arcEnd)}`,
-    `c${rel(arcEnd, c2cp1)},${rel(arcEnd, c2cp2)},${rel(arcEnd, c2end)}`,
-    `l${rel(c2end, lend)}`,
-    `s${rel(lend, sCp2)},${rel(lend, sEnd)}`,
-    `S${fmt(anchor.x)},${fmt(anchor.y)},${fmt(anchor.x)},${fmt(anchor.y)}`,
-    'Z',
-  ].join('')
+  const inertia = (headAngle - headLag) * 3.5
+  const ambient =
+    ponytailAngle(t, root) * 0.45 +
+    ponytailAngle(t, mid) * 0.78 +
+    ponytailAngle(t, tip) * 0.62
+  return ambient + inertia
 }
 
 function rotateRaisedLeg(angleDeg: number): RaisedLegPoints {
@@ -262,13 +202,10 @@ export function GuiaCursosHeroIllustration({
     svg.style.overflow = 'visible'
 
     const bodyEl = host.querySelector<SVGPathElement>('#body')
-    const hairEl = host.querySelector<SVGPathElement>('#hair')
+    const ponytailEl = host.querySelector<SVGGraphicsElement>('#hair-ponytail')
 
     if (bodyEl && !bodyEl.dataset.basePath) {
       bodyEl.dataset.basePath = bodyEl.getAttribute('d') ?? BODY_PATH_ORIGINAL
-    }
-    if (hairEl && !hairEl.dataset.basePath) {
-      hairEl.dataset.basePath = hairEl.getAttribute('d') ?? HAIR_PATH_ORIGINAL
     }
 
     const groups = Object.fromEntries(
@@ -278,7 +215,12 @@ export function GuiaCursosHeroIllustration({
       ]),
     ) as Record<MotionGroup, SVGGraphicsElement[]>
 
-    const allAnimated = (Object.values(groups) as SVGGraphicsElement[][]).flat()
+    const ponytailAnimated = ponytailEl ? [ponytailEl] : []
+    const allAnimated = [
+      ...(Object.values(groups) as SVGGraphicsElement[][]).flat(),
+      ...ponytailAnimated,
+    ]
+
     for (const el of allAnimated) {
       el.dataset.baseTransform = el.getAttribute('transform') ?? ''
     }
@@ -291,7 +233,6 @@ export function GuiaCursosHeroIllustration({
       svg.classList.remove('cursos-woman-hero-svg--motion')
       resetTransforms(allAnimated)
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
-      hairEl?.setAttribute('d', hairEl.dataset.basePath ?? HAIR_PATH_ORIGINAL)
       return
     }
 
@@ -326,9 +267,19 @@ export function GuiaCursosHeroIllustration({
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
       }
 
-      if (hairEl) {
+      if (ponytailEl) {
         const swing = ponytailSwingAngle(t, headAngle)
-        hairEl.setAttribute('d', buildHairPath(morphHairShape(headAngle, swing)))
+        const base = ponytailEl.dataset.baseTransform ?? ''
+        ponytailEl.setAttribute(
+          'transform',
+          buildTransform(
+            [
+              { angleDeg: swing, pivot: HAIR_ANCHOR },
+              { angleDeg: headAngle, pivot: PIVOTS.head },
+            ],
+            base,
+          ),
+        )
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
@@ -371,7 +322,6 @@ export function GuiaCursosHeroIllustration({
       window.cancelAnimationFrame(frame)
       resetTransforms(allAnimated)
       bodyEl?.setAttribute('d', bodyEl.dataset.basePath ?? BODY_PATH_ORIGINAL)
-      hairEl?.setAttribute('d', hairEl.dataset.basePath ?? HAIR_PATH_ORIGINAL)
     }
   }, [forceMotion])
 
