@@ -60,22 +60,20 @@ export function GuiaCursosSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 lg:gap-3">
+          <div className="grid grid-cols-3 gap-3 lg:ml-auto lg:w-fit">
             {statItems.map(({ key, label, icon: Icon }) => (
               <div
                 key={key}
-                className="rounded-2xl border border-neutral-500/10 bg-brand-100/30 px-5 py-5 text-center lg:px-6 lg:py-6 lg:text-right"
+                className="rounded-2xl border border-neutral-500/10 bg-brand-100/30 px-4 py-4 text-center"
               >
                 <Icon
-                  size={28}
+                  size={24}
                   weight="duotone"
-                  className="mx-auto text-brand-400 lg:ml-auto lg:mr-0"
+                  className="mx-auto text-brand-400"
                   aria-hidden
                 />
-                <p className="mt-3 text-3xl font-black text-neutral-500 md:text-4xl">
-                  {stats[key]}
-                </p>
-                <p className="mt-1 text-xs font-bold tracking-wide text-neutral-400 uppercase">
+                <p className="mt-2 text-2xl font-black text-neutral-500">{stats[key]}</p>
+                <p className="text-[0.65rem] font-bold tracking-wide text-neutral-400 uppercase">
                   {label}
                 </p>
               </div>
