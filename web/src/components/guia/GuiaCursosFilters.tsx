@@ -1,5 +1,4 @@
 import { X } from '@phosphor-icons/react'
-import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
 import type { GuiaCursoFilters } from '@/lib/guiaCursoFilters'
 import { cn } from '@/lib/utils'
 
@@ -14,45 +13,71 @@ type GuiaCursosFiltersProps = {
   className?: string
 }
 
+const chipClassName = (active: boolean) =>
+  cn(
+    'rounded-full border px-3 py-1.5 text-xs font-bold transition-colors',
+    active
+      ? 'border-brand-400 bg-brand-400 text-neutral-100'
+      : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
+  )
+
 function FilterChipGroup({
   label,
   tags,
   value,
   onChange,
+  inline = false,
 }: {
   label: string
   tags: string[]
   value: string | null
   onChange: (value: string | null) => void
+  inline?: boolean
 }) {
   if (tags.length === 0) return null
 
+  const chips = (
+    <div
+      className="flex flex-wrap gap-1.5"
+      role="group"
+      aria-label={`Filtrar por ${label.toLowerCase()}`}
+    >
+      {tags.map((tag) => {
+        const active = value === tag
+        return (
+          <button
+            key={tag}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(active ? null : tag)}
+            className={chipClassName(active)}
+          >
+            {tag}
+          </button>
+        )
+      })}
+    </div>
+  )
+
+  const labelEl = (
+    <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+      {label}
+    </p>
+  )
+
+  if (inline) {
+    return (
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+        <div className="shrink-0">{labelEl}</div>
+        {chips}
+      </div>
+    )
+  }
+
   return (
     <div>
-      <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-        {label}
-      </p>
-      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label={`Filtrar por ${label.toLowerCase()}`}>
-        {tags.map((tag) => {
-          const active = value === tag
-          return (
-            <button
-              key={tag}
-              type="button"
-              aria-pressed={active}
-              onClick={() => onChange(active ? null : tag)}
-              className={cn(
-                'rounded-full border px-3 py-1.5 text-xs font-bold transition-colors',
-                active
-                  ? 'border-brand-400 bg-brand-400 text-neutral-100'
-                  : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
-              )}
-            >
-              {tag}
-            </button>
-          )
-        })}
-      </div>
+      {labelEl}
+      <div className="mt-2">{chips}</div>
     </div>
   )
 }
@@ -71,12 +96,7 @@ function ToggleChip({
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={cn(
-        'rounded-full border px-4 py-2 text-sm font-bold transition-colors',
-        active
-          ? 'border-brand-400 bg-brand-400 text-neutral-100 shadow-sm'
-          : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500',
-      )}
+      className={chipClassName(active)}
     >
       {label}
     </button>
@@ -98,43 +118,44 @@ export function GuiaCursosFilters({
   }
 
   return (
-    <div className={cn('space-y-6', className)}>
-      <GuiaContextFilter
+    <div className={cn('space-y-4', className)}>
+      <FilterChipGroup
+        label="Contexto"
         tags={themeTags}
         value={filters.theme}
         onChange={(theme) => patch({ theme })}
-        ariaLabel="Filtrar cursos por tema"
-        showAllOption={false}
       />
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
         <FilterChipGroup
           label="Nível"
           tags={levelTags}
           value={filters.level}
           onChange={(level) => patch({ level })}
+          inline
         />
         <FilterChipGroup
           label="Modalidade"
           tags={modalityTags}
           value={filters.modality}
           onChange={(modality) => patch({ modality })}
+          inline
         />
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2 sm:items-start">
         <FilterChipGroup
           label="Custo"
           tags={costTags}
           value={filters.cost}
           onChange={(cost) => patch({ cost })}
+          inline
         />
 
-        <div>
-          <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-            Destaques
-          </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <div className="shrink-0">
+            <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+              Destaques
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-1.5">
             <ToggleChip
               label="☂️ Parceiros VagasUX"
               active={filters.partnersOnly}
@@ -158,10 +179,10 @@ export function GuiaCursosFilters({
                     feedbackOnly: false,
                   })
                 }
-                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-neutral-500/20 px-3 py-2 text-xs font-bold text-neutral-400 transition-colors hover:border-brand-300 hover:text-brand-500"
+                className="inline-flex items-center gap-1 rounded-full border border-dashed border-neutral-500/20 px-3 py-1.5 text-xs font-bold text-neutral-400 transition-colors hover:border-brand-300 hover:text-brand-500"
               >
-                <X size={14} weight="bold" aria-hidden />
-                Limpar filtros ({activeCount})
+                <X size={12} weight="bold" aria-hidden />
+                Limpar ({activeCount})
               </button>
             ) : null}
           </div>
