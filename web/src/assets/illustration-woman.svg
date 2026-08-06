@@ -19,7 +19,7 @@
     <rect id="sock-right" data-motion="leg-right" class="iw-lilac" x="716.34" y="424.89" width="34.19" height="17.87" transform="translate(-114.15 521.77) rotate(-36.53)"/>
     <rect id="sock-left" data-motion="leg-left" class="iw-lilac" x="454.37" y="605.48" width="34.19" height="17.87" transform="translate(-142.95 1085.89) rotate(-90)"/>
     <path id="shoe-left" data-motion="leg-left" class="iw-white" d="M441.16,625.69h44.29a0,0,0,0,1,0,0V649a0,0,0,0,1,0,0H417.85a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,441.16,625.69Z"/>
-    <path id="sleeve-left" class="iw-skin" d="M336,355,472,253.55A13.47,13.47,0,0,0,473.6,234h0a15,15,0,0,0-20.52-1.36L326,343c-6.1,5-8.83,10-3.6,15.78h0C327.63,364.57,329.9,360,336,355Z"/>
+    <path id="sleeve-left" data-motion="arm-left" class="iw-skin" d="M336,355,472,253.55A13.47,13.47,0,0,0,473.6,234h0a15,15,0,0,0-20.52-1.36L326,343c-6.1,5-8.83,10-3.6,15.78h0C327.63,364.57,329.9,360,336,355Z"/>
     <path id="top" class="iw-lilac" d="M507.62,299.71l-59.85-1.57s-9.27-27.64-8.27-39.64c1.16-13.95,13-19,25-29l43.77,6.1c9.85,1.49,16.13,11,13.26,20.06Z"/>
     <path id="face" class="iw-skin" d="M517.93,187.23c-1.52,3.83-3.18,8.07-3.86,9.8-3.73,9.45-14.81,14.12-24.75,10.42s-15-14.36-11.25-23.81c1.17-3,5.29-13.43,6.47-16.4a17.66,17.66,0,0,1,4.74-6.79C503,184.15,516.41,187.83,517.93,187.23Z"/>
     <path id="face-line-1" class="iw-detail" d="M492.2,188.31c-.44,1-2.62,2.25-4.11,2.8-2.47.9-3.83.76-4.82-1.61"/>
@@ -38,10 +38,10 @@
     <line id="shoe-left-lace-1" data-motion="leg-left" class="iw-white" x1="436.35" y1="623.25" x2="441.18" y2="635.37"/>
     <line id="shoe-left-lace-2" data-motion="leg-left" class="iw-white" x1="444.03" y1="622.61" x2="448.85" y2="634.73"/>
     <line id="shoe-left-lace-3" data-motion="leg-left" class="iw-white" x1="485.88" y1="641.51" x2="459.5" y2="641.51"/>
-    <path id="shoe-right" data-motion="leg-right" class="iw-white" d="M757.69,420.73H802a0,0,0,0,1,0,0V444a0,0,0,0,1,0,0H734.38a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,757.69,420.73Z" transform="translate(1033.2 1273.12) rotate(-136.87)"/>
-    <line id="shoe-right-lace-1" data-motion="leg-right" class="iw-white" x1="769.72" y1="453.13" x2="774.48" y2="440.99"/>
-    <line id="shoe-right-lace-2" data-motion="leg-right" class="iw-white" x1="763.68" y1="448.35" x2="768.44" y2="436.2"/>
-    <line id="shoe-right-lace-3" data-motion="leg-right" class="iw-white" x1="746.06" y1="405.95" x2="765.3" y2="423.98"/>
+    <path id="shoe-right" data-motion="leg-right-foot" class="iw-white" d="M757.69,420.73H802a0,0,0,0,1,0,0V444a0,0,0,0,1,0,0H734.38a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,757.69,420.73Z" transform="translate(1033.2 1273.12) rotate(-136.87)"/>
+    <line id="shoe-right-lace-1" data-motion="leg-right-foot" class="iw-white" x1="769.72" y1="453.13" x2="774.48" y2="440.99"/>
+    <line id="shoe-right-lace-2" data-motion="leg-right-foot" class="iw-white" x1="763.68" y1="448.35" x2="768.44" y2="436.2"/>
+    <line id="shoe-right-lace-3" data-motion="leg-right-foot" class="iw-white" x1="746.06" y1="405.95" x2="765.3" y2="423.98"/>
     <path id="umbrella-arc-1" data-motion="arm-left" class="iw-umbrella-fill" d="M352.09,577.76c-55.47,53.8-154.4,41.79-221-26.85S55.51,383,111,329.22"/>
     <path id="umbrella-rib-1" data-motion="arm-left" class="iw-umbrella-stroke" d="M313.31,536c-55.85,54.18-137.31,60.8-181.95,14.79"/>
     <path id="umbrella-rib-2" data-motion="arm-left" class="iw-umbrella-stroke" d="M271.6,495.14c-55.66,54-121,76.89-146,51.13"/>
