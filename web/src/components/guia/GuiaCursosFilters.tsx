@@ -109,60 +109,62 @@ export function GuiaCursosFilters({
 
       <div className="grid gap-6 sm:grid-cols-2">
         <FilterChipGroup
+          label="Nível"
+          tags={levelTags}
+          value={filters.level}
+          onChange={(level) => patch({ level })}
+        />
+        <FilterChipGroup
           label="Modalidade"
           tags={modalityTags}
           value={filters.modality}
           onChange={(modality) => patch({ modality })}
         />
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 sm:items-start">
         <FilterChipGroup
           label="Custo"
           tags={costTags}
           value={filters.cost}
           onChange={(cost) => patch({ cost })}
         />
-      </div>
 
-      <FilterChipGroup
-        label="Nível"
-        tags={levelTags}
-        value={filters.level}
-        onChange={(level) => patch({ level })}
-      />
-
-      <div>
-        <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-          Destaques
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <ToggleChip
-            label="☂️ Parceiros VagasUX"
-            active={filters.partnersOnly}
-            onClick={() => patch({ partnersOnly: !filters.partnersOnly })}
-          />
-          <ToggleChip
-            label="💬 Com relatos"
-            active={filters.feedbackOnly}
-            onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
-          />
-          {activeCount > 0 ? (
-            <button
-              type="button"
-              onClick={() =>
-                onChange({
-                  theme: null,
-                  modality: null,
-                  cost: null,
-                  level: null,
-                  partnersOnly: false,
-                  feedbackOnly: false,
-                })
-              }
-              className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-neutral-500/20 px-3 py-2 text-xs font-bold text-neutral-400 transition-colors hover:border-brand-300 hover:text-brand-500"
-            >
-              <X size={14} weight="bold" aria-hidden />
-              Limpar filtros ({activeCount})
-            </button>
-          ) : null}
+        <div>
+          <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+            Destaques
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <ToggleChip
+              label="☂️ Parceiros VagasUX"
+              active={filters.partnersOnly}
+              onClick={() => patch({ partnersOnly: !filters.partnersOnly })}
+            />
+            <ToggleChip
+              label="💬 Com relatos"
+              active={filters.feedbackOnly}
+              onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
+            />
+            {activeCount > 0 ? (
+              <button
+                type="button"
+                onClick={() =>
+                  onChange({
+                    theme: null,
+                    modality: null,
+                    cost: null,
+                    level: null,
+                    partnersOnly: false,
+                    feedbackOnly: false,
+                  })
+                }
+                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-neutral-500/20 px-3 py-2 text-xs font-bold text-neutral-400 transition-colors hover:border-brand-300 hover:text-brand-500"
+              >
+                <X size={14} weight="bold" aria-hidden />
+                Limpar filtros ({activeCount})
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
