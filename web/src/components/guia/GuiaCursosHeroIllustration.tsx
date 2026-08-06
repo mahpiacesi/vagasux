@@ -17,10 +17,10 @@ const PIVOTS = {
   'leg-left': { x: 455, y: 474 },
   'leg-right': { x: 554, y: 466 },
   'leg-right-knee': { x: 668, y: 418 },
-  hair: { x: 502, y: 178 },
+  head: { x: 502, y: 178 },
 } as const
 
-type MotionGroup = 'arm-left' | 'arm-right' | 'leg-left' | 'leg-right' | 'leg-right-foot' | 'hair'
+type MotionGroup = 'arm-left' | 'arm-right' | 'leg-left' | 'leg-right' | 'leg-right-foot' | 'head'
 
 const MOTION: Record<
   MotionGroup,
@@ -31,7 +31,7 @@ const MOTION: Record<
   'leg-left': { amplitude: 1.2, cycle: 5.2, phase: 0.25 },
   'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
   'leg-right-foot': { amplitude: 0.9, cycle: 5.6, phase: 0.82 },
-  hair: { amplitude: 0.8, cycle: 6, phase: 0.35 },
+  head: { amplitude: 0.8, cycle: 6, phase: 0.35 },
 }
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
@@ -40,7 +40,7 @@ const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'leg-left',
   'leg-right',
   'leg-right-foot',
-  'hair',
+  'head',
 ]
 
 /** Unified body path — raised-leg points rotate; crotch + inner thigh stay fixed. */
