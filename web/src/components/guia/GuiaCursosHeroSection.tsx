@@ -32,12 +32,12 @@ export function GuiaCursosHeroSection({ className }: GuiaCursosHeroProps) {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild size="lg">
+            <Button asChild variant="guia">
               <Link to={guiaRoutes.cursosPublicarRelato}>
                 {guiaCursosHero.ctaPublicarRelato}
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="guia-outline">
               <Link to={`${guiaRoutes.cursos}?relatos=1`}>
                 {guiaCursosHero.ctaVerComRelatos}
               </Link>

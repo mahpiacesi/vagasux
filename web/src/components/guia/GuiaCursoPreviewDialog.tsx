@@ -140,13 +140,13 @@ export function GuiaCursoPreviewDialog({
           </div>
 
           <div className="flex flex-col gap-3 border-t border-neutral-500/10 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <Button asChild variant="outline">
+            <Button asChild variant="guia-outline">
               <Link to={guiaRoutes.cursosPublicarRelato}>Enviar relato</Link>
             </Button>
-            <Button asChild>
+            <Button asChild variant="guia">
               <a href={curso.url} target="_blank" rel="noopener noreferrer">
                 Acessar curso
-                <ArrowSquareOut weight="bold" aria-hidden />
+                <ArrowSquareOut size={16} weight="bold" className="ml-2" aria-hidden />
               </a>
             </Button>
           </div>

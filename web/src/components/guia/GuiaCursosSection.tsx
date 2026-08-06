@@ -86,20 +86,20 @@ export function GuiaCursosSection() {
 
             <div className="mt-6 flex flex-wrap gap-2">
               {quickLinks.map((link) => (
-                <Button key={link.label} asChild variant="outline" size="sm">
+                <Button key={link.label} asChild variant="guia-chip">
                   <Link to={link.href}>{link.label}</Link>
                 </Button>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
+              <Button asChild variant="guia">
                 <Link to={guiaRoutes.cursos}>
                   Explorar diretório
-                  <ArrowRight weight="bold" aria-hidden />
+                  <ArrowRight size={16} weight="bold" aria-hidden />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="guia-outline">
                 <Link to={guiaRoutes.cursosPublicarRelato}>Publicar relato</Link>
               </Button>
             </div>

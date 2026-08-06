@@ -131,7 +131,7 @@ export function GuiaCursosPageContent() {
               <Button
                 type="button"
                 variant="link"
-                className="h-auto p-0"
+                className="h-auto p-0 font-bold text-brand-500"
                 onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
               >
                 Limpar filtros

@@ -60,8 +60,7 @@ function FilterChipGroup({
                 <Button
                   key={tag}
                   type="button"
-                  variant={active ? 'default' : 'outline'}
-                  size="xs"
+                  variant={active ? 'guia-chip-active' : 'guia-chip'}
                   aria-pressed={active}
                   onClick={() => onChange(active ? null : tag)}
                 >
@@ -133,8 +132,7 @@ export function GuiaCursosFilters({
           <div className="mt-2 flex flex-wrap gap-1.5">
             <Button
               type="button"
-              variant={filters.partnersOnly ? 'default' : 'outline'}
-              size="xs"
+              variant={filters.partnersOnly ? 'guia-chip-active' : 'guia-chip'}
               aria-pressed={filters.partnersOnly}
               onClick={() => patch({ partnersOnly: !filters.partnersOnly })}
             >
@@ -142,8 +140,7 @@ export function GuiaCursosFilters({
             </Button>
             <Button
               type="button"
-              variant={filters.feedbackOnly ? 'default' : 'outline'}
-              size="xs"
+              variant={filters.feedbackOnly ? 'guia-chip-active' : 'guia-chip'}
               aria-pressed={filters.feedbackOnly}
               onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
             >
@@ -152,8 +149,7 @@ export function GuiaCursosFilters({
             {activeCount > 0 ? (
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="guia-clear"
                 onClick={() =>
                   onChange({
                     theme: null,
@@ -165,7 +161,7 @@ export function GuiaCursosFilters({
                   })
                 }
               >
-                <X weight="bold" aria-hidden />
+                <X size={12} weight="bold" aria-hidden />
                 Limpar ({activeCount})
               </Button>
             ) : null}

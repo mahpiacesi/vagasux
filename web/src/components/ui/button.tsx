@@ -19,6 +19,18 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        guia:
+          "h-auto gap-2 rounded-full border-transparent bg-brand-400 px-5 py-3 text-sm font-bold text-neutral-100 hover:bg-brand-500 active:translate-y-0",
+        "guia-outline":
+          "h-auto gap-2 rounded-full border-brand-200 bg-brand-100/40 px-5 py-3 text-sm font-bold text-brand-500 hover:bg-brand-100 active:translate-y-0",
+        "guia-compact":
+          "h-auto gap-2 rounded-full border-transparent bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 hover:bg-brand-500 active:translate-y-0",
+        "guia-chip":
+          "h-auto gap-1.5 rounded-full border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold whitespace-nowrap text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500 active:translate-y-0",
+        "guia-chip-active":
+          "h-auto gap-1.5 rounded-full border-brand-400 bg-brand-400 px-3 py-1.5 text-xs font-bold whitespace-nowrap text-neutral-100 active:translate-y-0",
+        "guia-clear":
+          "h-auto gap-1 rounded-full border border-dashed border-neutral-500/20 bg-transparent px-3 py-1.5 text-xs font-bold text-neutral-400 hover:border-brand-300 hover:bg-transparent hover:text-brand-500 active:translate-y-0",
       },
       size: {
         default:

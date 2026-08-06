@@ -23,9 +23,9 @@ export function GuiaBackToGuiaLink({
       : guiaRoutes.homeTipos(tipoId)
 
   return (
-    <Button asChild className={cn(className)}>
+    <Button asChild variant="guia-compact" className={cn(className)}>
       <Link to={to}>
-        <ArrowLeft weight="bold" aria-hidden />
+        <ArrowLeft size={18} weight="bold" aria-hidden />
         Voltar ao Guia
       </Link>
     </Button>
