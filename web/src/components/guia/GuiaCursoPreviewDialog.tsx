@@ -21,7 +21,7 @@ type GuiaCursoPreviewDialogProps = {
 const SAMPLE_RELATOS: Record<string, string[]> = {
   '1061fe3b9e2e4360ad65793b7aaab059': [
     'Formação completa e bem estruturada para quem está começando. A trilha de UX é um bom ponto de partida.',
-    'Conteúdo denso — vale combinar com projetos práticos paralelos para fixar.',
+    'Conteúdo denso. Vale combinar com projetos práticos paralelos para fixar.',
   ],
   b492db04bde5445aa8e06798350656c3: [
     'Bootcamp intenso com mentoria. Exige dedicação, mas a comunidade ajuda bastante.',
@@ -65,7 +65,7 @@ function RelatosSection({ curso }: { curso: GuiaCurso }) {
         ))}
       </ul>
       <p className="mt-4 text-xs font-semibold text-neutral-400">
-        Preview — conteúdo ilustrativo até integração com a base de feedbacks.
+        Preview: conteúdo ilustrativo até integração com a base de feedbacks.
       </p>
     </section>
   )

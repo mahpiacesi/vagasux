@@ -4,7 +4,7 @@ export const guiaCursosHero = {
   eyebrow: 'Diretório da comunidade',
   title: 'Conheça os cursos que movimentam o mercado de UX',
   description:
-    'Busque informações e relatos de cursos para todos os gostos e cenários — e contribua deixando sua experiência para a comunidade.',
+    'Busque informações e relatos de cursos para todos os gostos e cenários e contribua deixando sua experiência para a comunidade.',
   ctaPublicarRelato: 'Publicar relato',
 } as const
 
