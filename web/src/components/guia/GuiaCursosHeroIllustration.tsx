@@ -34,13 +34,13 @@ const MOTION: Record<
 
 /** Ponytail secondary motion — layered lag + head inertia (follow-through). */
 const PONYTAIL_SWING = {
-  root: { amplitude: 11, cycle: 3.1, phase: 0.58, lag: 0.24 },
-  mid: { amplitude: 22, cycle: 2.3, phase: 0.82, lag: 0.46 },
-  tip: { amplitude: 18, cycle: 1.85, phase: 1.05, lag: 0.62 },
+  root: { amplitude: 8, cycle: 3.1, phase: 0.58, lag: 0.24 },
+  mid: { amplitude: 16, cycle: 2.3, phase: 0.82, lag: 0.46 },
+  tip: { amplitude: 12, cycle: 1.85, phase: 1.05, lag: 0.62 },
 } as const
 
-/** Scalp attachment — ponytail swings here; fringe stays rigid on head. */
-const HAIR_ANCHOR = { x: 489.35, y: 162 } as const
+/** Junction where ponytail meets scalp cap — pivot stays glued while tail swings. */
+const PONYTAIL_PIVOT = { x: 514.7, y: 156.74 } as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -126,11 +126,11 @@ function ponytailSwingAngle(t: number, headAngle: number) {
     MOTION.head.amplitude,
     MOTION.head.phase,
   )
-  const inertia = (headAngle - headLag) * 3.5
+  const inertia = (headAngle - headLag) * 4.2
   const ambient =
-    ponytailAngle(t, root) * 0.45 +
-    ponytailAngle(t, mid) * 0.78 +
-    ponytailAngle(t, tip) * 0.62
+    ponytailAngle(t, root) * 0.5 +
+    ponytailAngle(t, mid) * 0.85 +
+    ponytailAngle(t, tip) * 0.65
   return ambient + inertia
 }
 
@@ -274,7 +274,7 @@ export function GuiaCursosHeroIllustration({
           'transform',
           buildTransform(
             [
-              { angleDeg: swing, pivot: HAIR_ANCHOR },
+              { angleDeg: swing, pivot: PONYTAIL_PIVOT },
               { angleDeg: headAngle, pivot: PIVOTS.head },
             ],
             base,
