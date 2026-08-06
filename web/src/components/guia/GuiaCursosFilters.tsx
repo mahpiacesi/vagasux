@@ -21,18 +21,51 @@ const chipClassName = (active: boolean) =>
       : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
   )
 
+const LEVEL_TAG_ROWS = [
+  ['Certificação', 'Curso / Bootcamp', 'Graduação'],
+  ['Masterclass', 'Mentoria', 'Pós-Graduação', 'Workshop'],
+] as const
+
+function FilterChip({
+  tag,
+  active,
+  onClick,
+}: {
+  tag: string
+  active: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={chipClassName(active)}
+    >
+      {tag}
+    </button>
+  )
+}
+
 function FilterChipGroup({
   label,
   tags,
   value,
   onChange,
+  rows,
 }: {
   label: string
   tags: string[]
   value: string | null
   onChange: (value: string | null) => void
+  rows?: readonly (readonly string[])[]
 }) {
   if (tags.length === 0) return null
+
+  const tagSet = new Set(tags)
+  const tagRows = rows
+    ? rows.map((row) => row.filter((tag) => tagSet.has(tag)))
+    : [tags]
 
   return (
     <div>
@@ -40,24 +73,25 @@ function FilterChipGroup({
         {label}
       </p>
       <div
-        className="mt-2 flex flex-wrap gap-1.5"
+        className={cn('mt-2', rows ? 'space-y-1.5' : undefined)}
         role="group"
         aria-label={`Filtrar por ${label.toLowerCase()}`}
       >
-        {tags.map((tag) => {
-          const active = value === tag
-          return (
-            <button
-              key={tag}
-              type="button"
-              aria-pressed={active}
-              onClick={() => onChange(active ? null : tag)}
-              className={chipClassName(active)}
-            >
-              {tag}
-            </button>
-          )
-        })}
+        {tagRows.map((rowTags, rowIndex) => (
+          <div key={rowIndex} className="flex flex-wrap gap-1.5">
+            {rowTags.map((tag) => {
+              const active = value === tag
+              return (
+                <FilterChip
+                  key={tag}
+                  tag={tag}
+                  active={active}
+                  onClick={() => onChange(active ? null : tag)}
+                />
+              )
+            })}
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -113,6 +147,7 @@ export function GuiaCursosFilters({
           tags={levelTags}
           value={filters.level}
           onChange={(level) => patch({ level })}
+          rows={LEVEL_TAG_ROWS}
         />
         <FilterChipGroup
           label="Modalidade"
