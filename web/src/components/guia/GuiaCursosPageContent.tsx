@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
+import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
 import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
 import { GuiaCursoPreviewDialog } from '@/components/guia/GuiaCursoPreviewDialog'
 import { GuiaCursosFilters } from '@/components/guia/GuiaCursosFilters'
@@ -83,7 +84,10 @@ export function GuiaCursosPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <GuiaBackToGuiaLink section="cursos" />
+      <div className="flex flex-wrap items-center gap-3">
+        <GuiaBackToGuiaLink section="cursos" />
+        <GuiaFaqLink />
+      </div>
 
       <GuiaCursosHeroSection className="mt-8" />
 

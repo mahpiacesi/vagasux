@@ -1,6 +1,7 @@
 import { ArrowSquareOut } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
+import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
 import { Button } from '@/components/ui/button'
 import {
   guiaCursosPublicarRelato,
@@ -12,7 +13,10 @@ import { routes } from '@/lib/siteLinks'
 export function GuiaCursosPublicarRelatoPageContent() {
   return (
     <div className="mt-8 w-full">
-      <GuiaBackToGuiaLink section="cursos" />
+      <div className="flex flex-wrap items-center gap-3">
+        <GuiaBackToGuiaLink section="cursos" />
+        <GuiaFaqLink />
+      </div>
 
       <header className="mt-8 max-w-3xl">
         <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">

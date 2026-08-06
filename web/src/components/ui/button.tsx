@@ -35,6 +35,10 @@ const buttonVariants = cva(
           guiaPillBase,
           "gap-2 border-transparent bg-brand-400 px-4 py-2.5 text-sm text-neutral-100 hover:bg-brand-500 [&_svg:not([class*='size-'])]:size-[18px]",
         ),
+        "guia-compact-outline": cn(
+          guiaPillBase,
+          "gap-2 border border-neutral-500/10 bg-brand-100/30 px-4 py-2.5 text-sm text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500 [&_svg:not([class*='size-'])]:size-[18px]",
+        ),
         "guia-chip": cn(
           guiaPillBase,
           "gap-1.5 whitespace-nowrap border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500",
@@ -75,6 +79,7 @@ const GUIA_VARIANTS = new Set([
   "guia",
   "guia-outline",
   "guia-compact",
+  "guia-compact-outline",
   "guia-chip",
   "guia-chip-active",
   "guia-clear",
