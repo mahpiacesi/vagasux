@@ -26,58 +26,39 @@ function FilterChipGroup({
   tags,
   value,
   onChange,
-  inline = false,
 }: {
   label: string
   tags: string[]
   value: string | null
   onChange: (value: string | null) => void
-  inline?: boolean
 }) {
   if (tags.length === 0) return null
 
-  const chips = (
-    <div
-      className="flex flex-wrap gap-1.5"
-      role="group"
-      aria-label={`Filtrar por ${label.toLowerCase()}`}
-    >
-      {tags.map((tag) => {
-        const active = value === tag
-        return (
-          <button
-            key={tag}
-            type="button"
-            aria-pressed={active}
-            onClick={() => onChange(active ? null : tag)}
-            className={chipClassName(active)}
-          >
-            {tag}
-          </button>
-        )
-      })}
-    </div>
-  )
-
-  const labelEl = (
-    <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-      {label}
-    </p>
-  )
-
-  if (inline) {
-    return (
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-        <div className="shrink-0">{labelEl}</div>
-        {chips}
-      </div>
-    )
-  }
-
   return (
     <div>
-      {labelEl}
-      <div className="mt-2">{chips}</div>
+      <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+        {label}
+      </p>
+      <div
+        className="mt-2 flex flex-wrap gap-1.5"
+        role="group"
+        aria-label={`Filtrar por ${label.toLowerCase()}`}
+      >
+        {tags.map((tag) => {
+          const active = value === tag
+          return (
+            <button
+              key={tag}
+              type="button"
+              aria-pressed={active}
+              onClick={() => onChange(active ? null : tag)}
+              className={chipClassName(active)}
+            >
+              {tag}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -126,36 +107,31 @@ export function GuiaCursosFilters({
         onChange={(theme) => patch({ theme })}
       />
 
-      <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
+      <div className="grid items-start gap-x-6 gap-y-4 sm:grid-cols-2 xl:grid-cols-4">
         <FilterChipGroup
           label="Nível"
           tags={levelTags}
           value={filters.level}
           onChange={(level) => patch({ level })}
-          inline
         />
         <FilterChipGroup
           label="Modalidade"
           tags={modalityTags}
           value={filters.modality}
           onChange={(modality) => patch({ modality })}
-          inline
         />
         <FilterChipGroup
           label="Custo"
           tags={costTags}
           value={filters.cost}
           onChange={(cost) => patch({ cost })}
-          inline
         />
 
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <div className="shrink-0">
-            <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
-              Destaques
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-1.5">
+        <div>
+          <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
+            Destaques
+          </p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
             <ToggleChip
               label="☂️ Parceiros VagasUX"
               active={filters.partnersOnly}
