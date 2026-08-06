@@ -337,20 +337,20 @@
   overflow: visible;
 }
 
-@keyframes cursos-woman-hero-float {
+@keyframes cursos-woman-root-float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
   }
 }
 
-.cursos-woman-hero-svg--motion {
+.cursos-woman-hero-svg--motion #woman-root {
   transform-box: view-box;
-  transform-origin: center bottom;
-  animation: cursos-woman-hero-float 5.5s ease-in-out infinite;
+  transform-origin: 50% 88%;
+  animation: cursos-woman-root-float 6s ease-in-out infinite;
 }
 
 /* Curadoria illustration */
@@ -962,7 +962,7 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
-  .cursos-woman-hero-svg--motion,
+  .cursos-woman-hero-svg--motion #woman-root,
   .umbrella-hero-glow,
   .umbrella-hero-raindrop,
   .umbrella-hero-svg--motion #umbrella-main,

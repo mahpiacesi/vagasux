@@ -7,16 +7,30 @@ type GuiaCursosHeroIllustrationProps = {
   forceMotion?: boolean
 }
 
-const LEFT_PIVOT = { x: 468, y: 248 }
-const RIGHT_PIVOT = { x: 558, y: 212 }
+/** Shared pivots (viewBox coords) — shoulder, hip, head base. */
+const PIVOTS = {
+  'arm-left': { x: 468, y: 248 },
+  'arm-right': { x: 558, y: 212 },
+  'leg-left': { x: 455, y: 474 },
+  'leg-right': { x: 554, y: 466 },
+  hair: { x: 502, y: 178 },
+} as const
 
-const LEFT_CYCLE_S = 4.2
-const RIGHT_CYCLE_S = 4.6
-const RIGHT_PHASE_S = 0.4
-const LEFT_AMPLITUDE_DEG = 1.75
-const RIGHT_AMPLITUDE_DEG = 1.5
+type MotionGroup = keyof typeof PIVOTS
 
-function applyPivotRotation(
+const MOTION = {
+  'arm-left': { amplitude: 2, cycle: 4.4, phase: 0 },
+  'arm-right': { amplitude: 1.8, cycle: 4.8, phase: 0.5 },
+  'leg-left': { amplitude: 1.2, cycle: 5.2, phase: 0.25 },
+  'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
+  hair: { amplitude: 0.8, cycle: 6, phase: 0.35 },
+} satisfies Record<MotionGroup, { amplitude: number; cycle: number; phase: number }>
+
+function waveAngle(t: number, cycle: number, amplitude: number, phase: number) {
+  return Math.sin(((t + phase) / cycle) * Math.PI * 2) * amplitude
+}
+
+function applyGroupRotation(
   elements: SVGGraphicsElement[],
   angleDeg: number,
   pivot: { x: number; y: number },
@@ -28,7 +42,15 @@ function applyPivotRotation(
   }
 }
 
-/** Cursos hero: woman illustration with gentle limb sway (original paint order preserved). */
+function resetTransforms(elements: SVGGraphicsElement[]) {
+  for (const el of elements) {
+    const base = el.dataset.baseTransform ?? ''
+    if (base) el.setAttribute('transform', base)
+    else el.removeAttribute('transform')
+  }
+}
+
+/** Cursos hero — flat woman illustration; paint order preserved, limbs animated via SVG rotate. */
 export function GuiaCursosHeroIllustration({
   className,
   forceMotion = false,
@@ -57,28 +79,25 @@ export function GuiaCursosHeroIllustration({
     svg.style.maxWidth = '100%'
     svg.style.overflow = 'visible'
 
+    const groups = Object.fromEntries(
+      (Object.keys(PIVOTS) as MotionGroup[]).map((key) => [
+        key,
+        [...host.querySelectorAll<SVGGraphicsElement>(`[data-motion="${key}"]`)],
+      ]),
+    ) as Record<MotionGroup, SVGGraphicsElement[]>
+
+    const allAnimated = (Object.values(groups) as SVGGraphicsElement[][]).flat()
+    for (const el of allAnimated) {
+      el.dataset.baseTransform = el.getAttribute('transform') ?? ''
+    }
+
     const reduceMotion =
       !forceMotion &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    const armLeft = [
-      ...host.querySelectorAll<SVGGraphicsElement>('[data-motion="arm-left"]'),
-    ]
-    const armRight = [
-      ...host.querySelectorAll<SVGGraphicsElement>('[data-motion="arm-right"]'),
-    ]
-
-    for (const el of [...armLeft, ...armRight]) {
-      el.dataset.baseTransform = el.getAttribute('transform') ?? ''
-    }
-
     if (reduceMotion) {
       svg.classList.remove('cursos-woman-hero-svg--motion')
-      for (const el of [...armLeft, ...armRight]) {
-        const base = el.dataset.baseTransform ?? ''
-        if (base) el.setAttribute('transform', base)
-        else el.removeAttribute('transform')
-      }
+      resetTransforms(allAnimated)
       return
     }
 
@@ -87,15 +106,11 @@ export function GuiaCursosHeroIllustration({
     let frame = 0
     const tick = (now: number) => {
       const t = now / 1000
-      const leftAngle =
-        Math.sin((t * Math.PI * 2) / LEFT_CYCLE_S) * -LEFT_AMPLITUDE_DEG
-      const rightAngle =
-        Math.sin((t * Math.PI * 2) / RIGHT_CYCLE_S + RIGHT_PHASE_S) *
-        RIGHT_AMPLITUDE_DEG
-
-      applyPivotRotation(armLeft, leftAngle, LEFT_PIVOT)
-      applyPivotRotation(armRight, rightAngle, RIGHT_PIVOT)
-
+      for (const key of Object.keys(MOTION) as MotionGroup[]) {
+        const { amplitude, cycle, phase } = MOTION[key]
+        const angle = waveAngle(t, cycle, amplitude, phase)
+        applyGroupRotation(groups[key], angle, PIVOTS[key])
+      }
       frame = window.requestAnimationFrame(tick)
     }
 
@@ -103,11 +118,7 @@ export function GuiaCursosHeroIllustration({
 
     return () => {
       window.cancelAnimationFrame(frame)
-      for (const el of [...armLeft, ...armRight]) {
-        const base = el.dataset.baseTransform ?? ''
-        if (base) el.setAttribute('transform', base)
-        else el.removeAttribute('transform')
-      }
+      resetTransforms(allAnimated)
     }
   }, [forceMotion])
 
