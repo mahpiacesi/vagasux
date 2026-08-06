@@ -15,6 +15,8 @@ type GuiaCursoCardProps = {
   onPreview?: (curso: GuiaCurso) => void
   /** Oculta tags de tema, meta (custo/modalidade) e badge de relatos. */
   hideTags?: boolean
+  /** Card estático na home — sem link, ícone ou destaque de parceiro. */
+  visualOnly?: boolean
 }
 
 function CursoCover({ className }: { className?: string }) {
@@ -63,20 +65,27 @@ function CardBody({
   meta,
   previewMode,
   hideTags,
+  visualOnly,
 }: {
   curso: GuiaCurso
   meta: string
   previewMode: boolean
   hideTags: boolean
+  visualOnly: boolean
 }) {
   return (
     <>
       <CursoCover />
 
       <div className="mt-4 flex flex-1 flex-col">
-        {curso.isPartner ? <PartnerLabel className="mb-2" /> : null}
+        {curso.isPartner && !visualOnly ? <PartnerLabel className="mb-2" /> : null}
 
-        <h3 className="text-base leading-snug font-black text-neutral-500 group-hover:text-brand-500">
+        <h3
+          className={cn(
+            'text-base leading-snug font-black text-neutral-500',
+            !visualOnly && 'group-hover:text-brand-500',
+          )}
+        >
           {curso.title}
         </h3>
 
@@ -97,26 +106,28 @@ function CardBody({
           </div>
         ) : null}
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-            {meta && !hideTags ? (
-              <p className="text-xs font-semibold text-neutral-400">{meta}</p>
-            ) : null}
-            {curso.hasFeedback && !hideTags ? <FeedbackBadge /> : null}
+        {!visualOnly ? (
+          <div className="mt-auto flex items-center justify-between gap-2 pt-3">
+            <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+              {meta && !hideTags ? (
+                <p className="text-xs font-semibold text-neutral-400">{meta}</p>
+              ) : null}
+              {curso.hasFeedback && !hideTags ? <FeedbackBadge /> : null}
+            </div>
+            {previewMode ? (
+              <span className="text-xs font-bold tracking-wide text-brand-400 uppercase">
+                Ver detalhes
+              </span>
+            ) : (
+              <ArrowSquareOut
+                size={16}
+                weight="bold"
+                className="shrink-0 text-brand-400"
+                aria-hidden
+              />
+            )}
           </div>
-          {previewMode ? (
-            <span className="text-xs font-bold tracking-wide text-brand-400 uppercase">
-              Ver detalhes
-            </span>
-          ) : (
-            <ArrowSquareOut
-              size={16}
-              weight="bold"
-              className="shrink-0 text-brand-400"
-              aria-hidden
-            />
-          )}
-        </div>
+        ) : null}
       </div>
     </>
   )
@@ -128,20 +139,40 @@ export function GuiaCursoCard({
   previewMode = false,
   onPreview,
   hideTags = false,
+  visualOnly = false,
 }: GuiaCursoCardProps) {
   const meta = cursoMetaLine(curso)
   const cardClassName = cn(
-    'group flex h-full flex-col rounded-2xl border p-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
-    curso.isPartner
-      ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
-      : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
+    'flex h-full flex-col rounded-2xl border p-4',
+    visualOnly
+      ? 'border-neutral-500/10 bg-neutral-100'
+      : cn(
+          'group transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400',
+          curso.isPartner
+            ? 'border-brand-300 bg-brand-100/50 hover:border-brand-400 hover:bg-brand-100/70'
+            : 'border-neutral-500/10 bg-neutral-100 hover:border-brand-300 hover:bg-brand-100/30',
+        ),
     className,
   )
+
+  const body = (
+    <CardBody
+      curso={curso}
+      meta={meta}
+      previewMode={previewMode}
+      hideTags={hideTags}
+      visualOnly={visualOnly}
+    />
+  )
+
+  if (visualOnly) {
+    return <div className={cardClassName}>{body}</div>
+  }
 
   if (previewMode && onPreview) {
     return (
       <button type="button" onClick={() => onPreview(curso)} className={cn(cardClassName, 'cursor-pointer text-left')}>
-        <CardBody curso={curso} meta={meta} previewMode={previewMode} hideTags={hideTags} />
+        {body}
       </button>
     )
   }
@@ -153,7 +184,7 @@ export function GuiaCursoCard({
       rel="noopener noreferrer"
       className={cardClassName}
     >
-      <CardBody curso={curso} meta={meta} previewMode={false} hideTags={hideTags} />
+      {body}
     </a>
   )
 }

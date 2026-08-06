@@ -93,7 +93,7 @@ export function GuiaCursosSection() {
           <ul className="grid gap-4 sm:grid-cols-2">
             {previewCursos.map((curso) => (
               <li key={curso.id}>
-                <GuiaCursoCard curso={curso} className="h-full" hideTags />
+                <GuiaCursoCard curso={curso} className="h-full" hideTags visualOnly />
               </li>
             ))}
           </ul>
