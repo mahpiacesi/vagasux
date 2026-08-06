@@ -4,6 +4,10 @@ import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
+/** Pill buttons with VagasUX brand tokens — overrides shadcn defaults (rounded-lg, primary token). */
+const guiaPillBase =
+  "h-auto min-h-0 rounded-full font-bold shadow-none transition-colors active:translate-y-0 focus-visible:ring-brand-300/40"
+
 const buttonVariants = cva(
   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
@@ -19,18 +23,30 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
-        guia:
-          "h-auto gap-2 rounded-full border-transparent bg-brand-400 px-5 py-3 text-sm font-bold text-neutral-100 hover:bg-brand-500 active:translate-y-0",
-        "guia-outline":
-          "h-auto gap-2 rounded-full border-brand-200 bg-brand-100/40 px-5 py-3 text-sm font-bold text-brand-500 hover:bg-brand-100 active:translate-y-0",
-        "guia-compact":
-          "h-auto gap-2 rounded-full border-transparent bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 hover:bg-brand-500 active:translate-y-0",
-        "guia-chip":
-          "h-auto gap-1.5 rounded-full border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold whitespace-nowrap text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500 active:translate-y-0",
-        "guia-chip-active":
-          "h-auto gap-1.5 rounded-full border-brand-400 bg-brand-400 px-3 py-1.5 text-xs font-bold whitespace-nowrap text-neutral-100 active:translate-y-0",
-        "guia-clear":
-          "h-auto gap-1 rounded-full border border-dashed border-neutral-500/20 bg-transparent px-3 py-1.5 text-xs font-bold text-neutral-400 hover:border-brand-300 hover:bg-transparent hover:text-brand-500 active:translate-y-0",
+        guia: cn(
+          guiaPillBase,
+          "gap-2 border-transparent bg-brand-400 px-5 py-3 text-sm text-neutral-100 hover:bg-brand-500",
+        ),
+        "guia-outline": cn(
+          guiaPillBase,
+          "gap-2 border-brand-200 bg-brand-100/40 px-5 py-3 text-sm text-brand-500 hover:bg-brand-100 hover:text-brand-500",
+        ),
+        "guia-compact": cn(
+          guiaPillBase,
+          "gap-2 border-transparent bg-brand-400 px-4 py-2.5 text-sm text-neutral-100 hover:bg-brand-500 [&_svg:not([class*='size-'])]:size-[18px]",
+        ),
+        "guia-chip": cn(
+          guiaPillBase,
+          "gap-1.5 whitespace-nowrap border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500",
+        ),
+        "guia-chip-active": cn(
+          guiaPillBase,
+          "gap-1.5 whitespace-nowrap border-brand-400 bg-brand-400 px-3 py-1.5 text-xs font-bold text-neutral-100",
+        ),
+        "guia-clear": cn(
+          guiaPillBase,
+          "gap-1 border border-dashed border-neutral-500/20 bg-transparent px-3 py-1.5 text-xs font-bold text-neutral-400 hover:border-brand-300 hover:bg-transparent hover:text-brand-500 [&_svg:not([class*='size-'])]:size-3",
+        ),
       },
       size: {
         default:

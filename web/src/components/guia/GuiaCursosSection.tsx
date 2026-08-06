@@ -1,11 +1,11 @@
 import { ArrowRight, ChatCircleDots, GraduationCap, Umbrella } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaCursoCard } from '@/components/guia/GuiaCursoCard'
+import { Button } from '@/components/ui/button'
 import { guiaCursos } from '@/data/guiaCursos'
 import { getGuiaCursoStats } from '@/lib/guiaCursoFilters'
 import { guiaHashes } from '@/lib/siteLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
-import { cn } from '@/lib/utils'
 
 const quickLinks = [
   { label: 'UX', href: `${guiaRoutes.cursos}?tema=UX` },
@@ -86,32 +86,22 @@ export function GuiaCursosSection() {
 
             <div className="mt-6 flex flex-wrap gap-2">
               {quickLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="rounded-full border border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
-                >
-                  {link.label}
-                </Link>
+                <Button key={link.label} asChild variant="guia-chip">
+                  <Link to={link.href}>{link.label}</Link>
+                </Button>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to={guiaRoutes.cursos}
-                className={cn(
-                  'inline-flex items-center gap-2 rounded-full bg-brand-400 px-5 py-3 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500',
-                )}
-              >
-                Explorar diretório
-                <ArrowRight size={16} weight="bold" aria-hidden />
-              </Link>
-              <Link
-                to={guiaRoutes.cursosPublicarRelato}
-                className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-100/40 px-5 py-3 text-sm font-bold text-brand-500 transition-colors hover:bg-brand-100"
-              >
-                Publicar relato
-              </Link>
+              <Button asChild variant="guia">
+                <Link to={guiaRoutes.cursos}>
+                  Explorar diretório
+                  <ArrowRight size={16} weight="bold" aria-hidden />
+                </Link>
+              </Button>
+              <Button asChild variant="guia-outline">
+                <Link to={guiaRoutes.cursosPublicarRelato}>Publicar relato</Link>
+              </Button>
             </div>
           </div>
 
