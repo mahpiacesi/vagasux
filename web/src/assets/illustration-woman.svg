@@ -2,7 +2,7 @@
 <svg id="illustration-woman" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 853 676" aria-hidden="true">
   <defs>
     <style>
-      .iw-skin,.iw-accent-stroke{fill:#fece45;}
+      .iw-skin,.iw-accent-stroke,.iw-umbrella-fill{fill:#fece45;}
       .iw-lilac{fill:#ecd4fe;}
       .iw-white{fill:#fff;}
       .iw-stroke,.iw-white,.iw-detail,.iw-accent-stroke,.iw-body,.iw-forearm,.iw-umbrella-fill,.iw-umbrella-stroke{stroke:#000;}
