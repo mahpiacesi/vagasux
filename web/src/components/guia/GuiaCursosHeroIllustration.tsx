@@ -17,9 +17,16 @@ const PIVOTS = {
   'leg-right': { x: 554, y: 466 },
   'leg-right-knee': { x: 668, y: 418 },
   head: { x: 502, y: 198 },
+  'ponytail-root': { x: 496, y: 166 },
 } as const
 
-type MotionGroup = 'arm-left' | 'arm-right' | 'leg-right' | 'leg-right-foot' | 'head'
+type MotionGroup =
+  | 'arm-left'
+  | 'arm-right'
+  | 'leg-right'
+  | 'leg-right-foot'
+  | 'head'
+  | 'ponytail'
 
 const MOTION: Record<
   MotionGroup,
@@ -30,7 +37,11 @@ const MOTION: Record<
   'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
   'leg-right-foot': { amplitude: 0.9, cycle: 5.6, phase: 0.82 },
   head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
+  ponytail: { amplitude: 2.4, cycle: 3.9, phase: 0.72 },
 }
+
+/** Seconds the ponytail trails the head (overlap / follow-through). */
+const PONYTAIL_FOLLOW_LAG_S = 0.22
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -38,6 +49,7 @@ const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'leg-right',
   'leg-right-foot',
   'head',
+  'ponytail',
 ]
 
 /** Unified body path — raised-leg points rotate; crotch + inner thigh stay fixed. */
@@ -216,19 +228,63 @@ export function GuiaCursosHeroIllustration({
         MOTION['leg-right-foot'].phase,
       )
 
+      const headMotion = MOTION.head
+      const headAngle = waveAngle(
+        t,
+        headMotion.cycle,
+        headMotion.amplitude,
+        headMotion.phase,
+      )
+      const ponytailSwing = waveAngle(
+        t,
+        MOTION.ponytail.cycle,
+        MOTION.ponytail.amplitude,
+        MOTION.ponytail.phase,
+      )
+      /** Delayed head tilt — ponytail drags behind the scalp (follow-through). */
+      const ponytailFollow = waveAngle(
+        t - PONYTAIL_FOLLOW_LAG_S,
+        headMotion.cycle,
+        headMotion.amplitude * 0.55,
+        headMotion.phase,
+      )
+
       if (bodyEl) {
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
       }
 
       for (const key of MOTION_GROUP_SELECTORS) {
-        if (key === 'leg-right-foot') continue
+        if (key === 'leg-right-foot' || key === 'ponytail') continue
 
         const { amplitude, cycle, phase } = MOTION[key]
         const angle =
           key === 'leg-right'
             ? legRightHip
-            : waveAngle(t, cycle, amplitude, phase)
-        applyGroupRotation(groups[key], angle, PIVOTS[key === 'leg-right' ? 'leg-right' : key])
+            : key === 'head'
+              ? headAngle
+              : waveAngle(t, cycle, amplitude, phase)
+        applyGroupRotation(
+          groups[key],
+          angle,
+          PIVOTS[key === 'leg-right' ? 'leg-right' : key],
+        )
+      }
+
+      for (const el of groups.ponytail) {
+        const base = el.dataset.baseTransform ?? ''
+        el.setAttribute(
+          'transform',
+          buildTransform(
+            [
+              {
+                angleDeg: ponytailSwing + ponytailFollow,
+                pivot: PIVOTS['ponytail-root'],
+              },
+              { angleDeg: headAngle, pivot: PIVOTS.head },
+            ],
+            base,
+          ),
+        )
       }
 
       for (const el of groups['leg-right-foot']) {

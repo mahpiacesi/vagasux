@@ -49,7 +49,7 @@
     <path id="umbrella-rib-4" data-motion="arm-left" class="iw-umbrella-stroke" d="M193.53,411.87c-56,54.37-83,117.44-60.3,140.88"/>
     <path id="umbrella-rib-5" data-motion="arm-left" class="iw-umbrella-stroke" d="M150.42,372.32c-54.69,53.06-63.23,133-19.06,178.51"/>
     <path id="umbrella-arc-2" data-motion="arm-left" class="iw-umbrella-fill" d="M115.15,326.18a29.2,29.2,0,0,0,36.53,45.25,29.2,29.2,0,0,0,40,41.22,29.2,29.2,0,0,0,40,41.22,29.2,29.2,0,0,0,40,41.22,29.2,29.2,0,0,0,40,41.22,29.2,29.2,0,0,0,44.12,37.89"/>
-    <path id="hair" data-motion="head" class="iw-hair" d="M484.58,166.17c-1.52-4.64,3.09-4.63,4.92-6a25.52,25.52,0,0,1,25.2-3.43c12.47,5.32,19.43,22.32,2.27,35.59l.53-4.84s-8.52-1.89-17.26-11.95S489.35,162,489.35,162Z"/>
+    <path id="hair" data-motion="ponytail" class="iw-hair" d="M484.58,166.17c-1.52-4.64,3.09-4.63,4.92-6a25.52,25.52,0,0,1,25.2-3.43c12.47,5.32,19.43,22.32,2.27,35.59l.53-4.84s-8.52-1.89-17.26-11.95S489.35,162,489.35,162Z"/>
     <path id="face-line-5" data-motion="head" class="iw-accent-stroke" d="M512.87,195.19a3.73,3.73,0,0,0,4.82-1.95l.54-1.43a3.58,3.58,0,0,0-2.4-4.52"/>
     <path id="forearm-right" data-motion="arm-right" class="iw-skin" d="M525.68,260.31,705,164c-1-5-7.09-5.95-11.12-10.93l-182.1,82.64c-7.58,3.85-10.62,12.47-6.78,19.27h0C508.83,261.77,518.09,264.16,525.68,260.31Z"/>
     <ellipse id="banner-tip" data-motion="arm-right" class="iw-skin" cx="706.33" cy="152.3" rx="5.32" ry="5.22" transform="translate(260.21 720.7) rotate(-64.04)"/>
