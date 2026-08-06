@@ -343,7 +343,7 @@
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(-4deg);
+    transform: rotate(-1.75deg);
   }
 }
 
@@ -353,52 +353,36 @@
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(3.5deg);
+    transform: rotate(1.5deg);
   }
 }
 
-@keyframes cursos-woman-leg-left-sway {
+@keyframes cursos-woman-figure-float {
   0%,
   100% {
-    transform: rotate(0deg);
+    transform: translateY(0);
   }
   50% {
-    transform: rotate(2.5deg);
+    transform: translateY(-4px);
   }
 }
 
-@keyframes cursos-woman-leg-right-sway {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-2.5deg);
-  }
+.cursos-woman-hero-svg--motion #woman-figure {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: cursos-woman-figure-float 5.5s ease-in-out infinite;
 }
 
-.cursos-woman-hero-svg--motion #woman-arm-left {
+.cursos-woman-hero-svg--motion #woman-arm-left-motion {
   transform-box: fill-box;
-  transform-origin: 470px 280px;
-  animation: cursos-woman-arm-left-sway 3.8s ease-in-out infinite;
+  transform-origin: 0 0;
+  animation: cursos-woman-arm-left-sway 4.2s ease-in-out infinite;
 }
 
-.cursos-woman-hero-svg--motion #woman-arm-right {
+.cursos-woman-hero-svg--motion #woman-arm-right-motion {
   transform-box: fill-box;
-  transform-origin: 545px 173px;
-  animation: cursos-woman-arm-right-sway 4.2s ease-in-out 0.35s infinite;
-}
-
-.cursos-woman-hero-svg--motion #woman-leg-left {
-  transform-box: fill-box;
-  transform-origin: 455px 474px;
-  animation: cursos-woman-leg-left-sway 4.6s ease-in-out 0.2s infinite;
-}
-
-.cursos-woman-hero-svg--motion #woman-leg-right {
-  transform-box: fill-box;
-  transform-origin: 554px 466px;
-  animation: cursos-woman-leg-right-sway 4.9s ease-in-out 0.55s infinite;
+  transform-origin: 0 0;
+  animation: cursos-woman-arm-right-sway 4.6s ease-in-out 0.4s infinite;
 }
 
 /* Curadoria illustration */
@@ -1010,10 +994,9 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
-  .cursos-woman-hero-svg--motion #woman-arm-left,
-  .cursos-woman-hero-svg--motion #woman-arm-right,
-  .cursos-woman-hero-svg--motion #woman-leg-left,
-  .cursos-woman-hero-svg--motion #woman-leg-right,
+  .cursos-woman-hero-svg--motion #woman-figure,
+  .cursos-woman-hero-svg--motion #woman-arm-left-motion,
+  .cursos-woman-hero-svg--motion #woman-arm-right-motion,
   .umbrella-hero-glow,
   .umbrella-hero-raindrop,
   .umbrella-hero-svg--motion #umbrella-main,
