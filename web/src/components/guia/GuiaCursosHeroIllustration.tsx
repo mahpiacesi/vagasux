@@ -11,7 +11,7 @@ type Pivot = { x: number; y: number }
 type Point = { x: number; y: number }
 
 const PIVOTS = {
-  'arm-left': { x: 468, y: 248 },
+  'arm-left': { x: 472, y: 253.55 },
   'arm-right': { x: 558, y: 212 },
   'leg-right': { x: 554, y: 466 },
   'leg-right-knee': { x: 668, y: 418 },
