@@ -15,7 +15,7 @@ type GuiaCursosFiltersProps = {
 
 const chipClassName = (active: boolean) =>
   cn(
-    'rounded-full border px-3 py-1.5 text-xs font-bold transition-colors',
+    'rounded-full border px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-colors',
     active
       ? 'border-brand-400 bg-brand-400 text-neutral-100'
       : 'border-neutral-500/10 bg-neutral-100 text-neutral-500 hover:border-brand-300 hover:bg-brand-100/60',
@@ -78,7 +78,10 @@ function FilterChipGroup({
         aria-label={`Filtrar por ${label.toLowerCase()}`}
       >
         {tagRows.map((rowTags, rowIndex) => (
-          <div key={rowIndex} className="flex flex-wrap gap-1.5">
+          <div
+            key={rowIndex}
+            className={cn('flex gap-1.5', rows ? 'flex-nowrap' : 'flex-wrap')}
+          >
             {rowTags.map((tag) => {
               const active = value === tag
               return (
@@ -141,28 +144,34 @@ export function GuiaCursosFilters({
         onChange={(theme) => patch({ theme })}
       />
 
-      <div className="grid items-start gap-x-6 gap-y-4 sm:grid-cols-2 xl:grid-cols-4">
-        <FilterChipGroup
-          label="Nível"
-          tags={levelTags}
-          value={filters.level}
-          onChange={(level) => patch({ level })}
-          rows={LEVEL_TAG_ROWS}
-        />
-        <FilterChipGroup
-          label="Modalidade"
-          tags={modalityTags}
-          value={filters.modality}
-          onChange={(modality) => patch({ modality })}
-        />
-        <FilterChipGroup
-          label="Custo"
-          tags={costTags}
-          value={filters.cost}
-          onChange={(cost) => patch({ cost })}
-        />
+      <div className="grid items-start gap-x-6 gap-y-4 sm:grid-cols-2 xl:grid-cols-12">
+        <div className="col-span-full sm:col-span-2 xl:col-span-5">
+          <FilterChipGroup
+            label="Nível"
+            tags={levelTags}
+            value={filters.level}
+            onChange={(level) => patch({ level })}
+            rows={LEVEL_TAG_ROWS}
+          />
+        </div>
+        <div className="xl:col-span-2">
+          <FilterChipGroup
+            label="Modalidade"
+            tags={modalityTags}
+            value={filters.modality}
+            onChange={(modality) => patch({ modality })}
+          />
+        </div>
+        <div className="xl:col-span-2">
+          <FilterChipGroup
+            label="Custo"
+            tags={costTags}
+            value={filters.cost}
+            onChange={(cost) => patch({ cost })}
+          />
+        </div>
 
-        <div>
+        <div className="sm:col-span-2 xl:col-span-3">
           <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
             Destaques
           </p>
