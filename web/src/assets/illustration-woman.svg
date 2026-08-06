@@ -9,7 +9,7 @@
       .iw-white,.iw-detail,.iw-accent-stroke,.iw-body,.iw-forearm,.iw-umbrella-fill,.iw-umbrella-stroke{stroke-miterlimit:10;}
       .iw-detail,.iw-forearm,.iw-umbrella-stroke{fill:none;}
       .iw-forearm{stroke-width:3px;}
-      .iw-hair,.iw-umbrella-fill,.iw-umbrella-stroke{stroke-linecap:square;}
+      .iw-hair,.iw-umbrella-fill,.iw-umbrella-stroke{stroke:#000;stroke-linecap:square;}
       .iw-umbrella-fill,.iw-umbrella-stroke{stroke-width:2px;}
       .iw-hair{stroke-linejoin:round;}
     </style>

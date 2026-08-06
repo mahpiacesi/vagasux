@@ -17,7 +17,10 @@ const PIVOTS = {
   'leg-right': { x: 554, y: 466 },
   'leg-right-knee': { x: 668, y: 418 },
   head: { x: 502, y: 198 },
-  'ponytail-root': { x: 496, y: 166 },
+  /** Scalp attachment — fixed feel; swings happen further down the tail. */
+  'ponytail-root': { x: 492, y: 164 },
+  'ponytail-mid': { x: 512, y: 182 },
+  'ponytail-tip': { x: 518, y: 192 },
 } as const
 
 type MotionGroup =
@@ -37,11 +40,15 @@ const MOTION: Record<
   'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
   'leg-right-foot': { amplitude: 0.9, cycle: 5.6, phase: 0.82 },
   head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
-  ponytail: { amplitude: 2.4, cycle: 3.9, phase: 0.72 },
+  ponytail: { amplitude: 0, cycle: 1, phase: 0 },
 }
 
-/** Seconds the ponytail trails the head (overlap / follow-through). */
-const PONYTAIL_FOLLOW_LAG_S = 0.22
+/** Ponytail overlap: faster, wider swings with staggered lag (tip leads the drag). */
+const PONYTAIL_SWING = {
+  root: { amplitude: 10, cycle: 3.4, phase: 0.58, lag: 0.18 },
+  mid: { amplitude: 18, cycle: 2.6, phase: 0.82, lag: 0.36 },
+  tip: { amplitude: 12, cycle: 2.1, phase: 1.05, lag: 0.52 },
+} as const
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
@@ -130,6 +137,47 @@ function buildTransform(rotations: Array<{ angleDeg: number; pivot: Pivot }>, ba
   )
   if (base) parts.push(base)
   return parts.join(' ')
+}
+
+function ponytailAngle(
+  t: number,
+  layer: (typeof PONYTAIL_SWING)[keyof typeof PONYTAIL_SWING],
+) {
+  return waveAngle(t - layer.lag, layer.cycle, layer.amplitude, layer.phase)
+}
+
+function applyPonytailMotion(
+  elements: SVGGraphicsElement[],
+  t: number,
+  headAngle: number,
+) {
+  const { root, mid, tip } = PONYTAIL_SWING
+  const rootSwing = ponytailAngle(t, root)
+  const midSwing = ponytailAngle(t, mid)
+  const tipSwing = ponytailAngle(t, tip)
+  /** Delayed head drag — tail keeps going after the face turns. */
+  const headDrag = waveAngle(
+    t - 0.28,
+    MOTION.head.cycle,
+    MOTION.head.amplitude * 0.65,
+    MOTION.head.phase,
+  )
+
+  for (const el of elements) {
+    const base = el.dataset.baseTransform ?? ''
+    el.setAttribute(
+      'transform',
+      buildTransform(
+        [
+          { angleDeg: tipSwing, pivot: PIVOTS['ponytail-tip'] },
+          { angleDeg: midSwing, pivot: PIVOTS['ponytail-mid'] },
+          { angleDeg: rootSwing + headDrag, pivot: PIVOTS['ponytail-root'] },
+          { angleDeg: headAngle, pivot: PIVOTS.head },
+        ],
+        base,
+      ),
+    )
+  }
 }
 
 function applyGroupRotation(
@@ -235,19 +283,6 @@ export function GuiaCursosHeroIllustration({
         headMotion.amplitude,
         headMotion.phase,
       )
-      const ponytailSwing = waveAngle(
-        t,
-        MOTION.ponytail.cycle,
-        MOTION.ponytail.amplitude,
-        MOTION.ponytail.phase,
-      )
-      /** Delayed head tilt — ponytail drags behind the scalp (follow-through). */
-      const ponytailFollow = waveAngle(
-        t - PONYTAIL_FOLLOW_LAG_S,
-        headMotion.cycle,
-        headMotion.amplitude * 0.55,
-        headMotion.phase,
-      )
 
       if (bodyEl) {
         bodyEl.setAttribute('d', buildBodyPath(rotateRaisedLeg(legRightHip)))
@@ -270,22 +305,7 @@ export function GuiaCursosHeroIllustration({
         )
       }
 
-      for (const el of groups.ponytail) {
-        const base = el.dataset.baseTransform ?? ''
-        el.setAttribute(
-          'transform',
-          buildTransform(
-            [
-              {
-                angleDeg: ponytailSwing + ponytailFollow,
-                pivot: PIVOTS['ponytail-root'],
-              },
-              { angleDeg: headAngle, pivot: PIVOTS.head },
-            ],
-            base,
-          ),
-        )
-      }
+      applyPonytailMotion(groups.ponytail, t, headAngle)
 
       for (const el of groups['leg-right-foot']) {
         const base = el.dataset.baseTransform ?? ''
