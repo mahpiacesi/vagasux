@@ -337,27 +337,7 @@
   overflow: visible;
 }
 
-@keyframes cursos-woman-arm-left-sway {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-1.75deg);
-  }
-}
-
-@keyframes cursos-woman-arm-right-sway {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(1.5deg);
-  }
-}
-
-@keyframes cursos-woman-figure-float {
+@keyframes cursos-woman-hero-float {
   0%,
   100% {
     transform: translateY(0);
@@ -367,22 +347,10 @@
   }
 }
 
-.cursos-woman-hero-svg--motion #woman-figure {
-  transform-box: fill-box;
+.cursos-woman-hero-svg--motion {
+  transform-box: view-box;
   transform-origin: center bottom;
-  animation: cursos-woman-figure-float 5.5s ease-in-out infinite;
-}
-
-.cursos-woman-hero-svg--motion #woman-arm-left-motion {
-  transform-box: fill-box;
-  transform-origin: 0 0;
-  animation: cursos-woman-arm-left-sway 4.2s ease-in-out infinite;
-}
-
-.cursos-woman-hero-svg--motion #woman-arm-right-motion {
-  transform-box: fill-box;
-  transform-origin: 0 0;
-  animation: cursos-woman-arm-right-sway 4.6s ease-in-out 0.4s infinite;
+  animation: cursos-woman-hero-float 5.5s ease-in-out infinite;
 }
 
 /* Curadoria illustration */
@@ -994,9 +962,7 @@
   .testimonials-track,
   .testimonials-track-reverse,
   .curation-hero-svg--motion #blob,
-  .cursos-woman-hero-svg--motion #woman-figure,
-  .cursos-woman-hero-svg--motion #woman-arm-left-motion,
-  .cursos-woman-hero-svg--motion #woman-arm-right-motion,
+  .cursos-woman-hero-svg--motion,
   .umbrella-hero-glow,
   .umbrella-hero-raindrop,
   .umbrella-hero-svg--motion #umbrella-main,
