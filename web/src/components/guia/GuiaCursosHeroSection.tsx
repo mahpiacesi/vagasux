@@ -20,7 +20,7 @@ export function GuiaCursosHeroSection({ className }: GuiaCursosHeroProps) {
 
   return (
     <section className={cn('overflow-hidden rounded-3xl border border-brand-200/40 bg-brand-100/40', className)}>
-      <div className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-10">
+      <div className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-center lg:gap-10">
         <div>
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
             {guiaCursosHero.eyebrow}
@@ -53,12 +53,8 @@ export function GuiaCursosHeroSection({ className }: GuiaCursosHeroProps) {
           </dl>
         </div>
 
-        <div
-          className="relative mx-auto flex aspect-[4/3] w-full max-w-md items-end justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-100/20 p-4 lg:max-w-none lg:p-6"
-          aria-hidden
-        >
-          <div className="absolute top-6 right-6 size-24 rounded-full bg-brand-200/40 blur-2xl" />
-          <GuiaCursosHeroIllustration className="cursos-woman-hero relative w-full max-w-[22rem] lg:max-w-none" />
+        <div className="relative w-full overflow-visible" aria-hidden>
+          <GuiaCursosHeroIllustration className="cursos-woman-hero w-full" />
         </div>
       </div>
 

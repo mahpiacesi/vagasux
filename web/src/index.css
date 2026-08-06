@@ -327,13 +327,14 @@
 /* Cursos hero — woman illustration */
 .cursos-woman-hero {
   overflow: visible;
+  width: 100%;
 }
 
 .cursos-woman-hero svg {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 100%;
+  max-width: none;
   overflow: visible;
 }
 
