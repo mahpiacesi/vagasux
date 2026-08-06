@@ -17,8 +17,8 @@
   <g id="woman-root">
     <path id="hair-clip" data-motion="head" class="iw-skin" d="M504.33,190s12-1.56,9.91,5.28l-12,39.8c-2.06,6.84-8.17,11.11-13.63,9.54h0c-5.46-1.58-8.21-8.39-6.14-15.23l12-39.81C496.53,182.74,498.86,188.42,504.33,190Z"/>
     <rect id="sock-right" data-motion="leg-right" class="iw-lilac" x="716.34" y="424.89" width="34.19" height="17.87" transform="translate(-114.15 521.77) rotate(-36.53)"/>
-    <rect id="sock-left" data-motion="leg-left" class="iw-lilac" x="454.37" y="605.48" width="34.19" height="17.87" transform="translate(-142.95 1085.89) rotate(-90)"/>
-    <path id="shoe-left" data-motion="leg-left" class="iw-white" d="M441.16,625.69h44.29a0,0,0,0,1,0,0V649a0,0,0,0,1,0,0H417.85a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,441.16,625.69Z"/>
+    <rect id="sock-left" class="iw-lilac" x="454.37" y="605.48" width="34.19" height="17.87" transform="translate(-142.95 1085.89) rotate(-90)"/>
+    <path id="shoe-left" class="iw-white" d="M441.16,625.69h44.29a0,0,0,0,1,0,0V649a0,0,0,0,1,0,0H417.85a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,441.16,625.69Z"/>
     <path id="sleeve-left" data-motion="arm-left" class="iw-skin" d="M336,355,472,253.55A13.47,13.47,0,0,0,473.6,234h0a15,15,0,0,0-20.52-1.36L326,343c-6.1,5-8.83,10-3.6,15.78h0C327.63,364.57,329.9,360,336,355Z"/>
     <path id="top" class="iw-lilac" d="M507.62,299.71l-59.85-1.57s-9.27-27.64-8.27-39.64c1.16-13.95,13-19,25-29l43.77,6.1c9.85,1.49,16.13,11,13.26,20.06Z"/>
     <path id="face" data-motion="head" class="iw-skin" d="M517.93,187.23c-1.52,3.83-3.18,8.07-3.86,9.8-3.73,9.45-14.81,14.12-24.75,10.42s-15-14.36-11.25-23.81c1.17-3,5.29-13.43,6.47-16.4a17.66,17.66,0,0,1,4.74-6.79C503,184.15,516.41,187.83,517.93,187.23Z"/>
@@ -35,9 +35,9 @@
     <path id="finger-left-2" data-motion="arm-left" class="iw-skin" d="M314.85,365.59l-3.05-6.2a3.45,3.45,0,0,1,1.58-4.62h0a3.45,3.45,0,0,1,4.62,1.58l5.54,11.27"/>
     <path id="finger-left-3" data-motion="arm-left" class="iw-lilac" d="M320.22,363.73l-3-6.2a3.45,3.45,0,0,1,1.58-4.62h0a3.45,3.45,0,0,1,4.62,1.58l5.53,11.27"/>
     <path id="finger-left-4" data-motion="arm-left" class="iw-accent-stroke" d="M302,363.87l-3,3a3.44,3.44,0,0,1-4.87.26h0c-1.42-1.27-1.54-3.46.48-5.53l8.86-9.09"/>
-    <line id="shoe-left-lace-1" data-motion="leg-left" class="iw-white" x1="436.35" y1="623.25" x2="441.18" y2="635.37"/>
-    <line id="shoe-left-lace-2" data-motion="leg-left" class="iw-white" x1="444.03" y1="622.61" x2="448.85" y2="634.73"/>
-    <line id="shoe-left-lace-3" data-motion="leg-left" class="iw-white" x1="485.88" y1="641.51" x2="459.5" y2="641.51"/>
+    <line id="shoe-left-lace-1" class="iw-white" x1="436.35" y1="623.25" x2="441.18" y2="635.37"/>
+    <line id="shoe-left-lace-2" class="iw-white" x1="444.03" y1="622.61" x2="448.85" y2="634.73"/>
+    <line id="shoe-left-lace-3" class="iw-white" x1="485.88" y1="641.51" x2="459.5" y2="641.51"/>
     <path id="shoe-right" data-motion="leg-right-foot" class="iw-white" d="M757.69,420.73H802a0,0,0,0,1,0,0V444a0,0,0,0,1,0,0H734.38a0,0,0,0,1,0,0v0A23.31,23.31,0,0,1,757.69,420.73Z" transform="translate(1033.2 1273.12) rotate(-136.87)"/>
     <line id="shoe-right-lace-1" data-motion="leg-right-foot" class="iw-white" x1="769.72" y1="453.13" x2="774.48" y2="440.99"/>
     <line id="shoe-right-lace-2" data-motion="leg-right-foot" class="iw-white" x1="763.68" y1="448.35" x2="768.44" y2="436.2"/>

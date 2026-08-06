@@ -14,13 +14,12 @@ type Point = { x: number; y: number }
 const PIVOTS = {
   'arm-left': { x: 468, y: 248 },
   'arm-right': { x: 558, y: 212 },
-  'leg-left': { x: 455, y: 474 },
   'leg-right': { x: 554, y: 466 },
   'leg-right-knee': { x: 668, y: 418 },
-  head: { x: 502, y: 178 },
+  head: { x: 502, y: 198 },
 } as const
 
-type MotionGroup = 'arm-left' | 'arm-right' | 'leg-left' | 'leg-right' | 'leg-right-foot' | 'head'
+type MotionGroup = 'arm-left' | 'arm-right' | 'leg-right' | 'leg-right-foot' | 'head'
 
 const MOTION: Record<
   MotionGroup,
@@ -28,16 +27,14 @@ const MOTION: Record<
 > = {
   'arm-left': { amplitude: 1.6, cycle: 4.4, phase: 0 },
   'arm-right': { amplitude: 1.8, cycle: 4.8, phase: 0.5 },
-  'leg-left': { amplitude: 1.2, cycle: 5.2, phase: 0.25 },
   'leg-right': { amplitude: 1.4, cycle: 5.6, phase: 0.75 },
   'leg-right-foot': { amplitude: 0.9, cycle: 5.6, phase: 0.82 },
-  head: { amplitude: 0.8, cycle: 6, phase: 0.35 },
+  head: { amplitude: 1.5, cycle: 5.4, phase: 0.35 },
 }
 
 const MOTION_GROUP_SELECTORS: MotionGroup[] = [
   'arm-left',
   'arm-right',
-  'leg-left',
   'leg-right',
   'leg-right-foot',
   'head',
