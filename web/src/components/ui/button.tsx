@@ -60,6 +60,8 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        /** Skips fixed h-8 / px-2.5 from default — guia variants bring their own padding. */
+        guia: "",
       },
     },
     defaultVariants: {
@@ -68,6 +70,15 @@ const buttonVariants = cva(
     },
   }
 )
+
+const GUIA_VARIANTS = new Set([
+  "guia",
+  "guia-outline",
+  "guia-compact",
+  "guia-chip",
+  "guia-chip-active",
+  "guia-clear",
+])
 
 function Button({
   className,
@@ -80,13 +91,15 @@ function Button({
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot.Root : "button"
+  const resolvedSize =
+    variant && GUIA_VARIANTS.has(variant) ? "guia" : size
 
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      data-size={resolvedSize}
+      className={cn(buttonVariants({ variant, size: resolvedSize, className }))}
       {...props}
     />
   )
