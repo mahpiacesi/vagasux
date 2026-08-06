@@ -10,6 +10,7 @@
       .iw-detail,.iw-forearm,.iw-umbrella-stroke{fill:none;}
       .iw-forearm{stroke-width:3px;}
       .iw-hair{fill:#000;stroke:#000;stroke-width:2px;stroke-linejoin:round;}
+      .iw-hair-highlight{fill:none;stroke:#fff;stroke-width:2px;stroke-linecap:round;}
     </style>
   </defs>
   <g id="woman-root">
@@ -50,6 +51,8 @@
     <path id="hair-scalp" class="iw-hair" d="M484.58,166.17c-1.52-4.64,3.09-4.63,4.92-6a25.52,25.52,0,0,1,25.2-3.43S489.35,162,484.58,166.17Z"/>
     <g id="hair-ponytail-pivot">
       <path id="hair-ponytail" class="iw-hair" d="M514.7,156.74c12.47,5.32,19.43,22.32,2.27,35.59l.53-4.84s-8.52-1.89-17.26-11.95S489.35,162,514.7,156.74Z"/>
+      <path id="hair-ponytail-highlight-1" class="iw-hair-highlight" d="M524.5,157.5c0,-1.9,3,-5,7,-3"/>
+      <path id="hair-ponytail-highlight-2" class="iw-hair-highlight" d="M545.5,173.5s10,19,24,24"/>
     </g>
     <path id="face-line-5" data-motion="head" class="iw-accent-stroke" d="M512.87,195.19a3.73,3.73,0,0,0,4.82-1.95l.54-1.43a3.58,3.58,0,0,0-2.4-4.52"/>
     <path id="forearm-right" data-motion="arm-right" class="iw-skin" d="M525.68,260.31,705,164c-1-5-7.09-5.95-11.12-10.93l-182.1,82.64c-7.58,3.85-10.62,12.47-6.78,19.27h0C508.83,261.77,518.09,264.16,525.68,260.31Z"/>
