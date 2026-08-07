@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowSquareOut, ChatCircleDots, X } from '@phosphor-icons/react'
+import { ArrowSquareOut, ChatCircleDots, Tag, X } from '@phosphor-icons/react'
 import { Dialog } from 'radix-ui'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -7,6 +7,7 @@ import {
   GUIA_CURSO_FEEDBACK_LABEL,
   GUIA_CURSO_PARTNER_LABEL,
 } from '@/components/guia/GuiaCursoCard'
+import { getGuiaCursoOffer } from '@/data/guiaCursoOffers'
 import type { GuiaCurso } from '@/data/guiaCursos'
 import { cursoMetaLine } from '@/lib/guiaCursoMeta'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -79,6 +80,11 @@ export function GuiaCursoPreviewDialog({
   if (!curso) return null
 
   const meta = cursoMetaLine(curso)
+  const offer = getGuiaCursoOffer(curso.id)
+  const ctaUrl = offer?.ctaUrl ?? curso.url
+  const ctaLabel = offer
+    ? `Garantir ${offer.discountLabel}`
+    : 'Acessar curso'
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -134,6 +140,21 @@ export function GuiaCursoPreviewDialog({
               </p>
             ) : null}
 
+            {offer ? (
+              <section
+                aria-labelledby="course-discount-title"
+                className="mt-5 rounded-2xl border border-brand-200/50 bg-brand-100/35 px-4 py-4"
+              >
+                <div className="flex items-center gap-2 text-sm font-bold text-brand-500">
+                  <Tag size={18} weight="duotone" aria-hidden />
+                  <h3 id="course-discount-title">{offer.discountLabel}</h3>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+                  Como comunidade, temos 15% de desconto nas licenças da Alura.
+                </p>
+              </section>
+            ) : null}
+
             <div className="mt-6">
               <RelatosSection curso={curso} />
             </div>
@@ -144,8 +165,8 @@ export function GuiaCursoPreviewDialog({
               <Link to={guiaRoutes.cursosPublicarRelato}>Enviar relato</Link>
             </Button>
             <Button asChild variant="guia">
-              <a href={curso.url} target="_blank" rel="noopener noreferrer">
-                Acessar curso
+              <a href={ctaUrl} target="_blank" rel="noopener noreferrer">
+                {ctaLabel}
                 <ArrowSquareOut size={16} weight="bold" aria-hidden />
               </a>
             </Button>
