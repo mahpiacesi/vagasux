@@ -2,8 +2,6 @@ export type GuiaTemaLink = {
   title: string
   url: string
   description?: string
-  /** Use quando o site impede a captura visual. */
-  thumbnailUnavailable?: boolean
 }
 
 export type GuiaTemaLinkSection = {
@@ -51,11 +49,7 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
         title: 'Chamjo | Design Inspiration from live apps, games, and websites',
         url: 'https://chamjo.design/',
       },
-      {
-        title: 'Design Pttrns',
-        url: 'https://pttrns.com/',
-        thumbnailUnavailable: true,
-      },
+      { title: 'Design Pttrns', url: 'https://pttrns.com/' },
       {
         title: 'Land-book - website design inspiration gallery',
         url: 'https://land-book.com/',

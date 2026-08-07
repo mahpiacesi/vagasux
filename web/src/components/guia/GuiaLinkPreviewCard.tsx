@@ -12,7 +12,13 @@ function getHostname(url: string) {
 }
 
 function getScreenshotUrl(url: string) {
-  return `https://image.thum.io/get/width/1200/crop/675/noanimate/${url}`
+  const params = new URLSearchParams({
+    url,
+    screenshot: 'true',
+    meta: 'false',
+    embed: 'screenshot.url',
+  })
+  return `https://api.microlink.io/?${params}`
 }
 
 export function GuiaLinkPreviewCard({
@@ -24,7 +30,7 @@ export function GuiaLinkPreviewCard({
 }) {
   const [imageFailed, setImageFailed] = useState(false)
   const hostname = getHostname(link.url)
-  const showFallback = imageFailed || link.thumbnailUnavailable
+  const showFallback = imageFailed
 
   return (
     <a
