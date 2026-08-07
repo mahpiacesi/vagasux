@@ -144,7 +144,7 @@ export function GuiaCursosFilters({
               aria-pressed={filters.feedbackOnly}
               onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
             >
-              💬 Com relatos
+              💬 Com feedback
             </Button>
             {activeCount > 0 ? (
               <Button
