@@ -11,6 +11,42 @@ function getHostname(url: string) {
   }
 }
 
+async function getImageUrlFromResponse(response: Response) {
+  if (!response.ok) return null
+
+  const data = (await response.json()) as {
+    imageUrl?: unknown
+    data?: { image?: { url?: unknown } }
+  }
+
+  if (typeof data.imageUrl === 'string') return data.imageUrl
+  if (typeof data.data?.image?.url === 'string') return data.data.image.url
+  return null
+}
+
+async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
+  try {
+    const localResponse = await fetch(
+      `/api/link-preview?url=${encodeURIComponent(url)}`,
+      { signal },
+    )
+    const localImageUrl = await getImageUrlFromResponse(localResponse)
+    if (localImageUrl) return localImageUrl
+  } catch {
+    // No Vite, funções da Vercel não são atendidas. Usa o unfurl público abaixo.
+  }
+
+  try {
+    const params = new URLSearchParams({ url, meta: 'true' })
+    const response = await fetch(`https://api.microlink.io/?${params}`, {
+      signal,
+    })
+    return await getImageUrlFromResponse(response)
+  } catch {
+    return null
+  }
+}
+
 export function GuiaLinkPreviewCard({
   link,
   className,
@@ -31,14 +67,7 @@ export function GuiaLinkPreviewCard({
     setImageUrl(null)
     setIsLoadingImage(true)
 
-    void fetch(`/api/link-preview?url=${encodeURIComponent(link.url)}`, {
-      signal: controller.signal,
-    })
-      .then(async (response) => {
-        if (!response.ok) return null
-        const data = (await response.json()) as { imageUrl?: unknown }
-        return typeof data.imageUrl === 'string' ? data.imageUrl : null
-      })
+    void resolvePreviewImageUrl(link.url, controller.signal)
       .then(setImageUrl)
       .catch(() => setImageUrl(null))
       .finally(() => setIsLoadingImage(false))
@@ -83,9 +112,6 @@ export function GuiaLinkPreviewCard({
             className="h-full min-h-32 w-full object-cover object-top"
           />
         )}
-        <span className="absolute inset-x-0 bottom-0 truncate bg-neutral-500/75 px-2 py-1 text-center text-[0.625rem] font-bold tracking-wide text-neutral-100">
-          {hostname}
-        </span>
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col px-4 py-4">
