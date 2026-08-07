@@ -48,7 +48,7 @@
 
 ### Guia por tema, UX (07 ago)
 - A rota `/guia/tema/ux` ganhou conteúdo de referências para UX: padrões, bibliotecas de UI e landing pages.
-- Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Priorizam `og:image`/`twitter:image`, usam captura visual sem metadados e mostram um fallback sutil com ícone de guarda-chuva quando a prévia não é confiável.
+- Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Priorizam `og:image`/`twitter:image`, usam captura visual sem metadados e mostram um fallback sutil com ícone de guarda-chuva quando a prévia não é confiável ou bloqueada.
 
 ---
 

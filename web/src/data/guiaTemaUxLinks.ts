@@ -82,6 +82,7 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
       {
         title: "Element - The world's most popular Vue UI framework",
         url: 'https://element.eleme.io/#/en-US',
+        useScreenshotFallback: false,
       },
       {
         title: 'Collect UI',
@@ -106,6 +107,7 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
       {
         title: '4003 Landing Page Design Inspiration - Lapa Ninja',
         url: 'https://www.lapa.ninja/',
+        useScreenshotFallback: false,
       },
     ],
   },
