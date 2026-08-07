@@ -48,7 +48,7 @@
 
 ### Guia por tema, UX (07 ago)
 - A rota `/guia/tema/ux` ganhou conteúdo de referências para UX: padrões, bibliotecas de UI e landing pages.
-- Links usam cards visuais de marcador, com captura externa da página e fallback de domínio.
+- Links usam cards visuais de marcador, com captura externa da página e fallback ilustrado quando a miniatura não estiver disponível.
 
 ---
 

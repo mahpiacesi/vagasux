@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowSquareOut, LinkSimple } from '@phosphor-icons/react'
+import { ArrowSquareOut, ImageSquare, Sparkle } from '@phosphor-icons/react'
 import type { GuiaTemaLink } from '@/data/guiaTemaUxLinks'
 import { cn } from '@/lib/utils'
 
@@ -24,6 +24,7 @@ export function GuiaLinkPreviewCard({
 }) {
   const [imageFailed, setImageFailed] = useState(false)
   const hostname = getHostname(link.url)
+  const showFallback = imageFailed || link.thumbnailUnavailable
 
   return (
     <a
@@ -36,14 +37,19 @@ export function GuiaLinkPreviewCard({
       )}
     >
       <div className="relative w-32 shrink-0 border-r border-neutral-500/10 bg-brand-100/60 sm:w-44">
-        {imageFailed ? (
-          <div className="flex h-full min-h-32 items-center justify-center p-4 text-center">
-            <LinkSimple
-              size={32}
-              weight="duotone"
-              className="text-brand-400"
-              aria-hidden
-            />
+        {showFallback ? (
+          <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden bg-brand-100/80 p-4">
+            <span className="absolute -top-3 -right-3 size-16 rounded-full bg-complementary-200/70" />
+            <span className="absolute -bottom-6 -left-4 size-20 rounded-full bg-brand-200/50" />
+            <span className="relative flex size-12 items-center justify-center rounded-2xl bg-neutral-100 text-brand-400 shadow-sm">
+              <ImageSquare size={28} weight="duotone" aria-hidden />
+              <Sparkle
+                size={14}
+                weight="fill"
+                className="absolute -top-1 -right-1 text-highlight-200"
+                aria-hidden
+              />
+            </span>
           </div>
         ) : (
           <img
