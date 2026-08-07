@@ -1,4 +1,3 @@
-import { X } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import type { GuiaCursoFilters } from '@/lib/guiaCursoFilters'
 import { cn } from '@/lib/utils'
@@ -10,7 +9,6 @@ type GuiaCursosFiltersProps = {
   levelTags: string[]
   filters: GuiaCursoFilters
   onChange: (filters: GuiaCursoFilters) => void
-  activeCount: number
   className?: string
 }
 
@@ -82,7 +80,6 @@ export function GuiaCursosFilters({
   levelTags,
   filters,
   onChange,
-  activeCount,
   className,
 }: GuiaCursosFiltersProps) {
   function patch(partial: Partial<GuiaCursoFilters>) {
@@ -144,27 +141,8 @@ export function GuiaCursosFilters({
               aria-pressed={filters.feedbackOnly}
               onClick={() => patch({ feedbackOnly: !filters.feedbackOnly })}
             >
-              💬 Com relatos
+              💬 Com feedback
             </Button>
-            {activeCount > 0 ? (
-              <Button
-                type="button"
-                variant="guia-clear"
-                onClick={() =>
-                  onChange({
-                    theme: null,
-                    modality: null,
-                    cost: null,
-                    level: null,
-                    partnersOnly: false,
-                    feedbackOnly: false,
-                  })
-                }
-              >
-                <X size={12} weight="bold" aria-hidden />
-                Limpar ({activeCount})
-              </Button>
-            ) : null}
           </div>
         </div>
       </div>
