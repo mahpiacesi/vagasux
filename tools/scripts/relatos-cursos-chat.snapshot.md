@@ -823,3 +823,16 @@ UX4 Tecnologia (UX4BI)
 
 Incluído em 20/09/2023
 Achei excelente, me ajudou muito no entendimento do que é relevante na construção de dashboards. Se é o seu caso, pode comprar sem medo. O instrutor é muito acessível também e as aulas são bem práticas.
+
+---
+
+UXCOPY.SCHOOL
+
+Incluído em 27/01/2022
+Esse foi meu primeiro contato com UX Writing - já estava estudando UX há alguns meses - e foi uma experiência incrível. A Ariana tem uma didática maravilhosa e um astral lindo. As aulas foram dinâmicas e tivemos a chance de fazer um exercício para praticar os conceitos apresentados, foi uma experiência muito rica. Indico muito para quem está começando :)
+
+Incluído em 21/04/2021
+Registro aqui minha gratidão e agradecimento ao Vagas UX pela oportunidade de ter participado do delicioso workshop da UXCOPY.SCHOOL com a Ariana Dias Neves!!! Foi um dia de muito aprendizado e compartilhamento de informações e conhecimento. Tudo de forma muito leve, sincera e madura. O dia passou num piscar de olhos e ficou um gostinho de quero mais! Quanta troca bacana e contato próximo com pessoas instigantes e inteligentes! Experiência incrível e que me deixou com vontade de estudar e aprender mais e mais!
+
+Incluído em 19/04/2021
+O workshop foi incrível. Eu sou iniciante, ainda não trabalho na área, mas sinto que agora estou mais preparada para enfim dar o start. Além de aprender sobre UX Writing, a Ari também apresenta diversas ferramentas que são importantes para trabalhar, o que facilita muito pra gente não chegar numa empresa despreparada. A atividade em grupo para desenvolver um caso real também foi muito importante para fixar o conteúdo na minha mente e só tenho a agradecer por essa oportunidade. A Ari realmente pega a gente pela mão e vai apresentando tudo o que temos que saber para desbravar o mundo do UX Writing com mais facilidade.
