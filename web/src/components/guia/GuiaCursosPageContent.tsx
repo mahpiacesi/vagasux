@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { X } from '@phosphor-icons/react'
 import { useSearchParams } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
@@ -92,16 +93,26 @@ export function GuiaCursosPageContent() {
       <GuiaCursosHeroSection className="mt-8" />
 
       <section className="mt-12" aria-labelledby="guia-cursos-listagem-heading">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <h2
               id="guia-cursos-listagem-heading"
               className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
             >
               Explore o diretório
             </h2>
-            <p className="mt-1 text-sm font-semibold text-neutral-400">{countLabel}</p>
+            {activeCount > 0 ? (
+              <Button
+                type="button"
+                variant="guia-clear"
+                onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
+              >
+                <X size={12} weight="bold" aria-hidden />
+                Limpar ({activeCount})
+              </Button>
+            ) : null}
           </div>
+          <p className="text-sm font-semibold text-neutral-400">{countLabel}</p>
         </div>
 
         <GuiaCursosFilters
@@ -112,7 +123,6 @@ export function GuiaCursosPageContent() {
           levelTags={levelTags}
           filters={filters}
           onChange={handleFiltersChange}
-          activeCount={activeCount}
         />
 
         {filteredCursos.length > 0 ? (
