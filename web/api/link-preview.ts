@@ -1,3 +1,4 @@
+import type { IncomingMessage, ServerResponse } from 'node:http'
 import { guiaTemaUxLinkSections } from '../src/data/guiaTemaUxLinks'
 
 const allowedUrls = new Set(
@@ -47,21 +48,40 @@ function getOpenGraphImage(html: string, pageUrl: string) {
   return null
 }
 
-export default async function handler(request: Request) {
+function sendJson(
+  response: ServerResponse,
+  body: { imageUrl: string | null },
+  cacheControl: string,
+  statusCode = 200,
+) {
+  response.statusCode = statusCode
+  response.setHeader('Content-Type', 'application/json; charset=utf-8')
+  response.setHeader('Cache-Control', cacheControl)
+  response.end(JSON.stringify(body))
+}
+
+export default async function handler(
+  request: IncomingMessage,
+  serverResponse: ServerResponse,
+) {
   if (request.method !== 'GET') {
-    return new Response('Method not allowed', { status: 405 })
+    serverResponse.statusCode = 405
+    serverResponse.end('Method not allowed')
+    return
   }
 
   const sourceUrl = new URL(
-    request.url,
-    'https://vagasux.vercel.app',
+    request.url ?? '/',
+    `https://${request.headers.host ?? 'vagasux.vercel.app'}`,
   ).searchParams.get('url')
   if (!sourceUrl || !allowedUrls.has(sourceUrl)) {
-    return new Response('Link não autorizado', { status: 400 })
+    serverResponse.statusCode = 400
+    serverResponse.end('Link não autorizado')
+    return
   }
 
   try {
-    const response = await fetch(sourceUrl, {
+    const fetchedPage = await fetch(sourceUrl, {
       headers: {
         Accept: 'text/html,application/xhtml+xml',
         'User-Agent': 'VagasUX Link Preview/1.0',
@@ -69,28 +89,30 @@ export default async function handler(request: Request) {
       signal: AbortSignal.timeout(5000),
     })
 
-    if (!response.ok) {
-      return Response.json(
+    if (!fetchedPage.ok) {
+      sendJson(
+        serverResponse,
         { imageUrl: null },
-        { headers: { 'Cache-Control': 'public, s-maxage=3600' } },
+        'public, s-maxage=3600',
       )
+      return
     }
 
-    const imageUrl = getOpenGraphImage(await response.text(), response.url)
+    const imageUrl = getOpenGraphImage(
+      await fetchedPage.text(),
+      fetchedPage.url,
+    )
 
-    return Response.json(
+    sendJson(
+      serverResponse,
       { imageUrl },
-      {
-        headers: {
-          'Cache-Control':
-            'public, s-maxage=86400, stale-while-revalidate=604800',
-        },
-      },
+      'public, s-maxage=86400, stale-while-revalidate=604800',
     )
   } catch {
-    return Response.json(
+    sendJson(
+      serverResponse,
       { imageUrl: null },
-      { headers: { 'Cache-Control': 'public, s-maxage=3600' } },
+      'public, s-maxage=3600',
     )
   }
 }
