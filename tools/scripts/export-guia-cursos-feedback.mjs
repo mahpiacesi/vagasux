@@ -39,7 +39,7 @@ const MANUAL_MATCHES = [
   },
   {
     pattern: /puc minas - pós/i,
-    cursoId: '49db936d5b174305a07edbeb8785358d',
+    cursoId: '1b08cbb0d9048081b7e1c5be93530ede',
   },
   {
     pattern: /udemy - métricas/i,

@@ -84,7 +84,8 @@ export const guiaCursoFeedbackByCourse: Record<string, GuiaCursoRelato[]> = {
     {
       "id": "cf152556",
       "text": "Comecei esse ano a pós, e tô adorando. Estou fazendo a online com aulas ao vivo, não só gravadas, e se não me engano só 4 cadeiras serão aulas gravadas. Financeiramente, pra quem faz questão de ter contato com os professores e os colegas, vale muito a pena.\n\nAté então temos alguns projetos pra fazer, que imagino que serão bem completos para o portfólio. As aulas são mais puxadas do que eu esperava, o que eu adorei.\n\nAs professoras que tive aula são maravilhosas, e a faculdade dá bastante apoio. Pra quem tem como pagar, eu recomendo demais.\n\nÚnica coisa que eu estranhei um pouco é que a maioria dos colegas estão em migração pra área, de 20 e poucos acho que uns 5 ou 6 só trabalham já na área. De qualquer forma, a turma é muito querida, e o curso é muito bom.",
-      "receivedAt": "2024-10-16T00:00:00Z"
+      "receivedAt": "2024-10-16T00:00:00Z",
+      "author": "Mariah"
     }
   ],
   "2216d55f6f50461dac728fd39cd240b6": [
@@ -286,14 +287,6 @@ export const guiaCursoFeedbackByCourse: Record<string, GuiaCursoRelato[]> = {
     {
       "id": "e807fb37",
       "text": "É uma pós-graduação, realizada à distância, utilizando o lms MOODLE. Não é complicado o uso da plataforma porém não há qualquer interação, se o aluno espera fazer networking ou relacionamento com professor ou alunos, esqueça, talvez não seja o melhor curso a ti. Por ser tratar de uma pós o professor deixa bem claro que cabe ao aluno fazer pesquisa e buscar soluções, o que inclui não apenas buscas externas, mas, compras de outros cursos e material adicional, então acaba que o valor acessível não seja tão acessível assim. Se a pessoa não sabe nada de UX ou Design talvez enfrente muitas dificuldades, porque pelo formato da aula e interação (mínima diga-se de passagem) o professor subentende-se que o aluno já tem conhecimento. Recomendo apenas para quem tem um tempo livro e quer um certificado de Pós Graduação, no mais, se quer praticar, interagir e aprender por troca, talvez outros cursos sejam uma melhor solução."
-    }
-  ],
-  "49db936d5b174305a07edbeb8785358d": [
-    {
-      "id": "1218cbb0d9048169bd3beda4e1ed1a55",
-      "text": "Comecei esse ano a pós, e tô adorando. Estou fazendo a online com aulas ao vivo, não só gravadas, e se não me engano só 4 cadeiras serão aulas gravadas. Financeiramente, pra quem faz questão de ter contato com os professores e os colegas, vale muito a pena.\n\nAté então temos alguns projetos pra fazer, que imagino que serão bem completos para o portfólio. As aulas são mais puxadas do que eu esperava, o que eu adorei.\n\nAs professoras que tive aula são maravilhosas, e a faculdade dá bastante apoio. Pra quem tem como pagar, eu recomendo demais.\n\nÚnica coisa que eu estranhei um pouco é que a maioria dos colegas estão em migração pra área, de 20 e poucos acho que uns 5 ou 6 só trabalham já na área. De qualquer forma, a turma é muito querida, e o curso é muito bom.",
-      "author": "Mariah",
-      "receivedAt": "2024-10-16T13:23:54Z"
     }
   ],
   "4abbb969b37b416c808a40c8c185b377": [
