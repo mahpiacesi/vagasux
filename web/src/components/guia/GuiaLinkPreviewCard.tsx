@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowSquareOut, ImageSquare, Sparkle } from '@phosphor-icons/react'
 import type { GuiaTemaLink } from '@/data/guiaTemaUxLinks'
 import { cn } from '@/lib/utils'
@@ -11,16 +11,6 @@ function getHostname(url: string) {
   }
 }
 
-function getScreenshotUrl(url: string) {
-  const params = new URLSearchParams({
-    url,
-    screenshot: 'true',
-    meta: 'false',
-    embed: 'screenshot.url',
-  })
-  return `https://api.microlink.io/?${params}`
-}
-
 export function GuiaLinkPreviewCard({
   link,
   className,
@@ -29,8 +19,32 @@ export function GuiaLinkPreviewCard({
   className?: string
 }) {
   const [imageFailed, setImageFailed] = useState(false)
+  const [imageUrl, setImageUrl] = useState<string | null>(null)
+  const [isLoadingImage, setIsLoadingImage] = useState(true)
   const hostname = getHostname(link.url)
-  const showFallback = imageFailed
+  const showFallback = !isLoadingImage && (!imageUrl || imageFailed)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    setImageFailed(false)
+    setImageUrl(null)
+    setIsLoadingImage(true)
+
+    void fetch(`/api/link-preview?url=${encodeURIComponent(link.url)}`, {
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) return null
+        const data = (await response.json()) as { imageUrl?: unknown }
+        return typeof data.imageUrl === 'string' ? data.imageUrl : null
+      })
+      .then(setImageUrl)
+      .catch(() => setImageUrl(null))
+      .finally(() => setIsLoadingImage(false))
+
+    return () => controller.abort()
+  }, [link.url])
 
   return (
     <a
@@ -43,7 +57,9 @@ export function GuiaLinkPreviewCard({
       )}
     >
       <div className="relative w-32 shrink-0 border-r border-neutral-500/10 bg-brand-100/60 sm:w-44">
-        {showFallback ? (
+        {isLoadingImage ? (
+          <div className="h-full min-h-32 animate-pulse bg-brand-100/80" />
+        ) : showFallback ? (
           <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden bg-brand-100/80 p-4">
             <span className="absolute -top-3 -right-3 size-16 rounded-full bg-complementary-200/70" />
             <span className="absolute -bottom-6 -left-4 size-20 rounded-full bg-brand-200/50" />
@@ -59,7 +75,7 @@ export function GuiaLinkPreviewCard({
           </div>
         ) : (
           <img
-            src={getScreenshotUrl(link.url)}
+            src={imageUrl}
             alt=""
             loading="lazy"
             decoding="async"
