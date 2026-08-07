@@ -52,7 +52,10 @@ export default async function handler(request: Request) {
     return new Response('Method not allowed', { status: 405 })
   }
 
-  const sourceUrl = new URL(request.url).searchParams.get('url')
+  const sourceUrl = new URL(
+    request.url,
+    'https://vagasux.vercel.app',
+  ).searchParams.get('url')
   if (!sourceUrl || !allowedUrls.has(sourceUrl)) {
     return new Response('Link não autorizado', { status: 400 })
   }
