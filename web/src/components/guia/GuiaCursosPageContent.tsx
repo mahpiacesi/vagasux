@@ -116,12 +116,11 @@ export function GuiaCursosPageContent() {
         />
 
         {filteredCursos.length > 0 ? (
-          <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ul className="mt-10 flex flex-col gap-3">
             {filteredCursos.map((curso) => (
               <li key={curso.id}>
                 <GuiaCursoCard
                   curso={curso}
-                  className="h-full"
                   previewMode
                   onPreview={handlePreview}
                 />
