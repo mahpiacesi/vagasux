@@ -13,7 +13,7 @@ export type GuiaCurso = {
   languages: string[]
   /** Parceiro oficial VagasUX. */
   isPartner: boolean
-  /** Tem relatos da comunidade (Fase 2). */
+  /** Tem relatos da comunidade publicados. */
   hasFeedback: boolean
   /** Data de criação no Notion — ordenação do preview. */
   addedAt?: string

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { X } from '@phosphor-icons/react'
 import { useSearchParams } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
@@ -22,6 +23,7 @@ import {
   GUIA_CURSO_FILTER_DEFAULTS,
   type GuiaCursoFilters,
 } from '@/lib/guiaCursoFilters'
+import { cn } from '@/lib/utils'
 
 function parseFiltersFromSearchParams(params: URLSearchParams): GuiaCursoFilters {
   return {
@@ -92,15 +94,29 @@ export function GuiaCursosPageContent() {
       <GuiaCursosHeroSection className="mt-8" />
 
       <section className="mt-12" aria-labelledby="guia-cursos-listagem-heading">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2
-              id="guia-cursos-listagem-heading"
-              className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
+        <div className="flex flex-col gap-2">
+          <h2
+            id="guia-cursos-listagem-heading"
+            className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
+          >
+            Explore o diretório
+          </h2>
+          <div className="grid w-fit grid-cols-[auto_6.75rem] items-center gap-x-4">
+            <p className="text-sm font-semibold text-neutral-400">{countLabel}</p>
+            <Button
+              type="button"
+              variant="guia-clear"
+              className={cn(
+                'w-full justify-center',
+                activeCount === 0 && 'invisible pointer-events-none',
+              )}
+              onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
+              tabIndex={activeCount === 0 ? -1 : 0}
+              aria-hidden={activeCount === 0 || undefined}
             >
-              Explore o diretório
-            </h2>
-            <p className="mt-1 text-sm font-semibold text-neutral-400">{countLabel}</p>
+              <X size={12} weight="bold" aria-hidden />
+              Limpar ({activeCount})
+            </Button>
           </div>
         </div>
 
@@ -112,7 +128,6 @@ export function GuiaCursosPageContent() {
           levelTags={levelTags}
           filters={filters}
           onChange={handleFiltersChange}
-          activeCount={activeCount}
         />
 
         {filteredCursos.length > 0 ? (

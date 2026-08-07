@@ -15,6 +15,7 @@ import {
   GUIA_CURSO_PARTNER_LABEL,
 } from '@/components/guia/GuiaCursoCard'
 import type { GuiaCurso } from '@/data/guiaCursos'
+import { getRelatosForCurso, type GuiaCursoRelato } from '@/data/guiaCursoFeedback'
 import { cursoMetaLine } from '@/lib/guiaCursoMeta'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
@@ -24,28 +25,46 @@ type GuiaCursoPreviewDialogProps = {
   onOpenChange: (open: boolean) => void
 }
 
-/** Placeholder para Fase 2 — relatos reais virão do Notion. */
-const SAMPLE_RELATOS: Record<string, string[]> = {
-  '1061fe3b9e2e4360ad65793b7aaab059': [
-    'Formação completa e bem estruturada para quem está começando. A trilha de UX é um bom ponto de partida.',
-    'Conteúdo denso. Vale combinar com projetos práticos paralelos para fixar.',
-  ],
-  b492db04bde5445aa8e06798350656c3: [
-    'Bootcamp intenso com mentoria. Exige dedicação, mas a comunidade ajuda bastante.',
-  ],
+function formatRelatoDate(iso?: string) {
+  if (!iso) return null
+  const date = new Date(iso)
+  if (Number.isNaN(date.getTime())) return null
+  return new Intl.DateTimeFormat('pt-BR', {
+    month: 'short',
+    year: 'numeric',
+  }).format(date)
+}
+
+function RelatoCard({ relato }: { relato: GuiaCursoRelato }) {
+  const dateLabel = formatRelatoDate(relato.receivedAt)
+
+  return (
+    <li className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3">
+      <blockquote className="text-sm italic leading-relaxed text-neutral-500 whitespace-pre-line">
+        {relato.text}
+      </blockquote>
+      {(relato.author || dateLabel) && (
+        <footer className="mt-3 text-xs font-semibold text-neutral-400">
+          {relato.author}
+          {relato.author && dateLabel ? ' · ' : null}
+          {dateLabel}
+        </footer>
+      )}
+    </li>
+  )
 }
 
 function RelatosSection({ curso }: { curso: GuiaCurso }) {
-  const relatos = SAMPLE_RELATOS[curso.id]
+  const relatos = getRelatosForCurso(curso.id)
 
-  if (!curso.hasFeedback && !relatos) {
+  if (relatos.length === 0) {
     return (
       <section className="rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-6">
         <p className="text-sm font-semibold text-neutral-400">
           Ainda não há relatos publicados para este curso.
         </p>
         <p className="mt-2 text-xs text-neutral-400/80">
-          Em breve você poderá ler e enviar relatos da comunidade (Fase 2).
+          Se você fez este curso, compartilhe sua experiência com a comunidade.
         </p>
       </section>
     )
@@ -60,20 +79,10 @@ function RelatosSection({ curso }: { curso: GuiaCurso }) {
         </h3>
       </div>
       <ul className="mt-4 space-y-3">
-        {(relatos ?? [
-          'Relatos reais deste curso serão carregados do Notion na Fase 2.',
-        ]).map((relato) => (
-          <li
-            key={relato}
-            className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3 text-sm leading-relaxed text-neutral-500"
-          >
-            “{relato}”
-          </li>
+        {relatos.map((relato) => (
+          <RelatoCard key={relato.id} relato={relato} />
         ))}
       </ul>
-      <p className="mt-4 text-xs font-semibold text-neutral-400">
-        Preview: conteúdo ilustrativo até integração com a base de feedbacks.
-      </p>
     </section>
   )
 }
@@ -117,7 +126,7 @@ export function GuiaCursoPreviewDialog({
             </div>
           ) : null}
 
-          {curso.hasFeedback ? (
+          {curso.hasFeedback || getRelatosForCurso(curso.id).length > 0 ? (
             <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-brand-500 uppercase">
               <ChatCircleDots size={14} weight="fill" aria-hidden />
               {GUIA_CURSO_FEEDBACK_LABEL}
