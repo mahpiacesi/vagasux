@@ -40,8 +40,8 @@ function RelatoCard({ relato }: { relato: GuiaCursoRelato }) {
 
   return (
     <li className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3">
-      <blockquote className="text-sm leading-relaxed text-neutral-500 whitespace-pre-line">
-        “{relato.text}”
+      <blockquote className="text-sm italic leading-relaxed text-neutral-500 whitespace-pre-line">
+        {relato.text}
       </blockquote>
       {(relato.author || dateLabel) && (
         <footer className="mt-3 text-xs font-semibold text-neutral-400">
