@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-07-31 (noite)
+**Última atualização:** 2026-08-07 (noite)
 
 ---
 
@@ -37,6 +37,10 @@
 - Collector Parceiros, PRs #34 e #37–#40 mergeados
 - n8n self-hosted; Scheduler inclui Collector Parceiros após VagasUX
 
+### Base de cursos (07 ago)
+- Registros duplicados da PUC foram consolidados: permanece somente **PUC Minas** no banco `Abertos`.
+- A página preserva as modalidades, cursos, investimento e relato já registrados; não há entrada ativa `PUCMG`.
+
 ---
 
 ## Próximo passo esperado
@@ -52,6 +56,7 @@
 |------|--------|
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
+| Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
