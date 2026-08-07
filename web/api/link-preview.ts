@@ -1,11 +1,25 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
-import { guiaTemaUxLinkSections } from '../src/data/guiaTemaUxLinks'
 
-const allowedUrls = new Set(
-  guiaTemaUxLinkSections.flatMap((section) =>
-    section.links.map((link) => link.url),
-  ),
-)
+const allowedUrls = new Set([
+  'https://cantunsee.space/',
+  'https://mobbin.com/',
+  'https://screensdesign.com/',
+  'https://pageflows.com/',
+  'https://webframe.xyz/',
+  'https://theappfuel.com/',
+  'https://chamjo.design/',
+  'https://pttrns.com/',
+  'https://land-book.com/',
+  'https://scrnshts.club/',
+  'https://interfaceingame.com/',
+  'https://www.unsection.com/',
+  'https://refero.design/',
+  'https://element.eleme.io/#/en-US',
+  'https://collectui.com/',
+  'https://www.producthunt.com/',
+  'https://designmunk.com/',
+  'https://www.lapa.ninja/',
+])
 
 function getAttribute(tag: string, attribute: string) {
   const match = tag.match(
