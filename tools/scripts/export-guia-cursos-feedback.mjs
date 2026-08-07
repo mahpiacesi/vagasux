@@ -1,21 +1,29 @@
 #!/usr/bin/env node
 /**
- * Exporta relatos aprovados da database Notion "Relatos de cursos"
- * para web/src/data/guiaCursoFeedback.ts
+ * Exporta relatos publicados para web/src/data/guiaCursoFeedback.ts
+ *
+ * Fontes (merge + dedupe):
+ * 1. Database Notion "Relatos de cursos" (Categorizado = Sim)
+ * 2. Blockquotes nas páginas dos cursos (relatos-cursos-pages.snapshot.json)
  *
  * Uso:
  *   node tools/scripts/export-guia-cursos-feedback.mjs
- *   node tools/scripts/export-guia-cursos-feedback.mjs [relatos-snapshot.json] [cursos.ts]
  */
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import {
+  mergeRelatos,
+  enrichRelatoFromDb,
+  normalizeRelatoText,
+} from './parse-curso-relatos-page.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '../..')
 const OUT = join(ROOT, 'web/src/data/guiaCursoFeedback.ts')
-const DEFAULT_SNAPSHOT = join(__dirname, 'relatos-notion.snapshot.json')
+const DEFAULT_DB_SNAPSHOT = join(__dirname, 'relatos-notion.snapshot.json')
+const DEFAULT_PAGES_SNAPSHOT = join(__dirname, 'relatos-cursos-pages.snapshot.json')
 const DEFAULT_CURSOS = join(ROOT, 'web/src/data/guiaCursos.ts')
 
 /** Overrides quando o título do relato não bate com Escola do curso. */
@@ -97,7 +105,7 @@ function matchCursoId(relatoTitle, cursos) {
   return bestScore >= 4 ? bestId : null
 }
 
-function mapRelato(row) {
+function mapDbRelato(row) {
   const text = String(row.Relato ?? '').trim()
   if (!text) return null
 
@@ -112,8 +120,15 @@ function mapRelato(row) {
   }
 }
 
+function loadPageRelatos(pagesSnapshotPath) {
+  if (!existsSync(pagesSnapshotPath)) return []
+
+  const raw = JSON.parse(readFileSync(pagesSnapshotPath, 'utf8'))
+  return raw.results ?? raw
+}
+
 function emitTs(byCourse) {
-  const header = `/** Snapshot from Notion database "Relatos de cursos" (Categorizado = Sim). */
+  const header = `/** Relatos publicados (form + blockquotes das páginas de curso). */
 /** Regenerar: node tools/scripts/export-guia-cursos-feedback.mjs */
 
 export type GuiaCursoRelato = {
@@ -123,7 +138,7 @@ export type GuiaCursoRelato = {
   receivedAt?: string
 }
 
-/** Relatos aprovados indexados por curso.id (Notion page id da escola). */
+/** Relatos indexados por curso.id (Notion page id da escola). */
 export const guiaCursoFeedbackByCourse: Record<string, GuiaCursoRelato[]> = `
 
   const helpers = `
@@ -154,17 +169,39 @@ export function getGuiaCursoFeedbackStats() {
   return `${header}${JSON.stringify(sortedByCourse, null, 2)}\n${helpers}`
 }
 
-const snapshotPath = process.argv[2] || DEFAULT_SNAPSHOT
-const cursosPath = process.argv[3] || DEFAULT_CURSOS
-const raw = JSON.parse(readFileSync(snapshotPath, 'utf8'))
-const rows = (raw.results ?? raw).filter((row) => row.Categorizado === 'Sim')
+function mergeDbIntoPages(byCourse, dbByCourse) {
+  for (const [cursoId, dbRelatos] of Object.entries(dbByCourse)) {
+    const pageRelatos = byCourse[cursoId] ?? []
+    const dbByText = new Map(dbRelatos.map((r) => [normalizeRelatoText(r.text), r]))
+
+    const enrichedPages = pageRelatos.map((relato) => {
+      const dbMatch = dbByText.get(normalizeRelatoText(relato.text))
+      return dbMatch ? enrichRelatoFromDb(relato, dbMatch) : relato
+    })
+
+    const merged = mergeRelatos(enrichedPages, dbRelatos)
+    if (merged.length > 0) byCourse[cursoId] = merged
+  }
+
+  for (const [cursoId, dbRelatos] of Object.entries(dbByCourse)) {
+    if (!byCourse[cursoId]) byCourse[cursoId] = dbRelatos
+  }
+}
+
+const dbSnapshotPath = process.argv[2] || DEFAULT_DB_SNAPSHOT
+const pagesSnapshotPath = process.argv[3] || DEFAULT_PAGES_SNAPSHOT
+const cursosPath = process.argv[4] || DEFAULT_CURSOS
+
+const dbRaw = JSON.parse(readFileSync(dbSnapshotPath, 'utf8'))
+const dbRows = (dbRaw.results ?? dbRaw).filter((row) => row.Categorizado === 'Sim')
 const cursos = loadCursos(cursosPath)
 
 const byCourse = {}
+const dbByCourse = {}
 const unmatched = []
 
-for (const row of rows) {
-  const relato = mapRelato(row)
+for (const row of dbRows) {
+  const relato = mapDbRelato(row)
   if (!relato) continue
 
   const cursoId = matchCursoId(row['Escola / Curso'], cursos)
@@ -173,9 +210,15 @@ for (const row of rows) {
     continue
   }
 
-  if (!byCourse[cursoId]) byCourse[cursoId] = []
-  byCourse[cursoId].push(relato)
+  if (!dbByCourse[cursoId]) dbByCourse[cursoId] = []
+  dbByCourse[cursoId].push(relato)
 }
+
+for (const entry of loadPageRelatos(pagesSnapshotPath)) {
+  if (entry.relatos?.length > 0) byCourse[entry.cursoId] = entry.relatos
+}
+
+mergeDbIntoPages(byCourse, dbByCourse)
 
 writeFileSync(OUT, emitTs(byCourse), 'utf8')
 
@@ -185,5 +228,5 @@ console.log(
   `Wrote ${relatoCount} relatos for ${courseCount} cursos to ${OUT}`,
 )
 if (unmatched.length > 0) {
-  console.warn('Unmatched relatos:', unmatched.join(', '))
+  console.warn('Unmatched DB relatos:', unmatched.join(', '))
 }
