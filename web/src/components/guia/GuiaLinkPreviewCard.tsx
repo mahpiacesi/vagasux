@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowSquareOut, ImageSquare, Sparkle } from '@phosphor-icons/react'
+import { ArrowSquareOut, Umbrella } from '@phosphor-icons/react'
 import type { GuiaTemaLink } from '@/data/guiaTemaUxLinks'
 import { cn } from '@/lib/utils'
 
@@ -110,17 +110,9 @@ export function GuiaLinkPreviewCard({
         {isLoadingImage ? (
           <div className="h-full min-h-32 animate-pulse bg-brand-100/80" />
         ) : showFallback ? (
-          <div className="relative flex h-full min-h-32 items-center justify-center overflow-hidden bg-brand-100/80 p-4">
-            <span className="absolute -top-3 -right-3 size-16 rounded-full bg-complementary-200/70" />
-            <span className="absolute -bottom-6 -left-4 size-20 rounded-full bg-brand-200/50" />
-            <span className="relative flex size-12 items-center justify-center rounded-2xl bg-neutral-100 text-brand-400 shadow-sm">
-              <ImageSquare size={28} weight="duotone" aria-hidden />
-              <Sparkle
-                size={14}
-                weight="fill"
-                className="absolute -top-1 -right-1 text-highlight-200"
-                aria-hidden
-              />
+          <div className="flex h-full min-h-32 items-center justify-center bg-brand-100/45 p-4">
+            <span className="flex size-11 items-center justify-center rounded-xl bg-neutral-100/70 text-brand-300">
+              <Umbrella size={25} weight="duotone" aria-hidden />
             </span>
           </div>
         ) : (
