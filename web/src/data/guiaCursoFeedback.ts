@@ -72,7 +72,7 @@ export const guiaCursoFeedbackByCourse: Record<string, GuiaCursoRelato[]> = {
       "receivedAt": "2023-03-30T00:00:00Z"
     }
   ],
-  "1b08cbb0d90480588e52c9840e4300ba": [
+  "58949b1ad1b64b9c96728c2bad73c5e8": [
     {
       "id": "d80f0050",
       "text": "Participei do curso de Design Ops, e foi muito bom o aprendizado. Apesar da minha senioridade ser inferior, pude aprender muito sobre operações de Design e também compartilhar a minha vivência no mercado de trabalho com gestão de pessoas nas mentorias que o João promove durante o curso além das aulas.",

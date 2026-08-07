@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-07-31 (noite)
+**Última atualização:** 2026-08-07 (noite)
 
 ---
 
@@ -37,6 +37,19 @@
 - Collector Parceiros, PRs #34 e #37–#40 mergeados
 - n8n self-hosted; Scheduler inclui Collector Parceiros após VagasUX
 
+### Base de cursos (07 ago)
+- Registros duplicados da PUC foram consolidados: permanece somente **PUC Minas** no banco `Abertos`.
+- A página preserva as modalidades, cursos, investimento e relato já registrados; não há entrada ativa `PUCMG`.
+
+### Guia de cursos, desconto parceiro (07 ago)
+- O painel lateral de detalhes exibe descontos e cupons de parceiros, incluindo Alura e FIAP.
+- Cursos extintos foram removidos da curadoria. Cubos Academy e Tangível Academy seguem no diretório, sem selo de parceria.
+- A duplicata `Design Ops Lab` foi retirada; permanece `DesignOps Lab` com o relato preservado.
+
+### Guia por tema, UX (07 ago)
+- A rota `/guia/tema/ux` ganhou conteúdo de referências para UX: padrões, bibliotecas de UI e landing pages.
+- Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Priorizam `og:image`/`twitter:image`, usam captura visual sem metadados e mostram um fallback sutil com ícone de guarda-chuva quando a prévia não é confiável ou bloqueada.
+
 ---
 
 ## Próximo passo esperado
@@ -52,6 +65,8 @@
 |------|--------|
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
+| Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
+| Destaque de desconto da Alura | Em PR (#71) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---

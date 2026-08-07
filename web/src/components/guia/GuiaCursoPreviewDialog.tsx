@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowSquareOut, ChatCircleDots } from '@phosphor-icons/react'
+import { ArrowSquareOut, ChatCircleDots, Tag } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -14,6 +14,7 @@ import {
   GUIA_CURSO_FEEDBACK_LABEL,
   GUIA_CURSO_PARTNER_LABEL,
 } from '@/components/guia/GuiaCursoCard'
+import { getGuiaCursoOffer } from '@/data/guiaCursoOffers'
 import type { GuiaCurso } from '@/data/guiaCursos'
 import { getRelatosForCurso, type GuiaCursoRelato } from '@/data/guiaCursoFeedback'
 import { cursoMetaLine } from '@/lib/guiaCursoMeta'
@@ -95,6 +96,11 @@ export function GuiaCursoPreviewDialog({
   if (!curso) return null
 
   const meta = cursoMetaLine(curso)
+  const offer = getGuiaCursoOffer(curso.id)
+  const ctaUrl = offer?.ctaUrl ?? curso.url
+  const ctaLabel = offer
+    ? `Garantir ${offer.discountLabel}`
+    : 'Acessar curso'
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -133,6 +139,44 @@ export function GuiaCursoPreviewDialog({
             </p>
           ) : null}
 
+          {offer ? (
+            <section
+              aria-labelledby="course-discount-title"
+              className="mt-5 rounded-2xl border border-brand-200/50 bg-brand-100/35 px-4 py-4"
+            >
+              <div className="flex items-center gap-2 text-sm font-bold text-brand-500">
+                <Tag size={18} weight="duotone" aria-hidden />
+                <h3 id="course-discount-title">{offer.discountLabel}</h3>
+              </div>
+              {offer.description ? (
+                <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+                  {offer.description}
+                </p>
+              ) : null}
+              {offer.benefits ? (
+                <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-neutral-400">
+                  {offer.benefits.map((benefit) => (
+                    <li key={benefit} className="flex gap-2">
+                      <span className="text-brand-500" aria-hidden>
+                        •
+                      </span>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {offer.couponCode ? (
+                <p className="mt-3 text-sm text-neutral-400">
+                  Use o cupom{' '}
+                  <code className="rounded-md bg-neutral-100 px-2 py-1 font-bold text-brand-500">
+                    {offer.couponCode}
+                  </code>
+                  .
+                </p>
+              ) : null}
+            </section>
+          ) : null}
+
           <div className="mt-6">
             <RelatosSection curso={curso} />
           </div>
@@ -143,8 +187,8 @@ export function GuiaCursoPreviewDialog({
             <Link to={guiaRoutes.cursosPublicarRelato}>Enviar relato</Link>
           </Button>
           <Button asChild variant="guia">
-            <a href={curso.url} target="_blank" rel="noopener noreferrer">
-              Acessar curso
+            <a href={ctaUrl} target="_blank" rel="noopener noreferrer">
+              {ctaLabel}
               <ArrowSquareOut size={16} weight="bold" aria-hidden />
             </a>
           </Button>
