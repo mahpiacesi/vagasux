@@ -48,7 +48,7 @@
 
 ### Guia por tema, UX (07 ago)
 - A rota `/guia/tema/ux` ganhou conteúdo de referências para UX: padrões, bibliotecas de UI e landing pages.
-- Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Um endpoint faz unfurl de `og:image`/`twitter:image`, com fallback compatível no ambiente local e ilustração quando não houver miniatura.
+- Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Priorizam `og:image`/`twitter:image`, usam captura visual sem metadados e mostram ilustração quando a prévia não é confiável.
 
 ---
 
