@@ -41,6 +41,10 @@
 - Registros duplicados da PUC foram consolidados: permanece somente **PUC Minas** no banco `Abertos`.
 - A página preserva as modalidades, cursos, investimento e relato já registrados; não há entrada ativa `PUCMG`.
 
+### Guia de cursos, desconto parceiro (07 ago)
+- O modal de detalhes da Alura agora exibe um destaque de 15% de desconto para a comunidade.
+- O CTA usa `https://www.alura.com.br/promocao/comunidade15`; os demais cursos permanecem sem destaque.
+
 ---
 
 ## Próximo passo esperado
@@ -57,6 +61,7 @@
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
+| Destaque de desconto da Alura | Em PR (#71) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
