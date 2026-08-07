@@ -75,7 +75,7 @@ export function GuiaLinkPreviewCard({
           </div>
         ) : (
           <img
-            src={imageUrl}
+            src={imageUrl ?? undefined}
             alt=""
             loading="lazy"
             decoding="async"
