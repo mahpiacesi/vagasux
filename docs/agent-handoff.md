@@ -46,6 +46,10 @@
 - Cursos extintos foram removidos da curadoria. Cubos Academy e Tangível Academy seguem no diretório, sem selo de parceria.
 - A duplicata `Design Ops Lab` foi retirada; permanece `DesignOps Lab` com o relato preservado.
 
+### Guia por tema, UX (07 ago)
+- A rota `/guia/tema/ux` ganhou conteúdo de referências para UX: padrões, bibliotecas de UI e landing pages.
+- Links usam cards visuais de marcador, com captura externa da página e fallback de domínio.
+
 ---
 
 ## Próximo passo esperado
