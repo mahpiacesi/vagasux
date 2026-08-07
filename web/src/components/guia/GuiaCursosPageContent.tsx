@@ -94,13 +94,14 @@ export function GuiaCursosPageContent() {
 
       <section className="mt-12" aria-labelledby="guia-cursos-listagem-heading">
         <div className="flex flex-col gap-2">
+          <h2
+            id="guia-cursos-listagem-heading"
+            className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
+          >
+            Explore o diretório
+          </h2>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <h2
-              id="guia-cursos-listagem-heading"
-              className="text-xl font-black tracking-[-0.02em] text-neutral-500 md:text-2xl"
-            >
-              Explore o diretório
-            </h2>
+            <p className="text-sm font-semibold text-neutral-400">{countLabel}</p>
             {activeCount > 0 ? (
               <Button
                 type="button"
@@ -112,7 +113,6 @@ export function GuiaCursosPageContent() {
               </Button>
             ) : null}
           </div>
-          <p className="text-sm font-semibold text-neutral-400">{countLabel}</p>
         </div>
 
         <GuiaCursosFilters
