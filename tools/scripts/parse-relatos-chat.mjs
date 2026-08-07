@@ -21,6 +21,8 @@ export const SECTION_TO_CURSO_ID = {
   'cubos academy': 'd123aee3b5744a7a8e5ca6d56120de6e',
   'design circuit': '06ebb7cfe8a240669d56dec3b307f3ef',
   'design circuit (aj)': '06ebb7cfe8a240669d56dec3b307f3ef',
+  'cubos academy': 'd123aee3b5744a7a8e5ca6d56120de6e',
+  'design circuit (aj)': '06ebb7cfe8a240669d56dec3b307f3ef',
   'cel.lep - estacao hack': '61346788115141e8ae5361e944bae50d',
   'interact design foundation (idf)': 'e7cd3716c574419ab234f5e5f8809105',
   'metricas de ux para produtos e servicos digitais (guilherme de paula)':

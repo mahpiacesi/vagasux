@@ -1,33 +1,24 @@
 #!/usr/bin/env node
 /**
- * Gera relatos-cursos-pages.snapshot.json a partir de fetches colados localmente.
- * Uso: node tools/scripts/build-relatos-cursos-pages-snapshot.mjs [fetch-dir]
+ * Gera relatos-cursos-pages.snapshot.json a partir do chat colado pela Mah.
+ *
+ * Uso:
+ *   node tools/scripts/build-relatos-cursos-pages-snapshot.mjs
+ *   node tools/scripts/build-relatos-cursos-pages-snapshot.mjs [chat.md]
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { parseRelatosFromNotionPageText } from './parse-curso-relatos-page.mjs'
+import { parseRelatosChatMarkdown } from './parse-relatos-chat.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const FETCH_DIR = process.argv[2] || join(__dirname, '_fetches-cursos-relatos')
+const DEFAULT_CHAT = join(__dirname, 'relatos-cursos-chat.snapshot.md')
 const OUT = join(__dirname, 'relatos-cursos-pages.snapshot.json')
 
-if (!existsSync(FETCH_DIR)) {
-  console.error(`Fetch dir not found: ${FETCH_DIR}`)
-  process.exit(1)
-}
-
-const results = readdirSync(FETCH_DIR)
-  .filter((file) => file.endsWith('.json'))
-  .map((file) => {
-    const cursoId = file.replace(/\.json$/, '')
-    const raw = JSON.parse(readFileSync(join(FETCH_DIR, file), 'utf8'))
-    const relatos = parseRelatosFromNotionPageText(raw.text ?? '', cursoId)
-    return relatos.length > 0 ? { cursoId, relatos } : null
-  })
-  .filter(Boolean)
-  .sort((a, b) => a.cursoId.localeCompare(b.cursoId))
+const chatPath = process.argv[2] || DEFAULT_CHAT
+const raw = readFileSync(chatPath, 'utf8')
+const { results } = parseRelatosChatMarkdown(raw)
 
 writeFileSync(OUT, `${JSON.stringify({ results }, null, 2)}\n`, 'utf8')
 

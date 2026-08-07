@@ -4,9 +4,11 @@
  *
  * Fontes (merge + dedupe):
  * 1. Database Notion "Relatos de cursos" (Categorizado = Sim)
- * 2. Blockquotes nas páginas dos cursos (relatos-cursos-pages.snapshot.json)
+ * 2. Relatos colados no chat → relatos-cursos-chat.snapshot.md
+ *    → node tools/scripts/build-relatos-cursos-pages-snapshot.mjs
  *
  * Uso:
+ *   node tools/scripts/build-relatos-cursos-pages-snapshot.mjs
  *   node tools/scripts/export-guia-cursos-feedback.mjs
  */
 
