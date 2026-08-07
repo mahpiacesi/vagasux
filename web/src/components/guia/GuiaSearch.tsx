@@ -57,7 +57,7 @@ export function GuiaSearch() {
         <div
           id={listboxId}
           role="listbox"
-          className="absolute top-[calc(100%+0.5rem)] z-20 w-full overflow-hidden rounded-2xl border border-neutral-500/10 bg-neutral-100 shadow-[0_24px_48px_-24px_rgb(7_0_58_/_0.35)]"
+          className="absolute top-[calc(100%+0.5rem)] z-30 w-full rounded-2xl border border-neutral-500/10 bg-neutral-100 shadow-[0_24px_48px_-24px_rgb(7_0_58_/_0.35)]"
         >
           <div className="border-b border-neutral-500/8 px-4 py-3">
             <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">

@@ -13,7 +13,7 @@ export type GuiaCurso = {
   languages: string[]
   /** Parceiro oficial VagasUX. */
   isPartner: boolean
-  /** Tem relatos da comunidade (Fase 2). */
+  /** Tem relatos da comunidade publicados. */
   hasFeedback: boolean
   /** Data de criação no Notion — ordenação do preview. */
   addedAt?: string
@@ -665,7 +665,7 @@ export const guiaCursos: GuiaCurso[] = [
     "languages": [
       "🇧🇷"
     ],
-    "isPartner": true,
+    "isPartner": false,
     "hasFeedback": true,
     "addedAt": "2021-09-14T23:34:00Z"
   },
@@ -789,30 +789,6 @@ export const guiaCursos: GuiaCurso[] = [
     "isPartner": true,
     "hasFeedback": true,
     "addedAt": "2022-02-19T06:30:00Z"
-  },
-  {
-    "id": "1b08cbb0d90480588e52c9840e4300ba",
-    "title": "Design Ops Lab",
-    "url": "https://designopslab.com/cursos/",
-    "cost": [
-      "Pago"
-    ],
-    "modality": [
-      "Online"
-    ],
-    "levels": [
-      "Curso / Bootcamp"
-    ],
-    "themes": [
-      "Design System",
-      "Design Ops"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "isPartner": true,
-    "hasFeedback": true,
-    "addedAt": "2025-03-08T21:39:14Z"
   },
   {
     "id": "3218cbb0d9048064944cfb2f98aa718f",
@@ -1066,31 +1042,6 @@ export const guiaCursos: GuiaCurso[] = [
     "isPartner": false,
     "hasFeedback": false,
     "addedAt": "2022-03-07T03:13:00Z"
-  },
-  {
-    "id": "d7dfb08745c342dfbb5c41acd2782391",
-    "title": "eManual Criativo",
-    "url": "https://www.emanualcriativo.com/emanualdeux/meu-projeto",
-    "cost": [
-      "Pago"
-    ],
-    "modality": [
-      "Online"
-    ],
-    "levels": [
-      "Masterclass"
-    ],
-    "themes": [
-      "UI",
-      "UX",
-      "Figma"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "isPartner": true,
-    "hasFeedback": false,
-    "addedAt": "2021-12-27T19:01:00Z"
   },
   {
     "id": "01d1335179154a2795a436ba29a2a51b",
@@ -1909,33 +1860,6 @@ export const guiaCursos: GuiaCurso[] = [
     "addedAt": "2022-02-19T04:28:00Z"
   },
   {
-    "id": "29a751e9d4834fcdaceda4da74074b9d",
-    "title": "Klotar Prototype Academy",
-    "url": "https://klotar.com/",
-    "cost": [
-      "Pago",
-      "Gratuito"
-    ],
-    "modality": [
-      "Online"
-    ],
-    "levels": [
-      "Curso / Bootcamp"
-    ],
-    "themes": [
-      "UI",
-      "UX",
-      "Figma",
-      "Research"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "isPartner": true,
-    "hasFeedback": false,
-    "addedAt": "2022-03-07T02:40:00Z"
-  },
-  {
     "id": "d487bd7e5a7f4b258fee6123c8959e63",
     "title": "Kubu Impulso Tech",
     "url": "https://somoskubu.com/impulso-tech/",
@@ -2078,33 +2002,6 @@ export const guiaCursos: GuiaCurso[] = [
     "isPartner": false,
     "hasFeedback": false,
     "addedAt": "2021-09-14T22:37:00Z"
-  },
-  {
-    "id": "efa8ce2c95e448ec8b6f0b6c9b18b5ff",
-    "title": "Liderança em Design (Josias Oliveira)",
-    "url": "https://cursoliderancadesign.com.br/",
-    "cost": [
-      "Pago"
-    ],
-    "modality": [
-      "Online"
-    ],
-    "levels": [
-      "Curso / Bootcamp",
-      "Mentoria"
-    ],
-    "themes": [
-      "Liderança",
-      "Estratégia",
-      "UX",
-      "Carreira"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "isPartner": true,
-    "hasFeedback": false,
-    "addedAt": "2024-08-01T14:20:59Z"
   },
   {
     "id": "2558efad554e438d8e4f7068e3ea54dd",
@@ -2539,32 +2436,6 @@ export const guiaCursos: GuiaCurso[] = [
     "addedAt": "2022-02-19T06:10:00Z"
   },
   {
-    "id": "5b2d6f56eb5d45c8af7d45612bb86253",
-    "title": "Product Design 4.0 (Josias Oliveira)",
-    "url": "https://www.cursoproductdesign.com.br/",
-    "cost": [
-      "Pago"
-    ],
-    "modality": [
-      "Online"
-    ],
-    "levels": [
-      "Curso / Bootcamp",
-      "Mentoria"
-    ],
-    "themes": [
-      "UI",
-      "UX",
-      "Produto"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "isPartner": true,
-    "hasFeedback": false,
-    "addedAt": "2024-08-01T14:06:42Z"
-  },
-  {
     "id": "2ea3432beed94784bea3255a179255ff",
     "title": "PrograMaria",
     "url": "https://www.programaria.org/mulherespodem/sprint-comunicacao/",
@@ -2911,7 +2782,7 @@ export const guiaCursos: GuiaCurso[] = [
     "languages": [
       "🇵🇹"
     ],
-    "isPartner": true,
+    "isPartner": false,
     "hasFeedback": false,
     "addedAt": "2022-03-07T02:54:00Z"
   },

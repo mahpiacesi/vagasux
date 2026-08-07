@@ -3,8 +3,8 @@ import { GuiaSearch } from '@/components/guia/GuiaSearch'
 
 export function GuiaHero() {
   return (
-    <section className="relative overflow-hidden border-b border-neutral-500/10 bg-brand-100/40 px-5 pt-14 pb-16 md:px-6 md:pt-20 md:pb-20">
-      <div className="pointer-events-none absolute inset-0">
+    <section className="relative border-b border-neutral-500/10 bg-brand-100/40 px-5 pt-14 pb-16 md:px-6 md:pt-20 md:pb-20">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -38,7 +38,7 @@ export function GuiaHero() {
             <p id="guia-search-label" className="text-center text-sm font-bold text-neutral-500 md:text-left md:text-base">
               O que você quer aprender hoje?
             </p>
-            <div className="mt-4 md:max-w-xl" aria-labelledby="guia-search-label">
+            <div className="relative mt-4 md:max-w-xl" aria-labelledby="guia-search-label">
               <GuiaSearch />
             </div>
           </div>
