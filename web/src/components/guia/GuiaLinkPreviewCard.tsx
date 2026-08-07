@@ -24,14 +24,28 @@ async function getImageUrlFromResponse(response: Response) {
   return null
 }
 
-async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
+function isUsefulOpenGraphImage(url: string) {
+  return !url.includes('gravatar.com/avatar/')
+}
+
+function getScreenshotUrl(url: string) {
+  return `https://image.thum.io/get/width/1200/crop/675/noanimate/${url}`
+}
+
+async function resolvePreviewImageUrl(
+  url: string,
+  useScreenshotFallback: boolean,
+  signal: AbortSignal,
+) {
   try {
     const localResponse = await fetch(
       `/api/link-preview?url=${encodeURIComponent(url)}`,
       { signal },
     )
     const localImageUrl = await getImageUrlFromResponse(localResponse)
-    if (localImageUrl) return localImageUrl
+    if (localImageUrl && isUsefulOpenGraphImage(localImageUrl)) {
+      return localImageUrl
+    }
   } catch {
     // No Vite, funções da Vercel não são atendidas. Usa o unfurl público abaixo.
   }
@@ -41,10 +55,13 @@ async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
     const response = await fetch(`https://api.microlink.io/?${params}`, {
       signal,
     })
-    return await getImageUrlFromResponse(response)
+    const imageUrl = await getImageUrlFromResponse(response)
+    if (imageUrl && isUsefulOpenGraphImage(imageUrl)) return imageUrl
   } catch {
-    return null
+    // A captura visual abaixo ainda pode ser útil quando não há metadados.
   }
+
+  return useScreenshotFallback ? getScreenshotUrl(url) : null
 }
 
 export function GuiaLinkPreviewCard({
@@ -67,13 +84,17 @@ export function GuiaLinkPreviewCard({
     setImageUrl(null)
     setIsLoadingImage(true)
 
-    void resolvePreviewImageUrl(link.url, controller.signal)
+    void resolvePreviewImageUrl(
+      link.url,
+      link.useScreenshotFallback !== false,
+      controller.signal,
+    )
       .then(setImageUrl)
       .catch(() => setImageUrl(null))
       .finally(() => setIsLoadingImage(false))
 
     return () => controller.abort()
-  }, [link.url])
+  }, [link.url, link.useScreenshotFallback])
 
   return (
     <a

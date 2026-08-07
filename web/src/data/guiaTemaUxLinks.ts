@@ -2,6 +2,8 @@ export type GuiaTemaLink = {
   title: string
   url: string
   description?: string
+  /** Desativa captura de tela para sites que retornam uma imagem de erro. */
+  useScreenshotFallback?: boolean
 }
 
 export type GuiaTemaLinkSection = {
@@ -49,7 +51,11 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
         title: 'Chamjo | Design Inspiration from live apps, games, and websites',
         url: 'https://chamjo.design/',
       },
-      { title: 'Design Pttrns', url: 'https://pttrns.com/' },
+      {
+        title: 'Design Pttrns',
+        url: 'https://pttrns.com/',
+        useScreenshotFallback: false,
+      },
       {
         title: 'Land-book - website design inspiration gallery',
         url: 'https://land-book.com/',
