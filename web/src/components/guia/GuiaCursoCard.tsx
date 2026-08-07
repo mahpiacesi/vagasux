@@ -5,7 +5,7 @@ import { cursoMetaLine } from '@/lib/guiaCursoMeta'
 import { cn } from '@/lib/utils'
 
 export const GUIA_CURSO_PARTNER_LABEL = 'Parceiro VagasUX'
-export const GUIA_CURSO_FEEDBACK_LABEL = 'Tem feedback'
+export const GUIA_CURSO_FEEDBACK_LABEL = 'Com feedback'
 
 type GuiaCursoCardProps = {
   curso: GuiaCurso
