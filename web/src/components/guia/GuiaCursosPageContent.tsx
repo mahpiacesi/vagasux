@@ -23,6 +23,7 @@ import {
   GUIA_CURSO_FILTER_DEFAULTS,
   type GuiaCursoFilters,
 } from '@/lib/guiaCursoFilters'
+import { cn } from '@/lib/utils'
 
 function parseFiltersFromSearchParams(params: URLSearchParams): GuiaCursoFilters {
   return {
@@ -100,18 +101,22 @@ export function GuiaCursosPageContent() {
           >
             Explore o diretório
           </h2>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="grid w-fit grid-cols-[auto_6.75rem] items-center gap-x-4">
             <p className="text-sm font-semibold text-neutral-400">{countLabel}</p>
-            {activeCount > 0 ? (
-              <Button
-                type="button"
-                variant="guia-clear"
-                onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
-              >
-                <X size={12} weight="bold" aria-hidden />
-                Limpar ({activeCount})
-              </Button>
-            ) : null}
+            <Button
+              type="button"
+              variant="guia-clear"
+              className={cn(
+                'w-full justify-center',
+                activeCount === 0 && 'invisible pointer-events-none',
+              )}
+              onClick={() => handleFiltersChange(GUIA_CURSO_FILTER_DEFAULTS)}
+              tabIndex={activeCount === 0 ? -1 : 0}
+              aria-hidden={activeCount === 0 || undefined}
+            >
+              <X size={12} weight="bold" aria-hidden />
+              Limpar ({activeCount})
+            </Button>
           </div>
         </div>
 
