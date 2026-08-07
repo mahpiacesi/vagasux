@@ -148,9 +148,32 @@ export function GuiaCursoPreviewDialog({
                 <Tag size={18} weight="duotone" aria-hidden />
                 <h3 id="course-discount-title">{offer.discountLabel}</h3>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-                Como comunidade, temos 15% de desconto nas licenças da Alura.
-              </p>
+              {offer.description ? (
+                <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+                  {offer.description}
+                </p>
+              ) : null}
+              {offer.benefits ? (
+                <ul className="mt-3 space-y-1.5 text-sm leading-relaxed text-neutral-400">
+                  {offer.benefits.map((benefit) => (
+                    <li key={benefit} className="flex gap-2">
+                      <span className="text-brand-500" aria-hidden>
+                        •
+                      </span>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {offer.couponCode ? (
+                <p className="mt-3 text-sm text-neutral-400">
+                  Use o cupom{' '}
+                  <code className="rounded-md bg-neutral-100 px-2 py-1 font-bold text-brand-500">
+                    {offer.couponCode}
+                  </code>
+                  .
+                </p>
+              ) : null}
             </section>
           ) : null}
 

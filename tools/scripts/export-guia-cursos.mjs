@@ -63,20 +63,36 @@ function hasFeedback(raw) {
   return String(raw ?? '').includes('👍')
 }
 
+/** Cursos descontinuados e duplicados removidos da curadoria pública. */
+const excludedCourseTitles = new Set([
+  'Design Ops Lab',
+  'eManual Criativo',
+  'Klotar Prototype Academy',
+  'Liderança em Design (Josias Oliveira)',
+  'Product Design 4.0 (Josias Oliveira)',
+])
+
+/** Parceiros que seguem no diretório, mas sem selo ou destaque de parceria. */
+const partnerOverrides = new Map([
+  ['Cubos Academy', false],
+  ['Tangível Academy', false],
+])
+
 function mapCurso(row) {
   const id = notionPageId(row.url)
   const url = normalizeUrl(row.Acesso?.trim() || row['Inscrição / Acesso']?.trim() || '')
+  const title = row.Escola?.trim() || 'Sem título'
 
   const item = {
     id,
-    title: row.Escola?.trim() || 'Sem título',
+    title,
     url,
     cost: parseJsonArray(row.Custo),
     modality: parseJsonArray(row.Modalidade).map(normalizeModality),
     levels: parseJsonArray(row['Nível']).map(normalizeLevel),
     themes: parseJsonArray(row.Tema),
     languages: parseJsonArray(row['Língua']),
-    isPartner: isPartner(row['Parceiro?']),
+    isPartner: partnerOverrides.get(title) ?? isPartner(row['Parceiro?']),
     hasFeedback: hasFeedback(row['Feedback?']),
   }
 
@@ -141,7 +157,9 @@ const snapshotPath = process.argv[2] || DEFAULT_SNAPSHOT
 const raw = JSON.parse(readFileSync(snapshotPath, 'utf8'))
 const rows = raw.results ?? raw
 
-const cursos = rows.map(mapCurso)
+const cursos = rows
+  .map(mapCurso)
+  .filter((curso) => !excludedCourseTitles.has(curso.title))
 writeFileSync(OUT, emitTs(cursos), 'utf8')
 
 const partners = cursos.filter((c) => c.isPartner).length

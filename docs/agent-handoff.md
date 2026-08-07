@@ -42,8 +42,9 @@
 - A página preserva as modalidades, cursos, investimento e relato já registrados; não há entrada ativa `PUCMG`.
 
 ### Guia de cursos, desconto parceiro (07 ago)
-- O modal de detalhes da Alura agora exibe um destaque de 15% de desconto para a comunidade.
-- O CTA usa `https://www.alura.com.br/promocao/comunidade15`; os demais cursos permanecem sem destaque.
+- O painel lateral de detalhes exibe descontos e cupons de parceiros, incluindo Alura e FIAP.
+- Cursos extintos foram removidos da curadoria. Cubos Academy e Tangível Academy seguem no diretório, sem selo de parceria.
+- A duplicata `Design Ops Lab` foi retirada; permanece `DesignOps Lab` com o relato preservado.
 
 ---
 
