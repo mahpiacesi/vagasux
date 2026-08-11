@@ -196,6 +196,22 @@ const allowedUrls = new Set([
   'https://www.flaticon.com/',
   'https://fontello.com/',
   'https://iconset.io/',
+  'https://storytale.io/',
+  'https://blush.design/',
+  'https://www.figma.com/community/file/842934129022914364',
+  'https://www.ls.graphics/illustrations',
+  'https://control.rocks/',
+  'https://icons8.com/illustrations',
+  'https://undraw.co/illustrations',
+  'https://www.drawkit.io/',
+  'https://www.humaaans.com/',
+  'https://stubborn.fun/',
+  'https://fresh-folk.com/',
+  'https://www.opendoodles.com/',
+  'https://www.openpeeps.com/',
+  'https://products.ls.graphics/wrrooom',
+  'https://www.pixeltrue.com/free-illustrations',
+  'https://sapiens.ui8.net/',
 ])
 
 function getAttribute(tag: string, attribute: string) {

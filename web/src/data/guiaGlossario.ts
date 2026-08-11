@@ -1234,6 +1234,20 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
+    id: 'ilustracao',
+    term: 'Ilustração',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    whatIs: [
+      'Recurso visual desenhado para explicar, orientar, criar contexto ou dar personalidade a uma interface. Pode aparecer em estados vazios, onboarding, mensagens e materiais de apoio.',
+      'Em produtos digitais, uma boa ilustração complementa o conteúdo sem competir com a tarefa principal da pessoa usuária.',
+    ],
+    youWillHear: [
+      '"Vamos usar uma ilustração para explicar esse estado vazio."',
+      '"Essa ilustração precisa seguir o tom visual do produto."',
+    ],
+  },
+  {
     id: 'espacamento',
     term: 'Espaçamento',
     categoryId: 'interface',
