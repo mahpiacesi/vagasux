@@ -5,6 +5,7 @@ import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { GuiaTemaContentDesignPageContent } from '@/components/guia/GuiaTemaContentDesignPageContent'
 import { GuiaTemaIaPageContent } from '@/components/guia/GuiaTemaIaPageContent'
 import { GuiaTemaResearchPageContent } from '@/components/guia/GuiaTemaResearchPageContent'
+import { GuiaTemaDesignSystemPageContent } from '@/components/guia/GuiaTemaDesignSystemPageContent'
 import { GuiaTemaUxPageContent } from '@/components/guia/GuiaTemaUxPageContent'
 import { getGuiaTemaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -46,6 +47,9 @@ export function GuiaTemaPage() {
 
   if (tema.id === 'research') {
     return <><GuiaTemaNavigation /><GuiaTemaResearchPageContent /></>
+  }
+  if (tema.id === 'design-system') {
+    return <><GuiaTemaNavigation /><GuiaTemaDesignSystemPageContent /></>
   }
 
   return (
