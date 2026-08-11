@@ -102,7 +102,7 @@ export function GuiaLinkPreviewCard({
 
     void resolvePreviewImageUrl(
       link.url,
-      link.useScreenshotFallback === true,
+      link.useScreenshotFallback !== false,
       controller.signal,
     )
       .then(setImageUrl)
