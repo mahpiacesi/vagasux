@@ -57,19 +57,21 @@ export function GuiaFerramentasPageContent() {
         </div>
 
         {figmaOpen ? (
-          <ul className="mt-6 grid gap-4 lg:grid-cols-2">
-            {guiaFigmaLinks.map((link) => (
-              <li key={link.url}>
-                <GuiaLinkPreviewCard link={link} className="h-full" />
-              </li>
-            ))}
-          </ul>
-          <blockquote className="mt-6 border-l-2 border-brand-300 pl-4 text-sm italic leading-relaxed text-neutral-400">
-            “Master your craft, but don't forget mastering your humanity.”
-            <footer className="mt-1 text-xs font-bold not-italic text-neutral-500">
-              Haraldur Thorleifsson
-            </footer>
-          </blockquote>
+          <>
+            <ul className="mt-6 grid gap-4 lg:grid-cols-2">
+              {guiaFigmaLinks.map((link) => (
+                <li key={link.url}>
+                  <GuiaLinkPreviewCard link={link} className="h-full" />
+                </li>
+              ))}
+            </ul>
+            <blockquote className="mt-6 border-l-2 border-brand-300 pl-4 text-sm italic leading-relaxed text-neutral-400">
+              “Master your craft, but don't forget mastering your humanity.”
+              <footer className="mt-1 text-xs font-bold not-italic text-neutral-500">
+                Haraldur Thorleifsson
+              </footer>
+            </blockquote>
+          </>
         ) : null}
       </section>
 
