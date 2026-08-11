@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
@@ -17,7 +18,10 @@ export function GuiaLivrosPageContent({
   title,
   description,
 }: GuiaLivrosPageContentProps) {
-  const [contextFilter, setContextFilter] = useState<string | null>(null)
+  const [searchParams] = useSearchParams()
+  const [contextFilter, setContextFilter] = useState<string | null>(
+    () => searchParams.get('contexto'),
+  )
   const contextTags = useMemo(() => getGuiaBookContextTags(), [])
 
   const filteredBooks = useMemo(

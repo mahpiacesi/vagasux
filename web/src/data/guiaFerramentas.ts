@@ -128,3 +128,15 @@ export const guiaFerramentasLinks: GuiaFerramentaLink[] = [
     url: 'https://www.canva.com/pt_br/',
   },
 ]
+
+export const guiaQuadroDeIdeiasLinks: GuiaFerramentaLink[] = [
+  { title: 'FigJam', description: 'Quadro colaborativo da Figma para ideias, dinâmicas e fluxos.', url: 'https://www.figma.com/pt-br/figjam/' },
+  { title: 'Miro', description: 'Quadro colaborativo para dinâmicas, mapas e workshops.', url: 'https://miro.com/' },
+  { title: 'Miroverse', description: 'Galeria de templates criados pela comunidade Miro.', url: 'https://miro.com/miroverse/' },
+  { title: 'MURAL', description: 'Workspace visual para colaboração e facilitação.', url: 'https://www.mural.co/' },
+  { title: 'Whimsical', description: 'Crie fluxogramas, wireframes e documentos visuais.', url: 'https://whimsical.com/' },
+  { title: 'MindMeister', description: 'Mapas mentais online para organizar ideias.', url: 'https://www.mindmeister.com/' },
+  { title: 'Milanote', description: 'Organize projetos criativos em quadros flexíveis.', url: 'https://milanote.com/' },
+  { title: 'Witeboard', description: 'Quadro branco simples para colaboração em tempo real.', url: 'https://witeboard.com/' },
+  { title: 'FlowMapp', description: 'Ferramenta para sitemaps, jornadas e fluxos de UX.', url: 'https://www.flowmapp.com/' },
+]

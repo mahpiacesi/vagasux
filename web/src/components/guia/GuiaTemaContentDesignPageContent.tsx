@@ -40,7 +40,7 @@ export function GuiaTemaContentDesignPageContent() {
       </section>
       <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
         <h2 className="text-xl font-black text-neutral-500">Procurando cursos de UX Writing?</h2>
-        <Button asChild variant="guia-outline" className="mt-5"><Link to={`${guiaRoutes.cursos}?tema=Writing`}>Explorar cursos de UX Writing</Link></Button>
+        <Button asChild variant="guia-outline" className="mt-5"><Link to={`${guiaRoutes.cursos}?tema=Writing#guia-cursos-filtros`}>Explorar cursos de UX Writing</Link></Button>
       </section>
     </div>
   </div>

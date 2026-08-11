@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import {
   guiaFerramentasLinks,
   guiaFigmaLinks,
+  guiaQuadroDeIdeiasLinks,
 } from '@/data/guiaFerramentas'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
@@ -91,10 +92,26 @@ export function GuiaFerramentasPageContent() {
           id="ferramentas-lista"
           className="text-xl font-black tracking-[-0.02em] text-neutral-500"
         >
-          Outras ferramentas
+          Ferramentas de criação
         </h2>
         <ul className="mt-5 grid gap-4 lg:grid-cols-2">
           {guiaFerramentasLinks.map((link) => (
+            <li key={link.url}>
+              <GuiaLinkPreviewCard link={link} className="h-full" />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-12" aria-labelledby="quadro-de-ideias">
+        <h2 id="quadro-de-ideias" className="text-xl font-black tracking-[-0.02em] text-neutral-500">
+          Quadro de ideias
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+          Ferramentas para dinâmicas, wireframes, fluxos, jornadas e colaboração com o time.
+        </p>
+        <ul className="mt-5 grid gap-4 lg:grid-cols-2">
+          {guiaQuadroDeIdeiasLinks.map((link) => (
             <li key={link.url}>
               <GuiaLinkPreviewCard link={link} className="h-full" />
             </li>

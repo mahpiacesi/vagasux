@@ -34,6 +34,8 @@ export function GuiaTemasSection() {
                 to={
                   tema.id === 'ferramentas'
                     ? guiaRoutes.ferramentas
+                    : tema.id === 'fundamentos'
+                      ? guiaRoutes.fundamentos
                     : guiaRoutes.tema(tema.id)
                 }
                 className="flex h-full flex-col items-center rounded-2xl border border-neutral-500/10 bg-neutral-100 px-3 py-4 text-center transition-colors hover:border-brand-300 hover:bg-brand-100/40"

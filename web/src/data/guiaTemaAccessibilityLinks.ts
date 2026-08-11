@@ -1,0 +1,19 @@
+import type { GuiaTemaLinkSection } from '@/data/guiaTemaUxLinks'
+const a='Recurso curado para criar experiências digitais mais acessíveis.'
+export const guiaTemaAccessibilityLinks: GuiaTemaLinkSection[]=[
+{title:'Entendendo o contexto',links:[
+['Introdução à acessibilidade','https://brasil.uxdesign.cc/uma-breve-introdu%C3%A7%C3%A3o-a-acessibilidade-a82d61e72e75'],['Acessibilidade no Design de Interação','https://medium.com/tableless/acessibilidade-no-design-de-intera%C3%A7%C3%A3o-exemplos-e-recomenda%C3%A7%C3%B5es-86c059ef9e2f'],['Acessibilidade e conteúdo UX','https://medium.com/ladies-that-ux-br/acessibilidade-e-produ%C3%A7%C3%A3o-de-conte%C3%BAdo-ux-913c4c55847c']
+].map(([title,url])=>({title,url,description:a}))},
+{title:'Iniciativas brasileiras',links:[
+['Design Inclusivo','http://designinclusivo.com/'],['acessibilida.de','http://acessibilida.de/'],['Guia WCAG','https://guia-wcag.com/'],['Acessibilidade Toolkit','http://acessibilidadetoolkit.com/'],['GAIA','https://gaia.wiki.br/'],['Movimento Web para Todos','https://mwpt.com.br/']
+].map(([title,url])=>({title,url,description:a}))},
+{title:'Iniciativas estrangeiras',links:[
+['Accessibility for teams','https://accessibility-for-teams.com/'],['Accessibility for UX designers','https://digital.gov/guides/accessibility-for-teams/ux-design/'],['Accessibility Cheatsheet','https://moritzgiessmann.de/accessibility-cheatsheet/'],['Inclusive Design Spectrum','https://spectrum.adobe.com/page/inclusive-design/'],['Funkify','https://www.funkify.se/'],['Vox Accessibility Guidelines','http://accessibility.voxmedia.com/'],['WCAG for designers','https://gerireid.com/wcag-for-designers.html'],['Dos and don’ts','https://accessibility.blog.gov.uk/2016/09/02/dos-and-donts-on-designing-for-accessibility/']
+].map(([title,url])=>({title,url,description:a}))},
+{title:'Materiais e ferramentas',links:[
+['A11y Annotation Kit','https://www.figma.com/file/RWGgrLLjkcDndL7WTbHcHf/A11y-Annotation-Kit-(Community)?node-id=37%3A0'],['Acessibilidade Digital: Primeiros passos','https://docs.google.com/presentation/d/1IYcSZtK-XcYO4B9t6QCbaQI9dU33I9FZTSjitGLLc-o/edit?usp=sharing'],['Cartilhas de Acessibilidade na Web','https://w3c.br/web-para-todos/cartilhas-de-acessibilidade-na-web/'],['E-book Profissionais com deficiência','https://d16zac8h4kza33.cloudfront.net/ebook-marketing-profissionais-com-deficiencia/eBook-marketing-profissionais-com-deficiencia-resultados-digitais.pdf']
+].map(([title,url])=>({title,url,description:a}))},
+{title:'Transcrição automática',links:[
+['Speechnotes','https://speechnotes.co/pt/'],['Live Transcribe','https://play.google.com/store/apps/details?id=com.google.audio.hearing.visualization.accessibility.scribe'],['Web Captioner','https://captioner.live/']
+].map(([title,url])=>({title,url,description:a}))},
+]

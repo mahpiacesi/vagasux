@@ -1645,6 +1645,51 @@ export const guiaBooks: GuiaBook[] = [
     "url": "https://www.editorabrauer.com.br/livros-de-design/vis%C3%A3o-de-produto-a-partir-do-discovery",
     "addedAt": "2026-08-04T16:22:22Z"
   }
+,  {
+    "id": "3b98cbb0d90480b5ab54faa875ef012f",
+    "title": "Accessibility for Everyone",
+    "authors": ["Laura Kalbag"],
+    "context": ["Acessibilidade"],
+    "languages": ["🇺🇸"],
+    "url": "https://link.amazon/B0514zdTn",
+    "addedAt": "2026-08-11T22:00:00Z"
+  },
+  {
+    "id": "3b98cbb0d904803a848ee89f56d9d76e",
+    "title": "Mismatch",
+    "authors": ["Kat Holmes"],
+    "context": ["Acessibilidade"],
+    "languages": ["🇺🇸"],
+    "url": "https://link.amazon/B0aOt903o",
+    "addedAt": "2026-08-11T22:00:01Z"
+  },
+  {
+    "id": "3b98cbb0d90480f3b81fdcc9d49b4b3e",
+    "title": "A Web for Everyone",
+    "authors": ["Sarah Horton", "Whitney Quesenbery"],
+    "context": ["Acessibilidade"],
+    "languages": ["🇺🇸"],
+    "url": "https://link.amazon/B01B80jwL",
+    "addedAt": "2026-08-11T22:00:02Z"
+  },
+  {
+    "id": "3b98cbb0d904803d8e64c16c82191a3e",
+    "title": "Inclusive Design Patterns",
+    "authors": ["Heydon Pickering"],
+    "context": ["Acessibilidade"],
+    "languages": ["🇺🇸"],
+    "url": "https://link.amazon/B06qFvp1S",
+    "addedAt": "2026-08-11T22:00:03Z"
+  },
+  {
+    "id": "3b98cbb0d90480ff8fd1d950f34a9f93",
+    "title": "Form Design Patterns",
+    "authors": ["Adam Silver"],
+    "context": ["Acessibilidade"],
+    "languages": ["🇺🇸"],
+    "url": "https://link.amazon/B06JLBBKw",
+    "addedAt": "2026-08-11T22:00:04Z"
+  },
 ]
 
 /** Tags de Contexto únicas, ordenadas (Notion multi_select). */
@@ -1660,6 +1705,7 @@ export function filterGuiaBooksByContext(
   books: GuiaBook[],
   contextTag: string | null,
 ): GuiaBook[] {
-  if (!contextTag) return books
-  return books.filter((book) => book.context.includes(contextTag))
+  return books
+    .filter((book) => !contextTag || book.context.includes(contextTag))
+    .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR', { sensitivity: 'base' }))
 }
