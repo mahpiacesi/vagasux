@@ -1,9 +1,8 @@
-import { MagnifyingGlass, TrendUp } from '@phosphor-icons/react'
+import { MagnifyingGlass } from '@phosphor-icons/react'
 import { useId, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import {
-  guiaPopularContent,
   guiaSearchCategories,
   guiaSearchSuggestions,
 } from '@/data/guia'
@@ -115,33 +114,6 @@ export function GuiaSearch() {
             {history.length ? <ul className="mt-2 space-y-1">{history.map((item) => <li key={item.id}><button type="button" className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 hover:bg-brand-100/70" onClick={() => selectResult(item)}>{item.title}</button></li>)}</ul> : <p className="mt-2 px-3 py-2 text-sm font-medium text-neutral-300">Suas buscas recentes aparecerão aqui.</p>}
           </div>
 
-          <div className="px-4 py-3">
-            <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
-              Populares
-            </p>
-            <ul className="mt-2 space-y-1">
-              {guiaPopularContent.slice(0, 3).map((item) => (
-                <li key={item.id}>
-                  <button
-                    type="button"
-                    className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left transition-colors hover:bg-brand-100/70"
-                    onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => selectResult({ id: `popular-${item.id}`, title: item.title, category: 'Popular', to: item.url, external: true, keywords: item.title })}
-                  >
-                    <TrendUp
-                      size={14}
-                      weight="bold"
-                      className="shrink-0 text-brand-400"
-                      aria-hidden
-                    />
-                    <span className="text-sm font-semibold text-neutral-500">
-                      {item.title}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       ) : null}
 
