@@ -172,6 +172,16 @@ const allowedUrls = new Set([
   'https://gridprint.in/',
   'https://sneakpeekit.com/',
   'https://uiprint.co/',
+  'https://www.typewolf.com/',
+  'https://fontjoy.com/',
+  'https://fonts.google.com/',
+  'https://fonts.adobe.com/',
+  'https://www.fontsquirrel.com/',
+  'https://prowebtype.com/',
+  'https://type.method.ac/',
+  'https://justmytype.co/',
+  'https://fontsinuse.com/',
+  'https://uncut.wtf/',
 ])
 
 function getAttribute(tag: string, attribute: string) {

@@ -22,3 +22,15 @@ export const guiaFundamentosGridLinks = [
   { title: 'Sneakpeekit Sketch Sheets', description: 'Folhas de sketch para explorar ideias de interface.', url: 'https://sneakpeekit.com/' },
   { title: 'uiprint', description: 'Mockups, wireframes e sketchpads imprimíveis.', url: 'https://uiprint.co/' },
 ]
+export const guiaFundamentosTypographyLinks = [
+  { title:'Typewolf', description:'Fontes em uso em sites reais e combinações recomendadas.', url:'https://www.typewolf.com/' },
+  { title:'Fontjoy', description:'Gere combinações de fontes usando redes neurais.', url:'https://fontjoy.com/' },
+  { title:'Google Fonts', description:'Repositório aberto de fontes para a web.', url:'https://fonts.google.com/' },
+  { title:'Adobe Fonts', description:'Biblioteca de fontes licenciadas da Adobe.', url:'https://fonts.adobe.com/' },
+  { title:'Font Squirrel', description:'Repositório de fontes gratuitas.', url:'https://www.fontsquirrel.com/' },
+  { title:'Pro Web Type', description:'Guia prático de tipografia profissional para a web.', url:'https://prowebtype.com/' },
+  { title:'Kern Type', description:'Jogo para praticar kerning.', url:'https://type.method.ac/' },
+  { title:'Just My Type', description:'Diretório dedicado à tipografia criado por Daniel Eden.', url:'https://justmytype.co/' },
+  { title:'Fonts In Use', description:'Arquivo pesquisável de design tipográfico.', url:'https://fontsinuse.com/' },
+  { title:'UNCUT.wtf', description:'Catálogo de tipografias de designers independentes.', url:'https://uncut.wtf/' },
+]
