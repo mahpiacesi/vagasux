@@ -39,7 +39,10 @@ export function GuiaTemaIaPageContent() {
             <ul className="mt-5 grid gap-4 lg:grid-cols-2">
               {section.links.map((link) => (
                 <li key={link.url}>
-                  <GuiaLinkPreviewCard link={link} className="h-full" />
+                  <GuiaLinkPreviewCard
+                    link={{ ...link, useScreenshotFallback: false }}
+                    className="h-full"
+                  />
                 </li>
               ))}
             </ul>
