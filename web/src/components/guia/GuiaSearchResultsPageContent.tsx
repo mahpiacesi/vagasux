@@ -25,12 +25,12 @@ export function GuiaSearchResultsPageContent() {
   }
 
   return (
-    <div className="mt-8 w-full">
+    <div className="mx-auto mt-8 w-full max-w-5xl">
       <div className="flex flex-wrap items-center gap-3">
         <GuiaBackToGuiaLink />
         <GuiaFaqLink />
       </div>
-      <header className="mt-8 max-w-3xl">
+      <header className="mt-8 max-w-4xl">
         <h1 className="text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Resultados da busca
         </h1>
@@ -50,7 +50,7 @@ export function GuiaSearchResultsPageContent() {
                 <h2 className="text-xl font-black text-neutral-500">{category}</h2>
                 <span className="rounded-full bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-500">{items.length}</span>
               </div>
-              <ul className="mt-4 grid gap-4 md:grid-cols-2">
+              <ul className="mt-4 grid gap-4">
                 {items.map((item) => (
                   <li key={item.id}>
                     {item.external ? (
