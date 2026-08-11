@@ -681,7 +681,7 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     },
     whatIs: [
       'Área que cria condições para times de Design trabalharem com mais clareza, consistência e eficiência: processos, ferramentas, rituais, documentação e colaboração entre áreas.',
-      'Não é sobre desenhar uma tela. É sobre organizar como o trabalho de Design acontece, evolui e gera impacto dentro da empresa.',
+      'Organiza como o trabalho de Design acontece, evolui e gera impacto dentro da empresa, conectando pessoas, processos e a estratégia do negócio.',
     ],
     youWillHear: [
       '"Precisamos de Design Ops para organizar os rituais e a documentação do time."',
