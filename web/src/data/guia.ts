@@ -100,13 +100,11 @@ export const guiaTrilhas: GuiaTrilha[] = [
 export const guiaTemas: GuiaTema[] = [
   { id: 'ux', title: 'UX', emoji: '🧭' },
   { id: 'ui', title: 'UI', emoji: '🎨' },
-  { id: 'ux-research', title: 'UX Research', emoji: '🔍' },
+  { id: 'research', title: 'UX Research', emoji: '🔍' },
   { id: 'content-design', title: 'Content Design', emoji: '✍️' },
   { id: 'discovery', title: 'Discovery', emoji: '💡' },
-  { id: 'figma', title: 'Figma', emoji: '🖊️' },
-  { id: 'miro', title: 'Miro', emoji: '📋' },
-  { id: 'notion', title: 'Notion', emoji: '📝' },
-  { id: 'design-systems', title: 'Design Systems', emoji: '🧩' },
+  { id: 'ferramentas', title: 'Ferramentas', emoji: '🧰' },
+  { id: 'design-system', title: 'Design System', emoji: '🧩' },
   { id: 'ia', title: 'IA', emoji: '🤖' },
   { id: 'carreira', title: 'Carreira', emoji: '💼' },
 ]

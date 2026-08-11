@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react'
 import { ArrowSquareOut, Umbrella } from '@phosphor-icons/react'
-import type { GuiaTemaLink } from '@/data/guiaTemaUxLinks'
+import { getGuiaCuratedThumbnail } from '@/data/guiaCuratedThumbnails'
 import { cn } from '@/lib/utils'
+
+type GuiaLinkPreview = {
+  title: string
+  url: string
+  description?: string
+  previewImageUrl?: string
+}
 
 function getHostname(url: string) {
   try {
@@ -14,70 +21,49 @@ function getHostname(url: string) {
 async function getImageUrlFromResponse(response: Response) {
   if (!response.ok) return null
 
-  const data = (await response.json()) as {
-    imageUrl?: unknown
-    data?: { image?: { url?: unknown } }
-  }
+  const data = (await response.json()) as { imageUrl?: unknown }
 
   if (typeof data.imageUrl === 'string') return data.imageUrl
-  if (typeof data.data?.image?.url === 'string') return data.data.image.url
   return null
 }
 
-function isUsefulOpenGraphImage(url: string) {
-  return !url.includes('gravatar.com/avatar/')
-}
+async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
+  if (import.meta.env.DEV) return null
 
-function getScreenshotUrl(url: string) {
-  return `https://image.thum.io/get/width/1200/crop/675/noanimate/${url}`
-}
-
-async function resolvePreviewImageUrl(
-  url: string,
-  useScreenshotFallback: boolean,
-  signal: AbortSignal,
-) {
   try {
     const localResponse = await fetch(
       `/api/link-preview?url=${encodeURIComponent(url)}`,
       { signal },
     )
-    const localImageUrl = await getImageUrlFromResponse(localResponse)
-    if (localImageUrl && isUsefulOpenGraphImage(localImageUrl)) {
-      return localImageUrl
-    }
+    return await getImageUrlFromResponse(localResponse)
   } catch {
-    // No Vite, funções da Vercel não são atendidas. Usa o unfurl público abaixo.
+    return null
   }
-
-  try {
-    const params = new URLSearchParams({ url, meta: 'true' })
-    const response = await fetch(`https://api.microlink.io/?${params}`, {
-      signal,
-    })
-    const imageUrl = await getImageUrlFromResponse(response)
-    if (imageUrl && isUsefulOpenGraphImage(imageUrl)) return imageUrl
-  } catch {
-    // A captura visual abaixo ainda pode ser útil quando não há metadados.
-  }
-
-  return useScreenshotFallback ? getScreenshotUrl(url) : null
 }
 
 export function GuiaLinkPreviewCard({
   link,
   className,
 }: {
-  link: GuiaTemaLink
+  link: GuiaLinkPreview
   className?: string
 }) {
+  const curatedThumbnail = getGuiaCuratedThumbnail(link.url)
+  const preferredImageUrl = curatedThumbnail ?? link.previewImageUrl ?? null
   const [imageFailed, setImageFailed] = useState(false)
-  const [imageUrl, setImageUrl] = useState<string | null>(null)
-  const [isLoadingImage, setIsLoadingImage] = useState(true)
+  const [imageUrl, setImageUrl] = useState<string | null>(preferredImageUrl)
+  const [isLoadingImage, setIsLoadingImage] = useState(!preferredImageUrl)
   const hostname = getHostname(link.url)
   const showFallback = !isLoadingImage && (!imageUrl || imageFailed)
 
   useEffect(() => {
+    if (preferredImageUrl) {
+      setImageFailed(false)
+      setImageUrl(preferredImageUrl)
+      setIsLoadingImage(false)
+      return
+    }
+
     const controller = new AbortController()
 
     setImageFailed(false)
@@ -86,7 +72,6 @@ export function GuiaLinkPreviewCard({
 
     void resolvePreviewImageUrl(
       link.url,
-      link.useScreenshotFallback !== false,
       controller.signal,
     )
       .then(setImageUrl)
@@ -94,7 +79,7 @@ export function GuiaLinkPreviewCard({
       .finally(() => setIsLoadingImage(false))
 
     return () => controller.abort()
-  }, [link.url, link.useScreenshotFallback])
+  }, [link.url, preferredImageUrl])
 
   return (
     <a

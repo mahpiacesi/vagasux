@@ -4,6 +4,7 @@ import { guiaDifficultyLabels, type GuiaDifficulty } from '@/data/guia'
 
 type GuiaPlaceholderProps = {
   title: string
+  icon?: string
   description?: string
   level?: GuiaDifficulty
   duration?: string
@@ -12,6 +13,7 @@ type GuiaPlaceholderProps = {
 
 export function GuiaPlaceholder({
   title,
+  icon,
   description,
   level,
   duration,
@@ -21,9 +23,12 @@ export function GuiaPlaceholder({
 
   return (
     <div className="mt-8 max-w-2xl">
-      <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-        {title}
-      </h1>
+      <div className="flex items-center gap-3">
+        {icon ? <span className="text-3xl" aria-hidden>{icon}</span> : null}
+        <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+          {title}
+        </h1>
+      </div>
 
       {description ? (
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">

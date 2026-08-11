@@ -8,6 +8,7 @@ export const guiaRoutes = {
   homeCursos: '/guia#cursos',
   cursos: '/guia/cursos',
   cursosPublicarRelato: '/guia/cursos/publicar-relato',
+  ferramentas: '/guia/ferramentas',
   trilha: (slug: string) => `/guia/trilhas/${slug}`,
   tema: (slug: string) => `/guia/tema/${slug}`,
   tipo: (slug: string) => `/guia/tipo/${slug}`,

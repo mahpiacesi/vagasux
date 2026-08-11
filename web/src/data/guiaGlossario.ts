@@ -115,11 +115,14 @@ export const guiaGlossarioEditorialOrder: Partial<
     'ux-designer',
     'ui-designer',
     'ux-research',
+    'ux-researcher',
+    'ux-writer',
     'design-de-interacao',
     'content-design',
     'arquitetura-da-informacao',
     'design-visual',
     'service-design',
+    'design-ops',
     'customer-experience',
     'hci',
     // Mentalidade: base → frameworks → ferramentas de pensamento
@@ -370,11 +373,11 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Design de Conteúdo',
       usageNote:
-        'No Brasil, muitas vagas ainda usam UX Writing para o mesmo tipo de trabalho. Os dois nomes convivem no mercado.',
+        'É a disciplina que orienta como o conteúdo contribui para a experiência. UX Writer e Content Designer são cargos que atuam nela.',
     },
     whatIs: [
-      'Cuida dos textos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microtextos que orientam a pessoa usuária. No mercado, esse material também costuma ser chamado de copy.',
-      'Prioriza clareza, confiança e ajudar a pessoa usuária a completar a tarefa sem travar.',
+      'Disciplina que planeja, cria e avalia conteúdos em produtos digitais para que as pessoas entendam o que fazer, encontrem o que precisam e completem tarefas com clareza.',
+      'Abrange textos de interface, mensagens de erro, instruções, nomenclaturas e a estratégia de conteúdo ao longo da jornada. Prioriza clareza, confiança e utilidade.',
     ],
     youWillHear: [
       '"Esse botão precisa de um copy mais claro."',
@@ -617,15 +620,72 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Pesquisa em UX',
       usageNote:
-        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
+        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português.',
     },
     whatIs: [
-      'Estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
-      'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
+      'Área que estuda pessoas usuárias para entender necessidades, comportamentos, motivações e dificuldades antes, durante e depois do desenvolvimento de um produto.',
+      'Usa métodos como entrevistas, testes de usabilidade, pesquisas quantitativas e síntese de dados para reduzir incertezas e orientar decisões de produto.',
     ],
     youWillHear: [
-      '"Precisamos de uma pessoa de UX Research antes de fechar essa solução."',
+      '"Precisamos de UX Research antes de fechar essa solução."',
+      '"Esse insight de pesquisa mudou a prioridade do produto."',
+    ],
+  },
+  {
+    id: 'ux-researcher',
+    term: 'UX Researcher',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Pesquisador(a) de UX',
+      usageNote:
+        'É o cargo profissional que atua na área de UX Research. Em algumas empresas, Product Designers também realizam parte dessas atividades.',
+    },
+    whatIs: [
+      'Pessoa profissional que planeja e conduz pesquisas para gerar evidências sobre pessoas usuárias e apoiar decisões de produto.',
+      'Pode recrutar participantes, definir métodos, conduzir entrevistas e testes, analisar dados e comunicar aprendizados para o time.',
+    ],
+    youWillHear: [
       '"A UX Researcher vai recrutar participantes para o estudo."',
+      '"Precisamos de uma pessoa de UX Researcher para esta frente."',
+    ],
+  },
+  {
+    id: 'ux-writer',
+    term: 'UX Writer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Content Designer',
+      usageNote:
+        'UX Writer e Content Designer são nomes de cargo usados no mercado. Ambos trabalham com Content Design, a disciplina de conteúdo em produtos digitais.',
+    },
+    whatIs: [
+      'Pessoa profissional que escreve, revisa e estrutura conteúdos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microcopy.',
+      'Colabora com Design, Produto, Pesquisa e Engenharia para transformar necessidades da pessoa usuária e do negócio em conteúdo claro e útil.',
+    ],
+    youWillHear: [
+      '"Precisamos de um UX Writer para revisar esse fluxo."',
+      '"Essa vaga é para Content Designer, com foco em produto digital."',
+    ],
+  },
+  {
+    id: 'design-ops',
+    term: 'Design Ops',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Design Operations',
+      usageNote:
+        'O termo costuma permanecer em inglês no mercado e se refere à operação que permite o Design trabalhar melhor em escala.',
+    },
+    whatIs: [
+      'Área que cria condições para times de Design trabalharem com mais clareza, consistência e eficiência: processos, ferramentas, rituais, documentação e colaboração entre áreas.',
+      'Organiza como o trabalho de Design acontece, evolui e gera impacto dentro da empresa, conectando pessoas, processos e a estratégia do negócio.',
+    ],
+    youWillHear: [
+      '"Precisamos de Design Ops para organizar os rituais e a documentação do time."',
+      '"Essa iniciativa melhora a operação de Design, não apenas um projeto específico."',
     ],
   },
 
