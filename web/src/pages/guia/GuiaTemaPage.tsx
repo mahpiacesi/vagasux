@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { GuiaTemaContentDesignPageContent } from '@/components/guia/GuiaTemaContentDesignPageContent'
 import { GuiaTemaIaPageContent } from '@/components/guia/GuiaTemaIaPageContent'
+import { GuiaTemaResearchPageContent } from '@/components/guia/GuiaTemaResearchPageContent'
 import { GuiaTemaUxPageContent } from '@/components/guia/GuiaTemaUxPageContent'
 import { getGuiaTemaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -41,6 +42,10 @@ export function GuiaTemaPage() {
         <GuiaTemaContentDesignPageContent />
       </>
     )
+  }
+
+  if (tema.id === 'research') {
+    return <><GuiaTemaNavigation /><GuiaTemaResearchPageContent /></>
   }
 
   return (
