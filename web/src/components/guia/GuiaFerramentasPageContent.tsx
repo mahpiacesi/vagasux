@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CaretDown, FigmaLogo, Toolbox } from '@phosphor-icons/react'
+import { ArrowLeft, CaretDown, FigmaLogo, Question, Toolbox } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,24 @@ export function GuiaFerramentasPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <header className="max-w-3xl">
+      <div className="flex flex-wrap items-center gap-3">
+        <Link
+          to={guiaRoutes.home}
+          className="inline-flex items-center gap-2 rounded-full bg-brand-400 px-4 py-2.5 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500"
+        >
+          <ArrowLeft size={18} weight="bold" aria-hidden />
+          Voltar ao Guia
+        </Link>
+        <Link
+          to={guiaRoutes.faq}
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-500/10 bg-brand-100/30 px-4 py-2.5 text-sm font-bold text-neutral-500 transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500"
+        >
+          <Question size={18} weight="bold" aria-hidden />
+          FAQ
+        </Link>
+      </div>
+
+      <header className="mt-8 max-w-3xl">
         <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
           <Toolbox size={23} weight="duotone" aria-hidden />
         </span>
