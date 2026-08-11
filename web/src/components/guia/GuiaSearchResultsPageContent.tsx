@@ -2,8 +2,9 @@ import { useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowSquareOut, MagnifyingGlass } from '@phosphor-icons/react'
 import { Input } from '@/components/ui/input'
+import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
+import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
 import { searchGuia } from '@/data/guiaSearchIndex'
-import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export function GuiaSearchResultsPageContent() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -25,9 +26,10 @@ export function GuiaSearchResultsPageContent() {
 
   return (
     <div className="mt-8 w-full">
-      <Link to={guiaRoutes.home} className="text-sm font-bold text-brand-400">
-        Voltar ao Guia
-      </Link>
+      <div className="flex flex-wrap items-center gap-3">
+        <GuiaBackToGuiaLink />
+        <GuiaFaqLink />
+      </div>
       <header className="mt-8 max-w-3xl">
         <h1 className="text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Resultados da busca
@@ -41,19 +43,22 @@ export function GuiaSearchResultsPageContent() {
         </p>
       </header>
       {grouped.length ? (
-        <div className="mt-10 space-y-10">
+        <div className="mt-10 space-y-12">
           {grouped.map(([category, items]) => (
             <section key={category}>
-              <h2 className="text-xl font-black text-neutral-500">{category}</h2>
-              <ul className="mt-4 grid gap-3 md:grid-cols-2">
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-black text-neutral-500">{category}</h2>
+                <span className="rounded-full bg-brand-100 px-2.5 py-1 text-xs font-bold text-brand-500">{items.length}</span>
+              </div>
+              <ul className="mt-4 grid gap-4 md:grid-cols-2">
                 {items.map((item) => (
                   <li key={item.id}>
                     {item.external ? (
-                      <a href={item.to} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-2xl border border-neutral-500/10 bg-neutral-100 px-4 py-3 font-bold text-neutral-500 hover:border-brand-300">
-                        {item.title}<ArrowSquareOut size={16} className="text-brand-400" />
+                      <a href={item.to} target="_blank" rel="noopener noreferrer" className="group flex min-h-20 items-center justify-between rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/30">
+                        <span>{item.title}</span><ArrowSquareOut size={16} className="text-brand-400" />
                       </a>
                     ) : (
-                      <Link to={item.to} className="flex rounded-2xl border border-neutral-500/10 bg-neutral-100 px-4 py-3 font-bold text-neutral-500 hover:border-brand-300">
+                      <Link to={item.to} className="flex min-h-20 items-center rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/30">
                         {item.title}
                       </Link>
                     )}
