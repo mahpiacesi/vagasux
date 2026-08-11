@@ -19,11 +19,11 @@ export function GuiaTemaContentDesignPageContent() {
     </header>
     {glossaryEntry ? <section className="mt-10 rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8" aria-labelledby="sobre-content-design">
       <h2 id="sobre-content-design" className="text-xl font-black text-neutral-500">Sobre Content Design</h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-neutral-400">
-        {glossaryEntry.whatIs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      {glossaryEntry.originalName ? <div className="mt-4 rounded-2xl border border-brand-200/60 bg-neutral-100/70 px-5 py-4"><p className="text-xs font-bold tracking-[0.12em] text-brand-400 uppercase">Termo relacionado</p><p className="mt-1.5 text-base font-bold text-neutral-500">{glossaryEntry.originalName.alternate}</p>{glossaryEntry.originalName.usageNote ? <p className="mt-3 text-sm leading-relaxed text-neutral-400">{glossaryEntry.originalName.usageNote}</p> : null}</div> : null}
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div><h3 className="text-base font-black text-neutral-500">O que é?</h3><div className="mt-2 space-y-3 text-sm leading-relaxed text-neutral-400">{glossaryEntry.whatIs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div>
+        <div><h3 className="text-base font-black text-neutral-500">Você provavelmente vai ouvir</h3><ul className="mt-2 space-y-2">{glossaryEntry.youWillHear.map((phrase) => <li key={phrase} className="rounded-xl border border-neutral-500/10 bg-neutral-100/80 px-4 py-3 text-sm font-medium italic text-neutral-500">{phrase}</li>)}</ul></div>
       </div>
-      {glossaryEntry.originalName?.usageNote ? <p className="mt-4 text-sm italic text-neutral-400">{glossaryEntry.originalName.usageNote}</p> : null}
-      <p className="mt-4 text-sm font-semibold text-neutral-500">{glossaryEntry.youWillHear[0]}</p>
       <Button asChild variant="guia-outline" className="mt-5">
         <Link to={`${guiaRoutes.glossario}#content-design`}>Ver no glossário completo</Link>
       </Button>
