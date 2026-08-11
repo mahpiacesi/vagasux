@@ -25,6 +25,10 @@ export function useGuiaBreadcrumbs(): GuiaBreadcrumbItem[] {
       return [{ label: 'Cursos' }]
     }
 
+    if (pathname === guiaRoutes.ferramentas) {
+      return [{ label: 'Ferramentas' }]
+    }
+
     if (pathname === guiaRoutes.cursosPublicarRelato) {
       return [
         { label: 'Cursos', to: guiaRoutes.cursos },

@@ -31,7 +31,11 @@ export function GuiaTemasSection() {
           {guiaTemas.map((tema) => (
             <li key={tema.id}>
               <Link
-                to={guiaRoutes.tema(tema.id)}
+                to={
+                  tema.id === 'ferramentas'
+                    ? guiaRoutes.ferramentas
+                    : guiaRoutes.tema(tema.id)
+                }
                 className="flex h-full flex-col items-center rounded-2xl border border-neutral-500/10 bg-neutral-100 px-3 py-4 text-center transition-colors hover:border-brand-300 hover:bg-brand-100/40"
               >
                 {tema.emoji ? (

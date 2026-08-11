@@ -19,6 +19,17 @@ const allowedUrls = new Set([
   'https://www.producthunt.com/',
   'https://designmunk.com/',
   'https://www.lapa.ninja/',
+  'https://www.figma.com/best-practices/',
+  'https://framer.com/',
+  'https://icons8.com.br/lunacy',
+  'https://webflow.com/',
+  'https://www.sketch.com/',
+  'https://www.axure.com/',
+  'https://www.uxpin.com/',
+  'http://marvelapp.com/',
+  'https://penpot.app/',
+  'https://www.protopie.io/',
+  'https://www.canva.com/pt_br/',
 ])
 
 function getAttribute(tag: string, attribute: string) {

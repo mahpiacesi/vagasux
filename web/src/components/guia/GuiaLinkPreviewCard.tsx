@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import { ArrowSquareOut, Umbrella } from '@phosphor-icons/react'
-import type { GuiaTemaLink } from '@/data/guiaTemaUxLinks'
 import { cn } from '@/lib/utils'
+
+type GuiaLinkPreview = {
+  title: string
+  url: string
+  description?: string
+  useScreenshotFallback?: boolean
+}
 
 function getHostname(url: string) {
   try {
@@ -68,7 +74,7 @@ export function GuiaLinkPreviewCard({
   link,
   className,
 }: {
-  link: GuiaTemaLink
+  link: GuiaLinkPreview
   className?: string
 }) {
   const [imageFailed, setImageFailed] = useState(false)
