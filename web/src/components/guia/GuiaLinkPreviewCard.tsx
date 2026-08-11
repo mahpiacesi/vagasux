@@ -28,6 +28,8 @@ async function getImageUrlFromResponse(response: Response) {
 }
 
 async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
+  if (import.meta.env.DEV) return null
+
   try {
     const localResponse = await fetch(
       `/api/link-preview?url=${encodeURIComponent(url)}`,
