@@ -115,6 +115,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'ux-designer',
     'ui-designer',
     'ux-research',
+    'ux-researcher',
     'ux-writer',
     'design-de-interacao',
     'content-design',
@@ -618,15 +619,34 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     originalName: {
       alternate: 'Pesquisa em UX',
       usageNote:
-        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português. O cargo costuma ser UX Researcher.',
+        'Também aparece como User Research ou Pesquisa com Usuários em vagas e materiais em português.',
     },
     whatIs: [
-      'Estuda pessoas usuárias para entender necessidades, comportamentos e dificuldades antes e durante o desenvolvimento de um produto.',
-      'Product Designers colaboram com UX Researchers e muitas vezes fazem pesquisa no próprio dia a dia. Entrevistas, testes e síntese de dados ficam na categoria Pesquisa deste glossário.',
+      'Área que estuda pessoas usuárias para entender necessidades, comportamentos, motivações e dificuldades antes, durante e depois do desenvolvimento de um produto.',
+      'Usa métodos como entrevistas, testes de usabilidade, pesquisas quantitativas e síntese de dados para reduzir incertezas e orientar decisões de produto.',
     ],
     youWillHear: [
-      '"Precisamos de uma pessoa de UX Research antes de fechar essa solução."',
+      '"Precisamos de UX Research antes de fechar essa solução."',
+      '"Esse insight de pesquisa mudou a prioridade do produto."',
+    ],
+  },
+  {
+    id: 'ux-researcher',
+    term: 'UX Researcher',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Pesquisador(a) de UX',
+      usageNote:
+        'É o cargo profissional que atua na área de UX Research. Em algumas empresas, Product Designers também realizam parte dessas atividades.',
+    },
+    whatIs: [
+      'Pessoa profissional que planeja e conduz pesquisas para gerar evidências sobre pessoas usuárias e apoiar decisões de produto.',
+      'Pode recrutar participantes, definir métodos, conduzir entrevistas e testes, analisar dados e comunicar aprendizados para o time.',
+    ],
+    youWillHear: [
       '"A UX Researcher vai recrutar participantes para o estudo."',
+      '"Precisamos de uma pessoa de UX Researcher para esta frente."',
     ],
   },
   {
