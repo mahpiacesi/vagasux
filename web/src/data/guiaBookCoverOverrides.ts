@@ -3,6 +3,16 @@
  * Chave = id do livro (Notion page id). Preservado entre re-exports do snapshot.
  */
 export const guiaBookCoverOverrides: Record<string, string> = {
+  '3b98cbb0d90480b5ab54faa875ef012f':
+    'https://m.media-amazon.com/images/I/51638bwylwL._SL1360_.jpg',
+  '3b98cbb0d904803a848ee89f56d9d76e':
+    'https://m.media-amazon.com/images/I/61lW9xUDe3L._SL1500_.jpg',
+  '3b98cbb0d90480f3b81fdcc9d49b4b3e':
+    'https://m.media-amazon.com/images/I/81GHQaZ5pqL._SL1500_.jpg',
+  '3b98cbb0d904803d8e64c16c82191a3e':
+    'https://m.media-amazon.com/images/I/81l6orpPloL._SL1500_.jpg',
+  '3b98cbb0d90480ff8fd1d950f34a9f93':
+    'https://m.media-amazon.com/images/I/71gNbh31jIL._SL1500_.jpg',
   /** Design Thinking — Gláucia de Salles Ferro */
   a3fa155b5a77402499fe8ca32b7d211b:
     'https://m.media-amazon.com/images/I/51D3-L2qAoS.jpg',
