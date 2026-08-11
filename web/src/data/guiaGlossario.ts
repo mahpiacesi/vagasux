@@ -382,25 +382,6 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
-    id: 'ux-writer',
-    term: 'UX Writer',
-    categoryId: 'fundamentos',
-    subgroup: 'areas-disciplinas',
-    originalName: {
-      alternate: 'Content Designer',
-      usageNote:
-        'UX Writer e Content Designer são nomes de cargo usados no mercado. Ambos trabalham com Content Design, a disciplina de conteúdo em produtos digitais.',
-    },
-    whatIs: [
-      'Pessoa profissional que escreve, revisa e estrutura conteúdos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microcopy.',
-      'Colabora com Design, Produto, Pesquisa e Engenharia para transformar necessidades da pessoa usuária e do negócio em conteúdo claro e útil.',
-    ],
-    youWillHear: [
-      '"Precisamos de um UX Writer para revisar esse fluxo."',
-      '"Essa vaga é para Content Designer, com foco em produto digital."',
-    ],
-  },
-  {
     id: 'customer-experience',
     term: 'CX',
     categoryId: 'fundamentos',
@@ -645,6 +626,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos de uma pessoa de UX Research antes de fechar essa solução."',
       '"A UX Researcher vai recrutar participantes para o estudo."',
+    ],
+  },
+  {
+    id: 'ux-writer',
+    term: 'UX Writer',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Content Designer',
+      usageNote:
+        'UX Writer e Content Designer são nomes de cargo usados no mercado. Ambos trabalham com Content Design, a disciplina de conteúdo em produtos digitais.',
+    },
+    whatIs: [
+      'Pessoa profissional que escreve, revisa e estrutura conteúdos dentro de produtos digitais: títulos, botões, mensagens de erro, instruções e microcopy.',
+      'Colabora com Design, Produto, Pesquisa e Engenharia para transformar necessidades da pessoa usuária e do negócio em conteúdo claro e útil.',
+    ],
+    youWillHear: [
+      '"Precisamos de um UX Writer para revisar esse fluxo."',
+      '"Essa vaga é para Content Designer, com foco em produto digital."',
     ],
   },
 
