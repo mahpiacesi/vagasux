@@ -93,7 +93,7 @@ export function GuiaCursosPageContent() {
 
       <GuiaCursosHeroSection className="mt-8" />
 
-      <section className="mt-12" aria-labelledby="guia-cursos-listagem-heading">
+      <section id="guia-cursos-filtros" className="mt-12 scroll-mt-24" aria-labelledby="guia-cursos-listagem-heading">
         <div className="flex flex-col gap-2">
           <h2
             id="guia-cursos-listagem-heading"
