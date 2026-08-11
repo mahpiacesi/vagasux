@@ -2,6 +2,23 @@ import type { GuiaTemaLinkSection } from '@/data/guiaTemaUxLinks'
 
 export const guiaTemaContentDesignDescription =
   'Referências, ferramentas e repositórios para escrever experiências mais claras e humanas.'
+const descriptions: Record<string, string> = {
+  'UX Writing: o que é e por onde começar?': 'Introdução à área e ao papel da escrita na experiência.',
+  'UX Writing: Muito além das palavras': 'Reflexão sobre o escopo estratégico de UX Writing.',
+  'As muitas facetas de UX Writing': 'Panorama das possibilidades de atuação na área.',
+  'UX Writing, Copywriting e Web Writing': 'Entenda diferenças de objetivo e aplicação entre as três áreas.',
+  'Portfólio de UX Writer': 'Dicas, exemplos e referências para montar um portfólio.',
+  'Como a colaboração dá vida às palavras': 'Como trabalhar conteúdo em parceria com Design e Produto.',
+  'Repositório de UX Writing': 'Conteúdos e referências reunidos em um só lugar.',
+  'Repositório UX Writing': 'Curadoria atualizada de conteúdos sobre UX Writing.',
+  'A mega list of UX writing resources': 'Lista extensa de referências e recursos da área.',
+  'Best UX Writing Portfolios': 'Exemplos de portfólios para inspiração profissional.',
+  'Material Communication Principles': 'Princípios do Material Design para comunicação em interfaces.',
+  'Guias de voz e tom em Português': 'Seleção de referências de voz e tom em português.',
+  'Guia de redação da Conta Azul': 'Caso sobre estruturar um guia de escrita em produto.',
+  'Voz e tom da Vindi': 'Caso sobre a construção de um guia de comunicação de marca.',
+  'Manual de Redação Bench': 'Planilha com manuais e referências de escrita.',
+}
 
 export const guiaTemaContentDesignLinkSections: GuiaTemaLinkSection[] = [
   { title: 'UX Writing: por onde começar', links: [
@@ -29,4 +46,4 @@ export const guiaTemaContentDesignLinkSections: GuiaTemaLinkSection[] = [
     { title: 'Voz e tom da Vindi', url: 'https://medium.com/vindi/voz-e-tom-da-vindi-como-come%C3%A7amos-a-construir-o-nosso-guia-11c1692c15da' },
     { title: 'Manual de Redação Bench', url: 'https://docs.google.com/spreadsheets/d/1vXDJ4CcRSCP_FGgdrAJgcKdU9KuR7gFDyWfMH3JFrJ0/edit?usp=sharing' },
   ] },
-]
+].map((section) => ({ ...section, links: section.links.map((link) => ({ ...link, description: descriptions[link.title] ?? link.description })) }))
