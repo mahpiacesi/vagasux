@@ -347,19 +347,6 @@ export function sortGuiaGlossarioEntries(
 }
 
 export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
-  {
-    id: 'acessibilidade',
-    term: 'Acessibilidade',
-    categoryId: 'acessibilidade',
-    whatIs: [
-      'Prática de criar produtos, serviços e conteúdos que possam ser usados por pessoas com diferentes capacidades, contextos e tecnologias assistivas.',
-      'Em produtos digitais, envolve decisões de conteúdo, contraste, estrutura, interação, semântica e testes com pessoas usuárias.',
-    ],
-    youWillHear: [
-      '"Vamos revisar a acessibilidade antes de publicar esse fluxo."',
-      '"Esse componente precisa funcionar bem com leitor de tela."',
-    ],
-  },
   // Fundamentos: areas-disciplinas
   {
     id: 'arquitetura-da-informacao',
