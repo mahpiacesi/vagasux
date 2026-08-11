@@ -1248,6 +1248,21 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     ],
   },
   {
+    id: 'motion',
+    term: 'Motion',
+    categoryId: 'interface',
+    subgroup: 'visual',
+    originalName: { alternate: 'Motion Design' },
+    whatIs: [
+      'Uso intencional de movimento em interfaces para explicar mudanças, dar feedback, orientar atenção e tornar transições mais compreensíveis.',
+      'Inclui animações, transições, microinterações e motion tokens que documentam duração, easing e comportamento de elementos do produto.',
+    ],
+    youWillHear: [
+      '"Essa transição precisa de motion para deixar a mudança de estado clara."',
+      '"Vamos documentar os motion tokens no design system."',
+    ],
+  },
+  {
     id: 'espacamento',
     term: 'Espaçamento',
     categoryId: 'interface',
