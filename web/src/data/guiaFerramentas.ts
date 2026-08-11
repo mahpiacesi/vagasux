@@ -6,11 +6,15 @@ export type GuiaFerramentaLink = {
   useScreenshotFallback?: boolean
 }
 
+const figmaPreviewImage =
+  'https://cdn.sanity.io/images/599r6htc/regionalized/342e17642c7afa81206490b0dd21c3e5724ae040-2400x1260.png?w=1200&q=70&fit=max&auto=format'
+
 export const guiaFigmaLinks: GuiaFerramentaLink[] = [
   {
     title: 'Boas práticas do Figma',
     description: 'Boas práticas para usar a ferramenta no dia a dia.',
     url: 'https://www.figma.com/best-practices/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Awesome Figma Tips',
@@ -22,57 +26,68 @@ export const guiaFigmaLinks: GuiaFerramentaLink[] = [
     title: 'Fundamentos de design',
     description: 'Recursos para revisar princípios essenciais de design.',
     url: 'https://www.figma.com/resource-library/design-basics/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Dicas e truques',
     description: 'Guias rápidos para aproveitar melhor os recursos do Figma.',
     url: 'https://www.figma.com/best-practices/tips-and-tricks/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Organização de arquivos',
     description: 'Estruture times, projetos e arquivos de forma mais clara.',
     url: 'https://www.figma.com/best-practices/team-file-organization/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Notas de lançamento',
     description: 'Acompanhe as novidades e atualizações da plataforma.',
     url: 'https://www.figma.com/release-notes/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Comunidade Figma',
     description: 'Encontre arquivos, plugins e recursos criados pela comunidade.',
     url: 'https://www.figma.com/community',
     useScreenshotFallback: false,
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Figma para iniciantes',
     description: 'Curso gratuito para começar a criar interfaces no Figma.',
     url: 'https://www.cursae.com.br/play-course/figma-criando-interfaces-do-zero-ate-o-prototipo-final/introducao-ao-figma',
+    useScreenshotFallback: false,
   },
   {
     title: 'Friends of Figma',
     description: 'Eventos e grupos locais para conectar a comunidade Figma.',
     url: 'https://friends.figma.com/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Friends of Figma São Paulo',
     description: 'Acompanhe a comunidade e os encontros de Figma em São Paulo.',
     url: 'https://friends.figma.com/sao-paulo/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Figma no X',
     description: 'Canal oficial para novidades e referências da Figma.',
     url: 'https://x.com/figma',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Blog da Figma',
     description: 'Artigos sobre produto, design e o universo da Figma.',
     url: 'https://www.figma.com/blog/',
+    previewImageUrl: figmaPreviewImage,
   },
   {
     title: 'Config',
     description: 'Conferência oficial da Figma sobre design e construção de produtos.',
     url: 'https://config.figma.com/',
+    previewImageUrl: figmaPreviewImage,
   },
 ]
 
