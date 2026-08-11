@@ -14,12 +14,14 @@ export function GuiaTemaUxPageContent() {
   return (
     <div className="mt-8 w-full">
       <header className="max-w-3xl">
-        <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
-          <Compass size={23} weight="duotone" aria-hidden />
-        </span>
-        <h1 className="mt-5 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          UI
-        </h1>
+        <div className="flex items-center gap-3">
+          <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
+            <Compass size={23} weight="duotone" aria-hidden />
+          </span>
+          <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+            UI
+          </h1>
+        </div>
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
           {guiaTemaUxDescription}
         </p>
