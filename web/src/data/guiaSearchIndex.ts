@@ -2,6 +2,7 @@ import { guiaCuratedItems, guiaTemas, guiaTipos, guiaTrilhas } from '@/data/guia
 import { guiaBooks } from '@/data/guiaBooks'
 import { guiaCursos } from '@/data/guiaCursos'
 import { guiaGlossarioEntries } from '@/data/guiaGlossario'
+import { guiaArtigos } from '@/data/guiaArtigos'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export type GuiaSearchResult = {
@@ -73,16 +74,31 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: `${guiaRoutes.glossario}#${item.id}`,
     keywords: `${item.term} ${item.originalName?.alternate ?? ''} ${item.whatIs.join(' ')}`,
   })),
+  ...guiaArtigos.map((item) => ({
+    id: `artigo-${item.id}`,
+    title: item.title,
+    category: 'Artigo',
+    to: item.url,
+    external: true,
+    keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
+  })),
 ]
 
 export function searchGuia(query: string): GuiaSearchResult[] {
   const terms = query.toLocaleLowerCase('pt-BR').trim().split(/\s+/).filter(Boolean)
   if (!terms.length) return []
 
-  return guiaSearchIndex
+  const matches = guiaSearchIndex
     .filter((item) => {
       const text = `${item.title} ${item.keywords}`.toLocaleLowerCase('pt-BR')
       return terms.every((term) => text.includes(term))
     })
-    .slice(0, 8)
+
+  const byCategory = new Map<string, number>()
+  return matches.filter((item) => {
+    const count = byCategory.get(item.category) ?? 0
+    if (count >= 3) return false
+    byCategory.set(item.category, count + 1)
+    return true
+  }).slice(0, 8)
 }
