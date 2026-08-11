@@ -4,6 +4,12 @@ import { guiaCursos } from '@/data/guiaCursos'
 import { guiaGlossarioEntries } from '@/data/guiaGlossario'
 import { guiaArtigos } from '@/data/guiaArtigos'
 import { guiaFaqItems } from '@/data/guiaFaqItems'
+import { guiaTemaUxLinkSections } from '@/data/guiaTemaUxLinks'
+import { guiaTemaIaLinkSections } from '@/data/guiaTemaIaLinks'
+import { guiaTemaContentDesignLinkSections } from '@/data/guiaTemaContentDesignLinks'
+import { guiaTemaResearchLinkSections } from '@/data/guiaTemaResearchLinks'
+import { guiaTemaDesignSystemLinks } from '@/data/guiaTemaDesignSystemLinks'
+import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export type GuiaSearchResult = {
@@ -33,6 +39,21 @@ const themeRoute = (id: string) =>
     : id === 'ferramentas'
       ? guiaRoutes.ferramentas
       : guiaRoutes.tema(id)
+
+const indexedLinks = (
+  sectionGroups: { links: { title: string; url: string; description?: string }[] }[],
+  to: string,
+  category: string,
+) => sectionGroups.flatMap((section, sectionIndex) =>
+  section.links.map((item, itemIndex) => ({
+    id: `${category}-${sectionIndex}-${itemIndex}`,
+    title: item.title,
+    category,
+    to,
+    keywords: `${item.title} ${item.description ?? ''}`,
+    snippet: item.description,
+  })),
+)
 
 export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaTrilhas.map((item) => ({
@@ -111,6 +132,12 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     keywords: `${item.question} ${item.answer.join(' ')}`,
     snippet: item.answer[0],
   })),
+  ...indexedLinks(guiaTemaUxLinkSections, guiaRoutes.tema('ui'), 'Recursos de UI'),
+  ...indexedLinks(guiaTemaIaLinkSections, guiaRoutes.tema('ia'), 'Recursos de IA'),
+  ...indexedLinks(guiaTemaContentDesignLinkSections, guiaRoutes.tema('content-design'), 'Recursos de Content Design'),
+  ...indexedLinks(guiaTemaResearchLinkSections, guiaRoutes.tema('research'), 'Recursos de Research'),
+  ...indexedLinks(guiaTemaDesignSystemLinks, guiaRoutes.tema('design-system'), 'Recursos de Design System'),
+  ...indexedLinks(guiaTemaAccessibilityLinks, guiaRoutes.tema('acessibilidade'), 'Recursos de Acessibilidade'),
 ]
 
 export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
@@ -121,7 +148,7 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
     .filter((item) => {
       const text = `${item.title} ${item.keywords}`.toLocaleLowerCase('pt-BR')
       return terms.every((term) => text.includes(term))
-    })
+    }).map((item) => ({ ...item, snippet: buildSnippet(item.keywords, terms) ?? item.snippet }))
 
   const byCategory = new Map<string, number>()
   return matches.filter((item) => {
@@ -130,4 +157,13 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
     byCategory.set(item.category, count + 1)
     return true
   }).slice(0, limit)
+}
+
+function buildSnippet(text: string, terms: string[]): string | null {
+  const normalized = text.toLocaleLowerCase('pt-BR')
+  const index = normalized.indexOf(terms[0] ?? '')
+  if (index < 0) return null
+  const start = Math.max(0, index - 70)
+  const end = Math.min(text.length, index + 130)
+  return `${start ? '…' : ''}${text.slice(start, end)}${end < text.length ? '…' : ''}`
 }
