@@ -33,4 +33,5 @@ export const guiaFundamentosTypographyLinks = [
   { title:'Just My Type', description:'Diretório dedicado à tipografia criado por Daniel Eden.', url:'https://justmytype.co/' },
   { title:'Fonts In Use', description:'Arquivo pesquisável de design tipográfico.', url:'https://fontsinuse.com/' },
   { title:'UNCUT.wtf', description:'Catálogo de tipografias de designers independentes.', url:'https://uncut.wtf/' },
+  { title:'Curso de Tipografia', description:'Playlist de tipografia por Willian Matiola.', url:'https://www.youtube.com/playlist?list=PLKbAmHQYDSaNodtj4fMHb3BJBOag7JC81' },
 ]

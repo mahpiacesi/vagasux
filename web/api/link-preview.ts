@@ -182,6 +182,7 @@ const allowedUrls = new Set([
   'https://justmytype.co/',
   'https://fontsinuse.com/',
   'https://uncut.wtf/',
+  'https://www.youtube.com/playlist?list=PLKbAmHQYDSaNodtj4fMHb3BJBOag7JC81',
 ])
 
 function getAttribute(tag: string, attribute: string) {
