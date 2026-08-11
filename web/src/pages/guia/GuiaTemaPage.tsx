@@ -2,6 +2,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Question } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
+import { GuiaTemaContentDesignPageContent } from '@/components/guia/GuiaTemaContentDesignPageContent'
 import { GuiaTemaIaPageContent } from '@/components/guia/GuiaTemaIaPageContent'
 import { GuiaTemaUxPageContent } from '@/components/guia/GuiaTemaUxPageContent'
 import { getGuiaTemaById } from '@/data/guia'
@@ -29,6 +30,15 @@ export function GuiaTemaPage() {
       <>
         <GuiaTemaNavigation />
         <GuiaTemaIaPageContent />
+      </>
+    )
+  }
+
+  if (tema.id === 'content-design') {
+    return (
+      <>
+        <GuiaTemaNavigation />
+        <GuiaTemaContentDesignPageContent />
       </>
     )
   }
