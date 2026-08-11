@@ -14,12 +14,6 @@ export const guiaFigmaLinks: GuiaFerramentaLink[] = [
     useScreenshotFallback: false,
   },
   {
-    title: 'Awesome Figma Tips',
-    description: 'Dicas e atalhos para deixar seu fluxo no Figma mais ágil.',
-    url: 'https://awesomefigmatips.com/',
-    useScreenshotFallback: false,
-  },
-  {
     title: 'Fundamentos de design',
     description: 'Recursos para revisar princípios essenciais de design.',
     url: 'https://www.figma.com/resource-library/design-basics/',

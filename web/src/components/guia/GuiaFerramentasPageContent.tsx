@@ -86,7 +86,7 @@ export function GuiaFerramentasPageContent() {
       </section>
 
       <div className="mt-12 grid gap-5 md:grid-cols-2">
-        <section className="rounded-3xl border border-complementary-300/50 bg-complementary-100 p-6 md:p-8">
+        <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-8">
           <h2 className="text-xl font-black text-neutral-500">
             Procurando ferramentas de IA?
           </h2>
@@ -106,7 +106,7 @@ export function GuiaFerramentasPageContent() {
             Encontre referências para organizar seus cases e apresentar sua
             trajetória com clareza.
           </p>
-          <Button asChild variant="guia" className="mt-5">
+          <Button asChild variant="guia-outline" className="mt-5">
             <Link to={guiaRoutes.trilha('portfolio')}>
               Explorar sobre portfólio
             </Link>
