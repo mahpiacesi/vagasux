@@ -232,6 +232,19 @@ const allowedUrls = new Set([
   'https://principleformac.com/',
   'https://community.phase.com/',
   'https://uxmotiondesign.com/',
+  'https://maxst.icons8.com/vue-static/landings/lunacy-new/opengraph-lunacy.jpg',
+  'https://www.sketch.com/images/metadata/pages/home.jpg',
+  'https://www.axure.com/images/2025/04/og-image.png',
+  'https://files.uxpin.com/marketing-assets/hEANM0hTqezomJsApfaQ.webp',
+  'https://marvelapp.com/static/workshop-nav@2x-7ec05d5fe3d476739e3d47833e3f8956-c4bfe.jpg',
+  'https://miro.com/',
+  'https://miro.com/miroverse/',
+  'https://www.mural.co/',
+  'https://whimsical.com/',
+  'https://www.mindmeister.com/',
+  'https://milanote.com/',
+  'https://witeboard.com/',
+  'https://www.flowmapp.com/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
