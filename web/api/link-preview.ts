@@ -221,6 +221,7 @@ const allowedUrls = new Set([
   'https://icons8.com/animated-icons',
   'https://cliply.co/',
   'https://www.framer.com/motion/',
+  'https://www.figma.com/motion/',
   'https://useanimations.com/',
   'https://potlabicons.com/',
   'https://loading.io/',
