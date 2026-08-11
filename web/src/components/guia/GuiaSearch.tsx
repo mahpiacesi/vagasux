@@ -7,6 +7,7 @@ import {
   guiaSearchSuggestions,
 } from '@/data/guia'
 import { searchGuia, type GuiaSearchResult } from '@/data/guiaSearchIndex'
+import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
 export function GuiaSearch() {
@@ -42,6 +43,9 @@ export function GuiaSearch() {
     if (item.external) window.open(item.to, '_blank', 'noopener,noreferrer')
     else navigate(item.to)
   }
+  function openAllResults() {
+    if (query.trim()) navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(query.trim())}`)
+  }
 
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
 
@@ -67,6 +71,12 @@ export function GuiaSearch() {
           placeholder="Buscar artigos, trilhas, ferramentas…"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' && query.trim()) {
+              event.preventDefault()
+              openAllResults()
+            }
+          }}
           onFocus={() => setFocused(true)}
           onBlur={() => window.setTimeout(() => setFocused(false), 150)}
           className="h-14 rounded-2xl border-neutral-500/15 bg-neutral-100 pr-4 pl-12 text-base shadow-[0_16px_40px_-24px_rgb(7_0_58_/_0.35)] placeholder:text-neutral-300 focus-visible:border-brand-300 focus-visible:ring-brand-200/60 md:text-base"
@@ -105,6 +115,11 @@ export function GuiaSearch() {
                 </li>
               ))}
             </ul>
+            {hasQuery && results.length ? (
+              <button type="button" className="mt-2 px-3 text-sm font-bold text-brand-400" onMouseDown={(event) => event.preventDefault()} onClick={openAllResults}>
+                Ver todos os resultados
+              </button>
+            ) : null}
           </div>
 
           <div className="border-b border-neutral-500/8 px-4 py-3">

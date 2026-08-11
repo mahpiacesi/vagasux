@@ -95,7 +95,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   })),
 ]
 
-export function searchGuia(query: string): GuiaSearchResult[] {
+export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
   const terms = query.toLocaleLowerCase('pt-BR').trim().split(/\s+/).filter(Boolean)
   if (!terms.length) return []
 
@@ -111,5 +111,5 @@ export function searchGuia(query: string): GuiaSearchResult[] {
     if (count >= 3) return false
     byCategory.set(item.category, count + 1)
     return true
-  }).slice(0, 8)
+  }).slice(0, limit)
 }
