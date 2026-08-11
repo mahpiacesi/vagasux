@@ -130,6 +130,7 @@ export const guiaFerramentasLinks: GuiaFerramentaLink[] = [
 ]
 
 export const guiaQuadroDeIdeiasLinks: GuiaFerramentaLink[] = [
+  { title: 'FigJam', description: 'Quadro colaborativo da Figma para ideias, dinâmicas e fluxos.', url: 'https://www.figma.com/pt-br/figjam/' },
   { title: 'Miro', description: 'Quadro colaborativo para dinâmicas, mapas e workshops.', url: 'https://miro.com/' },
   { title: 'Miroverse', description: 'Galeria de templates criados pela comunidade Miro.', url: 'https://miro.com/miroverse/' },
   { title: 'MURAL', description: 'Workspace visual para colaboração e facilitação.', url: 'https://www.mural.co/' },

@@ -245,6 +245,7 @@ const allowedUrls = new Set([
   'https://milanote.com/',
   'https://witeboard.com/',
   'https://www.flowmapp.com/',
+  'https://www.figma.com/pt-br/figjam/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
