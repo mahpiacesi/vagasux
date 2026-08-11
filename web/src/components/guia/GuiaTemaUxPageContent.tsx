@@ -1,4 +1,3 @@
-import { Compass } from '@phosphor-icons/react'
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
 import {
   guiaTemaUxDescription,
@@ -15,9 +14,7 @@ export function GuiaTemaUxPageContent() {
     <div className="mt-8 w-full">
       <header className="max-w-3xl">
         <div className="flex items-center gap-3">
-          <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
-            <Compass size={23} weight="duotone" aria-hidden />
-          </span>
+          <span className="text-3xl" aria-hidden>🎨</span>
           <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
             UI
           </h1>

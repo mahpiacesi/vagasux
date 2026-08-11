@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowLeft, CaretDown, FigmaLogo, Question, Toolbox } from '@phosphor-icons/react'
+import { ArrowLeft, CaretDown, FigmaLogo, Question } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
 import { Button } from '@/components/ui/button'
@@ -32,12 +32,12 @@ export function GuiaFerramentasPageContent() {
       </div>
 
       <header className="mt-8 max-w-3xl">
-        <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
-          <Toolbox size={23} weight="duotone" aria-hidden />
-        </span>
-        <h1 className="mt-5 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          Ferramentas
-        </h1>
+        <div className="flex items-center gap-3">
+          <span className="text-3xl" aria-hidden>🧰</span>
+          <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
+            Ferramentas
+          </h1>
+        </div>
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
           Ferramentas para criar, prototipar e transformar ideias em
           experiências.
