@@ -1,4 +1,7 @@
 import { guiaCuratedItems, guiaTemas, guiaTipos, guiaTrilhas } from '@/data/guia'
+import { guiaBooks } from '@/data/guiaBooks'
+import { guiaCursos } from '@/data/guiaCursos'
+import { guiaGlossarioEntries } from '@/data/guiaGlossario'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export type GuiaSearchResult = {
@@ -46,6 +49,29 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.temas.join(' ')} ${item.trilhas.join(' ')}`,
+  })),
+  ...guiaBooks.map((item) => ({
+    id: `livro-${item.id}`,
+    title: item.title,
+    category: 'Livro',
+    to: item.url,
+    external: true,
+    keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
+  })),
+  ...guiaCursos.map((item) => ({
+    id: `curso-${item.id}`,
+    title: item.title,
+    category: 'Curso',
+    to: item.url,
+    external: true,
+    keywords: `${item.title} ${item.themes.join(' ')} ${item.levels.join(' ')}`,
+  })),
+  ...guiaGlossarioEntries.map((item) => ({
+    id: `glossario-${item.id}`,
+    title: item.term,
+    category: 'Glossário',
+    to: `${guiaRoutes.glossario}#${item.id}`,
+    keywords: `${item.term} ${item.originalName?.alternate ?? ''} ${item.whatIs.join(' ')}`,
   })),
 ]
 
