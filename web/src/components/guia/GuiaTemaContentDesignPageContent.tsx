@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { getGuiaGlossarioEntryById } from '@/data/guiaGlossario'
 import { guiaTemaContentDesignDescription, guiaTemaContentDesignLinkSections } from '@/data/guiaTemaContentDesignLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { routes } from '@/lib/siteLinks'
 
 export function GuiaTemaContentDesignPageContent() {
   const total = guiaTemaContentDesignLinkSections.reduce((sum, section) => sum + section.links.length, 0)
@@ -31,6 +32,16 @@ export function GuiaTemaContentDesignPageContent() {
           {section.links.map((link) => <li key={link.url}><GuiaLinkPreviewCard link={link} className="h-full" /></li>)}
         </ul>
       </section>)}
+    </div>
+    <div className="mt-12 grid gap-5 md:grid-cols-2">
+      <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
+        <h2 className="text-xl font-black text-neutral-500">Procurando vagas de UX Writing?</h2>
+        <Button asChild variant="guia-outline" className="mt-5"><Link to={`${routes.oportunidades}?discipline=content_design#vagas`}>Explorar vagas de UX Writing</Link></Button>
+      </section>
+      <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
+        <h2 className="text-xl font-black text-neutral-500">Procurando cursos de UX Writing?</h2>
+        <Button asChild variant="guia-outline" className="mt-5"><Link to={`${guiaRoutes.cursos}?tema=Writing`}>Explorar cursos de UX Writing</Link></Button>
+      </section>
     </div>
   </div>
 }
