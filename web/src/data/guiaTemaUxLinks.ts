@@ -2,6 +2,7 @@ export type GuiaTemaLink = {
   title: string
   url: string
   description?: string
+  previewImageUrl?: string
   /** Desativa captura de tela para sites que retornam uma imagem de erro. */
   useScreenshotFallback?: boolean
 }
