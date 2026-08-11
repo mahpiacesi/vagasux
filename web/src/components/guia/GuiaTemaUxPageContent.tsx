@@ -32,8 +32,7 @@ export function GuiaTemaUxPageContent() {
         </p>
       </header>
       {glossaryEntry ? (
-        <section className="mt-10 rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8" aria-labelledby="sobre-ui">
-          <h2 id="sobre-ui" className="text-xl font-black text-neutral-500">Sobre UI</h2>
+        <section className="mt-10 rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8">
           {glossaryEntry.originalName ? <div className="mt-4 rounded-2xl border border-brand-200/60 bg-neutral-100/70 px-5 py-4">
             <p className="text-xs font-bold tracking-[0.12em] text-brand-400 uppercase">Termo relacionado</p>
             <p className="mt-1.5 text-base font-bold text-neutral-500">{glossaryEntry.originalName.alternate}</p>
