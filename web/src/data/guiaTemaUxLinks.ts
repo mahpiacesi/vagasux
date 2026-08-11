@@ -3,8 +3,6 @@ export type GuiaTemaLink = {
   url: string
   description?: string
   previewImageUrl?: string
-  /** Desativa captura de tela para sites que retornam uma imagem de erro. */
-  useScreenshotFallback?: boolean
 }
 
 export type GuiaTemaLinkSection = {
@@ -55,7 +53,6 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
       {
         title: 'Design Pttrns',
         url: 'https://pttrns.com/',
-        useScreenshotFallback: false,
       },
       {
         title: 'Land-book - website design inspiration gallery',
@@ -83,7 +80,6 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
       {
         title: "Element - The world's most popular Vue UI framework",
         url: 'https://element.eleme.io/#/en-US',
-        useScreenshotFallback: false,
       },
       {
         title: 'Collect UI',
@@ -108,7 +104,6 @@ export const guiaTemaUxLinkSections: GuiaTemaLinkSection[] = [
       {
         title: '4003 Landing Page Design Inspiration - Lapa Ninja',
         url: 'https://www.lapa.ninja/',
-        useScreenshotFallback: false,
       },
     ],
   },

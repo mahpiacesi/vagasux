@@ -3,7 +3,6 @@ export type GuiaFerramentaLink = {
   url: string
   description?: string
   previewImageUrl?: string
-  useScreenshotFallback?: boolean
 }
 
 export const guiaFigmaLinks: GuiaFerramentaLink[] = [
@@ -11,25 +10,21 @@ export const guiaFigmaLinks: GuiaFerramentaLink[] = [
     title: 'Boas práticas do Figma',
     description: 'Boas práticas para usar a ferramenta no dia a dia.',
     url: 'https://www.figma.com/best-practices/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Fundamentos de design',
     description: 'Recursos para revisar princípios essenciais de design.',
     url: 'https://www.figma.com/resource-library/design-basics/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Dicas e truques',
     description: 'Guias rápidos para aproveitar melhor os recursos do Figma.',
     url: 'https://www.figma.com/best-practices/tips-and-tricks/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Organização de arquivos',
     description: 'Estruture times, projetos e arquivos de forma mais clara.',
     url: 'https://www.figma.com/best-practices/team-file-organization/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Notas de lançamento',
@@ -40,31 +35,26 @@ export const guiaFigmaLinks: GuiaFerramentaLink[] = [
     title: 'Comunidade Figma',
     description: 'Encontre arquivos, plugins e recursos criados pela comunidade.',
     url: 'https://www.figma.com/community',
-    useScreenshotFallback: false,
   },
   {
     title: 'Figma para iniciantes',
     description: 'Curso gratuito para começar a criar interfaces no Figma.',
     url: 'https://www.cursae.com.br/play-course/figma-criando-interfaces-do-zero-ate-o-prototipo-final/introducao-ao-figma',
-    useScreenshotFallback: false,
   },
   {
     title: 'Friends of Figma',
     description: 'Eventos e grupos locais para conectar a comunidade Figma.',
     url: 'https://friends.figma.com/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Friends of Figma São Paulo',
     description: 'Acompanhe a comunidade e os encontros de Figma em São Paulo.',
     url: 'https://friends.figma.com/sao-paulo/',
-    useScreenshotFallback: false,
   },
   {
     title: 'Figma no X',
     description: 'Canal oficial para novidades e referências da Figma.',
     url: 'https://x.com/figma',
-    useScreenshotFallback: false,
   },
   {
     title: 'Blog da Figma',

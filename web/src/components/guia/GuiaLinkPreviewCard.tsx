@@ -7,7 +7,6 @@ type GuiaLinkPreview = {
   url: string
   description?: string
   previewImageUrl?: string
-  useScreenshotFallback?: boolean
 }
 
 function getHostname(url: string) {
@@ -21,54 +20,22 @@ function getHostname(url: string) {
 async function getImageUrlFromResponse(response: Response) {
   if (!response.ok) return null
 
-  const data = (await response.json()) as {
-    imageUrl?: unknown
-    data?: { image?: { url?: unknown } }
-  }
+  const data = (await response.json()) as { imageUrl?: unknown }
 
   if (typeof data.imageUrl === 'string') return data.imageUrl
-  if (typeof data.data?.image?.url === 'string') return data.data.image.url
   return null
 }
 
-function isUsefulOpenGraphImage(url: string) {
-  return !url.includes('gravatar.com/avatar/')
-}
-
-function getScreenshotUrl(url: string) {
-  return `https://image.thum.io/get/width/1200/crop/675/noanimate/${url}`
-}
-
-async function resolvePreviewImageUrl(
-  url: string,
-  useScreenshotFallback: boolean,
-  signal: AbortSignal,
-) {
+async function resolvePreviewImageUrl(url: string, signal: AbortSignal) {
   try {
     const localResponse = await fetch(
       `/api/link-preview?url=${encodeURIComponent(url)}`,
       { signal },
     )
-    const localImageUrl = await getImageUrlFromResponse(localResponse)
-    if (localImageUrl && isUsefulOpenGraphImage(localImageUrl)) {
-      return localImageUrl
-    }
+    return await getImageUrlFromResponse(localResponse)
   } catch {
-    // No Vite, funções da Vercel não são atendidas. Usa o unfurl público abaixo.
+    return null
   }
-
-  try {
-    const params = new URLSearchParams({ url, meta: 'true' })
-    const response = await fetch(`https://api.microlink.io/?${params}`, {
-      signal,
-    })
-    const imageUrl = await getImageUrlFromResponse(response)
-    if (imageUrl && isUsefulOpenGraphImage(imageUrl)) return imageUrl
-  } catch {
-    // A captura visual abaixo ainda pode ser útil quando não há metadados.
-  }
-
-  return useScreenshotFallback ? getScreenshotUrl(url) : null
 }
 
 export function GuiaLinkPreviewCard({
@@ -102,7 +69,6 @@ export function GuiaLinkPreviewCard({
 
     void resolvePreviewImageUrl(
       link.url,
-      link.useScreenshotFallback !== false,
       controller.signal,
     )
       .then(setImageUrl)
@@ -110,7 +76,7 @@ export function GuiaLinkPreviewCard({
       .finally(() => setIsLoadingImage(false))
 
     return () => controller.abort()
-  }, [link.previewImageUrl, link.url, link.useScreenshotFallback])
+  }, [link.previewImageUrl, link.url])
 
   return (
     <a
