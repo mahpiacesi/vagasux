@@ -122,6 +122,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'arquitetura-da-informacao',
     'design-visual',
     'service-design',
+    'design-ops',
     'customer-experience',
     'hci',
     // Mentalidade: base → frameworks → ferramentas de pensamento
@@ -666,6 +667,25 @@ export const guiaGlossarioEntries: GuiaGlossarioEntry[] = [
     youWillHear: [
       '"Precisamos de um UX Writer para revisar esse fluxo."',
       '"Essa vaga é para Content Designer, com foco em produto digital."',
+    ],
+  },
+  {
+    id: 'design-ops',
+    term: 'Design Ops',
+    categoryId: 'fundamentos',
+    subgroup: 'areas-disciplinas',
+    originalName: {
+      alternate: 'Design Operations',
+      usageNote:
+        'O termo costuma permanecer em inglês no mercado e se refere à operação que permite o Design trabalhar melhor em escala.',
+    },
+    whatIs: [
+      'Área que cria condições para times de Design trabalharem com mais clareza, consistência e eficiência: processos, ferramentas, rituais, documentação e colaboração entre áreas.',
+      'Não é sobre desenhar uma tela. É sobre organizar como o trabalho de Design acontece, evolui e gera impacto dentro da empresa.',
+    ],
+    youWillHear: [
+      '"Precisamos de Design Ops para organizar os rituais e a documentação do time."',
+      '"Essa iniciativa melhora a operação de Design, não apenas um projeto específico."',
     ],
   },
 
