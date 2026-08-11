@@ -102,7 +102,7 @@ export const guiaTemas: GuiaTema[] = [
   { id: 'ui', title: 'UI', emoji: '🎨' },
   { id: 'research', title: 'UX Research', emoji: '🔍' },
   { id: 'content-design', title: 'Content Design', emoji: '✍️' },
-  { id: 'discovery', title: 'Discovery', emoji: '💡' },
+  { id: 'acessibilidade', title: 'Acessibilidade', emoji: '👁️' },
   { id: 'ferramentas', title: 'Ferramentas', emoji: '🧰' },
   { id: 'design-system', title: 'Design System', emoji: '🧩' },
   { id: 'ia', title: 'IA', emoji: '🤖' },
