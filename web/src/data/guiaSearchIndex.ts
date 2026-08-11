@@ -14,6 +14,17 @@ export type GuiaSearchResult = {
   keywords: string
 }
 
+const categoryLabels: Record<string, string> = {
+  artigos: 'Artigos',
+  videos: 'Vídeos',
+  cursos: 'Cursos',
+  livros: 'Livros',
+  podcasts: 'Podcasts',
+  newsletters: 'Newsletters',
+  canais: 'Canais',
+  eventos: 'Eventos',
+}
+
 const themeRoute = (id: string) =>
   id === 'fundamentos'
     ? guiaRoutes.fundamentos
@@ -46,7 +57,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaCuratedItems.map((item) => ({
     id: `conteudo-${item.id}`,
     title: item.title,
-    category: item.tipos[0] ?? 'Conteúdo',
+    category: categoryLabels[item.tipos[0] ?? ''] ?? 'Conteúdo',
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.temas.join(' ')} ${item.trilhas.join(' ')}`,
@@ -54,7 +65,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaBooks.map((item) => ({
     id: `livro-${item.id}`,
     title: item.title,
-    category: 'Livro',
+    category: 'Livros',
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
@@ -62,7 +73,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaCursos.map((item) => ({
     id: `curso-${item.id}`,
     title: item.title,
-    category: 'Curso',
+    category: 'Cursos',
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.themes.join(' ')} ${item.levels.join(' ')}`,
@@ -77,7 +88,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaArtigos.map((item) => ({
     id: `artigo-${item.id}`,
     title: item.title,
-    category: 'Artigo',
+    category: 'Artigos',
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
