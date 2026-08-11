@@ -6,6 +6,7 @@ type GuiaLinkPreview = {
   title: string
   url: string
   description?: string
+  previewImageUrl?: string
   useScreenshotFallback?: boolean
 }
 
@@ -78,12 +79,21 @@ export function GuiaLinkPreviewCard({
   className?: string
 }) {
   const [imageFailed, setImageFailed] = useState(false)
-  const [imageUrl, setImageUrl] = useState<string | null>(null)
-  const [isLoadingImage, setIsLoadingImage] = useState(true)
+  const [imageUrl, setImageUrl] = useState<string | null>(
+    link.previewImageUrl ?? null,
+  )
+  const [isLoadingImage, setIsLoadingImage] = useState(!link.previewImageUrl)
   const hostname = getHostname(link.url)
   const showFallback = !isLoadingImage && (!imageUrl || imageFailed)
 
   useEffect(() => {
+    if (link.previewImageUrl) {
+      setImageFailed(false)
+      setImageUrl(link.previewImageUrl)
+      setIsLoadingImage(false)
+      return
+    }
+
     const controller = new AbortController()
 
     setImageFailed(false)
@@ -100,7 +110,7 @@ export function GuiaLinkPreviewCard({
       .finally(() => setIsLoadingImage(false))
 
     return () => controller.abort()
-  }, [link.url, link.useScreenshotFallback])
+  }, [link.previewImageUrl, link.url, link.useScreenshotFallback])
 
   return (
     <a

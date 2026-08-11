@@ -51,7 +51,7 @@
 - Links usam cards visuais de marcador sem faixa de URL sobre a miniatura. Priorizam `og:image`/`twitter:image`, usam captura visual sem metadados e mostram um fallback sutil com ícone de guarda-chuva quando a prévia não é confiável ou bloqueada. Endpoint em produção validado em 07/08.
 
 ### Guia, ferramentas (11 ago)
-- Rota `/guia/ferramentas` iniciada com Figma expansível, ferramentas de criação e CTA para a trilha de portfólio.
+- Rota `/guia/ferramentas` iniciada com Figma expansível, ferramentas de criação, callout de IA e CTA para a trilha de portfólio.
 - Miro e Notion não têm páginas próprias; Figma fica como seção especial da página de ferramentas.
 
 ---

@@ -83,6 +83,18 @@ export function GuiaFerramentasPageContent() {
         </ul>
       </section>
 
+      <section className="mt-12 rounded-3xl border border-complementary-300/50 bg-complementary-100 p-6 md:p-8">
+        <h2 className="text-xl font-black text-neutral-500">
+          Procurando ferramentas de IA?
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
+          Explore referências para incorporar IA ao seu processo de design.
+        </p>
+        <Button asChild variant="guia-outline" className="mt-5">
+          <Link to={guiaRoutes.tema('ia')}>Explorar tema IA</Link>
+        </Button>
+      </section>
+
       <section className="mt-12 rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-8">
         <h2 className="text-xl font-black text-neutral-500">
           Procurando ferramentas para criar portfólio?
