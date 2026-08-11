@@ -37,9 +37,12 @@ export function GuiaGlossarioPageContent() {
     [filteredEntries, sortMode],
   )
 
-  const visibleCategories = guiaGlossarioCategories
-
   const hasActiveSearch = query.trim().length > 0
+  const visibleCategories = hasActiveSearch
+    ? guiaGlossarioCategories.filter(
+        (category) => (entriesByCategory.get(category.id)?.length ?? 0) > 0,
+      )
+    : guiaGlossarioCategories
 
   const openCategory = useCallback((categoryId: GuiaGlossarioCategoryId) => {
     setOpenCategories((current) => new Set(current).add(categoryId))
