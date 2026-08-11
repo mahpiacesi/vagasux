@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowSquareOut, Umbrella } from '@phosphor-icons/react'
+import { getGuiaCuratedThumbnail } from '@/data/guiaCuratedThumbnails'
 import { cn } from '@/lib/utils'
 
 type GuiaLinkPreview = {
@@ -45,18 +46,18 @@ export function GuiaLinkPreviewCard({
   link: GuiaLinkPreview
   className?: string
 }) {
+  const curatedThumbnail = getGuiaCuratedThumbnail(link.url)
+  const preferredImageUrl = curatedThumbnail ?? link.previewImageUrl ?? null
   const [imageFailed, setImageFailed] = useState(false)
-  const [imageUrl, setImageUrl] = useState<string | null>(
-    link.previewImageUrl ?? null,
-  )
-  const [isLoadingImage, setIsLoadingImage] = useState(!link.previewImageUrl)
+  const [imageUrl, setImageUrl] = useState<string | null>(preferredImageUrl)
+  const [isLoadingImage, setIsLoadingImage] = useState(!preferredImageUrl)
   const hostname = getHostname(link.url)
   const showFallback = !isLoadingImage && (!imageUrl || imageFailed)
 
   useEffect(() => {
-    if (link.previewImageUrl) {
+    if (preferredImageUrl) {
       setImageFailed(false)
-      setImageUrl(link.previewImageUrl)
+      setImageUrl(preferredImageUrl)
       setIsLoadingImage(false)
       return
     }
@@ -76,7 +77,7 @@ export function GuiaLinkPreviewCard({
       .finally(() => setIsLoadingImage(false))
 
     return () => controller.abort()
-  }, [link.previewImageUrl, link.url])
+  }, [link.url, preferredImageUrl])
 
   return (
     <a
