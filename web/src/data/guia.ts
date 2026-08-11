@@ -98,7 +98,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
 ]
 
 export const guiaTemas: GuiaTema[] = [
-  { id: 'ux', title: 'UX', emoji: '🧭' },
+  { id: 'fundamentos', title: 'Fundamentos', emoji: '🚀' },
   { id: 'ui', title: 'UI', emoji: '🎨' },
   { id: 'research', title: 'UX Research', emoji: '🔍' },
   { id: 'content-design', title: 'Content Design', emoji: '✍️' },
