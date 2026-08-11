@@ -12,6 +12,7 @@ export type GuiaSearchResult = {
   to: string
   external?: boolean
   keywords: string
+  snippet?: string
 }
 
 const categoryLabels: Record<string, string> = {
@@ -39,6 +40,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Trilha',
     to: guiaRoutes.trilha(item.id),
     keywords: `${item.title} ${item.description}`,
+    snippet: item.description,
   })),
   ...guiaTemas.map((item) => ({
     id: `tema-${item.id}`,
@@ -46,6 +48,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Tema',
     to: themeRoute(item.id),
     keywords: `${item.title} ${item.id}`,
+    snippet: `Tema do Guia sobre ${item.title}.`,
   })),
   ...guiaTipos.map((item) => ({
     id: `tipo-${item.id}`,
@@ -53,6 +56,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Tipo',
     to: item.id === 'cursos' ? guiaRoutes.cursos : guiaRoutes.tipo(item.id),
     keywords: `${item.title} ${item.description ?? ''}`,
+    snippet: item.description,
   })),
   ...guiaCuratedItems.map((item) => ({
     id: `conteudo-${item.id}`,
@@ -61,6 +65,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.temas.join(' ')} ${item.trilhas.join(' ')}`,
+    snippet: item.temas.join(', '),
   })),
   ...guiaBooks.map((item) => ({
     id: `livro-${item.id}`,
@@ -69,6 +74,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
+    snippet: `${item.authors.join(', ')} · ${item.context.join(', ')}`,
   })),
   ...guiaCursos.map((item) => ({
     id: `curso-${item.id}`,
@@ -77,6 +83,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.themes.join(' ')} ${item.levels.join(' ')}`,
+    snippet: `${item.themes.join(', ')} · ${item.levels.join(', ')}`,
   })),
   ...guiaGlossarioEntries.map((item) => ({
     id: `glossario-${item.id}`,
@@ -84,6 +91,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Glossário',
     to: `${guiaRoutes.glossario}#${item.id}`,
     keywords: `${item.term} ${item.originalName?.alternate ?? ''} ${item.whatIs.join(' ')}`,
+    snippet: item.whatIs[0],
   })),
   ...guiaArtigos.map((item) => ({
     id: `artigo-${item.id}`,
@@ -92,6 +100,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     to: item.url,
     external: true,
     keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
+    snippet: `${item.authors.join(', ')} · ${item.context.join(', ')}`,
   })),
 ]
 
