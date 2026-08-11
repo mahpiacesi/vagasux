@@ -1,4 +1,5 @@
 import { useDeferredValue, useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
 import { MuralIntro } from '@/components/MuralIntro'
@@ -6,6 +7,7 @@ import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
 import { filterJobs } from '@/lib/filterJobs'
 import { fetchPublishedJobs } from '@/lib/supabase'
+import { JOB_DISCIPLINES } from '@/lib/discipline'
 import type { Job, JobFiltersState } from '@/types/job'
 
 const PAGE_SIZE = 15
@@ -20,10 +22,17 @@ const initialFilters: JobFiltersState = {
 }
 
 export function OportunidadesPage() {
+  const [searchParams] = useSearchParams()
+  const requestedDiscipline = searchParams.get('discipline')
   const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [filters, setFilters] = useState<JobFiltersState>(initialFilters)
+  const [filters, setFilters] = useState<JobFiltersState>(() => ({
+    ...initialFilters,
+    discipline: JOB_DISCIPLINES.includes(requestedDiscipline as never)
+      ? requestedDiscipline as JobFiltersState['discipline']
+      : 'all',
+  }))
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const deferredQuery = useDeferredValue(filters.query)
 
