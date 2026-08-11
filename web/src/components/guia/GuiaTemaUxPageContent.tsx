@@ -18,7 +18,7 @@ export function GuiaTemaUxPageContent() {
           <Compass size={23} weight="duotone" aria-hidden />
         </span>
         <h1 className="mt-5 text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-          UX
+          UI
         </h1>
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
           {guiaTemaUxDescription}
@@ -32,12 +32,12 @@ export function GuiaTemaUxPageContent() {
         {guiaTemaUxLinkSections.map((section, sectionIndex) => (
           <section
             key={section.title ?? 'destaque'}
-            aria-labelledby={section.title ? `ux-section-${sectionIndex}` : undefined}
+            aria-labelledby={section.title ? `ui-section-${sectionIndex}` : undefined}
           >
             {section.title ? (
               <div className="max-w-2xl">
                 <h2
-                  id={`ux-section-${sectionIndex}`}
+                  id={`ui-section-${sectionIndex}`}
                   className="text-xl font-black tracking-[-0.02em] text-neutral-500"
                 >
                   {section.title}

@@ -12,7 +12,7 @@ export function GuiaTemaPage() {
     return <Navigate to={guiaRoutes.home} replace />
   }
 
-  if (tema.id === 'ux') {
+  if (tema.id === 'ui') {
     return <GuiaTemaUxPageContent />
   }
 
