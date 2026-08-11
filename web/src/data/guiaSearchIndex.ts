@@ -3,6 +3,7 @@ import { guiaBooks } from '@/data/guiaBooks'
 import { guiaCursos } from '@/data/guiaCursos'
 import { guiaGlossarioEntries } from '@/data/guiaGlossario'
 import { guiaArtigos } from '@/data/guiaArtigos'
+import { guiaFaqItems } from '@/data/guiaFaqItems'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export type GuiaSearchResult = {
@@ -101,6 +102,14 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     external: true,
     keywords: `${item.title} ${item.authors.join(' ')} ${item.context.join(' ')}`,
     snippet: `${item.authors.join(', ')} · ${item.context.join(', ')}`,
+  })),
+  ...guiaFaqItems.map((item) => ({
+    id: `faq-${item.id}`,
+    title: item.question,
+    category: 'FAQ',
+    to: `${guiaRoutes.faq}#${item.id}`,
+    keywords: `${item.question} ${item.answer.join(' ')}`,
+    snippet: item.answer[0],
   })),
 ]
 

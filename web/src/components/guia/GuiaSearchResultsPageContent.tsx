@@ -36,7 +36,7 @@ export function GuiaSearchResultsPageContent() {
         <GuiaBackToGuiaLink />
         <GuiaFaqLink />
       </div>
-      <header className="mt-8 max-w-4xl">
+      <header className="mt-8 max-w-5xl">
         <h1 className="text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
           Resultados da busca
         </h1>
