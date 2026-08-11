@@ -1,14 +1,19 @@
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { getGuiaGlossarioEntryById } from '@/data/guiaGlossario'
 import {
   guiaTemaUxDescription,
   guiaTemaUxLinkSections,
 } from '@/data/guiaTemaUxLinks'
+import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export function GuiaTemaUxPageContent() {
   const linkCount = guiaTemaUxLinkSections.reduce(
     (count, section) => count + section.links.length,
     0,
   )
+  const glossaryEntry = getGuiaGlossarioEntryById('ui')
 
   return (
     <div className="mt-8 w-full">
@@ -26,6 +31,19 @@ export function GuiaTemaUxPageContent() {
           {linkCount} links para explorar
         </p>
       </header>
+      {glossaryEntry ? (
+        <section className="mt-10 rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8" aria-labelledby="sobre-ui">
+          <h2 id="sobre-ui" className="text-xl font-black text-neutral-500">Sobre UI</h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-neutral-400">
+            {glossaryEntry.whatIs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          {glossaryEntry.originalName?.usageNote ? <p className="mt-4 text-sm italic text-neutral-400">{glossaryEntry.originalName.usageNote}</p> : null}
+          <p className="mt-4 text-sm font-semibold text-neutral-500">{glossaryEntry.youWillHear[0]}</p>
+          <Button asChild variant="guia-outline" className="mt-5">
+            <Link to={`${guiaRoutes.glossario}#ui`}>Ver no glossário completo</Link>
+          </Button>
+        </section>
+      ) : null}
 
       <div className="mt-10 space-y-12">
         {guiaTemaUxLinkSections.map((section, sectionIndex) => (
