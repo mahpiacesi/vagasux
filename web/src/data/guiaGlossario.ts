@@ -115,6 +115,7 @@ export const guiaGlossarioEditorialOrder: Partial<
     'ux-designer',
     'ui-designer',
     'ux-research',
+    'ux-writer',
     'design-de-interacao',
     'content-design',
     'arquitetura-da-informacao',
