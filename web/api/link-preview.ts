@@ -168,6 +168,10 @@ const allowedUrls = new Set([
   'https://cssgradient.io/',
   'https://www.grabient.com/',
   'https://mobilepalette.colorion.co/',
+  'https://sketchsheets.com/',
+  'https://gridprint.in/',
+  'https://sneakpeekit.com/',
+  'https://uiprint.co/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
