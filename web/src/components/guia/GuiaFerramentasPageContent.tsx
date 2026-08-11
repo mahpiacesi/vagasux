@@ -88,35 +88,40 @@ export function GuiaFerramentasPageContent() {
         </ul>
       </section>
 
-      <section className="mt-12 rounded-3xl border border-complementary-300/50 bg-complementary-100 p-6 md:p-8">
-        <h2 className="text-xl font-black text-neutral-500">
-          Procurando ferramentas de IA?
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
-          Explore referências para incorporar IA ao seu processo de design.
-        </p>
-        <Button asChild variant="guia-outline" className="mt-5">
-          <Link to={guiaRoutes.tema('ia')}>Explorar tema IA</Link>
-        </Button>
-      </section>
+      <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <section className="rounded-3xl border border-complementary-300/50 bg-complementary-100 p-6 md:p-8">
+          <h2 className="text-xl font-black text-neutral-500">
+            Procurando ferramentas de IA?
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+            Explore referências para incorporar IA ao seu processo de design.
+          </p>
+          <Button asChild variant="guia-outline" className="mt-5">
+            <Link to={guiaRoutes.tema('ia')}>Explorar sobre IA</Link>
+          </Button>
+        </section>
 
-      <section className="mt-12 rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-8">
-        <h2 className="text-xl font-black text-neutral-500">
-          Procurando ferramentas para criar portfólio?
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
-          Encontre referências para organizar seus cases e apresentar sua
-          trajetória com clareza.
-        </p>
-        <Button asChild variant="guia" className="mt-5">
-          <Link to={guiaRoutes.trilha('portfolio')}>
-            Explorar trilha de portfólio
-          </Link>
-        </Button>
-      </section>
+        <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-8">
+          <h2 className="text-xl font-black text-neutral-500">
+            Procurando ferramentas para criar portfólio?
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+            Encontre referências para organizar seus cases e apresentar sua
+            trajetória com clareza.
+          </p>
+          <Button asChild variant="guia" className="mt-5">
+            <Link to={guiaRoutes.trilha('portfolio')}>
+              Explorar sobre portfólio
+            </Link>
+          </Button>
+        </section>
+      </div>
 
       <blockquote className="mt-12 rounded-3xl bg-brand-500 px-6 py-8 text-center text-lg leading-relaxed font-bold text-neutral-100 md:px-12 md:text-2xl">
         “Master your craft, but don't forget mastering your humanity.”
+        <p className="mt-3 text-sm font-normal italic text-brand-100">
+          Domine seu ofício, mas não se esqueça de dominar sua humanidade.
+        </p>
         <footer className="mt-4 text-sm font-semibold text-brand-200">
           Haraldur Thorleifsson
         </footer>
