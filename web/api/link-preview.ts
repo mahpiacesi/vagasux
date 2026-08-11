@@ -137,6 +137,7 @@ const allowedUrls = new Set([
   'https://spectrum.adobe.com/',
   'https://contaazul.design/',
   'https://bold.bridge.ufsc.br/pt/',
+  'https://playbook.ebay.com/',
 ])
 
 function getAttribute(tag: string, attribute: string) {

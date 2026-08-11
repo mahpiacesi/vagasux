@@ -25,6 +25,7 @@ const descriptions: Record<string, string> = {
   Spectrum: 'Sistema de design aberto da Adobe.',
   'Conta Azul Design': 'Referências do sistema de design da Conta Azul.',
   'Bold Design System': 'Sistema de componentes com foco em acessibilidade.',
+  'eBay Playbook': 'O Design System do eBay para experiências consistentes.',
 }
 export const guiaTemaDesignSystemLinks: GuiaTemaLinkSection[] = [
   { title: 'Fundamentos', links: [
@@ -34,6 +35,6 @@ export const guiaTemaDesignSystemLinks: GuiaTemaLinkSection[] = [
     ['Design System Checklist','https://designsystemchecklist.com/'],['UI Guideline','https://www.uiguideline.com/'],['zeroheight','https://www.zeroheight.com/'],['Supernova','https://www.supernova.io/'],['Storybook','https://storybook.js.org/'],['Specify','https://specifyapp.com/'],['Duet Design System','https://www.duetds.com/designers/']
   ].map(([title,url])=>({title,url,description:descriptions[title]})) },
   { title: 'Repositórios e exemplos', links: [
-    ['DesignSystems.com','https://www.designsystems.com/'],['Design Systems Repo','https://designsystemsrepo.com/'],['Design Systems Brasileiros','https://designsystemsbrasileiros.com/'],['Hey Design Systems','https://heydesign.systems/'],['Carbon','https://www.carbondesignsystem.com/'],['Shopify Polaris','https://polaris.shopify.com/'],['Atlassian Design','https://atlassian.design/'],['Spectrum','https://spectrum.adobe.com/'],['Conta Azul Design','https://contaazul.design/'],['Bold Design System','https://bold.bridge.ufsc.br/pt/']
+    ['DesignSystems.com','https://www.designsystems.com/'],['Design Systems Repo','https://designsystemsrepo.com/'],['Design Systems Brasileiros','https://designsystemsbrasileiros.com/'],['Hey Design Systems','https://heydesign.systems/'],['Carbon','https://www.carbondesignsystem.com/'],['Shopify Polaris','https://polaris.shopify.com/'],['Atlassian Design','https://atlassian.design/'],['Spectrum','https://spectrum.adobe.com/'],['Conta Azul Design','https://contaazul.design/'],['Bold Design System','https://bold.bridge.ufsc.br/pt/'],['eBay Playbook','https://playbook.ebay.com/']
   ].map(([title,url])=>({title,url,description:descriptions[title]})) },
 ]
