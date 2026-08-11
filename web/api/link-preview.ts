@@ -183,6 +183,19 @@ const allowedUrls = new Set([
   'https://fontsinuse.com/',
   'https://uncut.wtf/',
   'https://www.youtube.com/playlist?list=PLKbAmHQYDSaNodtj4fMHb3BJBOag7JC81',
+  'https://thenounproject.com/',
+  'https://www.streamlineicons.com/',
+  'https://iconic.app/',
+  'https://fonts.google.com/icons',
+  'https://fontawesome.com/',
+  'https://heroicons.com/',
+  'https://orioniconlibrary.com/',
+  'https://icomoon.io/',
+  'https://icons8.com/line-awesome',
+  'https://nucleoapp.com/',
+  'https://www.flaticon.com/',
+  'https://fontello.com/',
+  'https://iconset.io/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
