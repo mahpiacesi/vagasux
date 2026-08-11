@@ -114,6 +114,26 @@ function getOpenGraphImage(html: string, pageUrl: string) {
   return null
 }
 
+async function getUnfurlImage(sourceUrl: string) {
+  try {
+    const params = new URLSearchParams({ url: sourceUrl, meta: 'true' })
+    const response = await fetch(`https://api.microlink.io/?${params}`, {
+      signal: AbortSignal.timeout(8000),
+    })
+    if (!response.ok) return null
+
+    const data = (await response.json()) as {
+      data?: { image?: { url?: unknown } }
+    }
+
+    return typeof data.data?.image?.url === 'string'
+      ? data.data.image.url
+      : null
+  } catch {
+    return null
+  }
+}
+
 function sendJson(
   response: ServerResponse,
   body: { imageUrl: string | null },
@@ -146,6 +166,8 @@ export default async function handler(
     return
   }
 
+  let imageUrl: string | null = null
+
   try {
     const fetchedPage = await fetch(sourceUrl, {
       headers: {
@@ -155,30 +177,21 @@ export default async function handler(
       signal: AbortSignal.timeout(5000),
     })
 
-    if (!fetchedPage.ok) {
-      sendJson(
-        serverResponse,
-        { imageUrl: null },
-        'public, s-maxage=3600',
+    if (fetchedPage.ok) {
+      imageUrl = getOpenGraphImage(
+        await fetchedPage.text(),
+        fetchedPage.url,
       )
-      return
     }
+  } catch {}
 
-    const imageUrl = getOpenGraphImage(
-      await fetchedPage.text(),
-      fetchedPage.url,
-    )
+  if (!imageUrl) imageUrl = await getUnfurlImage(sourceUrl)
 
-    sendJson(
-      serverResponse,
-      { imageUrl },
-      'public, s-maxage=86400, stale-while-revalidate=604800',
-    )
-  } catch {
-    sendJson(
-      serverResponse,
-      { imageUrl: null },
-      'public, s-maxage=3600',
-    )
-  }
+  sendJson(
+    serverResponse,
+    { imageUrl },
+    imageUrl
+      ? 'public, s-maxage=86400, stale-while-revalidate=604800'
+      : 'public, s-maxage=3600',
+  )
 }
