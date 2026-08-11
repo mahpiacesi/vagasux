@@ -46,7 +46,7 @@ export function GuiaFerramentasPageContent() {
             aria-expanded={figmaOpen}
             onClick={() => setFigmaOpen((open) => !open)}
           >
-            Ver recomendações
+            Ver links úteis
             <CaretDown
               size={16}
               weight="bold"
@@ -61,16 +61,13 @@ export function GuiaFerramentasPageContent() {
             <ul className="mt-6 grid gap-4 lg:grid-cols-2">
               {guiaFigmaLinks.map((link) => (
                 <li key={link.url}>
-                  <GuiaLinkPreviewCard link={link} className="h-full" />
+                  <GuiaLinkPreviewCard
+                    link={{ ...link, useScreenshotFallback: false }}
+                    className="h-full"
+                  />
                 </li>
               ))}
             </ul>
-            <blockquote className="mt-6 border-l-2 border-brand-300 pl-4 text-sm italic leading-relaxed text-neutral-400">
-              “Master your craft, but don't forget mastering your humanity.”
-              <footer className="mt-1 text-xs font-bold not-italic text-neutral-500">
-                Haraldur Thorleifsson
-              </footer>
-            </blockquote>
           </>
         ) : null}
       </section>
@@ -117,6 +114,13 @@ export function GuiaFerramentasPageContent() {
           </Link>
         </Button>
       </section>
+
+      <blockquote className="mt-12 rounded-3xl bg-brand-500 px-6 py-8 text-center text-lg leading-relaxed font-bold text-neutral-100 md:px-12 md:text-2xl">
+        “Master your craft, but don't forget mastering your humanity.”
+        <footer className="mt-4 text-sm font-semibold text-brand-200">
+          Haraldur Thorleifsson
+        </footer>
+      </blockquote>
     </div>
   )
 }
