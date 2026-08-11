@@ -33,4 +33,4 @@ export const guiaTemaResearchLinkSections: GuiaTemaLinkSection[] = [
   { title: 'Métodos e planejamento', links: [
     { title: 'AnswerThePublic', url: 'https://answerthepublic.com/' }, { title: 'Open Card Sorter', url: 'https://brasil.uxdesign.cc/open-card-sorter-em-busca-de-uma-ferramenta-de-card-sorting-para-chamar-de-nossa-b821a41d3fa4' }, { title: 'Dovetail', url: 'https://dovetailapp.com/' }, { title: 'Make My Persona', url: 'https://www.hubspot.com/make-my-persona' }, { title: 'Talebook', url: 'https://talebook.io/' }, { title: 'Calculadora de tamanho de amostra', url: 'https://pt.surveymonkey.com/mp/sample-size-calculator/' },
   ] },
-].map((section) => ({ ...section, links: section.links.map((link) => ({ ...link, description: descriptions[link.title] ?? link.description })) }))
+].map((section) => ({ ...section, links: section.links.map((link) => ({ ...link, description: descriptions[link.title] })) }))

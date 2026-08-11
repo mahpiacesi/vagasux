@@ -8,7 +8,11 @@ const descriptions: Record<string, string> = {
   'As muitas facetas de UX Writing': 'Panorama das possibilidades de atuação na área.',
   'UX Writing, Copywriting e Web Writing': 'Entenda diferenças de objetivo e aplicação entre as três áreas.',
   'Portfólio de UX Writer': 'Dicas, exemplos e referências para montar um portfólio.',
+  'Good Microcopy': 'Referências de microcopy para dar contexto e alinhar expectativas.',
   'Como a colaboração dá vida às palavras': 'Como trabalhar conteúdo em parceria com Design e Produto.',
+  'Speak Human': 'Gere microcopy centrada em pessoas para diferentes contextos.',
+  'Daily UX Writing': 'Pratique desafios de UX Writing por 15 dias.',
+  'Clarice.ai': 'Assistente de IA para revisar e aprimorar textos em português.',
   'Repositório de UX Writing': 'Conteúdos e referências reunidos em um só lugar.',
   'Repositório UX Writing': 'Curadoria atualizada de conteúdos sobre UX Writing.',
   'A mega list of UX writing resources': 'Lista extensa de referências e recursos da área.',
@@ -46,4 +50,4 @@ export const guiaTemaContentDesignLinkSections: GuiaTemaLinkSection[] = [
     { title: 'Voz e tom da Vindi', url: 'https://medium.com/vindi/voz-e-tom-da-vindi-como-come%C3%A7amos-a-construir-o-nosso-guia-11c1692c15da' },
     { title: 'Manual de Redação Bench', url: 'https://docs.google.com/spreadsheets/d/1vXDJ4CcRSCP_FGgdrAJgcKdU9KuR7gFDyWfMH3JFrJ0/edit?usp=sharing' },
   ] },
-].map((section) => ({ ...section, links: section.links.map((link) => ({ ...link, description: descriptions[link.title] ?? link.description })) }))
+].map((section) => ({ ...section, links: section.links.map((link) => ({ ...link, description: descriptions[link.title] })) }))
