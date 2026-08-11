@@ -61,10 +61,7 @@ export function GuiaFerramentasPageContent() {
             <ul className="mt-6 grid gap-4 lg:grid-cols-2">
               {guiaFigmaLinks.map((link) => (
                 <li key={link.url}>
-                  <GuiaLinkPreviewCard
-                    link={{ ...link, useScreenshotFallback: false }}
-                    className="h-full"
-                  />
+                  <GuiaLinkPreviewCard link={link} className="h-full" />
                 </li>
               ))}
             </ul>
