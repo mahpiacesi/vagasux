@@ -67,6 +67,7 @@ const allowedUrls = new Set([
   'https://pair.withgoogle.com/guidebook/',
   'https://www.openui.com/',
   'https://ui.shadcn.com/',
+  'https://styles.refero.design/',
   'https://learnprompting.org/pt/docs/introduction',
   'https://futuretools.io/',
   'https://quillbot.com/',

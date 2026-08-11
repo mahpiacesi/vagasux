@@ -38,6 +38,7 @@ export const guiaTemaIaLinkSections: GuiaTemaLinkSection[] = [
     { title: 'People + AI Guidebook', description: 'Boas práticas para construir produtos com IA.', url: 'https://pair.withgoogle.com/guidebook/', previewImageUrl: 'https://pair.withgoogle.com/guidebook-v2/images/gbv2-social.png' },
     { title: 'OpenUI', description: 'Toolkit open source para explorar componentes de interface.', url: 'https://www.openui.com/', previewImageUrl: 'https://www.openui.com/meta-image.png?v=20260725-1708' },
     { title: 'shadcn/ui', description: 'Biblioteca open source de componentes de UI reutilizáveis.', url: 'https://ui.shadcn.com/' },
+    { title: 'Refero Design Guidelines', description: 'Exemplos de DESIGN.md para agentes de IA.', url: 'https://styles.refero.design/' },
     { title: 'Learn Prompting', description: 'Guias práticos para escrever prompts mais claros e eficazes.', url: 'https://learnprompting.org/pt/docs/introduction' },
     { title: 'Future Tools', description: 'Notícias e ferramentas de IA curadas por Matt Wolfe.', url: 'https://futuretools.io/' },
     { title: 'QuillBot', description: 'Auxilia na escrita, edição e aprimoramento de textos.', url: 'https://quillbot.com/' },
