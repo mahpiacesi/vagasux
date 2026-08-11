@@ -1,12 +1,11 @@
 import { useMemo } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowSquareOut, MagnifyingGlass } from '@phosphor-icons/react'
 import { Input } from '@/components/ui/input'
 import { searchGuia } from '@/data/guiaSearchIndex'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
 export function GuiaSearchResultsPageContent() {
-  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('q') ?? ''
   const results = useMemo(() => searchGuia(query, 100), [query])
