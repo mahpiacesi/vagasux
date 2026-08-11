@@ -15,3 +15,10 @@ export const guiaFundamentosLinks: GuiaTemaLinkSection[] = [
     ['MSHR','https://www.mshr.app/create/new'],['Mesher','https://csshero.org/mesher/'],['uiGradients','https://uigradients.com/'],['ColorSpace','https://mycolor.space/'],['CSS Gradient','https://cssgradient.io/'],['Grabient','https://www.grabient.com/'],['Mobile Palette Generator','https://mobilepalette.colorion.co/']
   ].map(([title,url])=>({title,url,description:descriptions[title]})) },
 ]
+
+export const guiaFundamentosGridLinks = [
+  { title: 'Sketchsheets', description: 'Templates imprimíveis para wireframes de dispositivos.', url: 'https://sketchsheets.com/' },
+  { title: 'GRIDPRINT.IN', description: 'Grids de linha de base para prototipação em papel.', url: 'https://gridprint.in/' },
+  { title: 'Sneakpeekit Sketch Sheets', description: 'Folhas de sketch para explorar ideias de interface.', url: 'https://sneakpeekit.com/' },
+  { title: 'uiprint', description: 'Mockups, wireframes e sketchpads imprimíveis.', url: 'https://uiprint.co/' },
+]
