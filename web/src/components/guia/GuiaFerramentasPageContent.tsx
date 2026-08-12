@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import {
   guiaFerramentasLinks,
   guiaFigmaLinks,
+  guiaGravacoesDeTelaLinks,
   guiaQuadroDeIdeiasLinks,
 } from '@/data/guiaFerramentas'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -112,6 +113,22 @@ export function GuiaFerramentasPageContent() {
         </p>
         <ul className="mt-5 grid gap-4 lg:grid-cols-2">
           {guiaQuadroDeIdeiasLinks.map((link) => (
+            <li key={link.url}>
+              <GuiaLinkPreviewCard link={link} className="h-full" />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-12" aria-labelledby="gravacoes-de-tela">
+        <h2 id="gravacoes-de-tela" className="text-xl font-black tracking-[-0.02em] text-neutral-500">
+          Gravações de tela
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+          Ferramentas para registrar demonstrações, pesquisas e sessões de uso.
+        </p>
+        <ul className="mt-5 grid gap-4 lg:grid-cols-2">
+          {guiaGravacoesDeTelaLinks.map((link) => (
             <li key={link.url}>
               <GuiaLinkPreviewCard link={link} className="h-full" />
             </li>
