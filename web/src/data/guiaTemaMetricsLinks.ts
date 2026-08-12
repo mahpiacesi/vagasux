@@ -9,8 +9,8 @@ export const guiaTemaMetricsLinks: GuiaTemaLinkSection[] = [
 ]
 
 export const guiaMetricVideos = [
-  { id:'3ba8cbb0d904803c8aacd832f30b9a48', title:'Como medir o impacto do seu Design', url:'https://youtu.be/gPH5hbdLaSI?si=INtwn_zLxdVRHtXm', authors:['Alvaro Souza'] },
-  { id:'3ba8cbb0d9048043aa3dd6f5e5bb6f20', title:'Métricas UX: Números, Porcentagens e Impacto', url:'https://youtu.be/owbNt7RXJYk?si=yudDXCZ0KBPT4SAM', authors:['Design Circuit'] },
-  { id:'3ba8cbb0d904804f9204e16df80eae5f', title:'Métricas de UX com Allan Cardozo', url:'https://youtu.be/1sT4T19OX6Q?si=58-uj5Bo5S3-iWZF', authors:['UXNOW'] },
-  { id:'3ba8cbb0d90480bebe5fcd3432d46600', title:'Métricas para UX: Como Escolher e Usar de Forma Eficiente', url:'https://youtu.be/ieD21pE9JTY?si=j6UgptosulgCRnPx', authors:['DesignTeam'] },
+  { id:'3ba8cbb0d904803c8aacd832f30b9a48', title:'Como medir o impacto do seu Design', url:'https://youtu.be/gPH5hbdLaSI?si=INtwn_zLxdVRHtXm', authors:['Alvaro Souza'], context:['Métricas'], languages:['🇧🇷'], youtubeVideoId:'gPH5hbdLaSI' },
+  { id:'3ba8cbb0d9048043aa3dd6f5e5bb6f20', title:'Métricas UX: Números, Porcentagens e Impacto', url:'https://youtu.be/owbNt7RXJYk?si=yudDXCZ0KBPT4SAM', authors:['Design Circuit'], context:['Métricas'], languages:['🇧🇷'], youtubeVideoId:'owbNt7RXJYk' },
+  { id:'3ba8cbb0d904804f9204e16df80eae5f', title:'Métricas de UX com Allan Cardozo', url:'https://youtu.be/1sT4T19OX6Q?si=58-uj5Bo5S3-iWZF', authors:['UXNOW'], context:['Métricas'], languages:['🇧🇷'], youtubeVideoId:'1sT4T19OX6Q' },
+  { id:'3ba8cbb0d90480bebe5fcd3432d46600', title:'Métricas para UX: Como Escolher e Usar de Forma Eficiente', url:'https://youtu.be/ieD21pE9JTY?si=j6UgptosulgCRnPx', authors:['DesignTeam'], context:['Métricas'], languages:['🇧🇷'], youtubeVideoId:'ieD21pE9JTY' },
 ]
