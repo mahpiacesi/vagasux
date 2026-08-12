@@ -160,6 +160,10 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
           ? item.snippet
           : item.keywords
       return { ...item, snippet: buildSnippet(snippetSource, terms) ?? item.snippet }
+    }).sort((a, b) => {
+      const exact = (item: GuiaSearchResult) =>
+        item.keywords.toLocaleLowerCase('pt-BR').split(/[^\p{L}\p{N}]+/u).some((word) => word === terms[0])
+      return Number(exact(b)) - Number(exact(a))
     })
 
   const byCategory = new Map<string, number>()
@@ -175,18 +179,22 @@ export function suggestGuiaQueries(query: string): string[] {
   const term = query.trim().toLocaleLowerCase('pt-BR')
   if (!term) return []
 
-  const suggestions = new Set<string>()
-  for (const item of searchGuia(query, 30)) {
+  const suggestions = new Map<string, string>()
+  for (const item of searchGuia(query, 100)) {
     const words = `${item.title} ${item.keywords}`
       .split(/[^\p{L}\p{N}]+/u)
       .filter(Boolean)
-    const index = words.findIndex((word) => word.toLocaleLowerCase('pt-BR').startsWith(term))
-    const next = words[index + 1]
-    if (index >= 0 && next && next.length > 1) {
-      suggestions.add(`${words[index]} ${next}`)
+    const indices = words.map((word, index) => word.toLocaleLowerCase('pt-BR').startsWith(term) ? index : -1).filter((index) => index >= 0)
+    for (const index of indices) {
+      const next = words[index + 1]
+      if (next && next.length > 1 && next.toLocaleLowerCase('pt-BR') !== words[index].toLocaleLowerCase('pt-BR')) {
+        const suggestion = `${words[index]} ${next}`
+        suggestions.set(suggestion.toLocaleLowerCase('pt-BR'), suggestion)
+        break
+      }
     }
   }
-  return [...suggestions].slice(0, 5)
+  return [...suggestions.values()].slice(0, 5)
 }
 
 function buildSnippet(text: string, terms: string[]): string | null {
