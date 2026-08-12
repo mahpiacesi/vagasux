@@ -270,6 +270,20 @@ const allowedUrls = new Set([
   'https://speechnotes.co/pt/',
   'https://play.google.com/store/apps/details?id=com.google.audio.hearing.visualization.accessibility.scribe',
   'https://captioner.live/',
+  'https://woliveiras.com.br/linguagem-neutra',
+  'https://brasil.uxdesign.cc/m%C3%A9tricas-de-ux-por-onde-come%C3%A7ar-54fa7513e5e0',
+  'https://brasil.uxdesign.cc/a-relacao-entre-ux-e-metricas-acompanhamento-pratico-de-metricas-d4c68a1522a4',
+  'https://brasil.uxdesign.cc/guia-basico-de-estudos-sobre-metricas-de-ux-49cf5fc71ee6',
+  'https://brasil.uxdesign.cc/quais-sao-as-metricas-de-ux-e-como-usa-las-ea21774778a1',
+  'https://brasil.uxdesign.cc/m%C3%A9tricas-de-cx-que-todo-ux-deve-conhecer-5a432ded712b',
+  'https://uxpilot.ai/blogs/ux-metrics',
+  'https://clarity.microsoft.com/',
+  'https://plausible.io/',
+  'https://www.hotjar.com/pt-BR/',
+  'https://youtu.be/gPH5hbdLaSI?si=INtwn_zLxdVRHtXm',
+  'https://youtu.be/owbNt7RXJYk?si=yudDXCZ0KBPT4SAM',
+  'https://youtu.be/1sT4T19OX6Q?si=58-uj5Bo5S3-iWZF',
+  'https://youtu.be/ieD21pE9JTY?si=j6UgptosulgCRnPx',
 ])
 
 function getAttribute(tag: string, attribute: string) {

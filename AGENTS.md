@@ -15,3 +15,10 @@ Ao criar, migrar ou alterar conteúdo em qualquer rota ou curadoria sob
 
 Indexe título, descrições, contexto e destino navegável. A busca precisa
 encontrar conteúdos do Guia antes que a alteração seja considerada concluída.
+
+## Guia: vídeos
+
+Todo vídeo vindo do Notion deve entrar em `web/src/data/guiaVideos.ts`, a
+fonte global de vídeos, com contexto, idioma, URL e identificador do YouTube
+quando disponível. Páginas de tema apenas filtram ou destacam essa fonte;
+não devem manter uma cópia local do vídeo.

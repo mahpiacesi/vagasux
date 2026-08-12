@@ -7,6 +7,7 @@ import { GuiaTemaIaPageContent } from '@/components/guia/GuiaTemaIaPageContent'
 import { GuiaTemaResearchPageContent } from '@/components/guia/GuiaTemaResearchPageContent'
 import { GuiaTemaDesignSystemPageContent } from '@/components/guia/GuiaTemaDesignSystemPageContent'
 import { GuiaTemaAccessibilityPageContent } from '@/components/guia/GuiaTemaAccessibilityPageContent'
+import { GuiaTemaMetricsPageContent } from '@/components/guia/GuiaTemaMetricsPageContent'
 import { GuiaTemaUxPageContent } from '@/components/guia/GuiaTemaUxPageContent'
 import { getGuiaTemaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -54,6 +55,9 @@ export function GuiaTemaPage() {
   }
   if (tema.id === 'acessibilidade') {
     return <><GuiaTemaNavigation /><GuiaTemaAccessibilityPageContent /></>
+  }
+  if (tema.id === 'metricas') {
+    return <><GuiaTemaNavigation /><GuiaTemaMetricsPageContent /></>
   }
 
   return (
