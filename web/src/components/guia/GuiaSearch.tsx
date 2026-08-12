@@ -85,6 +85,7 @@ export function GuiaSearch() {
                 category: 'Sugestão',
                 to: '',
                 keywords: title,
+                snippet: undefined,
               }))).map((item) => (
                 <li key={item.id}>
                   <button
