@@ -324,6 +324,22 @@ const allowedUrls = new Set([
   'https://genderphotos.vice.com/',
   'https://ygb.black/',
   'https://unsplash.com/s/photos/plus-size',
+  'https://www.4devs.com.br/',
+  'https://undesign.learn.uno/generator/',
+  'https://br.lipsum.com/',
+  'http://www.cutedrop.com.br/2016/03/lorem-ipsum-de-imagens-geradores-de-fotos-gratuitas-para-usar-nos-seus-layouts/',
+  'http://feminipsum.com.br/',
+  'http://www.zombieipsum.com/',
+  'https://mussumipsum.com/',
+  'http://www.cupcakeipsum.com/',
+  'http://www.catipsum.com/',
+  'https://satoristudio.net/delorean-ipsum/',
+  'https://slipsum.com/',
+  'https://vlad-saling.github.io/star-trek-ipsum/',
+  'https://hipsum.co/',
+  'https://silviosantosipsum.com/',
+  'https://siliconvalleyjobtitlegenerator.tumblr.com/',
+  'https://designtitles.com/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
