@@ -465,7 +465,7 @@ export const guiaEventos: GuiaEvento[] = [
     "languages": [
       "🇧🇷"
     ],
-    "url": "https://avely.me/vagasux",
+    "url": "https://luma.com/user/vagasUX",
     "addedAt": "2025-01-23T14:35:46Z",
     "imageUrl": "/guia/eventos/1848cbb0d9048002b672cccfe159c293.png"
   },
