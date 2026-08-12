@@ -11,6 +11,7 @@ import { guiaTemaResearchLinkSections } from '@/data/guiaTemaResearchLinks'
 import { guiaTemaDesignSystemLinks } from '@/data/guiaTemaDesignSystemLinks'
 import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
 export type GuiaSearchResult = {
   id: string
@@ -41,7 +42,7 @@ const themeRoute = (id: string) =>
       : guiaRoutes.tema(id)
 
 const indexedLinks = (
-  sectionGroups: { links: { title: string; url: string; description?: string }[] }[],
+  sectionGroups: { title?: string; links: { title: string; url: string; description?: string }[] }[],
   to: string,
   category: string,
 ) => sectionGroups.flatMap((section, sectionIndex) =>
@@ -49,7 +50,10 @@ const indexedLinks = (
     id: `${category}-${sectionIndex}-${itemIndex}`,
     title: item.title,
     category,
-    to,
+    to:
+      category === 'Recursos de Research' && section.title
+        ? `${to}#${guiaSearchAnchor(section.title)}`
+        : to,
     keywords: `${item.title} ${item.description ?? ''}`,
     snippet: item.description,
   })),
