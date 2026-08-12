@@ -474,7 +474,7 @@ export const guiaArtigos: GuiaArtigo[] = [
     "context": [
       "UX",
       "Carreira",
-      "Soft skills"
+      "Soft Skills"
     ],
     "languages": [
       "🇧🇷"

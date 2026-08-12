@@ -950,7 +950,7 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Soft skills"
+      "Soft Skills"
     ],
     "languages": [
       "🇧🇷"
@@ -1144,15 +1144,123 @@ export const guiaVideos: GuiaVideo[] = [
     "vagasuxChannel": true,
     "addedAt": "2026-08-12T18:30:00Z"
   },
+  {
+    "id": "3ba8cbb0d904806f9907c285806a9e89",
+    "title": "Por que tem mais Mulheres em UX Writing?",
+    "authors": [
+      "Semiose Podcast"
+    ],
+    "context": [
+      "Diversidade",
+      "Mulheres"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=0fwedkZrcfE",
+    "youtubeVideoId": "0fwedkZrcfE",
+    "imageUrl": "https://i.ytimg.com/vi/0fwedkZrcfE/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d90480e4b798d1301e38a29e",
+    "title": "Mulheres no design. Como fazer carreira em uma grande empresa",
+    "authors": [
+      "Mentorama"
+    ],
+    "context": [
+      "Diversidade",
+      "Mulheres"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=4NLs8ZYmcag",
+    "youtubeVideoId": "4NLs8ZYmcag",
+    "imageUrl": "https://i.ytimg.com/vi/4NLs8ZYmcag/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d90480228f17fc8d7bce7b72",
+    "title": "Diversidade em Design: como transformar sua empresa de dentro para fora",
+    "authors": [
+      "UXConf BR"
+    ],
+    "context": [
+      "Diversidade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=vGHjW08B4X8",
+    "youtubeVideoId": "vGHjW08B4X8",
+    "imageUrl": "https://i.ytimg.com/vi/vGHjW08B4X8/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d904801eaf23ce55dbced322",
+    "title": "Diversidade e Inclusão nas Empresas",
+    "authors": [
+      "Semiose Podcast"
+    ],
+    "context": [
+      "Diversidade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=IngaGG091RM",
+    "youtubeVideoId": "IngaGG091RM",
+    "imageUrl": "https://i.ytimg.com/vi/IngaGG091RM/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d904804fb931ffa4b53c358d",
+    "title": "Designers negros no mercado brasileiro com Joyce Rocha",
+    "authors": [
+      "DesignTeam"
+    ],
+    "context": [
+      "Diversidade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=Sp9ERNnhYAI",
+    "youtubeVideoId": "Sp9ERNnhYAI",
+    "imageUrl": "https://i.ytimg.com/vi/Sp9ERNnhYAI/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d90480bdb782cb166ac3e1fd",
+    "title": "Designers negros no mercado brasileiro com Fernando França",
+    "authors": [
+      "DesignTeam"
+    ],
+    "context": [
+      "Diversidade"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=rQHJhaP2L00",
+    "youtubeVideoId": "rQHJhaP2L00",
+    "imageUrl": "https://i.ytimg.com/vi/rQHJhaP2L00/hqdefault.jpg",
+    "addedAt": "2026-08-12T21:00:00Z"
+  },
 ]
 
 /** Tags de Contexto únicas, ordenadas (Notion multi_select). */
 export function getGuiaVideoContextTags(): string[] {
   const tags = new Set<string>()
   for (const video of guiaVideos) {
-    for (const tag of video.context) tags.add(tag)
+    for (const tag of video.context) tags.add(normalizeVideoContextTag(tag))
   }
   return [...tags].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }))
+}
+
+function normalizeVideoContextTag(tag: string): string {
+  return tag.toLocaleLowerCase('pt-BR') === 'soft skills' ? 'Soft Skills' : tag
 }
 
 export function filterGuiaVideosByContext(
@@ -1160,7 +1268,11 @@ export function filterGuiaVideosByContext(
   contextTag: string | null,
 ): GuiaVideo[] {
   if (!contextTag) return videos
-  return videos.filter((video) => video.context.includes(contextTag))
+  return videos.filter((video) =>
+    video.context.some(
+      (tag) => normalizeVideoContextTag(tag) === normalizeVideoContextTag(contextTag),
+    ),
+  )
 }
 
 export function splitGuiaFeaturedVideo(videos: GuiaVideo[]): {

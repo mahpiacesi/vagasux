@@ -151,7 +151,7 @@ export const guiaBooks: GuiaBook[] = [
       "Jim VandeHei"
     ],
     "context": [
-      "Soft skills",
+      "Soft Skills",
       "Comunicação"
     ],
     "languages": [
