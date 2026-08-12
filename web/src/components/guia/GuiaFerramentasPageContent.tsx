@@ -1,4 +1,4 @@
-import { ArrowLeft, FigmaLogo, Question } from "@phosphor-icons/react"
+import { ArrowLeft, Question } from "@phosphor-icons/react"
 import { Link } from "react-router-dom"
 import { GuiaLinkPreviewCard } from "@/components/guia/GuiaLinkPreviewCard"
 import { Button } from "@/components/ui/button"
