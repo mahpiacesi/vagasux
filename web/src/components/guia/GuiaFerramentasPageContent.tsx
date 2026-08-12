@@ -128,7 +128,7 @@ export function GuiaFerramentasPageContent() {
             Explore referências para incorporar IA ao seu processo de design.
           </p>
           <Button asChild variant="guia-outline" className="mt-5">
-            <Link to={guiaRoutes.tema('ia')}>Explorar sobre IA</Link>
+            <Link to={guiaRoutes.tema('ia')}>Explorar IA</Link>
           </Button>
         </section>
 
@@ -142,7 +142,7 @@ export function GuiaFerramentasPageContent() {
           </p>
           <Button asChild variant="guia-outline" className="mt-5">
             <Link to={guiaRoutes.trilha('portfolio')}>
-              Explorar sobre portfólio
+              Explorar portfólio
             </Link>
           </Button>
         </section>

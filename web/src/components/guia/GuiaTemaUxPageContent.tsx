@@ -78,13 +78,13 @@ export function GuiaTemaUxPageContent() {
         <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
           <h2 className="text-xl font-black text-neutral-500">Procurando vagas de UI?</h2>
           <Button asChild variant="guia-outline" className="mt-5">
-            <Link to={`${routes.oportunidades}?discipline=ui#vagas`}>Explorar vagas de UI</Link>
+            <Link to={`${routes.oportunidades}?discipline=ui#vagas`}>Explorar vagas</Link>
           </Button>
         </section>
         <section className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
           <h2 className="text-xl font-black text-neutral-500">Procurando cursos de UI?</h2>
           <Button asChild variant="guia-outline" className="mt-5">
-            <Link to={`${guiaRoutes.cursos}?tema=UI#guia-cursos-filtros`}>Explorar cursos de UI</Link>
+            <Link to={`${guiaRoutes.cursos}?tema=UI#guia-cursos-filtros`}>Explorar cursos</Link>
           </Button>
         </section>
       </div>
