@@ -74,7 +74,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Tema',
     to: themeRoute(item.id),
     keywords: `${item.title} ${item.id}`,
-    snippet: `Tema do Guia sobre ${item.title}.`,
+    snippet: '',
   })),
   ...guiaTipos.map((item) => ({
     id: `tipo-${item.id}`,
@@ -153,6 +153,7 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
       const text = `${item.title} ${item.keywords}`.toLocaleLowerCase('pt-BR')
       return terms.every((term) => text.includes(term))
     }).map((item) => {
+      if (item.snippet === '') return item
       const snippetSource =
         item.snippet?.toLocaleLowerCase('pt-BR').includes(terms[0] ?? '')
           ? item.snippet
