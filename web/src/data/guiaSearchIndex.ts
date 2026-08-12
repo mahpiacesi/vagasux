@@ -152,7 +152,13 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
     .filter((item) => {
       const text = `${item.title} ${item.keywords}`.toLocaleLowerCase('pt-BR')
       return terms.every((term) => text.includes(term))
-    }).map((item) => ({ ...item, snippet: buildSnippet(item.keywords, terms) ?? item.snippet }))
+    }).map((item) => {
+      const snippetSource =
+        item.snippet?.toLocaleLowerCase('pt-BR').includes(terms[0] ?? '')
+          ? item.snippet
+          : item.keywords
+      return { ...item, snippet: buildSnippet(snippetSource, terms) ?? item.snippet }
+    })
 
   const byCategory = new Map<string, number>()
   return matches.filter((item) => {
