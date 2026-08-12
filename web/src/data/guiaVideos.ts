@@ -1254,9 +1254,13 @@ export const guiaVideos: GuiaVideo[] = [
 export function getGuiaVideoContextTags(): string[] {
   const tags = new Set<string>()
   for (const video of guiaVideos) {
-    for (const tag of video.context) tags.add(tag)
+    for (const tag of video.context) tags.add(normalizeVideoContextTag(tag))
   }
   return [...tags].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }))
+}
+
+function normalizeVideoContextTag(tag: string): string {
+  return tag.toLocaleLowerCase('pt-BR') === 'soft skills' ? 'Soft Skills' : tag
 }
 
 export function filterGuiaVideosByContext(
@@ -1264,7 +1268,11 @@ export function filterGuiaVideosByContext(
   contextTag: string | null,
 ): GuiaVideo[] {
   if (!contextTag) return videos
-  return videos.filter((video) => video.context.includes(contextTag))
+  return videos.filter((video) =>
+    video.context.some(
+      (tag) => normalizeVideoContextTag(tag) === normalizeVideoContextTag(contextTag),
+    ),
+  )
 }
 
 export function splitGuiaFeaturedVideo(videos: GuiaVideo[]): {
