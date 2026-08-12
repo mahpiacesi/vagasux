@@ -8,6 +8,7 @@ import { GuiaTemaResearchPageContent } from '@/components/guia/GuiaTemaResearchP
 import { GuiaTemaDesignSystemPageContent } from '@/components/guia/GuiaTemaDesignSystemPageContent'
 import { GuiaTemaAccessibilityPageContent } from '@/components/guia/GuiaTemaAccessibilityPageContent'
 import { GuiaTemaMetricsPageContent } from '@/components/guia/GuiaTemaMetricsPageContent'
+import { GuiaTemaDiversidadePageContent } from '@/components/guia/GuiaTemaDiversidadePageContent'
 import { GuiaTemaUxPageContent } from '@/components/guia/GuiaTemaUxPageContent'
 import { getGuiaTemaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -58,6 +59,9 @@ export function GuiaTemaPage() {
   }
   if (tema.id === 'metricas') {
     return <><GuiaTemaNavigation /><GuiaTemaMetricsPageContent /></>
+  }
+  if (tema.id === 'diversidade') {
+    return <><GuiaTemaNavigation /><GuiaTemaDiversidadePageContent /></>
   }
 
   return (
