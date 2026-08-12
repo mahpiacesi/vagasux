@@ -34,6 +34,15 @@ export function GuiaSearch() {
       navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(value.trim())}`)
     }
   }
+  function highlight(value: string) {
+    if (!hasQuery) return value
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    return value.split(new RegExp(`(${escaped})`, 'ig')).map((part, index) =>
+      part.toLocaleLowerCase() === query.toLocaleLowerCase()
+        ? <strong key={index} className="font-black text-neutral-500">{part}</strong>
+        : part,
+    )
+  }
 
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
 
@@ -98,7 +107,7 @@ export function GuiaSearch() {
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => openAllResults(hasQuery ? query : item.title)}
                   >
-                    <span className="min-w-0"><span>{item.title}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{item.snippet}</span> : null}</span>
+                    <span className="min-w-0"><span>{highlight(item.title)}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{highlight(item.snippet)}</span> : null}</span>
                     {hasQuery ? <span className="ml-auto shrink-0 text-xs font-medium text-neutral-400">{item.category}</span> : null}
                   </button>
                 </li>

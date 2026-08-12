@@ -29,6 +29,10 @@ export function GuiaSearchResultsPageContent() {
     const parts = compact.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig'))
     return <p className="mt-2 text-sm leading-relaxed text-neutral-400">{parts.map((part, index) => part.toLocaleLowerCase() === query.toLocaleLowerCase() ? <strong key={index} className="font-bold text-neutral-500">{part}</strong> : part)}</p>
   }
+  function highlight(value: string) {
+    const parts = value.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig'))
+    return parts.map((part, index) => part.toLocaleLowerCase() === query.toLocaleLowerCase() ? <strong key={index} className="font-black text-neutral-500">{part}</strong> : part)
+  }
 
   return (
     <div className="mx-auto mt-8 w-full max-w-5xl">
@@ -61,11 +65,11 @@ export function GuiaSearchResultsPageContent() {
                   <li key={item.id}>
                     {item.external ? (
                       <a href={item.to} target="_blank" rel="noopener noreferrer" className="group flex min-h-20 items-center justify-between rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/30">
-                        <span><span>{item.title}</span>{renderSnippet(item.snippet)}</span><ArrowSquareOut size={16} className="text-brand-400" />
+                        <span><span>{highlight(item.title)}</span>{renderSnippet(item.snippet)}</span><ArrowSquareOut size={16} className="text-brand-400" />
                       </a>
                     ) : (
                       <Link to={item.to} className="flex min-h-20 items-center rounded-2xl border border-neutral-500/10 bg-neutral-100 px-5 py-4 font-bold text-neutral-500 hover:border-brand-300 hover:bg-brand-100/30">
-                        <span>{item.title}{renderSnippet(item.snippet)}</span>
+                        <span>{highlight(item.title)}{renderSnippet(item.snippet)}</span>
                       </Link>
                     )}
                   </li>
