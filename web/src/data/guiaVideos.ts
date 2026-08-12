@@ -598,10 +598,7 @@ export const guiaVideos: GuiaVideo[] = [
     "authors": [
       "VagasUX"
     ],
-    "context": [
-      "UX",
-      "Carreira"
-    ],
+    "context": ["Design System"],
     "languages": [
       "🇧🇷"
     ],
@@ -692,10 +689,7 @@ export const guiaVideos: GuiaVideo[] = [
     "authors": [
       "VagasUX"
     ],
-    "context": [
-      "UX",
-      "Carreira"
-    ],
+    "context": ["Métricas"],
     "languages": [
       "🇧🇷"
     ],
@@ -704,25 +698,6 @@ export const guiaVideos: GuiaVideo[] = [
     "imageUrl": "https://i.ytimg.com/vi/GZZtjREWR74/hqdefault.jpg",
     "vagasuxChannel": true,
     "addedAt": "2025-07-09T04:32:54+00:00"
-  },
-  {
-    "id": "yt-75ZbJKoJOYo",
-    "title": "Chegamos ao TikTok",
-    "authors": [
-      "VagasUX"
-    ],
-    "context": [
-      "UX",
-      "Carreira"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "https://www.youtube.com/watch?v=75ZbJKoJOYo",
-    "youtubeVideoId": "75ZbJKoJOYo",
-    "imageUrl": "https://i.ytimg.com/vi/75ZbJKoJOYo/hqdefault.jpg",
-    "vagasuxChannel": true,
-    "addedAt": "2025-04-03T23:34:52+00:00"
   },
   {
     "id": "yt-AOXKamzZ7CY",
@@ -801,44 +776,6 @@ export const guiaVideos: GuiaVideo[] = [
     "addedAt": "2024-11-01T04:36:47+00:00"
   },
   {
-    "id": "yt-UOaDuDM7lqU",
-    "title": "Estamos fazendo acessibilidade? com Cintia Romero",
-    "authors": [
-      "VagasUX"
-    ],
-    "context": [
-      "UX",
-      "Carreira"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "https://www.youtube.com/watch?v=UOaDuDM7lqU",
-    "youtubeVideoId": "UOaDuDM7lqU",
-    "imageUrl": "https://i.ytimg.com/vi/UOaDuDM7lqU/hqdefault.jpg",
-    "vagasuxChannel": true,
-    "addedAt": "2024-10-27T18:09:49+00:00"
-  },
-  {
-    "id": "yt-254JWwd1ZYM",
-    "title": "Como funciona a Design Critique da VagasUX?",
-    "authors": [
-      "VagasUX"
-    ],
-    "context": [
-      "UX",
-      "Carreira"
-    ],
-    "languages": [
-      "🇧🇷"
-    ],
-    "url": "https://www.youtube.com/watch?v=254JWwd1ZYM",
-    "youtubeVideoId": "254JWwd1ZYM",
-    "imageUrl": "https://i.ytimg.com/vi/254JWwd1ZYM/hqdefault.jpg",
-    "vagasuxChannel": true,
-    "addedAt": "2024-10-15T01:01:09+00:00"
-  },
-  {
     "id": "yt-3aODngaHTdU",
     "title": "Como se motivar de maneira saudável? Cuide da sua saúde mental durante a migração para UX 💛",
     "authors": [
@@ -896,6 +833,316 @@ export const guiaVideos: GuiaVideo[] = [
     "url": "https://youtu.be/ieD21pE9JTY?si=j6UgptosulgCRnPx",
     "youtubeVideoId": "ieD21pE9JTY",
     "addedAt": "2026-08-12T16:00:03Z"
+  },
+  {
+    "id": "yt-UzsuL8WGeJw",
+    "title": "WEBINAR DE #ANTROPOLOGIA com Eros Sester e Marcelo Perilo",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Research"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=UzsuL8WGeJw",
+    "youtubeVideoId": "UzsuL8WGeJw",
+    "imageUrl": "https://i.ytimg.com/vi/UzsuL8WGeJw/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-O0QorFKCyzI",
+    "title": "Áudio do Podcast no Youtube - #001 A Vagas UX com Mah Piacesi",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=O0QorFKCyzI",
+    "youtubeVideoId": "O0QorFKCyzI",
+    "imageUrl": "https://i.ytimg.com/vi/O0QorFKCyzI/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-FEBZlCPRUHg",
+    "title": "Como é trabalhar em empresas de diferentes tamanhos - Talk Vagas #15",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=FEBZlCPRUHg",
+    "youtubeVideoId": "FEBZlCPRUHg",
+    "imageUrl": "https://i.ytimg.com/vi/FEBZlCPRUHg/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-qv-sbD1PPBc",
+    "title": "A importância do pensamento crítico - Talk Vagas #14",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Design Estratégico"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=qv-sbD1PPBc",
+    "youtubeVideoId": "qv-sbD1PPBc",
+    "imageUrl": "https://i.ytimg.com/vi/qv-sbD1PPBc/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-HMCyyDshh10",
+    "title": "Metodologias ágeis e UX Design se misturam? - Talk Vagas #13",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Ágil"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=HMCyyDshh10",
+    "youtubeVideoId": "HMCyyDshh10",
+    "imageUrl": "https://i.ytimg.com/vi/HMCyyDshh10/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-Inbdny3jvSs",
+    "title": "Carreira em UX Design no exterior - Talk VagasUX #12",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira",
+      "Exterior"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=Inbdny3jvSs",
+    "youtubeVideoId": "Inbdny3jvSs",
+    "imageUrl": "https://i.ytimg.com/vi/Inbdny3jvSs/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-nYqwWGNAZZY",
+    "title": "Quais soft skills são importantes em UX? - Talk VagasUX #11",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Soft skills"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=nYqwWGNAZZY",
+    "youtubeVideoId": "nYqwWGNAZZY",
+    "imageUrl": "https://i.ytimg.com/vi/nYqwWGNAZZY/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-aAy7nkXVmH8",
+    "title": "Qual a importância do Motion Design? - Talk VagasUX #10",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Motion"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=aAy7nkXVmH8",
+    "youtubeVideoId": "aAy7nkXVmH8",
+    "imageUrl": "https://i.ytimg.com/vi/aAy7nkXVmH8/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-k99Z42078kE",
+    "title": "O que líderes esperam de um perfil júnior? - Talk VagasUX #09",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=k99Z42078kE",
+    "youtubeVideoId": "k99Z42078kE",
+    "imageUrl": "https://i.ytimg.com/vi/k99Z42078kE/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-Ov3DvnwvxPg",
+    "title": "Metodologias de UX Design - Talk VagasUX #08",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "UX",
+      "Fundamentos"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=Ov3DvnwvxPg",
+    "youtubeVideoId": "Ov3DvnwvxPg",
+    "imageUrl": "https://i.ytimg.com/vi/Ov3DvnwvxPg/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-H3CDvBT2xNw",
+    "title": "Trabalho como freelancer em UX: Por onde começar? - Talk VagasUX #07",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=H3CDvBT2xNw",
+    "youtubeVideoId": "H3CDvBT2xNw",
+    "imageUrl": "https://i.ytimg.com/vi/H3CDvBT2xNw/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-9CkhldhysSA",
+    "title": "Como apresentar um case de UX na entrevista? - Talk VagasUX #06",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=9CkhldhysSA",
+    "youtubeVideoId": "9CkhldhysSA",
+    "imageUrl": "https://i.ytimg.com/vi/9CkhldhysSA/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-jCvyiv7g-kM",
+    "title": "Como fazer um portfólio de destaque em UX? - Talk VagasUX #05",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=jCvyiv7g-kM",
+    "youtubeVideoId": "jCvyiv7g-kM",
+    "imageUrl": "https://i.ytimg.com/vi/jCvyiv7g-kM/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-B9t8DC5ev-Y",
+    "title": "Processos seletivos: Testes e entrevista técnica - Talk VagasUX #04",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=B9t8DC5ev-Y",
+    "youtubeVideoId": "B9t8DC5ev-Y",
+    "imageUrl": "https://i.ytimg.com/vi/B9t8DC5ev-Y/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-CsdfWNUU-pk",
+    "title": "Processos seletivos: Primeiro contato e RH - Talk VagasUX #03",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira",
+      "RH"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=CsdfWNUU-pk",
+    "youtubeVideoId": "CsdfWNUU-pk",
+    "imageUrl": "https://i.ytimg.com/vi/CsdfWNUU-pk/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-61sx27Y4EZU",
+    "title": "LinkedIn e currículo - Talk VagasUX #02",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira",
+      "RH"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=61sx27Y4EZU",
+    "youtubeVideoId": "61sx27Y4EZU",
+    "imageUrl": "https://i.ytimg.com/vi/61sx27Y4EZU/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
+  },
+  {
+    "id": "yt-iTzeVgQQ2cU",
+    "title": "A jornada conturbada do profissional iniciante em UX",
+    "authors": [
+      "VagasUX"
+    ],
+    "context": [
+      "Carreira"
+    ],
+    "languages": [
+      "🇧🇷"
+    ],
+    "url": "https://www.youtube.com/watch?v=iTzeVgQQ2cU",
+    "youtubeVideoId": "iTzeVgQQ2cU",
+    "imageUrl": "https://i.ytimg.com/vi/iTzeVgQQ2cU/hqdefault.jpg",
+    "vagasuxChannel": true,
+    "addedAt": "2026-08-12T18:30:00Z"
   },
 ]
 
