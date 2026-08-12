@@ -858,7 +858,7 @@ export const guiaVideos: GuiaVideo[] = [
     "imageUrl": "https://i.ytimg.com/vi/3aODngaHTdU/hqdefault.jpg",
     "vagasuxChannel": true,
     "addedAt": "2024-09-28T22:38:03+00:00"
-  }
+  },
   {
     "id": "3ba8cbb0d904803c8aacd832f30b9a48",
     "title": "Como medir o impacto do seu Design",
