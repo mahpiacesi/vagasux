@@ -108,7 +108,6 @@ export const guiaTemas: GuiaTema[] = [
   { id: 'design-system', title: 'Design System', emoji: '🧩' },
   { id: 'ia', title: 'IA', emoji: '🤖' },
   { id: 'metricas', title: 'Métricas', emoji: '📊' },
-  { id: 'utilitarios', title: 'Utilitários', emoji: '🛠️' },
 ]
 
 export const guiaTipos: GuiaTipo[] = [
