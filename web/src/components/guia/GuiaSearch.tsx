@@ -6,7 +6,7 @@ import {
   guiaSearchCategories,
   guiaSearchSuggestions,
 } from '@/data/guia'
-import { searchGuia } from '@/data/guiaSearchIndex'
+import { searchGuia, suggestGuiaQueries } from '@/data/guiaSearchIndex'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
@@ -36,10 +36,7 @@ export function GuiaSearch() {
       navigate(`${guiaRoutes.home}/busca?${params}`)
     }
   }
-  const relatedSuggestions = useMemo(
-    () => [...new Set(results.map((item) => item.category))].slice(0, 5),
-    [results],
-  )
+  const relatedSuggestions = useMemo(() => suggestGuiaQueries(query), [query])
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
 
   return (
@@ -94,9 +91,9 @@ export function GuiaSearch() {
                     role="option"
                     className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 transition-colors hover:bg-brand-100/70"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => hasQuery ? openAllResults(query, item) : openAllResults(item)}
+                    onClick={() => openAllResults(hasQuery ? item : item)}
                   >
-                    <span>{hasQuery ? `${query} · ${item}` : item}</span>
+                    <span>{item}</span>
                   </button>
                 </li>
               ))}

@@ -151,7 +151,8 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
   const matches = guiaSearchIndex
     .filter((item) => {
       const text = `${item.title} ${item.keywords}`.toLocaleLowerCase('pt-BR')
-      return terms.every((term) => text.includes(term))
+      const words = text.split(/[^\p{L}\p{N}]+/u).filter(Boolean)
+      return terms.every((term) => words.some((word) => word.startsWith(term)))
     }).map((item) => {
       if (item.snippet === '') return item
       const snippetSource =
@@ -168,6 +169,24 @@ export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
     byCategory.set(item.category, count + 1)
     return true
   }).slice(0, limit)
+}
+
+export function suggestGuiaQueries(query: string): string[] {
+  const term = query.trim().toLocaleLowerCase('pt-BR')
+  if (!term) return []
+
+  const suggestions = new Set<string>()
+  for (const item of searchGuia(query, 30)) {
+    const words = `${item.title} ${item.keywords}`
+      .split(/[^\p{L}\p{N}]+/u)
+      .filter(Boolean)
+    const index = words.findIndex((word) => word.toLocaleLowerCase('pt-BR').startsWith(term))
+    const next = words[index + 1]
+    if (index >= 0 && next && next.length > 1) {
+      suggestions.add(`${words[index]} ${next}`)
+    }
+  }
+  return [...suggestions].slice(0, 5)
 }
 
 function buildSnippet(text: string, terms: string[]): string | null {
