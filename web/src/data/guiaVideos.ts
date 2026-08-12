@@ -859,6 +859,46 @@ export const guiaVideos: GuiaVideo[] = [
     "vagasuxChannel": true,
     "addedAt": "2024-09-28T22:38:03+00:00"
   }
+,  {
+    "id": "3ba8cbb0d904803c8aacd832f30b9a48",
+    "title": "Como medir o impacto do seu Design",
+    "authors": ["Alvaro Souza"],
+    "context": ["Métricas"],
+    "languages": ["🇧🇷"],
+    "url": "https://youtu.be/gPH5hbdLaSI?si=INtwn_zLxdVRHtXm",
+    "youtubeVideoId": "gPH5hbdLaSI",
+    "addedAt": "2026-08-12T16:00:00Z"
+  },
+  {
+    "id": "3ba8cbb0d9048043aa3dd6f5e5bb6f20",
+    "title": "Métricas UX: Números, Porcentagens e Impacto",
+    "authors": ["Design Circuit"],
+    "context": ["Métricas"],
+    "languages": ["🇧🇷"],
+    "url": "https://youtu.be/owbNt7RXJYk?si=yudDXCZ0KBPT4SAM",
+    "youtubeVideoId": "owbNt7RXJYk",
+    "addedAt": "2026-08-12T16:00:01Z"
+  },
+  {
+    "id": "3ba8cbb0d904804f9204e16df80eae5f",
+    "title": "Métricas de UX com Allan Cardozo",
+    "authors": ["UXNOW"],
+    "context": ["Métricas"],
+    "languages": ["🇧🇷"],
+    "url": "https://youtu.be/1sT4T19OX6Q?si=58-uj5Bo5S3-iWZF",
+    "youtubeVideoId": "1sT4T19OX6Q",
+    "addedAt": "2026-08-12T16:00:02Z"
+  },
+  {
+    "id": "3ba8cbb0d90480bebe5fcd3432d46600",
+    "title": "Métricas para UX: Como Escolher e Usar de Forma Eficiente",
+    "authors": ["DesignTeam"],
+    "context": ["Métricas", "Produto"],
+    "languages": ["🇧🇷"],
+    "url": "https://youtu.be/ieD21pE9JTY?si=j6UgptosulgCRnPx",
+    "youtubeVideoId": "ieD21pE9JTY",
+    "addedAt": "2026-08-12T16:00:03Z"
+  },
 ]
 
 /** Tags de Contexto únicas, ordenadas (Notion multi_select). */
