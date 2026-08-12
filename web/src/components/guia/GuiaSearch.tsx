@@ -28,8 +28,11 @@ export function GuiaSearch() {
   const results = useMemo(() => searchGuia(query), [query])
   const hasQuery = query.trim().length > 0
 
-  function openAllResults() {
-    if (query.trim()) navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(query.trim())}`)
+  function openAllResults(value = query) {
+    if (value.trim()) {
+      setFocused(false)
+      navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(value.trim())}`)
+    }
   }
 
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
@@ -93,7 +96,7 @@ export function GuiaSearch() {
                     role="option"
                     className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 transition-colors hover:bg-brand-100/70"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => hasQuery ? openAllResults() : setQuery(item.title)}
+                    onClick={() => openAllResults(hasQuery ? query : item.title)}
                   >
                     <span className="min-w-0"><span>{item.title}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{item.snippet}</span> : null}</span>
                     {hasQuery ? <span className="ml-auto shrink-0 text-xs font-medium text-neutral-400">{item.category}</span> : null}
