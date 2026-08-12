@@ -9,7 +9,11 @@ import { searchGuia } from '@/data/guiaSearchIndex'
 export function GuiaSearchResultsPageContent() {
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('q') ?? ''
-  const results = useMemo(() => searchGuia(query, 100), [query])
+  const category = searchParams.get('categoria')
+  const results = useMemo(
+    () => searchGuia(query, 100).filter((item) => !category || item.category === category),
+    [query, category],
+  )
   const grouped = useMemo(() => {
     const map = new Map<string, typeof results>()
     for (const result of results) {
@@ -49,7 +53,7 @@ export function GuiaSearchResultsPageContent() {
           <Input name="q" defaultValue={query} className="h-14 rounded-2xl pl-12" />
         </form>
         <p className="mt-4 text-sm font-semibold text-neutral-400">
-          {query ? `${results.length} resultados para “${query}”` : 'Digite um termo para buscar no Guia.'}
+          {query ? `${results.length} resultados para “${query}”${category ? ` em ${category}` : ''}` : 'Digite um termo para buscar no Guia.'}
         </p>
       </header>
       {grouped.length ? (

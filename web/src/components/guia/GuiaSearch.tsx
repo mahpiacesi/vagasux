@@ -28,27 +28,18 @@ export function GuiaSearch() {
   const results = useMemo(() => searchGuia(query), [query])
   const hasQuery = query.trim().length > 0
 
-  function openAllResults(value = query) {
+  function openAllResults(value = query, category?: string) {
     if (value.trim()) {
       setFocused(false)
-      navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(value.trim())}`)
+      const params = new URLSearchParams({ q: value.trim() })
+      if (category) params.set('categoria', category)
+      navigate(`${guiaRoutes.home}/busca?${params}`)
     }
   }
-  function openResult(item: { to: string; external?: boolean }) {
-    setFocused(false)
-    if (item.external) window.open(item.to, '_blank', 'noopener,noreferrer')
-    else navigate(item.to)
-  }
-  function highlight(value: string) {
-    if (!hasQuery) return value
-    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    return value.split(new RegExp(`(${escaped})`, 'ig')).map((part, index) =>
-      part.toLocaleLowerCase() === query.toLocaleLowerCase()
-        ? <strong key={index} className="font-black text-neutral-500">{part}</strong>
-        : part,
-    )
-  }
-
+  const relatedSuggestions = useMemo(
+    () => [...new Set(results.map((item) => item.category))].slice(0, 5),
+    [results],
+  )
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
 
   return (
@@ -93,27 +84,19 @@ export function GuiaSearch() {
         >
           <div className="border-b border-neutral-500/8 px-4 py-3">
             <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
-              {hasQuery ? 'Resultados' : 'Sugestões'}
+              Sugestões
             </p>
             <ul className="mt-2 space-y-1">
-              {(hasQuery ? results : suggestions.map((title) => ({
-                id: `suggestion-${title}`,
-                title,
-                category: 'Sugestão',
-                to: '',
-                keywords: title,
-                snippet: undefined,
-              }))).map((item) => (
-                <li key={item.id}>
+              {(hasQuery ? relatedSuggestions : suggestions).map((item) => (
+                <li key={item}>
                   <button
                     type="button"
                     role="option"
                     className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 transition-colors hover:bg-brand-100/70"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => hasQuery ? openResult(item) : openAllResults(item.title)}
+                    onClick={() => hasQuery ? openAllResults(query, item) : openAllResults(item)}
                   >
-                    <span className="min-w-0"><span>{highlight(item.title)}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{highlight(item.snippet)}</span> : null}</span>
-                    {hasQuery ? <span className="ml-auto shrink-0 text-xs font-medium text-neutral-400">{item.category}</span> : null}
+                    <span>{hasQuery ? `${query} · ${item}` : item}</span>
                   </button>
                 </li>
               ))}
