@@ -6,7 +6,7 @@ import {
   guiaSearchCategories,
   guiaSearchSuggestions,
 } from '@/data/guia'
-import { searchGuia, type GuiaSearchResult } from '@/data/guiaSearchIndex'
+import { searchGuia } from '@/data/guiaSearchIndex'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
@@ -16,13 +16,6 @@ export function GuiaSearch() {
   const listboxId = useId()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
-  const [history, setHistory] = useState<GuiaSearchResult[]>(() => {
-    try {
-      return JSON.parse(localStorage.getItem('guia-search-history') ?? '[]')
-    } catch {
-      return []
-    }
-  })
 
   const suggestions = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -35,14 +28,6 @@ export function GuiaSearch() {
   const results = useMemo(() => searchGuia(query), [query])
   const hasQuery = query.trim().length > 0
 
-  function selectResult(item: GuiaSearchResult) {
-    const nextHistory = [item, ...history.filter((entry) => entry.id !== item.id)].slice(0, 4)
-    setHistory(nextHistory)
-    localStorage.setItem('guia-search-history', JSON.stringify(nextHistory))
-    setFocused(false)
-    if (item.external) window.open(item.to, '_blank', 'noopener,noreferrer')
-    else navigate(item.to)
-  }
   function openAllResults() {
     if (query.trim()) navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(query.trim())}`)
   }
@@ -107,26 +92,14 @@ export function GuiaSearch() {
                     role="option"
                     className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 transition-colors hover:bg-brand-100/70"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => hasQuery ? selectResult(item) : setQuery(item.title)}
+                    onClick={() => hasQuery ? openAllResults() : setQuery(item.title)}
                   >
-                    <span>{item.title}</span>
-                    {hasQuery ? <span className="ml-auto text-xs font-medium text-neutral-400">{item.category}</span> : null}
+                    <span className="min-w-0"><span>{item.title}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{item.snippet}</span> : null}</span>
+                    {hasQuery ? <span className="ml-auto shrink-0 text-xs font-medium text-neutral-400">{item.category}</span> : null}
                   </button>
                 </li>
               ))}
             </ul>
-            {hasQuery && results.length ? (
-              <button type="button" className="mt-2 px-3 text-sm font-bold text-brand-400" onMouseDown={(event) => event.preventDefault()} onClick={openAllResults}>
-                Ver todos os resultados
-              </button>
-            ) : null}
-          </div>
-
-          <div className="border-b border-neutral-500/8 px-4 py-3">
-            <p className="text-[0.65rem] font-bold tracking-[0.16em] text-neutral-400 uppercase">
-              Histórico
-            </p>
-            {history.length ? <ul className="mt-2 space-y-1">{history.map((item) => <li key={item.id}><button type="button" className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 hover:bg-brand-100/70" onClick={() => selectResult(item)}>{item.title}</button></li>)}</ul> : <p className="mt-2 px-3 py-2 text-sm font-medium text-neutral-300">Suas buscas recentes aparecerão aqui.</p>}
           </div>
 
         </div>
