@@ -13,6 +13,7 @@ import { GuiaFundamentosPageContent } from '@/components/guia/GuiaFundamentosPag
 import { GuiaFaqPage } from '@/pages/guia/GuiaFaqPage'
 import { GuiaGlossarioPage } from '@/pages/guia/GuiaGlossarioPage'
 import { GuiaTemaPage } from '@/pages/guia/GuiaTemaPage'
+import { GuiaSearchResultsPageContent } from '@/components/guia/GuiaSearchResultsPageContent'
 import { GuiaTipoPage } from '@/pages/guia/GuiaTipoPage'
 import { GuiaTrilhaPage } from '@/pages/guia/GuiaTrilhaPage'
 import { HomePage } from '@/pages/HomePage'
@@ -39,6 +40,7 @@ export default function App() {
           <Route path={routes.parcerias} element={<ParceriasPage />} />
           <Route path={routes.guia} element={<GuiaLayout />}>
             <Route index element={<GuiaPage />} />
+            <Route path="busca" element={<GuiaSearchResultsPageContent />} />
             <Route path="trilhas/:slug" element={<GuiaTrilhaPage />} />
             <Route path="tema/:slug" element={<GuiaTemaPage />} />
             <Route path="ferramentas" element={<GuiaFerramentasPage />} />
