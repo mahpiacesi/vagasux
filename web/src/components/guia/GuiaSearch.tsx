@@ -6,7 +6,7 @@ import {
   guiaSearchCategories,
   guiaSearchSuggestions,
 } from '@/data/guia'
-import { searchGuia, suggestGuiaQueries } from '@/data/guiaSearchIndex'
+import { suggestGuiaQueries } from '@/data/guiaSearchIndex'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { cn } from '@/lib/utils'
 
@@ -25,7 +25,6 @@ export function GuiaSearch() {
       item.toLowerCase().includes(normalized),
     )
   }, [query])
-  const results = useMemo(() => searchGuia(query), [query])
   const hasQuery = query.trim().length > 0
 
   function openAllResults(value = query, category?: string) {
