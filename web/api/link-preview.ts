@@ -340,6 +340,14 @@ const allowedUrls = new Set([
   'https://silviosantosipsum.com/',
   'https://siliconvalleyjobtitlegenerator.tumblr.com/',
   'https://designtitles.com/',
+  'https://www.notion.so/',
+  'https://raindrop.io/',
+  'https://meetfranz.com/',
+  'https://scribehow.com/',
+  'https://doodle.com/en/',
+  'https://www.mentimeter.com/',
+  'https://calendly.com/',
+  'https://alternativeto.net/',
 ])
 
 function getAttribute(tag: string, attribute: string) {
