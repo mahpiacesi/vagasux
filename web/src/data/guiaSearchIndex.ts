@@ -180,13 +180,16 @@ export function suggestGuiaQueries(query: string): string[] {
   if (!term) return []
 
   const suggestions = new Map<string, string>()
+  const ignoredWords = new Set(['a', 'as', 'o', 'os', 'de', 'da', 'das', 'do', 'dos', 'em', 'na', 'nas', 'no', 'nos', 'para', 'por', 'com', 'e', 'ou'])
   for (const item of searchGuia(query, 100)) {
     const words = `${item.title} ${item.keywords}`
       .split(/[^\p{L}\p{N}]+/u)
       .filter(Boolean)
     const indices = words.map((word, index) => word.toLocaleLowerCase('pt-BR').startsWith(term) ? index : -1).filter((index) => index >= 0)
     for (const index of indices) {
-      const next = words[index + 1]
+      const next = words.slice(index + 1).find(
+        (word) => word.length > 1 && !ignoredWords.has(word.toLocaleLowerCase('pt-BR')),
+      )
       if (next && next.length > 1 && next.toLocaleLowerCase('pt-BR') !== words[index].toLocaleLowerCase('pt-BR')) {
         const suggestion = `${words[index]} ${next}`
         suggestions.set(suggestion.toLocaleLowerCase('pt-BR'), suggestion)
