@@ -16,6 +16,7 @@ export function GuiaSearch() {
   const listboxId = useId()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   const suggestions = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -37,6 +38,13 @@ export function GuiaSearch() {
   }
   const relatedSuggestions = useMemo(() => suggestGuiaQueries(query), [query])
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
+  const categoryFilters: Record<string, { category?: string; to: string }> = {
+    Trilhas: { category: 'Trilha', to: `${guiaRoutes.home}#trilhas` },
+    Temas: { category: 'Tema', to: `${guiaRoutes.home}#temas` },
+    Tipos: { category: 'Tipo', to: `${guiaRoutes.home}#tipos` },
+    Artigos: { category: 'Artigos', to: guiaRoutes.homeTipos('artigos') },
+    Vídeos: { category: 'Vídeos', to: guiaRoutes.homeTipos('videos') },
+  }
 
   return (
     <div className="relative mx-auto w-full max-w-2xl">
@@ -107,12 +115,17 @@ export function GuiaSearch() {
           <button
             key={category}
             type="button"
-            disabled
-            aria-disabled="true"
-            title="Em breve"
+            aria-pressed={activeCategory === category}
+            onClick={() => {
+              const filter = categoryFilters[category]
+              setActiveCategory(category)
+              if (query.trim() && filter.category) openAllResults(query, filter.category)
+              else navigate(filter.to)
+            }}
             className={cn(
               'rounded-full border border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-400',
-              'cursor-not-allowed opacity-70',
+              'transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500',
+              activeCategory === category && 'border-brand-400 bg-brand-400 text-neutral-100',
             )}
           >
             {category}
