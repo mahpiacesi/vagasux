@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaContextFilter } from '@/components/guia/GuiaContextFilter'
 import { GuiaVideoCard } from '@/components/guia/GuiaVideoCard'
@@ -18,7 +19,10 @@ export function GuiaVideosPageContent({
   title,
   description,
 }: GuiaVideosPageContentProps) {
-  const [contextFilter, setContextFilter] = useState<string | null>(null)
+  const [searchParams] = useSearchParams()
+  const [contextFilter, setContextFilter] = useState<string | null>(
+    () => searchParams.get('contexto'),
+  )
   const contextTags = useMemo(() => getGuiaVideoContextTags(), [])
 
   const filteredVideos = useMemo(
