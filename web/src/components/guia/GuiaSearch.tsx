@@ -34,6 +34,11 @@ export function GuiaSearch() {
       navigate(`${guiaRoutes.home}/busca?q=${encodeURIComponent(value.trim())}`)
     }
   }
+  function openResult(item: { to: string; external?: boolean }) {
+    setFocused(false)
+    if (item.external) window.open(item.to, '_blank', 'noopener,noreferrer')
+    else navigate(item.to)
+  }
   function highlight(value: string) {
     if (!hasQuery) return value
     const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -105,7 +110,7 @@ export function GuiaSearch() {
                     role="option"
                     className="flex w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-neutral-500 transition-colors hover:bg-brand-100/70"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => openAllResults(hasQuery ? query : item.title)}
+                    onClick={() => hasQuery ? openResult(item) : openAllResults(item.title)}
                   >
                     <span className="min-w-0"><span>{highlight(item.title)}</span>{hasQuery && item.snippet ? <span className="mt-1 block text-xs font-medium leading-relaxed text-neutral-400">{highlight(item.snippet)}</span> : null}</span>
                     {hasQuery ? <span className="ml-auto shrink-0 text-xs font-medium text-neutral-400">{item.category}</span> : null}
