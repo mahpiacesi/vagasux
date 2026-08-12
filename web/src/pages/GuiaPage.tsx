@@ -10,8 +10,8 @@ export function GuiaPage() {
   return (
     <main className="guia-page">
       <GuiaHero />
-      <GuiaLearningQuote />
       <GuiaTrilhasGrid />
+      <GuiaLearningQuote />
       <GuiaTemasSection />
       <GuiaCursosSection />
       <GuiaTiposSection />
