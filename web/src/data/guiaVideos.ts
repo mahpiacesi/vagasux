@@ -950,7 +950,7 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Soft skills"
+      "Soft Skills"
     ],
     "languages": [
       "🇧🇷"
