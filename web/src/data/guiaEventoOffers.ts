@@ -14,7 +14,7 @@ export type GuiaEventoOffer = {
 export const guiaEventoOffers: Record<string, GuiaEventoOffer> = {
   /** VagasUX — meetup gratuito, link das redes sociais. */
   '1848cbb0d9048002b672cccfe159c293': {
-    ctaUrl: 'https://avely.me/vagasux',
+    ctaUrl: 'https://luma.com/user/vagasUX',
     notice:
       'Acesse as redes sociais da VagasUX para conferir se existe algum meetup confirmado vindo aí.',
   },
