@@ -899,28 +899,6 @@ export const guiaVideos: GuiaVideo[] = [
     "youtubeVideoId": "ieD21pE9JTY",
     "addedAt": "2026-08-12T16:00:03Z"
   },
-  {
-    "id": "3ba8cbb0d9048069a5d6f755c27195c4",
-    "title": "Workshop Google Analytics com Adriana Akamine",
-    "authors": ["VagasUX"],
-    "context": ["Métricas"],
-    "languages": ["🇧🇷"],
-    "url": "https://youtu.be/-cA9qBcQHJU?si=6xvg5YuD85hzeKi8",
-    "youtubeVideoId": "-cA9qBcQHJU",
-    "vagasuxChannel": true,
-    "addedAt": "2026-08-12T18:00:00Z"
-  },
-  {
-    "id": "3ba8cbb0d9048038a7fbcd1be5ca1fb1",
-    "title": "Workshop Google Analytics",
-    "authors": ["VagasUX"],
-    "context": ["Métricas"],
-    "languages": ["🇧🇷"],
-    "url": "https://youtu.be/DtKhxKVsr4E?si=wnUF-8xRami5I9Hi",
-    "youtubeVideoId": "DtKhxKVsr4E",
-    "vagasuxChannel": true,
-    "addedAt": "2026-08-12T18:00:01Z"
-  },
 ]
 
 /** Tags de Contexto únicas, ordenadas (Notion multi_select). */
