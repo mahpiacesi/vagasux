@@ -306,6 +306,22 @@ const allowedUrls = new Set([
   'https://queerdesign.club/',
   'https://www.latinxswhodesign.com/',
   'https://humanebydesign.com/',
+  'https://obsproject.com/',
+  'https://www.webex.com/pt/index.html',
+  'https://www.araelium.com/screenflick-mac-screen-recorder',
+  'https://chrome.google.com/webstore/detail/screen-and-webcam-recorde/jiihcciniecimeajcniapbngjjbonjan',
+  'https://recordscreen.io/',
+  'https://www.useloom.com/',
+  'https://overframe.xyz/',
+  'https://lookback.io/',
+  'https://www.awesomescreenshot.com/',
+  'https://getkap.co/',
+  'http://recordit.co/',
+  'https://www.inspectlet.com/',
+  'https://www.fullstory.com/',
+  'https://www.smartlook.com/pt/',
+  'https://www.telestream.net/screenflow/overview.htm',
+  'https://play.google.com/store/apps/details?id=com.rsupport.mvagent&hl=pt_BR',
 ])
 
 function getAttribute(tag: string, attribute: string) {
