@@ -859,7 +859,7 @@ export const guiaVideos: GuiaVideo[] = [
     "vagasuxChannel": true,
     "addedAt": "2024-09-28T22:38:03+00:00"
   }
-,  {
+  {
     "id": "3ba8cbb0d904803c8aacd832f30b9a48",
     "title": "Como medir o impacto do seu Design",
     "authors": ["Alvaro Souza"],
@@ -899,7 +899,7 @@ export const guiaVideos: GuiaVideo[] = [
     "youtubeVideoId": "ieD21pE9JTY",
     "addedAt": "2026-08-12T16:00:03Z"
   },
-,  {
+  {
     "id": "3ba8cbb0d9048069a5d6f755c27195c4",
     "title": "Workshop Google Analytics com Adriana Akamine",
     "authors": ["VagasUX"],
