@@ -3,12 +3,10 @@ import { useId, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import {
-  guiaSearchCategories,
   guiaSearchSuggestions,
 } from '@/data/guia'
 import { suggestGuiaQueries } from '@/data/guiaSearchIndex'
 import { guiaRoutes } from '@/lib/guiaRoutes'
-import { cn } from '@/lib/utils'
 
 export function GuiaSearch() {
   const navigate = useNavigate()
@@ -16,7 +14,6 @@ export function GuiaSearch() {
   const listboxId = useId()
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   const suggestions = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -28,23 +25,15 @@ export function GuiaSearch() {
   }, [query])
   const hasQuery = query.trim().length > 0
 
-  function openAllResults(value = query, category?: string) {
+  function openAllResults(value = query) {
     if (value.trim()) {
       setFocused(false)
       const params = new URLSearchParams({ q: value.trim() })
-      if (category) params.set('categoria', category)
       navigate(`${guiaRoutes.home}/busca?${params}`)
     }
   }
   const relatedSuggestions = useMemo(() => suggestGuiaQueries(query), [query])
   const showPanel = focused && (query.length > 0 || suggestions.length > 0)
-  const categoryFilters: Record<string, { category?: string; to: string }> = {
-    Trilhas: { category: 'Trilha', to: `${guiaRoutes.home}#trilhas` },
-    Temas: { category: 'Tema', to: `${guiaRoutes.home}#temas` },
-    Tipos: { category: 'Tipo', to: `${guiaRoutes.home}#tipos` },
-    Artigos: { category: 'Artigos', to: guiaRoutes.homeTipos('artigos') },
-    Vídeos: { category: 'Vídeos', to: guiaRoutes.homeTipos('videos') },
-  }
 
   return (
     <div className="relative mx-auto w-full max-w-2xl">
@@ -109,29 +98,6 @@ export function GuiaSearch() {
 
         </div>
       ) : null}
-
-      <div className="mt-4 flex flex-wrap justify-center gap-2">
-        {guiaSearchCategories.map((category) => (
-          <button
-            key={category}
-            type="button"
-            aria-pressed={activeCategory === category}
-            onClick={() => {
-              const filter = categoryFilters[category]
-              setActiveCategory(category)
-              if (query.trim() && filter.category) openAllResults(query, filter.category)
-              else navigate(filter.to)
-            }}
-            className={cn(
-              'rounded-full border border-neutral-500/10 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-400',
-              'transition-colors hover:border-brand-300 hover:bg-brand-100/60 hover:text-brand-500',
-              activeCategory === category && 'border-brand-400 bg-brand-400 text-neutral-100',
-            )}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
     </div>
   )
 }
