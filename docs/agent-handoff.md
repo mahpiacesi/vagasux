@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-08-07 (noite)
+**Última atualização:** 2026-08-13
 
 ---
 
@@ -54,12 +54,19 @@
 - Rota `/guia/ferramentas` iniciada com Figma expansível, ferramentas de criação, callout de IA e CTA para a trilha de portfólio.
 - Miro e Notion não têm páginas próprias; Figma fica como seção especial da página de ferramentas.
 
+### Guia expandido (12–13 ago)
+- Temas integrados: Fundamentos, UI, Research, Content Design, Design System, Acessibilidade, Diversidade e Métricas.
+- Fundamentos usa abas para Cor, Grid, Tipografia, Iconografia, Ilustração e Motion.
+- Ferramentas usa abas para criação, quadro de ideias e utilitários.
+- Busca do Guia ganhou resultados, índice de conteúdos e sugestões contextuais.
+- Vídeos, livros e Glossário foram atualizados com novas curadorias e contextos.
+
 ---
 
 ## Próximo passo esperado
 
-1. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
-2. Monitorar Scheduler diário (~8h BRT) com cadeia completa incluindo InfoJobs
+1. Revisar visualmente as novas curadorias e previews em produção.
+2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -70,7 +77,7 @@
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
-| Destaque de desconto da Alura | Em PR (#71) |
+| Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
