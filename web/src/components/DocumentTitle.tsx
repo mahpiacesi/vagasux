@@ -27,6 +27,9 @@ function resolveGuiaTitle(pathname: string): string | undefined {
   const trilhaMatch = pathname.match(/^\/guia\/trilhas\/([^/]+)$/)
   if (trilhaMatch) {
     const trilha = getGuiaTrilhaById(trilhaMatch[1])
+    if (trilha?.id === 'entender-o-basico') {
+      return 'Entender o básico | Guia do Product Designer | VagasUX'
+    }
     return trilha
       ? `VagasUX · Guia · ${trilha.title}`
       : 'VagasUX · Guia do Product Designer'
@@ -56,6 +59,18 @@ export function DocumentTitle() {
 
   useEffect(() => {
     document.title = resolveGuiaTitle(pathname) ?? 'VagasUX'
+    if (pathname === '/guia/trilhas/entender-o-basico') {
+      let description = document.querySelector<HTMLMetaElement>(
+        'meta[name="description"]',
+      )
+      if (!description) {
+        description = document.createElement('meta')
+        description.name = 'description'
+        document.head.append(description)
+      }
+      description.content =
+        'Uma trilha para quem está começando em Product Design. Entenda a área, conheça o processo e descubra por onde começar.'
+    }
   }, [pathname])
 
   return null
