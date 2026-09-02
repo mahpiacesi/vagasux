@@ -22,6 +22,7 @@ export function GuiaTrailNavigator() {
   const trailId = searchParams.get('trilha')
   const itemId = searchParams.get('item')
 
+  if (!trailId) return null
   const trail = trails[trailId as keyof typeof trails]
   if (!trail) return null
   const trailContents = trail.stages.flatMap((stage) =>
