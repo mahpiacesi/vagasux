@@ -26,6 +26,9 @@ export function GuiaTrailNavigator() {
 
   const current = trailContents[currentIndex]
   const next = trailContents[currentIndex + 1]
+  const chapterIndex = current.stage.contents.findIndex(
+    (content) => content.id === current.id,
+  ) + 1
   const backTo = `${guiaRoutes.trilha('entender-o-basico')}#stage-${current.stage.number}`
 
   return (
@@ -33,6 +36,9 @@ export function GuiaTrailNavigator() {
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-semibold text-neutral-500">
           Você está na trilha <span className="font-black">Entender o básico</span>
+          <span className="ml-2 text-neutral-400">
+            | {current.stage.number}.{chapterIndex} {current.title}
+          </span>
         </p>
         <div className="flex flex-wrap gap-2">
           <Link
