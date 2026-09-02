@@ -72,9 +72,8 @@
 
 ## Próximo passo esperado
 
-1. Acompanhar a integração das PRs #83 e #84.
-2. Refinar a trilha **Conseguir minha primeira vaga** após uso e feedback editorial.
-3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Refinar a trilha **Conseguir minha primeira vaga** após uso e feedback editorial.
+2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -86,8 +85,8 @@
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
 | Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
-| [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | 🟡 Pronta para integração |
-| [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | 🟡 Pronta para integração; depende da PR #83 |
+| [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
+| [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
