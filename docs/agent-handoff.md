@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-08-13
+**Última atualização:** 2026-09-02
 
 ---
 
@@ -61,12 +61,18 @@
 - Busca do Guia ganhou resultados, índice de conteúdos e sugestões contextuais.
 - Vídeos, livros e Glossário foram atualizados com novas curadorias e contextos.
 
+### Trilhas do Guia (02 set)
+- A trilha **Entender o básico** está implementada e fornece a base de navegação contextual.
+- A trilha **Conseguir minha primeira vaga** foi estruturada em sete etapas: preparação, escolha de oportunidades, apresentação profissional, busca, networking, processo seletivo e pós-entrevista.
+- A barra inferior agora entende o contexto das duas trilhas.
+
 ---
 
 ## Próximo passo esperado
 
-1. Revisar visualmente as novas curadorias e previews em produção.
-2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar visualmente a trilha **Conseguir minha primeira vaga** na PR #84.
+2. Após a aprovação, adicionar a trilha ao índice de busca do Guia.
+3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -78,6 +84,7 @@
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
 | Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
+| [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | 🟡 Em avaliação; depende da trilha básica |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
