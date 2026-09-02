@@ -65,35 +65,25 @@ export const guiaTrilhas: GuiaTrilha[] = [
     contentCount: 12,
   },
   {
-    id: 'ui',
-    emoji: '🎨',
-    title: 'Aprender UI',
-    description: 'Interface, tipografia, cores, componentes e Figma.',
+    id: 'voluntariado',
+    emoji: '🤝',
+    title: 'Praticar em um voluntariado',
+    description: 'Experiências para praticar Design com impacto real.',
     level: 'iniciante',
   },
   {
-    id: 'research',
-    emoji: '🔍',
-    title: 'Aprender UX Research',
-    description:
-      'Discovery, entrevistas, testes de usabilidade e síntese.',
+    id: 'freelancer',
+    emoji: '💻',
+    title: 'Me tornar um designer freelancer',
+    description: 'Primeiros passos para organizar e oferecer seu trabalho.',
     level: 'intermediario',
-    duration: '5 h',
-    contentCount: 15,
   },
   {
-    id: 'content-design',
-    emoji: '🧩',
-    title: 'Aprender Content Design',
-    description:
-      'Microcopy, tom de voz, UX writing e conteúdo em interfaces de produto.',
-    level: 'iniciante',
-  },
-  {
-    id: 'explorar',
-    emoji: '📚',
-    title: 'Explorar todo o Guia',
-    description: 'Navegue por temas, tipos de conteúdo e centenas de curadorias.',
+    id: 'vagas-internacionais',
+    emoji: '🌎',
+    title: 'Me posicionar para vagas internacionais',
+    description: 'Referências para preparar sua carreira para o mercado global.',
+    level: 'intermediario',
   },
 ]
 
