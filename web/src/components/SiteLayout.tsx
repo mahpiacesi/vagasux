@@ -4,6 +4,7 @@ import { DocumentTitle } from './DocumentTitle'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { ScrollToTop } from './ScrollToTop'
+import { GuiaTrailNavigator } from './guia/GuiaTrailNavigator'
 
 export function SiteLayout() {
   return (
@@ -13,6 +14,7 @@ export function SiteLayout() {
       <Header />
       <Outlet />
       <Footer />
+      <GuiaTrailNavigator />
       <CookieConsentBanner />
     </div>
   )

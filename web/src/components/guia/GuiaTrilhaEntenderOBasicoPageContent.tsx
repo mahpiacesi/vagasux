@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { guiaTrilhas } from '@/data/guia'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { withTrailContext } from '@/components/guia/GuiaTrailNavigator'
 
 export function GuiaTrilhaEntenderOBasicoPageContent() {
   const contents = guiaTrilhaEntenderOBasicoStages.flatMap((stage) => stage.contents)
@@ -70,7 +71,7 @@ export function GuiaTrilhaEntenderOBasicoPageContent() {
             <ol className="mt-6 grid gap-3 lg:grid-cols-2">
               {stage.contents.map((content, index) => (
                 <li key={content.id}>
-                  <Link to={content.to} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 transition-colors hover:border-brand-300 hover:bg-brand-100/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400">
+                  <Link to={withTrailContext(content.to, content.id)} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 transition-colors hover:border-brand-300 hover:bg-brand-100/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400">
                     <span className="text-sm font-black text-brand-400">{stage.number}.{index + 1}</span>
                     <span className="min-w-0 flex-1">
                       <span className="flex items-start justify-between gap-3">
