@@ -60,9 +60,9 @@ export const guiaTrilhaEntenderOBasicoStages: GuiaTrilhaStage[] = [
       'Agora que você já conhece o básico, descubra como transformar esse conhecimento em próximos passos.',
     contents: [
       { id: 'tools', title: 'Ferramentas que Product Designers usam', description: 'Conheça ferramentas para criar, colaborar e organizar seu trabalho.', type: 'Ferramentas', to: guiaRoutes.ferramentas },
-      { id: 'courses', title: 'Como começar a estudar Product Design?', description: 'Encontre cursos para avançar no seu ritmo.', type: 'Cursos', to: guiaRoutes.cursos },
-      { id: 'course-choice', title: 'Em qual curso vale investir?', description: 'Entenda como escolher um curso que faça sentido para o seu momento.', type: 'FAQ', to: `${guiaRoutes.faq}#tipo-curso-ingressar` },
       { id: 'prepare', title: 'Como se preparar para o mercado?', description: 'Confira habilidades e referências para se candidatar com mais clareza.', type: 'FAQ', to: `${guiaRoutes.faq}#habilidades-junior` },
+      { id: 'course-choice', title: 'Em qual curso vale investir?', description: 'Entenda como escolher um curso que faça sentido para o seu momento.', type: 'FAQ', to: `${guiaRoutes.faq}#tipo-curso-ingressar` },
+      { id: 'courses', title: 'Como começar a estudar Product Design?', description: 'Encontre cursos para avançar no seu ritmo.', type: 'Cursos', to: guiaRoutes.cursos },
       { id: 'guide', title: 'Como usar o Guia para seguir estudando?', description: 'Conheça os caminhos e conteúdos disponíveis para continuar aprendendo.', type: 'FAQ', to: `${guiaRoutes.faq}#o-que-e-o-guia` },
     ],
   },
