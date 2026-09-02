@@ -15,8 +15,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     introduction: 'Não existe um momento em que você domina tudo e só então começa a procurar uma vaga. Entenda o que já consegue apresentar, identifique o que precisa desenvolver e comece a se movimentar.',
     essentials: ['Uma base de conhecimento em Product Design', 'Projetos que mostrem como você pensa', 'Currículo e perfil profissional atualizados', 'Disposição para aprender durante o processo'],
     contents: [
-      { id: 'ready', title: 'Como saber se estou pronta para buscar minha primeira vaga?', description: 'Entenda quais sinais ajudam a decidir seu próximo passo.', type: 'FAQ', to: `${guiaRoutes.faq}#preparado-integrar-equipe` },
-      { id: 'junior-skills', title: 'Quais habilidades uma pessoa júnior precisa desenvolver?', description: 'Veja o equilíbrio entre prática, repertório e habilidades de colaboração.', type: 'FAQ', to: `${guiaRoutes.faq}#habilidades-junior` },
+      { id: 'junior-levels', title: 'Entendendo níveis de designers iniciantes', description: 'Vídeo da curadoria VagasUX para entender expectativas de posições de entrada.', type: 'Referência', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
+      { id: 'cv-checklist', title: '10 coisas que não podem faltar no seu currículo', description: 'Checklist criado pela recrutadora Hana Chiarelli para a comunidade VagasUX.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/trilhas/10-coisas-que-no-podem-faltar-no-seu-currculo', external: true },
     ],
   },
   {
@@ -26,9 +26,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     introduction: 'Uma vaga pode focar em UI, discovery, pesquisa ou evolução de produtos existentes. Entender as diferenças ajuda a ler oportunidades que façam sentido para o seu momento.',
     note: 'Você não precisa cumprir 100% dos requisitos para se candidatar. Use a descrição como referência, não como uma prova que precisa passar.',
     contents: [
-      { id: 'job-types', title: 'Como identificar uma vaga que faz sentido?', description: 'Conheça diferenças de contexto, escopo e nível de entrada.', type: 'FAQ', to: `${guiaRoutes.faq}#rotina-contextos-diversos` },
-      { id: 'junior-market', title: 'Como funciona o mercado para pessoas iniciantes?', description: 'Entenda portas de entrada e o que empresas costumam procurar.', type: 'FAQ', to: `${guiaRoutes.faq}#mercado-sem-faculdade` },
       { id: 'opportunities', title: 'Onde encontrar vagas de Product Design?', description: 'Explore oportunidades publicadas pela VagasUX.', type: 'Vagas', to: '/oportunidades#vagas' },
+      { id: 'career-hubs', title: 'Plataformas e comunidades para acompanhar', description: 'A curadoria VagasUX reúne plataformas de vagas, comunidades e iniciativas para quem está buscando oportunidade.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
     ],
   },
   {
@@ -36,11 +35,12 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     title: 'Prepare sua apresentação',
     description: 'Seu material não precisa contar tudo sobre você.',
     introduction: 'Currículo, LinkedIn e portfólio ajudam uma pessoa recrutadora a entender rapidamente quem você é, o que sabe fazer e que tipo de oportunidade busca.',
+    essentials: ['Nome, cidade, contato e link direto para o portfólio', 'Cargo ou área desejada e um resumo profissional objetivo', 'Experiência e projetos com ações, entregas e resultados', 'Formação, cursos, idiomas e habilidades relevantes para a vaga'],
     contents: [
-      { id: 'cv-including', title: 'Como montar um currículo para Product Design?', description: 'Saiba o que incluir para criar um CV claro e relevante.', type: 'FAQ', to: `${guiaRoutes.faq}#cv-o-que-incluir` },
-      { id: 'cv-ats', title: 'Como adaptar o currículo para uma vaga?', description: 'Use palavras-chave e uma estrutura compatível com ATS.', type: 'FAQ', to: `${guiaRoutes.faq}#cv-simples-vs-chamativo` },
-      { id: 'linkedin', title: 'Como organizar seu LinkedIn para buscar vagas?', description: 'Ajuste título, resumo, experiências e links para sua trajetória.', type: 'FAQ', to: `${guiaRoutes.faq}#linkedin-perfil-competitivo` },
-      { id: 'portfolio', title: 'Como apresentar experiências anteriores na transição?', description: 'Conecte sua trajetória ao trabalho que quer construir agora.', type: 'FAQ', to: `${guiaRoutes.faq}#linkedin-transicao-carreira` },
+      { id: 'vagasux-cv', title: 'Currículo para UX, UI e Product Design', description: 'O passo a passo da VagasUX: conteúdo essencial, hierarquia, palavras de ação e o que deixar de fora.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira/currculo', external: true },
+      { id: 'cv-ats', title: 'Como estruturar um currículo de UX', description: 'Guia prático sobre currículo simples, palavras-chave e leitura por ATS.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-layout/', external: true },
+      { id: 'portfolio', title: 'O que recrutadores procuram em um portfólio de UX', description: 'Use seus cases para mostrar contexto, decisões, colaboração e impacto — não apenas telas bonitas.', type: 'Referência', to: 'https://blog.uxfol.io/ux-designer-portfolio/', external: true },
+      { id: 'linkedin', title: 'Perfil de LinkedIn e carta de apresentação', description: 'Complete sua apresentação com palavras-chave, links acessíveis e uma mensagem personalizada para cada aplicação.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira/currculo', external: true },
     ],
   },
   {
@@ -51,8 +51,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     note: 'Quantidade não é estratégia. Use cada processo para entender o mercado e melhorar sua próxima candidatura.',
     contents: [
       { id: 'jobs-board', title: 'Como pesquisar oportunidades?', description: 'Use o mural para explorar vagas e aplicar filtros.', type: 'Vagas', to: '/oportunidades#vagas' },
-      { id: 'job-warning', title: 'Como reconhecer uma vaga cilada?', description: 'Saiba o que observar antes de investir tempo em um processo.', type: 'FAQ', to: `${guiaRoutes.faq}#vagas-cilada-protecao` },
-      { id: 'applications', title: 'Como organizar suas candidaturas?', description: 'Crie um processo simples para acompanhar oportunidades e retornos.', type: 'FAQ', to: `${guiaRoutes.faq}#nenhuma-resposta-empresas` },
+      { id: 'career-hubs-list', title: 'Outros lugares para encontrar oportunidades', description: 'Veja a seleção da VagasUX de plataformas, comunidades e iniciativas de carreira.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
+      { id: 'job-warning', title: 'Como reconhecer uma vaga cilada?', description: 'Use este apoio da FAQ para observar sinais antes de investir tempo em um processo.', type: 'FAQ', to: `${guiaRoutes.faq}#vagas-cilada-protecao` },
     ],
   },
   {
@@ -61,9 +61,9 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     description: 'Networking não precisa começar pedindo emprego.',
     introduction: 'Conhecer pessoas da área ajuda você a entender trajetórias, descobrir empresas e aprender como o mercado funciona. Comece com curiosidade e troca genuína.',
     contents: [
-      { id: 'networking', title: 'Como começar a fazer networking em Design?', description: 'Use o LinkedIn para criar relações profissionais com respeito.', type: 'FAQ', to: `${guiaRoutes.faq}#networking-linkedin` },
       { id: 'community', title: 'Como participar de comunidades e eventos?', description: 'Encontre espaços para acompanhar conversas e conhecer pessoas.', type: 'Tema', to: guiaRoutes.tipo('eventos') },
-      { id: 'volunteer', title: 'Como pedir feedback sobre seu trabalho?', description: 'Use experiências práticas e colaboração para construir repertório.', type: 'Trilha', to: '/voluntariado' },
+      { id: 'volunteer', title: 'Encontre experiências de voluntariado', description: 'A curadoria VagasUX indica iniciativas e plataformas para ganhar experiência colaborando com impacto.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
+      { id: 'networking', title: 'Networking no LinkedIn', description: 'Se precisar de um ponto de partida, use a FAQ para abordar novas conexões com respeito.', type: 'FAQ', to: `${guiaRoutes.faq}#networking-linkedin` },
     ],
   },
   {
@@ -72,10 +72,9 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     description: 'O processo seletivo também é parte do trabalho.',
     introduction: 'Entrevistas também ajudam você a entender se aquela empresa, time e forma de trabalhar fazem sentido para você.',
     contents: [
-      { id: 'interview', title: 'Como me portar em uma entrevista?', description: 'Prepare uma conversa clara sobre sua trajetória e interesses.', type: 'FAQ', to: `${guiaRoutes.faq}#como-portar-entrevista` },
-      { id: 'tell-me', title: 'Como falar sobre mim?', description: 'Organize sua apresentação sem decorar um roteiro artificial.', type: 'FAQ', to: `${guiaRoutes.faq}#como-falar-sobre-mim` },
-      { id: 'case', title: 'Como apresentar um case?', description: 'Conte sua participação, decisões e aprendizados com clareza.', type: 'FAQ', to: `${guiaRoutes.faq}#por-que-testes-seletivos` },
-      { id: 'interview-guide', title: 'Como responder perguntas de entrevista de UX?', description: 'Material da Nielsen Norman Group sobre respostas e storytelling.', type: 'Tema', to: 'https://www.nngroup.com/articles/answer-ux-job-interview-questions/', external: true },
+      { id: 'interview-guide', title: 'Como responder perguntas de entrevista de UX?', description: 'Material da Nielsen Norman Group sobre respostas e storytelling.', type: 'Referência', to: 'https://www.nngroup.com/articles/answer-ux-job-interview-questions/', external: true },
+      { id: 'case', title: 'Como apresentar um case na entrevista', description: 'Estruture a apresentação com contexto, papel no projeto, decisões e aprendizados.', type: 'Referência', to: 'https://blog.uxfol.io/ux-portfolio-presentation/', external: true },
+      { id: 'interview', title: 'Entrevistas e testes seletivos', description: 'A FAQ complementa a preparação para a conversa e para desafios de processo.', type: 'FAQ', to: `${guiaRoutes.faq}#como-portar-entrevista` },
     ],
   },
   {
@@ -85,9 +84,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     introduction: 'Você pode receber um sim, um não ou não receber resposta. Transforme cada processo em aprendizado sempre que possível.',
     note: 'Sua primeira vaga não precisa ser perfeita. Ela precisa ser uma oportunidade em que você consiga aprender, contribuir e continuar construindo sua carreira.',
     contents: [
-      { id: 'feedback', title: 'Como pedir feedback depois de um processo?', description: 'Entenda como abordar retornos com respeito e objetividade.', type: 'FAQ', to: `${guiaRoutes.faq}#case-sem-retorno` },
-      { id: 'rejection', title: 'O que fazer quando você recebe um não?', description: 'Use o retorno para avaliar seu próximo passo sem se culpar.', type: 'FAQ', to: `${guiaRoutes.faq}#case-reprovado-o-que-fazer` },
-      { id: 'first-job', title: 'Quando aceitar sua primeira oportunidade?', description: 'Conheça pontos importantes para avaliar uma proposta e seu contexto.', type: 'FAQ', to: `${guiaRoutes.faq}#quando-escolher-clt-ou-pj` },
+      { id: 'feedback', title: 'Como pedir feedback depois de um processo?', description: 'Use este apoio da FAQ para abordar retornos com respeito e objetividade.', type: 'FAQ', to: `${guiaRoutes.faq}#case-sem-retorno` },
+      { id: 'opportunities-next', title: 'Continue acompanhando oportunidades', description: 'Mantenha uma rotina sustentável de busca e use o mural para encontrar sua próxima aplicação.', type: 'Vagas', to: '/oportunidades#vagas' },
     ],
   },
 ]
