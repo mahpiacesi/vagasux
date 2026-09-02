@@ -35,7 +35,7 @@ export function GuiaFaqCategoryAccordion({
       <h2
         className={cn(
           isOpen &&
-            'sticky top-[4.5rem] z-30 border-b border-neutral-500/10 bg-neutral-100/95 backdrop-blur-md',
+            'sticky top-[4.5rem] z-30 rounded-t-2xl border-b border-neutral-500/10 bg-neutral-100/95 backdrop-blur-md',
         )}
       >
         <button

@@ -17,10 +17,13 @@ export function withTrailContext(to: string, itemId: string): string {
 
 export function GuiaTrailNavigator() {
   const [searchParams] = useSearchParams()
-  if (searchParams.get('trilha') !== 'entender-o-basico') return null
+  const trailId = searchParams.get('trilha')
+  const itemId = searchParams.get('item')
+
+  if (trailId !== 'entender-o-basico') return null
 
   const currentIndex = trailContents.findIndex(
-    (content) => content.id === searchParams.get('item'),
+    (content) => content.id === itemId,
   )
   if (currentIndex < 0) return null
 
