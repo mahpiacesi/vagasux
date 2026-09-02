@@ -64,6 +64,7 @@
 ### Trilhas do Guia (02 set)
 - A trilha **Entender o básico** está implementada e fornece a base de navegação contextual.
 - A trilha **Conseguir minha primeira vaga** foi estruturada em sete etapas: preparação, escolha de oportunidades, apresentação profissional, busca, networking, processo seletivo e pós-entrevista.
+- A curadoria principal da trilha usa materiais próprios da VagasUX e referências externas sobre currículo, portfólio e entrevistas; a FAQ fica apenas como complemento.
 - A barra inferior agora entende o contexto das duas trilhas.
 
 ---
