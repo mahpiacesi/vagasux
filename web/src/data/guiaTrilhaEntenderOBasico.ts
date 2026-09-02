@@ -6,6 +6,7 @@ export type GuiaTrilhaContent = {
   description: string
   type: 'Glossário' | 'FAQ' | 'Tema' | 'Ferramentas' | 'Cursos' | 'Trilha' | 'Vagas'
   to: string
+  external?: boolean
 }
 
 export type GuiaTrilhaStage = {
