@@ -10,6 +10,8 @@ import { guiaTemaContentDesignLinkSections } from '@/data/guiaTemaContentDesignL
 import { guiaTemaResearchLinkSections } from '@/data/guiaTemaResearchLinks'
 import { guiaTemaDesignSystemLinks } from '@/data/guiaTemaDesignSystemLinks'
 import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
+import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
@@ -59,6 +61,46 @@ const indexedLinks = (
   })),
 )
 
+const indexedTrailStages = (
+  trailId: string,
+  stages: {
+    number: string
+    title: string
+    description: string
+    contents: { id: string; title: string; description: string }[]
+    introduction?: string
+    guidance?: { title: string; description: string }[]
+    nextStep?: string
+  }[],
+) => stages.flatMap((stage) => {
+  const to = `${guiaRoutes.trilha(trailId)}#stage-${stage.number}`
+  const editorialText = [
+    stage.description,
+    stage.introduction,
+    ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description])),
+    stage.nextStep,
+  ].filter(Boolean).join(' ')
+
+  return [
+    {
+      id: `trilha-${trailId}-etapa-${stage.number}`,
+      title: `${stage.number}. ${stage.title}`,
+      category: 'Etapa da trilha',
+      to,
+      keywords: `${stage.title} ${editorialText}`,
+      snippet: stage.introduction ?? stage.description,
+    },
+    ...stage.contents.map((content) => ({
+      id: `trilha-${trailId}-${content.id}`,
+      title: content.title,
+      category: 'Conteúdo da trilha',
+      to,
+      keywords: `${content.title} ${content.description} ${stage.title} ${editorialText}`,
+      snippet: content.description,
+    })),
+  ]
+})
+
 export const guiaSearchIndex: GuiaSearchResult[] = [
   ...guiaTrilhas.map((item) => ({
     id: `trilha-${item.id}`,
@@ -68,6 +110,8 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     keywords: `${item.title} ${item.description}`,
     snippet: item.description,
   })),
+  ...indexedTrailStages('entender-o-basico', guiaTrilhaEntenderOBasicoStages),
+  ...indexedTrailStages('primeira-vaga', guiaTrilhaPrimeiraVagaStages),
   ...guiaTemas.map((item) => ({
     id: `tema-${item.id}`,
     title: item.title,

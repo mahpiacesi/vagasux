@@ -1,16 +1,18 @@
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
-const trailContents = guiaTrilhaEntenderOBasicoStages.flatMap((stage) =>
-  stage.contents.map((content) => ({ ...content, stage })),
-)
+const trails = {
+  'entender-o-basico': { title: 'Entender o básico', stages: guiaTrilhaEntenderOBasicoStages },
+  'primeira-vaga': { title: 'Conseguir minha primeira vaga', stages: guiaTrilhaPrimeiraVagaStages },
+} as const
 
-export function withTrailContext(to: string, itemId: string): string {
+export function withTrailContext(to: string, itemId: string, trailId = 'entender-o-basico'): string {
   const [pathWithQuery, hash] = to.split('#')
   const params = new URLSearchParams()
-  params.set('trilha', 'entender-o-basico')
+  params.set('trilha', trailId)
   params.set('item', itemId)
   return `${pathWithQuery}?${params}${hash ? `#${hash}` : ''}`
 }
@@ -20,7 +22,12 @@ export function GuiaTrailNavigator() {
   const trailId = searchParams.get('trilha')
   const itemId = searchParams.get('item')
 
-  if (trailId !== 'entender-o-basico') return null
+  if (!trailId) return null
+  const trail = trails[trailId as keyof typeof trails]
+  if (!trail) return null
+  const trailContents = trail.stages.flatMap((stage) =>
+    stage.contents.map((content) => ({ ...content, stage })),
+  )
 
   const currentIndex = trailContents.findIndex(
     (content) => content.id === itemId,
@@ -32,13 +39,13 @@ export function GuiaTrailNavigator() {
   const chapterIndex = current.stage.contents.findIndex(
     (content) => content.id === current.id,
   ) + 1
-  const backTo = `${guiaRoutes.trilha('entender-o-basico')}#stage-${current.stage.number}`
+  const backTo = `${guiaRoutes.trilha(trailId)}#stage-${current.stage.number}`
 
   return (
     <aside className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-200/70 bg-neutral-100/95 px-5 py-3 shadow-[0_-12px_32px_-24px_rgb(7_0_58_/_0.45)] backdrop-blur md:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-semibold text-neutral-500">
-          Você está na trilha <span className="font-black">Entender o básico</span>
+          Você está na trilha <span className="font-black">{trail.title}</span>
           <span className="ml-2 text-neutral-400">
             | {current.stage.number}.{chapterIndex} {current.title}
           </span>
@@ -53,7 +60,7 @@ export function GuiaTrailNavigator() {
           </Link>
           {next ? (
             <Link
-              to={withTrailContext(next.to, next.id)}
+              to={withTrailContext(next.to, next.id, trailId)}
               className="inline-flex items-center gap-1.5 rounded-full bg-brand-400 px-3 py-2 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500"
             >
               Próximo

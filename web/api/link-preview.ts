@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
 const allowedUrls = new Set([
+  'https://www.nngroup.com/articles/answer-ux-job-interview-questions/',
   'https://cantunsee.space/',
   'https://mobbin.com/',
   'https://screensdesign.com/',
