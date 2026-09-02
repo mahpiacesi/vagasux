@@ -63,7 +63,7 @@ export const guiaTrilhaEntenderOBasicoStages: GuiaTrilhaStage[] = [
       { id: 'courses', title: 'Como começar a estudar Product Design?', description: 'Encontre cursos para avançar no seu ritmo.', type: 'Cursos', to: guiaRoutes.cursos },
       { id: 'portfolio', title: 'Como montar um portfólio?', description: 'Continue para a trilha que ajuda a estruturar seus cases.', type: 'Trilha', to: guiaRoutes.trilha('portfolio') },
       { id: 'prepare', title: 'Como se preparar para o mercado?', description: 'Confira habilidades e referências para se candidatar com mais clareza.', type: 'FAQ', to: `${guiaRoutes.faq}#habilidades-junior` },
-      { id: 'opportunities', title: 'Como encontrar a primeira oportunidade?', description: 'Explore vagas e caminhos para começar sua carreira.', type: 'Vagas', to: '/oportunidades#vagas' },
+      { id: 'opportunities', title: 'Como encontrar a primeira oportunidade?', description: 'Continue para a trilha que ajuda a encontrar e se preparar para oportunidades.', type: 'Trilha', to: guiaRoutes.trilha('primeira-vaga') },
     ],
   },
 ]
