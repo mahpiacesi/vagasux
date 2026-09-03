@@ -90,6 +90,7 @@
 - O aprofundamento do bloco 03 inclui referências de ATS, modelos e exemplos de currículos com cards de preview.
 - O aprofundamento do bloco 05 contém apenas os cards externos de Eventos e Faça parte da VagasUX.
 - Esses cards abrem as rotas atuais do site em nova aba, enquanto usam a URL pública apenas para resolver a prévia.
+- O aprofundamento do bloco 06 contém somente as referências externas da Nielsen Norman Group e UXfolio.
 
 ---
 
