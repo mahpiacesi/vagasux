@@ -47,7 +47,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
             <div className="ml-11">
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">{stage.introduction}</p>
             {stage.essentials ? <ul className="mt-5 grid gap-2 sm:grid-cols-2">{stage.essentials.map((item) => <li key={item} className="rounded-xl bg-brand-100/40 px-4 py-3 text-sm font-semibold text-neutral-500">{item}</li>)}</ul> : null}
-            {stage.note ? <aside className="mt-5 rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">{stage.note}</aside> : null}
+            {stage.note ? <aside className="mt-5 max-w-3xl rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">{stage.note}</aside> : null}
             <div className="mt-7 max-w-3xl">
               <p className="text-xs font-black tracking-[0.16em] text-brand-400 uppercase">Na prática</p>
               <div className="mt-3 space-y-4">{stage.guidance.map((item) => <div key={item.title} className="border-l-2 border-brand-200 pl-4"><h3 className="font-black text-neutral-500">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p></div>)}</div>
