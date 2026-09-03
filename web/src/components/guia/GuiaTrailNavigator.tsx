@@ -3,6 +3,7 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { guiaHashes } from '@/lib/siteLinks'
 
 const trails = {
   'entender-o-basico': { title: 'Entender o básico', stages: guiaTrilhaEntenderOBasicoStages },
@@ -74,10 +75,10 @@ export function GuiaTrailNavigator() {
               </Link>
             ) : (
               <Link
-                to={guiaRoutes.home}
+                to={`${guiaRoutes.home}#${guiaHashes.trilhas}`}
                 className="inline-flex items-center gap-1.5 rounded-full bg-brand-400 px-3 py-2 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500"
               >
-                Voltar ao Guia
+                Ver trilhas
               </Link>
             )}
           </div>
