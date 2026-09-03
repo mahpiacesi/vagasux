@@ -135,9 +135,6 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
       { title: 'Chegou uma proposta? Respira 🧘', description: 'Antes de aceitar, olhe para a oportunidade como um todo. Considere aprendizado, apoio do time, escopo, modelo de trabalho e condições da vaga. O primeiro “sim” é importante, mas vale entender se é um “sim” que faz sentido para você.' },
     ],
     nextStep: 'Atualize seu registro de candidaturas, anote o principal aprendizado do último processo e escolha qual será seu próximo passo.',
-    contents: [
-      { id: 'feedback', title: 'Como pedir feedback depois de um processo?', description: 'Use este apoio da FAQ para abordar retornos com respeito e objetividade.', type: 'FAQ', to: `${guiaRoutes.faq}#case-sem-retorno` },
-      { id: 'opportunities-next', title: 'Continue acompanhando oportunidades', description: 'Mantenha uma rotina sustentável de busca e use o mural para encontrar sua próxima aplicação.', type: 'Vagas', to: '/oportunidades#vagas' },
-    ],
+    contents: [],
   },
 ]
