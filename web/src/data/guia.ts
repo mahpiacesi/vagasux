@@ -59,7 +59,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
     id: 'portfolio',
     emoji: '🎒',
     title: 'Montar meu portfólio',
-    description: 'Organize seus cases e mostre seu processo, suas decisões e como você pensa como designer.',
+    description: 'Organize seus cases e mostre seu processo e suas decisões estratégicas.',
     level: 'iniciante',
     duration: '4 h',
     contentCount: 12,
