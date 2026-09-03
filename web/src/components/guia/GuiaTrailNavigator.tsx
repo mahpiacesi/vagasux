@@ -93,6 +93,14 @@ export function GuiaTrailNavigator() {
   const chapterIndex = current.stage.contents.findIndex(
     (content) => content.id === current.id,
   ) + 1
+  const nextTo = next && (
+    next.stage.number !== current.stage.number
+    && (trailId === 'primeira-vaga' || trailId === 'entender-o-basico')
+  )
+    ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${next.stage.number}`
+    : next
+      ? withTrailContext(next.to, next.id, trailId)
+      : null
   const backTo = (
     trailId === 'primeira-vaga' || trailId === 'entender-o-basico'
   )
@@ -116,9 +124,9 @@ export function GuiaTrailNavigator() {
             <ArrowLeft size={16} weight="bold" aria-hidden />
             Voltar à trilha
           </Link>
-          {next ? (
+          {nextTo ? (
             <Link
-              to={withTrailContext(next.to, next.id, trailId)}
+              to={nextTo}
               className="inline-flex items-center gap-1.5 rounded-full bg-brand-400 px-3 py-2 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500"
             >
               Próximo
