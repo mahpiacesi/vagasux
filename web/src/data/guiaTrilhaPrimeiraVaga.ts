@@ -23,10 +23,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
       { title: 'Procure enquanto aprende', description: 'As vagas também são uma fonte de aprendizado. Observe o que as empresas pedem, quais conhecimentos aparecem com frequência e use isso para direcionar seus estudos e próximos passos.' },
     ],
     nextStep: 'Liste o que você já consegue demonstrar hoje e escolha uma ou duas coisas que gostaria de desenvolver durante a busca.',
-    contents: [
-      { id: 'junior-experience', title: 'SouJunior', description: 'Participe de projetos de tecnologia para desenvolver experiência em equipe durante sua transição.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
-      { id: 'mentorship', title: 'ADPList', description: 'Encontre mentorias com profissionais de Design e Produto para trocar sobre sua trajetória.', type: 'Referência', to: 'https://adplist.org/', external: true },
-    ],
+    contents: [],
   },
   {
     number: '02',
