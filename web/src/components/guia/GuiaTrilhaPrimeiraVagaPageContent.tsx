@@ -29,14 +29,14 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
         <Button asChild variant="guia-compact"><Link to={guiaRoutes.home}>Voltar ao Guia</Link></Button>
         <Button asChild variant="guia-compact-outline"><Link to={guiaRoutes.faq}>FAQ</Link></Button>
       </div>
-      <header className={isFirstStage ? 'relative mt-8 overflow-hidden rounded-3xl bg-brand-100 px-6 py-8 md:px-10 md:py-10' : 'mt-8 max-w-3xl'}>
-        <div className={isFirstStage ? 'relative z-10 max-w-2xl' : ''}>
-          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Trilha</p>
-          <div className="mt-4 flex items-center gap-3"><span className="text-3xl">💼</span><h1 className={isFirstStage ? 'text-4xl font-black tracking-[-0.05em] text-neutral-500 md:text-5xl' : 'text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl'}>Conseguir minha primeira vaga</h1></div>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">Um caminho para organizar sua busca, preparar sua apresentação e se posicionar em processos seletivos.</p>
-          <div className="mt-6 flex flex-wrap items-center gap-3"><Badge className="border-brand-300/30 bg-neutral-100 text-brand-500">Iniciante</Badge>{isFirstStage ? <span className="text-sm font-semibold text-neutral-400">7 etapas para seguir no seu ritmo</span> : null}</div>
+      <header className="relative mt-8 overflow-hidden rounded-3xl bg-brand-100 px-6 py-8 md:px-10 md:py-10">
+        <div className="relative z-10 max-w-2xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">{isFirstStage ? 'Trilha' : `Trilha · Etapa ${currentStage.number}`}</p>
+          <div className="mt-4 flex items-center gap-3"><span className="text-3xl">💼</span><h1 className="text-4xl font-black tracking-[-0.05em] text-neutral-500 md:text-5xl">{isFirstStage ? 'Conseguir minha primeira vaga' : currentStage.title}</h1></div>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">{isFirstStage ? 'Um caminho para organizar sua busca, preparar sua apresentação e se posicionar em processos seletivos.' : currentStage.description}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3"><Badge className="border-brand-300/30 bg-neutral-100 text-brand-500">Iniciante</Badge><span className="text-sm font-semibold text-neutral-400">{isFirstStage ? '7 etapas para seguir no seu ritmo' : `Etapa ${currentStage.number} de 07`}</span></div>
         </div>
-        {isFirstStage ? <Umbrella aria-hidden weight="duotone" className="absolute -right-10 -bottom-14 hidden size-64 -rotate-12 text-brand-200/70 md:block" /> : null}
+        <Umbrella aria-hidden weight="duotone" className="absolute -right-10 -bottom-14 hidden size-64 -rotate-12 text-brand-200/70 md:block" />
       </header>
       <div className="mt-12">
         <section id={`stage-${currentStage.number}`} className="scroll-mt-24">
@@ -44,7 +44,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
             const stage = currentStage
             return (
               <>
-            <div className="flex gap-4"><span className="text-2xl font-black text-brand-400">{stage.number}</span><div><h2 className="text-2xl font-black text-neutral-500">{stage.title}</h2><p className="mt-2 text-sm font-semibold text-neutral-400">{stage.description}</p></div></div>
+            {isFirstStage ? <div className="flex gap-4"><span className="text-2xl font-black text-brand-400">{stage.number}</span><div><h2 className="text-2xl font-black text-neutral-500">{stage.title}</h2><p className="mt-2 text-sm font-semibold text-neutral-400">{stage.description}</p></div></div> : null}
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">{stage.introduction}</p>
             {stage.essentials ? <ul className="mt-5 grid gap-2 sm:grid-cols-2">{stage.essentials.map((item) => <li key={item} className="rounded-xl bg-brand-100/40 px-4 py-3 text-sm font-semibold text-neutral-500">{item}</li>)}</ul> : null}
             {stage.note ? <aside className="mt-5 rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">{stage.note}</aside> : null}

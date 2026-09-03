@@ -1,4 +1,4 @@
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight, Umbrella } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -24,24 +24,25 @@ export function GuiaTrilhaEntenderOBasicoPageContent() {
         </Button>
       </div>
 
-      <header className="mt-8 max-w-3xl">
-        <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-          Trilha
-        </p>
-        <div className="mt-4 flex items-center gap-3">
-          <span className="text-3xl" aria-hidden>🚀</span>
-          <h1 className="text-3xl leading-[1.06] font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
-            Entender o básico
-          </h1>
+      <header className="relative mt-8 overflow-hidden rounded-3xl bg-brand-100 px-6 py-8 md:px-10 md:py-10">
+        <div className="relative z-10 max-w-2xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Trilha</p>
+          <div className="mt-4 flex items-center gap-3">
+            <span className="text-3xl" aria-hidden>🚀</span>
+            <h1 className="text-4xl leading-[1.06] font-black tracking-[-0.05em] text-neutral-500 md:text-5xl">
+              Entender o básico
+            </h1>
+          </div>
+          <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
+            O que é Product Design, como é o mercado e por onde começar.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-neutral-400">
+            <Badge className="border-brand-300/30 bg-neutral-100 text-brand-500">Iniciante</Badge>
+            <span>6 h estimadas</span>
+            <span>{contents.length} conteúdos</span>
+          </div>
         </div>
-        <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-          O que é Product Design, como é o mercado e por onde começar.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold text-neutral-400">
-          <Badge className="border-brand-300/30 bg-brand-100 text-brand-500">Iniciante</Badge>
-          <span>6 h estimadas</span>
-          <span>{contents.length} conteúdos</span>
-        </div>
+        <Umbrella aria-hidden weight="duotone" className="absolute -right-10 -bottom-14 hidden size-64 -rotate-12 text-brand-200/70 md:block" />
       </header>
 
       <section className="mt-10 rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8">
@@ -54,10 +55,10 @@ export function GuiaTrilhaEntenderOBasicoPageContent() {
       <div className="mt-12 space-y-12">
         {guiaTrilhaEntenderOBasicoStages.map((stage) => (
           <section key={stage.number} aria-labelledby={`stage-${stage.number}`}>
-            <div className="flex items-start gap-4">
-              <span className="text-2xl font-black text-brand-400">{stage.number}</span>
-              <div>
-                <h2 id={`stage-${stage.number}`} className="text-2xl font-black tracking-[-0.02em] text-neutral-500">
+            <div className="relative overflow-hidden rounded-3xl bg-brand-100 px-6 py-7 md:px-8">
+              <div className="relative z-10 max-w-2xl">
+                <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Trilha · Etapa {stage.number}</p>
+                <h2 id={`stage-${stage.number}`} className="mt-3 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">
                   {stage.title}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-400">
@@ -67,6 +68,7 @@ export function GuiaTrilhaEntenderOBasicoPageContent() {
                   {stage.contents.length} conteúdos
                 </p>
               </div>
+              <Umbrella aria-hidden weight="duotone" className="absolute -right-8 -bottom-14 hidden size-48 -rotate-12 text-brand-200/70 md:block" />
             </div>
             <ol className="mt-6 grid gap-3 lg:grid-cols-2">
               {stage.contents.map((content, index) => (
