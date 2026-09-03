@@ -30,15 +30,15 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
   {
     number: '02',
     title: 'Entenda que vaga você está procurando',
-    description: 'Nem toda vaga de Product Design é igual.',
-    introduction: 'Uma vaga pode estar mais focada em UI, discovery, pesquisa ou evolução de produtos existentes. Entender essas diferenças ajuda você a encontrar oportunidades que tenham a ver com o que busca e com o momento da sua carreira.',
-    note: 'Você não precisa cumprir 100% dos requisitos para se candidatar. Use a descrição como referência, não como uma prova que precisa passar.',
+    description: 'Nem toda vaga de Product Design é igual 👀',
+    introduction: 'Uma vaga pode estar mais focada em UI, discovery, pesquisa ou evolução de produtos existentes. Entender essas diferenças ajuda você a identificar o tipo de trabalho, rotina e desafios que vai encontrar em cada oportunidade.',
+    note: 'Você não precisa cumprir 100% dos requisitos para se candidatar. Use a descrição para entender o que a empresa busca e avaliar se a oportunidade faz sentido para você.',
     guidance: [
-      { title: 'Olhe além do cargo', description: '“Product Designer” pode significar coisas bem diferentes de uma empresa para outra. Observe o que você vai fazer, quais problemas vai ajudar a resolver, como o time trabalha e quem estará ao seu lado.' },
-      { title: 'Leia os requisitos com contexto', description: 'Nem todo requisito tem o mesmo peso. Observe o que é essencial para a função, o que você já domina e o que ainda está desenvolvendo. Isso ajuda a escolher oportunidades mais alinhadas ao seu momento.' },
-      { title: 'Procure um lugar para aprender', description: 'Na primeira vaga, vale olhar também para o ambiente. Ter pessoas para trocar, receber feedback e trabalhar em problemas reais pode fazer uma grande diferença no seu desenvolvimento.' },
+      { title: 'Olhe além do título', description: 'Duas vagas com o mesmo cargo podem ter rotinas bem diferentes. Veja o que você vai fazer, quais problemas vai ajudar a resolver, como o time trabalha e quem estará ao seu lado.' },
+      { title: 'Leia os requisitos com calma', description: 'Nem todo requisito tem o mesmo peso. Observe o que a vaga realmente precisa, o que você já sabe e onde ainda pode evoluir. Isso ajuda a escolher oportunidades que façam sentido para o seu momento.' },
+      { title: 'Descubra onde você vai aprender', description: 'Para a primeira vaga, vale olhar também para o time. Ter pessoas para trocar, receber feedback e trabalhar em problemas reais pode fazer muita diferença no seu desenvolvimento.' },
     ],
-    nextStep: 'Salve algumas vagas que chamaram sua atenção e compare o que elas têm em comum. Observe o que pedem, o que você já tem e o que ainda quer desenvolver.',
+    nextStep: 'Salve algumas vagas que chamaram sua atenção e compare o que elas têm em comum. O que essas empresas estão procurando? O que você já tem? O que aparece como próximo passo para você?',
     contents: [
       { id: 'opportunities', title: 'Onde encontrar vagas de Product Design?', description: 'Explore oportunidades publicadas pela VagasUX.', type: 'Vagas', to: '/oportunidades#vagas' },
       { id: 'career-hubs', title: 'Michael Page', description: 'Acompanhe uma plataforma de recrutamento para entender descrições e oportunidades do mercado.', type: 'Referência', to: 'https://www.michaelpage.com.br/', external: true },
