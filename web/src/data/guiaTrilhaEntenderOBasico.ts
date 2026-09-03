@@ -4,9 +4,10 @@ export type GuiaTrilhaContent = {
   id: string
   title: string
   description: string
-  type: 'Glossário' | 'FAQ' | 'Tema' | 'Ferramentas' | 'Cursos' | 'Trilha' | 'Vagas' | 'Referência' | 'VagasUX'
+  type: 'Glossário' | 'FAQ' | 'Tema' | 'Ferramentas' | 'Cursos' | 'Trilha' | 'Vagas' | 'Referência' | 'VagasUX' | 'Comunidade'
   to: string
   external?: boolean
+  previewUrl?: string
 }
 
 export type GuiaTrilhaStage = {

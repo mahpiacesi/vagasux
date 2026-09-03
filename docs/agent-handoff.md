@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-02
+**Última atualização:** 2026-09-03
 
 ---
 
@@ -68,12 +68,40 @@
 - A busca do Guia indexa as etapas, orientações e conteúdos das trilhas **Entender o básico** e **Conseguir minha primeira vaga**.
 - A barra inferior agora entende o contexto das duas trilhas.
 
+### Refinamento da trilha primeira vaga (03 set)
+- Referências externas da trilha usam o card visual do Guia, com miniatura, título, descrição e domínio.
+- Os links para o Guia antigo da VagasUX foram removidos; ficaram apenas referências externas selecionadas da curadoria original e os conteúdos internos atuais.
+- A voz editorial da trilha foi ajustada para linguagem neutra, direta e sem construções contrastivas ou qualificadores repetitivos.
+- A trilha de primeira vaga mostra uma etapa por vez e usa a barra fixa para avançar ou voltar. O bloco final aparece na etapa 07.
+- Ao avançar ou voltar pela barra fixa, a página posiciona a pessoa no início da etapa selecionada.
+- Ao entrar pelo card do Guia, a trilha abre no topo da página; a rolagem para a etapa ocorre apenas durante a navegação sequencial.
+- A abertura da etapa 01 ganhou um cabeçalho destacado com o título da trilha, contexto, nível e indicação das sete etapas.
+- O grafismo do cabeçalho usa o ícone de guarda-chuva em roxo, ampliado, rotacionado e parcialmente cortado no canto direito.
+- O cabeçalho destacado agora aparece em todas as etapas de `Conseguir minha primeira vaga` e em todos os blocos da trilha `Entender o básico`.
+- A trilha `Entender o básico` agora abre na etapa 01 e usa a mesma navegação sequencial da primeira vaga; os blocos internos deixaram de repetir o cabeçalho gráfico.
+- A rolagem entre as etapas da trilha básica mantém o título do bloco visível abaixo da navegação fixa.
+- Ao terminar os conteúdos de uma etapa, a barra fixa abre primeiro o próximo bloco antes do seu primeiro conteúdo.
+- Na trilha de primeira vaga, o cabeçalho mantém o título e a descrição da trilha durante a navegação; cada etapa aparece identificada no bloco de conteúdo.
+- O conteúdo da trilha de primeira vaga está alinhado pela coluna do título de cada etapa.
+- Os callouts amarelo e azul da trilha seguem a mesma largura máxima.
+- Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
+- O bloco 02 foi revisado com foco em leitura de vagas, requisitos e ambiente de aprendizado.
+- O bloco 03 ganhou orientações atualizadas para currículo, LinkedIn e portfólio, além do callout sobre leitura por ATS.
+- O aprofundamento do bloco 03 inclui referências de ATS, modelos e exemplos de currículos com cards de preview.
+- O aprofundamento do bloco 05 contém apenas os cards externos de Eventos e Faça parte da VagasUX.
+- Esses cards abrem as rotas atuais do site em nova aba, enquanto usam a URL pública apenas para resolver a prévia.
+- O aprofundamento do bloco 06 contém somente as referências externas da Nielsen Norman Group e UXfolio.
+- O bloco 07 termina com a seção `Quer continuar se preparando?`, sem aprofundamentos intermediários.
+- O bloco 02 segue da orientação editorial para o próximo passo, sem seção de aprofundamento.
+- O bloco 01 também segue direto da orientação editorial para o próximo passo.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar a trilha **Conseguir minha primeira vaga** após uso e feedback editorial.
-2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar os cards de preview externos da trilha **Conseguir minha primeira vaga** na nova PR.
+2. Refinar a trilha após uso e feedback editorial.
+3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -87,6 +115,7 @@
 | Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
 | [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
+| Cards de preview da trilha primeira vaga | 🟡 Branch `cursor/refine-first-vaga-previews-c6eb` |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
