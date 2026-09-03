@@ -92,6 +92,7 @@
 - Esses cards abrem as rotas atuais do site em nova aba, enquanto usam a URL pública apenas para resolver a prévia.
 - O aprofundamento do bloco 06 contém somente as referências externas da Nielsen Norman Group e UXfolio.
 - O bloco 07 termina com a seção `Quer continuar se preparando?`, sem aprofundamentos intermediários.
+- O bloco 02 segue da orientação editorial para o próximo passo, sem seção de aprofundamento.
 
 ---
 
