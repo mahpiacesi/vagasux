@@ -5,6 +5,7 @@ export type GuiaTrilhaPrimeiraVagaStage = GuiaTrilhaStage & {
   introduction: string
   essentials?: string[]
   note?: string
+  tip?: { title: string; description: string }
   guidance: { title: string; description: string }[]
   nextStep: string
 }
@@ -51,11 +52,12 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     introduction: 'Currículo, LinkedIn e portfólio são partes da mesma apresentação. Juntos, eles ajudam a mostrar quem você é, o que sabe fazer e que tipo de oportunidade está buscando.',
     essentials: ['Nome, cidade, contato e link direto para o portfólio', 'Cargo ou área desejada e um resumo profissional objetivo', 'Experiência e projetos com ações, entregas e resultados', 'Formação, cursos, idiomas e habilidades relevantes para a vaga'],
     guidance: [
-      { title: 'Currículo abre a conversa', description: 'Seu CV precisa ser fácil de entender e rápido de ler. Deixe visíveis o cargo ou área desejada, contato, portfólio e as experiências ou projetos mais relevantes para a vaga.' },
-      { title: 'LinkedIn conta sua trajetória', description: 'Use título, resumo e experiências para explicar quem você é, sua transição para UX e o que está buscando. Deixe portfólio e contato acessíveis e use palavras-chave que aparecem nas vagas.' },
+      { title: 'Currículo abre a conversa', description: 'Seu CV precisa ser fácil de entender e rápido de ler. Deixe visíveis o cargo ou área desejada, contato, portfólio e as experiências ou projetos mais relevantes para a vaga. Ao descrever o que você fez, use palavras de ação para deixar suas contribuições mais claras.' },
+      { title: 'LinkedIn conta sua trajetória', description: 'Use o título, resumo e experiências para explicar quem você é, sua transição para UX e o que está buscando. Inclua palavras-chave relacionadas ao cargo, área e ferramentas que fazem parte do seu trabalho. Mantenha suas principais habilidades atualizadas e deixe portfólio e formas de contato acessíveis.' },
       { title: 'Portfólio mostra como você pensa', description: 'Não mostre só as telas. Conte o que estava acontecendo por trás delas: o contexto, seu papel, as decisões que tomou, como trabalhou com outras pessoas, o que aprendeu e, quando houver, o impacto do projeto.' },
-      { title: 'Adapte sem começar do zero', description: 'Você não precisa refazer tudo a cada candidatura. Mantenha uma base consistente e ajuste o que fizer sentido para cada oportunidade, como resumo, palavras-chave e ordem dos projetos. No currículo, priorize uma estrutura simples para facilitar a leitura por ATS.' },
+      { title: 'Adapte sem começar do zero', description: 'Você não precisa refazer tudo a cada candidatura. Mantenha uma base consistente e ajuste o que fizer sentido para cada oportunidade, como resumo, palavras-chave e ordem dos projetos.' },
     ],
+    tip: { title: 'De olho no ATS', description: 'Para facilitar a leitura automática do seu currículo, use palavras-chave da vaga, títulos claros e um formato simples. Evite gráficos, tabelas e colunas e prefira uma ordem cronológica reversa. Salve em .pdf ou .docx conforme o formato solicitado pela empresa.' },
     nextStep: 'Abra seu currículo, LinkedIn e portfólio lado a lado. Eles contam a mesma história? Quem encontrar um deles consegue entender rapidamente quem você é e chegar aos outros?',
     contents: [
       { id: 'cv-content', title: 'O que incluir e o que deixar de fora do currículo de UX', description: 'Checklist complementar para manter seu currículo relevante, direto e conectado ao portfólio.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-what-to-include/', external: true },
