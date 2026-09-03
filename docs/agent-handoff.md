@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-02
+**Última atualização:** 2026-09-03
 
 ---
 
@@ -68,12 +68,17 @@
 - A busca do Guia indexa as etapas, orientações e conteúdos das trilhas **Entender o básico** e **Conseguir minha primeira vaga**.
 - A barra inferior agora entende o contexto das duas trilhas.
 
+### Refinamento da trilha primeira vaga (03 set)
+- Referências externas da trilha usam o card visual do Guia, com miniatura, título, descrição e domínio.
+- Os links para o Guia antigo da VagasUX foram removidos; ficaram apenas referências externas selecionadas da curadoria original e os conteúdos internos atuais.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar a trilha **Conseguir minha primeira vaga** após uso e feedback editorial.
-2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar os cards de preview externos da trilha **Conseguir minha primeira vaga** na nova PR.
+2. Refinar a trilha após uso e feedback editorial.
+3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -87,6 +92,7 @@
 | Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
 | [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
+| Cards de preview da trilha primeira vaga | 🟡 Branch `cursor/refine-first-vaga-previews-c6eb` |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
