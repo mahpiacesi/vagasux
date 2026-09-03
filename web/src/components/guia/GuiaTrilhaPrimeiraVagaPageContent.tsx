@@ -44,6 +44,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
             return (
               <>
             <div className="flex gap-4"><span className="text-2xl font-black text-brand-400">{stage.number}</span><div><h2 className="text-2xl font-black text-neutral-500">{stage.title}</h2><p className="mt-2 text-sm font-semibold text-neutral-400">{stage.description}</p></div></div>
+            <div className="ml-11">
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">{stage.introduction}</p>
             {stage.essentials ? <ul className="mt-5 grid gap-2 sm:grid-cols-2">{stage.essentials.map((item) => <li key={item} className="rounded-xl bg-brand-100/40 px-4 py-3 text-sm font-semibold text-neutral-500">{item}</li>)}</ul> : null}
             {stage.note ? <aside className="mt-5 rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">{stage.note}</aside> : null}
@@ -53,6 +54,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
             </div>
             <aside className="mt-7 max-w-3xl rounded-2xl border border-brand-200 bg-brand-100/40 px-5 py-4"><p className="text-xs font-black tracking-[0.16em] text-brand-500 uppercase">Antes de seguir</p><p className="mt-1 text-sm leading-relaxed text-neutral-500">{stage.nextStep}</p></aside>
             <div className="mt-7"><p className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Quer se aprofundar?</p><ol className="mt-3 grid gap-3 lg:grid-cols-2">{stage.contents.map((content, index) => <li key={content.id}>{content.external ? <GuiaLinkPreviewCard link={{ title: content.title, url: content.to, description: content.description }} className="h-full" /> : <Link to={withTrailContext(content.to, content.id, 'primeira-vaga')} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 hover:border-brand-300 hover:bg-brand-100/30"><CardContent number={`${stage.number}.${index+1}`} title={content.title} description={content.description} type={content.type}/></Link>}</li>)}</ol></div>
+            </div>
               </>
             )
           })()}
