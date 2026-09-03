@@ -120,7 +120,6 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     contents: [
       { id: 'interview-guide', title: 'Como responder perguntas de entrevista de UX?', description: 'Material da Nielsen Norman Group sobre respostas e storytelling.', type: 'Referência', to: 'https://www.nngroup.com/articles/answer-ux-job-interview-questions/', external: true },
       { id: 'case', title: 'Como apresentar um case na entrevista', description: 'Estruture a apresentação com contexto, papel no projeto, decisões e aprendizados.', type: 'Referência', to: 'https://blog.uxfol.io/ux-portfolio-presentation/', external: true },
-      { id: 'interview', title: 'Entrevistas e testes seletivos', description: 'A FAQ complementa a preparação para a conversa e para desafios de processo.', type: 'FAQ', to: `${guiaRoutes.faq}#como-portar-entrevista` },
     ],
   },
   {
