@@ -2,6 +2,14 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 
 const allowedUrls = new Set([
   'https://www.nngroup.com/articles/answer-ux-job-interview-questions/',
+  'https://soujunior.tech/',
+  'https://adplist.org/',
+  'https://www.michaelpage.com.br/',
+  'https://blog.uxfol.io/ux-resume-what-to-include/',
+  'https://blog.uxfol.io/ux-resume-layout/',
+  'https://blog.uxfol.io/ux-designer-portfolio/',
+  'https://blog.uxfol.io/ux-portfolio-presentation/',
+  'https://www.atados.com.br/',
   'https://cantunsee.space/',
   'https://mobbin.com/',
   'https://screensdesign.com/',

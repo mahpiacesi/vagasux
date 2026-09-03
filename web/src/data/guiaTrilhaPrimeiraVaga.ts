@@ -23,8 +23,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     ],
     nextStep: 'Liste o que você já consegue demonstrar hoje e escolha uma ou duas lacunas para desenvolver enquanto inicia a busca.',
     contents: [
-      { id: 'junior-levels', title: 'Entendendo níveis de designers iniciantes', description: 'Vídeo da curadoria VagasUX para entender expectativas de posições de entrada.', type: 'Referência', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
-      { id: 'cv-checklist', title: '10 coisas que não podem faltar no seu currículo', description: 'Checklist criado pela recrutadora Hana Chiarelli para a comunidade VagasUX.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/trilhas/10-coisas-que-no-podem-faltar-no-seu-currculo', external: true },
+      { id: 'junior-experience', title: 'SouJunior', description: 'Participe de projetos reais de tecnologia para desenvolver experiência prática durante sua transição.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
+      { id: 'mentorship', title: 'ADPList', description: 'Encontre mentorias com profissionais de Design e Produto para trocar sobre sua trajetória.', type: 'Referência', to: 'https://adplist.org/', external: true },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     nextStep: 'Salve algumas vagas que fariam sentido para você e compare o que elas pedem antes de preparar sua candidatura.',
     contents: [
       { id: 'opportunities', title: 'Onde encontrar vagas de Product Design?', description: 'Explore oportunidades publicadas pela VagasUX.', type: 'Vagas', to: '/oportunidades#vagas' },
-      { id: 'career-hubs', title: 'Plataformas e comunidades para acompanhar', description: 'A curadoria VagasUX reúne plataformas de vagas, comunidades e iniciativas para quem está buscando oportunidade.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
+      { id: 'career-hubs', title: 'Michael Page', description: 'Acompanhe uma plataforma de recrutamento para entender descrições e oportunidades do mercado.', type: 'Referência', to: 'https://www.michaelpage.com.br/', external: true },
     ],
   },
   {
@@ -58,10 +58,9 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     ],
     nextStep: 'Revise currículo, LinkedIn e portfólio como um conjunto: quem abrir um deles deve encontrar uma história coerente e chegar aos outros com facilidade.',
     contents: [
-      { id: 'vagasux-cv', title: 'Currículo para UX, UI e Product Design', description: 'O passo a passo da VagasUX: conteúdo essencial, hierarquia, palavras de ação e o que deixar de fora.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira/currculo', external: true },
+      { id: 'cv-content', title: 'O que incluir e o que deixar de fora do currículo de UX', description: 'Checklist complementar para manter seu currículo relevante, direto e conectado ao portfólio.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-what-to-include/', external: true },
       { id: 'cv-ats', title: 'Como estruturar um currículo de UX', description: 'Guia prático sobre currículo simples, palavras-chave e leitura por ATS.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-layout/', external: true },
       { id: 'portfolio', title: 'O que recrutadores procuram em um portfólio de UX', description: 'Use seus cases para mostrar contexto, decisões, colaboração e impacto — não apenas telas bonitas.', type: 'Referência', to: 'https://blog.uxfol.io/ux-designer-portfolio/', external: true },
-      { id: 'linkedin', title: 'Perfil de LinkedIn e carta de apresentação', description: 'Complete sua apresentação com palavras-chave, links acessíveis e uma mensagem personalizada para cada aplicação.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira/currculo', external: true },
     ],
   },
   {
@@ -79,7 +78,6 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     nextStep: 'Escolha uma ferramenta simples para acompanhar candidaturas e faça sua primeira aplicação adaptada a uma vaga real.',
     contents: [
       { id: 'jobs-board', title: 'Como pesquisar oportunidades?', description: 'Use o mural para explorar vagas e aplicar filtros.', type: 'Vagas', to: '/oportunidades#vagas' },
-      { id: 'career-hubs-list', title: 'Outros lugares para encontrar oportunidades', description: 'Veja a seleção da VagasUX de plataformas, comunidades e iniciativas de carreira.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
       { id: 'job-warning', title: 'Como reconhecer uma vaga cilada?', description: 'Use este apoio da FAQ para observar sinais antes de investir tempo em um processo.', type: 'FAQ', to: `${guiaRoutes.faq}#vagas-cilada-protecao` },
     ],
   },
@@ -96,7 +94,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     nextStep: 'Escolha uma comunidade, evento ou pessoa para acompanhar nesta semana e faça uma aproximação respeitosa e específica.',
     contents: [
       { id: 'community', title: 'Como participar de comunidades e eventos?', description: 'Encontre espaços para acompanhar conversas e conhecer pessoas.', type: 'Tema', to: guiaRoutes.tipo('eventos') },
-      { id: 'volunteer', title: 'Encontre experiências de voluntariado', description: 'A curadoria VagasUX indica iniciativas e plataformas para ganhar experiência colaborando com impacto.', type: 'VagasUX', to: 'https://vagasux.com.br/guia-do-product-designer/carreira', external: true },
+      { id: 'volunteer', title: 'Atados', description: 'Encontre oportunidades de voluntariado por causa, habilidade ou localidade.', type: 'Referência', to: 'https://www.atados.com.br/', external: true },
+      { id: 'volunteer-projects', title: 'SouJunior', description: 'Experimente trabalhar em projetos de tecnologia em equipe e construa repertório na prática.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
       { id: 'networking', title: 'Networking no LinkedIn', description: 'Se precisar de um ponto de partida, use a FAQ para abordar novas conexões com respeito.', type: 'FAQ', to: `${guiaRoutes.faq}#networking-linkedin` },
     ],
   },
