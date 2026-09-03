@@ -80,6 +80,7 @@
 - O cabeçalho destacado agora aparece em todas as etapas de `Conseguir minha primeira vaga` e em todos os blocos da trilha `Entender o básico`.
 - A trilha `Entender o básico` agora abre na etapa 01 e usa a mesma navegação sequencial da primeira vaga; os blocos internos deixaram de repetir o cabeçalho gráfico.
 - A rolagem entre as etapas da trilha básica mantém o título do bloco visível abaixo da navegação fixa.
+- Ao terminar os conteúdos de uma etapa, a barra fixa abre primeiro o próximo bloco antes do seu primeiro conteúdo.
 - Na trilha de primeira vaga, o cabeçalho mantém o título e a descrição da trilha durante a navegação; cada etapa aparece identificada no bloco de conteúdo.
 - O conteúdo da trilha de primeira vaga está alinhado pela coluna do título de cada etapa.
 - Os callouts amarelo e azul da trilha seguem a mesma largura máxima.
