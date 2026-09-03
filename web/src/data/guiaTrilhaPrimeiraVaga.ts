@@ -101,10 +101,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     ],
     nextStep: 'Escolha uma comunidade, evento ou pessoa para acompanhar nesta semana. Participe de uma conversa, compartilhe algo que você está aprendendo ou faça uma aproximação. Inclusive, se você chegou até aqui pela VagasUX, já encontrou uma comunidade para começar 👀',
     contents: [
-      { id: 'community', title: 'Como participar de comunidades e eventos?', description: 'Encontre espaços para acompanhar conversas e conhecer pessoas.', type: 'Tema', to: guiaRoutes.tipo('eventos') },
-      { id: 'volunteer', title: 'Atados', description: 'Encontre oportunidades de voluntariado por causa, habilidade ou localidade.', type: 'Referência', to: 'https://www.atados.com.br/', external: true },
-      { id: 'volunteer-projects', title: 'SouJunior', description: 'Participe de projetos de tecnologia em equipe e construa repertório para o seu portfólio.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
-      { id: 'networking', title: 'Networking no LinkedIn', description: 'Se precisar de um ponto de partida, use a FAQ para abordar novas conexões com respeito.', type: 'FAQ', to: `${guiaRoutes.faq}#networking-linkedin` },
+      { id: 'community-events', title: 'Eventos', description: 'Encontre eventos e espaços para acompanhar conversas, trocar experiências e conhecer pessoas da área.', type: 'Tema', to: 'https://vagasux.com.br/guia/tipo/eventos', external: true },
+      { id: 'join-vagasux', title: 'Faça parte da VagasUX', description: 'Conheça formas de participar da comunidade e se aproximar de outras pessoas da área.', type: 'Comunidade', to: 'https://vagasux.com.br/comunidade', external: true },
     ],
   },
   {

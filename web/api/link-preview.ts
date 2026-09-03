@@ -16,6 +16,8 @@ const allowedUrls = new Set([
   'https://create.microsoft.com/pt-br/templates/curr%C3%ADculos-e-cartas-de-apresenta%C3%A7%C3%A3o-do-sistema-de-rastreamento-de-candidatos-(ats)',
   'https://blog.uxfol.io/product-designer-resume/',
   'https://resumeworded.com/ux-designer-resume-examples',
+  'https://vagasux.com.br/guia/tipo/eventos',
+  'https://vagasux.com.br/comunidade',
   'https://cantunsee.space/',
   'https://mobbin.com/',
   'https://screensdesign.com/',
