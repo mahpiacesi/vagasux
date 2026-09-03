@@ -10,15 +10,17 @@ import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
 
 export function GuiaTrilhaPrimeiraVagaPageContent() {
   const [searchParams] = useSearchParams()
-  const currentStageNumber = searchParams.get('etapa') ?? '01'
+  const selectedStageNumber = searchParams.get('etapa')
+  const currentStageNumber = selectedStageNumber ?? '01'
   const currentStage = guiaTrilhaPrimeiraVagaStages.find(
     (stage) => stage.number === currentStageNumber,
   ) ?? guiaTrilhaPrimeiraVagaStages[0]
   const isLastStage = currentStage.number === guiaTrilhaPrimeiraVagaStages.at(-1)?.number
 
   useEffect(() => {
+    if (!selectedStageNumber) return
     document.getElementById(`stage-${currentStage.number}`)?.scrollIntoView()
-  }, [currentStage.number])
+  }, [currentStage.number, selectedStageNumber])
 
   return (
     <div className="mt-8 w-full pb-24">
