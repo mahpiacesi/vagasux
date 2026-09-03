@@ -59,7 +59,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
     id: 'portfolio',
     emoji: '🎒',
     title: 'Montar meu portfólio',
-    description: 'Cases, narrativa e como se destacar.',
+    description: 'Organize seus cases e mostre seu processo, suas decisões e como você pensa como designer.',
     level: 'iniciante',
     duration: '4 h',
     contentCount: 12,
@@ -68,7 +68,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
     id: 'voluntariado',
     emoji: '🤝',
     title: 'Praticar em um voluntariado',
-    description: 'Experiências para praticar Design com impacto real.',
+    description: 'Pratique Design em projetos, colabore com pessoas e construa experiência.',
     level: 'iniciante',
   },
   {
