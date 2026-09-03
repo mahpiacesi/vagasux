@@ -93,6 +93,7 @@
 - O aprofundamento do bloco 06 contém somente as referências externas da Nielsen Norman Group e UXfolio.
 - O bloco 07 termina com a seção `Quer continuar se preparando?`, sem aprofundamentos intermediários.
 - O bloco 02 segue da orientação editorial para o próximo passo, sem seção de aprofundamento.
+- O bloco 01 também segue direto da orientação editorial para o próximo passo.
 
 ---
 
