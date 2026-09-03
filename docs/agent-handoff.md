@@ -86,6 +86,7 @@
 - Os callouts amarelo e azul da trilha seguem a mesma largura máxima.
 - Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
 - O bloco 02 foi revisado com foco em leitura de vagas, requisitos e ambiente de aprendizado.
+- O bloco 03 ganhou orientações atualizadas para currículo, LinkedIn e portfólio, além do callout sobre leitura por ATS.
 
 ---
 
