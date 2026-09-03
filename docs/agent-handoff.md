@@ -74,6 +74,7 @@
 - A voz editorial da trilha foi ajustada para linguagem neutra, direta e sem construções contrastivas ou qualificadores repetitivos.
 - A trilha de primeira vaga mostra uma etapa por vez e usa a barra fixa para avançar ou voltar. O bloco final aparece na etapa 07.
 - Ao avançar ou voltar pela barra fixa, a página posiciona a pessoa no início da etapa selecionada.
+- Ao entrar pelo card do Guia, a trilha abre no topo da página; a rolagem para a etapa ocorre apenas durante a navegação sequencial.
 - Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
 
 ---
