@@ -71,6 +71,7 @@
 ### Refinamento da trilha primeira vaga (03 set)
 - Referências externas da trilha usam o card visual do Guia, com miniatura, título, descrição e domínio.
 - Os links para o Guia antigo da VagasUX foram removidos; ficaram apenas referências externas selecionadas da curadoria original e os conteúdos internos atuais.
+- A voz editorial da trilha foi ajustada para linguagem neutra, direta e sem construções por oposição ou escala.
 
 ---
 
