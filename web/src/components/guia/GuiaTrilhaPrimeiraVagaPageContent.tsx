@@ -1,5 +1,5 @@
 import { ArrowRight } from '@phosphor-icons/react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
@@ -8,8 +8,15 @@ import { withTrailContext } from '@/components/guia/GuiaTrailNavigator'
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
 
 export function GuiaTrilhaPrimeiraVagaPageContent() {
+  const [searchParams] = useSearchParams()
+  const currentStageNumber = searchParams.get('etapa') ?? '01'
+  const currentStage = guiaTrilhaPrimeiraVagaStages.find(
+    (stage) => stage.number === currentStageNumber,
+  ) ?? guiaTrilhaPrimeiraVagaStages[0]
+  const isLastStage = currentStage.number === guiaTrilhaPrimeiraVagaStages.at(-1)?.number
+
   return (
-    <div className="mt-8 w-full">
+    <div className="mt-8 w-full pb-24">
       <div className="flex flex-wrap gap-3">
         <Button asChild variant="guia-compact"><Link to={guiaRoutes.home}>Voltar ao Guia</Link></Button>
         <Button asChild variant="guia-compact-outline"><Link to={guiaRoutes.faq}>FAQ</Link></Button>
@@ -20,9 +27,12 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
         <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">Currículo, LinkedIn, entrevistas e processos seletivos.</p>
         <Badge className="mt-5 border-brand-300/30 bg-brand-100 text-brand-500">Iniciante</Badge>
       </header>
-      <div className="mt-12 space-y-14">
-        {guiaTrilhaPrimeiraVagaStages.map((stage) => (
-          <section key={stage.number} id={`stage-${stage.number}`} className="scroll-mt-24">
+      <div className="mt-12">
+        <section id={`stage-${currentStage.number}`} className="scroll-mt-24">
+          {(() => {
+            const stage = currentStage
+            return (
+              <>
             <div className="flex gap-4"><span className="text-2xl font-black text-brand-400">{stage.number}</span><div><h2 className="text-2xl font-black text-neutral-500">{stage.title}</h2><p className="mt-2 text-sm font-semibold text-neutral-400">{stage.description}</p></div></div>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">{stage.introduction}</p>
             {stage.essentials ? <ul className="mt-5 grid gap-2 sm:grid-cols-2">{stage.essentials.map((item) => <li key={item} className="rounded-xl bg-brand-100/40 px-4 py-3 text-sm font-semibold text-neutral-500">{item}</li>)}</ul> : null}
@@ -33,10 +43,12 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
             </div>
             <aside className="mt-7 max-w-3xl rounded-2xl border border-brand-200 bg-brand-100/40 px-5 py-4"><p className="text-xs font-black tracking-[0.16em] text-brand-500 uppercase">Antes de seguir</p><p className="mt-1 text-sm leading-relaxed text-neutral-500">{stage.nextStep}</p></aside>
             <div className="mt-7"><p className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Quer se aprofundar?</p><ol className="mt-3 grid gap-3 lg:grid-cols-2">{stage.contents.map((content, index) => <li key={content.id}>{content.external ? <GuiaLinkPreviewCard link={{ title: content.title, url: content.to, description: content.description }} className="h-full" /> : <Link to={withTrailContext(content.to, content.id, 'primeira-vaga')} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 hover:border-brand-300 hover:bg-brand-100/30"><CardContent number={`${stage.number}.${index+1}`} title={content.title} description={content.description} type={content.type}/></Link>}</li>)}</ol></div>
-          </section>
-        ))}
+              </>
+            )
+          })()}
+        </section>
       </div>
-      <section className="mt-14 border-t border-neutral-500/10 pt-12"><h2 className="text-2xl font-black text-neutral-500">Quer continuar se preparando?</h2><p className="mt-2 text-sm text-neutral-400">A VagasUX já reuniu respostas para dúvidas de currículo, LinkedIn e entrevistas.</p><div className="mt-6 grid gap-3 md:grid-cols-3">{[['📄','Currículo','/guia/faq#cv-o-que-incluir'],['💼','LinkedIn','/guia/faq#linkedin-perfil-competitivo'],['🎤','Entrevistas','/guia/faq#como-portar-entrevista']].map(([emoji,title,to])=><Link key={title} to={to} className="rounded-2xl border border-neutral-500/10 bg-brand-100/30 p-5 font-black text-neutral-500">{emoji} {title}<span className="mt-2 block text-sm font-semibold text-brand-400">Ver dúvidas</span></Link>)}</div></section>
+      {isLastStage ? <section className="mt-14 border-t border-neutral-500/10 pt-12"><h2 className="text-2xl font-black text-neutral-500">Quer continuar se preparando?</h2><p className="mt-2 text-sm text-neutral-400">A VagasUX já reuniu respostas para dúvidas de currículo, LinkedIn e entrevistas.</p><div className="mt-6 grid gap-3 md:grid-cols-3">{[['📄','Currículo','/guia/faq#cv-o-que-incluir'],['💼','LinkedIn','/guia/faq#linkedin-perfil-competitivo'],['🎤','Entrevistas','/guia/faq#como-portar-entrevista']].map(([emoji,title,to])=><Link key={title} to={to} className="rounded-2xl border border-neutral-500/10 bg-brand-100/30 p-5 font-black text-neutral-500">{emoji} {title}<span className="mt-2 block text-sm font-semibold text-brand-400">Ver dúvidas</span></Link>)}</div></section> : null}
     </div>
   )
 }
