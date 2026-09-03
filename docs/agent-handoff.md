@@ -76,6 +76,7 @@
 - Ao avançar ou voltar pela barra fixa, a página posiciona a pessoa no início da etapa selecionada.
 - Ao entrar pelo card do Guia, a trilha abre no topo da página; a rolagem para a etapa ocorre apenas durante a navegação sequencial.
 - A abertura da etapa 01 ganhou um cabeçalho destacado com o título da trilha, contexto, nível e indicação das sete etapas.
+- O grafismo do cabeçalho usa o ícone de guarda-chuva em roxo, ampliado, rotacionado e parcialmente cortado no canto direito.
 - Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
 - O bloco 02 foi revisado com foco em leitura de vagas, requisitos e ambiente de aprendizado.
 
