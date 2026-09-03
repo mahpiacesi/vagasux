@@ -40,10 +40,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
       { title: 'Descubra onde você vai aprender', description: 'Para a primeira vaga, vale olhar também para o time. Ter pessoas para trocar, receber feedback e trabalhar em problemas reais pode fazer muita diferença no seu desenvolvimento.' },
     ],
     nextStep: 'Salve algumas vagas que chamaram sua atenção e compare o que elas têm em comum. O que essas empresas estão procurando? O que você já tem? O que aparece como próximo passo para você?',
-    contents: [
-      { id: 'opportunities', title: 'Onde encontrar vagas de Product Design?', description: 'Explore oportunidades publicadas pela VagasUX.', type: 'Vagas', to: '/oportunidades#vagas' },
-      { id: 'career-hubs', title: 'Michael Page', description: 'Acompanhe uma plataforma de recrutamento para entender descrições e oportunidades do mercado.', type: 'Referência', to: 'https://www.michaelpage.com.br/', external: true },
-    ],
+    contents: [],
   },
   {
     number: '03',
