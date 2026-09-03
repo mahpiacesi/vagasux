@@ -24,7 +24,9 @@ export function GuiaTrailNavigator() {
   const trailId = searchParams.get('trilha') ?? (
     location.pathname === guiaRoutes.trilha('primeira-vaga')
       ? 'primeira-vaga'
-      : null
+      : location.pathname === guiaRoutes.trilha('entender-o-basico')
+        ? 'entender-o-basico'
+        : null
   )
   const itemId = searchParams.get('item')
 
@@ -32,7 +34,10 @@ export function GuiaTrailNavigator() {
   const trail = trails[trailId as keyof typeof trails]
   if (!trail) return null
 
-  if (trailId === 'primeira-vaga' && (stageId || !itemId)) {
+  if (
+    (trailId === 'primeira-vaga' || trailId === 'entender-o-basico')
+    && (stageId || !itemId)
+  ) {
     const currentIndex = trail.stages.findIndex(
       (stage) => stage.number === (stageId ?? trail.stages[0].number),
     )
@@ -42,7 +47,7 @@ export function GuiaTrailNavigator() {
     const previous = trail.stages[currentIndex - 1]
     const next = trail.stages[currentIndex + 1]
     const stageTo = (stageNumber: string) =>
-      `${guiaRoutes.trilha('primeira-vaga')}?trilha=primeira-vaga&etapa=${stageNumber}`
+      `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${stageNumber}`
 
     return (
       <aside className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-200/70 bg-neutral-100/95 px-5 py-3 shadow-[0_-12px_32px_-24px_rgb(7_0_58_/_0.45)] backdrop-blur md:px-6">
@@ -88,7 +93,11 @@ export function GuiaTrailNavigator() {
   const chapterIndex = current.stage.contents.findIndex(
     (content) => content.id === current.id,
   ) + 1
-  const backTo = `${guiaRoutes.trilha(trailId)}#stage-${current.stage.number}`
+  const backTo = (
+    trailId === 'primeira-vaga' || trailId === 'entender-o-basico'
+  )
+    ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${current.stage.number}`
+    : `${guiaRoutes.trilha(trailId)}#stage-${current.stage.number}`
 
   return (
     <aside className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-200/70 bg-neutral-100/95 px-5 py-3 shadow-[0_-12px_32px_-24px_rgb(7_0_58_/_0.45)] backdrop-blur md:px-6">
