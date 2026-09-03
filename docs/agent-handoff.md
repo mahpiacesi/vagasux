@@ -94,14 +94,14 @@
 - O bloco 07 termina com a seção `Quer continuar se preparando?`, sem aprofundamentos intermediários.
 - O bloco 02 segue da orientação editorial para o próximo passo, sem seção de aprofundamento.
 - O bloco 01 também segue direto da orientação editorial para o próximo passo.
+- **PR #85 mergeada:** refinamentos visuais, navegação sequencial e curadoria das trilhas estão em `main`.
 
 ---
 
 ## Próximo passo esperado
 
-1. Revisar os cards de preview externos da trilha **Conseguir minha primeira vaga** na nova PR.
-2. Refinar a trilha após uso e feedback editorial.
-3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Refinar as trilhas após uso e feedback editorial.
+2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -115,7 +115,7 @@
 | Guia expandido e busca dinâmica | ✅ mergeado (#73, #74, #76–#82) |
 | [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
-| Cards de preview da trilha primeira vaga | 🟡 Branch `cursor/refine-first-vaga-previews-c6eb` |
+| [PR #85 — refinamentos das trilhas](https://github.com/mahpiacesi/vagasux/pull/85) | ✅ Mergeada em 03/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
