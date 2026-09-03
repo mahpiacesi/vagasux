@@ -1,4 +1,5 @@
 import { ArrowRight } from '@phosphor-icons/react'
+import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -14,6 +15,10 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
     (stage) => stage.number === currentStageNumber,
   ) ?? guiaTrilhaPrimeiraVagaStages[0]
   const isLastStage = currentStage.number === guiaTrilhaPrimeiraVagaStages.at(-1)?.number
+
+  useEffect(() => {
+    document.getElementById(`stage-${currentStage.number}`)?.scrollIntoView()
+  }, [currentStage.number])
 
   return (
     <div className="mt-8 w-full pb-24">
