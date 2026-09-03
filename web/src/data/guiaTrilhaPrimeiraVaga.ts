@@ -23,7 +23,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     ],
     nextStep: 'Liste o que você já consegue demonstrar hoje e escolha uma ou duas lacunas para desenvolver enquanto inicia a busca.',
     contents: [
-      { id: 'junior-experience', title: 'SouJunior', description: 'Participe de projetos reais de tecnologia para desenvolver experiência prática durante sua transição.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
+      { id: 'junior-experience', title: 'SouJunior', description: 'Participe de projetos de tecnologia para desenvolver experiência em equipe durante sua transição.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
       { id: 'mentorship', title: 'ADPList', description: 'Encontre mentorias com profissionais de Design e Produto para trocar sobre sua trajetória.', type: 'Referência', to: 'https://adplist.org/', external: true },
     ],
   },
@@ -35,7 +35,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     note: 'Você não precisa cumprir 100% dos requisitos para se candidatar. Use a descrição como referência, não como uma prova que precisa passar.',
     guidance: [
       { title: 'Leia além do cargo', description: '“Product Designer” pode significar trabalhos bem diferentes. Observe o problema da empresa, a maturidade do time, as responsabilidades e quem vai trabalhar com você.' },
-      { title: 'Diferencie requisito de desejo', description: 'Separe o que é essencial para a função daquilo que aparece como diferencial. A vaga pode ser uma boa oportunidade mesmo quando você ainda está desenvolvendo parte do repertório.' },
+      { title: 'Observe os requisitos', description: 'Identifique os requisitos necessários para a função e os conhecimentos que você está desenvolvendo. Use essa leitura para escolher oportunidades alinhadas ao seu momento.' },
       { title: 'Busque contexto de aprendizado', description: 'Para a primeira vaga, considere se haverá pessoas para trocar, espaço para receber feedback e problemas reais em que você possa contribuir.' },
     ],
     nextStep: 'Salve algumas vagas que fariam sentido para você e compare o que elas pedem antes de preparar sua candidatura.',
@@ -59,7 +59,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     nextStep: 'Revise currículo, LinkedIn e portfólio como um conjunto: quem abrir um deles deve encontrar uma história coerente e chegar aos outros com facilidade.',
     contents: [
       { id: 'cv-content', title: 'O que incluir e o que deixar de fora do currículo de UX', description: 'Checklist complementar para manter seu currículo relevante, direto e conectado ao portfólio.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-what-to-include/', external: true },
-      { id: 'cv-ats', title: 'Como estruturar um currículo de UX', description: 'Guia prático sobre currículo simples, palavras-chave e leitura por ATS.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-layout/', external: true },
+      { id: 'cv-ats', title: 'Como estruturar um currículo de UX', description: 'Guia sobre currículo simples, palavras-chave e leitura por ATS.', type: 'Referência', to: 'https://blog.uxfol.io/ux-resume-layout/', external: true },
       { id: 'portfolio', title: 'O que recrutadores procuram em um portfólio de UX', description: 'Use seus cases para mostrar contexto, decisões, colaboração e impacto do seu trabalho.', type: 'Referência', to: 'https://blog.uxfol.io/ux-designer-portfolio/', external: true },
     ],
   },
@@ -75,7 +75,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
       { title: 'Registre os processos', description: 'Anote empresa, vaga, data, contato, etapa e aprendizados. Isso evita aplicações duplicadas e mostra padrões que ajudam a ajustar sua busca.' },
       { title: 'Proteja seu tempo', description: 'Leia a vaga com atenção, pesquise a empresa e desconfie de promessas vagas, tarefas extensas sem contexto ou pedidos de informação sensível.' },
     ],
-    nextStep: 'Escolha uma ferramenta simples para acompanhar candidaturas e faça sua primeira aplicação adaptada a uma vaga real.',
+    nextStep: 'Escolha uma ferramenta simples para acompanhar candidaturas e faça sua primeira aplicação adaptada a uma vaga selecionada.',
     contents: [
       { id: 'jobs-board', title: 'Como pesquisar oportunidades?', description: 'Use o mural para explorar vagas e aplicar filtros.', type: 'Vagas', to: '/oportunidades#vagas' },
       { id: 'job-warning', title: 'Como reconhecer uma vaga cilada?', description: 'Use este apoio da FAQ para observar sinais antes de investir tempo em um processo.', type: 'FAQ', to: `${guiaRoutes.faq}#vagas-cilada-protecao` },
@@ -85,9 +85,9 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     number: '05',
     title: 'Conheça as pessoas',
     description: 'Networking não precisa começar pedindo emprego.',
-    introduction: 'Conhecer pessoas da área ajuda você a entender trajetórias, descobrir empresas e aprender como o mercado funciona. Comece com curiosidade e troca genuína.',
+    introduction: 'Conhecer pessoas da área ajuda você a entender trajetórias, descobrir empresas e aprender como o mercado funciona. Comece observando conversas e participando aos poucos.',
     guidance: [
-      { title: 'Networking é relação, não pedido', description: 'Em vez de começar pedindo indicação, acompanhe o trabalho de pessoas e empresas que admira. Faça perguntas específicas e compartilhe aprendizados quando fizer sentido.' },
+      { title: 'Crie relações profissionais', description: 'Acompanhe o trabalho de pessoas e empresas que admira. Faça perguntas específicas e compartilhe aprendizados quando fizer sentido.' },
       { title: 'Mostre que você está em movimento', description: 'Atualize seu perfil, compartilhe um projeto ou reflexão e participe de conversas. Isso ajuda outras pessoas a entenderem seus interesses e lembrarem de você.' },
       { title: 'Procure experiências reais', description: 'Comunidades, eventos e voluntariado podem ampliar seu repertório e criar trocas profissionais. Escolha espaços respeitosos e com objetivos claros para seu momento.' },
     ],
@@ -95,7 +95,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     contents: [
       { id: 'community', title: 'Como participar de comunidades e eventos?', description: 'Encontre espaços para acompanhar conversas e conhecer pessoas.', type: 'Tema', to: guiaRoutes.tipo('eventos') },
       { id: 'volunteer', title: 'Atados', description: 'Encontre oportunidades de voluntariado por causa, habilidade ou localidade.', type: 'Referência', to: 'https://www.atados.com.br/', external: true },
-      { id: 'volunteer-projects', title: 'SouJunior', description: 'Experimente trabalhar em projetos de tecnologia em equipe e construa repertório na prática.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
+      { id: 'volunteer-projects', title: 'SouJunior', description: 'Participe de projetos de tecnologia em equipe e construa repertório para o seu portfólio.', type: 'Referência', to: 'https://soujunior.tech/', external: true },
       { id: 'networking', title: 'Networking no LinkedIn', description: 'Se precisar de um ponto de partida, use a FAQ para abordar novas conexões com respeito.', type: 'FAQ', to: `${guiaRoutes.faq}#networking-linkedin` },
     ],
   },
@@ -127,7 +127,7 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
       { title: 'Dê espaço para o retorno', description: 'Processos podem levar tempo e podem não trazer uma resposta. Faça um acompanhamento educado quando for apropriado e siga procurando enquanto espera.' },
       { title: 'Transforme cada processo em aprendizado', description: 'Depois de uma entrevista, registre perguntas, pontos em que se sentiu seguro e o que gostaria de explicar na próxima vez.' },
       { title: 'Use uma recusa para ajustar sua busca', description: 'Uma recusa está ligada à combinação de vaga, momento e contexto. Use feedback quando existir e ajuste o que fizer sentido.' },
-      { title: 'Avalie o sim com calma', description: 'Ao receber uma proposta, considere aprendizado, apoio do time, escopo, modelo de trabalho e condições. Sua primeira vaga é um começo, não uma decisão definitiva.' },
+      { title: 'Avalie a proposta com calma', description: 'Ao receber uma proposta, considere aprendizado, apoio do time, escopo, modelo de trabalho e condições. Essa oportunidade pode iniciar uma nova etapa da sua trajetória.' },
     ],
     nextStep: 'Atualize seu registro de candidaturas, anote o principal aprendizado do último processo e defina qual será sua próxima ação de busca.',
     contents: [
