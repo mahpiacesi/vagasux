@@ -57,7 +57,7 @@ export function GuiaTrilhaEntenderOBasicoPageContent() {
         <Umbrella aria-hidden weight="duotone" className="absolute -right-10 -bottom-14 hidden size-64 -rotate-12 text-brand-200/70 md:block" />
       </header>
 
-      <section className="mt-12" id={`stage-${currentStage.number}`} aria-labelledby={`stage-title-${currentStage.number}`}>
+      <section className="mt-12 scroll-mt-24" id={`stage-${currentStage.number}`} aria-labelledby={`stage-title-${currentStage.number}`}>
         <div className="flex gap-4">
           <span className="text-2xl font-black text-brand-400">{currentStage.number}</span>
           <div>
