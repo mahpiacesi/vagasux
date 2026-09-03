@@ -78,7 +78,6 @@ export function GuiaTrailNavigator() {
                 className="inline-flex items-center gap-1.5 rounded-full bg-brand-400 px-3 py-2 text-sm font-bold text-neutral-100 transition-colors hover:bg-brand-500"
               >
                 Voltar ao Guia
-                <ArrowRight size={16} weight="bold" aria-hidden />
               </Link>
             )}
           </div>
