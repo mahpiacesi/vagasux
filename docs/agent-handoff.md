@@ -87,6 +87,7 @@
 - Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
 - O bloco 02 foi revisado com foco em leitura de vagas, requisitos e ambiente de aprendizado.
 - O bloco 03 ganhou orientações atualizadas para currículo, LinkedIn e portfólio, além do callout sobre leitura por ATS.
+- O aprofundamento do bloco 03 inclui referências de ATS, modelos e exemplos de currículos com cards de preview.
 
 ---
 
