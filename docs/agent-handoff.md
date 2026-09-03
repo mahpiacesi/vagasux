@@ -72,6 +72,7 @@
 - Referências externas da trilha usam o card visual do Guia, com miniatura, título, descrição e domínio.
 - Os links para o Guia antigo da VagasUX foram removidos; ficaram apenas referências externas selecionadas da curadoria original e os conteúdos internos atuais.
 - A voz editorial da trilha foi ajustada para linguagem neutra, direta e sem construções contrastivas ou qualificadores repetitivos.
+- A trilha de primeira vaga mostra uma etapa por vez e usa a barra fixa para avançar ou voltar. O bloco final aparece na etapa 07.
 
 ---
 
