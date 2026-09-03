@@ -15,6 +15,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
   const currentStage = guiaTrilhaPrimeiraVagaStages.find(
     (stage) => stage.number === currentStageNumber,
   ) ?? guiaTrilhaPrimeiraVagaStages[0]
+  const isFirstStage = currentStage.number === '01'
   const isLastStage = currentStage.number === guiaTrilhaPrimeiraVagaStages.at(-1)?.number
 
   useEffect(() => {
@@ -28,11 +29,14 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
         <Button asChild variant="guia-compact"><Link to={guiaRoutes.home}>Voltar ao Guia</Link></Button>
         <Button asChild variant="guia-compact-outline"><Link to={guiaRoutes.faq}>FAQ</Link></Button>
       </div>
-      <header className="mt-8 max-w-3xl">
-        <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Trilha</p>
-        <div className="mt-4 flex items-center gap-3"><span className="text-3xl">💼</span><h1 className="text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl">Conseguir minha primeira vaga</h1></div>
-        <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">Currículo, LinkedIn, entrevistas e processos seletivos.</p>
-        <Badge className="mt-5 border-brand-300/30 bg-brand-100 text-brand-500">Iniciante</Badge>
+      <header className={isFirstStage ? 'relative mt-8 overflow-hidden rounded-3xl bg-brand-100 px-6 py-8 md:px-10 md:py-10' : 'mt-8 max-w-3xl'}>
+        <div className={isFirstStage ? 'relative z-10 max-w-2xl' : ''}>
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Trilha</p>
+          <div className="mt-4 flex items-center gap-3"><span className="text-3xl">💼</span><h1 className={isFirstStage ? 'text-4xl font-black tracking-[-0.05em] text-neutral-500 md:text-5xl' : 'text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-4xl'}>Conseguir minha primeira vaga</h1></div>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">Um caminho para organizar sua busca, preparar sua apresentação e se posicionar em processos seletivos.</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3"><Badge className="border-brand-300/30 bg-neutral-100 text-brand-500">Iniciante</Badge>{isFirstStage ? <span className="text-sm font-semibold text-neutral-400">7 etapas para seguir no seu ritmo</span> : null}</div>
+        </div>
+        {isFirstStage ? <div aria-hidden className="absolute -right-8 -bottom-14 hidden size-56 rounded-full border-[28px] border-brand-200/60 md:block" /> : null}
       </header>
       <div className="mt-12">
         <section id={`stage-${currentStage.number}`} className="scroll-mt-24">
