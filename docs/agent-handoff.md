@@ -78,6 +78,7 @@
 - A abertura da etapa 01 ganhou um cabeçalho destacado com o título da trilha, contexto, nível e indicação das sete etapas.
 - O grafismo do cabeçalho usa o ícone de guarda-chuva em roxo, ampliado, rotacionado e parcialmente cortado no canto direito.
 - O cabeçalho destacado agora aparece em todas as etapas de `Conseguir minha primeira vaga` e em todos os blocos da trilha `Entender o básico`.
+- Na trilha de primeira vaga, o cabeçalho mantém o título e a descrição da trilha durante a navegação; cada etapa aparece identificada no bloco de conteúdo.
 - Os textos dos sete blocos foram revisados com a orientação editorial enviada em 03/09.
 - O bloco 02 foi revisado com foco em leitura de vagas, requisitos e ambiente de aprendizado.
 
