@@ -101,8 +101,8 @@ export const guiaTrilhaPrimeiraVagaStages: GuiaTrilhaPrimeiraVagaStage[] = [
     ],
     nextStep: 'Escolha uma comunidade, evento ou pessoa para acompanhar nesta semana. Participe de uma conversa, compartilhe algo que você está aprendendo ou faça uma aproximação. Inclusive, se você chegou até aqui pela VagasUX, já encontrou uma comunidade para começar 👀',
     contents: [
-      { id: 'community-events', title: 'Eventos', description: 'Encontre eventos e espaços para acompanhar conversas, trocar experiências e conhecer pessoas da área.', type: 'Tema', to: 'https://vagasux.com.br/guia/tipo/eventos', external: true },
-      { id: 'join-vagasux', title: 'Faça parte da VagasUX', description: 'Conheça formas de participar da comunidade e se aproximar de outras pessoas da área.', type: 'Comunidade', to: 'https://vagasux.com.br/comunidade', external: true },
+      { id: 'community-events', title: 'Eventos', description: 'Encontre eventos e espaços para acompanhar conversas, trocar experiências e conhecer pessoas da área.', type: 'Tema', to: guiaRoutes.tipo('eventos'), previewUrl: 'https://vagasux.com.br/guia/tipo/eventos', external: true },
+      { id: 'join-vagasux', title: 'Faça parte da VagasUX', description: 'Conheça formas de participar da comunidade e se aproximar de outras pessoas da área.', type: 'Comunidade', to: '/comunidade', previewUrl: 'https://vagasux.com.br/comunidade', external: true },
     ],
   },
   {

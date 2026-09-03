@@ -8,6 +8,7 @@ type GuiaLinkPreview = {
   url: string
   description?: string
   previewImageUrl?: string
+  href?: string
 }
 
 function getHostname(url: string) {
@@ -83,7 +84,7 @@ export function GuiaLinkPreviewCard({
 
   return (
     <a
-      href={link.url}
+      href={link.href ?? link.url}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
