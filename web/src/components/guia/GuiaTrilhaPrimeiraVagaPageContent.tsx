@@ -1,4 +1,4 @@
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight, Umbrella } from '@phosphor-icons/react'
 import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
@@ -36,7 +36,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
           <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">Um caminho para organizar sua busca, preparar sua apresentação e se posicionar em processos seletivos.</p>
           <div className="mt-6 flex flex-wrap items-center gap-3"><Badge className="border-brand-300/30 bg-neutral-100 text-brand-500">Iniciante</Badge>{isFirstStage ? <span className="text-sm font-semibold text-neutral-400">7 etapas para seguir no seu ritmo</span> : null}</div>
         </div>
-        {isFirstStage ? <div aria-hidden className="absolute -right-8 -bottom-14 hidden size-56 rounded-full border-[28px] border-brand-200/60 md:block" /> : null}
+        {isFirstStage ? <Umbrella aria-hidden weight="duotone" className="absolute -right-10 -bottom-14 hidden size-64 -rotate-12 text-brand-200/70 md:block" /> : null}
       </header>
       <div className="mt-12">
         <section id={`stage-${currentStage.number}`} className="scroll-mt-24">
