@@ -6,7 +6,7 @@ export type GuiaTrilhaPrimeiraVagaStage = GuiaTrilhaStage & {
   essentials?: string[]
   note?: string
   tip?: { title: string; description: string }
-  guidance: { title: string; description: string; items?: string[]; emphasis?: string }[]
+  guidance: { title: string; description: string }[]
   nextStep: string
 }
 

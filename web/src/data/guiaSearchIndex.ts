@@ -72,7 +72,7 @@ const indexedTrailStages = (
     introduction?: string
     essentials?: string[]
     tip?: { title: string; description: string }
-    guidance?: { title: string; description: string; items?: string[]; emphasis?: string }[]
+    guidance?: { title: string; description: string }[]
     nextStep?: string
   }[],
 ) => stages.flatMap((stage) => {
@@ -81,7 +81,7 @@ const indexedTrailStages = (
     stage.description,
     stage.introduction,
     ...(stage.essentials ?? []),
-    ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description, item.emphasis, ...(item.items ?? [])])),
+    ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description])),
     stage.tip?.title,
     stage.tip?.description,
     stage.nextStep,

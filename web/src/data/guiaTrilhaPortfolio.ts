@@ -54,16 +54,7 @@ export const guiaTrilhaPortfolioStages: GuiaTrilhaPrimeiraVagaStage[] = [
     introduction: 'Agora é hora de escolher onde apresentar seu trabalho e criar uma experiência simples para quem vai navegar por ele.',
     guidance: [
       { title: 'Escolha onde publicar', description: 'Notion, Behance, Framer, Adobe Portfolio, Webflow, Wix e outras ferramentas podem funcionar para começar. Considere seu tempo, familiaridade e o tipo de apresentação que você quer criar.' },
-      {
-        title: 'Crie uma estrutura',
-        description: 'Uma primeira versão pode reunir:',
-        items: [
-          'Apresentação: quem você é e o que busca.',
-          'Cases: seus principais trabalhos.',
-          'Sobre: sua trajetória e interesses.',
-          'Contato: e-mail, LinkedIn e outros canais relevantes.',
-        ],
-      },
+      { title: 'Crie uma estrutura', description: 'Uma primeira versão pode reunir apresentação (quem você é e o que busca), cases (seus principais trabalhos), sobre (sua trajetória e interesses) e contato (e-mail, LinkedIn e outros canais relevantes).' },
       { title: 'Facilite o caminho', description: 'Deixe os trabalhos fáceis de encontrar e mantenha a navegação consistente. Links para currículo, LinkedIn e contato também devem estar acessíveis.' },
       { title: 'Cuide dos detalhes', description: 'Revise textos, imagens, hierarquia, espaçamento e links. Confira também como tudo funciona em diferentes tamanhos de tela.' },
     ],
@@ -76,11 +67,7 @@ export const guiaTrilhaPortfolioStages: GuiaTrilhaPrimeiraVagaStage[] = [
     description: 'Portfólio publicado. Agora ele pode evoluir com você. 👀',
     introduction: 'A primeira versão abre espaço para feedback, ajustes e novos trabalhos. Use essas experiências para deixar sua apresentação cada vez mais alinhada ao momento da sua carreira.',
     guidance: [
-      {
-        title: 'Peça outros olhares',
-        description: 'Mostre seu portfólio para pessoas de Design, Produto ou outras áreas e peça feedback sobre a clareza do conteúdo, seu papel e suas escolhas.',
-        emphasis: 'Uma mentoria também pode ser um ótimo espaço para receber uma visão mais direcionada e descobrir pontos que você pode melhorar.',
-      },
+      { title: 'Peça outros olhares', description: 'Mostre seu portfólio para pessoas de Design, Produto ou outras áreas e peça feedback sobre a clareza do conteúdo, seu papel e suas escolhas. Uma mentoria também pode ser um ótimo espaço para receber uma visão mais direcionada e descobrir pontos que você pode melhorar.' },
       { title: 'Descubra os pontos confusos', description: 'Preste atenção nas partes que geram dúvidas ou precisam de muita explicação. Reescreva, reorganize ou simplifique quando necessário.' },
       { title: 'Faça uma revisão técnica', description: 'Confira links, imagens, ortografia, navegação, responsividade, carregamento e informações de contato.' },
       { title: 'Continue atualizando', description: 'Novas experiências podem trazer materiais melhores para sua apresentação. Adicione trabalhos relevantes, revise os antigos e mantenha tudo alinhado ao que você quer buscar.' },

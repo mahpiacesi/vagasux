@@ -49,7 +49,7 @@ export function GuiaTrilhaPortfolioPageContent() {
             {stage.note ? <aside className="mt-5 max-w-3xl rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500">{stage.note}</aside> : null}
             <div className="mt-7 max-w-3xl">
               <p className="text-xs font-black tracking-[0.16em] text-brand-400 uppercase">Na prática</p>
-              <div className="mt-3 space-y-4">{stage.guidance.map((item) => <div key={item.title} className="border-l-2 border-brand-200 pl-4"><h3 className="font-black text-neutral-500">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p>{item.items ? <ul className="mt-2 space-y-1.5">{item.items.map((entry) => <GuidanceListItem key={entry} text={entry} />)}</ul> : null}{item.emphasis ? <p className="mt-2 text-sm font-semibold leading-relaxed text-neutral-500">{item.emphasis}</p> : null}</div>)}</div>
+              <div className="mt-3 space-y-4">{stage.guidance.map((item) => <div key={item.title} className="border-l-2 border-brand-200 pl-4"><h3 className="font-black text-neutral-500">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p></div>)}</div>
               {stage.tip ? <aside className="mt-6 max-w-3xl rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500"><p className="font-black">💡 {stage.tip.title}</p><p className="mt-1">{stage.tip.description}</p></aside> : null}
             </div>
             <aside className="mt-7 max-w-3xl rounded-2xl border border-brand-200 bg-brand-100/40 px-5 py-4"><p className="text-xs font-black tracking-[0.16em] text-brand-500 uppercase">Antes de seguir</p><p className="mt-1 text-sm leading-relaxed text-neutral-500">{stage.nextStep}</p></aside>
@@ -61,19 +61,6 @@ export function GuiaTrilhaPortfolioPageContent() {
         </section>
       </div>
     </div>
-  )
-}
-
-function GuidanceListItem({ text }: { text: string }) {
-  const separator = text.indexOf(':')
-  const label = separator >= 0 ? text.slice(0, separator) : text
-  const rest = separator >= 0 ? text.slice(separator + 1) : ''
-
-  return (
-    <li className="text-sm leading-relaxed text-neutral-400">
-      <span className="font-semibold text-neutral-500">{label}{rest ? ':' : ''}</span>
-      {rest}
-    </li>
   )
 }
 
