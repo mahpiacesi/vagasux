@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaPortfolioStages } from '@/data/guiaTrilhaPortfolio'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { guiaHashes } from '@/lib/siteLinks'
@@ -8,7 +9,18 @@ import { guiaHashes } from '@/lib/siteLinks'
 const trails = {
   'entender-o-basico': { title: 'Entender o básico', stages: guiaTrilhaEntenderOBasicoStages },
   'primeira-vaga': { title: 'Conseguir minha primeira vaga', stages: guiaTrilhaPrimeiraVagaStages },
+  portfolio: { title: 'Montar meu portfólio', stages: guiaTrilhaPortfolioStages },
 } as const
+
+const sequentialTrailIds = Object.keys(trails) as Array<keyof typeof trails>
+
+function trailIdFromPath(pathname: string) {
+  return sequentialTrailIds.find((id) => pathname === guiaRoutes.trilha(id)) ?? null
+}
+
+function isSequentialTrail(trailId: string): trailId is keyof typeof trails {
+  return sequentialTrailIds.includes(trailId as keyof typeof trails)
+}
 
 export function withTrailContext(to: string, itemId: string, trailId = 'entender-o-basico'): string {
   const [pathWithQuery, hash] = to.split('#')
@@ -22,23 +34,14 @@ export function GuiaTrailNavigator() {
   const [searchParams] = useSearchParams()
   const location = useLocation()
   const stageId = searchParams.get('etapa')
-  const trailId = searchParams.get('trilha') ?? (
-    location.pathname === guiaRoutes.trilha('primeira-vaga')
-      ? 'primeira-vaga'
-      : location.pathname === guiaRoutes.trilha('entender-o-basico')
-        ? 'entender-o-basico'
-        : null
-  )
+  const trailId = searchParams.get('trilha') ?? trailIdFromPath(location.pathname)
   const itemId = searchParams.get('item')
 
   if (!trailId) return null
   const trail = trails[trailId as keyof typeof trails]
   if (!trail) return null
 
-  if (
-    (trailId === 'primeira-vaga' || trailId === 'entender-o-basico')
-    && (stageId || !itemId)
-  ) {
+  if (isSequentialTrail(trailId) && (stageId || !itemId)) {
     const currentIndex = trail.stages.findIndex(
       (stage) => stage.number === (stageId ?? trail.stages[0].number),
     )
@@ -103,14 +106,14 @@ export function GuiaTrailNavigator() {
   ) + 1
   const nextTo = next && (
     next.stage.number !== current.stage.number
-    && (trailId === 'primeira-vaga' || trailId === 'entender-o-basico')
+    && isSequentialTrail(trailId)
   )
     ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${next.stage.number}`
     : next
       ? withTrailContext(next.to, next.id, trailId)
       : null
   const backTo = (
-    trailId === 'primeira-vaga' || trailId === 'entender-o-basico'
+    isSequentialTrail(trailId)
   )
     ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${current.stage.number}`
     : `${guiaRoutes.trilha(trailId)}#stage-${current.stage.number}`

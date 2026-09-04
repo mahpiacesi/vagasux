@@ -61,8 +61,6 @@ export const guiaTrilhas: GuiaTrilha[] = [
     title: 'Montar meu portfólio',
     description: 'Organize seus cases e mostre seu processo e suas decisões estratégicas.',
     level: 'iniciante',
-    duration: '4 h',
-    contentCount: 12,
   },
   {
     id: 'voluntariado',

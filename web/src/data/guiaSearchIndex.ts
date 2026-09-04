@@ -11,6 +11,7 @@ import { guiaTemaResearchLinkSections } from '@/data/guiaTemaResearchLinks'
 import { guiaTemaDesignSystemLinks } from '@/data/guiaTemaDesignSystemLinks'
 import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaPortfolioStages } from '@/data/guiaTrilhaPortfolio'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
@@ -69,15 +70,20 @@ const indexedTrailStages = (
     description: string
     contents: { id: string; title: string; description: string }[]
     introduction?: string
-    guidance?: { title: string; description: string }[]
+    essentials?: string[]
+    tip?: { title: string; description: string }
+    guidance?: { title: string; description: string; items?: string[]; emphasis?: string }[]
     nextStep?: string
   }[],
 ) => stages.flatMap((stage) => {
-  const to = `${guiaRoutes.trilha(trailId)}#stage-${stage.number}`
+  const to = `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${stage.number}`
   const editorialText = [
     stage.description,
     stage.introduction,
-    ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description])),
+    ...(stage.essentials ?? []),
+    ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description, item.emphasis, ...(item.items ?? [])])),
+    stage.tip?.title,
+    stage.tip?.description,
     stage.nextStep,
   ].filter(Boolean).join(' ')
 
@@ -112,6 +118,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   })),
   ...indexedTrailStages('entender-o-basico', guiaTrilhaEntenderOBasicoStages),
   ...indexedTrailStages('primeira-vaga', guiaTrilhaPrimeiraVagaStages),
+  ...indexedTrailStages('portfolio', guiaTrilhaPortfolioStages),
   ...guiaTemas.map((item) => ({
     id: `tema-${item.id}`,
     title: item.title,
