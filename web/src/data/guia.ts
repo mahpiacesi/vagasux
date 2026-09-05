@@ -70,6 +70,8 @@ export const guiaTrilhas: GuiaTrilha[] = [
     title: 'Praticar em um voluntariado',
     description: 'Pratique Design em projetos, colabore com pessoas e construa experiência.',
     level: 'iniciante',
+    duration: '3 h',
+    contentCount: 13,
   },
   {
     id: 'freelancer',

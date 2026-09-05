@@ -3,6 +3,7 @@ import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { GuiaTrilhaEntenderOBasicoPageContent } from '@/components/guia/GuiaTrilhaEntenderOBasicoPageContent'
 import { GuiaTrilhaPortfolioPageContent } from '@/components/guia/GuiaTrilhaPortfolioPageContent'
 import { GuiaTrilhaPrimeiraVagaPageContent } from '@/components/guia/GuiaTrilhaPrimeiraVagaPageContent'
+import { GuiaTrilhaVoluntariadoPageContent } from '@/components/guia/GuiaTrilhaVoluntariadoPageContent'
 import { getGuiaTrilhaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 
@@ -22,6 +23,9 @@ export function GuiaTrilhaPage() {
   }
   if (trilha.id === 'portfolio') {
     return <GuiaTrilhaPortfolioPageContent />
+  }
+  if (trilha.id === 'voluntariado') {
+    return <GuiaTrilhaVoluntariadoPageContent />
   }
 
   return (
