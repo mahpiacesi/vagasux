@@ -1,6 +1,8 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
 const allowedUrls = new Set([
+  'https://medium.com/ux-user-experience-design-em-portugues/voluntariado-hands-on-conectando-a-pr%C3%A1tica-com-a-colabora%C3%A7%C3%A3o-4f1476f37d9c',
+  'https://forms.gle/vqyLwPfA42LYv6ZV6',
   'https://medium.com/aela/6-dicas-essenciais-para-montar-seu-portf%C3%B3lio-de-ux-design-205e551b3aa3',
   'https://brasil.uxdesign.cc/como-estruturar-um-case-para-portf%C3%B3lio-de-ux-ui-e-impressionar-recrutadores-62266ee50839',
   'https://dribbble.com/stories/2020/03/11/ultimate-guide-getting-hired-ux-design',

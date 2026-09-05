@@ -13,6 +13,7 @@ import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
 import { guiaTrilhaPortfolioStages } from '@/data/guiaTrilhaPortfolio'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
+import { guiaTrilhaVoluntariadoStages } from '@/data/guiaTrilhaVoluntariado'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
@@ -119,6 +120,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...indexedTrailStages('entender-o-basico', guiaTrilhaEntenderOBasicoStages),
   ...indexedTrailStages('primeira-vaga', guiaTrilhaPrimeiraVagaStages),
   ...indexedTrailStages('portfolio', guiaTrilhaPortfolioStages),
+  ...indexedTrailStages('voluntariado', guiaTrilhaVoluntariadoStages),
   ...guiaTemas.map((item) => ({
     id: `tema-${item.id}`,
     title: item.title,
