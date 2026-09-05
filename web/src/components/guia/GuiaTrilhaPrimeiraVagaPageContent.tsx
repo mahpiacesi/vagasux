@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
+import { guiaRelatosMigracao } from '@/data/guiaRelatosMigracao'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { withTrailContext } from '@/components/guia/GuiaTrailNavigator'
 import { GuiaLinkPreviewCard } from '@/components/guia/GuiaLinkPreviewCard'
@@ -53,6 +54,7 @@ export function GuiaTrilhaPrimeiraVagaPageContent() {
               <div className="mt-3 space-y-4">{stage.guidance.map((item) => <div key={item.title} className="border-l-2 border-brand-200 pl-4"><h3 className="font-black text-neutral-500">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p></div>)}</div>
               {stage.tip ? <aside className="mt-6 max-w-3xl rounded-2xl border border-complementary-300/50 bg-complementary-100 px-5 py-4 text-sm leading-relaxed text-neutral-500"><p className="font-black">💡 {stage.tip.title}</p><p className="mt-1">{stage.tip.description}</p></aside> : null}
             </div>
+            {stage.number === '01' ? <section className="mt-7"><h3 className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Veja relatos de quem já migrou</h3><ol className="mt-3 grid gap-3 lg:grid-cols-2">{guiaRelatosMigracao.map(([id, title, description, url]) => <li key={id}><GuiaLinkPreviewCard link={{ title, url, description }} className="h-full" /></li>)}</ol></section> : null}
             <aside className="mt-7 max-w-3xl rounded-2xl border border-brand-200 bg-brand-100/40 px-5 py-4"><p className="text-xs font-black tracking-[0.16em] text-brand-500 uppercase">Antes de seguir</p><p className="mt-1 text-sm leading-relaxed text-neutral-500">{stage.nextStep}</p></aside>
             {stage.contents.length ? <div className="mt-7"><p className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Quer se aprofundar?</p><ol className="mt-3 grid gap-3 lg:grid-cols-2">{stage.contents.map((content, index) => <li key={content.id}>{content.external ? <GuiaLinkPreviewCard link={{ title: content.title, url: content.previewUrl ?? content.to, href: content.to, description: content.description }} className="h-full" /> : <Link to={withTrailContext(content.to, content.id, 'primeira-vaga')} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 hover:border-brand-300 hover:bg-brand-100/30"><CardContent number={`${stage.number}.${index+1}`} title={content.title} description={content.description} type={content.type}/></Link>}</li>)}</ol></div> : null}
             </div>
