@@ -36,7 +36,6 @@ const categoryLabels: Record<string, string> = {
   livros: 'Livros',
   podcasts: 'Podcasts',
   newsletters: 'Newsletters',
-  canais: 'Canais',
   eventos: 'Eventos',
 }
 

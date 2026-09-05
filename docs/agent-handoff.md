@@ -124,11 +124,15 @@
 - Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
 - A branch `cursor/youtube-full-bleed-thumbnails-aed2` troca a variação 4:3 pela imagem 16:9, removendo as barras pretas dos cards.
 
+### Formatos do Guia (05 set)
+- A curadoria de `Canais` foi colocada em pausa: o formato, seus itens e sua página deixaram de aparecer no Guia.
+- O redirecionamento legado de perfis para seguir agora leva à página inicial do Guia.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar as trilhas após uso e feedback editorial.
+1. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 

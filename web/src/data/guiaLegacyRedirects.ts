@@ -7,7 +7,7 @@ export const guiaLegacyRedirects = [
   { source: '/eventos', destination: '/guia/tipo/eventos' },
   {
     source: '/perfis-para-seguir',
-    destination: '/guia/tipo/canais',
+    destination: '/guia',
   },
   { source: '/glossario', destination: '/guia/glossario' },
   {
