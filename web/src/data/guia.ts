@@ -80,7 +80,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
     description: 'Primeiros passos para organizar e oferecer seu trabalho.',
     level: 'intermediario',
     duration: '4 h',
-    contentCount: 23,
+    contentCount: 22,
   },
   {
     id: 'vagas-internacionais',

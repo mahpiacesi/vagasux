@@ -11,7 +11,6 @@ const allowedUrls = new Set([
   'https://www.youtube.com/watch?v=sdsbErSFLt8',
   'https://www.youtube.com/watch?v=f9EMla_ILFY',
   'https://www.youtube.com/watch?v=f9EMla_ILFY&t=12s',
-  'https://www.youtube.com/watch?v=4SGnQOfSIds',
   'https://brasil.uxdesign.cc/quanto-cobrar-pelo-meu-design-freelancer-b0e926d2b35c',
   'https://www.youtube.com/watch?v=yF3oJ9FoKng',
   'https://www.youtube.com/watch?v=Djl9EZRgwkw',
