@@ -30,7 +30,7 @@ function getYouTubeThumbnail(url: string) {
         : null
 
     return videoId?.match(/^[\w-]{11}$/)
-      ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
       : null
   } catch {
     return null
