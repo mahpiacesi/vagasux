@@ -105,7 +105,8 @@
 ### Trilha de voluntariado (05 set)
 - **PR #88** — branch `cursor/trilha-voluntariado-aed2`.
 - A trilha `Praticar em um voluntariado` foi estruturada em cinco etapas, da escolha de uma iniciativa à transformação da experiência em próximos passos.
-- A curadoria conecta a página de voluntariado da VagasUX, o formulário de participação, FAQ, outras trilhas e referências externas.
+- A curadoria usa o conteúdo editorial enviado em 05/09 e inclui cards de aprofundamento na primeira e na segunda etapa.
+- O card de voluntariado da VagasUX abre a rota local e usa a URL pública apenas para a thumbnail.
 
 ---
 
