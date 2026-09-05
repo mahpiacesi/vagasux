@@ -124,11 +124,15 @@
 - Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
 - A branch `cursor/youtube-full-bleed-thumbnails-aed2` troca a variação 4:3 pela imagem 16:9, removendo as barras pretas dos cards.
 
+### Trilha primeira vaga (05 set)
+- A etapa 01 ganhou a seção `Veja relatos de quem já migrou`, com 33 relatos de transição profissional em cards com miniatura, título e contexto.
+- Todas as URLs da nova curadoria foram autorizadas no resolvedor de previews e indexadas na busca do Guia.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar as trilhas após uso e feedback editorial.
+1. Validar e integrar a curadoria de relatos da etapa 01 da trilha primeira vaga.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
