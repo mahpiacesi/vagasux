@@ -1,7 +1,10 @@
 import type { GuiaTrilhaStage } from '@/data/guiaTrilhaEntenderOBasico'
 
-export type GuiaTrilhaPortfolioStage = GuiaTrilhaStage & {
+export type GuiaTrilhaPortfolioStage = Omit<GuiaTrilhaStage, 'contents'> & {
   introduction: string
+  contents: (Omit<GuiaTrilhaStage['contents'][number], 'type'> & {
+    type: string
+  })[]
 }
 
 export const guiaTrilhaPortfolioStages: GuiaTrilhaPortfolioStage[] = [
