@@ -119,6 +119,10 @@
 - **PR #90 integrada** em `main`.
 - A trilha `Me posicionar para vagas internacionais` tem cinco etapas e cards de aprofundamento com previews autorizados.
 
+### Thumbnails do YouTube (05 set)
+- Branch `cursor/youtube-trail-thumbnails-aed2`.
+- Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
+
 ---
 
 ## Próximo passo esperado
