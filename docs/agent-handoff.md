@@ -128,11 +128,15 @@
 - A etapa 01 ganhou a seção `Veja relatos de quem já migrou`, com 33 relatos de transição profissional em cards com miniatura, título e contexto.
 - Todas as URLs da nova curadoria foram autorizadas no resolvedor de previews e indexadas na busca do Guia.
 
+### Formatos do Guia (05 set)
+- `Artigos` foi removido do carrossel e deixou de ter uma página própria.
+- Os artigos continuam disponíveis como referências dentro dos temas, trilhas e resultados de busca.
+
 ---
 
 ## Próximo passo esperado
 
-1. Validar e integrar a curadoria de relatos da etapa 01 da trilha primeira vaga.
+1. Validar e integrar a curadoria de relatos e a remoção do formato Artigos do Guia.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
