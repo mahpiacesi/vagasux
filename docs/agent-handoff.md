@@ -132,11 +132,15 @@
 - `Artigos` foi removido do carrossel e deixou de ter uma página própria.
 - Os artigos continuam disponíveis como referências dentro dos temas, trilhas e resultados de busca.
 
+### Canais do Guia (05 set)
+- A curadoria de `Canais` foi colocada em pausa: o formato, seus itens e sua página deixaram de aparecer no Guia.
+- O redirecionamento legado de perfis para seguir agora leva à página inicial do Guia.
+
 ---
 
 ## Próximo passo esperado
 
-1. Validar e integrar a curadoria de relatos e a remoção do formato Artigos do Guia.
+1. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 

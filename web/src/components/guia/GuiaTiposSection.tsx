@@ -103,7 +103,7 @@ export function GuiaTiposSection() {
             Explorar por tipo de conteúdo
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Vídeos, livros, podcasts, eventos, canais e mais.
+            Vídeos, livros, podcasts, eventos e mais.
           </p>
         </div>
 

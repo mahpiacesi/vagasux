@@ -125,11 +125,6 @@ export const guiaTipos: GuiaTipo[] = [
       'Newsletters de design, produto e UX para acompanhar no e-mail, curadas pela comunidade VagasUX.',
   },
   { id: 'eventos', title: 'Eventos', description: 'Principais eventos anuais de UX, produto e tecnologia, curados pela comunidade VagasUX.' },
-  {
-    id: 'canais',
-    title: 'Canais',
-    description: 'Perfis, grupos e comunidades para seguir',
-  },
 ]
 
 export const guiaCuratedItems: GuiaCuratedItem[] = [
@@ -319,36 +314,6 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
     addedAt: '2026-07-17',
     tipos: ['eventos'],
     temas: ['carreira'],
-    trilhas: [],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-1',
-    title: 'VagasUX no Instagram',
-    url: 'https://instagram.com/vagasux',
-    addedAt: '2026-07-28',
-    tipos: ['canais'],
-    temas: ['carreira'],
-    trilhas: [],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-2',
-    title: 'Grupo Telegram: Guia do PD',
-    url: 'https://t.me/guiadoproductdesigner',
-    addedAt: '2026-07-19',
-    tipos: ['canais'],
-    temas: ['ux'],
-    trilhas: ['entender-o-basico'],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-3',
-    title: 'Canal UX Now no YouTube',
-    url: 'https://www.youtube.com',
-    addedAt: '2026-07-13',
-    tipos: ['canais'],
-    temas: ['ux'],
     trilhas: [],
     difficulty: 'iniciante',
   },
