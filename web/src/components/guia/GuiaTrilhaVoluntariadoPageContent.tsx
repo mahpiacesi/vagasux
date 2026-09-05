@@ -13,7 +13,6 @@ export function GuiaTrilhaVoluntariadoPageContent() {
   const selectedStageNumber = searchParams.get('etapa')
   const currentStageNumber = selectedStageNumber ?? '01'
   const currentStage = guiaTrilhaVoluntariadoStages.find((stage) => stage.number === currentStageNumber) ?? guiaTrilhaVoluntariadoStages[0]
-  const isLastStage = currentStage.number === guiaTrilhaVoluntariadoStages.at(-1)?.number
 
   useEffect(() => {
     if (!selectedStageNumber) return
@@ -42,11 +41,10 @@ export function GuiaTrilhaVoluntariadoPageContent() {
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-400">{currentStage.introduction}</p>
             <div className="mt-7 max-w-3xl"><p className="text-xs font-black tracking-[0.16em] text-brand-400 uppercase">Na prática</p><div className="mt-3 space-y-4">{currentStage.guidance.map((item) => <div key={item.title} className="border-l-2 border-brand-200 pl-4"><h3 className="font-black text-neutral-500">{item.title}</h3><p className="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p></div>)}</div></div>
             <aside className="mt-7 max-w-3xl rounded-2xl border border-brand-200 bg-brand-100/40 px-5 py-4"><p className="text-xs font-black tracking-[0.16em] text-brand-500 uppercase">Antes de seguir</p><p className="mt-1 text-sm leading-relaxed text-neutral-500">{currentStage.nextStep}</p></aside>
-            {currentStage.contents.length ? <div className="mt-7"><p className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Quer se aprofundar?</p><ol className="mt-3 grid gap-3 lg:grid-cols-2">{currentStage.contents.map((content, index) => <li key={content.id}>{content.external ? <GuiaLinkPreviewCard link={{ title: content.title, url: content.to, href: content.to, description: content.description }} className="h-full" /> : <Link to={withTrailContext(content.to, content.id, 'voluntariado')} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 hover:border-brand-300 hover:bg-brand-100/30"><CardContent number={`${currentStage.number}.${index + 1}`} title={content.title} description={content.description} type={content.type} /></Link>}</li>)}</ol></div> : null}
+            {currentStage.contents.length ? <div className="mt-7"><p className="text-xs font-black tracking-[0.16em] text-neutral-400 uppercase">Quer se aprofundar?</p><ol className="mt-3 grid gap-3 lg:grid-cols-2">{currentStage.contents.map((content, index) => <li key={content.id}>{content.external ? <GuiaLinkPreviewCard link={{ title: content.title, url: content.previewUrl ?? content.to, href: content.to, description: content.description }} className="h-full" /> : <Link to={withTrailContext(content.to, content.id, 'voluntariado')} className="group flex h-full gap-4 rounded-2xl border border-neutral-500/10 bg-neutral-100 p-5 hover:border-brand-300 hover:bg-brand-100/30"><CardContent number={`${currentStage.number}.${index + 1}`} title={content.title} description={content.description} type={content.type} /></Link>}</li>)}</ol></div> : null}
           </div>
         </section>
       </div>
-      {isLastStage ? <section className="mt-14 border-t border-neutral-500/10 pt-12"><h2 className="text-2xl font-black text-neutral-500">Quer contribuir com a VagasUX?</h2><p className="mt-2 text-sm text-neutral-400">Conheça o time, as frentes de atuação e conte como gostaria de participar.</p><Link to="/voluntariado#como-fazer-parte" className="mt-6 inline-flex rounded-2xl border border-neutral-500/10 bg-brand-100/30 px-5 py-4 font-black text-neutral-500 hover:border-brand-300">🤝 Conhecer o voluntariado</Link></section> : null}
     </div>
   )
 }

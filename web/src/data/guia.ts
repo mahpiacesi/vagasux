@@ -71,7 +71,7 @@ export const guiaTrilhas: GuiaTrilha[] = [
     description: 'Pratique Design em projetos, colabore com pessoas e construa experiência.',
     level: 'iniciante',
     duration: '3 h',
-    contentCount: 8,
+    contentCount: 13,
   },
   {
     id: 'freelancer',
