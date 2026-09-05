@@ -19,6 +19,24 @@ function getHostname(url: string) {
   }
 }
 
+function getYouTubeThumbnail(url: string) {
+  try {
+    const parsed = new URL(url)
+    const hostname = parsed.hostname.replace(/^www\./, '')
+    const videoId = hostname === 'youtu.be'
+      ? parsed.pathname.slice(1)
+      : hostname.endsWith('youtube.com')
+        ? parsed.searchParams.get('v') ?? parsed.pathname.match(/^\/shorts\/([^/]+)/)?.[1]
+        : null
+
+    return videoId?.match(/^[\w-]{11}$/)
+      ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      : null
+  } catch {
+    return null
+  }
+}
+
 async function getImageUrlFromResponse(response: Response) {
   if (!response.ok) return null
 
@@ -50,7 +68,9 @@ export function GuiaLinkPreviewCard({
   className?: string
 }) {
   const curatedThumbnail = getGuiaCuratedThumbnail(link.url)
-  const preferredImageUrl = curatedThumbnail ?? link.previewImageUrl ?? null
+  const preferredImageUrl = curatedThumbnail
+    ?? link.previewImageUrl
+    ?? getYouTubeThumbnail(link.url)
   const [imageFailed, setImageFailed] = useState(false)
   const [imageUrl, setImageUrl] = useState<string | null>(preferredImageUrl)
   const [isLoadingImage, setIsLoadingImage] = useState(!preferredImageUrl)
