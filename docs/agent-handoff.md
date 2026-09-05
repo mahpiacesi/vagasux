@@ -103,16 +103,20 @@
 - A etapa final direciona para a FAQ de portfólio. A busca do Guia indexa as etapas e todos os cards.
 
 ### Trilha de voluntariado (05 set)
-- **PR #88** — branch `cursor/trilha-voluntariado-aed2`.
+- **PR #88 mergeada** em `main`.
 - A trilha `Praticar em um voluntariado` foi estruturada em cinco etapas, da escolha de uma iniciativa à transformação da experiência em próximos passos.
 - A curadoria usa o conteúdo editorial enviado em 05/09 e inclui cards de aprofundamento na primeira e na segunda etapa.
 - O card de voluntariado da VagasUX abre a rota local e usa a URL pública apenas para a thumbnail.
+
+### Trilha freelancer (05 set)
+- **PR #89** — branch `cursor/trilha-freelancer-aed2`.
+- A trilha `Me tornar um designer freelancer` foi estruturada em cinco etapas, com referências para serviços, precificação, propostas e plataformas.
 
 ---
 
 ## Próximo passo esperado
 
-1. Revisar e integrar a PR #88 da trilha de voluntariado.
+1. Revisar e integrar a PR #89 da trilha freelancer.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
@@ -132,6 +136,7 @@
 | [PR #86 — conteúdo da trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/86) | ✅ Integrada em `main` em 05/09 |
 | [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | ✅ Integrada em `main` em 05/09 |
 | [PR #88 — trilha de voluntariado](https://github.com/mahpiacesi/vagasux/pull/88) | 🟡 Aberta |
+| [PR #89 — trilha freelancer](https://github.com/mahpiacesi/vagasux/pull/89) | 🟡 Aberta |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
