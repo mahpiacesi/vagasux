@@ -124,11 +124,15 @@
 - Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
 - A branch `cursor/youtube-full-bleed-thumbnails-aed2` troca a variação 4:3 pela imagem 16:9, removendo as barras pretas dos cards.
 
+### Formatos do Guia (05 set)
+- `Artigos` foi removido do carrossel e deixou de ter uma página própria.
+- Os artigos continuam disponíveis como referências dentro dos temas, trilhas e resultados de busca.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar as trilhas após uso e feedback editorial.
+1. Validar e integrar a remoção do formato Artigos do Guia.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 

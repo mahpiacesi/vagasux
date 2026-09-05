@@ -106,12 +106,6 @@ export const guiaTemas: GuiaTema[] = [
 
 export const guiaTipos: GuiaTipo[] = [
   {
-    id: 'artigos',
-    title: 'Artigos',
-    description:
-      'Artigos de design, produto e UX para ler no seu ritmo, curados pela comunidade VagasUX.',
-  },
-  {
     id: 'videos',
     title: 'Vídeos',
     description:
@@ -139,50 +133,6 @@ export const guiaTipos: GuiaTipo[] = [
 ]
 
 export const guiaCuratedItems: GuiaCuratedItem[] = [
-  {
-    id: 'art-1',
-    title: 'O que faz um Product Designer?',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-28',
-    tipos: ['artigos'],
-    temas: ['ux'],
-    trilhas: ['entender-o-basico'],
-    difficulty: 'iniciante',
-    duration: '8 min',
-  },
-  {
-    id: 'art-2',
-    title: 'Guia de entrevistas em UX',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-22',
-    tipos: ['artigos'],
-    temas: ['carreira'],
-    trilhas: ['primeira-vaga'],
-    difficulty: 'intermediario',
-    duration: '12 min',
-  },
-  {
-    id: 'art-3',
-    title: 'Como escrever um case study enxuto',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-15',
-    tipos: ['artigos'],
-    temas: ['carreira'],
-    trilhas: ['portfolio'],
-    difficulty: 'iniciante',
-    duration: '10 min',
-  },
-  {
-    id: 'art-4',
-    title: 'Heurísticas de usabilidade na prática',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-08',
-    tipos: ['artigos'],
-    temas: ['ux'],
-    trilhas: ['ui'],
-    difficulty: 'iniciante',
-    duration: '14 min',
-  },
   {
     id: 'vid-1',
     title: 'Como montar um portfólio júnior',

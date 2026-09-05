@@ -2,7 +2,6 @@ import { useEffect, useId, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { GuiaArtigoCard } from '@/components/guia/GuiaArtigoCard'
 import { GuiaBookCard } from '@/components/guia/GuiaBookCard'
 import { GuiaContentCard } from '@/components/guia/GuiaContentCard'
 import { GuiaEventoCard } from '@/components/guia/GuiaEventoCard'
@@ -11,10 +10,6 @@ import { GuiaPodcastCard } from '@/components/guia/GuiaPodcastCard'
 import { GuiaVideoCard } from '@/components/guia/GuiaVideoCard'
 import { Button } from '@/components/ui/button'
 import { getRecentCuratedByTipo, guiaTipos } from '@/data/guia'
-import {
-  guiaArtigos,
-  GUIA_FEATURED_ARTIGO_ID,
-} from '@/data/guiaArtigos'
 import { guiaBooks } from '@/data/guiaBooks'
 import {
   guiaEventos,
@@ -50,7 +45,7 @@ export function GuiaTiposSection() {
     if (tipoFromUrl && guiaTipos.some((tipo) => tipo.id === tipoFromUrl)) {
       return tipoFromUrl
     }
-    return guiaTipos[0]?.id ?? 'artigos'
+    return guiaTipos[0]?.id ?? 'videos'
   })
   const tablistId = useId()
 
@@ -64,10 +59,6 @@ export function GuiaTiposSection() {
   const recentItems = useMemo(
     () => getRecentCuratedByTipo(selectedTipoId),
     [selectedTipoId],
-  )
-  const recentArtigos = useMemo(
-    () => pickGuiaRecentPreview(guiaArtigos, GUIA_FEATURED_ARTIGO_ID),
-    [],
   )
   const recentBooks = useMemo(() => pickGuiaRecentPreview(guiaBooks, null), [])
   const recentNewsletters = useMemo(
@@ -112,7 +103,7 @@ export function GuiaTiposSection() {
             Explorar por tipo de conteúdo
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-400 md:text-lg">
-            Artigos, vídeos, livros, podcasts, eventos, canais e mais.
+            Vídeos, livros, podcasts, eventos, canais e mais.
           </p>
         </div>
 
@@ -172,19 +163,7 @@ export function GuiaTiposSection() {
             </Button>
           </div>
 
-          {selectedTipoId === 'artigos' && recentArtigos.length > 0 ? (
-            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-              {recentArtigos.map((artigo, index) => (
-                <li key={artigo.id}>
-                  <GuiaArtigoCard
-                    artigo={artigo}
-                    featured={index === 0}
-                    className="h-full"
-                  />
-                </li>
-              ))}
-            </ul>
-          ) : selectedTipoId === 'livros' && recentBooks.length > 0 ? (
+          {selectedTipoId === 'livros' && recentBooks.length > 0 ? (
             <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {recentBooks.map((book) => (
                 <li key={book.id}>
