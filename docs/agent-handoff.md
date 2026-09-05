@@ -115,11 +115,15 @@
 - O vídeo restrito a assinantes foi removido da trilha, da área de vídeos e da allowlist de previews.
 - Três vídeos gerais de carreira foram mantidos apenas na categoria `Carreira`, sem a tag `Freelancer`.
 
+### Trilha internacional (05 set)
+- Branch `cursor/trilha-internacional-aed2`.
+- A trilha `Me posicionar para vagas internacionais` tem cinco etapas e cards de aprofundamento com previews autorizados.
+
 ---
 
 ## Próximo passo esperado
 
-1. Revisar e integrar a PR #89 da trilha freelancer.
+1. Revisar e integrar a trilha internacional.
 2. Refinar as trilhas após uso e feedback editorial.
 3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
