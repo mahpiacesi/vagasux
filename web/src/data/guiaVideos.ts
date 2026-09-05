@@ -860,8 +860,7 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Carreira",
-      "Freelancer"
+      "Carreira"
     ],
     "languages": [
       "🇧🇷"
@@ -879,8 +878,7 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Carreira",
-      "Freelancer"
+      "Carreira"
     ],
     "languages": [
       "🇧🇷"
@@ -989,8 +987,7 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Carreira",
-      "Freelancer"
+      "Carreira"
     ],
     "languages": [
       "🇧🇷"
