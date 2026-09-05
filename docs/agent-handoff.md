@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-03
+**Última atualização:** 2026-09-05
 
 ---
 
@@ -96,12 +96,19 @@
 - O bloco 01 também segue direto da orientação editorial para o próximo passo.
 - **PR #85 mergeada:** refinamentos visuais, navegação sequencial e curadoria das trilhas estão em `main`.
 
+### Trilha de portfólio (05 set)
+- **PR #87** — branch `cursor/trilha-portfolio-aed2`.
+- A trilha `Montar meu portfólio` mantém seus textos editoriais nas cinco etapas e adiciona 36 referências externas em cards com título, descrição e miniatura.
+- A curadoria cobre estrutura de cases, portfólio sem experiência, desafios para praticar, plataformas de publicação e referências de portfólios.
+- A etapa final direciona para a FAQ de portfólio. A busca do Guia indexa as etapas e todos os cards.
+
 ---
 
 ## Próximo passo esperado
 
-1. Refinar as trilhas após uso e feedback editorial.
-2. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar e integrar a PR #87 da trilha de portfólio.
+2. Refinar as trilhas após uso e feedback editorial.
+3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
 
 ---
 
@@ -116,6 +123,7 @@
 | [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
 | [PR #85 — refinamentos das trilhas](https://github.com/mahpiacesi/vagasux/pull/85) | ✅ Mergeada em 03/09 |
+| [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | 🟡 Aberta |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---

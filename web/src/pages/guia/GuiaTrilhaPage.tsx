@@ -1,6 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { GuiaTrilhaEntenderOBasicoPageContent } from '@/components/guia/GuiaTrilhaEntenderOBasicoPageContent'
+import { GuiaTrilhaPortfolioPageContent } from '@/components/guia/GuiaTrilhaPortfolioPageContent'
 import { GuiaTrilhaPrimeiraVagaPageContent } from '@/components/guia/GuiaTrilhaPrimeiraVagaPageContent'
 import { getGuiaTrilhaById } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
@@ -18,6 +19,9 @@ export function GuiaTrilhaPage() {
   }
   if (trilha.id === 'primeira-vaga') {
     return <GuiaTrilhaPrimeiraVagaPageContent />
+  }
+  if (trilha.id === 'portfolio') {
+    return <GuiaTrilhaPortfolioPageContent />
   }
 
   return (
