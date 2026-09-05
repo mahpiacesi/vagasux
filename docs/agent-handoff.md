@@ -122,6 +122,7 @@
 ### Thumbnails do YouTube (05 set)
 - Branch `cursor/youtube-trail-thumbnails-aed2`.
 - Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
+- A branch `cursor/youtube-full-bleed-thumbnails-aed2` troca a variação 4:3 pela imagem 16:9, removendo as barras pretas dos cards.
 
 ---
 
