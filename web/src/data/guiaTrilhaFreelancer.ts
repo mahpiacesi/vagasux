@@ -29,6 +29,5 @@ export const guiaTrilhaFreelancerStages: GuiaTrilhaPortfolioStage[] = [
     { id: '99designs', title: '99designs', description: 'Plataforma de projetos e concursos para profissionais de Design.', type: 'Plataforma', to: 'https://99designs.com.br/', external: true },
     { id: 'freelancer', title: 'Freelancer', description: 'Marketplace global para encontrar trabalhos freelancer.', type: 'Plataforma', to: 'https://www.freelancer.com/', external: true },
     { id: 'designcrowd', title: 'DesignCrowd', description: 'Plataforma de projetos de Design para profissionais independentes.', type: 'Plataforma', to: 'https://www.designcrowd.com/', external: true },
-    { id: 'revelo', title: 'Revelo', description: 'Plataforma de oportunidades em tecnologia e Design.', type: 'Plataforma', to: 'https://www.revelo.com.br/', external: true },
   ] },
 ]
