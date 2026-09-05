@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaFreelancerStages } from '@/data/guiaTrilhaFreelancer'
 import { guiaTrilhaPortfolioStages } from '@/data/guiaTrilhaPortfolio'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaTrilhaVoluntariadoStages } from '@/data/guiaTrilhaVoluntariado'
@@ -11,6 +12,7 @@ const trails = {
   'entender-o-basico': { title: 'Entender o básico', stages: guiaTrilhaEntenderOBasicoStages },
   'primeira-vaga': { title: 'Conseguir minha primeira vaga', stages: guiaTrilhaPrimeiraVagaStages },
   portfolio: { title: 'Montar meu portfólio', stages: guiaTrilhaPortfolioStages },
+  freelancer: { title: 'Me tornar um designer freelancer', stages: guiaTrilhaFreelancerStages },
   voluntariado: { title: 'Praticar em um voluntariado', stages: guiaTrilhaVoluntariadoStages },
 } as const
 
@@ -33,6 +35,8 @@ export function GuiaTrailNavigator() {
         ? 'entender-o-basico'
         : location.pathname === guiaRoutes.trilha('portfolio')
           ? 'portfolio'
+        : location.pathname === guiaRoutes.trilha('freelancer')
+          ? 'freelancer'
         : location.pathname === guiaRoutes.trilha('voluntariado')
           ? 'voluntariado'
         : null
@@ -44,7 +48,7 @@ export function GuiaTrailNavigator() {
   if (!trail) return null
 
   if (
-    (trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado')
+    (trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado' || trailId === 'freelancer')
     && (stageId || !itemId)
   ) {
     const currentIndex = trail.stages.findIndex(
@@ -111,14 +115,14 @@ export function GuiaTrailNavigator() {
   ) + 1
   const nextTo = next && (
     next.stage.number !== current.stage.number
-    && (trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado')
+    && (trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado' || trailId === 'freelancer')
   )
     ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${next.stage.number}`
     : next
       ? withTrailContext(next.to, next.id, trailId)
       : null
   const backTo = (
-    trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado'
+    trailId === 'primeira-vaga' || trailId === 'entender-o-basico' || trailId === 'portfolio' || trailId === 'voluntariado' || trailId === 'freelancer'
   )
     ? `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${current.stage.number}`
     : `${guiaRoutes.trilha(trailId)}#stage-${current.stage.number}`
