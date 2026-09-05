@@ -98,7 +98,7 @@
 
 ### Trilha de portfólio (05 set)
 - **PR #87** — branch `cursor/trilha-portfolio-aed2`.
-- A trilha `Montar meu portfólio` agora tem cinco etapas, com 36 referências externas em cards com título, descrição e miniatura.
+- A trilha `Montar meu portfólio` mantém seus textos editoriais nas cinco etapas e adiciona 36 referências externas em cards com título, descrição e miniatura.
 - A curadoria cobre estrutura de cases, portfólio sem experiência, desafios para praticar, plataformas de publicação e referências de portfólios.
 - A etapa final direciona para a FAQ de portfólio. A busca do Guia indexa as etapas e todos os cards.
 
