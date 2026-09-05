@@ -1,6 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { GuiaPlaceholder } from '@/components/guia/GuiaPlaceholder'
 import { GuiaTrilhaEntenderOBasicoPageContent } from '@/components/guia/GuiaTrilhaEntenderOBasicoPageContent'
+import { GuiaTrilhaFreelancerPageContent } from '@/components/guia/GuiaTrilhaFreelancerPageContent'
 import { GuiaTrilhaPortfolioPageContent } from '@/components/guia/GuiaTrilhaPortfolioPageContent'
 import { GuiaTrilhaPrimeiraVagaPageContent } from '@/components/guia/GuiaTrilhaPrimeiraVagaPageContent'
 import { GuiaTrilhaVoluntariadoPageContent } from '@/components/guia/GuiaTrilhaVoluntariadoPageContent'
@@ -27,6 +28,7 @@ export function GuiaTrilhaPage() {
   if (trilha.id === 'voluntariado') {
     return <GuiaTrilhaVoluntariadoPageContent />
   }
+  if (trilha.id === 'freelancer') return <GuiaTrilhaFreelancerPageContent />
 
   return (
     <GuiaPlaceholder
