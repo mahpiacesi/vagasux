@@ -70,15 +70,20 @@ const indexedTrailStages = (
     description: string
     contents: { id: string; title: string; description: string }[]
     introduction?: string
+    essentials?: string[]
+    tip?: { title: string; description: string }
     guidance?: { title: string; description: string }[]
     nextStep?: string
   }[],
 ) => stages.flatMap((stage) => {
-  const to = `${guiaRoutes.trilha(trailId)}#stage-${stage.number}`
+  const to = `${guiaRoutes.trilha(trailId)}?trilha=${trailId}&etapa=${stage.number}`
   const editorialText = [
     stage.description,
     stage.introduction,
+    ...(stage.essentials ?? []),
     ...((stage.guidance ?? []).flatMap((item) => [item.title, item.description])),
+    stage.tip?.title,
+    stage.tip?.description,
     stage.nextStep,
   ].filter(Boolean).join(' ')
 
