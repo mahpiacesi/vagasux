@@ -159,8 +159,11 @@
 | [PR #85 — refinamentos das trilhas](https://github.com/mahpiacesi/vagasux/pull/85) | ✅ Mergeada em 03/09 |
 | [PR #86 — conteúdo da trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/86) | ✅ Integrada em `main` em 05/09 |
 | [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | ✅ Integrada em `main` em 05/09 |
-| [PR #88 — trilha de voluntariado](https://github.com/mahpiacesi/vagasux/pull/88) | 🟡 Aberta |
-| [PR #89 — trilha freelancer](https://github.com/mahpiacesi/vagasux/pull/89) | 🟡 Aberta |
+| [PR #88 — trilha de voluntariado](https://github.com/mahpiacesi/vagasux/pull/88) | ✅ Integrada em `main` em 05/09 |
+| [PR #89 — trilha freelancer](https://github.com/mahpiacesi/vagasux/pull/89) | ✅ Integrada em `main` em 05/09 |
+| [PR #93 — relatos de migração](https://github.com/mahpiacesi/vagasux/pull/93) | ✅ Integrada em `main` em 05/09 |
+| [PR #94 — formato Artigos](https://github.com/mahpiacesi/vagasux/pull/94) | ✅ Integrada em `main` em 05/09 |
+| [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
