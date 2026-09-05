@@ -113,6 +113,7 @@
 - A trilha `Me tornar um designer freelancer` foi estruturada em cinco etapas, com referências para serviços, precificação, propostas e plataformas.
 - Os vídeos citados na trilha estão na fonte global `guiaVideos.ts`, com thumbnails do YouTube e tag `Freelancer`.
 - O vídeo restrito a assinantes foi removido da trilha, da área de vídeos e da allowlist de previews.
+- Três vídeos gerais de carreira foram mantidos apenas na categoria `Carreira`, sem a tag `Freelancer`.
 
 ---
 
