@@ -140,9 +140,9 @@
 
 ## Próximo passo esperado
 
-1. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
-2. Refinar as trilhas após uso e feedback editorial.
-3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar e implementar o formulário para envio de relatos de cursos na área de cursos.
+2. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
+3. Refinar as trilhas após uso e feedback editorial.
 
 ---
 
