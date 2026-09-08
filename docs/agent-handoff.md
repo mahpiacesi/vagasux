@@ -102,13 +102,18 @@
 - A curadoria cobre estrutura de cases, portfólio sem experiência, desafios para praticar, plataformas de publicação e referências de portfólios.
 - A etapa final direciona para a FAQ de portfólio. A busca do Guia indexa as etapas e todos os cards.
 
+### Relatos de cursos (08 set)
+- A página de publicação ganhou um formulário nativo com busca de cursos e alternativa para sugerir curso ainda não mapeado.
+- O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
+- A database `Relatos de cursos` no Notion segue como fila editorial; relatos existentes não foram alterados.
+
 ---
 
 ## Próximo passo esperado
 
-1. Revisar e integrar a PR #87 da trilha de portfólio.
-2. Refinar as trilhas após uso e feedback editorial.
-3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Configurar e publicar os workflows n8n de recebimento e sincronização de relatos de cursos.
+2. Configurar `N8N_COURSE_FEEDBACK_WEBHOOK_URL` no ambiente Vercel.
+3. Refinar as trilhas após uso e feedback editorial.
 
 ---
 
