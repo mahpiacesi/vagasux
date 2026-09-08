@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Job } from '../types/job'
 import type { Partner } from '../types/partner'
+import type { GuiaCursoRelato } from '@/data/guiaCursoFeedback'
 
 const url = import.meta.env.VITE_SUPABASE_URL
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -70,4 +71,26 @@ export async function fetchActivePartners(): Promise<Partner[]> {
 
   if (error) throw error
   return (data ?? []) as unknown as Partner[]
+}
+
+const courseFeedbackColumns = ['id', 'text', 'author', 'received_at'] as const
+
+export async function fetchCourseFeedback(
+  courseId: string,
+): Promise<GuiaCursoRelato[]> {
+  const { data, error } = await supabase
+    .from('guia_curso_relatos')
+    .select(courseFeedbackColumns.join(', '))
+    .eq('curso_id', courseId)
+    .order('received_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+
+  return (data ?? []).map((relato) => ({
+    id: relato.id,
+    text: relato.text,
+    author: relato.author ?? undefined,
+    receivedAt: relato.received_at ?? undefined,
+  }))
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowSquareOut, ChatCircleDots, Tag } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
@@ -19,6 +20,7 @@ import type { GuiaCurso } from '@/data/guiaCursos'
 import { getRelatosForCurso, type GuiaCursoRelato } from '@/data/guiaCursoFeedback'
 import { cursoMetaLine } from '@/lib/guiaCursoMeta'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { fetchCourseFeedback } from '@/lib/supabase'
 
 type GuiaCursoPreviewDialogProps = {
   curso: GuiaCurso | null
@@ -55,9 +57,38 @@ function RelatoCard({ relato }: { relato: GuiaCursoRelato }) {
   )
 }
 
-function RelatosSection({ curso }: { curso: GuiaCurso }) {
-  const relatos = getRelatosForCurso(curso.id)
+function useCourseFeedback(cursoId?: string) {
+  const fallbackRelatos = getRelatosForCurso(cursoId ?? '')
+  const [relatos, setRelatos] = useState<GuiaCursoRelato[]>(fallbackRelatos)
 
+  useEffect(() => {
+    let cancelled = false
+    const fallback = getRelatosForCurso(cursoId ?? '')
+
+    setRelatos(fallback)
+    if (!cursoId) return () => {
+      cancelled = true
+    }
+
+    void fetchCourseFeedback(cursoId)
+      .then((publishedRelatos) => {
+        if (!cancelled && (publishedRelatos.length > 0 || fallback.length === 0)) {
+          setRelatos(publishedRelatos)
+        }
+      })
+      .catch((error) => {
+        console.warn('Failed to load course feedback from Supabase, using fallback.', error)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [cursoId])
+
+  return relatos
+}
+
+function RelatosSection({ relatos }: { relatos: GuiaCursoRelato[] }) {
   if (relatos.length === 0) {
     return (
       <section className="rounded-2xl border border-dashed border-neutral-500/15 bg-brand-100/20 px-5 py-6">
@@ -93,6 +124,8 @@ export function GuiaCursoPreviewDialog({
   open,
   onOpenChange,
 }: GuiaCursoPreviewDialogProps) {
+  const relatos = useCourseFeedback(curso?.id)
+
   if (!curso) return null
 
   const meta = cursoMetaLine(curso)
@@ -132,7 +165,7 @@ export function GuiaCursoPreviewDialog({
             </div>
           ) : null}
 
-          {curso.hasFeedback || getRelatosForCurso(curso.id).length > 0 ? (
+          {curso.hasFeedback || relatos.length > 0 ? (
             <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-brand-500 uppercase">
               <ChatCircleDots size={14} weight="fill" aria-hidden />
               {GUIA_CURSO_FEEDBACK_LABEL}
@@ -178,7 +211,7 @@ export function GuiaCursoPreviewDialog({
           ) : null}
 
           <div className="mt-6">
-            <RelatosSection curso={curso} />
+            <RelatosSection relatos={relatos} />
           </div>
         </div>
 
