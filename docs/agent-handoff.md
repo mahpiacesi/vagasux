@@ -108,6 +108,7 @@
 - A database `Relatos de cursos` no Notion segue como fila editorial.
 - Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
+- O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
 
 ---
 
