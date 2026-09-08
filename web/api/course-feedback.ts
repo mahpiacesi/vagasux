@@ -12,10 +12,10 @@ function debugLog(entry: Record<string, unknown>) {
   if (process.env.CURSOR_DEBUG_LOGGING === 'true') appendFileSync('/opt/cursor/logs/debug.log', `${JSON.stringify(entry)}\n`)
 }
 
-function isN8nProductionWebhookUrl(value: string) {
+function isN8nCourseFeedbackWebhookUrl(value: string) {
   try {
     const url = new URL(value)
-    return url.protocol === 'https:' && /^\/webhook\/[0-9a-f-]+\/course-feedback-intake\/?$/i.test(url.pathname)
+    return url.protocol === 'https:' && /^\/webhook\/course-feedback-intake(?:-[a-z0-9-]+)?\/?$/i.test(url.pathname)
   } catch {
     return false
   }
@@ -63,9 +63,9 @@ export default async function handler(request: IncomingMessage, response: Server
 
   const webhookUrl = process.env.N8N_COURSE_FEEDBACK_WEBHOOK_URL
   // #region agent log
-  debugLog({ hypothesisId: 'A', location: 'web/api/course-feedback.ts:66', message: 'Course feedback webhook configuration evaluated', data: { isConfigured: Boolean(webhookUrl), isProductionWebhookUrl: isN8nProductionWebhookUrl(webhookUrl ?? '') }, timestamp: Date.now() })
+  debugLog({ hypothesisId: 'A', location: 'web/api/course-feedback.ts:66', message: 'Course feedback webhook configuration evaluated', data: { isConfigured: Boolean(webhookUrl), isProductionWebhookUrl: isN8nCourseFeedbackWebhookUrl(webhookUrl ?? '') }, timestamp: Date.now() })
   // #endregion
-  if (!webhookUrl || !isN8nProductionWebhookUrl(webhookUrl)) {
+  if (!webhookUrl || !isN8nCourseFeedbackWebhookUrl(webhookUrl)) {
     return json(response, 503, { error: 'Course feedback intake is not configured' })
   }
 

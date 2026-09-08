@@ -109,15 +109,16 @@
 - Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
-- Diagnóstico do Preview da PR #97: o webhook configurado sem o identificador do webhook respondeu `403` com autenticação Basic, e não houve execuções no workflow. O n8n informa como URL de produção a rota que inclui o identificador do webhook.
-- O workflow ativo `Receber relatos de cursos` confirmou a URL de produção completa: `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/course-feedback-intake`. A confirmação de novo envio às 23h não gerou execução, reforçando que o Preview ainda usa a variável incorreta.
+- Diagnóstico de runtime: a URL com UUID indicada pelo n8n responde `404` porque não está registrada. A rota padrão `/webhook/...` responde `403 Authorization data is wrong!` antes de iniciar o workflow, pois o proxy reverso ainda exige Basic Auth nesse prefixo.
+- O gatilho foi movido para `course-feedback-intake-d4a41145` e a API aceita a rota padrão. Falta liberar `/webhook/*` de Basic Auth no proxy e apontar a variável Preview para a URL padrão.
 
 ---
 
 ## Próximo passo esperado
 
-1. Atualizar a variável `N8N_COURSE_FEEDBACK_WEBHOOK_URL` do Preview da PR #97 com a URL completa do webhook e fazer redeploy.
-2. Validar um envio real e conferir a execução no workflow antes de aprovar o relato no Notion.
+1. No proxy reverso do n8n, liberar `POST /webhook/*` de Basic Auth e encaminhá-lo ao n8n.
+2. Definir `N8N_COURSE_FEEDBACK_WEBHOOK_URL` em Preview como `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/course-feedback-intake-d4a41145`, fazer redeploy e validar um envio real.
+3. Conferir a execução no workflow antes de aprovar o relato no Notion.
 3. Refinar as trilhas após uso e feedback editorial.
 
 ---
