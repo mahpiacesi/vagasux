@@ -109,8 +109,9 @@
 - Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
-- Diagnóstico de runtime: a URL com UUID indicada pelo n8n responde `404` porque não está registrada. A rota padrão `/webhook/...` responde `403 Authorization data is wrong!` antes de iniciar o workflow, pois o proxy reverso ainda exige Basic Auth nesse prefixo.
-- O gatilho foi movido para `course-feedback-intake-d4a41145` e a API aceita a rota padrão. Falta liberar `/webhook/*` de Basic Auth no proxy e apontar a variável Preview para a URL padrão.
+- Diagnóstico de runtime confirmado: a URL de produção exibida pelo workflow ativo (`/webhook/<webhookId>/course-feedback-intake-d4a41145`) responde `404` e não cria execução. A rota registrada pelo n8n sem UUID responde `403 Authorization data is wrong!` antes de alcançar o workflow, pois o proxy reverso protege `/webhook/*` com Basic Auth.
+- O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem.
+- A instrumentação temporária da Function foi removida após o diagnóstico.
 
 ---
 
