@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-05
+**Última atualização:** 2026-09-08
 
 ---
 
@@ -105,14 +105,15 @@
 ### Relatos de cursos (08 set)
 - A página de publicação ganhou um formulário nativo com busca de cursos e alternativa para sugerir curso ainda não mapeado.
 - O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
-- A database `Relatos de cursos` no Notion segue como fila editorial; relatos existentes não foram alterados.
+- A database `Relatos de cursos` no Notion segue como fila editorial.
+- Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
 
 ---
 
 ## Próximo passo esperado
 
-1. Configurar e publicar os workflows n8n de recebimento e sincronização de relatos de cursos.
-2. Configurar `N8N_COURSE_FEEDBACK_WEBHOOK_URL` no ambiente Vercel.
+1. Fazer redeploy na Vercel após a configuração de `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
+2. Trocar a leitura de relatos do arquivo estático para `public.guia_curso_relatos`, com fallback seguro durante a transição.
 3. Refinar as trilhas após uso e feedback editorial.
 
 ---
