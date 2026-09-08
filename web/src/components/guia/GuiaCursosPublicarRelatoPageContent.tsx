@@ -22,6 +22,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({})
   const [investment, setInvestment] = useState('')
+  const hasFieldErrors = Object.values(fieldErrors).some(Boolean)
   const matchingCourses = useMemo(() => {
     const query = courseQuery.trim().toLocaleLowerCase('pt-BR')
     return query.length < 2 ? [] : guiaCursos
@@ -97,7 +98,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors)
       setTouchedFields((fields) => ({ ...fields, ...Object.fromEntries(Object.keys(errors).map((field) => [field, true])) }))
-      setErrorMessage('Confira os campos destacados antes de enviar.')
+      setErrorMessage('')
       return
     }
 
@@ -207,6 +208,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
           <label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu relato <b className="text-brand-500">*</b></span><Textarea name="feedback" required rows={8} minLength={80} aria-invalid={Boolean(fieldErrors.feedback)} className="resize-y bg-neutral-100" placeholder="Conte como foi sua experiência, o que funcionou e o que não funcionou para você." /><FieldError message={fieldErrors.feedback} /></label>
           <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">Pontos positivos <span className="font-normal text-neutral-400">(opcional)</span></span><textarea name="positives" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">O que poderia melhorar <span className="font-normal text-neutral-400">(opcional)</span></span><textarea name="improvements" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
           <div><label className="flex gap-3 text-sm leading-relaxed text-neutral-500"><input name="consent" type="checkbox" required className="mt-1" aria-invalid={Boolean(fieldErrors.consent)} /><span>Li e concordo com os <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">Termos e Políticas</Link>. Autorizo a publicação do relato com meu primeiro nome. <b className="text-brand-500">*</b></span></label><FieldError message={fieldErrors.consent} /></div>
+          {hasFieldErrors ? <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">Confira os campos destacados antes de enviar.</p> : null}
           {errorMessage ? <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">{errorMessage}</p> : null}
           <div><Button type="submit" variant="guia" disabled={submissionState === 'sending'}>{submissionState === 'sending' ? 'Enviando...' : 'Enviar relato'}</Button></div>
         </form>
