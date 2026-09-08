@@ -17,6 +17,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
   const [isNewCourse, setIsNewCourse] = useState(false)
   const [submissionState, setSubmissionState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const matchingCourses = useMemo(() => {
     const query = courseQuery.trim().toLocaleLowerCase('pt-BR')
     return query.length < 2 ? [] : guiaCursos
@@ -34,11 +35,6 @@ export function GuiaCursosPublicarRelatoPageContent() {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
 
-    if (!selectedCourse && !isNewCourse) {
-      setErrorMessage('Busque e selecione um curso ou informe que ele ainda não está no diretório.')
-      return
-    }
-
     const requiredFields = [
       ['firstName', 'primeiro nome'],
       ['email', 'e-mail'],
@@ -47,18 +43,26 @@ export function GuiaCursosPublicarRelatoPageContent() {
       ['modality', 'modalidade'],
       ['feedback', 'relato'],
     ] as const
-    const missingFields: string[] = requiredFields
-      .filter(([field]) => !String(formData.get(field) ?? '').trim())
-      .map(([, label]) => label)
-    if (isNewCourse && (!String(formData.get('schoolName') ?? '').trim() || !String(formData.get('suggestedCourseName') ?? '').trim() || !String(formData.get('officialUrl') ?? '').trim())) missingFields.push('informações do curso sugerido')
-    if (formData.get('consent') !== 'on') missingFields.push('aceite dos Termos e Políticas')
-    if (missingFields.length > 0) {
-      setErrorMessage(`Preencha os campos obrigatórios: ${missingFields.join(', ')}.`)
+    const errors: Record<string, string> = {}
+    if (!selectedCourse && !isNewCourse) errors.course = 'Selecione um curso da lista ou informe que ele ainda não está no diretório.'
+    requiredFields.forEach(([field, label]) => {
+      if (!String(formData.get(field) ?? '').trim()) errors[field] = `Informe ${label}.`
+    })
+    if (isNewCourse) {
+      if (!String(formData.get('schoolName') ?? '').trim()) errors.schoolName = 'Informe a escola ou plataforma.'
+      if (!String(formData.get('suggestedCourseName') ?? '').trim()) errors.suggestedCourseName = 'Informe o nome do curso.'
+      if (!String(formData.get('officialUrl') ?? '').trim()) errors.officialUrl = 'Informe o link oficial.'
+    }
+    if (formData.get('consent') !== 'on') errors.consent = 'Você precisa concordar com os Termos e Políticas.'
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      setErrorMessage('Confira os campos destacados antes de enviar.')
       return
     }
 
     setSubmissionState('sending')
     setErrorMessage('')
+    setFieldErrors({})
 
     const response = await fetch('/api/course-feedback', {
       method: 'POST',
@@ -152,15 +156,16 @@ export function GuiaCursosPublicarRelatoPageContent() {
             {matchingCourses.length > 0 && !selectedCourse ? <ul className="mt-2 overflow-hidden rounded-xl border border-neutral-500/10 bg-neutral-100">{matchingCourses.map((course) => <li key={course.id}><button type="button" onClick={() => selectCourse(course)} className="w-full px-4 py-3 text-left text-sm font-semibold text-neutral-500 hover:bg-brand-100/50">{course.title}</button></li>)}</ul> : null}
             {selectedCourse ? <p className="mt-3 text-sm font-bold text-brand-500">Curso selecionado: {selectedCourse.title}</p> : null}
             <label className="mt-4 flex items-center gap-2 text-sm font-semibold text-neutral-500"><input type="checkbox" checked={isNewCourse} onChange={(event) => { setIsNewCourse(event.target.checked); if (event.target.checked) setSelectedCourse(null) }} /> Não encontrei meu curso no diretório</label>
+            <FieldError message={fieldErrors.course} />
           </fieldset>
 
           {isNewCourse ? <div className="grid gap-4 rounded-2xl border border-brand-200/40 bg-neutral-100/70 p-5 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500">Nome da escola ou plataforma<input name="schoolName" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500">Nome do curso<input name="suggestedCourseName" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500 sm:col-span-2">Link oficial do curso<input name="officialUrl" type="url" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div> : null}
 
-          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu primeiro nome <b className="text-brand-500">*</b></span><input name="firstName" required maxLength={60} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">E-mail <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="email" type="email" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">LinkedIn <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="linkedin" type="url" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Ano de término <b className="text-brand-500">*</b></span><input name="completedYear" type="number" min="1990" max="2100" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
-          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">Valor investido <span className="font-normal text-neutral-400">(opcional)</span></span><input name="investment" className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Ex.: R$ 1.500" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Modalidade <b className="text-brand-500">*</b></span><select name="modality" required className="rounded-xl border border-neutral-500/15 bg-neutral-100 px-3 py-2.5 font-normal"><option value="">Selecione</option><option>Online</option><option>Presencial</option><option>Híbrido</option></select></label></div>
-          <label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu relato <b className="text-brand-500">*</b></span><textarea name="feedback" required rows={8} minLength={80} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Conte como foi sua experiência, o que funcionou e o que não funcionou para você." /></label>
+          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu primeiro nome <b className="text-brand-500">*</b></span><input name="firstName" required maxLength={60} aria-invalid={Boolean(fieldErrors.firstName)} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600" /><FieldError message={fieldErrors.firstName} /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">E-mail <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="email" type="email" required aria-invalid={Boolean(fieldErrors.email)} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600" /><FieldError message={fieldErrors.email} /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">LinkedIn <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="linkedin" type="url" required aria-invalid={Boolean(fieldErrors.linkedin)} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600" /><FieldError message={fieldErrors.linkedin} /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Ano de término <b className="text-brand-500">*</b></span><input name="completedYear" type="number" min="1990" max="2100" required aria-invalid={Boolean(fieldErrors.completedYear)} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600" /><FieldError message={fieldErrors.completedYear} /></label></div>
+          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">Valor investido <span className="font-normal text-neutral-400">(opcional)</span></span><input name="investment" className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Ex.: R$ 1.500" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Modalidade <b className="text-brand-500">*</b></span><select name="modality" required aria-invalid={Boolean(fieldErrors.modality)} className="rounded-xl border border-neutral-500/15 bg-neutral-100 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600"><option value="">Selecione</option><option>Online</option><option>Presencial</option><option>Híbrido</option></select><FieldError message={fieldErrors.modality} /></label></div>
+          <label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu relato <b className="text-brand-500">*</b></span><textarea name="feedback" required rows={8} minLength={80} aria-invalid={Boolean(fieldErrors.feedback)} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal aria-[invalid=true]:border-red-600" placeholder="Conte como foi sua experiência, o que funcionou e o que não funcionou para você." /><FieldError message={fieldErrors.feedback} /></label>
           <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">Pontos positivos <span className="font-normal text-neutral-400">(opcional)</span></span><textarea name="positives" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="inline-flex items-center gap-1.5">O que poderia melhorar <span className="font-normal text-neutral-400">(opcional)</span></span><textarea name="improvements" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
-          <label className="flex gap-3 text-sm leading-relaxed text-neutral-500"><input name="consent" type="checkbox" required className="mt-1" /><span>Li e concordo com os <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">Termos e Políticas</Link>. Autorizo a publicação do relato com meu primeiro nome. <b className="text-brand-500">*</b></span></label>
+          <div><label className="flex gap-3 text-sm leading-relaxed text-neutral-500"><input name="consent" type="checkbox" required className="mt-1" aria-invalid={Boolean(fieldErrors.consent)} /><span>Li e concordo com os <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">Termos e Políticas</Link>. Autorizo a publicação do relato com meu primeiro nome. <b className="text-brand-500">*</b></span></label><FieldError message={fieldErrors.consent} /></div>
           {errorMessage ? <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">{errorMessage}</p> : null}
           <div><Button type="submit" variant="guia" disabled={submissionState === 'sending'}>{submissionState === 'sending' ? 'Enviando...' : 'Enviar relato'}</Button></div>
         </form>
@@ -183,4 +188,8 @@ export function GuiaCursosPublicarRelatoPageContent() {
       </section>
     </div>
   )
+}
+
+function FieldError({ message }: { message?: string }) {
+  return message ? <span role="alert" className="mt-1 block text-xs font-semibold text-red-700">{message}</span> : null
 }
