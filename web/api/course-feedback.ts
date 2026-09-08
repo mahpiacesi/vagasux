@@ -36,6 +36,7 @@ export default async function handler(request: IncomingMessage, response: Server
     || Number(input.completedYear) < 1990
     || Number(input.completedYear) > new Date().getFullYear()
     || String(input.feedback).trim().length < 80
+    || (input.isNewCourse === true && !/^https?:\/\/.+/i.test(String(input.officialUrl)))
   ) {
     return json(response, 400, { error: 'Invalid form fields' })
   }
