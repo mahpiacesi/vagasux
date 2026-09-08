@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { GuiaBackToGuiaLink } from '@/components/guia/GuiaBackToGuiaLink'
 import { GuiaFaqLink } from '@/components/guia/GuiaFaqLink'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import {
   guiaCursosPublicarRelato,
 } from '@/data/guiaCursosCopy'
@@ -152,7 +154,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
         <form className="mt-7 grid gap-6" onSubmit={handleSubmit} noValidate>
           <fieldset>
             <legend className="text-sm font-black text-neutral-500">Qual curso você fez? <span className="text-brand-500">*</span></legend>
-            <label className="relative mt-3 block"><MagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-neutral-400" aria-hidden /><input value={courseQuery} onChange={(event) => { setCourseQuery(event.target.value); setSelectedCourse(null); setIsNewCourse(false) }} placeholder="Busque pelo nome do curso ou escola" className="w-full rounded-xl border border-neutral-500/15 bg-neutral-100 py-3 pr-4 pl-10 text-sm text-neutral-500 outline-none focus:border-brand-300" /></label>
+            <label className="relative mt-3 block"><MagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-neutral-400" aria-hidden /><Input value={courseQuery} onChange={(event) => { setCourseQuery(event.target.value); setSelectedCourse(null); setIsNewCourse(false) }} placeholder="Busque pelo nome do curso ou escola" className="h-12 bg-neutral-100 py-3 pr-4 pl-10 text-sm text-neutral-500" /></label>
             {matchingCourses.length > 0 && !selectedCourse ? <ul className="mt-2 overflow-hidden rounded-xl border border-neutral-500/10 bg-neutral-100">{matchingCourses.map((course) => <li key={course.id}><button type="button" onClick={() => selectCourse(course)} className="w-full px-4 py-3 text-left text-sm font-semibold text-neutral-500 hover:bg-brand-100/50">{course.title}</button></li>)}</ul> : null}
             {selectedCourse ? <p className="mt-3 text-sm font-bold text-brand-500">Curso selecionado: {selectedCourse.title}</p> : null}
             <label className="mt-4 flex items-center gap-2 text-sm font-semibold text-neutral-500"><input type="checkbox" checked={isNewCourse} onChange={(event) => { setIsNewCourse(event.target.checked); if (event.target.checked) setSelectedCourse(null) }} /> Não encontrei meu curso no diretório</label>
@@ -191,5 +193,5 @@ export function GuiaCursosPublicarRelatoPageContent() {
 }
 
 function FieldError({ message }: { message?: string }) {
-  return message ? <span role="alert" className="mt-1 block text-xs font-semibold text-red-700">{message}</span> : null
+  return <span role={message ? 'alert' : undefined} className="block min-h-5 text-xs font-semibold text-red-700">{message}</span>
 }
