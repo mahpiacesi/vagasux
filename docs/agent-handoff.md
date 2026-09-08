@@ -119,7 +119,7 @@
 1. No proxy reverso do n8n, liberar `POST /webhook/*` de Basic Auth e encaminhá-lo ao n8n.
 2. Definir `N8N_COURSE_FEEDBACK_WEBHOOK_URL` em Preview como `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/course-feedback-intake-d4a41145`, fazer redeploy e validar um envio real.
 3. Conferir a execução no workflow antes de aprovar o relato no Notion.
-3. Refinar as trilhas após uso e feedback editorial.
+4. Refinar as trilhas após uso e feedback editorial.
 
 ---
 
