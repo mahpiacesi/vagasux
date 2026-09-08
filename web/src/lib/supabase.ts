@@ -87,7 +87,7 @@ export async function fetchCourseFeedback(
 
   if (error) throw error
 
-  const relatos = (data ?? []) as Array<{
+  const relatos = (data ?? []) as unknown as Array<{
     id: string
     text: string
     author: string | null
