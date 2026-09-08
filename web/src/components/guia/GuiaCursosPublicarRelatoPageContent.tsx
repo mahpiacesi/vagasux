@@ -31,6 +31,22 @@ export function GuiaCursosPublicarRelatoPageContent() {
     setSelectedCourse(course)
     setCourseQuery(course.title)
     setIsNewCourse(false)
+    setFieldErrors((errors) => ({ ...errors, course: '' }))
+  }
+
+  function handleFieldChange(event: FormEvent<HTMLFormElement>) {
+    const target = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    if (!target.name) return
+    const isValid = target instanceof HTMLInputElement && target.type === 'checkbox'
+      ? target.checked
+      : target.validity.valid && Boolean(target.value.trim())
+    if (!isValid) return
+    setFieldErrors((errors) => {
+      if (!errors[target.name]) return errors
+      const next = { ...errors }
+      delete next[target.name]
+      return next
+    })
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -151,7 +167,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
           .
         </p>
 
-        <form className="mt-7 grid gap-6" onSubmit={handleSubmit} noValidate>
+        <form className="mt-7 grid gap-6" onSubmit={handleSubmit} onChange={handleFieldChange} noValidate>
           <fieldset>
             <legend className="text-sm font-black text-neutral-500">Qual curso você fez? <span className="text-brand-500">*</span></legend>
             <label className="relative mt-3 block"><MagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-neutral-400" aria-hidden /><Input value={courseQuery} onChange={(event) => { setCourseQuery(event.target.value); setSelectedCourse(null); setIsNewCourse(false) }} placeholder="Busque pelo nome do curso ou escola" className="h-12 bg-neutral-100 py-3 pr-4 pl-10 text-sm text-neutral-500" /></label>
