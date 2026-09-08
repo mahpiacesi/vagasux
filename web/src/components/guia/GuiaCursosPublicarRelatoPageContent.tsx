@@ -39,6 +39,24 @@ export function GuiaCursosPublicarRelatoPageContent() {
       return
     }
 
+    const requiredFields = [
+      ['firstName', 'primeiro nome'],
+      ['email', 'e-mail'],
+      ['linkedin', 'LinkedIn'],
+      ['completedYear', 'ano de término'],
+      ['modality', 'modalidade'],
+      ['feedback', 'relato'],
+    ] as const
+    const missingFields = requiredFields
+      .filter(([field]) => !String(formData.get(field) ?? '').trim())
+      .map(([, label]) => label)
+    if (isNewCourse && (!String(formData.get('schoolName') ?? '').trim() || !String(formData.get('suggestedCourseName') ?? '').trim() || !String(formData.get('officialUrl') ?? '').trim())) missingFields.push('informações do curso sugerido')
+    if (formData.get('consent') !== 'on') missingFields.push('aceite dos Termos e Políticas')
+    if (missingFields.length > 0) {
+      setErrorMessage(`Preencha os campos obrigatórios: ${missingFields.join(', ')}.`)
+      return
+    }
+
     setSubmissionState('sending')
     setErrorMessage('')
 
@@ -127,9 +145,9 @@ export function GuiaCursosPublicarRelatoPageContent() {
           .
         </p>
 
-        <form className="mt-7 grid gap-6" onSubmit={handleSubmit}>
+        <form className="mt-7 grid gap-6" onSubmit={handleSubmit} noValidate>
           <fieldset>
-            <legend className="text-sm font-black text-neutral-500">Qual curso você fez?</legend>
+            <legend className="text-sm font-black text-neutral-500">Qual curso você fez? <span className="text-brand-500">*</span></legend>
             <label className="relative mt-3 block"><MagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-neutral-400" aria-hidden /><input value={courseQuery} onChange={(event) => { setCourseQuery(event.target.value); setSelectedCourse(null); setIsNewCourse(false) }} placeholder="Busque pelo nome do curso ou escola" className="w-full rounded-xl border border-neutral-500/15 bg-neutral-100 py-3 pr-4 pl-10 text-sm text-neutral-500 outline-none focus:border-brand-300" /></label>
             {matchingCourses.length > 0 && !selectedCourse ? <ul className="mt-2 overflow-hidden rounded-xl border border-neutral-500/10 bg-neutral-100">{matchingCourses.map((course) => <li key={course.id}><button type="button" onClick={() => selectCourse(course)} className="w-full px-4 py-3 text-left text-sm font-semibold text-neutral-500 hover:bg-brand-100/50">{course.title}</button></li>)}</ul> : null}
             {selectedCourse ? <p className="mt-3 text-sm font-bold text-brand-500">Curso selecionado: {selectedCourse.title}</p> : null}
@@ -138,12 +156,12 @@ export function GuiaCursosPublicarRelatoPageContent() {
 
           {isNewCourse ? <div className="grid gap-4 rounded-2xl border border-brand-200/40 bg-neutral-100/70 p-5 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500">Nome da escola ou plataforma<input name="schoolName" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500">Nome do curso<input name="suggestedCourseName" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500 sm:col-span-2">Link oficial do curso<input name="officialUrl" type="url" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div> : null}
 
-          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500">Seu primeiro nome<input name="firstName" required maxLength={60} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">E-mail <span className="font-normal text-neutral-400">(privado)</span></span><input name="email" type="email" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">LinkedIn <span className="font-normal text-neutral-400">(privado)</span></span><input name="linkedin" type="url" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500">Ano de término<input name="completedYear" type="number" min="1990" max="2100" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
-          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">Valor investido <span className="font-normal text-neutral-400">(opcional)</span></span><input name="investment" className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Ex.: R$ 1.500" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500">Modalidade<select name="modality" required className="rounded-xl border border-neutral-500/15 bg-neutral-100 px-3 py-2.5 font-normal"><option value="">Selecione</option><option>Online</option><option>Presencial</option><option>Híbrido</option></select></label></div>
-          <label className="grid gap-2 text-sm font-bold text-neutral-500">Seu relato<textarea name="feedback" required rows={8} minLength={80} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Conte como foi sua experiência, o que funcionou e o que não funcionou para você." /></label>
+          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu primeiro nome <b className="text-brand-500">*</b></span><input name="firstName" required maxLength={60} className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">E-mail <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="email" type="email" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">LinkedIn <span className="font-normal text-neutral-400">(privado) <b className="text-brand-500">*</b></span></span><input name="linkedin" type="url" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Ano de término <b className="text-brand-500">*</b></span><input name="completedYear" type="number" min="1990" max="2100" required className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
+          <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500"><span className="flex justify-between gap-3">Valor investido <span className="font-normal text-neutral-400">(opcional)</span></span><input name="investment" className="rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Ex.: R$ 1.500" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Modalidade <b className="text-brand-500">*</b></span><select name="modality" required className="rounded-xl border border-neutral-500/15 bg-neutral-100 px-3 py-2.5 font-normal"><option value="">Selecione</option><option>Online</option><option>Presencial</option><option>Híbrido</option></select></label></div>
+          <label className="grid gap-2 text-sm font-bold text-neutral-500"><span>Seu relato <b className="text-brand-500">*</b></span><textarea name="feedback" required rows={8} minLength={80} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" placeholder="Conte como foi sua experiência, o que funcionou e o que não funcionou para você." /></label>
           <div className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm font-bold text-neutral-500">Pontos positivos <span className="font-normal text-neutral-400">(opcional)</span><textarea name="positives" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label><label className="grid gap-2 text-sm font-bold text-neutral-500">O que poderia melhorar <span className="font-normal text-neutral-400">(opcional)</span><textarea name="improvements" rows={4} className="resize-y rounded-xl border border-neutral-500/15 px-3 py-2.5 font-normal" /></label></div>
-          <label className="flex gap-3 text-sm leading-relaxed text-neutral-500"><input name="consent" type="checkbox" required className="mt-1" /><span>Li e concordo com os <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">Termos e Políticas</Link>. Autorizo a publicação do relato com meu primeiro nome.</span></label>
-          {errorMessage ? <p className="text-sm font-bold text-red-600">{errorMessage}</p> : null}
+          <label className="flex gap-3 text-sm leading-relaxed text-neutral-500"><input name="consent" type="checkbox" required className="mt-1" /><span>Li e concordo com os <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">Termos e Políticas</Link>. Autorizo a publicação do relato com meu primeiro nome. <b className="text-brand-500">*</b></span></label>
+          {errorMessage ? <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">{errorMessage}</p> : null}
           <div><Button type="submit" variant="guia" disabled={submissionState === 'sending'}>{submissionState === 'sending' ? 'Enviando...' : 'Enviar relato'}</Button></div>
         </form>
       </section>
