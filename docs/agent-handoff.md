@@ -110,12 +110,13 @@
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
 - Diagnóstico do Preview da PR #97: o webhook configurado sem o identificador do webhook respondeu `403` com autenticação Basic, e não houve execuções no workflow. O n8n informa como URL de produção a rota que inclui o identificador do webhook.
+- O workflow ativo `Receber relatos de cursos` confirmou a URL de produção completa: `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/course-feedback-intake`. A confirmação de novo envio às 23h não gerou execução, reforçando que o Preview ainda usa a variável incorreta.
 
 ---
 
 ## Próximo passo esperado
 
-1. Confirmar a variável `N8N_COURSE_FEEDBACK_WEBHOOK_URL` do Preview da PR #97, incluindo a URL de produção fornecida pelo n8n.
+1. Atualizar a variável `N8N_COURSE_FEEDBACK_WEBHOOK_URL` do Preview da PR #97 com a URL completa do webhook e fazer redeploy.
 2. Validar um envio real e conferir a execução no workflow antes de aprovar o relato no Notion.
 3. Refinar as trilhas após uso e feedback editorial.
 
@@ -133,7 +134,7 @@
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
 | [PR #85 — refinamentos das trilhas](https://github.com/mahpiacesi/vagasux/pull/85) | ✅ Mergeada em 03/09 |
 | [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | 🟡 Aberta |
-| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | 🟡 Aberta, diagnóstico do webhook pendente de ajuste |
+| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | 🟡 Aberta, aguarda atualização da variável no Vercel e validação do webhook |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
