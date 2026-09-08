@@ -23,7 +23,7 @@ export default async function handler(request: IncomingMessage, response: Server
     return json(response, 400, { error: 'Invalid request body' })
   }
 
-  const requiredFields = ['firstName', 'email', 'feedback']
+  const requiredFields = ['firstName', 'email', 'linkedin', 'completedYear', 'modality', 'feedback']
   const hasRequiredFields = requiredFields.every((field) => typeof input[field] === 'string' && input[field].trim())
   const hasCourse = typeof input.courseId === 'string' || (input.isNewCourse === true && typeof input.courseName === 'string')
   if (!hasRequiredFields || !hasCourse || input.consent !== true) {
