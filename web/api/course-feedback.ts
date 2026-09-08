@@ -29,6 +29,16 @@ export default async function handler(request: IncomingMessage, response: Server
   if (!hasRequiredFields || !hasCourse || input.consent !== true) {
     return json(response, 400, { error: 'Missing required fields' })
   }
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(input.email))
+    || !/^https?:\/\/(www\.)?linkedin\.com\/.+/i.test(String(input.linkedin))
+    || !/^\d{4}$/.test(String(input.completedYear))
+    || Number(input.completedYear) < 1990
+    || Number(input.completedYear) > new Date().getFullYear()
+    || String(input.feedback).trim().length < 80
+  ) {
+    return json(response, 400, { error: 'Invalid form fields' })
+  }
 
   const webhookUrl = process.env.N8N_COURSE_FEEDBACK_WEBHOOK_URL
   if (!webhookUrl) {

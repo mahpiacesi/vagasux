@@ -20,6 +20,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
   const [submissionState, setSubmissionState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({})
   const matchingCourses = useMemo(() => {
     const query = courseQuery.trim().toLocaleLowerCase('pt-BR')
     return query.length < 2 ? [] : guiaCursos
@@ -34,19 +35,31 @@ export function GuiaCursosPublicarRelatoPageContent() {
     setFieldErrors((errors) => ({ ...errors, course: '' }))
   }
 
+  function validateField(name: string, value: string, checked?: boolean) {
+    if (name === 'consent') return checked ? '' : 'Você precisa concordar com os Termos e Políticas.'
+    if (!value.trim()) return 'Este campo é obrigatório.'
+    if (name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Informe um e-mail válido.'
+    if (name === 'linkedin' && !/^https?:\/\/(www\.)?linkedin\.com\/.+/i.test(value)) return 'Informe a URL do seu perfil no LinkedIn.'
+    if (name === 'completedYear' && (!/^\d{4}$/.test(value) || Number(value) < 1990 || Number(value) > new Date().getFullYear())) return 'Informe um ano válido.'
+    if (name === 'feedback' && value.trim().length < 80) return 'Escreva pelo menos 80 caracteres sobre sua experiência.'
+    return ''
+  }
+
+  function validateTarget(target: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+    const message = validateField(target.name, target.value, target instanceof HTMLInputElement ? target.checked : undefined)
+    setFieldErrors((errors) => ({ ...errors, [target.name]: message }))
+  }
+
   function handleFieldChange(event: FormEvent<HTMLFormElement>) {
     const target = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    if (target.name && touchedFields[target.name]) validateTarget(target)
+  }
+
+  function handleFieldBlur(event: FormEvent<HTMLFormElement>) {
+    const target = event.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if (!target.name) return
-    const isValid = target instanceof HTMLInputElement && target.type === 'checkbox'
-      ? target.checked
-      : target.validity.valid && Boolean(target.value.trim())
-    if (!isValid) return
-    setFieldErrors((errors) => {
-      if (!errors[target.name]) return errors
-      const next = { ...errors }
-      delete next[target.name]
-      return next
-    })
+    setTouchedFields((fields) => ({ ...fields, [target.name]: true }))
+    validateTarget(target)
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -64,7 +77,8 @@ export function GuiaCursosPublicarRelatoPageContent() {
     const errors: Record<string, string> = {}
     if (!selectedCourse && !isNewCourse) errors.course = 'Selecione um curso da lista ou informe que ele ainda não está no diretório.'
     requiredFields.forEach(([field, label]) => {
-      if (!String(formData.get(field) ?? '').trim()) errors[field] = `Informe ${label}.`
+      const message = validateField(field, String(formData.get(field) ?? ''))
+      if (message) errors[field] = message === 'Este campo é obrigatório.' ? `Informe ${label}.` : message
     })
     if (isNewCourse) {
       if (!String(formData.get('schoolName') ?? '').trim()) errors.schoolName = 'Informe a escola ou plataforma.'
@@ -74,6 +88,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
     if (formData.get('consent') !== 'on') errors.consent = 'Você precisa concordar com os Termos e Políticas.'
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors)
+      setTouchedFields((fields) => ({ ...fields, ...Object.fromEntries(Object.keys(errors).map((field) => [field, true])) }))
       setErrorMessage('Confira os campos destacados antes de enviar.')
       return
     }
@@ -167,7 +182,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
           .
         </p>
 
-        <form className="mt-7 grid gap-6" onSubmit={handleSubmit} onChange={handleFieldChange} noValidate>
+        <form className="mt-7 grid gap-6" onSubmit={handleSubmit} onChange={handleFieldChange} onBlur={handleFieldBlur} noValidate>
           <fieldset>
             <legend className="text-sm font-black text-neutral-500">Qual curso você fez? <span className="text-brand-500">*</span></legend>
             <label className="relative mt-3 block"><MagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-neutral-400" aria-hidden /><Input value={courseQuery} onChange={(event) => { setCourseQuery(event.target.value); setSelectedCourse(null); setIsNewCourse(false) }} placeholder="Busque pelo nome do curso ou escola" className="h-12 bg-neutral-100 py-3 pr-4 pl-10 text-sm text-neutral-500" /></label>
