@@ -107,13 +107,14 @@
 - O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
 - A database `Relatos de cursos` no Notion segue como fila editorial.
 - Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
+- O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 
 ---
 
 ## Próximo passo esperado
 
 1. Fazer redeploy na Vercel após a configuração de `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
-2. Trocar a leitura de relatos do arquivo estático para `public.guia_curso_relatos`, com fallback seguro durante a transição.
+2. Validar um envio real e aprovar o relato no Notion para confirmar a publicação automática no site.
 3. Refinar as trilhas após uso e feedback editorial.
 
 ---
