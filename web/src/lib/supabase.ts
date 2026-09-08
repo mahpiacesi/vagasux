@@ -87,7 +87,14 @@ export async function fetchCourseFeedback(
 
   if (error) throw error
 
-  return (data ?? []).map((relato) => ({
+  const relatos = (data ?? []) as Array<{
+    id: string
+    text: string
+    author: string | null
+    received_at: string | null
+  }>
+
+  return relatos.map((relato) => ({
     id: relato.id,
     text: relato.text,
     author: relato.author ?? undefined,
