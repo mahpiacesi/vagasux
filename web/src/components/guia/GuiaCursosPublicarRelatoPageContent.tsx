@@ -47,7 +47,7 @@ export function GuiaCursosPublicarRelatoPageContent() {
       ['modality', 'modalidade'],
       ['feedback', 'relato'],
     ] as const
-    const missingFields = requiredFields
+    const missingFields: string[] = requiredFields
       .filter(([field]) => !String(formData.get(field) ?? '').trim())
       .map(([, label]) => label)
     if (isNewCourse && (!String(formData.get('schoolName') ?? '').trim() || !String(formData.get('suggestedCourseName') ?? '').trim() || !String(formData.get('officialUrl') ?? '').trim())) missingFields.push('informações do curso sugerido')
