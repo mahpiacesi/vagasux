@@ -164,12 +164,19 @@
 - A fonte agora também oferece `Bio` e `Rapidinhas`; o webhook registra os dois campos e usa o emoji do ícone de cada página no Notion.
 - A propriedade `Foto` agora é copiada para o bucket público `volunteer-photos` no Supabase. A imagem de Aline Carvalho foi validada com a URL permanente gerada pelo fluxo.
 - Diagnóstico do backfill de fotos: oito sincronizações concluíram e gravaram no Storage. A falha foi o ID incorreto de Tatiana Barbosa (`6f5d308c-32a4-4f4e-a3ac-e51124dffc2c`); o ID existente é `6f5d308c-b32a-4f4e-a3ac-e51124dffc2c`. O Notion respondeu `404` antes da chamada à Edge Function.
+- A execução com falha confirmou que o ID incorreto veio apenas do POST manual. O workflow lê `body.entity.id` dinamicamente, sem ID de pessoa fixo, portanto não precisa de alteração.
 
 ---
 
 ## Próximo passo esperado
 
-1. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
+1. Reexecutar o backfill da Tatiana com o ID corrigido e conferir que o webhook retorna 2xx.
+   ```sh
+   curl --fail-with-body --silent --show-error \
+     -X POST 'https://n8n-lws1.srv1866525.hstgr.cloud/webhook/2cc8251b-2dbb-47e5-bffa-7e4e55ac1687/notion-volunteers-events' \
+     -H 'Content-Type: application/json' \
+     --data '{"type":"page.properties_updated","entity":{"id":"6f5d308c-b32a-4f4e-a3ac-e51124dffc2c","type":"page"}}'
+   ```
 2. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
 
 ---
