@@ -194,7 +194,8 @@
 | Webhook oficial do Notion | ✅ Assinatura ativa e fluxo validado em 09/09 |
 | [PR #98 — correção do webhook](https://github.com/mahpiacesi/vagasux/pull/98) | ✅ Integrada junto da PR #99 em 09/09 |
 | [PR #99 — registro do webhook](https://github.com/mahpiacesi/vagasux/pull/99) | ✅ Integrada em `main` em 09/09 |
-| [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | Em validação: página usa `guia_volunteers`; webhook oficial está ativo |
+| [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | ✅ Integrada em `main` em 09/09 |
+| [PR #101 — perfis de voluntários](https://github.com/mahpiacesi/vagasux/pull/101) | ✅ Integrada em `main` em 09/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
