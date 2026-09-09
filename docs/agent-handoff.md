@@ -156,12 +156,17 @@
 - O acervo histórico foi conciliado com a database `Relatos de cursos`: ela passou de 28 para 167 registros, sendo 166 marcados como `Publicado`. O Supabase preserva 165 relatos públicos.
 - O workflow único de migração foi arquivado após terminar com sucesso; a sincronização contínua segue via webhook oficial e reconciliação diária.
 
+### Voluntários (09 set)
+- A integração `Voluntários do site` foi conectada à fonte `💪 Quem organiza` e sua assinatura oficial do Notion está verificada.
+- O workflow `Receber eventos do Notion — voluntários` está ativo: cria e atualiza a projeção `public.guia_volunteers` no Supabase e desativa pessoas removidas.
+- A tabela pública recebeu o backfill das 19 pessoas atuais. A página passa a usar essa fonte, sem depender de novo deploy para mudanças de nome, frentes ou redes sociais; fotos, emojis e relatos de perfil continuam no código.
+- Validação concluída: um evento `page.properties_updated` alterou Marianna Piacesi e a frente `Site` foi registrada no Supabase.
+
 ---
 
 ## Próximo passo esperado
 
-1. Remover o registro de teste `TESTE 1 — pode apagar` no Notion, se ele não for mais necessário para a curadoria.
-2. Acompanhar a próxima aprovação real: ela deve chegar pelo webhook e aparecer no site sem novo deploy.
+1. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
 
 ---
 
@@ -188,6 +193,7 @@
 | Webhook oficial do Notion | ✅ Assinatura ativa e fluxo validado em 09/09 |
 | [PR #98 — correção do webhook](https://github.com/mahpiacesi/vagasux/pull/98) | ✅ Integrada junto da PR #99 em 09/09 |
 | [PR #99 — registro do webhook](https://github.com/mahpiacesi/vagasux/pull/99) | ✅ Integrada em `main` em 09/09 |
+| [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | Em validação: página usa `guia_volunteers`; webhook oficial está ativo |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
