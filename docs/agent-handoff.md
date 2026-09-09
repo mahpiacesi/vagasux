@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-05
+**Última atualização:** 2026-09-08
 
 ---
 
@@ -135,14 +135,24 @@
 ### Canais do Guia (05 set)
 - A curadoria de `Canais` foi colocada em pausa: o formato, seus itens e sua página deixaram de aparecer no Guia.
 - O redirecionamento legado de perfis para seguir agora leva à página inicial do Guia.
+### Relatos de cursos (08 set)
+- A página de publicação ganhou um formulário nativo com busca de cursos e alternativa para sugerir curso ainda não mapeado.
+- O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
+- A database `Relatos de cursos` no Notion segue como fila editorial.
+- Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
+- O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
+- O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
+- Diagnóstico de runtime confirmado: a URL de produção exibida pelo workflow ativo (`/webhook/<webhookId>/course-feedback-intake-d4a41145`) responde `404` e não cria execução. A rota registrada pelo n8n sem UUID responde `403 Authorization data is wrong!` antes de alcançar o workflow, pois o proxy reverso protege `/webhook/*` com Basic Auth.
+- O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
+- A instrumentação temporária da Function foi removida após o diagnóstico.
 
 ---
 
 ## Próximo passo esperado
 
-1. Revisar e implementar o formulário para envio de relatos de cursos na área de cursos.
-2. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
-3. Refinar as trilhas após uso e feedback editorial.
+1. Resolver o acesso externo ao webhook do n8n e validar um envio real pelo formulário.
+2. Conferir a execução no workflow antes de aprovar o relato no Notion.
+3. Revisar a curadoria de comunidades, perfis e canais antes de reativá-la no Guia.
 
 ---
 
@@ -164,6 +174,8 @@
 | [PR #93 — relatos de migração](https://github.com/mahpiacesi/vagasux/pull/93) | ✅ Integrada em `main` em 05/09 |
 | [PR #94 — formato Artigos](https://github.com/mahpiacesi/vagasux/pull/94) | ✅ Integrada em `main` em 05/09 |
 | [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
+| [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
+| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação do webhook pendente |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
