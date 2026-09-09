@@ -143,7 +143,8 @@
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
 - Diagnóstico de runtime confirmado: às 02:14:37 UTC de 09/09, o POST da Function de produção `dpl_GfjyrZekqh7M24N335J99snAFfQR` retornou `502`. A variável de produção está carregada e a Function conseguiu chamar o upstream.
-- O POST sintético diretamente para `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/course-feedback-intake-d4a41145` retornou `403 Authorization data is wrong!` e não criou execution. A autenticação Basic Auth do Traefik bloqueia o `POST` antes do n8n, apesar de o Webhook ativo usar `authentication:none`.
+- A causa do `403` foi identificada no Webhook do n8n: a opção `Ignore Bots` estava ativa e rejeitava a chamada servidor-a-servidor da Vercel.
+- `Ignore Bots` foi desativado e a nova versão do workflow de recebimento foi publicada.
 - A URL com UUID exibida pelo MCP (`/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/...`) retorna `404` para `POST`; não deve substituir a URL de produção configurada.
 - O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
 - A instrumentação temporária da Function foi removida após o diagnóstico.
@@ -152,8 +153,7 @@
 
 ## Próximo passo esperado
 
-1. No VPS, liberar somente `POST /webhook/course-feedback-intake-d4a41145` da middleware Basic Auth no Traefik e manter a autenticação na interface do n8n.
-2. Repetir o POST de produção e conferir a execution criada em `Receber relatos de cursos`; o esperado é `201` na Function e `success` no n8n.
+1. Repetir o POST de produção e conferir a execution criada em `Receber relatos de cursos`; o esperado é `201` na Function e `success` no n8n.
 
 ---
 
@@ -176,8 +176,7 @@
 | [PR #94 — formato Artigos](https://github.com/mahpiacesi/vagasux/pull/94) | ✅ Integrada em `main` em 05/09 |
 | [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
 | [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
-| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação do webhook pendente |
-| Diagnóstico de produção do formulário | `cursor/fix-course-feedback-webhook-7537`; causa confirmada, aguarda ajuste no Traefik do VPS |
+| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação final do envio pendente |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
