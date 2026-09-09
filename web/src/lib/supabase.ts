@@ -101,3 +101,43 @@ export async function fetchCourseFeedback(
     receivedAt: relato.received_at ?? undefined,
   }))
 }
+
+export type PublicVolunteer = {
+  notionPageId: string
+  name: string
+  roles: string[]
+  instagram?: string
+  linkedin?: string
+}
+
+const volunteerColumns = [
+  'notion_page_id',
+  'name',
+  'roles',
+  'instagram_url',
+  'linkedin_url',
+] as const
+
+export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
+  const { data, error } = await supabase
+    .from('guia_volunteers')
+    .select(volunteerColumns.join(', '))
+    .eq('is_active', true)
+    .order('name', { ascending: true })
+
+  if (error) throw error
+
+  return ((data ?? []) as unknown as Array<{
+    notion_page_id: string
+    name: string
+    roles: string[] | null
+    instagram_url: string | null
+    linkedin_url: string | null
+  }>).map((volunteer) => ({
+    notionPageId: volunteer.notion_page_id,
+    name: volunteer.name,
+    roles: volunteer.roles ?? [],
+    instagram: volunteer.instagram_url ?? undefined,
+    linkedin: volunteer.linkedin_url ?? undefined,
+  }))
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Icon } from '@phosphor-icons/react'
 import {
   Clock,
@@ -13,7 +13,8 @@ import {
 import { Button } from '@/components/ui/button'
 import { VoluntariadoHero } from '@/components/VoluntariadoHero'
 import { VolunteerProfileDialog } from '@/components/VolunteerProfileDialog'
-import { volunteers, type Volunteer } from '@/data/volunteers'
+import { volunteers as staticVolunteers, type Volunteer } from '@/data/volunteers'
+import { fetchActiveVolunteers, type PublicVolunteer } from '@/lib/supabase'
 import { forms } from '@/lib/siteLinks'
 
 const experienceHighlights: {
@@ -136,14 +137,62 @@ function VolunteerCard({
   )
 }
 
+const fallbackEmoji = '💪'
+
+function volunteerSlug(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
+function mergeVolunteer(publicVolunteer: PublicVolunteer): Volunteer {
+  const slug = volunteerSlug(publicVolunteer.name)
+  const staticVolunteer = staticVolunteers.find(
+    (volunteer) => volunteer.slug === slug,
+  )
+
+  return {
+    slug,
+    name: publicVolunteer.name,
+    emoji: staticVolunteer?.emoji ?? fallbackEmoji,
+    photo: staticVolunteer?.photo,
+    photoFocus: staticVolunteer?.photoFocus,
+    roles: publicVolunteer.roles,
+    instagram: publicVolunteer.instagram,
+    linkedin: publicVolunteer.linkedin,
+  }
+}
+
 export function VoluntariadoPage() {
+  const [volunteers, setVolunteers] = useState<Volunteer[]>(staticVolunteers)
   const [selectedVolunteer, setSelectedVolunteer] = useState<Volunteer | null>(
     null,
   )
 
+  useEffect(() => {
+    let cancelled = false
+
+    void fetchActiveVolunteers()
+      .then((publicVolunteers) => {
+        if (!cancelled && publicVolunteers.length > 0) {
+          setVolunteers(publicVolunteers.map(mergeVolunteer))
+        }
+      })
+      .catch((error) => {
+        console.warn('Failed to load volunteers from Supabase, using fallback.', error)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main>
-      <VoluntariadoHero />
+      <VoluntariadoHero volunteers={volunteers} />
 
       <section id="como-e-ser" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
