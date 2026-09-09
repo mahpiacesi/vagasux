@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   CalendarCheck,
   ChatCircleDots,
   CheckCircle,
@@ -193,7 +194,10 @@ export function MentoriaPage() {
       <section className="px-5 pb-16 md:px-6 md:pb-24">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl bg-neutral-500 px-7 py-8 text-neutral-100 md:flex-row md:items-center md:px-10">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+            <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-neutral-100 text-complementary-300">
+              <Umbrella size={22} weight="bold" aria-hidden />
+            </span>
+            <p className="mt-5 text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
               Comunidade exclusiva
             </p>
             <p className="mt-2 text-2xl font-black tracking-[-0.035em]">
@@ -203,9 +207,9 @@ export function MentoriaPage() {
               Participe de encontros em grupo, desafios e trocas com a comunidade. Membros da Guilda tem acesso a desconto nas mentorias.
             </p>
           </div>
-          <Button variant="secondary" asChild className="rounded-full bg-neutral-100 px-5 py-3 font-bold text-brand-500 hover:bg-brand-100">
+          <Button asChild className="h-11 rounded-xl bg-complementary-300 px-5 font-black text-neutral-500 hover:bg-complementary-200">
             <Link to={routes.guilda}>
-              Conhecer a Guilda <Umbrella weight="bold" aria-hidden />
+              Vem pra Guilda <ArrowUpRight className="ml-1 size-4" aria-hidden />
             </Link>
           </Button>
         </div>
