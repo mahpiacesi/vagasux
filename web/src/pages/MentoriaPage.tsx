@@ -7,10 +7,13 @@ import {
   LinkedinLogo,
   NotePencil,
 } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
-import { superSite } from '@/lib/siteLinks'
+import { routes, superSite } from '@/lib/siteLinks'
+
+const mentoringPaymentUrl = 'https://nas.com/vagasux/zerolink/mentoria'
 
 const mentorAvailability = [
   { slug: 'natalia-feitosa', status: 'Indisponível', available: false },
@@ -25,7 +28,7 @@ const steps = [
     number: '01',
     title: 'Faça sua contribuição',
     description:
-      'Cada apoio a partir de R$ 10 equivale a uma mentoria. Para marcar mais conversas, faça uma nova contribuição para cada encontro.',
+      'Cada apoio a partir de R$ 15 equivale a uma mentoria. Para marcar mais conversas, faça uma nova contribuição para cada encontro.',
     detail: 'Salve o comprovante para enviar à pessoa mentora escolhida.',
     Icon: Heart,
   },
@@ -121,6 +124,29 @@ export function MentoriaPage() {
               </li>
             ))}
           </ol>
+          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
+            <div>
+              <p className="font-black tracking-[-0.02em] text-neutral-500">
+                Pronta para marcar sua mentoria?
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-neutral-400">
+                Faça uma contribuição de R$ 15 e guarde seu comprovante.
+              </p>
+            </div>
+            <Button variant="guia" asChild>
+              <a href={mentoringPaymentUrl} target="_blank" rel="noopener noreferrer">
+                Fazer contribuição
+                <Heart weight="bold" aria-hidden />
+              </a>
+            </Button>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
+            Já faz parte da{' '}
+            <Link to={routes.guilda} className="font-bold text-brand-500 hover:underline">
+              Guilda do Vaguiner
+            </Link>
+            ? Pessoas membros têm desconto na mentoria.
+          </p>
         </div>
       </section>
 
