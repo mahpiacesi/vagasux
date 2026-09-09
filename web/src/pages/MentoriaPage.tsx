@@ -55,20 +55,28 @@ export function MentoriaPage() {
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-neutral-500 px-5 py-16 text-neutral-100 md:px-6 md:py-20">
-        <div
-          className="pointer-events-none absolute -top-24 -right-16 size-80 rounded-full bg-brand-400/35 blur-3xl"
-          aria-hidden
-        />
+      <section className="relative overflow-hidden border-b border-neutral-500/10 bg-brand-100/40 px-5 py-16 md:px-6 md:py-20">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgb(7 0 58 / 0.06) 1px, transparent 0)',
+              backgroundSize: '20px 20px',
+            }}
+          />
+          <div className="absolute top-[-8%] right-[-6%] size-64 rounded-full bg-brand-200/40 blur-3xl" />
+          <div className="absolute bottom-[-12%] left-[-8%] size-56 rounded-full bg-complementary-200/35 blur-3xl" />
+        </div>
         <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)] md:items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+            <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
               Mentoria VagasUX
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-neutral-500 md:text-6xl">
               Que tal um papinho?
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-100/75 md:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg">
               Uma conversa individual com pessoas voluntárias da VagasUX para
               tirar dúvidas, trocar experiências e refletir sobre seu próximo
               passo em design.
