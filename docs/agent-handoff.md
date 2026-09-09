@@ -152,6 +152,7 @@
 - A integração `Relatos recebidos` do Notion agora assina o evento oficial `page.properties_updated` da database `Relatos de cursos`.
 - O workflow `Publicar relatos aprovados — webhook Notion` recebeu e processou um relato de teste em 09/09, publicou-o no Supabase e marcou o registro como `Publicado` no Notion.
 - O relato usado no teste foi removido do Supabase após a validação; a reconciliação diária permanece ativa como contingência.
+- A curadoria do site agora exibe `Fluency Skills (antiga Awari)` para o curso que antes aparecia como Awari.
 
 ---
 
