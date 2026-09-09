@@ -165,12 +165,17 @@
 - A propriedade `Foto` agora é copiada para o bucket público `volunteer-photos` no Supabase. A imagem de Aline Carvalho foi validada com a URL permanente gerada pelo fluxo.
 - Diagnóstico do backfill de fotos: oito sincronizações concluíram e gravaram no Storage. A falha foi o ID incorreto de Tatiana Barbosa (`6f5d308c-32a4-4f4e-a3ac-e51124dffc2c`); o ID existente é `6f5d308c-b32a-4f4e-a3ac-e51124dffc2c`. O Notion respondeu `404` antes da chamada à Edge Function.
 
+### Mentoria (09 set)
+- A rota `/mentoria` foi criada a partir da página de referência, com instruções de contribuição, agendamento, preparação e lista de pessoas mentoras.
+- O menu `Comunidade aberta` agora abre o topo de `/comunidade`.
+
 ---
 
 ## Próximo passo esperado
 
-1. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
-2. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
+1. Revisar a página de Mentoria no preview e confirmar disponibilidade e lista atual de pessoas mentoras.
+2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
+3. Avaliar uma futura camada multilíngue para o site.
 
 ---
 
@@ -200,6 +205,7 @@
 | [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | ✅ Integrada em `main` em 09/09 |
 | [PR #101 — perfis de voluntários](https://github.com/mahpiacesi/vagasux/pull/101) | ✅ Integrada em `main` em 09/09 |
 | [PR #102 — fotos de voluntários](https://github.com/mahpiacesi/vagasux/pull/102) | ✅ Integrada em `main` em 09/09 |
+| [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | Em revisão |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
