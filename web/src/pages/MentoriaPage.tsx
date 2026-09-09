@@ -100,7 +100,7 @@ export function MentoriaPage() {
         </div>
       </section>
 
-      <section id="como-funciona" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
+      <section id="como-funciona" className="scroll-mt-24 px-5 pt-16 pb-8 md:px-6 md:pt-24 md:pb-12">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
@@ -151,7 +151,7 @@ export function MentoriaPage() {
         </div>
       </section>
 
-      <section className="border-y border-complementary-200/70 bg-complementary-100/50 px-5 py-12 md:px-6">
+      <section className="border-y border-complementary-200/70 bg-complementary-100/50 px-5 py-8 md:px-6">
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
           {[
             'Compareça no horário combinado. Se precisar remarcar, avise com pelo menos 48 horas de antecedência.',
@@ -194,7 +194,7 @@ export function MentoriaPage() {
       <section className="px-5 pb-16 md:px-6 md:pb-24">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl bg-neutral-500 px-7 py-8 text-neutral-100 md:flex-row md:items-center md:px-10">
           <div>
-            <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-neutral-100 text-complementary-300">
+            <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-neutral-100 text-neutral-500">
               <Umbrella size={22} weight="bold" aria-hidden />
             </span>
             <p className="mt-5 text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
