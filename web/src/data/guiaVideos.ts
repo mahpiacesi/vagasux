@@ -227,7 +227,8 @@ export const guiaVideos: GuiaVideo[] = [
       "Tá boa?"
     ],
     "context": [
-      "Carreira"
+      "Carreira",
+      "Freelancer"
     ],
     "languages": [
       "🇧🇷"
@@ -1023,7 +1024,8 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Carreira"
+      "Carreira",
+      "Freelancer"
     ],
     "languages": [
       "🇧🇷"
@@ -1601,7 +1603,8 @@ export const guiaVideos: GuiaVideo[] = [
       "VagasUX"
     ],
     "context": [
-      "Carreira"
+      "Carreira",
+      "Freelancer"
     ],
     "languages": [
       "🇧🇷"
@@ -1828,6 +1831,14 @@ export const guiaVideos: GuiaVideo[] = [
     "vagasuxChannel": true,
     "addedAt": "2026-08-12T20:31:00Z"
   },
+  { "id": "yt-IU1TJNu4xG8", "title": "Iniciando uma carreira como designer freelancer", "authors": ["UXlab Design"], "context": ["Freelancer"], "languages": ["🇬🇧"], "url": "https://www.youtube.com/watch?v=IU1TJNu4xG8", "youtubeVideoId": "IU1TJNu4xG8", "imageUrl": "https://i.ytimg.com/vi/IU1TJNu4xG8/hqdefault.jpg" },
+  { "id": "yt-cWCMHHQvRwY", "title": "How to become a freelance designer in 2024", "authors": ["femke.design"], "context": ["Freelancer"], "languages": ["🇬🇧"], "url": "https://www.youtube.com/watch?v=cWCMHHQvRwY", "youtubeVideoId": "cWCMHHQvRwY", "imageUrl": "https://i.ytimg.com/vi/cWCMHHQvRwY/hqdefault.jpg" },
+  { "id": "yt-sdsbErSFLt8", "title": "Cobrar por hora ou por projeto?", "authors": ["UI Lab"], "context": ["Freelancer", "Carreira"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=sdsbErSFLt8", "youtubeVideoId": "sdsbErSFLt8", "imageUrl": "https://i.ytimg.com/vi/sdsbErSFLt8/hqdefault.jpg" },
+  { "id": "yt-f9EMla_ILFY", "title": "Quanto cobrar por uma arte, logo ou design?", "authors": ["Forasteiro"], "context": ["Freelancer", "Carreira"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=f9EMla_ILFY&t=12s", "youtubeVideoId": "f9EMla_ILFY", "imageUrl": "https://i.ytimg.com/vi/f9EMla_ILFY/hqdefault.jpg" },
+  { "id": "yt-yF3oJ9FoKng", "title": "Quanto cobrar por um projeto?", "authors": ["Alvaro Souza"], "context": ["Freelancer", "Carreira"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=yF3oJ9FoKng", "youtubeVideoId": "yF3oJ9FoKng", "imageUrl": "https://i.ytimg.com/vi/yF3oJ9FoKng/hqdefault.jpg" },
+  { "id": "yt-Djl9EZRgwkw", "title": "Como calcular o valor da sua hora", "authors": ["Design Circuit"], "context": ["Freelancer", "Carreira"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=Djl9EZRgwkw", "youtubeVideoId": "Djl9EZRgwkw", "imageUrl": "https://i.ytimg.com/vi/Djl9EZRgwkw/hqdefault.jpg" },
+  { "id": "yt--hF2tmh3rPo", "title": "3 erros ao enviar uma proposta de design", "authors": ["UI Lab"], "context": ["Freelancer"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=-hF2tmh3rPo", "youtubeVideoId": "-hF2tmh3rPo", "imageUrl": "https://i.ytimg.com/vi/-hF2tmh3rPo/hqdefault.jpg" },
+  { "id": "yt-X2zg5yfmpQY", "title": "Duas dicas para negociar melhor um projeto de design", "authors": ["UI Lab"], "context": ["Freelancer"], "languages": ["🇧🇷"], "url": "https://www.youtube.com/watch?v=X2zg5yfmpQY", "youtubeVideoId": "X2zg5yfmpQY", "imageUrl": "https://i.ytimg.com/vi/X2zg5yfmpQY/hqdefault.jpg" },
 ]
 
 /** Tags de Contexto únicas, ordenadas (Notion multi_select). */

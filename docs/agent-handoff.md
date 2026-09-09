@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-05
+**Última atualização:** 2026-09-09
 
 ---
 
@@ -97,18 +97,76 @@
 - **PR #85 mergeada:** refinamentos visuais, navegação sequencial e curadoria das trilhas estão em `main`.
 
 ### Trilha de portfólio (05 set)
-- **PR #87** — branch `cursor/trilha-portfolio-aed2`.
+- **PR #87 mergeada** em `main`.
 - A trilha `Montar meu portfólio` mantém seus textos editoriais nas cinco etapas e adiciona 36 referências externas em cards com título, descrição e miniatura.
 - A curadoria cobre estrutura de cases, portfólio sem experiência, desafios para praticar, plataformas de publicação e referências de portfólios.
 - A etapa final direciona para a FAQ de portfólio. A busca do Guia indexa as etapas e todos os cards.
+
+### Trilha de voluntariado (05 set)
+- **PR #88 mergeada** em `main`.
+- A trilha `Praticar em um voluntariado` foi estruturada em cinco etapas, da escolha de uma iniciativa à transformação da experiência em próximos passos.
+- A curadoria usa o conteúdo editorial enviado em 05/09 e inclui cards de aprofundamento na primeira e na segunda etapa.
+- O card de voluntariado da VagasUX abre a rota local e usa a URL pública apenas para a thumbnail.
+
+### Trilha freelancer (05 set)
+- **PR #89** — branch `cursor/trilha-freelancer-aed2`.
+- A trilha `Me tornar um designer freelancer` foi estruturada em cinco etapas, com referências para serviços, precificação, propostas e plataformas.
+- Os vídeos citados na trilha estão na fonte global `guiaVideos.ts`, com thumbnails do YouTube e tag `Freelancer`.
+- O vídeo restrito a assinantes foi removido da trilha, da área de vídeos e da allowlist de previews.
+- Três vídeos gerais de carreira foram mantidos apenas na categoria `Carreira`, sem a tag `Freelancer`.
+
+### Trilha internacional (05 set)
+- **PR #90 integrada** em `main`.
+- A trilha `Me posicionar para vagas internacionais` tem cinco etapas e cards de aprofundamento com previews autorizados.
+
+### Thumbnails do YouTube (05 set)
+- Branch `cursor/youtube-trail-thumbnails-aed2`.
+- Cards com URLs do YouTube agora usam diretamente a thumbnail oficial pelo ID do vídeo, sem depender do resolvedor de previews.
+- A branch `cursor/youtube-full-bleed-thumbnails-aed2` troca a variação 4:3 pela imagem 16:9, removendo as barras pretas dos cards.
+
+### Trilha primeira vaga (05 set)
+- A etapa 01 ganhou a seção `Veja relatos de quem já migrou`, com 33 relatos de transição profissional em cards com miniatura, título e contexto.
+- Todas as URLs da nova curadoria foram autorizadas no resolvedor de previews e indexadas na busca do Guia.
+
+### Formatos do Guia (05 set)
+- `Artigos` foi removido do carrossel e deixou de ter uma página própria.
+- Os artigos continuam disponíveis como referências dentro dos temas, trilhas e resultados de busca.
+
+### Canais do Guia (05 set)
+- A curadoria de `Canais` foi colocada em pausa: o formato, seus itens e sua página deixaram de aparecer no Guia.
+- O redirecionamento legado de perfis para seguir agora leva à página inicial do Guia.
+### Relatos de cursos (08–09 set)
+- A página de publicação ganhou um formulário nativo com busca de cursos e alternativa para sugerir curso ainda não mapeado.
+- O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
+- A database `Relatos de cursos` no Notion segue como fila editorial.
+- Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
+- O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
+- O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
+- Diagnóstico de runtime confirmado: às 02:14:37 UTC de 09/09, o POST da Function de produção `dpl_GfjyrZekqh7M24N335J99snAFfQR` retornou `502`. A variável de produção está carregada e a Function conseguiu chamar o upstream.
+- A causa do `403` foi identificada no Webhook do n8n: a opção `Ignore Bots` estava ativa e rejeitava a chamada servidor-a-servidor da Vercel.
+- `Ignore Bots` foi desativado e a nova versão do workflow de recebimento foi publicada.
+- Um envio real de produção foi concluído em 09/09 às 02:23 UTC: a Function retornou `201` e o workflow de recebimento terminou com sucesso.
+- A URL com UUID exibida pelo MCP (`/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/...`) retorna `404` para `POST`; não deve substituir a URL de produção configurada.
+- O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
+- A instrumentação temporária da Function foi removida após o diagnóstico.
+- A integração `Relatos recebidos` do Notion agora assina o evento oficial `page.properties_updated` da database `Relatos de cursos`.
+- O workflow `Publicar relatos aprovados — webhook Notion` recebeu e processou um relato de teste em 09/09, publicou-o no Supabase e marcou o registro como `Publicado` no Notion.
+- O relato usado no teste foi removido do Supabase após a validação; a reconciliação diária permanece ativa como contingência.
+- A curadoria do site agora exibe `Fluency Skills (antiga Awari)` para o curso que antes aparecia como Awari.
+- O acervo histórico foi conciliado com a database `Relatos de cursos`: ela passou de 28 para 167 registros, sendo 166 marcados como `Publicado`. O Supabase preserva 165 relatos públicos.
+- O workflow único de migração foi arquivado após terminar com sucesso; a sincronização contínua segue via webhook oficial e reconciliação diária.
+
+### Voluntários (09 set)
+- A integração `Voluntários do site` foi conectada à fonte `💪 Quem organiza` e sua assinatura oficial do Notion está verificada.
+- O workflow `Receber eventos do Notion — voluntários` está ativo: cria e atualiza a projeção `public.guia_volunteers` no Supabase e desativa pessoas removidas.
+- A tabela pública recebeu o backfill das 19 pessoas atuais. A página passa a usar essa fonte, sem depender de novo deploy para mudanças de nome, frentes ou redes sociais; fotos, emojis e relatos de perfil continuam no código.
+- Validação concluída: um evento `page.properties_updated` alterou Marianna Piacesi e a frente `Site` foi registrada no Supabase.
 
 ---
 
 ## Próximo passo esperado
 
-1. Revisar e integrar a PR #87 da trilha de portfólio.
-2. Refinar as trilhas após uso e feedback editorial.
-3. **Hardening** — ver `docs/hardening-backlog.md` (alertas Scheduler, health dashboard)
+1. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
 
 ---
 
@@ -123,7 +181,19 @@
 | [PR #83 — trilha entender o básico](https://github.com/mahpiacesi/vagasux/pull/83) | ✅ Mergeada em 02/09 |
 | [PR #84 — trilha primeira vaga](https://github.com/mahpiacesi/vagasux/pull/84) | ✅ Integrada em `main` em 02/09 |
 | [PR #85 — refinamentos das trilhas](https://github.com/mahpiacesi/vagasux/pull/85) | ✅ Mergeada em 03/09 |
-| [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | 🟡 Aberta |
+| [PR #86 — conteúdo da trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/86) | ✅ Integrada em `main` em 05/09 |
+| [PR #87 — trilha de portfólio](https://github.com/mahpiacesi/vagasux/pull/87) | ✅ Integrada em `main` em 05/09 |
+| [PR #88 — trilha de voluntariado](https://github.com/mahpiacesi/vagasux/pull/88) | ✅ Integrada em `main` em 05/09 |
+| [PR #89 — trilha freelancer](https://github.com/mahpiacesi/vagasux/pull/89) | ✅ Integrada em `main` em 05/09 |
+| [PR #93 — relatos de migração](https://github.com/mahpiacesi/vagasux/pull/93) | ✅ Integrada em `main` em 05/09 |
+| [PR #94 — formato Artigos](https://github.com/mahpiacesi/vagasux/pull/94) | ✅ Integrada em `main` em 05/09 |
+| [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
+| [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
+| [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação final do envio pendente |
+| Webhook oficial do Notion | ✅ Assinatura ativa e fluxo validado em 09/09 |
+| [PR #98 — correção do webhook](https://github.com/mahpiacesi/vagasux/pull/98) | ✅ Integrada junto da PR #99 em 09/09 |
+| [PR #99 — registro do webhook](https://github.com/mahpiacesi/vagasux/pull/99) | ✅ Integrada em `main` em 09/09 |
+| [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | Em validação: página usa `guia_volunteers`; webhook oficial está ativo |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---

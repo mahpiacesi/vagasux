@@ -1,6 +1,6 @@
 import { ArrowDown } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
-import { volunteers } from '@/data/volunteers'
+import { volunteers as staticVolunteers, type Volunteer } from '@/data/volunteers'
 import { voluntariadoHashes } from '@/lib/siteLinks'
 
 const heroMosaic = [
@@ -48,19 +48,22 @@ const heroMosaic = [
   },
 ] as const
 
-const frontCount = new Set(volunteers.flatMap((person) => person.roles)).size
-
-const heroStats = [
-  { value: String(volunteers.length), label: 'pessoas no time' },
-  { value: String(frontCount), label: 'frentes de atuação' },
-  { value: '100%', label: 'voluntário' },
-] as const
-
 function firstName(name: string) {
   return name.split(' ')[0] ?? name
 }
 
-export function VoluntariadoHero() {
+export function VoluntariadoHero({
+  volunteers = staticVolunteers,
+}: {
+  volunteers?: Volunteer[]
+}) {
+  const frontCount = new Set(volunteers.flatMap((person) => person.roles)).size
+  const heroStats = [
+    { value: String(volunteers.length), label: 'pessoas no time' },
+    { value: String(frontCount), label: 'frentes de atuação' },
+    { value: '100%', label: 'voluntário' },
+  ] as const
+
   return (
     <section className="relative overflow-hidden border-b border-neutral-500/10 bg-gradient-to-b from-brand-100/70 via-neutral-100 to-complementary-100/30 px-5 pt-16 pb-14 md:px-6 md:pt-24 md:pb-20">
       <div className="pointer-events-none absolute inset-0 -z-0">

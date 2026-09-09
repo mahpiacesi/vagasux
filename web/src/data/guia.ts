@@ -70,6 +70,8 @@ export const guiaTrilhas: GuiaTrilha[] = [
     title: 'Praticar em um voluntariado',
     description: 'Pratique Design em projetos, colabore com pessoas e construa experiência.',
     level: 'iniciante',
+    duration: '3 h',
+    contentCount: 13,
   },
   {
     id: 'freelancer',
@@ -77,6 +79,8 @@ export const guiaTrilhas: GuiaTrilha[] = [
     title: 'Me tornar um designer freelancer',
     description: 'Primeiros passos para organizar e oferecer seu trabalho.',
     level: 'intermediario',
+    duration: '4 h',
+    contentCount: 22,
   },
   {
     id: 'vagas-internacionais',
@@ -102,12 +106,6 @@ export const guiaTemas: GuiaTema[] = [
 
 export const guiaTipos: GuiaTipo[] = [
   {
-    id: 'artigos',
-    title: 'Artigos',
-    description:
-      'Artigos de design, produto e UX para ler no seu ritmo, curados pela comunidade VagasUX.',
-  },
-  {
     id: 'videos',
     title: 'Vídeos',
     description:
@@ -127,58 +125,9 @@ export const guiaTipos: GuiaTipo[] = [
       'Newsletters de design, produto e UX para acompanhar no e-mail, curadas pela comunidade VagasUX.',
   },
   { id: 'eventos', title: 'Eventos', description: 'Principais eventos anuais de UX, produto e tecnologia, curados pela comunidade VagasUX.' },
-  {
-    id: 'canais',
-    title: 'Canais',
-    description: 'Perfis, grupos e comunidades para seguir',
-  },
 ]
 
 export const guiaCuratedItems: GuiaCuratedItem[] = [
-  {
-    id: 'art-1',
-    title: 'O que faz um Product Designer?',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-28',
-    tipos: ['artigos'],
-    temas: ['ux'],
-    trilhas: ['entender-o-basico'],
-    difficulty: 'iniciante',
-    duration: '8 min',
-  },
-  {
-    id: 'art-2',
-    title: 'Guia de entrevistas em UX',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-22',
-    tipos: ['artigos'],
-    temas: ['carreira'],
-    trilhas: ['primeira-vaga'],
-    difficulty: 'intermediario',
-    duration: '12 min',
-  },
-  {
-    id: 'art-3',
-    title: 'Como escrever um case study enxuto',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-15',
-    tipos: ['artigos'],
-    temas: ['carreira'],
-    trilhas: ['portfolio'],
-    difficulty: 'iniciante',
-    duration: '10 min',
-  },
-  {
-    id: 'art-4',
-    title: 'Heurísticas de usabilidade na prática',
-    url: 'https://medium.com/vagas-ux',
-    addedAt: '2026-07-08',
-    tipos: ['artigos'],
-    temas: ['ux'],
-    trilhas: ['ui'],
-    difficulty: 'iniciante',
-    duration: '14 min',
-  },
   {
     id: 'vid-1',
     title: 'Como montar um portfólio júnior',
@@ -365,36 +314,6 @@ export const guiaCuratedItems: GuiaCuratedItem[] = [
     addedAt: '2026-07-17',
     tipos: ['eventos'],
     temas: ['carreira'],
-    trilhas: [],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-1',
-    title: 'VagasUX no Instagram',
-    url: 'https://instagram.com/vagasux',
-    addedAt: '2026-07-28',
-    tipos: ['canais'],
-    temas: ['carreira'],
-    trilhas: [],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-2',
-    title: 'Grupo Telegram: Guia do PD',
-    url: 'https://t.me/guiadoproductdesigner',
-    addedAt: '2026-07-19',
-    tipos: ['canais'],
-    temas: ['ux'],
-    trilhas: ['entender-o-basico'],
-    difficulty: 'iniciante',
-  },
-  {
-    id: 'can-3',
-    title: 'Canal UX Now no YouTube',
-    url: 'https://www.youtube.com',
-    addedAt: '2026-07-13',
-    tipos: ['canais'],
-    temas: ['ux'],
     trilhas: [],
     difficulty: 'iniciante',
   },

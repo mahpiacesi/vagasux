@@ -1,5 +1,12 @@
 # Guia: previews de links
 
+## Formulários
+
+Comece formulários com componentes shadcn existentes. Para campos sem componente
+instalado, sinalize a lacuna antes de criar uma implementação própria. Mensagens
+de erro devem aparecer junto ao campo, respeitar `aria-invalid` e manter espaço
+reservado para não deslocar o layout ao validar.
+
 Ao adicionar ou migrar um link que usa `GuiaLinkPreviewCard`, inclua a URL
 exata em `web/api/link-preview.ts` (`allowedUrls`) na mesma alteração.
 

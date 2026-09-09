@@ -11,8 +11,12 @@ import { guiaTemaResearchLinkSections } from '@/data/guiaTemaResearchLinks'
 import { guiaTemaDesignSystemLinks } from '@/data/guiaTemaDesignSystemLinks'
 import { guiaTemaAccessibilityLinks } from '@/data/guiaTemaAccessibilityLinks'
 import { guiaTrilhaEntenderOBasicoStages } from '@/data/guiaTrilhaEntenderOBasico'
+import { guiaTrilhaFreelancerStages } from '@/data/guiaTrilhaFreelancer'
+import { guiaTrilhaInternacionalStages } from '@/data/guiaTrilhaInternacional'
 import { guiaTrilhaPortfolioStages } from '@/data/guiaTrilhaPortfolio'
 import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
+import { guiaTrilhaVoluntariadoStages } from '@/data/guiaTrilhaVoluntariado'
+import { guiaRelatosMigracao } from '@/data/guiaRelatosMigracao'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
@@ -33,7 +37,6 @@ const categoryLabels: Record<string, string> = {
   livros: 'Livros',
   podcasts: 'Podcasts',
   newsletters: 'Newsletters',
-  canais: 'Canais',
   eventos: 'Eventos',
 }
 
@@ -118,7 +121,18 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   })),
   ...indexedTrailStages('entender-o-basico', guiaTrilhaEntenderOBasicoStages),
   ...indexedTrailStages('primeira-vaga', guiaTrilhaPrimeiraVagaStages),
+  ...guiaRelatosMigracao.map(([id, title, description]) => ({
+    id: `trilha-primeira-vaga-relato-${id}`,
+    title,
+    category: 'Relato de transição',
+    to: `${guiaRoutes.trilha('primeira-vaga')}?trilha=primeira-vaga&etapa=01`,
+    keywords: `${title} ${description} primeira vaga mudança de carreira migração transição UX`,
+    snippet: description,
+  })),
   ...indexedTrailStages('portfolio', guiaTrilhaPortfolioStages),
+  ...indexedTrailStages('freelancer', guiaTrilhaFreelancerStages),
+  ...indexedTrailStages('vagas-internacionais', guiaTrilhaInternacionalStages),
+  ...indexedTrailStages('voluntariado', guiaTrilhaVoluntariadoStages),
   ...guiaTemas.map((item) => ({
     id: `tema-${item.id}`,
     title: item.title,
