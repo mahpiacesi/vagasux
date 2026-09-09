@@ -5,6 +5,7 @@ import {
   Heart,
   LinkedinLogo,
   NotePencil,
+  Umbrella,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
@@ -144,7 +145,7 @@ export function MentoriaPage() {
             <Link to={routes.guilda} className="font-bold text-brand-500 hover:underline">
               Guilda do Vaguiner
             </Link>
-            ? Membros tem descontinho na mentoria.
+            ? Membros tem desconto na mentoria 👀
           </p>
         </div>
       </section>
@@ -199,12 +200,12 @@ export function MentoriaPage() {
               Conheça a Guilda do Vaguiner
             </p>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-100/80">
-              Participe de encontros, mentorias e trocas com a comunidade. Pessoas membros têm acesso a desconto nas mentorias.
+              Participe de encontros em grupo, desafios e trocas com a comunidade. Membros da Guilda tem acesso a desconto nas mentorias.
             </p>
           </div>
           <Button variant="secondary" asChild className="rounded-full bg-neutral-100 px-5 py-3 font-bold text-brand-500 hover:bg-brand-100">
             <Link to={routes.guilda}>
-              Conhecer a Guilda <Heart weight="bold" aria-hidden />
+              Conhecer a Guilda <Umbrella weight="bold" aria-hidden />
             </Link>
           </Button>
         </div>
