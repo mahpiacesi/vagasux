@@ -2,7 +2,6 @@ import {
   CalendarCheck,
   ChatCircleDots,
   CheckCircle,
-  Coffee,
   Heart,
   LinkedinLogo,
   NotePencil,
@@ -11,7 +10,7 @@ import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 const mentoringPaymentUrl = 'https://nas.com/vagasux/zerolink/mentoria'
 
@@ -127,7 +126,7 @@ export function MentoriaPage() {
           <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
             <div>
               <p className="font-black tracking-[-0.02em] text-neutral-500">
-                Pronta para marcar sua mentoria?
+                Pronto para marcar sua mentoria?
               </p>
               <p className="mt-1 text-sm leading-relaxed text-neutral-400">
                 Faça uma contribuição de R$ 15 e guarde seu comprovante.
@@ -145,7 +144,7 @@ export function MentoriaPage() {
             <Link to={routes.guilda} className="font-bold text-brand-500 hover:underline">
               Guilda do Vaguiner
             </Link>
-            ? Pessoas membros têm desconto na mentoria.
+            ? Membros tem descontinho na mentoria.
           </p>
         </div>
       </section>
@@ -191,15 +190,22 @@ export function MentoriaPage() {
       </section>
 
       <section className="px-5 pb-16 md:px-6 md:pb-24">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl bg-brand-500 px-7 py-8 text-neutral-100 md:flex-row md:items-center md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl bg-neutral-500 px-7 py-8 text-neutral-100 md:flex-row md:items-center md:px-10">
           <div>
-            <p className="text-2xl font-black tracking-[-0.035em]">Que tal pagar um café pra gente? ☕</p>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-100/80">Seu apoio ajuda a manter as iniciativas gratuitas e a comunidade em movimento.</p>
+            <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+              Comunidade exclusiva
+            </p>
+            <p className="mt-2 text-2xl font-black tracking-[-0.035em]">
+              Conheça a Guilda do Vaguiner
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-100/80">
+              Participe de encontros, mentorias e trocas com a comunidade. Pessoas membros têm acesso a desconto nas mentorias.
+            </p>
           </div>
           <Button variant="secondary" asChild className="rounded-full bg-neutral-100 px-5 py-3 font-bold text-brand-500 hover:bg-brand-100">
-            <a href={superSite.apoie} target="_blank" rel="noopener noreferrer">
-              Apoie a iniciativa <Coffee weight="bold" aria-hidden />
-            </a>
+            <Link to={routes.guilda}>
+              Conhecer a Guilda <Heart weight="bold" aria-hidden />
+            </Link>
           </Button>
         </div>
       </section>
