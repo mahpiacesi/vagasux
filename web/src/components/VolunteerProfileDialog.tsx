@@ -27,9 +27,12 @@ export function VolunteerProfileDialog({
 }: VolunteerProfileDialogProps) {
   if (!volunteer) return null
 
-  const profile = volunteerProfiles[volunteer.slug]
-  const hasAbout = Boolean(profile?.about.trim())
-  const rapidinhas = profile?.rapidinhas.filter((item) => item.trim()) ?? []
+  const fallbackProfile = volunteerProfiles[volunteer.slug]
+  const about = volunteer.bio ?? fallbackProfile?.about ?? ''
+  const rapidinhas = (
+    volunteer.rapidinhas ?? fallbackProfile?.rapidinhas ?? []
+  ).filter((item) => item.trim())
+  const hasAbout = Boolean(about.trim())
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -97,7 +100,7 @@ export function VolunteerProfileDialog({
                   Um pouco sobre mim
                 </h3>
                 <div className="mt-3 space-y-3 text-sm md:text-base">
-                  {formatParagraphs(profile.about)}
+                  {formatParagraphs(about)}
                 </div>
               </section>
             ) : null}

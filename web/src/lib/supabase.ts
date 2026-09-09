@@ -106,16 +106,22 @@ export type PublicVolunteer = {
   notionPageId: string
   name: string
   roles: string[]
+  emoji?: string
   instagram?: string
   linkedin?: string
+  bio?: string
+  rapidinhas: string[]
 }
 
 const volunteerColumns = [
   'notion_page_id',
   'name',
   'roles',
+  'emoji',
   'instagram_url',
   'linkedin_url',
+  'bio',
+  'rapidinhas',
 ] as const
 
 export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
@@ -131,13 +137,19 @@ export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
     notion_page_id: string
     name: string
     roles: string[] | null
+    emoji: string | null
     instagram_url: string | null
     linkedin_url: string | null
+    bio: string | null
+    rapidinhas: string[] | null
   }>).map((volunteer) => ({
     notionPageId: volunteer.notion_page_id,
     name: volunteer.name,
     roles: volunteer.roles ?? [],
+    emoji: volunteer.emoji ?? undefined,
     instagram: volunteer.instagram_url ?? undefined,
     linkedin: volunteer.linkedin_url ?? undefined,
+    bio: volunteer.bio ?? undefined,
+    rapidinhas: volunteer.rapidinhas ?? [],
   }))
 }
