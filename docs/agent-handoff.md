@@ -160,13 +160,13 @@
 - A integração `Voluntários do site` foi conectada à fonte `💪 Quem organiza` e sua assinatura oficial do Notion está verificada.
 - O workflow `Receber eventos do Notion — voluntários` está ativo: cria e atualiza a projeção `public.guia_volunteers` no Supabase e desativa pessoas removidas.
 - A tabela pública recebeu o backfill das 19 pessoas atuais. A página passa a usar essa fonte, sem depender de novo deploy para mudanças de nome, frentes ou redes sociais; fotos, emojis e relatos de perfil continuam no código.
+- Validação concluída: um evento `page.properties_updated` alterou Marianna Piacesi e a frente `Site` foi registrada no Supabase.
 
 ---
 
 ## Próximo passo esperado
 
-1. Alterar uma frente de uma pessoa no Notion e confirmar a atualização no Supabase.
-2. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
+1. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
 
 ---
 
