@@ -10,6 +10,7 @@ import {
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
+import { MentorshipRequestForm } from '@/components/MentorshipRequestForm'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
 import { routes } from '@/lib/siteLinks'
@@ -148,6 +149,9 @@ export function MentoriaPage() {
             </Link>
             ? Membros tem desconto na mentoria 👀
           </p>
+          <a href="#solicitar-mentoria" className="mt-6 inline-flex text-sm font-bold text-brand-500 hover:underline">
+            Já fez sua contribuição? Envie sua solicitação →
+          </a>
         </div>
       </section>
 
@@ -188,6 +192,25 @@ export function MentoriaPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section id="solicitar-mentoria" className="scroll-mt-24 border-t border-neutral-500/10 bg-brand-100/25 px-5 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+            Solicite sua mentoria
+          </p>
+          <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+            Conte com quem e sobre o que quer conversar
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+            Depois da contribuição, envie seu comprovante e o contexto da conversa. A solicitação será revisada antes da confirmação.
+          </p>
+          <MentorshipRequestForm
+            mentors={mentors
+              .filter((mentor) => mentor.available)
+              .map((mentor) => ({ id: mentor.slug, name: mentor.name }))}
+          />
         </div>
       </section>
 
