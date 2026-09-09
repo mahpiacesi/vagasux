@@ -153,6 +153,8 @@
 - O workflow `Publicar relatos aprovados — webhook Notion` recebeu e processou um relato de teste em 09/09, publicou-o no Supabase e marcou o registro como `Publicado` no Notion.
 - O relato usado no teste foi removido do Supabase após a validação; a reconciliação diária permanece ativa como contingência.
 - A curadoria do site agora exibe `Fluency Skills (antiga Awari)` para o curso que antes aparecia como Awari.
+- O acervo histórico foi conciliado com a database `Relatos de cursos`: ela passou de 28 para 167 registros, sendo 166 marcados como `Publicado`. O Supabase preserva 165 relatos públicos.
+- O workflow único de migração foi arquivado após terminar com sucesso; a sincronização contínua segue via webhook oficial e reconciliação diária.
 
 ---
 
