@@ -1,7 +1,7 @@
 import { CaretDown, Umbrella } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { communityHashes, routes } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 const navIconProps = { weight: 'bold' as const }
 
@@ -12,8 +12,13 @@ type ComunidadeNavItem =
 const comunidadeItems: ComunidadeNavItem[] = [
   {
     kind: 'internal' as const,
-    to: `${routes.comunidade}#${communityHashes.canaisAbertos}`,
+    to: routes.comunidade,
     label: 'Comunidade aberta',
+  },
+  {
+    kind: 'internal' as const,
+    to: routes.mentoria,
+    label: 'Mentoria',
   },
   {
     kind: 'internal' as const,

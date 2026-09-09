@@ -1,0 +1,166 @@
+import {
+  CalendarCheck,
+  ChatCircleDots,
+  CheckCircle,
+  Coffee,
+  Heart,
+  LinkedinLogo,
+  NotePencil,
+} from '@phosphor-icons/react'
+import { Button } from '@/components/ui/button'
+import { volunteers } from '@/data/volunteers'
+import { superSite } from '@/lib/siteLinks'
+
+const mentorAvailability = [
+  { slug: 'natalia-feitosa', status: 'Indisponível', available: false },
+  { slug: 'andre-hiro', status: 'Disponível', available: true },
+  { slug: 'anna-barros', status: 'Disponível', available: true },
+  { slug: 'luana-conde', status: 'Indisponível', available: false },
+  { slug: 'jade-simoes', status: 'Disponível', available: true },
+] as const
+
+const steps = [
+  {
+    number: '01',
+    title: 'Faça sua contribuição',
+    description:
+      'Cada apoio a partir de R$ 10 equivale a uma mentoria. Para marcar mais conversas, faça uma nova contribuição para cada encontro.',
+    detail: 'Salve o comprovante para enviar à pessoa mentora escolhida.',
+    Icon: Heart,
+  },
+  {
+    number: '02',
+    title: 'Escolha uma pessoa mentora',
+    description:
+      'Com o comprovante em mãos, escolha uma pessoa disponível e envie uma mensagem pelo LinkedIn para combinar o horário.',
+    detail: 'O agendamento é manual e a resposta pode levar até cinco dias úteis.',
+    Icon: CalendarCheck,
+  },
+  {
+    number: '03',
+    title: 'Prepare suas dúvidas',
+    description:
+      'Envie um resumo do que você quer conversar. Quanto mais contexto compartilhar, melhor a pessoa mentora poderá te ajudar.',
+    detail: 'Pronto: agora é só aguardar a confirmação da mentoria.',
+    Icon: NotePencil,
+  },
+] as const
+
+export function MentoriaPage() {
+  const mentors = mentorAvailability.flatMap((mentor) => {
+    const volunteer = volunteers.find((person) => person.slug === mentor.slug)
+    return volunteer ? [{ ...volunteer, ...mentor }] : []
+  })
+
+  return (
+    <main>
+      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
+        <div
+          className="pointer-events-none absolute -top-24 -right-16 size-80 rounded-full bg-brand-400/35 blur-3xl"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-6xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+            Mentoria VagasUX
+          </p>
+          <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] md:text-6xl">
+            Uma conversa para apoiar seu próximo passo.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-100/75 md:text-lg">
+            As mentorias da VagasUX são conversas com pessoas voluntárias da
+            iniciativa, abertas para trocar experiências, tirar dúvidas e
+            refletir sobre sua trajetória em design.
+          </p>
+          <Button variant="guia" asChild className="mt-8">
+            <a href="#como-funciona">
+              Entenda como funciona
+              <ChatCircleDots weight="bold" aria-hidden />
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      <section id="como-funciona" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+              Como participar
+            </p>
+            <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+              Três passos para marcar sua conversa
+            </h2>
+          </div>
+          <ol className="mt-10 grid gap-4 lg:grid-cols-3">
+            {steps.map(({ number, title, description, detail, Icon }) => (
+              <li key={number} className="rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-black text-brand-400">{number}</span>
+                  <span className="flex size-10 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
+                    <Icon size={21} weight="bold" aria-hidden />
+                  </span>
+                </div>
+                <h3 className="mt-8 text-xl font-black tracking-[-0.025em] text-neutral-500">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-400">{description}</p>
+                <p className="mt-4 border-t border-neutral-500/10 pt-4 text-sm font-semibold leading-relaxed text-neutral-500">{detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-y border-complementary-200/70 bg-complementary-100/50 px-5 py-12 md:px-6">
+        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
+          {[
+            'Compareça no horário combinado. Se precisar remarcar, avise com pelo menos 48 horas de antecedência.',
+            'Reserve um local silencioso para aproveitar a conversa com foco e tranquilidade.',
+            'Cada encontro dura 40 minutos e pode ser estendido conforme a disponibilidade da pessoa mentora.',
+          ].map((note) => (
+            <p key={note} className="flex gap-3 text-sm leading-relaxed text-neutral-500">
+              <CheckCircle size={20} weight="fill" className="mt-0.5 shrink-0 text-complementary-300" aria-hidden />
+              {note}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-5 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Pessoas mentoras</p>
+            <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+              Encontre uma pessoa disponível para conversar
+            </h2>
+          </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {mentors.map((mentor) => (
+              <li key={mentor.slug} className="overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100">
+                <div className="flex gap-4 p-5">
+                  {mentor.photo ? <img src={mentor.photo} alt="" className="size-16 rounded-2xl object-cover" style={{ objectPosition: mentor.photoFocus }} /> : <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-100 text-3xl">{mentor.emoji}</span>}
+                  <div className="min-w-0">
+                    <h3 className="font-black tracking-[-0.02em] text-neutral-500">{mentor.name}</h3>
+                    <p className={`mt-1 text-sm font-bold ${mentor.available ? 'text-emerald-700' : 'text-neutral-400'}`}>{mentor.status}</p>
+                    {mentor.linkedin && mentor.available ? <a href={mentor.linkedin} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-brand-500 hover:underline"><LinkedinLogo size={17} weight="fill" aria-hidden /> Conversar no LinkedIn</a> : null}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="px-5 pb-16 md:px-6 md:pb-24">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl bg-brand-500 px-7 py-8 text-neutral-100 md:flex-row md:items-center md:px-10">
+          <div>
+            <p className="text-2xl font-black tracking-[-0.035em]">Que tal pagar um café pra gente? ☕</p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-100/80">Seu apoio ajuda a manter as iniciativas gratuitas e a comunidade em movimento.</p>
+          </div>
+          <Button variant="secondary" asChild className="rounded-full bg-neutral-100 px-5 py-3 font-bold text-brand-500 hover:bg-brand-100">
+            <a href={superSite.apoie} target="_blank" rel="noopener noreferrer">
+              Apoie a iniciativa <Coffee weight="bold" aria-hidden />
+            </a>
+          </Button>
+        </div>
+      </section>
+    </main>
+  )
+}

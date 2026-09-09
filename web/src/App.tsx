@@ -17,6 +17,7 @@ import { GuiaSearchResultsPageContent } from '@/components/guia/GuiaSearchResult
 import { GuiaTipoPage } from '@/pages/guia/GuiaTipoPage'
 import { GuiaTrilhaPage } from '@/pages/guia/GuiaTrilhaPage'
 import { HomePage } from '@/pages/HomePage'
+import { MentoriaPage } from '@/pages/MentoriaPage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
 import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
 import { CodigoDeCondutaPage } from '@/pages/CodigoDeCondutaPage'
@@ -35,6 +36,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route index element={<HomePage />} />
           <Route path={routes.comunidade} element={<ComunidadePage />} />
+          <Route path={routes.mentoria} element={<MentoriaPage />} />
           <Route path={routes.guilda} element={<GuildaPage />} />
           <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.parcerias} element={<ParceriasPage />} />

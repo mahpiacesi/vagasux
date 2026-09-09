@@ -2,6 +2,7 @@
 export const routes = {
   home: '/',
   comunidade: '/comunidade',
+  mentoria: '/mentoria',
   guilda: '/guilda',
   voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',
