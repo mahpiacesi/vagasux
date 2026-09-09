@@ -223,7 +223,7 @@ export const guiaCursos: GuiaCurso[] = [
   },
   {
     "id": "386b924bc1c34840907e7f06405b5bdd",
-    "title": "Awari",
+    "title": "Fluency Skills (antiga Awari)",
     "url": "https://awari.com.br/?utm_source=siteparceiro_vagasux&utm_content=home",
     "cost": [
       "Pago"
