@@ -7,6 +7,7 @@ import {
   LinkedinLogo,
   NotePencil,
 } from '@phosphor-icons/react'
+import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
 import { superSite } from '@/lib/siteLinks'
@@ -54,29 +55,36 @@ export function MentoriaPage() {
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
+      <section className="relative overflow-hidden bg-neutral-500 px-5 py-16 text-neutral-100 md:px-6 md:py-20">
         <div
           className="pointer-events-none absolute -top-24 -right-16 size-80 rounded-full bg-brand-400/35 blur-3xl"
           aria-hidden
         />
-        <div className="relative mx-auto max-w-6xl">
-          <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
-            Mentoria VagasUX
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] md:text-6xl">
-            Uma conversa para apoiar seu próximo passo.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-100/75 md:text-lg">
-            As mentorias da VagasUX são conversas com pessoas voluntárias da
-            iniciativa, abertas para trocar experiências, tirar dúvidas e
-            refletir sobre sua trajetória em design.
-          </p>
-          <Button variant="guia" asChild className="mt-8">
-            <a href="#como-funciona">
-              Entenda como funciona
-              <ChatCircleDots weight="bold" aria-hidden />
-            </a>
-          </Button>
+        <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)] md:items-center">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+              Mentoria VagasUX
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] md:text-6xl">
+              Que tal um papinho?
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-100/75 md:text-lg">
+              Uma conversa individual com pessoas voluntárias da VagasUX para
+              tirar dúvidas, trocar experiências e refletir sobre seu próximo
+              passo em design.
+            </p>
+            <Button variant="guia" asChild className="mt-8">
+              <a href="#como-funciona">
+                Entenda como funciona
+                <ChatCircleDots weight="bold" aria-hidden />
+              </a>
+            </Button>
+          </div>
+          <img
+            src={learningIllustration}
+            alt="Pessoa aprendendo com referências de ferramentas de design"
+            className="mx-auto w-full max-w-md"
+          />
         </div>
       </section>
 
