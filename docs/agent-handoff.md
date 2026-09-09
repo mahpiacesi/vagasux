@@ -149,13 +149,16 @@
 - A URL com UUID exibida pelo MCP (`/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/...`) retorna `404` para `POST`; não deve substituir a URL de produção configurada.
 - O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
 - A instrumentação temporária da Function foi removida após o diagnóstico.
+- A integração `Relatos recebidos` do Notion agora assina o evento oficial `page.properties_updated` da database `Relatos de cursos`.
+- O workflow `Publicar relatos aprovados — webhook Notion` recebeu e processou um relato de teste em 09/09, publicou-o no Supabase e marcou o registro como `Publicado` no Notion.
+- O relato usado no teste foi removido do Supabase após a validação; a reconciliação diária permanece ativa como contingência.
 
 ---
 
 ## Próximo passo esperado
 
-1. Conferir o relato de teste no Notion e apagá-lo ou mantê-lo conforme a curadoria.
-2. Aprovar um relato no Notion para validar a publicação automática no Supabase e no site.
+1. Remover o registro de teste `TESTE 1 — pode apagar` no Notion, se ele não for mais necessário para a curadoria.
+2. Acompanhar a próxima aprovação real: ela deve chegar pelo webhook e aparecer no site sem novo deploy.
 
 ---
 
@@ -179,6 +182,7 @@
 | [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
 | [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
 | [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação final do envio pendente |
+| Webhook oficial do Notion | ✅ Assinatura ativa e fluxo validado em 09/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
