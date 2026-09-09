@@ -110,7 +110,7 @@
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
 - Diagnóstico de runtime confirmado: a URL de produção exibida pelo workflow ativo (`/webhook/<webhookId>/course-feedback-intake-d4a41145`) responde `404` e não cria execução. A rota registrada pelo n8n sem UUID responde `403 Authorization data is wrong!` antes de alcançar o workflow, pois o proxy reverso protege `/webhook/*` com Basic Auth.
-- O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem.
+- O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
 - A instrumentação temporária da Function foi removida após o diagnóstico.
 
 ---
