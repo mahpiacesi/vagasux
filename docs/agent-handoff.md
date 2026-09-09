@@ -161,6 +161,7 @@
 - O workflow `Receber eventos do Notion — voluntários` está ativo: cria e atualiza a projeção `public.guia_volunteers` no Supabase e desativa pessoas removidas.
 - A tabela pública recebeu o backfill das 19 pessoas atuais. A página passa a usar essa fonte, sem depender de novo deploy para mudanças de nome, frentes ou redes sociais; fotos, emojis e relatos de perfil continuam no código.
 - Validação concluída: um evento `page.properties_updated` alterou Marianna Piacesi e a frente `Site` foi registrada no Supabase.
+- A fonte agora também oferece `Bio` e `Rapidinhas`; o webhook registra os dois campos e usa o emoji do ícone de cada página no Notion. Fotos ainda precisam de um fluxo de cópia para storage durável.
 
 ---
 

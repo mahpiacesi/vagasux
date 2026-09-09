@@ -25,6 +25,8 @@ export type Volunteer = {
   photoFocus?: string
   instagram?: string
   linkedin?: string
+  bio?: string
+  rapidinhas?: string[]
 }
 
 export const defaultPhotoFocus = 'center 35%'

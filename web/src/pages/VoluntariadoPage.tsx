@@ -157,12 +157,17 @@ function mergeVolunteer(publicVolunteer: PublicVolunteer): Volunteer {
   return {
     slug,
     name: publicVolunteer.name,
-    emoji: staticVolunteer?.emoji ?? fallbackEmoji,
+    emoji: publicVolunteer.emoji ?? staticVolunteer?.emoji ?? fallbackEmoji,
     photo: staticVolunteer?.photo,
     photoFocus: staticVolunteer?.photoFocus,
     roles: publicVolunteer.roles,
     instagram: publicVolunteer.instagram,
     linkedin: publicVolunteer.linkedin,
+    bio: publicVolunteer.bio?.trim() || undefined,
+    rapidinhas:
+      publicVolunteer.rapidinhas.length > 0
+        ? publicVolunteer.rapidinhas
+        : undefined,
   }
 }
 
