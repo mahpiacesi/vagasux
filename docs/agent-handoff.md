@@ -135,15 +135,16 @@
 ### Canais do Guia (05 set)
 - A curadoria de `Canais` foi colocada em pausa: o formato, seus itens e sua página deixaram de aparecer no Guia.
 - O redirecionamento legado de perfis para seguir agora leva à página inicial do Guia.
-### Relatos de cursos (08 set)
+### Relatos de cursos (08–09 set)
 - A página de publicação ganhou um formulário nativo com busca de cursos e alternativa para sugerir curso ainda não mapeado.
 - O envio será encaminhado ao webhook n8n indicado por `N8N_COURSE_FEEDBACK_WEBHOOK_URL`.
 - A database `Relatos de cursos` no Notion segue como fila editorial.
 - Os 160 relatos históricos de 49 cursos foram migrados para `public.guia_curso_relatos`, com texto, autoria disponível e data de recebimento preservados.
 - O painel de cada curso agora lê os relatos publicados do Supabase e mantém o arquivo estático como fallback se a consulta não retornar conteúdo.
 - O aviso geral de validação do formulário desaparece assim que todos os campos destacados forem corrigidos.
-- Diagnóstico de runtime confirmado: a URL de produção exibida pelo workflow ativo (`/webhook/<webhookId>/course-feedback-intake-d4a41145`) responde `404` e não cria execução. A rota registrada pelo n8n sem UUID responde `403 Authorization data is wrong!` antes de alcançar o workflow, pois o proxy reverso protege `/webhook/*` com Basic Auth.
-- Em 09/09, um `POST` com dados válidos para a Function atualmente publicada em `https://vagasux.vercel.app/api/course-feedback` retornou `503 {"error":"Course feedback intake is not configured"}`. A variável de produção `N8N_COURSE_FEEDBACK_WEBHOOK_URL` está ausente ou usa um formato inválido. O endpoint n8n correto, sem UUID, também foi confirmado como bloqueado pelo Basic Auth do Traefik.
+- Diagnóstico de runtime confirmado: às 02:14:37 UTC de 09/09, o POST da Function de produção `dpl_GfjyrZekqh7M24N335J99snAFfQR` retornou `502`. A variável de produção está carregada e a Function conseguiu chamar o upstream.
+- O POST sintético diretamente para `https://n8n-lws1.srv1866525.hstgr.cloud/webhook/course-feedback-intake-d4a41145` retornou `403 Authorization data is wrong!` e não criou execution. A autenticação Basic Auth do Traefik bloqueia o `POST` antes do n8n, apesar de o Webhook ativo usar `authentication:none`.
+- A URL com UUID exibida pelo MCP (`/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/...`) retorna `404` para `POST`; não deve substituir a URL de produção configurada.
 - O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
 - A instrumentação temporária da Function foi removida após o diagnóstico.
 
@@ -152,8 +153,7 @@
 ## Próximo passo esperado
 
 1. No VPS, liberar somente `POST /webhook/course-feedback-intake-d4a41145` da middleware Basic Auth no Traefik e manter a autenticação na interface do n8n.
-2. Na Vercel, definir `N8N_COURSE_FEEDBACK_WEBHOOK_URL=https://n8n-lws1.srv1866525.hstgr.cloud/webhook/course-feedback-intake-d4a41145` para o ambiente Production e publicar o deployment que usa a variável.
-3. Enviar um relato de teste e conferir a execução criada em `Receber relatos de cursos` antes de aprová-lo no Notion.
+2. Repetir o POST de produção e conferir a execution criada em `Receber relatos de cursos`; o esperado é `201` na Function e `success` no n8n.
 
 ---
 
@@ -177,7 +177,7 @@
 | [PR #95 — formato Canais](https://github.com/mahpiacesi/vagasux/pull/95) | ✅ Integrada em `main` em 05/09 |
 | [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
 | [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação do webhook pendente |
-| Diagnóstico de produção do formulário | `cursor/fix-course-feedback-webhook-3699`; aguarda acesso ao VPS/Vercel para aplicar configuração |
+| Diagnóstico de produção do formulário | `cursor/fix-course-feedback-webhook-7537`; causa confirmada, aguarda ajuste no Traefik do VPS |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
