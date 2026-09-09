@@ -161,13 +161,16 @@
 - O workflow `Receber eventos do Notion — voluntários` está ativo: cria e atualiza a projeção `public.guia_volunteers` no Supabase e desativa pessoas removidas.
 - A tabela pública recebeu o backfill das 19 pessoas atuais. A página passa a usar essa fonte, sem depender de novo deploy para mudanças de nome, frentes ou redes sociais; fotos, emojis e relatos de perfil continuam no código.
 - Validação concluída: um evento `page.properties_updated` alterou Marianna Piacesi e a frente `Site` foi registrada no Supabase.
-- A fonte agora também oferece `Bio` e `Rapidinhas`; o webhook registra os dois campos e usa o emoji do ícone de cada página no Notion. Fotos ainda precisam de um fluxo de cópia para storage durável.
+- A fonte agora também oferece `Bio` e `Rapidinhas`; o webhook registra os dois campos e usa o emoji do ícone de cada página no Notion.
+- A propriedade `Foto` agora é copiada para o bucket público `volunteer-photos` no Supabase. A imagem de Aline Carvalho foi validada com a URL permanente gerada pelo fluxo.
+- Diagnóstico do backfill de fotos: oito sincronizações concluíram e gravaram no Storage. A falha foi o ID incorreto de Tatiana Barbosa (`6f5d308c-32a4-4f4e-a3ac-e51124dffc2c`); o ID existente é `6f5d308c-b32a-4f4e-a3ac-e51124dffc2c`. O Notion respondeu `404` antes da chamada à Edge Function.
 
 ---
 
 ## Próximo passo esperado
 
-1. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
+1. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
+2. Revisar depois como armazenar foto, emoji e texto de perfil no Notion para tornar também esses campos editáveis sem deploy.
 
 ---
 

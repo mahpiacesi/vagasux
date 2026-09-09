@@ -107,6 +107,7 @@ export type PublicVolunteer = {
   name: string
   roles: string[]
   emoji?: string
+  photo?: string
   instagram?: string
   linkedin?: string
   bio?: string
@@ -118,6 +119,7 @@ const volunteerColumns = [
   'name',
   'roles',
   'emoji',
+  'photo_url',
   'instagram_url',
   'linkedin_url',
   'bio',
@@ -138,6 +140,7 @@ export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
     name: string
     roles: string[] | null
     emoji: string | null
+    photo_url: string | null
     instagram_url: string | null
     linkedin_url: string | null
     bio: string | null
@@ -147,6 +150,7 @@ export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
     name: volunteer.name,
     roles: volunteer.roles ?? [],
     emoji: volunteer.emoji ?? undefined,
+    photo: volunteer.photo_url ?? undefined,
     instagram: volunteer.instagram_url ?? undefined,
     linkedin: volunteer.linkedin_url ?? undefined,
     bio: volunteer.bio ?? undefined,
