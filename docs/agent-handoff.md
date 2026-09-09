@@ -145,6 +145,7 @@
 - Diagnóstico de runtime confirmado: às 02:14:37 UTC de 09/09, o POST da Function de produção `dpl_GfjyrZekqh7M24N335J99snAFfQR` retornou `502`. A variável de produção está carregada e a Function conseguiu chamar o upstream.
 - A causa do `403` foi identificada no Webhook do n8n: a opção `Ignore Bots` estava ativa e rejeitava a chamada servidor-a-servidor da Vercel.
 - `Ignore Bots` foi desativado e a nova versão do workflow de recebimento foi publicada.
+- Um envio real de produção foi concluído em 09/09 às 02:23 UTC: a Function retornou `201` e o workflow de recebimento terminou com sucesso.
 - A URL com UUID exibida pelo MCP (`/webhook/d4a41145-37bb-450c-9acc-3ff63d2303a0/...`) retorna `404` para `POST`; não deve substituir a URL de produção configurada.
 - O workflow `Publicar relatos aprovados` foi corrigido: `Status de publicação` é `select`, não `status`, para que seus filtros e atualizações no Notion funcionem. A primeira execução agendada após publicar a alteração terminou com sucesso às 00:00 UTC.
 - A instrumentação temporária da Function foi removida após o diagnóstico.
@@ -153,7 +154,8 @@
 
 ## Próximo passo esperado
 
-1. Repetir o POST de produção e conferir a execution criada em `Receber relatos de cursos`; o esperado é `201` na Function e `success` no n8n.
+1. Conferir o relato de teste no Notion e apagá-lo ou mantê-lo conforme a curadoria.
+2. Aprovar um relato no Notion para validar a publicação automática no Supabase e no site.
 
 ---
 
