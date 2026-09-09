@@ -158,7 +158,7 @@ function mergeVolunteer(publicVolunteer: PublicVolunteer): Volunteer {
     slug,
     name: publicVolunteer.name,
     emoji: publicVolunteer.emoji ?? staticVolunteer?.emoji ?? fallbackEmoji,
-    photo: staticVolunteer?.photo,
+    photo: publicVolunteer.photo ?? staticVolunteer?.photo,
     photoFocus: staticVolunteer?.photoFocus,
     roles: publicVolunteer.roles,
     instagram: publicVolunteer.instagram,
