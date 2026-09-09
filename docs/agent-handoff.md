@@ -183,6 +183,7 @@
 | [PR #96 — formulário de relatos](https://github.com/mahpiacesi/vagasux/pull/96) | Incluída na integração da PR #97 |
 | [PR #97 — relatos de cursos](https://github.com/mahpiacesi/vagasux/pull/97) | Integrada em `main`; validação final do envio pendente |
 | Webhook oficial do Notion | ✅ Assinatura ativa e fluxo validado em 09/09 |
+| [PR #99 — registro do webhook](https://github.com/mahpiacesi/vagasux/pull/99) | Aberta como draft; documenta a ativação e validação |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
