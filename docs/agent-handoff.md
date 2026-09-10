@@ -174,6 +174,7 @@
 - A página e seus dois formulários foram integrados à produção em 10/09. A variável do webhook de candidatura está configurada em Preview e Production na Vercel.
 - Os formulários foram movidos para as rotas individuais `/mentoria/mentorado` e `/mentoria/pessoa-mentora`, ambas com breadcrumb de retorno.
 - A página principal agora usa dois cards de jornada: a solicitação destacada após o pagamento e a candidatura de pessoa mentora.
+- A jornada principal agora começa pela escolha da pessoa mentora e identifica mentores, comprovante e formulário em três etapas numeradas.
 
 ---
 
