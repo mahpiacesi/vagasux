@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-09
+**Última atualização:** 2026-09-10
 
 ---
 
@@ -171,12 +171,13 @@
 - A página inclui formulário de solicitação com comprovante, contexto e vínculo ao mentor selecionado.
 - O bucket privado `mentorship-proofs`, a Edge Function e o workflow de solicitações estão publicados e validados ponta a ponta.
 - A página também inclui candidatura para pessoa mentora. O workflow `Receber candidaturas de mentoria` cria a entrada como `Recebida` na fila privada do Notion.
+- A página e seus dois formulários foram integrados à produção em 10/09. A variável do webhook de candidatura está configurada em Preview e Production na Vercel.
 
 ---
 
 ## Próximo passo esperado
 
-1. Configurar `N8N_MENTOR_APPLICATION_WEBHOOK_URL` na Vercel e testar a candidatura de pessoa mentora.
+1. Enviar uma candidatura de teste pelo formulário para confirmar a nova integração do webhook.
 2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
 3. Avaliar uma futura camada multilíngue para o site.
 
@@ -208,7 +209,7 @@
 | [PR #100 — sincronização de voluntários](https://github.com/mahpiacesi/vagasux/pull/100) | ✅ Integrada em `main` em 09/09 |
 | [PR #101 — perfis de voluntários](https://github.com/mahpiacesi/vagasux/pull/101) | ✅ Integrada em `main` em 09/09 |
 | [PR #102 — fotos de voluntários](https://github.com/mahpiacesi/vagasux/pull/102) | ✅ Integrada em `main` em 09/09 |
-| [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | Em revisão |
+| [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | ✅ Integrada em `main` em 10/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
