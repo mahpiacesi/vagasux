@@ -10,6 +10,7 @@ import {
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
+import { MentorApplicationForm } from '@/components/MentorApplicationForm'
 import { MentorshipRequestForm } from '@/components/MentorshipRequestForm'
 import { Button } from '@/components/ui/button'
 import { volunteers } from '@/data/volunteers'
@@ -211,6 +212,15 @@ export function MentoriaPage() {
               .filter((mentor) => mentor.available)
               .map((mentor) => ({ id: mentor.slug, name: mentor.name }))}
           />
+        </div>
+      </section>
+
+      <section id="candidatar-mentoria" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Faça parte</p>
+          <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">Quer ser uma pessoa mentora?</h2>
+          <p className="mt-4 text-base leading-relaxed text-neutral-400">Compartilhe sua experiência e conte como gostaria de apoiar a comunidade. Todas as candidaturas passam por revisão.</p>
+          <MentorApplicationForm />
         </div>
       </section>
 
