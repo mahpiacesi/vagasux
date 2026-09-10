@@ -169,13 +169,14 @@
 - A rota `/mentoria` foi criada a partir da página de referência, com instruções de contribuição, agendamento, preparação e lista de pessoas mentoras.
 - O menu `Comunidade aberta` agora abre o topo de `/comunidade`.
 - A página inclui formulário de solicitação com comprovante, contexto e vínculo ao mentor selecionado.
-- O bucket privado `mentorship-proofs` e a Edge Function `upload-mentorship-proof` estão publicados; faltam os segredos da Vercel e a credencial n8n da nova integração do Notion para ativar o envio.
+- O bucket privado `mentorship-proofs`, a Edge Function e o workflow de solicitações estão publicados e validados ponta a ponta.
+- A página também inclui candidatura para pessoa mentora. O workflow `Receber candidaturas de mentoria` cria a entrada como `Recebida` na fila privada do Notion.
 
 ---
 
 ## Próximo passo esperado
 
-1. Criar a credencial n8n da nova conexão de Mentoria e configurar os segredos da Vercel para ativar o formulário.
+1. Configurar `N8N_MENTOR_APPLICATION_WEBHOOK_URL` na Vercel e testar a candidatura de pessoa mentora.
 2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
 3. Avaliar uma futura camada multilíngue para o site.
 
