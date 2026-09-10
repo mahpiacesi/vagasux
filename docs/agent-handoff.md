@@ -175,6 +175,7 @@
 - Os formulários foram movidos para as rotas individuais `/mentoria/mentorado` e `/mentoria/pessoa-mentora`, ambas com breadcrumb de retorno.
 - A página principal agora usa dois cards de jornada: a solicitação destacada após o pagamento e a candidatura de pessoa mentora.
 - A jornada principal agora começa pela escolha da pessoa mentora e identifica mentores, comprovante e formulário em três etapas numeradas.
+- A organização dos formulários e cards de Mentoria foi integrada em 10/09.
 
 ---
 
@@ -213,7 +214,7 @@
 | [PR #101 — perfis de voluntários](https://github.com/mahpiacesi/vagasux/pull/101) | ✅ Integrada em `main` em 09/09 |
 | [PR #102 — fotos de voluntários](https://github.com/mahpiacesi/vagasux/pull/102) | ✅ Integrada em `main` em 09/09 |
 | [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | ✅ Integrada em `main` em 10/09 |
-| [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | Em revisão |
+| [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | ✅ Integrada em `main` em 10/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
