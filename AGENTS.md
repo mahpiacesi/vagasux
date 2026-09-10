@@ -1,5 +1,11 @@
 # Guia: previews de links
 
+## Handoff de agentes
+
+Atualize `docs/agent-handoff.md` somente após uma PR ser integrada. Não edite
+o handoff durante atualizações intermediárias de branch, commits ou PRs em
+revisão.
+
 ## Formulários
 
 Comece formulários com componentes shadcn existentes. Para campos sem componente
