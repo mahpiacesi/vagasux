@@ -18,6 +18,8 @@ import { GuiaTipoPage } from '@/pages/guia/GuiaTipoPage'
 import { GuiaTrilhaPage } from '@/pages/guia/GuiaTrilhaPage'
 import { HomePage } from '@/pages/HomePage'
 import { MentoriaPage } from '@/pages/MentoriaPage'
+import { MentorApplicationPage } from '@/pages/MentorApplicationPage'
+import { MentorshipRequestPage } from '@/pages/MentorshipRequestPage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
 import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
 import { CodigoDeCondutaPage } from '@/pages/CodigoDeCondutaPage'
@@ -37,6 +39,8 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path={routes.comunidade} element={<ComunidadePage />} />
           <Route path={routes.mentoria} element={<MentoriaPage />} />
+          <Route path={routes.mentorado} element={<MentorshipRequestPage />} />
+          <Route path={routes.pessoaMentora} element={<MentorApplicationPage />} />
           <Route path={routes.guilda} element={<GuildaPage />} />
           <Route path={routes.voluntariado} element={<VoluntariadoPage />} />
           <Route path={routes.parcerias} element={<ParceriasPage />} />

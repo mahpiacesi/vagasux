@@ -3,6 +3,8 @@ export const routes = {
   home: '/',
   comunidade: '/comunidade',
   mentoria: '/mentoria',
+  mentorado: '/mentoria/mentorado',
+  pessoaMentora: '/mentoria/pessoa-mentora',
   guilda: '/guilda',
   voluntariado: '/voluntariado',
   oportunidades: '/oportunidades',

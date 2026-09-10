@@ -10,21 +10,11 @@ import {
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
-import { MentorApplicationForm } from '@/components/MentorApplicationForm'
-import { MentorshipRequestForm } from '@/components/MentorshipRequestForm'
 import { Button } from '@/components/ui/button'
-import { volunteers } from '@/data/volunteers'
+import { mentors } from '@/data/mentorship'
 import { routes } from '@/lib/siteLinks'
 
 const mentoringPaymentUrl = 'https://nas.com/vagasux/zerolink/mentoria'
-
-const mentorAvailability = [
-  { slug: 'natalia-feitosa', status: 'Indisponível', available: false },
-  { slug: 'andre-hiro', status: 'Disponível', available: true },
-  { slug: 'anna-barros', status: 'Disponível', available: true },
-  { slug: 'luana-conde', status: 'Indisponível', available: false },
-  { slug: 'jade-simoes', status: 'Disponível', available: true },
-] as const
 
 const steps = [
   {
@@ -54,11 +44,6 @@ const steps = [
 ] as const
 
 export function MentoriaPage() {
-  const mentors = mentorAvailability.flatMap((mentor) => {
-    const volunteer = volunteers.find((person) => person.slug === mentor.slug)
-    return volunteer ? [{ ...volunteer, ...mentor }] : []
-  })
-
   return (
     <main>
       <section className="relative overflow-hidden border-b border-neutral-500/10 bg-brand-100/40 px-5 py-16 md:px-6 md:py-20">
@@ -190,37 +175,17 @@ export function MentoriaPage() {
             </Link>
             ? Membros tem desconto na mentoria 👀
           </p>
-          <a href="#solicitar-mentoria" className="mt-6 inline-flex text-sm font-bold text-brand-500 hover:underline">
-            Já fez sua contribuição? Envie sua solicitação →
-          </a>
-        </div>
-      </section>
-
-      <section id="solicitar-mentoria" className="scroll-mt-24 border-t border-neutral-500/10 bg-brand-100/25 px-5 py-16 md:px-6 md:py-24">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Solicite sua mentoria
-          </p>
-          <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Conte com quem e sobre o que quer conversar
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
-            Depois da contribuição, envie seu comprovante e o contexto da conversa. A solicitação será revisada antes da confirmação.
-          </p>
-          <MentorshipRequestForm
-            mentors={mentors
-              .filter((mentor) => mentor.available)
-              .map((mentor) => ({ id: mentor.slug, name: mentor.name }))}
-          />
-        </div>
-      </section>
-
-      <section id="candidatar-mentoria" className="scroll-mt-24 px-5 py-16 md:px-6 md:py-24">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Faça parte</p>
-          <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">Quer ser uma pessoa mentora?</h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-400">Compartilhe sua experiência e conte como gostaria de apoiar a comunidade. Todas as candidaturas passam por revisão.</p>
-          <MentorApplicationForm />
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <Button variant="outline" asChild>
+              <Link to={routes.mentorado}>
+                Enviar solicitação
+                <ArrowUpRight weight="bold" aria-hidden />
+              </Link>
+            </Button>
+            <Link to={routes.pessoaMentora} className="text-sm font-bold text-brand-500 hover:underline">
+              Quer ser uma pessoa mentora?
+            </Link>
+          </div>
         </div>
       </section>
 

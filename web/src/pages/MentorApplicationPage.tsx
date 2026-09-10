@@ -1,0 +1,29 @@
+import { Link } from 'react-router-dom'
+import { MentorApplicationForm } from '@/components/MentorApplicationForm'
+import { routes } from '@/lib/siteLinks'
+
+export function MentorApplicationPage() {
+  return (
+    <main>
+      <section className="border-b border-neutral-500/10 bg-brand-100/40 px-5 py-16 md:px-6 md:py-24">
+        <div className="mx-auto max-w-3xl">
+          <nav aria-label="Navegação estrutural" className="flex flex-wrap gap-2 text-sm font-bold text-neutral-400">
+            <Link to={routes.home} className="hover:text-brand-500">Home</Link>
+            <span aria-hidden>/</span>
+            <Link to={routes.mentoria} className="hover:text-brand-500">Mentoria</Link>
+            <span aria-hidden>/</span>
+            <span className="text-neutral-500" aria-current="page">Pessoa mentora</span>
+          </nav>
+          <p className="mt-8 text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Faça parte</p>
+          <h1 className="mt-4 text-4xl font-black tracking-[-0.05em] text-neutral-500 md:text-6xl">
+            Quer ser uma pessoa mentora?
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
+            Compartilhe sua experiência e conte como gostaria de apoiar a comunidade. Todas as candidaturas passam por revisão.
+          </p>
+          <MentorApplicationForm />
+        </div>
+      </section>
+    </main>
+  )
+}
