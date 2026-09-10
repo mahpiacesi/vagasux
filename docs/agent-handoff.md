@@ -173,6 +173,7 @@
 - A página também inclui candidatura para pessoa mentora. O workflow `Receber candidaturas de mentoria` cria a entrada como `Recebida` na fila privada do Notion.
 - A página e seus dois formulários foram integrados à produção em 10/09. A variável do webhook de candidatura está configurada em Preview e Production na Vercel.
 - Os formulários foram movidos para as rotas individuais `/mentoria/mentorado` e `/mentoria/pessoa-mentora`, ambas com breadcrumb de retorno.
+- A página principal agora usa dois cards de jornada: a solicitação destacada após o pagamento e a candidatura de pessoa mentora.
 
 ---
 
