@@ -126,32 +126,6 @@ export function MentoriaPage() {
               </li>
             ))}
           </ol>
-          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
-            <div>
-              <p className="font-black tracking-[-0.02em] text-neutral-500">
-                Pronto para marcar sua mentoria?
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-400">
-                Faça uma contribuição de R$ 15 e guarde seu comprovante.
-              </p>
-            </div>
-            <Button variant="guia" asChild>
-              <a href={mentoringPaymentUrl} target="_blank" rel="noopener noreferrer">
-                Fazer contribuição
-                <Heart weight="bold" aria-hidden />
-              </a>
-            </Button>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
-            Já faz parte da{' '}
-            <Link to={routes.guilda} className="font-bold text-brand-500 hover:underline">
-              Guilda do Vaguiner
-            </Link>
-            ? Membros tem desconto na mentoria 👀
-          </p>
-          <a href="#solicitar-mentoria" className="mt-6 inline-flex text-sm font-bold text-brand-500 hover:underline">
-            Já fez sua contribuição? Envie sua solicitação →
-          </a>
         </div>
       </section>
 
@@ -192,6 +166,32 @@ export function MentoriaPage() {
               </li>
             ))}
           </ul>
+          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
+            <div>
+              <p className="font-black tracking-[-0.02em] text-neutral-500">
+                Pronto para marcar sua mentoria?
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-neutral-400">
+                Faça uma contribuição de R$ 15 e guarde seu comprovante.
+              </p>
+            </div>
+            <Button variant="guia" asChild>
+              <a href={mentoringPaymentUrl} target="_blank" rel="noopener noreferrer">
+                Fazer contribuição
+                <Heart weight="bold" aria-hidden />
+              </a>
+            </Button>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
+            Já faz parte da{' '}
+            <Link to={routes.guilda} className="font-bold text-brand-500 hover:underline">
+              Guilda do Vaguiner
+            </Link>
+            ? Membros tem desconto na mentoria 👀
+          </p>
+          <a href="#solicitar-mentoria" className="mt-6 inline-flex text-sm font-bold text-brand-500 hover:underline">
+            Já fez sua contribuição? Envie sua solicitação →
+          </a>
         </div>
       </section>
 
