@@ -3,6 +3,7 @@ import {
   CalendarCheck,
   ChatCircleDots,
   CheckCircle,
+  ClipboardText,
   Heart,
   LinkedinLogo,
   NotePencil,
@@ -175,16 +176,41 @@ export function MentoriaPage() {
             </Link>
             ? Membros tem desconto na mentoria 👀
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Button variant="outline" asChild>
-              <Link to={routes.mentorado}>
-                Enviar solicitação
-                <ArrowUpRight weight="bold" aria-hidden />
-              </Link>
-            </Button>
-            <Link to={routes.pessoaMentora} className="text-sm font-bold text-brand-500 hover:underline">
-              Quer ser uma pessoa mentora?
-            </Link>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <article className="flex min-h-full flex-col rounded-3xl border border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-complementary-100/80 to-brand-100/40 p-6 shadow-[0_24px_60px_-28px_rgb(7_0_58_/_0.35)] ring-1 ring-complementary-300/40 md:p-7">
+              <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-complementary-300 text-neutral-500">
+                <ClipboardText size={22} weight="bold" aria-hidden />
+              </span>
+              <h2 className="mt-5 text-2xl font-black tracking-[-0.03em] text-neutral-500">
+                Já fez o pagamento?
+              </h2>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
+                Agora é só enviar sua solicitação! Preencha o formulário, escolha a pessoa mentora que deseja e envie seu comprovante de pagamento. Depois, entre em contato com a pessoa mentora e aguarde o retorno para combinar a agenda.
+              </p>
+              <Button asChild size="lg" className="mt-8 h-11 w-full rounded-xl bg-complementary-300 font-bold text-neutral-500 hover:bg-complementary-200">
+                <Link to={routes.mentorado}>
+                  Enviar solicitação
+                  <ArrowUpRight weight="bold" aria-hidden />
+                </Link>
+              </Button>
+            </article>
+            <article className="flex min-h-full flex-col rounded-3xl border border-neutral-500/10 bg-neutral-100 p-6 md:p-7">
+              <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-brand-100 text-brand-500">
+                <ChatCircleDots size={22} weight="bold" aria-hidden />
+              </span>
+              <h2 className="mt-5 text-2xl font-black tracking-[-0.03em] text-neutral-500">
+                Quer fazer parte da mentoria?
+              </h2>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
+                Conte um pouco sobre você, suas experiências e os temas em que pode contribuir. Vamos conhecer seu perfil e, quem sabe, ter você com a gente!
+              </p>
+              <Button variant="outline" asChild size="lg" className="mt-8 h-11 w-full rounded-xl border-neutral-500/15 font-bold">
+                <Link to={routes.pessoaMentora}>
+                  Quero ser pessoa mentora
+                  <ArrowUpRight weight="bold" aria-hidden />
+                </Link>
+              </Button>
+            </article>
           </div>
         </div>
       </section>
