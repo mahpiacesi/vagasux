@@ -156,16 +156,18 @@ export function MentoriaPage() {
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
+          <div className="mt-12 max-w-2xl">
+            <div className="flex items-baseline gap-4">
+              <p className="text-2xl font-black tracking-[-0.02em] text-brand-500">02</p>
+              <p className="text-lg font-black tracking-[-0.02em] text-neutral-500">Comprovante</p>
+            </div>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+              Faça sua contribuição
+            </h2>
+          </div>
+          <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
             <div>
-              <div className="flex items-baseline gap-3">
-                <p className="text-2xl font-black tracking-[-0.02em] text-brand-500">02</p>
-                <p className="font-black tracking-[-0.02em] text-neutral-500">Comprovante</p>
-              </div>
-              <h2 className="mt-3 font-black tracking-[-0.02em] text-neutral-500">
-                Faça sua contribuição
-              </h2>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-400">
+              <p className="text-sm leading-relaxed text-neutral-400">
                 Faça uma contribuição de R$ 15 e guarde seu comprovante.
               </p>
             </div>
