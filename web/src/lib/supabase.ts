@@ -157,3 +157,47 @@ export async function fetchActiveVolunteers(): Promise<PublicVolunteer[]> {
     rapidinhas: volunteer.rapidinhas ?? [],
   }))
 }
+
+export type PublicMentor = {
+  notionPageId: string
+  name: string
+  topics: string[]
+  contactUrl?: string
+  photo?: string
+  status: 'Disponível' | 'Indisponível'
+}
+
+const mentorColumns = [
+  'notion_page_id',
+  'name',
+  'topics',
+  'contact_url',
+  'photo_url',
+  'availability_status',
+] as const
+
+export async function fetchActiveMentors(): Promise<PublicMentor[]> {
+  const { data, error } = await supabase
+    .from('guia_mentors')
+    .select(mentorColumns.join(', '))
+    .eq('is_active', true)
+    .order('name', { ascending: true })
+
+  if (error) throw error
+
+  return ((data ?? []) as unknown as Array<{
+    notion_page_id: string
+    name: string
+    topics: string[] | null
+    contact_url: string | null
+    photo_url: string | null
+    availability_status: 'Disponível' | 'Indisponível'
+  }>).map((mentor) => ({
+    notionPageId: mentor.notion_page_id,
+    name: mentor.name,
+    topics: mentor.topics ?? [],
+    contactUrl: mentor.contact_url ?? undefined,
+    photo: mentor.photo_url ?? undefined,
+    status: mentor.availability_status,
+  }))
+}

@@ -1,9 +1,52 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { MentorshipRequestForm } from '@/components/MentorshipRequestForm'
-import { mentors } from '@/data/mentorship'
+import { findMentorFallback, mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
 import { routes } from '@/lib/siteLinks'
+import { fetchActiveMentors, type PublicMentor } from '@/lib/supabase'
+
+function mentorSlug(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
+function mergeMentor(publicMentor: PublicMentor): Mentor {
+  const fallback = findMentorFallback(publicMentor.name)
+  return {
+    id: publicMentor.notionPageId,
+    slug: mentorSlug(publicMentor.name),
+    name: publicMentor.name,
+    photo: publicMentor.photo ?? fallback?.photo,
+    photoFocus: fallback?.photoFocus,
+    emoji: fallback?.emoji ?? '💬',
+    topics: publicMentor.topics,
+    contactUrl: publicMentor.contactUrl,
+    status: publicMentor.status,
+    available: publicMentor.status === 'Disponível',
+  }
+}
 
 export function MentorshipRequestPage() {
+  const [mentors, setMentors] = useState<Mentor[]>(fallbackMentors)
+
+  useEffect(() => {
+    let cancelled = false
+    void fetchActiveMentors()
+      .then((publicMentors) => {
+        if (!cancelled && publicMentors.length > 0) setMentors(publicMentors.map(mergeMentor))
+      })
+      .catch((error) => {
+        console.warn('Failed to load mentors from Supabase, using fallback.', error)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main>
       <section className="border-b border-neutral-500/10 bg-brand-100/40 px-5 py-16 md:px-6 md:py-24">
@@ -27,7 +70,7 @@ export function MentorshipRequestPage() {
           <MentorshipRequestForm
             mentors={mentors
               .filter((mentor) => mentor.available)
-              .map((mentor) => ({ id: mentor.slug, name: mentor.name }))}
+              .map((mentor) => ({ id: mentor.id, name: mentor.name }))}
           />
         </div>
       </section>
