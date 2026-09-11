@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
 import { MentorProfileDialog } from '@/components/MentorProfileDialog'
 import { Button } from '@/components/ui/button'
-import { mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
+import { findMentorFallback, mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
 import { routes } from '@/lib/siteLinks'
 import { fetchActiveMentors, type PublicMentor } from '@/lib/supabase'
 
@@ -56,13 +56,13 @@ function mentorSlug(name: string) {
 }
 
 function mergeMentor(publicMentor: PublicMentor): Mentor {
-  const fallback = fallbackMentors.find((mentor) => mentor.slug === mentorSlug(publicMentor.name))
+  const fallback = findMentorFallback(publicMentor.name)
   return {
     id: publicMentor.notionPageId,
     slug: mentorSlug(publicMentor.name),
     name: publicMentor.name,
     photo: publicMentor.photo ?? fallback?.photo,
-    photoFocus: fallback?.photoFocus,
+    photoFocus: fallback?.photoFocus ?? (mentorSlug(publicMentor.name) === 'jade-simoes' ? 'center top' : undefined),
     emoji: fallback?.emoji ?? '💬',
     topics: publicMentor.topics,
     contactUrl: publicMentor.contactUrl,

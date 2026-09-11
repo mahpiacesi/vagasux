@@ -29,10 +29,28 @@ export const mentors: Mentor[] = mentorAvailability.flatMap((mentor) => {
         ...mentor,
         name: volunteer.name,
         photo: volunteer.photo,
-        photoFocus: volunteer.photoFocus,
+        photoFocus: mentor.slug === 'jade-simoes' ? 'center top' : volunteer.photoFocus,
         emoji: volunteer.emoji,
         topics: [],
         contactUrl: volunteer.linkedin,
       }]
     : []
 })
+
+const mentorNameAliases: Record<string, string> = {
+  'andre-hiroyuki': 'andre-hiro',
+}
+
+function slugifyMentorName(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
+export function findMentorFallback(name: string) {
+  const slug = mentorNameAliases[slugifyMentorName(name)] ?? slugifyMentorName(name)
+  return mentors.find((mentor) => mentor.slug === slug)
+}

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { MentorshipRequestForm } from '@/components/MentorshipRequestForm'
-import { mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
+import { findMentorFallback, mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
 import { routes } from '@/lib/siteLinks'
 import { fetchActiveMentors, type PublicMentor } from '@/lib/supabase'
 
@@ -15,7 +15,7 @@ function mentorSlug(name: string) {
 }
 
 function mergeMentor(publicMentor: PublicMentor): Mentor {
-  const fallback = fallbackMentors.find((mentor) => mentor.slug === mentorSlug(publicMentor.name))
+  const fallback = findMentorFallback(publicMentor.name)
   return {
     id: publicMentor.notionPageId,
     slug: mentorSlug(publicMentor.name),
