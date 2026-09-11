@@ -5,15 +5,17 @@ import {
   CheckCircle,
   ClipboardText,
   Heart,
-  LinkedinLogo,
   NotePencil,
   Umbrella,
 } from '@phosphor-icons/react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import learningIllustration from '@/assets/illustrations/illustration-learning.svg'
+import { MentorProfileDialog } from '@/components/MentorProfileDialog'
 import { Button } from '@/components/ui/button'
-import { mentors } from '@/data/mentorship'
+import { mentors as fallbackMentors, type Mentor } from '@/data/mentorship'
 import { routes } from '@/lib/siteLinks'
+import { fetchActiveMentors, type PublicMentor } from '@/lib/supabase'
 
 const mentoringPaymentUrl = 'https://nas.com/vagasux/zerolink/mentoria'
 
@@ -44,7 +46,49 @@ const steps = [
   },
 ] as const
 
+function mentorSlug(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
+function mergeMentor(publicMentor: PublicMentor): Mentor {
+  const fallback = fallbackMentors.find((mentor) => mentor.slug === mentorSlug(publicMentor.name))
+  return {
+    id: publicMentor.notionPageId,
+    slug: mentorSlug(publicMentor.name),
+    name: publicMentor.name,
+    photo: publicMentor.photo ?? fallback?.photo,
+    photoFocus: fallback?.photoFocus,
+    emoji: fallback?.emoji ?? '💬',
+    topics: publicMentor.topics,
+    contactUrl: publicMentor.contactUrl,
+    status: publicMentor.status,
+    available: publicMentor.status === 'Disponível',
+  }
+}
+
 export function MentoriaPage() {
+  const [mentors, setMentors] = useState<Mentor[]>(fallbackMentors)
+  const [selectedMentor, setSelectedMentor] = useState<Mentor | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    void fetchActiveMentors()
+      .then((publicMentors) => {
+        if (!cancelled && publicMentors.length > 0) setMentors(publicMentors.map(mergeMentor))
+      })
+      .catch((error) => {
+        console.warn('Failed to load mentors from Supabase, using fallback.', error)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main>
       <section className="relative overflow-hidden border-b border-neutral-500/10 bg-brand-100/40 px-5 py-16 md:px-6 md:py-20">
@@ -144,15 +188,15 @@ export function MentoriaPage() {
           </div>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {mentors.map((mentor) => (
-              <li key={mentor.slug} className="overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100">
-                <div className="flex gap-4 p-5">
+              <li key={mentor.id} className="overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100">
+                <button type="button" onClick={() => setSelectedMentor(mentor)} className="flex w-full gap-4 p-5 text-left transition-colors hover:bg-brand-100/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400" aria-label={`Ver detalhes de ${mentor.name}`}>
                   {mentor.photo ? <img src={mentor.photo} alt="" className="size-16 rounded-2xl object-cover" style={{ objectPosition: mentor.photoFocus }} /> : <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-100 text-3xl">{mentor.emoji}</span>}
                   <div className="min-w-0">
                     <h3 className="font-black tracking-[-0.02em] text-neutral-500">{mentor.name}</h3>
                     <p className={`mt-1 text-sm font-bold ${mentor.available ? 'text-emerald-700' : 'text-neutral-400'}`}>{mentor.status}</p>
-                    {mentor.linkedin && mentor.available ? <a href={mentor.linkedin} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-brand-500 hover:underline"><LinkedinLogo size={17} weight="fill" aria-hidden /> Conversar no LinkedIn</a> : null}
+                    <p className="mt-3 text-sm font-bold text-brand-500">Ver detalhes</p>
                   </div>
-                </div>
+                </button>
               </li>
             ))}
           </ul>
@@ -256,6 +300,13 @@ export function MentoriaPage() {
           </Button>
         </div>
       </section>
+      <MentorProfileDialog
+        mentor={selectedMentor}
+        open={selectedMentor !== null}
+        onOpenChange={(open) => {
+          if (!open) setSelectedMentor(null)
+        }}
+      />
     </main>
   )
 }
