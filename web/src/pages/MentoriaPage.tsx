@@ -23,25 +23,22 @@ const steps = [
   {
     number: '01',
     title: 'Escolha uma pessoa mentora',
-    description:
-      'Encontre uma pessoa disponível para conversar e entre em contato pelo LinkedIn para combinar o horário.',
-    detail: 'O agendamento é manual e a resposta pode levar até cinco dias úteis.',
+    description: 'Entre em contato e combine sua mentoria.',
+    detail: 'Combine a agenda antes de fazer a contribuição.',
     Icon: CalendarCheck,
   },
   {
     number: '02',
     title: 'Faça sua contribuição',
-    description:
-      'Cada apoio a partir de R$ 15 equivale a uma mentoria. Para marcar mais conversas, faça uma nova contribuição para cada encontro.',
-    detail: 'Salve o comprovante para enviar à pessoa mentora escolhida.',
+    description: 'Com o horário combinado, faça uma contribuição de R$ 15 ou mais.',
+    detail: 'Guarde o comprovante para enviar no formulário.',
     Icon: Heart,
   },
   {
     number: '03',
-    title: 'Prepare suas dúvidas',
-    description:
-      'Envie um resumo do que você quer conversar. Quanto mais contexto compartilhar, melhor a pessoa mentora poderá te ajudar.',
-    detail: 'Pronto: agora é só aguardar a confirmação da mentoria.',
+    title: 'Envie o formulário',
+    description: 'Preencha o formulário e anexe seu comprovante.',
+    detail: 'Pronto! Agora é só aguardar a confirmação da mentoria.',
     Icon: NotePencil,
   },
 ] as const
