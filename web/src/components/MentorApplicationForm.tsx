@@ -28,7 +28,7 @@ export function MentorApplicationForm() {
       setState('success')
     } catch { setState('error'); setError('Não foi possível enviar agora. Tente novamente em alguns minutos.') }
   }
-  if (state === 'success') return <div className="mt-7 rounded-3xl border border-brand-200/50 bg-brand-100/35 p-8"><CheckCircle size={36} weight="duotone" className="text-brand-400" /><h3 className="mt-4 text-2xl font-black text-neutral-500">Candidatura recebida</h3><p className="mt-2 text-sm text-neutral-400">Obrigada por querer apoiar a comunidade. Vamos revisar sua candidatura e entrar em contato.</p></div>
+  if (state === 'success') return <div className="mt-7 rounded-3xl border border-brand-200/50 bg-brand-100/35 p-8"><CheckCircle size={36} weight="duotone" className="text-brand-400" /><h3 className="mt-4 text-2xl font-black text-neutral-500">Seu interesse foi recebido</h3><p className="mt-2 text-sm text-neutral-400">Você entrou na nossa lista de pessoas mentoras. Vamos revisar seu perfil e entrar em contato quando houver uma oportunidade de mentoria na comunidade.</p></div>
   return <form className="mt-7 grid gap-5" onSubmit={submit} noValidate>
     <div className="grid gap-4 sm:grid-cols-2"><Label text="Seu nome"><Input name="name" required className="bg-neutral-100" /></Label><Label text="LinkedIn"><Input name="linkedin" type="url" required placeholder="https://linkedin.com/in/..." className="bg-neutral-100" /></Label><Label text="Área de atuação"><Select name="area" values={areas} /></Label><Label text="Nível de experiência"><Select name="experience" values={experience} /></Label></div>
     <Choices name="topics" title="Temas em que você pode ajudar" values={topics} />

@@ -19,7 +19,9 @@ export function MentorApplicationPage() {
             Quer ser uma pessoa mentora?
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg">
-            Compartilhe sua experiência e conte como gostaria de apoiar a comunidade. Todas as candidaturas passam por revisão.
+            Compartilhe sua experiência e conte como gostaria de apoiar a comunidade.
+            Vamos revisar seu perfil e entrar em contato quando houver uma oportunidade
+            de mentoria na comunidade.
           </p>
           <MentorApplicationForm />
         </div>
