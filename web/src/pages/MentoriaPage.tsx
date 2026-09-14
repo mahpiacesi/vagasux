@@ -2,9 +2,9 @@ import {
   ArrowUpRight,
   CalendarCheck,
   ChatCircleDots,
-  CheckCircle,
   ClipboardText,
   Heart,
+  Lightbulb,
   NotePencil,
   Umbrella,
 } from '@phosphor-icons/react'
@@ -160,18 +160,29 @@ export function MentoriaPage() {
         </div>
       </section>
 
-      <section className="border-y border-complementary-200/70 bg-complementary-100/50 px-5 py-8 md:px-6">
-        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
-          {[
-            'Compareça no horário combinado. Se precisar remarcar, avise com pelo menos 48 horas de antecedência.',
-            'Reserve um local silencioso para aproveitar a conversa com foco e tranquilidade.',
-            'Cada encontro dura 40 minutos e pode ser estendido conforme a disponibilidade da pessoa mentora.',
-          ].map((note) => (
-            <p key={note} className="flex gap-3 text-sm leading-relaxed text-neutral-500">
-              <CheckCircle size={20} weight="fill" className="mt-0.5 shrink-0 text-complementary-300" aria-hidden />
-              {note}
-            </p>
-          ))}
+      <section className="px-5 py-8 md:px-6 md:py-12">
+        <div className="mx-auto max-w-6xl rounded-3xl border border-brand-200/60 bg-brand-100/35 p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-neutral-500 text-complementary-200">
+              <Lightbulb size={22} weight="bold" aria-hidden />
+            </span>
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">Para aproveitar a conversa</p>
+              <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-neutral-500">Alguns combinados para a mentoria</h2>
+            </div>
+          </div>
+          <ol className="mt-7 grid gap-5 md:grid-cols-3 md:gap-0">
+            {[
+              'Compareça no horário combinado. Se precisar remarcar, avise com pelo menos 48 horas de antecedência.',
+              'Reserve um local silencioso para aproveitar a conversa com foco e tranquilidade.',
+              'Cada encontro dura 40 minutos e pode ser estendido conforme a disponibilidade da pessoa mentora.',
+            ].map((note, index) => (
+              <li key={note} className="border-brand-200/70 md:border-l md:px-6 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
+                <span className="text-sm font-black text-brand-400">0{index + 1}</span>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-500">{note}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
