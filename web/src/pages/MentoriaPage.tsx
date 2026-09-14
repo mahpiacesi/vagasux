@@ -23,21 +23,24 @@ const steps = [
   {
     number: '01',
     title: 'Escolha uma pessoa mentora',
-    description: 'Entre em contato e combine sua mentoria.',
+    description:
+      'Encontre uma pessoa disponível e entre em contato pelo LinkedIn para conhecer o perfil e combinar a data da mentoria.',
     detail: 'Combine a agenda antes de fazer a contribuição.',
     Icon: CalendarCheck,
   },
   {
     number: '02',
     title: 'Faça sua contribuição',
-    description: 'Com o horário combinado, faça uma contribuição de R$ 15 ou mais.',
-    detail: 'Guarde o comprovante para enviar no formulário.',
+    description:
+      'Depois de combinar o horário, faça uma contribuição de R$ 15 ou mais e guarde o comprovante.',
+    detail: 'Você vai precisar dele no formulário.',
     Icon: Heart,
   },
   {
     number: '03',
     title: 'Envie o formulário',
-    description: 'Preencha o formulário e anexe seu comprovante.',
+    description:
+      'Preencha o formulário com seus dados, escolha a pessoa mentora e anexe o comprovante da contribuição.',
     detail: 'Pronto! Agora é só aguardar a confirmação da mentoria.',
     Icon: NotePencil,
   },
