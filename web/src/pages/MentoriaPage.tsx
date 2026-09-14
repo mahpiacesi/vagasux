@@ -32,7 +32,7 @@ const steps = [
     number: '02',
     title: 'Faça sua contribuição',
     description:
-      'Depois de combinar o horário, faça uma contribuição de R$ 15 ou mais e guarde o comprovante.',
+      'Depois de combinar o horário, faça uma contribuição de R$ 15 pelo link seguro compartilhado abaixo e guarde o comprovante.',
     detail: 'Você vai precisar dele no formulário.',
     Icon: Heart,
   },
@@ -185,8 +185,11 @@ export function MentoriaPage() {
             <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
               Escolha uma pessoa mentora
             </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+              Encontre uma pessoa mentora disponível, veja os detalhes do perfil e entre em contato pelo LinkedIn para combinar a data e o horário da conversa.
+            </p>
           </div>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {mentors.map((mentor) => (
               <li key={mentor.id} className="overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100">
                 <button type="button" onClick={() => setSelectedMentor(mentor)} className="flex w-full gap-4 p-5 text-left transition-colors hover:bg-brand-100/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400" aria-label={`Ver detalhes de ${mentor.name}`}>
@@ -212,7 +215,7 @@ export function MentoriaPage() {
           <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl border border-brand-200/70 bg-brand-100/45 p-6 sm:flex-row sm:items-center">
             <div>
               <p className="text-sm leading-relaxed text-neutral-400">
-                Faça uma contribuição de R$ 15 e guarde seu comprovante.
+                Depois de combinar a mentoria, faça uma contribuição de R$ 15 e guarde o comprovante para enviar junto com sua solicitação.
               </p>
             </div>
             <Button variant="guia" asChild>
@@ -237,6 +240,9 @@ export function MentoriaPage() {
             <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
               Envie seu pedido de mentoria
             </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+              Com a agenda combinada e o comprovante em mãos, preencha o formulário, escolha a pessoa mentora e envie sua solicitação.
+            </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <article className="flex min-h-full flex-col rounded-3xl border border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-complementary-100/80 to-brand-100/40 p-6 shadow-[0_24px_60px_-28px_rgb(7_0_58_/_0.35)] ring-1 ring-complementary-300/40 md:p-7">
@@ -247,7 +253,7 @@ export function MentoriaPage() {
                 Já fez o pagamento?
               </h2>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
-                Agora é só enviar sua solicitação! Preencha o formulário, escolha a pessoa mentora que deseja e envie seu comprovante de pagamento. Depois, entre em contato com a pessoa mentora e aguarde o retorno para combinar a agenda.
+                Agora é só enviar sua solicitação! Preencha o formulário, escolha a pessoa mentora e anexe seu comprovante.
               </p>
               <Button asChild size="lg" className="mt-8 h-11 w-full rounded-xl bg-complementary-300 font-bold text-neutral-500 hover:bg-complementary-200">
                 <Link to={routes.mentorado}>
@@ -261,19 +267,22 @@ export function MentoriaPage() {
                 <ChatCircleDots size={22} weight="bold" aria-hidden />
               </span>
               <h2 className="mt-5 text-2xl font-black tracking-[-0.03em] text-neutral-500">
-                Quer fazer parte da mentoria?
+                Quer ser uma pessoa mentora?
               </h2>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
                 Conte um pouco sobre você, suas experiências e os temas em que pode contribuir. Vamos conhecer seu perfil e, quem sabe, ter você com a gente!
               </p>
               <Button variant="outline" asChild size="lg" className="mt-8 h-11 w-full rounded-xl border-neutral-500/15 font-bold">
                 <Link to={routes.pessoaMentora}>
-                  Quero ser pessoa mentora
+                  Entrar na lista de espera
                   <ArrowUpRight weight="bold" aria-hidden />
                 </Link>
               </Button>
             </article>
           </div>
+          <p className="mt-6 text-base leading-relaxed text-neutral-400">
+            Depois, é só aguardar o retorno para confirmar a mentoria.
+          </p>
         </div>
       </section>
 
