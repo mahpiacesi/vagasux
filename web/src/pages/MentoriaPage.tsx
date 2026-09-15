@@ -252,7 +252,7 @@ export function MentoriaPage() {
               Envie seu pedido de mentoria
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
-              Com a agenda combinada e o comprovante em mãos, preencha o formulário, escolha a pessoa mentora e envie sua solicitação.
+              Com a agenda combinada e o comprovante em mãos, preencha o formulário, escolha a pessoa mentora e envie sua solicitação. Depois, é só aguardar o retorno para confirmar a mentoria.
             </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -291,9 +291,6 @@ export function MentoriaPage() {
               </Button>
             </article>
           </div>
-          <p className="mt-6 text-base leading-relaxed text-neutral-400">
-            Depois, é só aguardar o retorno para confirmar a mentoria.
-          </p>
         </div>
       </section>
 
