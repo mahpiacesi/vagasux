@@ -5,7 +5,7 @@ import {
   expr,
 } from '@n8n/workflow-sdk';
 
-const TENANTS = ['brq', 'contabilizei', 'queroeducacao', 'sympla', 'v4company'];
+const TENANTS = ['alice', 'brq', 'contabilizei', 'neoway', 'queroeducacao', 'sympla', 'v4company', 'vitru'];
 const CAREER_API_URL = 'https://api.inhire.app/job-posts/public/pages';
 
 const manualTrigger = trigger({
@@ -87,12 +87,19 @@ const buildJobPageQueue = node({
       mode: 'runOnceForAllItems',
       language: 'javaScript',
       jsCode: `const tenantsByName = {
+  Alice: 'alice',
   BRQ: 'brq',
   Contabilizei: 'contabilizei',
+  Neoway: 'neoway',
   Qeevo: 'queroeducacao',
   Sympla: 'sympla',
   'V4 Company': 'v4company',
+  'Vitru Educação': 'vitru',
 };
+
+function hasDesignKeyword(title) {
+  return /\\b(designer|design|ux|ui|research|pesquisa|diretor de arte)\\b/i.test(String(title || ''));
+}
 
 return items.flatMap((item) => {
   const page = item.json ?? {};
@@ -100,7 +107,11 @@ return items.flatMap((item) => {
   const jobs = Array.isArray(page.jobsPage) ? page.jobsPage : [];
   if (!tenant) return [];
   return jobs
-    .filter((job) => job?.jobId && String(job.status || '').toLowerCase() === 'published')
+    .filter((job) =>
+      job?.jobId
+      && String(job.status || '').toLowerCase() === 'published'
+      && hasDesignKeyword(job.displayName)
+    )
     .map((job) => ({ json: { tenant, job_id: String(job.jobId) } }));
 });`,
     },
@@ -150,11 +161,14 @@ const mapAndDedupe = node({
       language: 'javaScript',
       jsCode: `const MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;
 const tenantsByName = {
+  Alice: 'alice',
   BRQ: 'brq',
   Contabilizei: 'contabilizei',
+  Neoway: 'neoway',
   Qeevo: 'queroeducacao',
   Sympla: 'sympla',
   'V4 Company': 'v4company',
+  'Vitru Educação': 'vitru',
 };
 const byId = new Map();
 

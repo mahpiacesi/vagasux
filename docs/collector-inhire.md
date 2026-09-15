@@ -18,9 +18,10 @@ O identificador salvo é composto por tenant e vaga
 
 ## Tenant de validação
 
-Os tenants configurados são `brq`, `contabilizei`, `queroeducacao`, `sympla`
-e `v4company`. Eles permanecem monitorados mesmo quando não têm vagas recentes;
-o filtro de 60 dias decide o que entra no mural, não o que é consultado.
+Os tenants configurados são `alice`, `brq`, `contabilizei`, `neoway`,
+`queroeducacao`, `sympla`, `v4company` e `vitru`. Eles permanecem monitorados
+mesmo quando não têm vagas recentes; o filtro de 60 dias decide o que entra no
+mural, não o que é consultado.
 
 Para incluir outro tenant, adicione seu slug à lista `TENANTS` e associe o nome
 retornado pela API no mapa `tenantsByName` em
