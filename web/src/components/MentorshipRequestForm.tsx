@@ -47,13 +47,13 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     const proof = data.get('proof')
     const nextErrors: Record<string, string> = {}
 
-    for (const field of ['mentorId', 'name', 'email', 'phone', 'linkedin', 'area', 'experience', 'availability', 'motivation', 'need']) {
+    for (const field of ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'motivation', 'need']) {
       if (!String(data.get(field) ?? '').trim()) nextErrors[field] = 'Este campo é obrigatório.'
     }
     const email = String(data.get('email') ?? '').trim()
-    const phone = String(data.get('phone') ?? '').trim()
+    const whatsapp = String(data.get('whatsapp') ?? '').trim()
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Informe um e-mail válido.'
-    if (phone && phone.replace(/\D/g, '').length < 8) nextErrors.phone = 'Informe um telefone válido.'
+    if (whatsapp && whatsapp.replace(/\D/g, '').length < 8) nextErrors.whatsapp = 'Informe um WhatsApp válido.'
     if (data.getAll('topics').length === 0) nextErrors.topics = 'Selecione pelo menos um tema.'
     if (!(proof instanceof File) || proof.size === 0) nextErrors.proof = 'Envie o comprovante da contribuição.'
     if (proof instanceof File && proof.size > 5 * 1024 * 1024) nextErrors.proof = 'O comprovante deve ter no máximo 5 MB.'
@@ -73,7 +73,7 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         body: JSON.stringify({
           mentorId: data.get('mentorId'),
           name: data.get('name'),
-          contact: `E-mail: ${email}\nTelefone: ${phone}`,
+          contact: `E-mail: ${email}\nWhatsApp: ${whatsapp}`,
           linkedin: data.get('linkedin'),
           area: data.get('area'),
           experience: data.get('experience'),
@@ -119,8 +119,8 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         <Field label="E-mail" error={errors.email}>
           <Input name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} className={inputClass(Boolean(errors.email))} />
         </Field>
-        <Field label="Telefone" hint="WhatsApp" error={errors.phone}>
-          <Input name="phone" type="tel" autoComplete="tel" inputMode="tel" aria-invalid={Boolean(errors.phone)} className={inputClass(Boolean(errors.phone))} />
+        <Field label="WhatsApp" error={errors.whatsapp}>
+          <Input name="whatsapp" type="tel" autoComplete="tel" inputMode="tel" aria-invalid={Boolean(errors.whatsapp)} className={inputClass(Boolean(errors.whatsapp))} />
         </Field>
         <Field label="Seu nome" error={errors.name}>
           <Input name="name" aria-invalid={Boolean(errors.name)} className={inputClass(Boolean(errors.name))} />
