@@ -47,9 +47,13 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     const proof = data.get('proof')
     const nextErrors: Record<string, string> = {}
 
-    for (const field of ['mentorId', 'name', 'contact', 'linkedin', 'area', 'experience', 'availability', 'motivation', 'need']) {
+    for (const field of ['mentorId', 'name', 'email', 'phone', 'linkedin', 'area', 'experience', 'availability', 'motivation', 'need']) {
       if (!String(data.get(field) ?? '').trim()) nextErrors[field] = 'Este campo é obrigatório.'
     }
+    const email = String(data.get('email') ?? '').trim()
+    const phone = String(data.get('phone') ?? '').trim()
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Informe um e-mail válido.'
+    if (phone && phone.replace(/\D/g, '').length < 8) nextErrors.phone = 'Informe um telefone válido.'
     if (data.getAll('topics').length === 0) nextErrors.topics = 'Selecione pelo menos um tema.'
     if (!(proof instanceof File) || proof.size === 0) nextErrors.proof = 'Envie o comprovante da contribuição.'
     if (proof instanceof File && proof.size > 5 * 1024 * 1024) nextErrors.proof = 'O comprovante deve ter no máximo 5 MB.'
@@ -69,7 +73,7 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         body: JSON.stringify({
           mentorId: data.get('mentorId'),
           name: data.get('name'),
-          contact: data.get('contact'),
+          contact: `E-mail: ${email}\nTelefone: ${phone}`,
           linkedin: data.get('linkedin'),
           area: data.get('area'),
           experience: data.get('experience'),
@@ -106,14 +110,17 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
   return (
     <form className="mt-7 grid gap-5" onSubmit={handleSubmit} noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Com quem você quer conversar?" error={errors.mentorId}>
+        <Field label="Com quem você quer conversar?" error={errors.mentorId} className="sm:col-span-2">
           <select name="mentorId" className={fieldClass(Boolean(errors.mentorId))} defaultValue="">
             <option value="">Selecione uma pessoa mentora</option>
             {mentors.map((mentor) => <option key={mentor.id} value={mentor.id}>{mentor.name}</option>)}
           </select>
         </Field>
-        <Field label="Como podemos falar com você?" hint="e-mail, WhatsApp ou Telegram" error={errors.contact}>
-          <Input name="contact" aria-invalid={Boolean(errors.contact)} className={inputClass(Boolean(errors.contact))} />
+        <Field label="E-mail" error={errors.email}>
+          <Input name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} className={inputClass(Boolean(errors.email))} />
+        </Field>
+        <Field label="Telefone" hint="WhatsApp" error={errors.phone}>
+          <Input name="phone" type="tel" autoComplete="tel" inputMode="tel" aria-invalid={Boolean(errors.phone)} className={inputClass(Boolean(errors.phone))} />
         </Field>
         <Field label="Seu nome" error={errors.name}>
           <Input name="name" aria-invalid={Boolean(errors.name)} className={inputClass(Boolean(errors.name))} />
@@ -168,8 +175,8 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
   )
 }
 
-function Field({ label, hint, error, children }: { label: string; hint?: string; error?: string; children: ReactNode }) {
-  return <label className="grid gap-2 text-sm font-bold text-neutral-500"><span>{label} <b className="text-brand-500">*</b> {hint ? <span className="font-normal text-neutral-400">({hint})</span> : null}</span>{children}<FieldError message={error} /></label>
+function Field({ label, hint, error, className, children }: { label: string; hint?: string; error?: string; className?: string; children: ReactNode }) {
+  return <label className={`grid gap-2 text-sm font-bold text-neutral-500 ${className ?? ''}`}><span>{label} <b className="text-brand-500">*</b> {hint ? <span className="font-normal text-neutral-400">({hint})</span> : null}</span>{children}<FieldError message={error} /></label>
 }
 
 function FieldError({ message }: { message?: string }) {
