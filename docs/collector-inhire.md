@@ -18,9 +18,12 @@ O identificador salvo é composto por tenant e vaga
 
 ## Tenant de validação
 
-Os tenants configurados são `contabilizei` e `queroeducacao`. Para incluir
-outro tenant, adicione seu slug à lista `TENANTS` e associe o nome retornado
-pela API no mapa `tenantsByName` em
+Os tenants configurados são `brq`, `contabilizei`, `queroeducacao`, `sympla`
+e `v4company`. Eles permanecem monitorados mesmo quando não têm vagas recentes;
+o filtro de 60 dias decide o que entra no mural, não o que é consultado.
+
+Para incluir outro tenant, adicione seu slug à lista `TENANTS` e associe o nome
+retornado pela API no mapa `tenantsByName` em
 `tools/n8n/collector-inhire.workflow.ts`.
 
 O endpoint público não exige token, mas exige o slug que aparece antes de

@@ -5,7 +5,7 @@ import {
   expr,
 } from '@n8n/workflow-sdk';
 
-const TENANTS = ['contabilizei', 'queroeducacao'];
+const TENANTS = ['brq', 'contabilizei', 'queroeducacao', 'sympla', 'v4company'];
 const CAREER_API_URL = 'https://api.inhire.app/job-posts/public/pages';
 
 const manualTrigger = trigger({
@@ -87,8 +87,11 @@ const buildJobPageQueue = node({
       mode: 'runOnceForAllItems',
       language: 'javaScript',
       jsCode: `const tenantsByName = {
+  BRQ: 'brq',
   Contabilizei: 'contabilizei',
   Qeevo: 'queroeducacao',
+  Sympla: 'sympla',
+  'V4 Company': 'v4company',
 };
 
 return items.flatMap((item) => {
@@ -147,8 +150,11 @@ const mapAndDedupe = node({
       language: 'javaScript',
       jsCode: `const MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;
 const tenantsByName = {
+  BRQ: 'brq',
   Contabilizei: 'contabilizei',
   Qeevo: 'queroeducacao',
+  Sympla: 'sympla',
+  'V4 Company': 'v4company',
 };
 const byId = new Map();
 
