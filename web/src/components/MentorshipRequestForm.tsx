@@ -4,6 +4,15 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
+function debugValidation(hypothesisId: string, location: string, message: string, data: Record<string, unknown>) {
+  void fetch('/__debug/mentorship-validation', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    keepalive: true,
+    body: JSON.stringify({ hypothesisId, location, message, data, timestamp: Date.now() }),
+  })
+}
+
 export type AvailableMentor = {
   id: string
   name: string
@@ -47,11 +56,24 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     const proof = data.get('proof')
     const nextErrors: Record<string, string> = {}
 
+    // #region agent log
+    debugValidation('A', 'MentorshipRequestForm.tsx:54', 'Submit handler entered', {
+      formAction: form.action,
+      hasWhatsAppField: data.has('whatsapp'),
+    })
+    // #endregion
     for (const field of ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'need']) {
       if (!String(data.get(field) ?? '').trim()) nextErrors[field] = 'Este campo é obrigatório.'
     }
     const email = String(data.get('email') ?? '').trim()
     const whatsapp = String(data.get('whatsapp') ?? '').trim()
+    // #region agent log
+    debugValidation('B', 'MentorshipRequestForm.tsx:64', 'Validation inputs normalized', {
+      whatsappPresent: Boolean(whatsapp),
+      whatsappDigitCount: whatsapp.replace(/\D/g, '').length,
+      emailPresent: Boolean(email),
+    })
+    // #endregion
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Informe um e-mail válido.'
     if (whatsapp && whatsapp.replace(/\D/g, '').length < 8) nextErrors.whatsapp = 'Informe um WhatsApp válido.'
     if (data.getAll('topics').length === 0) nextErrors.topics = 'Selecione pelo menos um tema.'
@@ -60,9 +82,28 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     if (proof instanceof File && !['image/jpeg', 'image/png', 'image/webp', 'application/pdf'].includes(proof.type)) {
       nextErrors.proof = 'Envie uma imagem JPG, PNG, WebP ou um PDF.'
     }
+    // #region agent log
+    debugValidation('C', 'MentorshipRequestForm.tsx:79', 'Validation result calculated', {
+      errorFields: Object.keys(nextErrors),
+      whatsappError: nextErrors.whatsapp ?? null,
+    })
+    // #endregion
     setErrors(nextErrors)
-    if (Object.keys(nextErrors).length > 0) return
+    if (Object.keys(nextErrors).length > 0) {
+      // #region agent log
+      debugValidation('D', 'MentorshipRequestForm.tsx:86', 'Invalid branch returned before request', {
+        errorCount: Object.keys(nextErrors).length,
+        hasWhatsAppError: Boolean(nextErrors.whatsapp),
+      })
+      // #endregion
+      return
+    }
 
+    // #region agent log
+    debugValidation('E', 'MentorshipRequestForm.tsx:95', 'Valid branch proceeds to submission', {
+      errorCount: 0,
+    })
+    // #endregion
     setState('sending')
     try {
       const proofFile = proof as File
@@ -73,7 +114,6 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         body: JSON.stringify({
           mentorId: data.get('mentorId'),
           name: data.get('name'),
-          contact: `E-mail: ${email}\nWhatsApp: ${whatsapp}`,
           email,
           whatsapp,
           linkedin: data.get('linkedin'),

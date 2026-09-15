@@ -32,7 +32,7 @@ export default async function handler(request: IncomingMessage, response: Server
     return json(response, 400, { error: 'Invalid request body' })
   }
 
-  const required = ['mentorId', 'name', 'contact', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'need']
+  const required = ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'need']
   if (
     !required.every((field) => typeof input[field] === 'string' && input[field].trim())
     || !Array.isArray(input.topics)
