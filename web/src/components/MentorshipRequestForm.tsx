@@ -1,8 +1,10 @@
 import { CheckCircle } from '@phosphor-icons/react'
 import { useState, type FormEvent, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { routes } from '@/lib/siteLinks'
 
 export type AvailableMentor = {
   id: string
@@ -166,7 +168,13 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
 
       <label className="flex gap-3 text-sm leading-relaxed text-neutral-500">
         <input name="consent" type="checkbox" className="mt-1" />
-        <span>Li e concordo com os Termos e Políticas. <b className="text-brand-500">*</b></span>
+        <span>
+          Li e concordo com os{' '}
+          <Link to={routes.termosEPoliticas} className="font-bold text-brand-500 hover:underline">
+            Termos e Políticas
+          </Link>.
+          {' '}<b className="text-brand-500">*</b>
+        </span>
       </label>
       <FieldError message={errors.consent} />
       {state === 'error' ? <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">Não foi possível enviar agora. Tente novamente em alguns minutos.</p> : null}
