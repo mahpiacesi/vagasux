@@ -5,7 +5,7 @@ import {
   expr,
 } from '@n8n/workflow-sdk';
 
-const TENANT = 'contabilizei';
+const TENANTS = ['contabilizei', 'queroeducacao'];
 const CAREER_API_URL = 'https://api.inhire.app/job-posts/public/pages';
 
 const manualTrigger = trigger({
@@ -33,9 +33,22 @@ const kickoff = node({
       includeOtherFields: false,
       assignments: {
         assignments: [
-          { id: 'tenant', name: 'tenant', value: TENANT, type: 'string' },
+          { id: 'tenantCount', name: 'tenant_count', value: TENANTS.length, type: 'number' },
         ],
       },
+    },
+  },
+});
+
+const buildTenantQueue = node({
+  type: 'n8n-nodes-base.code',
+  version: 2,
+  config: {
+    name: 'Build InHire tenant queue',
+    parameters: {
+      mode: 'runOnceForAllItems',
+      language: 'javaScript',
+      jsCode: `return ${JSON.stringify(TENANTS)}.map((tenant) => ({ json: { tenant } }));`,
     },
   },
 });
@@ -56,7 +69,7 @@ const fetchCareerPage = node({
       sendHeaders: true,
       headerParameters: {
         parameters: [
-          { name: 'X-Tenant', value: TENANT },
+          { name: 'X-Tenant', value: expr('{{ $json.tenant }}') },
           { name: 'Accept', value: 'application/json' },
         ],
       },
@@ -73,19 +86,20 @@ const buildJobPageQueue = node({
     parameters: {
       mode: 'runOnceForAllItems',
       language: 'javaScript',
-      jsCode: `const page = items[0]?.json ?? {};
-const jobs = Array.isArray(page.jobsPage) ? page.jobsPage : [];
+      jsCode: `const tenantsByName = {
+  Contabilizei: 'contabilizei',
+  'Quero Educação': 'queroeducacao',
+};
 
-return jobs
-  .filter((job) => job?.jobId && String(job.status || '').toLowerCase() === 'published')
-  .map((job) => ({
-    json: {
-      tenant: '${TENANT}',
-      company: String(page.tenantName || 'Empresa').trim(),
-      job_id: String(job.jobId),
-      job_url: 'https://${TENANT}.inhire.app/job/' + encodeURIComponent(String(job.jobId)),
-    },
-  }));`,
+return items.flatMap((item) => {
+  const page = item.json ?? {};
+  const tenant = tenantsByName[page.tenantName];
+  const jobs = Array.isArray(page.jobsPage) ? page.jobsPage : [];
+  if (!tenant) return [];
+  return jobs
+    .filter((job) => job?.jobId && String(job.status || '').toLowerCase() === 'published')
+    .map((job) => ({ json: { tenant, job_id: String(job.jobId) } }));
+});`,
     },
   },
 });
@@ -106,7 +120,7 @@ const fetchJobPage = node({
       sendHeaders: true,
       headerParameters: {
         parameters: [
-          { name: 'X-Tenant', value: TENANT },
+          { name: 'X-Tenant', value: expr('{{ $json.tenant }}') },
           { name: 'Accept', value: 'application/json' },
         ],
       },
@@ -132,7 +146,10 @@ const mapAndDedupe = node({
       mode: 'runOnceForAllItems',
       language: 'javaScript',
       jsCode: `const MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;
-const TENANT = '${TENANT}';
+const tenantsByName = {
+  Contabilizei: 'contabilizei',
+  'Quero Educação': 'queroeducacao',
+};
 const byId = new Map();
 
 function decodeHtml(value) {
@@ -189,22 +206,24 @@ for (const item of items) {
 
 return Array.from(byId.values()).map((job) => {
   const jobId = String(job.jobId);
+  const tenant = tenantsByName[job.tenantName];
   const title = decodeHtml(job.displayName);
   const publishedAt = job.lastPublishedAt || job.publishedAt || job.createdAt || null;
   const publishedMs = publishedAt ? new Date(publishedAt).getTime() : NaN;
   let skipReason = null;
-  if (!title) skipReason = 'missing_title';
+  if (!tenant) skipReason = 'unknown_tenant';
+  else if (!title) skipReason = 'missing_title';
   else if (!isRelevant(title)) skipReason = 'not_design_related';
   else if (!Number.isNaN(publishedMs) && Date.now() - publishedMs > MAX_AGE_MS) skipReason = 'older_than_60_days';
 
   return {
     json: {
       source: 'InHire',
-      source_job_id: TENANT + ':' + jobId,
-      company: String(job.tenantName || 'Intera').trim(),
+      source_job_id: tenant + ':' + jobId,
+      company: String(job.tenantName || 'Empresa').trim(),
       title,
       description: decodeHtml(job.description) || null,
-      url: 'https://' + TENANT + '.inhire.app/job/' + encodeURIComponent(jobId),
+      url: 'https://' + tenant + '.inhire.app/job/' + encodeURIComponent(jobId),
       location: String(job.location || '').trim() || null,
       published_at: publishedAt,
       work_model: mapWorkModel(job.workplaceType),
@@ -312,7 +331,7 @@ const summarizeBatch = node({
 return [{
   json: {
     source: 'InHire',
-    tenant: '${TENANT}',
+    tenants: ${JSON.stringify(TENANTS)},
     job_count: $('Build upsert batch').first()?.json?.job_count ?? 0,
     batch: payload.total != null ? payload : (payload.ok != null ? payload : { raw: payload }),
   },
@@ -327,7 +346,9 @@ export default workflow('collector-inhire', 'Collector InHire')
   .add(subworkflowTrigger)
   .to(kickoff)
   .add(kickoff)
+  .to(buildTenantQueue)
   .to(fetchCareerPage)
+  .add(fetchCareerPage)
   .to(buildJobPageQueue)
   .to(fetchJobPage)
   .to(mapAndDedupe)

@@ -18,10 +18,10 @@ O identificador salvo é composto por tenant e vaga
 
 ## Tenant de validação
 
-O primeiro tenant configurado é `contabilizei`, escolhido porque possui uma
-vaga pública recente de Product Designer. Para incluir outro tenant, substitua
-o valor de `TENANT` em `tools/n8n/collector-inhire.workflow.ts` e nos headers
-dos dois nós HTTP do workflow `Collector InHire`.
+Os tenants configurados são `contabilizei` e `queroeducacao`; ambos possuem
+vagas públicas recentes relacionadas a Design. Para incluir outro tenant,
+adicione seu slug à lista `TENANTS` e associe o nome retornado pela API no mapa
+`tenantsByName` em `tools/n8n/collector-inhire.workflow.ts`.
 
 O endpoint público não exige token, mas exige o slug que aparece antes de
 `.inhire.app` como valor de `X-Tenant`.
