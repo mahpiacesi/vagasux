@@ -162,10 +162,10 @@ export const guildaPlans: GuildaPlan[] = [
     price: 'R$ 19,90',
     period: '/ mês',
     perks: [
-      'Mentorias em grupo mensais',
+      'Encontros mensais em grupo',
       'Acesso às gravações dos encontros',
-      'Mini-desafios para participar',
-      'Seletivas e descontos para membros',
+      'Mini-desafios e seletivas para participar',
+      'Descontos nas mentorias',
       'Grupo exclusivo no WhatsApp',
     ],
   },
@@ -175,28 +175,13 @@ export const guildaPlans: GuildaPlan[] = [
     hook: 'Para quem acredita na jornada e quer construir com a comunidade, com economia.',
     price: 'R$ 199',
     period: '/ ano',
-    badge: 'Mais popular',
+    badge: 'Economize',
     featured: true,
     perks: [
       'Tudo do plano mensal',
       'Economia de R$ 40 no ano',
-      '2 mentorias avulsas (30 min)',
       '1 mentoria de carreira com Mah Piacesi',
       'Apoio contínuo da comunidade',
-    ],
-  },
-  {
-    id: 'avulsa',
-    name: 'Mentorias avulsas',
-    hook: 'Feedback direto e orientação prática com quem já está no mercado.',
-    price: '+ R$ 10',
-    period: 'adicional',
-    perks: [
-      'Acesso a mentores do mercado',
-      'Simulações de entrevista e cases',
-      'Feedback sobre portfólio',
-      'Direcionamento de carreira',
-      'Revisão de CV e LinkedIn',
     ],
   },
 ]
@@ -205,7 +190,7 @@ export const guildaFaq = [
   {
     question: 'O que eu recebo ao entrar na Guilda do Vaguiner?',
     answer:
-      'Você tem acesso a lives gravadas, possibilidade de agendar mentorias com profissionais do mercado, simulações de entrevistas em grupo, seletivas e descontos exclusivos em cursos/eventos e participação nos bastidores da VagasUX. Tudo isso em um espaço seguro e colaborativo.',
+      'Você terá acesso à gravação dos encontros, desconto para agendar mentorias com profissionais do mercado, mini-desafios pensados para te apoiar na prática, seletivas e descontos exclusivos em cursos/eventos e participação nos bastidores da VagasUX. Tudo isso em um espaço seguro e colaborativo.',
   },
   {
     question: 'Preciso já trabalhar com UX pra entrar?',
@@ -215,7 +200,7 @@ export const guildaFaq = [
   {
     question: 'Como funcionam as mentorias avulsas?',
     answer:
-      'Para acessar as mentorias é necessário fazer parte da Guilda, você pode adquirir mentorias individuais de 30min por R$10 sempre que quiser. É só escolher a pauta (portfólio, case, entrevista…) e agendar com o mentor disponível.',
+      'As mentorias são conversas individuais de orientação e troca de experiências com pessoas mentoras da VagasUX. Para participar, escolha uma pessoa mentora disponível e entre em contato para combinar o horário. Depois, faça a contribuição de R$10, desconto exclusivo para membros da Guilda, e envie o formulário com o comprovante.',
   },
   {
     question: 'E se eu não conseguir acompanhar tudo?',

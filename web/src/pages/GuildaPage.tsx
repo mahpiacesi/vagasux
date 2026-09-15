@@ -353,7 +353,7 @@ export function GuildaPage() {
             <SectionIntro
               eyebrow="Valores"
               title="Apoie a comunidade e entre na Guilda"
-              description="A partir de R$ 19,90 por mês, com conteúdos exclusivos, mentorias e grupo fechado no WhatsApp."
+              description="A partir de R$ 19,90 por mês com conteúdos exclusivos, encontros gravados e grupo fechado no WhatsApp."
             />
 
             <ul className="flex flex-col gap-5">
