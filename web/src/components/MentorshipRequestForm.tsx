@@ -47,7 +47,7 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     const proof = data.get('proof')
     const nextErrors: Record<string, string> = {}
 
-    for (const field of ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'motivation', 'need']) {
+    for (const field of ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'need']) {
       if (!String(data.get(field) ?? '').trim()) nextErrors[field] = 'Este campo é obrigatório.'
     }
     const email = String(data.get('email') ?? '').trim()
@@ -74,12 +74,13 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
           mentorId: data.get('mentorId'),
           name: data.get('name'),
           contact: `E-mail: ${email}\nWhatsApp: ${whatsapp}`,
+          email,
+          whatsapp,
           linkedin: data.get('linkedin'),
           area: data.get('area'),
           experience: data.get('experience'),
           topics: data.getAll('topics'),
           availability: data.get('availability'),
-          motivation: data.get('motivation'),
           need: data.get('need'),
           proof: {
             name: proofFile.name,
@@ -159,9 +160,6 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         <FieldError message={errors.topics} />
       </fieldset>
 
-      <Field label="Por que você quer esta mentoria?" error={errors.motivation}>
-        <Textarea name="motivation" rows={3} aria-invalid={Boolean(errors.motivation)} className={inputClass(Boolean(errors.motivation))} />
-      </Field>
       <Field label="O que você gostaria de conversar?" hint="quanto mais contexto, melhor" error={errors.need}>
         <Textarea name="need" rows={5} aria-invalid={Boolean(errors.need)} className={inputClass(Boolean(errors.need))} />
       </Field>
