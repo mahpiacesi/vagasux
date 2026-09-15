@@ -88,7 +88,7 @@ const buildJobPageQueue = node({
       language: 'javaScript',
       jsCode: `const tenantsByName = {
   Contabilizei: 'contabilizei',
-  'Quero Educação': 'queroeducacao',
+  Qeevo: 'queroeducacao',
 };
 
 return items.flatMap((item) => {
@@ -148,7 +148,7 @@ const mapAndDedupe = node({
       jsCode: `const MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;
 const tenantsByName = {
   Contabilizei: 'contabilizei',
-  'Quero Educação': 'queroeducacao',
+  Qeevo: 'queroeducacao',
 };
 const byId = new Map();
 
