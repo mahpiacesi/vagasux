@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-15
+**Última atualização:** 2026-09-10
 
 ---
 
@@ -176,16 +176,12 @@
 - A página principal agora usa dois cards de jornada: a solicitação destacada após o pagamento e a candidatura de pessoa mentora.
 - A jornada principal agora começa pela escolha da pessoa mentora e identifica mentores, comprovante e formulário em três etapas numeradas.
 - A organização dos formulários e cards de Mentoria foi integrada em 10/09.
-- A lista de pessoas mentoras agora é sincronizada da base `Mentores` do Notion via Supabase: disponibilidade, temas e LinkedIn são atualizados pelo webhook, e cada card abre um perfil detalhado.
-- Os formulários de solicitação agora registram E-mail e WhatsApp em propriedades separadas no Notion. O comprovante continua privado no Supabase e fica acessível pela propriedade de arquivo/link na solicitação.
-- O formulário de mentorado foi simplificado: mantém apenas o contexto da conversa, sem o campo redundante de motivação ou consentimento para termos que ainda não existem.
-- A candidatura de pessoa mentora comunica lista de interesse e revisão, sem prometer entrada imediata.
 
 ---
 
 ## Próximo passo esperado
 
-1. Acompanhar as primeiras solicitações de mentoria na base do Notion e o alinhamento direto com as pessoas mentoras.
+1. Enviar uma candidatura de teste pelo formulário para confirmar a nova integração do webhook.
 2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
 3. Avaliar uma futura camada multilíngue para o site.
 
@@ -219,7 +215,6 @@
 | [PR #102 — fotos de voluntários](https://github.com/mahpiacesi/vagasux/pull/102) | ✅ Integrada em `main` em 09/09 |
 | [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | ✅ Integrada em `main` em 10/09 |
 | [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | ✅ Integrada em `main` em 10/09 |
-| [PR #105 — mentores dinâmicos e refinamentos da Mentoria](https://github.com/mahpiacesi/vagasux/pull/105) | ✅ Integrada em `main` em 15/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
