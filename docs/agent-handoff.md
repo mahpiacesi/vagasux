@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-10
+**Última atualização:** 2026-09-16
 
 ---
 
@@ -10,7 +10,7 @@
 
 | Área | Estado | Nota |
 |------|--------|------|
-| `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
+| `/guilda` | ✅ Live | Planos atualizados na PR #107 (16/09) |
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
@@ -20,10 +20,16 @@
 | Home logos dinâmicos | ✅ Mergeado | PR #46 — PartnershipsSection → Supabase |
 | Collector Sólides | ✅ Ativo | Exec #35 — 109 vagas; PR #47 mergeado |
 | Collector InfoJobs | ✅ Ativo | Exec #37 — 184 vagas; Scheduler encadeado |
+| Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 
 ---
 
 ## Feito recentemente
+
+### Integração 16 set
+- **PR #106 mergeada** em `main`: collector InHire para páginas públicas de vagas (Alice, BRQ, Contabilizei, Neoway, Quero Educação/Qeevo, Sympla, V4 Company, Vitru), com filtro de títulos de Design.
+- **PR #107 mergeada** em `main`: Guilda fica com dois planos (mensal e anual), tag de economia e FAQ da contribuição de R$10 nas mentorias.
+- GitHub App da Cursor confirmada neste ambiente: All repositories, clone/push/merge ok.
 
 ### Página Guilda (`/guilda`) — 30–31 jul
 - **PR #44** — branch `cursor/guilda-page-a8a9`, preview: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
@@ -181,9 +187,9 @@
 
 ## Próximo passo esperado
 
-1. Enviar uma candidatura de teste pelo formulário para confirmar a nova integração do webhook.
-2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
-3. Avaliar uma futura camada multilíngue para o site.
+1. Conferir o deploy de produção da Guilda com os dois planos e a FAQ do R$10.
+2. Publicar o workflow InHire no n8n e acompanhar a primeira coleta.
+3. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
 
 ---
 
@@ -215,7 +221,10 @@
 | [PR #102 — fotos de voluntários](https://github.com/mahpiacesi/vagasux/pull/102) | ✅ Integrada em `main` em 09/09 |
 | [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | ✅ Integrada em `main` em 10/09 |
 | [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | ✅ Integrada em `main` em 10/09 |
-| Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
+| [PR #105 — mentores dinâmicos e refinamentos da Mentoria](https://github.com/mahpiacesi/vagasux/pull/105) | ✅ Integrada em `main` em 15/09 |
+| [PR #106 — collector InHire](https://github.com/mahpiacesi/vagasux/pull/106) | ✅ Integrada em `main` em 16/09 |
+| [PR #107 — planos da Guilda](https://github.com/mahpiacesi/vagasux/pull/107) | ✅ Integrada em `main` em 16/09 |
+| Cloud agent run | [Autorização github vagasux](https://cursor.com/agents/bc-57f63f9c-9243-4187-be1e-692383b210ea) |
 
 ---
 
