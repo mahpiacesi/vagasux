@@ -1,13 +1,23 @@
 {
   "redirects": [
     {
-      "source": "/guia-do-product-designer",
-      "destination": "/guia",
+      "source": "/guia-do-product-designer/faq-tira-duvidas",
+      "destination": "/guia/faq",
       "permanent": true
     },
     {
-      "source": "/guia-do-product-designer/faq-tira-duvidas",
-      "destination": "/guia/faq",
+      "source": "/guia-do-product-designer/cursos/publicar-relato",
+      "destination": "/guia/cursos/publicar-relato",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/cursos",
+      "destination": "/guia/cursos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer",
+      "destination": "/guia",
       "permanent": true
     },
     {
@@ -32,7 +42,17 @@
     },
     {
       "source": "/perfis-para-seguir",
-      "destination": "/guia/tipo/canais",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
+      "source": "/guia/tipo/canais",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
+      "source": "/guia/tipo/artigos",
+      "destination": "/guia",
       "permanent": true
     },
     {
@@ -46,25 +66,65 @@
       "permanent": true
     },
     {
+      "source": "/trilhas/primeiros-passos",
+      "destination": "/guia/trilhas/entender-o-basico",
+      "permanent": true
+    },
+    {
       "source": "/trilhas/portfolio-iniciante",
       "destination": "/guia/trilhas/portfolio",
       "permanent": true
     },
     {
       "source": "/trilhas/ux-research-basics",
-      "destination": "/guia/trilhas/research",
+      "destination": "/guia/tema/research",
       "permanent": true
     },
     {
       "source": "/trilhas/design-systems-101",
-      "destination": "/guia/trilhas/content-design",
+      "destination": "/guia/tema/design-system",
       "permanent": true
     },
     {
-      "source": "/trilhas/primeiros-passos",
-      "destination": "/guia/trilhas/entender-o-basico",
+      "source": "/a-comunidade",
+      "destination": "/comunidade",
+      "permanent": true
+    },
+    {
+      "source": "/iniciantes-em-design/apenas-mentores",
+      "destination": "/mentoria",
+      "permanent": true
+    },
+    {
+      "source": "/iniciantes-em-design",
+      "destination": "/vagas-para-iniciantes",
+      "permanent": true
+    },
+    {
+      "source": "/quem-organiza",
+      "destination": "/voluntariado",
+      "permanent": true
+    },
+    {
+      "source": "/termos-e-polticas",
+      "destination": "/termos-e-politicas",
+      "permanent": true
+    },
+    {
+      "source": "/guia/tema/fundamentos",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia/tema/ferramentas",
+      "destination": "/guia/ferramentas",
       "permanent": true
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

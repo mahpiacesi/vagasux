@@ -1,37 +1,5 @@
 /**
- * Legacy Super/Notion paths → new Guia routes.
- * Used in vercel.json; keep in sync when adding routes.
+ * Legacy Super/Notion paths → current routes.
+ * Source of truth: `seoRedirects` in seoCatalog.ts.
  */
-export const guiaLegacyRedirects = [
-  { source: '/cursos', destination: '/guia/cursos' },
-  { source: '/eventos', destination: '/guia/tipo/eventos' },
-  {
-    source: '/perfis-para-seguir',
-    destination: '/guia',
-  },
-  { source: '/glossario', destination: '/guia/glossario' },
-  {
-    source: '/guia-do-product-designer/faq-tira-duvidas',
-    destination: '/guia/faq',
-  },
-  {
-    source: '/primeiros-passos',
-    destination: '/guia/trilhas/entender-o-basico',
-  },
-  {
-    source: '/trilhas/portfolio-iniciante',
-    destination: '/guia/trilhas/portfolio',
-  },
-  {
-    source: '/trilhas/ux-research-basics',
-    destination: '/guia/trilhas/research',
-  },
-  {
-    source: '/trilhas/design-systems-101',
-    destination: '/guia/trilhas/content-design',
-  },
-  {
-    source: '/trilhas/primeiros-passos',
-    destination: '/guia/trilhas/entender-o-basico',
-  },
-] as const
+export { seoRedirects as guiaLegacyRedirects } from './seoCatalog'
