@@ -34,7 +34,7 @@ export function NotFoundPage() {
 
           <img
             src={notFoundIllustration}
-            alt=""
+            alt="Pessoa se protegendo da chuva com um guarda-chuva"
             width={1536}
             height={1024}
             className="mural-fade mural-fade-delay-2 mx-auto h-auto w-full max-w-xl lg:max-w-none"
