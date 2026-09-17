@@ -17,6 +17,7 @@ import { GuiaSearchResultsPageContent } from '@/components/guia/GuiaSearchResult
 import { GuiaTipoPage } from '@/pages/guia/GuiaTipoPage'
 import { GuiaTrilhaPage } from '@/pages/guia/GuiaTrilhaPage'
 import { HomePage } from '@/pages/HomePage'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 import { MentoriaPage } from '@/pages/MentoriaPage'
 import { MentorApplicationPage } from '@/pages/MentorApplicationPage'
 import { MentorshipRequestPage } from '@/pages/MentorshipRequestPage'
@@ -72,7 +73,7 @@ export function AppRoutes() {
           />
           <Route path={routes.oportunidades} element={<OportunidadesPage />} />
           <Route path={routes.curadoria} element={<VagasParaIniciantesPage />} />
-          <Route path="*" element={<Navigate to={routes.home} replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
     </Routes>
   )
