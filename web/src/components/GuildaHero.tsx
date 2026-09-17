@@ -27,7 +27,7 @@ export function GuildaHero() {
           </p>
 
           <h1 className="mural-fade mural-fade-delay-1 mt-7 text-[2.55rem] leading-[0.98] font-black tracking-[-0.05em] text-neutral-500 uppercase md:text-[3.4rem] lg:text-[3.75rem]">
-            <span className="text-mark">Guilda</span> do
+            <span className="text-mark">Guilda</span> do{' '}
             <br />
             Vaguiner
           </h1>
