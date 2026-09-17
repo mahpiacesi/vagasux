@@ -8,12 +8,14 @@ import {
   getSeoRoute,
   listIndexableSeoRoutes,
   listPrerenderPaths,
+  matchSeoRedirect,
   renderRobotsTxt,
   renderSitemapXml,
   renderVercelJson,
   seoRedirects,
   seoRoutes,
 } from '../src/data/seoCatalog'
+import { parseJobFiltersFromSearchParams } from '../src/lib/jobSearchParams'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -56,6 +58,89 @@ describe('seo catalog', () => {
     )
     assert.equal(bySource['/perfis-para-seguir'], '/guia')
     assert.equal(bySource['/guia-do-product-designer/cursos'], '/guia/cursos')
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/carreira/portfolio')
+        ?.destination,
+      '/guia/trilhas/portfolio',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/carreira/freelancer')
+        ?.destination,
+      '/guia/trilhas/freelancer',
+    )
+    assert.equal(
+      matchSeoRedirect(
+        '/guia-do-product-designer/carreira/carreira-internacional',
+      )?.destination,
+      '/guia/trilhas/vagas-internacionais',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/carreira/voluntariado')
+        ?.destination,
+      '/guia/trilhas/voluntariado',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/carreira/currculo')
+        ?.destination,
+      '/guia/trilhas/primeira-vaga',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/carreira/transicoes')
+        ?.destination,
+      '/guia/trilhas/primeira-vaga',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/primeiros-passos')
+        ?.destination,
+      '/guia/trilhas/entender-o-basico',
+    )
+    assert.equal(
+      matchSeoRedirect(
+        '/guia-do-product-designer/perfis-para-seguir/grupos-no-whatsapp',
+      )?.destination,
+      '/comunidade#canais-abertos',
+    )
+    assert.equal(
+      matchSeoRedirect('/vagas-para-iniciantes/apenas-vagas-remoto')
+        ?.destination,
+      '/vagas-para-iniciantes?workModel=remote',
+    )
+    assert.equal(
+      matchSeoRedirect('/vagas-para-iniciantes/apenas-vagas-em-sp')
+        ?.destination,
+      '/vagas-para-iniciantes?state=SP',
+    )
+    assert.equal(
+      matchSeoRedirect('/vagas-para-iniciantes/apenas-vagas-de-estgio')
+        ?.destination,
+      '/vagas-para-iniciantes?seniority=intern',
+    )
+    assert.equal(
+      matchSeoRedirect('/oportunidades/vagas-remotas')?.destination,
+      '/oportunidades?workModel=remote',
+    )
+    assert.equal(
+      matchSeoRedirect('/vagas-para-iniciantes/em-aberto/saba')?.destination,
+      '/vagas-para-iniciantes',
+    )
+    assert.equal(
+      matchSeoRedirect('/guia-do-product-designer/conteudos/lista/foo')
+        ?.destination,
+      '/guia',
+    )
+  })
+
+  it('parses mural filter query params from Super landing pages', () => {
+    const remote = parseJobFiltersFromSearchParams(
+      new URLSearchParams('workModel=remote'),
+    )
+    assert.equal(remote.workModel, 'remote')
+    const sp = parseJobFiltersFromSearchParams(new URLSearchParams('state=SP'))
+    assert.equal(sp.state, 'São Paulo')
+    const intern = parseJobFiltersFromSearchParams(
+      new URLSearchParams('seniority=intern'),
+    )
+    assert.equal(intern.seniority, 'intern')
   })
 
   it('keeps generated artifacts in sync', () => {

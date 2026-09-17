@@ -48,6 +48,26 @@ function stateFromUf(uf: string) {
   return UF_TO_STATE[uf.toUpperCase()] ?? null
 }
 
+/** Map a query param (UF or full name) to the filter's Brazilian state label. */
+export function resolveBrazilianStateFilter(
+  value: string | null | undefined,
+): string | null {
+  if (!value) return null
+  const trimmed = value.trim()
+  if (!trimmed || trimmed.toLowerCase() === 'all') return null
+  if (/^[A-Za-z]{2}$/.test(trimmed)) return stateFromUf(trimmed)
+  const normalized = normalizeText(trimmed)
+  return (
+    BRAZILIAN_STATES.find((state) => normalizeText(state) === normalized) ?? null
+  )
+}
+
+/** Compact UF for shareable mural URLs. */
+export function brazilianStateToUf(state: string): string | null {
+  const match = Object.entries(UF_TO_STATE).find(([, name]) => name === state)
+  return match?.[0] ?? null
+}
+
 /** Parse a job location string into a Brazilian state name, when possible. */
 export function parseBrazilianState(location: string | null | undefined): string | null {
   if (!location) return null

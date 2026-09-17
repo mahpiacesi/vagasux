@@ -4,7 +4,12 @@ import {
   guiaTrilhas,
 } from '@/data/guia'
 import { guiaRoutes } from '@/lib/guiaRoutes'
-import { routes, superSite } from '@/lib/siteLinks'
+import {
+  communityHashes,
+  guiaHashes,
+  routes,
+  superSite,
+} from '@/lib/siteLinks'
 
 export const SITE_ORIGIN = superSite.origin
 
@@ -238,71 +243,265 @@ export const seoRoutes: SeoRoute[] = [
 
 const seoRouteByPath = new Map(seoRoutes.map((entry) => [entry.path, entry]))
 
+function redirect(source: string, destination: string): SeoRedirect {
+  return { source, destination }
+}
+
 /**
  * Permanent redirects from Super/Notion URLs and retired aliases
  * to the current canonical route. More specific paths come first.
  */
 export const seoRedirects: SeoRedirect[] = [
-  {
-    source: '/guia-do-product-designer/faq-tira-duvidas',
-    destination: guiaRoutes.faq,
-  },
-  {
-    source: '/guia-do-product-designer/cursos/publicar-relato',
-    destination: guiaRoutes.cursosPublicarRelato,
-  },
-  {
-    source: '/guia-do-product-designer/cursos',
-    destination: guiaRoutes.cursos,
-  },
-  {
-    source: '/guia-do-product-designer',
-    destination: guiaRoutes.home,
-  },
-  {
-    source: '/guia-do-product-designer/:path*',
-    destination: guiaRoutes.home,
-  },
-  { source: '/cursos', destination: guiaRoutes.cursos },
-  { source: '/guia/tipo/cursos', destination: guiaRoutes.cursos },
-  { source: '/eventos', destination: guiaRoutes.tipo('eventos') },
-  { source: '/perfis-para-seguir', destination: guiaRoutes.home },
-  { source: '/guia/tipo/canais', destination: guiaRoutes.home },
-  { source: '/guia/tipo/artigos', destination: guiaRoutes.home },
-  { source: '/glossario', destination: guiaRoutes.glossario },
-  {
-    source: '/primeiros-passos',
-    destination: guiaRoutes.trilha('entender-o-basico'),
-  },
-  {
-    source: '/trilhas/primeiros-passos',
-    destination: guiaRoutes.trilha('entender-o-basico'),
-  },
-  {
-    source: '/trilhas/portfolio-iniciante',
-    destination: guiaRoutes.trilha('portfolio'),
-  },
-  {
-    source: '/trilhas/ux-research-basics',
-    destination: guiaRoutes.tema('research'),
-  },
-  {
-    source: '/trilhas/design-systems-101',
-    destination: guiaRoutes.tema('design-system'),
-  },
-  { source: '/a-comunidade', destination: routes.comunidade },
-  { source: '/iniciantes-em-design/apenas-mentores', destination: routes.mentoria },
-  { source: '/iniciantes-em-design', destination: routes.curadoria },
-  { source: '/quem-organiza', destination: routes.voluntariado },
-  { source: '/termos-e-polticas', destination: routes.termosEPoliticas },
-  {
-    source: '/guia/tema/fundamentos',
-    destination: guiaRoutes.fundamentos,
-  },
-  {
-    source: '/guia/tema/ferramentas',
-    destination: guiaRoutes.ferramentas,
-  },
+  redirect('/guia-do-product-designer/faq-tira-duvidas', guiaRoutes.faq),
+  redirect(
+    '/guia-do-product-designer/cursos/publicar-relato',
+    guiaRoutes.cursosPublicarRelato,
+  ),
+  redirect('/guia-do-product-designer/cursos', guiaRoutes.cursos),
+  redirect(
+    '/guia-do-product-designer/carreira/portfolio',
+    guiaRoutes.trilha('portfolio'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/freelancer',
+    guiaRoutes.trilha('freelancer'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/carreira-internacional',
+    guiaRoutes.trilha('vagas-internacionais'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/voluntariado',
+    guiaRoutes.trilha('voluntariado'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/currculo',
+    guiaRoutes.trilha('primeira-vaga'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/curriculo',
+    guiaRoutes.trilha('primeira-vaga'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira/transicoes',
+    guiaRoutes.trilha('primeira-vaga'),
+  ),
+  redirect(
+    '/guia-do-product-designer/carreira',
+    `${guiaRoutes.home}#${guiaHashes.trilhas}`,
+  ),
+  redirect(
+    '/guia-do-product-designer/sobre-a-area',
+    guiaRoutes.trilha('entender-o-basico'),
+  ),
+  redirect(
+    '/guia-do-product-designer/primeiros-passos',
+    guiaRoutes.trilha('entender-o-basico'),
+  ),
+  redirect('/guia-do-product-designer/recursos/ui', guiaRoutes.tema('ui')),
+  redirect(
+    '/guia-do-product-designer/recursos/acessibilidade',
+    guiaRoutes.tema('acessibilidade'),
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/diversidade',
+    guiaRoutes.tema('diversidade'),
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/design-system',
+    guiaRoutes.tema('design-system'),
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/metricas',
+    guiaRoutes.tema('metricas'),
+  ),
+  redirect('/guia-do-product-designer/recursos/ia', guiaRoutes.tema('ia')),
+  redirect(
+    '/guia-do-product-designer/recursos/writing',
+    guiaRoutes.tema('content-design'),
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/ferramentas',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/quadro-de-ideias',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/utilitarios',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/geradores',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/gravacoes',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/bancos-de-imagens',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/organizacao-gerenciamento',
+    guiaRoutes.ferramentas,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/cores',
+    guiaRoutes.fundamentos,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/grids',
+    guiaRoutes.fundamentos,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/tipografia',
+    guiaRoutes.fundamentos,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/icones',
+    guiaRoutes.fundamentos,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/ilustracoes',
+    guiaRoutes.fundamentos,
+  ),
+  redirect(
+    '/guia-do-product-designer/recursos/animacao',
+    guiaRoutes.fundamentos,
+  ),
+  redirect('/guia-do-product-designer/recursos/ux', guiaRoutes.home),
+  redirect(
+    '/guia-do-product-designer/recursos',
+    `${guiaRoutes.home}#${guiaHashes.temas}`,
+  ),
+  redirect(
+    '/guia-do-product-designer/conteudos/videos',
+    guiaRoutes.tipo('videos'),
+  ),
+  redirect(
+    '/guia-do-product-designer/conteudos/livros',
+    guiaRoutes.tipo('livros'),
+  ),
+  redirect(
+    '/guia-do-product-designer/conteudos/podcasts',
+    guiaRoutes.tipo('podcasts'),
+  ),
+  redirect(
+    '/guia-do-product-designer/conteudos/newsletters',
+    guiaRoutes.tipo('newsletters'),
+  ),
+  redirect('/guia-do-product-designer/conteudos/artigos', guiaRoutes.home),
+  redirect(
+    '/guia-do-product-designer/conteudos',
+    `${guiaRoutes.home}#${guiaHashes.tipos}`,
+  ),
+  redirect(
+    '/guia-do-product-designer/eventos',
+    guiaRoutes.tipo('eventos'),
+  ),
+  redirect(
+    '/guia-do-product-designer/trilhas',
+    `${guiaRoutes.home}#${guiaHashes.trilhas}`,
+  ),
+  redirect(
+    '/guia-do-product-designer/perfis-para-seguir/grupos-no-whatsapp',
+    `${routes.comunidade}#${communityHashes.canaisAbertos}`,
+  ),
+  redirect('/guia-do-product-designer/perfis-para-seguir', guiaRoutes.home),
+  redirect('/guia-do-product-designer', guiaRoutes.home),
+  redirect('/guia-do-product-designer/:path*', guiaRoutes.home),
+  redirect('/cursos', guiaRoutes.cursos),
+  redirect('/guia/tipo/cursos', guiaRoutes.cursos),
+  redirect('/eventos', guiaRoutes.tipo('eventos')),
+  redirect('/perfis-para-seguir', guiaRoutes.home),
+  redirect('/guia/tipo/canais', guiaRoutes.home),
+  redirect('/guia/tipo/artigos', guiaRoutes.home),
+  redirect('/glossario', guiaRoutes.glossario),
+  redirect('/primeiros-passos', guiaRoutes.trilha('entender-o-basico')),
+  redirect('/trilhas/primeiros-passos', guiaRoutes.trilha('entender-o-basico')),
+  redirect('/trilhas/portfolio-iniciante', guiaRoutes.trilha('portfolio')),
+  redirect('/trilhas/ux-research-basics', guiaRoutes.tema('research')),
+  redirect('/trilhas/design-systems-101', guiaRoutes.tema('design-system')),
+  redirect('/a-comunidade', routes.comunidade),
+  redirect('/iniciantes-em-design/apenas-mentores', routes.mentoria),
+  redirect('/iniciantes-em-design', routes.curadoria),
+  redirect('/quem-organiza', routes.voluntariado),
+  redirect('/termos-e-polticas', routes.termosEPoliticas),
+  redirect('/guia/tema/fundamentos', guiaRoutes.fundamentos),
+  redirect('/guia/tema/ferramentas', guiaRoutes.ferramentas),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-remoto',
+    `${routes.curadoria}?workModel=remote`,
+  ),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-em-sp',
+    `${routes.curadoria}?state=SP`,
+  ),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-no-rj',
+    `${routes.curadoria}?state=RJ`,
+  ),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-em-mg',
+    `${routes.curadoria}?state=MG`,
+  ),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-de-estgio',
+    `${routes.curadoria}?seniority=intern`,
+  ),
+  redirect(
+    '/vagas-para-iniciantes/apenas-vagas-de-estagio',
+    `${routes.curadoria}?seniority=intern`,
+  ),
+  redirect('/vagas-para-iniciantes/:path*', routes.curadoria),
+  redirect(
+    '/oportunidades/vagas-remotas',
+    `${routes.oportunidades}?workModel=remote`,
+  ),
+  redirect(
+    '/oportunidades/vagas-em-so-paulo-sp',
+    `${routes.oportunidades}?state=SP`,
+  ),
+  redirect(
+    '/oportunidades/vagas-no-rio-de-janeiro-rj',
+    `${routes.oportunidades}?state=RJ`,
+  ),
+  redirect(
+    '/oportunidades/vagas-em-minas-gerais-mg',
+    `${routes.oportunidades}?state=MG`,
+  ),
+  redirect(
+    '/oportunidades/apenas-vagas-em-portugal',
+    `${routes.oportunidades}?market=international`,
+  ),
+  redirect(
+    '/oportunidades/apenas-vagas-de-product-designer',
+    `${routes.oportunidades}?discipline=ux`,
+  ),
+  redirect(
+    '/oportunidades/apenas-vagas-de-ui-designer',
+    `${routes.oportunidades}?discipline=ui`,
+  ),
+  redirect(
+    '/oportunidades/apenas-vagas-de-ux-designer',
+    `${routes.oportunidades}?discipline=ux`,
+  ),
+  redirect(
+    '/oportunidades/apenas-vagas-de-ux-research',
+    `${routes.oportunidades}?discipline=ux_research`,
+  ),
+  redirect(
+    '/oportunidades/vagas-de-design-system-e-ops',
+    `${routes.oportunidades}?discipline=design_ops`,
+  ),
+  redirect(
+    '/oportunidades/vagas-de-ux-writing',
+    `${routes.oportunidades}?discipline=content_design`,
+  ),
+  redirect('/oportunidades/:path*', routes.oportunidades),
 ]
 
 /** @deprecated Use seoRedirects. Kept so existing notes keep working. */
@@ -316,6 +515,19 @@ export function canonicalUrl(path: string): string {
 export function getSeoRoute(pathname: string): SeoRoute | undefined {
   const normalized = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname
   return seoRouteByPath.get(normalized)
+}
+
+/** First matching Vercel-style redirect for a pathname (no query string). */
+export function matchSeoRedirect(pathname: string): SeoRedirect | undefined {
+  const normalized = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname
+  for (const redirect of seoRedirects) {
+    if (redirect.source === normalized) return redirect
+    if (!redirect.source.endsWith('/:path*')) continue
+    const prefix = redirect.source.slice(0, -'/:path*'.length)
+    if (normalized === prefix || normalized.startsWith(`${prefix}/`)) {
+      return redirect
+    }
+  }
 }
 
 export function listIndexableSeoRoutes(): SeoRoute[] {
@@ -437,6 +649,31 @@ export function assertSeoCatalogInvariants(): void {
   )
   if (designSystems?.destination !== guiaRoutes.tema('design-system')) {
     throw new Error('/trilhas/design-systems-101 must redirect to /guia/tema/design-system')
+  }
+
+  const portfolio = matchSeoRedirect(
+    '/guia-do-product-designer/carreira/portfolio',
+  )
+  if (portfolio?.destination !== guiaRoutes.trilha('portfolio')) {
+    throw new Error(
+      'old Guia portfolio URL must redirect to /guia/trilhas/portfolio',
+    )
+  }
+
+  const remoteJobs = matchSeoRedirect(
+    '/vagas-para-iniciantes/apenas-vagas-remoto',
+  )
+  if (remoteJobs?.destination !== `${routes.curadoria}?workModel=remote`) {
+    throw new Error(
+      'Apenas vagas remoto must redirect to /vagas-para-iniciantes?workModel=remote',
+    )
+  }
+
+  const unknownGuia = matchSeoRedirect(
+    '/guia-do-product-designer/conteudos/lista/qualquer-item',
+  )
+  if (unknownGuia?.destination !== guiaRoutes.home) {
+    throw new Error('unknown Guia Super URLs must fall back to /guia')
   }
 }
 

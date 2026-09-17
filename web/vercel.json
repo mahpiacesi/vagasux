@@ -16,6 +16,216 @@
       "permanent": true
     },
     {
+      "source": "/guia-do-product-designer/carreira/portfolio",
+      "destination": "/guia/trilhas/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/freelancer",
+      "destination": "/guia/trilhas/freelancer",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/carreira-internacional",
+      "destination": "/guia/trilhas/vagas-internacionais",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/voluntariado",
+      "destination": "/guia/trilhas/voluntariado",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/currculo",
+      "destination": "/guia/trilhas/primeira-vaga",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/curriculo",
+      "destination": "/guia/trilhas/primeira-vaga",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira/transicoes",
+      "destination": "/guia/trilhas/primeira-vaga",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/carreira",
+      "destination": "/guia#trilhas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/sobre-a-area",
+      "destination": "/guia/trilhas/entender-o-basico",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/primeiros-passos",
+      "destination": "/guia/trilhas/entender-o-basico",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/ui",
+      "destination": "/guia/tema/ui",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/acessibilidade",
+      "destination": "/guia/tema/acessibilidade",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/diversidade",
+      "destination": "/guia/tema/diversidade",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/design-system",
+      "destination": "/guia/tema/design-system",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/metricas",
+      "destination": "/guia/tema/metricas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/ia",
+      "destination": "/guia/tema/ia",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/writing",
+      "destination": "/guia/tema/content-design",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/ferramentas",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/quadro-de-ideias",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/utilitarios",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/geradores",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/gravacoes",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/bancos-de-imagens",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/organizacao-gerenciamento",
+      "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/cores",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/grids",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/tipografia",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/icones",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/ilustracoes",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/animacao",
+      "destination": "/guia/fundamentos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos/ux",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/recursos",
+      "destination": "/guia#temas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos/videos",
+      "destination": "/guia/tipo/videos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos/livros",
+      "destination": "/guia/tipo/livros",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos/podcasts",
+      "destination": "/guia/tipo/podcasts",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos/newsletters",
+      "destination": "/guia/tipo/newsletters",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos/artigos",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/conteudos",
+      "destination": "/guia#tipos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/eventos",
+      "destination": "/guia/tipo/eventos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/trilhas",
+      "destination": "/guia#trilhas",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/perfis-para-seguir/grupos-no-whatsapp",
+      "destination": "/comunidade#canais-abertos",
+      "permanent": true
+    },
+    {
+      "source": "/guia-do-product-designer/perfis-para-seguir",
+      "destination": "/guia",
+      "permanent": true
+    },
+    {
       "source": "/guia-do-product-designer",
       "destination": "/guia",
       "permanent": true
@@ -118,6 +328,101 @@
     {
       "source": "/guia/tema/ferramentas",
       "destination": "/guia/ferramentas",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-remoto",
+      "destination": "/vagas-para-iniciantes?workModel=remote",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-em-sp",
+      "destination": "/vagas-para-iniciantes?state=SP",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-no-rj",
+      "destination": "/vagas-para-iniciantes?state=RJ",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-em-mg",
+      "destination": "/vagas-para-iniciantes?state=MG",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-de-estgio",
+      "destination": "/vagas-para-iniciantes?seniority=intern",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/apenas-vagas-de-estagio",
+      "destination": "/vagas-para-iniciantes?seniority=intern",
+      "permanent": true
+    },
+    {
+      "source": "/vagas-para-iniciantes/:path*",
+      "destination": "/vagas-para-iniciantes",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-remotas",
+      "destination": "/oportunidades?workModel=remote",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-em-so-paulo-sp",
+      "destination": "/oportunidades?state=SP",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-no-rio-de-janeiro-rj",
+      "destination": "/oportunidades?state=RJ",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-em-minas-gerais-mg",
+      "destination": "/oportunidades?state=MG",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/apenas-vagas-em-portugal",
+      "destination": "/oportunidades?market=international",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/apenas-vagas-de-product-designer",
+      "destination": "/oportunidades?discipline=ux",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/apenas-vagas-de-ui-designer",
+      "destination": "/oportunidades?discipline=ui",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/apenas-vagas-de-ux-designer",
+      "destination": "/oportunidades?discipline=ux",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/apenas-vagas-de-ux-research",
+      "destination": "/oportunidades?discipline=ux_research",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-de-design-system-e-ops",
+      "destination": "/oportunidades?discipline=design_ops",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/vagas-de-ux-writing",
+      "destination": "/oportunidades?discipline=content_design",
+      "permanent": true
+    },
+    {
+      "source": "/oportunidades/:path*",
+      "destination": "/oportunidades",
       "permanent": true
     }
   ],
