@@ -231,7 +231,7 @@
       "permanent": true
     },
     {
-      "source": "/guia-do-product-designer/:path*",
+      "source": "/guia-do-product-designer/:path+",
       "destination": "/guia",
       "permanent": true
     },
@@ -361,7 +361,7 @@
       "permanent": true
     },
     {
-      "source": "/vagas-para-iniciantes/:path*",
+      "source": "/vagas-para-iniciantes/:path+",
       "destination": "/vagas-para-iniciantes",
       "permanent": true
     },
@@ -421,7 +421,7 @@
       "permanent": true
     },
     {
-      "source": "/oportunidades/:path*",
+      "source": "/oportunidades/:path+",
       "destination": "/oportunidades",
       "permanent": true
     }

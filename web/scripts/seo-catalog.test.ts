@@ -123,6 +123,8 @@ describe('seo catalog', () => {
       matchSeoRedirect('/vagas-para-iniciantes/em-aberto/saba')?.destination,
       '/vagas-para-iniciantes',
     )
+    assert.equal(matchSeoRedirect('/vagas-para-iniciantes'), undefined)
+    assert.equal(matchSeoRedirect('/oportunidades'), undefined)
     assert.equal(
       matchSeoRedirect('/guia-do-product-designer/conteudos/lista/foo')
         ?.destination,

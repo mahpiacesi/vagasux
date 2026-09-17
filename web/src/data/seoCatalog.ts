@@ -412,7 +412,7 @@ export const seoRedirects: SeoRedirect[] = [
   ),
   redirect('/guia-do-product-designer/perfis-para-seguir', guiaRoutes.home),
   redirect('/guia-do-product-designer', guiaRoutes.home),
-  redirect('/guia-do-product-designer/:path*', guiaRoutes.home),
+  redirect('/guia-do-product-designer/:path+', guiaRoutes.home),
   redirect('/cursos', guiaRoutes.cursos),
   redirect('/guia/tipo/cursos', guiaRoutes.cursos),
   redirect('/eventos', guiaRoutes.tipo('eventos')),
@@ -456,7 +456,7 @@ export const seoRedirects: SeoRedirect[] = [
     '/vagas-para-iniciantes/apenas-vagas-de-estagio',
     `${routes.curadoria}?seniority=intern`,
   ),
-  redirect('/vagas-para-iniciantes/:path*', routes.curadoria),
+  redirect('/vagas-para-iniciantes/:path+', routes.curadoria),
   redirect(
     '/oportunidades/vagas-remotas',
     `${routes.oportunidades}?workModel=remote`,
@@ -501,7 +501,7 @@ export const seoRedirects: SeoRedirect[] = [
     '/oportunidades/vagas-de-ux-writing',
     `${routes.oportunidades}?discipline=content_design`,
   ),
-  redirect('/oportunidades/:path*', routes.oportunidades),
+  redirect('/oportunidades/:path+', routes.oportunidades),
 ]
 
 /** @deprecated Use seoRedirects. Kept so existing notes keep working. */
@@ -522,11 +522,12 @@ export function matchSeoRedirect(pathname: string): SeoRedirect | undefined {
   const normalized = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname
   for (const redirect of seoRedirects) {
     if (redirect.source === normalized) return redirect
-    if (!redirect.source.endsWith('/:path*')) continue
-    const prefix = redirect.source.slice(0, -'/:path*'.length)
-    if (normalized === prefix || normalized.startsWith(`${prefix}/`)) {
-      return redirect
-    }
+    const wildcard = redirect.source.match(/^(.*)\/:path([+*])$/)
+    if (!wildcard) continue
+    const prefix = wildcard[1]
+    const includeRoot = wildcard[2] === '*'
+    if (includeRoot && normalized === prefix) return redirect
+    if (normalized.startsWith(`${prefix}/`)) return redirect
   }
 }
 
