@@ -89,11 +89,9 @@ function PhotoCard({ item }: { item: SobreGalleryItem }) {
 function EmptyTile({
   span,
   tone,
-  delayMs,
-}: (typeof emptyTiles)[number] & { delayMs: number }) {
+}: Omit<(typeof emptyTiles)[number], 'id'> & { delayMs?: number }) {
   return (
-    <ScrollReveal
-      delayMs={delayMs}
+    <div
       className={cn(
         'sobre-gallery-item flex items-center justify-center overflow-hidden rounded-2xl',
         spanClass[span],
@@ -105,7 +103,7 @@ function EmptyTile({
         weight="duotone"
         aria-hidden
       />
-    </ScrollReveal>
+    </div>
   )
 }
 
@@ -120,8 +118,8 @@ export function SobrePhotoGallery() {
           As fotos da comunidade serão publicadas neste mural.
         </p>
         <div className="sobre-gallery" aria-hidden>
-          {emptyTiles.map((tile, index) => (
-            <EmptyTile key={tile.id} {...tile} delayMs={index * 60} />
+          {emptyTiles.map((tile) => (
+            <EmptyTile key={tile.id} span={tile.span} tone={tile.tone} />
           ))}
         </div>
       </>

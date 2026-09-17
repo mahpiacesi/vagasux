@@ -110,13 +110,15 @@ export function SobreTimeline() {
               <span className="sobre-timeline-node" aria-hidden>
                 <Umbrella size={16} weight="fill" />
               </span>
-              <ScrollReveal className="sobre-timeline-content" delayMs={index * 80}>
-                {milestone ? (
+              {milestone ? (
+                <ScrollReveal className="sobre-timeline-content" delayMs={index * 80}>
                   <MilestoneCard milestone={milestone} index={index} />
-                ) : (
+                </ScrollReveal>
+              ) : (
+                <div className="sobre-timeline-content">
                   <EmptyMilestoneCard index={index} />
-                )}
-              </ScrollReveal>
+                </div>
+              )}
             </li>
           )
         })}

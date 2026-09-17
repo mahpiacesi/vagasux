@@ -269,7 +269,7 @@ function FounderSection() {
               <img
                 src={founderPhoto}
                 alt="Mah Piacesi, fundadora da VagasUX"
-                className="aspect-[4/5] w-full object-cover object-[center_22%]"
+                className="aspect-[4/5] w-full object-cover object-[center_8%]"
                 width={720}
                 height={900}
                 loading="lazy"
@@ -287,7 +287,7 @@ function FounderSection() {
                 href={sobreLinks.founder}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-brand-200 decoration-4 underline-offset-4 transition-colors hover:text-brand-500 hover:decoration-brand-300"
+                className="text-neutral-500 underline decoration-brand-200 decoration-4 underline-offset-4 transition-colors hover:text-brand-500 hover:decoration-brand-300"
               >
                 Mah Piacesi
               </a>
