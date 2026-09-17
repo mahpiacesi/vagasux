@@ -223,7 +223,7 @@ export function ComunidadePage() {
             Faça parte da VagasUX
           </p>
           <h1 className="mural-fade mural-fade-delay-1 mt-6 max-w-4xl text-[2.6rem] leading-[1.02] font-black tracking-[-0.045em] md:text-6xl lg:text-7xl">
-            A maior comunidade
+            A maior comunidade{' '}
             <br />
             de <span className="text-mark-on-dark">UX design</span> do Brasil
           </h1>

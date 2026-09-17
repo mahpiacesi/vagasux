@@ -40,7 +40,7 @@ export function MuralIntro({ count }: MuralIntroProps) {
               Mural de vagas
             </p>
             <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-4xl text-[2.35rem] leading-[1.05] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl lg:text-[3.25rem]">
-              Oportunidades
+              Oportunidades{' '}
               <br />
               em <span className="text-mark">UX e Design</span>
             </h1>

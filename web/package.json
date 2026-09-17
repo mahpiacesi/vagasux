@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "prebuild": "npm run seo:sync && npm run test:seo",
+    "build": "tsc -b && vite build && npm run prerender",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seo:sync": "tsx --tsconfig tsconfig.app.json scripts/write-seo-artifacts.ts",
+    "prerender": "tsx --tsconfig tsconfig.app.json scripts/prerender.ts",
+    "test:seo": "tsx --tsconfig tsconfig.app.json --test scripts/seo-catalog.test.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -31,6 +35,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "oxlint": "^1.71.0",
     "tailwindcss": "^4.3.2",
+    "tsx": "^4.20.5",
     "typescript": "~6.0.2",
     "vite": "^8.1.1"
   }

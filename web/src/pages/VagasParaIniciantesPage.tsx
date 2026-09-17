@@ -4,27 +4,19 @@ import { JobFilters } from '@/components/JobFilters'
 import { JobList } from '@/components/JobList'
 import { JobsCrossLink } from '@/components/jobs/JobsCrossLink'
 import { JobsListingSection } from '@/components/jobs/JobsListingSection'
+import { useJobListingFilters } from '@/hooks/useJobListingFilters'
 import { filterJobs } from '@/lib/filterJobs'
 import { fetchPublishedJobs } from '@/lib/supabase'
-import type { Job, JobFiltersState } from '@/types/job'
+import type { Job } from '@/types/job'
 
 const PAGE_SIZE = 15
 const CURATED_SOURCE = 'VagasUX'
 
-const initialFilters: JobFiltersState = {
-  query: '',
-  market: 'all',
-  workModel: 'all',
-  seniority: 'all',
-  discipline: 'all',
-  state: 'all',
-}
-
 export function VagasParaIniciantesPage() {
+  const { filters, setFilters, clearFilters } = useJobListingFilters()
   const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [filters, setFilters] = useState<JobFiltersState>(initialFilters)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const deferredQuery = useDeferredValue(filters.query)
 
@@ -80,10 +72,10 @@ export function VagasParaIniciantesPage() {
             value={filters}
             resultCount={loading ? 0 : filtered.length}
             totalCount={jobs.length}
-            hideSeniority
+            hideSeniority={filters.seniority === 'all'}
             searchPlaceholder="Buscar empresa, função ou palavra-chave…"
             onChange={setFilters}
-            onClear={() => setFilters(initialFilters)}
+            onClear={clearFilters}
           />
         </div>
         <div className="mt-6">

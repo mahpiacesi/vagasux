@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /mentoria/mentorado
+Disallow: /mentoria/pessoa-mentora
+Disallow: /guia/busca
+Disallow: /guia/cursos/publicar-relato
+Disallow: /dev/
+
+Sitemap: https://vagasux.com.br/sitemap.xml
