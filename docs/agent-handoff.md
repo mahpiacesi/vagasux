@@ -198,7 +198,9 @@
 
 ## Próximo passo esperado
 
-1. Quando for plugar o site novo no domínio, conferir titles, descriptions, capas e 301s em produção.
+1. Criar página Sobre. (lembrar amanhã — ainda não fazer)
+2. Criar página Publicar relato. (lembrar amanhã — ainda não fazer)
+3. Quando for plugar o site novo no domínio, conferir titles, descriptions, capas e 301s em produção.
 
 ---
 
