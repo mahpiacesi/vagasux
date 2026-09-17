@@ -565,14 +565,9 @@ export function applyPrerenderHtml(
       : `${SITE_ORIGIN}${entry.image}`
     : undefined
 
-  let html = template
+  let html = stripPrerenderHead(template)
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeXml(title)}</title>`)
-  html = replaceOrInsertMeta(
-    html,
-    'name',
-    'description',
-    description,
-  )
+  html = replaceOrInsertMeta(html, 'name', 'description', description)
 
   const extras = [
     `<meta name="robots" content="${escapeXml(robots)}" />`,
@@ -600,15 +595,33 @@ export function applyPrerenderHtml(
   }
 
   html = html.replace(/<\/head>/i, `    ${extras.join('\n    ')}\n  </head>`)
+  return replaceRoot(html, appHtml)
+}
 
-  if (!/<div id="root">/.test(html)) {
+function stripPrerenderHead(html: string): string {
+  return html
+    .replace(/\s*<meta name="robots"[^>]*>/gi, '')
+    .replace(/\s*<link rel="canonical"[^>]*>/gi, '')
+    .replace(/\s*<meta property="og:[^"]+"[^>]*>/gi, '')
+    .replace(/\s*<meta name="twitter:[^"]+"[^>]*>/gi, '')
+    .replace(
+      /\s*<script type="application\/ld\+json"[^>]*data-seo-jsonld[^>]*>[\s\S]*?<\/script>/gi,
+      '',
+    )
+}
+
+function replaceRoot(html: string, appHtml: string): string {
+  if (!/<div id="root">/i.test(html)) {
     throw new Error('Vite HTML template is missing <div id="root">')
   }
-  html = html.replace(
-    /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${appHtml}</div>`,
+  const next = html.replace(
+    /<div id="root">[\s\S]*<\/div>(\s*)<\/body>/i,
+    `<div id="root">${appHtml}</div>$1</body>`,
   )
-  return html
+  if (next === html) {
+    throw new Error('Could not replace #root in Vite HTML template')
+  }
+  return next
 }
 
 function replaceOrInsertMeta(
@@ -619,12 +632,11 @@ function replaceOrInsertMeta(
 ): string {
   const pattern = new RegExp(
     `<meta[^>]*${attr}=["']${key}["'][^>]*>`,
-    'i',
+    'gi',
   )
   const tag = `<meta ${attr}="${key}" content="${escapeXml(content)}" />`
-  if (pattern.test(html)) {
-    return html.replace(pattern, tag)
-  }
+  const next = html.replace(pattern, tag)
+  if (next !== html) return next
   return html.replace(/<\/head>/i, `    ${tag}\n  </head>`)
 }
 

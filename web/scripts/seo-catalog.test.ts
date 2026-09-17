@@ -187,4 +187,27 @@ describe('seo catalog', () => {
     assert.match(html, /<div id="root"><h1>FAQ Tira-Dúvidas<\/h1><\/div>/)
     assert.match(html, /og:title/)
   })
+
+  it('replaces previous prerender tags instead of stacking them', () => {
+    const shell = `<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta name="description" content="fallback" />
+    <title>Fallback</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+`
+    const home = applyPrerenderHtml(shell, '/', '<div><h1>Home</h1></div>')
+    const faq = applyPrerenderHtml(home, '/guia/faq', '<h1>FAQ Tira-Dúvidas</h1>')
+    assert.equal(faq.match(/rel="canonical"/g)?.length, 1)
+    assert.equal(faq.match(/property="og:title"/g)?.length, 1)
+    assert.equal(faq.match(/data-seo-jsonld/g), null)
+    assert.match(faq, /rel="canonical" href="https:\/\/vagasux.com.br\/guia\/faq"/)
+    assert.match(faq, /<title>VagasUX · Guia · FAQ<\/title>/)
+    assert.match(faq, /<div id="root"><h1>FAQ Tira-Dúvidas<\/h1><\/div>/)
+    assert.doesNotMatch(faq, /rel="canonical" href="https:\/\/vagasux.com.br\/"/)
+  })
 })
