@@ -13,6 +13,19 @@ import {
 
 export const SITE_ORIGIN = superSite.origin
 
+/** Super social covers copied into `web/public/og`. Not shown as page UI. */
+const ogImages = {
+  home: '/og/home.png',
+  comunidade: '/og/comunidade.png',
+  mentoria: '/og/mentoria.png',
+  voluntariado: '/og/voluntariado.png',
+  parcerias: '/og/parcerias.png',
+  guia: '/og/guia.png',
+  cursos: '/og/cursos.png',
+  oportunidades: '/og/oportunidades.png',
+  curadoria: '/og/vagas-para-iniciantes.png',
+} as const
+
 export type SeoChangefreq =
   | 'always'
   | 'hourly'
@@ -73,6 +86,7 @@ const staticPages: SeoRoute[] = [
     {
       priority: 1,
       changefreq: 'weekly',
+      image: ogImages.home,
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
@@ -86,13 +100,13 @@ const staticPages: SeoRoute[] = [
     routes.comunidade,
     'VagasUX · Comunidade',
     'Torne-se um Vaguiner e faça parte da comunidade VagasUX, com conteúdos, oportunidades, desafios e conexões para quem vive UX, UI e Product Design.',
-    { priority: 0.8 },
+    { priority: 0.8, image: ogImages.comunidade },
   ),
   page(
     routes.mentoria,
     'VagasUX · Mentoria',
     'Mentoria em UX, UI e Product Design para quem busca orientação de carreira, desenvolvimento profissional e apoio para definir os próximos passos.',
-    { priority: 0.7 },
+    { priority: 0.7, image: ogImages.mentoria },
   ),
   page(
     routes.mentorado,
@@ -116,19 +130,19 @@ const staticPages: SeoRoute[] = [
     routes.voluntariado,
     'VagasUX · Voluntariado',
     'Conheça as frentes, o time e como contribuir com a VagasUX no ritmo que você tem.',
-    { priority: 0.7 },
+    { priority: 0.7, image: ogImages.voluntariado },
   ),
   page(
     routes.parcerias,
     'VagasUX · Parcerias',
     'Empresas e escolas que apoiam a VagasUX com conteúdos, descontos e oportunidades para a comunidade.',
-    { priority: 0.6 },
+    { priority: 0.6, image: ogImages.parcerias },
   ),
   page(
     routes.guia,
     'VagasUX · Guia do Product Designer',
     'Guia de UX, UI e Product Design para iniciantes, com conteúdos e materiais sobre carreira, portfólio, pesquisa, interface e mercado de design.',
-    { priority: 0.9 },
+    { priority: 0.9, image: ogImages.guia },
   ),
   page(
     guiaRoutes.busca,
@@ -152,7 +166,7 @@ const staticPages: SeoRoute[] = [
     guiaRoutes.cursos,
     'VagasUX · Guia · Cursos',
     'Avaliações de cursos e especializações de UX, UI e Product Design com relatos da comunidade sobre conteúdos, experiências de aprendizado e custo-benefício.',
-    { priority: 0.8 },
+    { priority: 0.8, image: ogImages.cursos },
   ),
   page(
     guiaRoutes.cursosPublicarRelato,
@@ -188,13 +202,13 @@ const staticPages: SeoRoute[] = [
     routes.oportunidades,
     'VagasUX · Mural de vagas',
     'Encontre vagas e oportunidades em UX, UI e Product Design com nosso buscador, que reúne diariamente novas vagas de diversas plataformas, além de oportunidades indicadas pela comunidade VagasUX.',
-    { priority: 0.8, changefreq: 'daily' },
+    { priority: 0.8, changefreq: 'daily', image: ogImages.oportunidades },
   ),
   page(
     routes.curadoria,
     'VagasUX · Curadoria de vagas para iniciantes',
     'Encontre vagas de estágio, trainee e júnior em UX, UI e Product Design. Uma curadoria de oportunidades para quem está começando a carreira em design e tecnologia.',
-    { priority: 0.8, changefreq: 'daily' },
+    { priority: 0.8, changefreq: 'daily', image: ogImages.curadoria },
   ),
 ]
 

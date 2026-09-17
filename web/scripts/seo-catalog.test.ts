@@ -58,6 +58,20 @@ describe('seo catalog', () => {
       getSeoRoute('/guia/cursos')?.description,
       'Avaliações de cursos e especializações de UX, UI e Product Design com relatos da comunidade sobre conteúdos, experiências de aprendizado e custo-benefício.',
     )
+    assert.equal(getSeoRoute('/')?.image, '/og/home.png')
+    assert.equal(getSeoRoute('/comunidade')?.image, '/og/comunidade.png')
+    assert.equal(getSeoRoute('/guia')?.image, '/og/guia.png')
+    assert.equal(
+      getSeoRoute('/vagas-para-iniciantes')?.image,
+      '/og/vagas-para-iniciantes.png',
+    )
+    assert.equal(getSeoRoute('/oportunidades')?.image, '/og/oportunidades.png')
+    assert.equal(getSeoRoute('/mentoria')?.image, '/og/mentoria.png')
+    assert.equal(getSeoRoute('/guia/cursos')?.image, '/og/cursos.png')
+    assert.equal(getSeoRoute('/parcerias')?.image, '/og/parcerias.png')
+    assert.equal(getSeoRoute('/voluntariado')?.image, '/og/voluntariado.png')
+    assert.equal(getSeoRoute('/guilda')?.image, undefined)
+    assert.equal(getSeoRoute('/guia/faq')?.image, undefined)
     assert.ok(
       getSeoRoute('/guia/trilhas/entender-o-basico')?.title.includes(
         'Entender o básico',
@@ -214,6 +228,28 @@ describe('seo catalog', () => {
     assert.match(html, /rel="canonical" href="https:\/\/vagasux.com.br\/guia\/faq"/)
     assert.match(html, /<div id="root"><h1>FAQ Tira-Dúvidas<\/h1><\/div>/)
     assert.match(html, /og:title/)
+    assert.match(html, /twitter:card" content="summary"/)
+    assert.doesNotMatch(html, /og:image/)
+    const home = applyPrerenderHtml(
+      `<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta name="description" content="fallback" />
+    <title>Fallback</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+`,
+      '/',
+      '<h1>Home</h1>',
+    )
+    assert.match(
+      home,
+      /property="og:image" content="https:\/\/vagasux.com.br\/og\/home.png"/,
+    )
+    assert.match(home, /twitter:card" content="summary_large_image"/)
   })
 
   it('replaces previous prerender tags instead of stacking them', () => {
@@ -237,5 +273,7 @@ describe('seo catalog', () => {
     assert.match(faq, /<title>VagasUX · Guia · FAQ<\/title>/)
     assert.match(faq, /<div id="root"><h1>FAQ Tira-Dúvidas<\/h1><\/div>/)
     assert.doesNotMatch(faq, /rel="canonical" href="https:\/\/vagasux.com.br\/"/)
+    assert.doesNotMatch(faq, /og:image/)
+    assert.match(faq, /twitter:card" content="summary"/)
   })
 })
