@@ -6,17 +6,17 @@ import {
   SITE_ORIGIN,
 } from '@/data/seoCatalog'
 
-const DEFAULT_TITLE = 'VagasUX · Curadoria de conteúdos e vagas em UX'
-const DEFAULT_DESCRIPTION =
-  'Acreditamos que oportunidades transformam carreiras. Por isso, reunimos vagas, conteúdos e recursos em um só lugar.'
+const NOT_FOUND_TITLE = 'VagasUX · Página não encontrada'
+const NOT_FOUND_DESCRIPTION =
+  'Parece que ela se perdeu no caminho. Calce sua galocha e volte para a VagasUX para continuar explorando vagas, conteúdos, mentorias e desafios.'
 
 export function SeoHead() {
   const { pathname } = useLocation()
 
   useEffect(() => {
     const entry = getSeoRoute(pathname)
-    const title = entry?.title ?? DEFAULT_TITLE
-    const description = entry?.description ?? DEFAULT_DESCRIPTION
+    const title = entry?.title ?? NOT_FOUND_TITLE
+    const description = entry?.description ?? NOT_FOUND_DESCRIPTION
     const url = canonicalUrl(entry?.path ?? pathname)
     const indexable = entry?.index ?? false
     const ogType = entry?.ogType ?? 'website'
