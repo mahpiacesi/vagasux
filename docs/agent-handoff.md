@@ -12,7 +12,7 @@
 |------|--------|------|
 | `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
-| Ilustração 404 | ✅ Mergeado | PR #113 em 17/09 — SVG no repo, página 404 ainda não usa |
+| Página 404 | ✅ Mergeado | PR #114 em 17/09 — ilustração, copy e CTA; rotas desconhecidas não voltam mais para a home |
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
@@ -36,8 +36,11 @@
 - **PR #112 integrada:** capa de `/oportunidades` corrigida.
 - H1s com quebra de linha (Guia, Comunidade, Oportunidades, Guilda, Parcerias) mantêm o espaço para o crawler.
 
-### Ilustração 404 (17 set)
-- **PR #113 integrada** em `main`. O SVG está em `web/src/assets/illustrations/404-illustration.svg`. Ainda não há página 404 usando o arquivo.
+### Página 404 (17 set)
+- **PR #113 integrada:** ilustração em `web/src/assets/illustrations/404-illustration.svg`.
+- **PR #114 integrada** em `main`. Rotas desconhecidas abrem a página 404 em vez de redirecionar para a home.
+- Copy: título “☔ Ops! Essa página pegou chuva.”, texto da galocha e CTA “Voltar para o início”.
+- O `<head>` de URLs fora do catálogo usa title/description de não encontrada e `noindex`.
 
 ### Página Guilda (`/guilda`) — 30–31 jul
 - **PR #44** — branch `cursor/guilda-page-a8a9`, preview: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
@@ -196,7 +199,6 @@
 ## Próximo passo esperado
 
 1. Quando for plugar o site novo no domínio, conferir titles, descriptions, capas e 301s em produção.
-2. Se quiser, ligar a ilustração 404 à página de erro.
 
 ---
 
@@ -231,6 +233,9 @@
 | [PR #110 — catálogo SEO, 301s e prerender](https://github.com/mahpiacesi/vagasux/pull/110) | ✅ Integrada em `main` em 17/09 |
 | [PR #113 — ilustração 404](https://github.com/mahpiacesi/vagasux/pull/113) | ✅ Integrada em `main` em 17/09 |
 | [PR #112 — capa OG de oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | ✅ Integrada em `main` em 17/09 |
+| [PR #114 — página 404](https://github.com/mahpiacesi/vagasux/pull/114) | ✅ Integrada em `main` em 17/09 |
+| [PR #111 — handoff SEO + 404](https://github.com/mahpiacesi/vagasux/pull/111) | Draft aberto — registro pós-merge |
+| [PR #109 — handoff InHire/Guilda](https://github.com/mahpiacesi/vagasux/pull/109) | Draft aberto |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
