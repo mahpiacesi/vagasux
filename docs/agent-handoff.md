@@ -12,6 +12,7 @@
 |------|--------|------|
 | `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
+| Ilustração 404 | ✅ Mergeado | PR #113 em 17/09 — SVG no repo, página 404 ainda não usa |
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
@@ -33,6 +34,9 @@
 - Build gera HTML estático das 35 rotas indexáveis, com assets de produção.
 - Capas 1200×630 em `web/public/og` para home, comunidade, guia, cursos, vagas para iniciantes, oportunidades, mentoria, parcerias, guilda e voluntariado. A capa de publicar-vaga ficou salva para quando a página existir.
 - H1s com quebra de linha (Guia, Comunidade, Oportunidades, Guilda, Parcerias) mantêm o espaço para o crawler.
+
+### Ilustração 404 (17 set)
+- **PR #113 integrada** em `main`. O SVG está em `web/src/assets/illustrations/404-illustration.svg`. Ainda não há página 404 usando o arquivo.
 
 ### Página Guilda (`/guilda`) — 30–31 jul
 - **PR #44** — branch `cursor/guilda-page-a8a9`, preview: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
@@ -190,9 +194,9 @@
 
 ## Próximo passo esperado
 
-1. Conferir o deploy de produção do site novo: `vagasux.com.br` ainda servia o Super; o SEO novo vale quando o Vite estiver no domínio.
-2. Quando existir a página de indicar vaga, ligar `/og/publicar-vaga.png` no catálogo.
-3. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
+1. Quando for plugar o site novo no domínio, conferir titles, descriptions, capas e 301s em produção.
+2. A capa corrigida de `/oportunidades` ainda está em revisão.
+3. Se quiser, ligar a ilustração 404 à página de erro.
 
 ---
 
@@ -225,6 +229,8 @@
 | [PR #103 — página Mentoria](https://github.com/mahpiacesi/vagasux/pull/103) | ✅ Integrada em `main` em 10/09 |
 | [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | ✅ Integrada em `main` em 10/09 |
 | [PR #110 — catálogo SEO, 301s e prerender](https://github.com/mahpiacesi/vagasux/pull/110) | ✅ Integrada em `main` em 17/09 |
+| [PR #113 — ilustração 404](https://github.com/mahpiacesi/vagasux/pull/113) | ✅ Integrada em `main` em 17/09 |
+| [PR #112 — capa OG de oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | Aberta (thumb corrigida) |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
