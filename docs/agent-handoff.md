@@ -33,6 +33,7 @@
 - Descriptions no padrão Super: entram só no `<head>` (`meta`, Open Graph e Twitter), sem texto visível na página.
 - Build gera HTML estático das 35 rotas indexáveis, com assets de produção.
 - Capas 1200×630 em `web/public/og` para home, comunidade, guia, cursos, vagas para iniciantes, oportunidades, mentoria, parcerias, guilda e voluntariado. A capa de publicar-vaga ficou salva para quando a página existir.
+- **PR #112 integrada:** capa de `/oportunidades` corrigida.
 - H1s com quebra de linha (Guia, Comunidade, Oportunidades, Guilda, Parcerias) mantêm o espaço para o crawler.
 
 ### Ilustração 404 (17 set)
@@ -195,8 +196,7 @@
 ## Próximo passo esperado
 
 1. Quando for plugar o site novo no domínio, conferir titles, descriptions, capas e 301s em produção.
-2. A capa corrigida de `/oportunidades` ainda está em revisão.
-3. Se quiser, ligar a ilustração 404 à página de erro.
+2. Se quiser, ligar a ilustração 404 à página de erro.
 
 ---
 
@@ -230,7 +230,7 @@
 | [PR #104 — formulários de Mentoria](https://github.com/mahpiacesi/vagasux/pull/104) | ✅ Integrada em `main` em 10/09 |
 | [PR #110 — catálogo SEO, 301s e prerender](https://github.com/mahpiacesi/vagasux/pull/110) | ✅ Integrada em `main` em 17/09 |
 | [PR #113 — ilustração 404](https://github.com/mahpiacesi/vagasux/pull/113) | ✅ Integrada em `main` em 17/09 |
-| [PR #112 — capa OG de oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | Aberta (thumb corrigida) |
+| [PR #112 — capa OG de oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | ✅ Integrada em `main` em 17/09 |
 | Cloud agent run | [VagasUX agregador inicial](https://cursor.com/agents/bc-5db5a205-aebe-401e-abc3-69b1db19a8a9) |
 
 ---
