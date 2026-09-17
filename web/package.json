@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "npm run seo:sync && npm run test:seo",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run prerender",
     "lint": "oxlint",
     "preview": "vite preview",
     "seo:sync": "tsx --tsconfig tsconfig.app.json scripts/write-seo-artifacts.ts",
+    "prerender": "tsx --tsconfig tsconfig.app.json scripts/prerender.ts",
     "test:seo": "tsx --tsconfig tsconfig.app.json --test scripts/seo-catalog.test.ts"
   },
   "dependencies": {

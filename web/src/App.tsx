@@ -30,7 +30,14 @@ import { VagasParaIniciantesPage } from '@/pages/VagasParaIniciantesPage'
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <AppRoutes />
+    </BrowserRouter>
+  )
+}
+
+export function AppRoutes() {
+  return (
+    <Routes>
         <Route
           path="/dev/guia-illustration"
           element={<GuiaIllustrationDevPage />}
@@ -67,7 +74,6 @@ export default function App() {
           <Route path={routes.curadoria} element={<VagasParaIniciantesPage />} />
           <Route path="*" element={<Navigate to={routes.home} replace />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+    </Routes>
   )
 }

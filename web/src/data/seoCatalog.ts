@@ -535,9 +535,97 @@ export function listIndexableSeoRoutes(): SeoRoute[] {
   return seoRoutes.filter((entry) => entry.index)
 }
 
-/** Paths the future prerender step should visit at build time. */
+/** Paths written as static HTML at build time. */
 export function listPrerenderPaths(): string[] {
   return listIndexableSeoRoutes().map((entry) => entry.path)
+}
+
+export function distFileForPrerenderPath(path: string): string {
+  if (path === '/') return 'index.html'
+  return `${path.replace(/^\//, '')}/index.html`
+}
+
+export function applyPrerenderHtml(
+  template: string,
+  path: string,
+  appHtml: string,
+): string {
+  const entry = getSeoRoute(path)
+  const title =
+    entry?.title ?? 'VagasUX · Curadoria de conteúdos e vagas em UX'
+  const description =
+    entry?.description ??
+    'Acreditamos que oportunidades transformam carreiras. Por isso, reunimos vagas, conteúdos e recursos em um só lugar.'
+  const url = canonicalUrl(entry?.path ?? path)
+  const robots = entry?.index === false ? 'noindex,follow' : 'index,follow'
+  const ogType = entry?.ogType ?? 'website'
+  const image = entry?.image
+    ? entry.image.startsWith('http')
+      ? entry.image
+      : `${SITE_ORIGIN}${entry.image}`
+    : undefined
+
+  let html = template
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeXml(title)}</title>`)
+  html = replaceOrInsertMeta(
+    html,
+    'name',
+    'description',
+    description,
+  )
+
+  const extras = [
+    `<meta name="robots" content="${escapeXml(robots)}" />`,
+    `<link rel="canonical" href="${escapeXml(url)}" />`,
+    `<meta property="og:title" content="${escapeXml(title)}" />`,
+    `<meta property="og:description" content="${escapeXml(description)}" />`,
+    `<meta property="og:url" content="${escapeXml(url)}" />`,
+    `<meta property="og:type" content="${escapeXml(ogType)}" />`,
+    `<meta property="og:locale" content="pt_BR" />`,
+    `<meta property="og:site_name" content="VagasUX" />`,
+    `<meta name="twitter:card" content="summary" />`,
+    `<meta name="twitter:title" content="${escapeXml(title)}" />`,
+    `<meta name="twitter:description" content="${escapeXml(description)}" />`,
+  ]
+
+  if (image) {
+    extras.push(`<meta property="og:image" content="${escapeXml(image)}" />`)
+    extras.push(`<meta name="twitter:image" content="${escapeXml(image)}" />`)
+  }
+
+  if (entry?.jsonLd) {
+    extras.push(
+      `<script type="application/ld+json" data-seo-jsonld="true">${JSON.stringify(entry.jsonLd).replaceAll('<', '\\u003c')}</script>`,
+    )
+  }
+
+  html = html.replace(/<\/head>/i, `    ${extras.join('\n    ')}\n  </head>`)
+
+  if (!/<div id="root">/.test(html)) {
+    throw new Error('Vite HTML template is missing <div id="root">')
+  }
+  html = html.replace(
+    /<div id="root">[\s\S]*?<\/div>/,
+    `<div id="root">${appHtml}</div>`,
+  )
+  return html
+}
+
+function replaceOrInsertMeta(
+  html: string,
+  attr: 'name' | 'property',
+  key: string,
+  content: string,
+): string {
+  const pattern = new RegExp(
+    `<meta[^>]*${attr}=["']${key}["'][^>]*>`,
+    'i',
+  )
+  const tag = `<meta ${attr}="${key}" content="${escapeXml(content)}" />`
+  if (pattern.test(html)) {
+    return html.replace(pattern, tag)
+  }
+  return html.replace(/<\/head>/i, `    ${tag}\n  </head>`)
 }
 
 export function renderSitemapXml(): string {

@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { describe, it } from 'node:test'
 import {
   assertSeoCatalogInvariants,
+  applyPrerenderHtml,
+  distFileForPrerenderPath,
   getSeoRoute,
   listIndexableSeoRoutes,
   listPrerenderPaths,
@@ -159,5 +161,30 @@ describe('seo catalog', () => {
       renderRobotsTxt(),
     )
     assert.ok(seoRoutes.length > 20)
+  })
+
+  it('injects catalog metas and markup into the Vite HTML shell', () => {
+    assert.equal(distFileForPrerenderPath('/'), 'index.html')
+    assert.equal(distFileForPrerenderPath('/guia/faq'), 'guia/faq/index.html')
+    const html = applyPrerenderHtml(
+      `<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta name="description" content="fallback" />
+    <title>Fallback</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+`,
+      '/guia/faq',
+      '<h1>FAQ Tira-Dúvidas</h1>',
+    )
+    assert.match(html, /<title>VagasUX · Guia · FAQ<\/title>/)
+    assert.match(html, /content="index,follow"/)
+    assert.match(html, /rel="canonical" href="https:\/\/vagasux.com.br\/guia\/faq"/)
+    assert.match(html, /<div id="root"><h1>FAQ Tira-Dúvidas<\/h1><\/div>/)
+    assert.match(html, /og:title/)
   })
 })
