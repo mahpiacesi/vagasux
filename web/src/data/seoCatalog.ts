@@ -25,6 +25,7 @@ const ogImages = {
   oportunidades: '/og/oportunidades.png',
   curadoria: '/og/vagas-para-iniciantes.png',
   guilda: '/og/guilda.png',
+  sobre: '/og/sobre.png',
 } as const
 
 /** Cover kept for a future in-app /publicar-vaga page. */
@@ -107,6 +108,12 @@ const staticPages: SeoRoute[] = [
     'VagasUX · Comunidade',
     'Torne-se um Vaguiner e faça parte da comunidade VagasUX, com conteúdos, oportunidades, desafios e conexões para quem vive UX, UI e Product Design.',
     { priority: 0.8, image: ogImages.comunidade },
+  ),
+  page(
+    routes.sobre,
+    'Sobre a VagasUX | Comunidade de UX, Produto e Design',
+    'A VagasUX nasceu como curadoria de vagas e cresceu com a comunidade. Conheça a história, o propósito e quem constrói um espaço de UX, Produto e Design.',
+    { priority: 0.7, image: ogImages.sobre },
   ),
   page(
     routes.mentoria,

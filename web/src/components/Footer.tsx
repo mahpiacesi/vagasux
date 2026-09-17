@@ -67,6 +67,7 @@ const legalLinkClass =
   'text-sm text-neutral-300/70 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-300 hover:decoration-complementary-300/50'
 
 const legalLinks = [
+  { kind: 'internal' as const, label: 'Sobre', href: routes.sobre },
   { kind: 'internal' as const, label: 'Código de Conduta', href: routes.codigoDeConduta },
   { kind: 'internal' as const, label: 'Termos e Políticas', href: routes.termosEPoliticas },
   { kind: 'cookies' as const, label: 'Preferências de cookies' },

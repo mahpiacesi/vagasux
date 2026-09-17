@@ -18,6 +18,7 @@ import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaTrilhaVoluntariadoStages } from '@/data/guiaTrilhaVoluntariado'
 import { guiaRelatosMigracao } from '@/data/guiaRelatosMigracao'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { routes } from '@/lib/siteLinks'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
 export type GuiaSearchResult = {
@@ -207,6 +208,36 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...indexedLinks(guiaTemaResearchLinkSections, guiaRoutes.tema('research'), 'Recursos de Research'),
   ...indexedLinks(guiaTemaDesignSystemLinks, guiaRoutes.tema('design-system'), 'Recursos de Design System'),
   ...indexedLinks(guiaTemaAccessibilityLinks, guiaRoutes.tema('acessibilidade'), 'Recursos de Acessibilidade'),
+  {
+    id: 'sobre-vagasux',
+    title: 'Sobre a VagasUX',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'sobre vagasux história origem comunidade mah piacesi fundadora voluntariado panorama mentoria relatos ux produto design',
+    snippet:
+      'Como a VagasUX surgiu, por que existe e quem está por trás da comunidade de UX, Produto e Design.',
+  },
+  {
+    id: 'sobre-historia',
+    title: 'Tudo começou com uma vaga',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'história vagasux curadoria de vagas pessoas conhecimento oportunidades jornada acessível',
+    snippet:
+      'A VagasUX nasceu como uma curadoria de vagas e cresceu junto com a comunidade.',
+  },
+  {
+    id: 'sobre-fundadora',
+    title: 'Mah Piacesi, fundadora da VagasUX',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'mah piacesi marianna fundadora community builder por trás da vagasux voluntariado',
+    snippet:
+      'Uma pessoa começou. Muita gente fez crescer.',
+  },
 ]
 
 export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {

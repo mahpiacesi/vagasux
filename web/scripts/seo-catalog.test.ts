@@ -72,6 +72,15 @@ describe('seo catalog', () => {
     assert.equal(getSeoRoute('/parcerias')?.image, '/og/parcerias.png')
     assert.equal(getSeoRoute('/voluntariado')?.image, '/og/voluntariado.png')
     assert.equal(getSeoRoute('/guilda')?.image, '/og/guilda.png')
+    assert.equal(
+      getSeoRoute('/sobre')?.title,
+      'Sobre a VagasUX | Comunidade de UX, Produto e Design',
+    )
+    assert.equal(
+      getSeoRoute('/sobre')?.description,
+      'A VagasUX nasceu como curadoria de vagas e cresceu com a comunidade. Conheça a história, o propósito e quem constrói um espaço de UX, Produto e Design.',
+    )
+    assert.equal(getSeoRoute('/sobre')?.image, '/og/sobre.png')
     assert.equal(getSeoRoute('/guia/faq')?.image, undefined)
     assert.equal(reservedOgImages.publicarVaga, '/og/publicar-vaga.png')
     assert.ok(
