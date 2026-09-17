@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, it } from 'node:test'
@@ -14,6 +14,7 @@ import {
   renderRobotsTxt,
   renderSitemapXml,
   renderVercelJson,
+  reservedOgImages,
   seoRedirects,
   seoRoutes,
 } from '../src/data/seoCatalog'
@@ -70,13 +71,29 @@ describe('seo catalog', () => {
     assert.equal(getSeoRoute('/guia/cursos')?.image, '/og/cursos.png')
     assert.equal(getSeoRoute('/parcerias')?.image, '/og/parcerias.png')
     assert.equal(getSeoRoute('/voluntariado')?.image, '/og/voluntariado.png')
-    assert.equal(getSeoRoute('/guilda')?.image, undefined)
+    assert.equal(getSeoRoute('/guilda')?.image, '/og/guilda.png')
     assert.equal(getSeoRoute('/guia/faq')?.image, undefined)
+    assert.equal(reservedOgImages.publicarVaga, '/og/publicar-vaga.png')
     assert.ok(
       getSeoRoute('/guia/trilhas/entender-o-basico')?.title.includes(
         'Entender o básico',
       ),
     )
+  })
+
+  it('keeps OG cover files for catalog routes and reserved pages', () => {
+    for (const entry of seoRoutes) {
+      if (!entry.image) continue
+      assert.ok(
+        entry.image.startsWith('/og/'),
+        `${entry.path} image should be a local /og asset`,
+      )
+      assert.ok(
+        existsSync(join(root, 'public', entry.image)),
+        `missing ${entry.image}`,
+      )
+    }
+    assert.ok(existsSync(join(root, 'public', reservedOgImages.publicarVaga)))
   })
 
   it('keeps prerender paths aligned with the sitemap', () => {

@@ -13,7 +13,7 @@ import {
 
 export const SITE_ORIGIN = superSite.origin
 
-/** Super social covers copied into `web/public/og`. Not shown as page UI. */
+/** Social covers in `web/public/og`. Not shown as page UI. */
 const ogImages = {
   home: '/og/home.png',
   comunidade: '/og/comunidade.png',
@@ -24,6 +24,12 @@ const ogImages = {
   cursos: '/og/cursos.png',
   oportunidades: '/og/oportunidades.png',
   curadoria: '/og/vagas-para-iniciantes.png',
+  guilda: '/og/guilda.png',
+} as const
+
+/** Cover kept for a future in-app /publicar-vaga page. */
+export const reservedOgImages = {
+  publicarVaga: '/og/publicar-vaga.png',
 } as const
 
 export type SeoChangefreq =
@@ -124,7 +130,7 @@ const staticPages: SeoRoute[] = [
     routes.guilda,
     'VagasUX · Guilda do Vaguiner',
     'Comunidade exclusiva da VagasUX, com encontros, mentoria e acompanhamento para quem está construindo carreira em UX.',
-    { priority: 0.8 },
+    { priority: 0.8, image: ogImages.guilda },
   ),
   page(
     routes.voluntariado,
