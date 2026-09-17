@@ -31,7 +31,7 @@ export function SeoHead() {
     setMeta('property', 'og:type', ogType)
     setMeta('property', 'og:locale', 'pt_BR')
     setMeta('property', 'og:site_name', 'VagasUX')
-    setMeta('name', 'twitter:card', 'summary')
+    setMeta('name', 'twitter:card', entry?.image ? 'summary_large_image' : 'summary')
     setMeta('name', 'twitter:title', title)
     setMeta('name', 'twitter:description', description)
 

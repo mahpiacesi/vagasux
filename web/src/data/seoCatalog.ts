@@ -68,7 +68,7 @@ const staticPages: SeoRoute[] = [
   page(
     routes.home,
     'VagasUX · Curadoria de conteúdos e vagas em UX',
-    'Acreditamos que oportunidades transformam carreiras. Por isso, reunimos vagas, conteúdos e recursos em um só lugar.',
+    'Curadoria de conteúdos e vagas em UX para todos os níveis, todos mesmo.',
     {
       priority: 1,
       changefreq: 'weekly',
@@ -84,7 +84,7 @@ const staticPages: SeoRoute[] = [
   page(
     routes.comunidade,
     'VagasUX · Comunidade',
-    'A maior comunidade de UX design do Brasil. Participe como membro, pessoa voluntária ou apoiadora.',
+    'Veja como se tornar um Vaguiner em nossos canais oficiais.',
     { priority: 0.8 },
   ),
   page(
@@ -578,7 +578,7 @@ export function applyPrerenderHtml(
     `<meta property="og:type" content="${escapeXml(ogType)}" />`,
     `<meta property="og:locale" content="pt_BR" />`,
     `<meta property="og:site_name" content="VagasUX" />`,
-    `<meta name="twitter:card" content="summary" />`,
+    `<meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${escapeXml(title)}" />`,
     `<meta name="twitter:description" content="${escapeXml(description)}" />`,
   ]

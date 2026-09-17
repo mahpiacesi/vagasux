@@ -30,6 +30,14 @@ describe('seo catalog', () => {
     assert.equal(getSeoRoute('/guia/faq')?.index, true)
     assert.equal(getSeoRoute('/guia/busca')?.index, false)
     assert.equal(getSeoRoute('/mentoria/mentorado')?.index, false)
+    assert.equal(
+      getSeoRoute('/')?.description,
+      'Curadoria de conteúdos e vagas em UX para todos os níveis, todos mesmo.',
+    )
+    assert.equal(
+      getSeoRoute('/comunidade')?.description,
+      'Veja como se tornar um Vaguiner em nossos canais oficiais.',
+    )
     assert.ok(
       getSeoRoute('/guia/trilhas/entender-o-basico')?.title.includes(
         'Entender o básico',

@@ -24,7 +24,7 @@ export function GuiaHero() {
           </p>
 
           <h1 className="mural-fade mural-fade-delay-1 mt-6 text-[2.35rem] leading-[0.98] font-black tracking-[-0.05em] text-neutral-500 md:text-[3.25rem] lg:text-[3.5rem]">
-            Guia do
+            Guia do{' '}
             <br />
             <span className="text-mark">Product Designer</span>
           </h1>
