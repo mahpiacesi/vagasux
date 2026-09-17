@@ -24,6 +24,7 @@ export type SeoChangefreq =
 export type SeoRoute = {
   path: string
   title: string
+  /** Meta description / Open Graph only. Not rendered as visible page copy. */
   description: string
   /** When false, the page stays out of sitemap.xml and sends robots noindex. */
   index: boolean
@@ -84,13 +85,13 @@ const staticPages: SeoRoute[] = [
   page(
     routes.comunidade,
     'VagasUX · Comunidade',
-    'Veja como se tornar um Vaguiner em nossos canais oficiais.',
+    'Torne-se um Vaguiner e faça parte da comunidade VagasUX, com conteúdos, oportunidades, desafios e conexões para quem vive UX, UI e Product Design.',
     { priority: 0.8 },
   ),
   page(
     routes.mentoria,
     'VagasUX · Mentoria',
-    'Uma conversa individual com pessoas voluntárias da VagasUX para tirar dúvidas e refletir sobre o próximo passo em design.',
+    'Mentoria em UX, UI e Product Design para quem busca orientação de carreira, desenvolvimento profissional e apoio para definir os próximos passos.',
     { priority: 0.7 },
   ),
   page(
@@ -126,7 +127,7 @@ const staticPages: SeoRoute[] = [
   page(
     routes.guia,
     'VagasUX · Guia do Product Designer',
-    'Centenas de conteúdos curados para você aprender no seu ritmo, com trilhas, busca e caminhos para quem está começando.',
+    'Guia de UX, UI e Product Design para iniciantes, com conteúdos e materiais sobre carreira, portfólio, pesquisa, interface e mercado de design.',
     { priority: 0.9 },
   ),
   page(
@@ -150,7 +151,7 @@ const staticPages: SeoRoute[] = [
   page(
     guiaRoutes.cursos,
     'VagasUX · Guia · Cursos',
-    'Curadoria de cursos de Product Design, UX e UI, com relatos de quem já fez.',
+    'Avaliações de cursos e especializações de UX, UI e Product Design com relatos da comunidade sobre conteúdos, experiências de aprendizado e custo-benefício.',
     { priority: 0.8 },
   ),
   page(
@@ -186,13 +187,13 @@ const staticPages: SeoRoute[] = [
   page(
     routes.oportunidades,
     'VagasUX · Mural de vagas',
-    'Mural de vagas de UX, Produto e Design da comunidade VagasUX. Só oportunidades publicadas, sem o ruído.',
+    'Encontre vagas e oportunidades em UX, UI e Product Design com nosso buscador, que reúne diariamente novas vagas de diversas plataformas, além de oportunidades indicadas pela comunidade VagasUX.',
     { priority: 0.8, changefreq: 'daily' },
   ),
   page(
     routes.curadoria,
     'VagasUX · Curadoria de vagas para iniciantes',
-    'Estágio, trainee e júnior em UX e Product Design. Cada vaga passa pelo olhar de uma pessoa voluntária.',
+    'Encontre vagas de estágio, trainee e júnior em UX, UI e Product Design. Uma curadoria de oportunidades para quem está começando a carreira em design e tecnologia.',
     { priority: 0.8, changefreq: 'daily' },
   ),
 ]

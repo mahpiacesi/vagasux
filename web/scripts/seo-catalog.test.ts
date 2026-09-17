@@ -36,7 +36,27 @@ describe('seo catalog', () => {
     )
     assert.equal(
       getSeoRoute('/comunidade')?.description,
-      'Veja como se tornar um Vaguiner em nossos canais oficiais.',
+      'Torne-se um Vaguiner e faça parte da comunidade VagasUX, com conteúdos, oportunidades, desafios e conexões para quem vive UX, UI e Product Design.',
+    )
+    assert.equal(
+      getSeoRoute('/guia')?.description,
+      'Guia de UX, UI e Product Design para iniciantes, com conteúdos e materiais sobre carreira, portfólio, pesquisa, interface e mercado de design.',
+    )
+    assert.equal(
+      getSeoRoute('/vagas-para-iniciantes')?.description,
+      'Encontre vagas de estágio, trainee e júnior em UX, UI e Product Design. Uma curadoria de oportunidades para quem está começando a carreira em design e tecnologia.',
+    )
+    assert.equal(
+      getSeoRoute('/oportunidades')?.description,
+      'Encontre vagas e oportunidades em UX, UI e Product Design com nosso buscador, que reúne diariamente novas vagas de diversas plataformas, além de oportunidades indicadas pela comunidade VagasUX.',
+    )
+    assert.equal(
+      getSeoRoute('/mentoria')?.description,
+      'Mentoria em UX, UI e Product Design para quem busca orientação de carreira, desenvolvimento profissional e apoio para definir os próximos passos.',
+    )
+    assert.equal(
+      getSeoRoute('/guia/cursos')?.description,
+      'Avaliações de cursos e especializações de UX, UI e Product Design com relatos da comunidade sobre conteúdos, experiências de aprendizado e custo-benefício.',
     )
     assert.ok(
       getSeoRoute('/guia/trilhas/entender-o-basico')?.title.includes(
