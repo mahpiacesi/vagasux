@@ -78,7 +78,7 @@ describe('seo catalog', () => {
     )
     assert.equal(
       getSeoRoute('/sobre')?.description,
-      'A VagasUX nasceu como curadoria de vagas e cresceu com a comunidade. Conheça a história, o propósito e quem constrói um espaço de UX, Produto e Design.',
+      'A VagasUX é uma comunidade tech e um hub de iniciativas para quem está começando em design, com curadoria de vagas, mentorias e conteúdos acessíveis para iniciantes e transição de carreira.',
     )
     assert.equal(getSeoRoute('/sobre')?.image, '/og/sobre.png')
     assert.equal(getSeoRoute('/guia/faq')?.image, undefined)

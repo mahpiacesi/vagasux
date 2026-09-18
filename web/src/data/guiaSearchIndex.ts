@@ -214,19 +214,19 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Institucional',
     to: routes.sobre,
     keywords:
-      'sobre vagasux história origem comunidade mah piacesi fundadora voluntariado panorama mentoria relatos ux produto design',
+      'sobre vagasux iniciativa comunidade tech hub iniciantes transição de carreira curadoria vagas mentorias conteúdos mah piacesi',
     snippet:
-      'Como a VagasUX surgiu, por que existe e quem está por trás da comunidade de UX, Produto e Design.',
+      'Uma comunidade para todos os níveis, todos mesmo.',
   },
   {
     id: 'sobre-historia',
-    title: 'Tudo começou com uma vaga',
+    title: 'Nossa história',
     category: 'Institucional',
     to: routes.sobre,
     keywords:
-      'história vagasux curadoria de vagas pessoas conhecimento oportunidades jornada acessível',
+      'história vagasux linha do tempo guia product designer panorama podvagas papo de vaguiner meetup nordeste damas uxconf',
     snippet:
-      'A VagasUX nasceu como uma curadoria de vagas e cresceu junto com a comunidade.',
+      'Entenda como surgiu a comunidade ao longo dos anos até aqui.',
   },
   {
     id: 'sobre-fundadora',
@@ -234,9 +234,9 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Institucional',
     to: routes.sobre,
     keywords:
-      'mah piacesi marianna fundadora community builder por trás da vagasux voluntariado',
+      'mah piacesi marianna fundadora community builder mentora professora por trás da comunidade vagasux voluntariado',
     snippet:
-      'Uma pessoa começou. Muita gente fez crescer.',
+      'Uma pessoa contagia uma ideia e uma comunidade ganha vida.',
   },
 ]
 

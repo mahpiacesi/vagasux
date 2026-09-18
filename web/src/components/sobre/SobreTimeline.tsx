@@ -1,128 +1,174 @@
-import { Umbrella } from '@phosphor-icons/react'
-import { ScrollReveal } from '@/components/guilda/ScrollReveal'
+import type { Icon } from '@phosphor-icons/react'
 import {
+  ArrowUpRight,
+  BookOpen,
+  ChartLineUp,
+  ChatsCircle,
+  Handshake,
+  Heart,
+  MagnifyingGlass,
+  MapPin,
+  MapTrifold,
+  MicrophoneStage,
+  Presentation,
+  Sparkle,
+  UsersFour,
+  UsersThree,
+  VideoCamera,
+} from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
+import { ScrollReveal } from '@/components/guilda/ScrollReveal'
+import { Button } from '@/components/ui/button'
+import {
+  groupSobreMilestones,
   sobreMilestones,
   type SobreMilestone,
+  type SobreTimelineIcon,
 } from '@/data/sobre'
 import { cn } from '@/lib/utils'
 
-const EMPTY_SLOT_COUNT = 4
+const timelineIcons: Record<SobreTimelineIcon, Icon> = {
+  BookOpen,
+  MagnifyingGlass,
+  ChatsCircle,
+  Handshake,
+  ChartLineUp,
+  VideoCamera,
+  Heart,
+  MicrophoneStage,
+  UsersThree,
+  MapPin,
+  MapTrifold,
+  UsersFour,
+  Presentation,
+  Sparkle,
+}
+
+function isInternalHref(href: string) {
+  return href.startsWith('/')
+}
 
 function MilestoneCard({
   milestone,
-  index,
+  Icon: ItemIcon,
 }: {
   milestone: SobreMilestone
-  index: number
+  Icon: Icon
 }) {
   return (
-    <article className="sobre-timeline-card overflow-hidden rounded-3xl border border-neutral-500/10 bg-neutral-100 shadow-[0_24px_60px_-36px_rgb(7_0_58_/_0.28)]">
-      {milestone.image ? (
-        <img
-          src={milestone.image}
-          alt={milestone.imageAlt || ''}
-          className="aspect-[16/10] w-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div
-          className={cn(
-            'flex aspect-[16/10] items-center justify-center',
-            index % 2 === 0 ? 'bg-brand-100' : 'bg-complementary-100',
-          )}
-          aria-hidden
-        >
-          <span className="text-5xl" aria-hidden>
-            {milestone.icon ?? '☂️'}
-          </span>
-        </div>
-      )}
-      <div className="p-6 md:p-7">
-        <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
-          {milestone.period}
-        </p>
-        <h3 className="mt-3 text-xl font-black tracking-[-0.03em] text-neutral-500 md:text-2xl">
-          {milestone.title}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-neutral-400 md:text-base">
-          {milestone.description}
-        </p>
-      </div>
-    </article>
-  )
-}
-
-function EmptyMilestoneCard({ index }: { index: number }) {
-  return (
     <article
-      className="sobre-timeline-card overflow-hidden rounded-3xl border border-dashed border-neutral-500/15 bg-neutral-100/80"
-      aria-hidden
+      className={cn(
+        'sobre-timeline-card rounded-3xl border p-5 md:p-6',
+        milestone.featured
+          ? 'border-complementary-300/70 bg-gradient-to-b from-complementary-100 via-neutral-100 to-brand-100/30 shadow-[0_24px_60px_-36px_rgb(7_0_58_/_0.28)]'
+          : 'border-neutral-500/10 bg-neutral-100',
+      )}
     >
-      <div
-        className={cn(
-          'flex aspect-[16/10] items-center justify-center',
-          index % 2 === 0 ? 'bg-brand-100/80' : 'bg-complementary-100/90',
-        )}
-      >
-        <Umbrella
-          size={index % 2 === 0 ? 56 : 44}
-          weight="duotone"
-          className="text-brand-300"
-        />
+      <div className="flex items-start gap-3">
+        <span
+          className={cn(
+            'mt-0.5 inline-flex shrink-0 items-center justify-center rounded-2xl',
+            milestone.featured
+              ? 'size-11 bg-neutral-500 text-complementary-300'
+              : 'size-10 bg-brand-100 text-brand-500',
+          )}
+        >
+          <ItemIcon
+            size={milestone.featured ? 22 : 20}
+            weight="bold"
+            aria-hidden
+          />
+        </span>
+        <div className="min-w-0">
+          <p className="text-xs font-bold tracking-[0.16em] text-brand-400 uppercase">
+            {milestone.date}
+          </p>
+          <h4
+            className={cn(
+              'mt-2 font-black tracking-[-0.03em] text-neutral-500',
+              milestone.featured
+                ? 'text-xl md:text-2xl'
+                : 'text-lg md:text-xl',
+            )}
+          >
+            {milestone.title}
+          </h4>
+        </div>
       </div>
-      <div className="space-y-3 p-6 md:p-7">
-        <span className="block h-2.5 w-20 rounded-full bg-brand-200/70" />
-        <span className="block h-4 w-3/4 rounded-full bg-neutral-500/10" />
-        <span className="block h-3 w-full rounded-full bg-neutral-500/10" />
-        <span className="block h-3 w-5/6 rounded-full bg-neutral-500/10" />
-      </div>
+      <p className="mt-4 text-sm leading-relaxed text-neutral-400 md:text-[0.95rem]">
+        {milestone.description}
+      </p>
+      {milestone.link ? (
+        <Button variant="guia-outline" asChild className="mt-5">
+          {isInternalHref(milestone.link.href) ? (
+            <Link to={milestone.link.href}>
+              {milestone.link.label}
+              <ArrowUpRight weight="bold" aria-hidden />
+            </Link>
+          ) : (
+            <a
+              href={milestone.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {milestone.link.label}
+              <ArrowUpRight weight="bold" aria-hidden />
+            </a>
+          )}
+        </Button>
+      ) : null}
     </article>
   )
 }
 
 export function SobreTimeline() {
-  const milestones = sobreMilestones
-  const isEmpty = milestones.length === 0
+  const groups = groupSobreMilestones(sobreMilestones)
+  let visualIndex = 0
 
   return (
     <div className="sobre-timeline">
-      {isEmpty ? (
-        <p className="sr-only">
-          A linha do tempo da VagasUX ainda não tem marcos publicados.
-        </p>
-      ) : null}
-
-      <ol className="sobre-timeline-list">
-        {(isEmpty
-          ? Array.from({ length: EMPTY_SLOT_COUNT }, (_, index) => index)
-          : milestones
-        ).map((item, index) => {
-          const milestone = typeof item === 'number' ? undefined : item
-          return (
-            <li
-              key={milestone?.id ?? `slot-${index}`}
-              className={cn(
-                'sobre-timeline-item',
-                index % 2 === 1 && 'sobre-timeline-item--alt',
-              )}
-            >
-              <span className="sobre-timeline-node" aria-hidden>
-                <Umbrella size={16} weight="fill" />
-              </span>
-              {milestone ? (
-                <ScrollReveal className="sobre-timeline-content" delayMs={index * 80}>
-                  <MilestoneCard milestone={milestone} index={index} />
-                </ScrollReveal>
-              ) : (
-                <div className="sobre-timeline-content">
-                  <EmptyMilestoneCard index={index} />
-                </div>
-              )}
-            </li>
-          )
-        })}
-      </ol>
+      {groups.map((group) => (
+        <section key={group.year} className="sobre-timeline-year">
+          <h3 className="sobre-timeline-year-label">
+            <span>{group.year}</span>
+          </h3>
+          <ol className="sobre-timeline-list">
+            {group.items.map((milestone) => {
+              const index = visualIndex
+              visualIndex += 1
+              const ItemIcon = timelineIcons[milestone.icon]
+              return (
+                <li
+                  key={milestone.id}
+                  className={cn(
+                    'sobre-timeline-item',
+                    index % 2 === 1 && 'sobre-timeline-item--alt',
+                  )}
+                >
+                  <span
+                    className={cn(
+                      'sobre-timeline-node',
+                      milestone.featured && 'sobre-timeline-node--featured',
+                    )}
+                    aria-hidden
+                  >
+                    <ItemIcon
+                      size={milestone.featured ? 16 : 14}
+                      weight="fill"
+                    />
+                  </span>
+                  <ScrollReveal
+                    className="sobre-timeline-content"
+                    delayMs={(index % 4) * 70}
+                  >
+                    <MilestoneCard milestone={milestone} Icon={ItemIcon} />
+                  </ScrollReveal>
+                </li>
+              )
+            })}
+          </ol>
+        </section>
+      ))}
     </div>
   )
 }

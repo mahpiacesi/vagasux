@@ -1,8 +1,12 @@
+import type { Icon } from '@phosphor-icons/react'
 import {
   ArrowRight,
+  Briefcase,
   ChatCircleDots,
   Handshake,
+  Info,
   MagnifyingGlass,
+  Plant,
   Umbrella,
   UsersThree,
 } from '@phosphor-icons/react'
@@ -13,8 +17,10 @@ import { SobrePhotoGallery } from '@/components/sobre/SobrePhotoGallery'
 import { SobreTimeline } from '@/components/sobre/SobreTimeline'
 import { UmbrellaHeroIllustration } from '@/components/UmbrellaHeroIllustration'
 import { Button } from '@/components/ui/button'
-import { sobreLinks } from '@/data/sobre'
+import { sobreLinks, sobrePurposePoints } from '@/data/sobre'
 import { routes } from '@/lib/siteLinks'
+
+const purposeIcons: Icon[] = [Info, MagnifyingGlass, Briefcase, Plant, Handshake]
 
 const collectiveCards = [
   {
@@ -59,7 +65,6 @@ export function SobrePage() {
   return (
     <main>
       <Hero />
-      <WhatIsSection />
       <WhySection />
       <HistorySection />
       <CommunityInMotionSection />
@@ -86,67 +91,23 @@ function Hero() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:gap-14">
         <div>
           <p className="mural-fade text-xs font-bold tracking-[0.22em] text-brand-400 uppercase md:text-sm">
-            Sobre a VagasUX
+            Sobre a iniciativa
           </p>
-          <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-3xl text-[2.45rem] leading-[1.04] font-black tracking-[-0.045em] text-neutral-500 md:text-6xl lg:text-[4.15rem]">
-            Tem espaço pra você{' '}
-            <br />
-            no design. ☂️
+          <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-3xl text-[2.35rem] leading-[1.04] font-black tracking-[-0.045em] text-neutral-500 md:text-6xl lg:text-[4.05rem]">
+            Uma comunidade para todos os níveis,{' '}
+            <span className="text-mark">todos mesmo.</span>
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl">
-            A VagasUX é uma comunidade criada para aproximar pessoas de
-            conhecimento, oportunidades e outras pessoas no universo de UX,
-            Produto e Design.
+            A VagasUX é uma comunidade tech que funciona como um hub de
+            iniciativas para quem está começando na área de design. O propósito
+            é promover uma curadoria de vagas, mentorias e conteúdos acessíveis,
+            com foco em profissionais iniciantes e em transição de carreira.
           </p>
         </div>
 
         <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-none">
           <UmbrellaHeroIllustration />
         </div>
-      </div>
-    </section>
-  )
-}
-
-function WhatIsSection() {
-  return (
-    <section className="px-5 py-16 md:px-6 md:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-16">
-        <ScrollReveal>
-          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            O que é a VagasUX?
-          </p>
-          <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Tudo começou com uma vaga.
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delayMs={80} className="space-y-5 text-base leading-relaxed text-neutral-400 md:text-lg">
-          <p>
-            A VagasUX nasceu como uma curadoria de vagas para pessoas
-            interessadas em UX e Design.
-          </p>
-          <p>
-            Com o tempo, ficou claro que quem está tentando entrar ou crescer
-            na área precisava de muito mais do que uma lista de oportunidades.
-          </p>
-          <p>
-            Era preciso encontrar informação, referências, pessoas, experiências
-            e caminhos.
-          </p>
-          <p>
-            Assim, a VagasUX foi crescendo junto com a comunidade e se
-            transformando em um espaço que conecta{' '}
-            <strong className="font-bold text-neutral-500">
-              pessoas, conhecimento e oportunidades
-            </strong>
-            .
-          </p>
-          <p>A VagasUX hoje reúne diferentes iniciativas, mas todas partem da mesma ideia:</p>
-          <blockquote className="rounded-3xl border border-brand-200/70 bg-brand-100/50 px-6 py-5 text-xl leading-snug font-black tracking-[-0.03em] text-neutral-500 md:text-2xl">
-            tornar a jornada em UX mais acessível e menos solitária.
-          </blockquote>
-        </ScrollReveal>
       </div>
     </section>
   )
@@ -165,37 +126,50 @@ function WhySection() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-4xl">
-        <ScrollReveal>
+      <div className="relative mx-auto max-w-6xl">
+        <ScrollReveal className="max-w-4xl">
           <p className="text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
-            Por que a VagasUX existe?
+            Por que existimos?
           </p>
           <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] md:text-5xl">
-            Porque começar já é difícil.{' '}
-            <span className="text-mark-on-dark">Começar sozinho não precisa ser.</span>
+            Lutamos por uma comunidade{' '}
+            <span className="text-mark-on-dark">menos elitista</span> no mercado
+            de UX
           </h2>
         </ScrollReveal>
-        <ScrollReveal delayMs={90}>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            Entrar ou crescer na área de design pode vir acompanhado de muitas
-            dúvidas: por onde começar, o que estudar, como montar um portfólio,
-            onde encontrar oportunidades, quais habilidades desenvolver e até se
-            você está no caminho certo.
+        <ScrollReveal delayMs={90} className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-neutral-300 md:text-lg">
+          <p>
+            Entrar na área não deveria depender de conhecer as pessoas certas,
+            ter anos de experiência ou saber exatamente por onde começar.
           </p>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            A VagasUX existe para aproximar pessoas de{' '}
-            <strong className="font-bold text-neutral-100">
-              conhecimento, oportunidades e comunidade
-            </strong>
-            , tornando essa jornada mais acessível.
+          <p>
+            A VagasUX existe para aproximar pessoas de conhecimento e
+            oportunidades, conectando quem está chegando com quem já faz parte
+            do mercado tech.
           </p>
         </ScrollReveal>
-        <ScrollReveal delayMs={140}>
-          <p className="mt-10 max-w-2xl text-2xl leading-snug font-black tracking-[-0.03em] text-complementary-200 md:text-3xl">
-            A gente não promete um caminho pronto. A gente ajuda você a
-            encontrar o seu.
+        <ScrollReveal delayMs={120}>
+          <p className="mt-10 text-xs font-bold tracking-[0.2em] text-complementary-300 uppercase">
+            Na prática, isso significa
           </p>
         </ScrollReveal>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {sobrePurposePoints.map((point, index) => {
+            const PointIcon = purposeIcons[index] ?? Info
+            return (
+              <ScrollReveal key={point} delayMs={index * 70} as="li">
+                <div className="flex h-full gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-complementary-300 text-neutral-500">
+                    <PointIcon size={20} weight="bold" aria-hidden />
+                  </span>
+                  <p className="text-sm font-semibold leading-relaxed text-neutral-100 md:text-base">
+                    {point}
+                  </p>
+                </div>
+              </ScrollReveal>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )
@@ -213,8 +187,7 @@ function HistorySection() {
             Nossa história
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
-            A VagasUX foi mudando de forma junto com as pessoas que passaram por
-            aqui. Os marcos entram nesta linha do tempo, um de cada vez.
+            Entenda como surgiu a comunidade ao longo dos anos até aqui.
           </p>
         </ScrollReveal>
         <div className="mt-12">
@@ -256,10 +229,10 @@ function FounderSection() {
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Por trás da ☂️
+            Por trás da comunidade
           </p>
           <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            Uma pessoa começou. Muita gente fez crescer.
+            Uma pessoa contagia uma ideia e uma comunidade ganha vida.
           </h2>
         </ScrollReveal>
 
@@ -294,15 +267,21 @@ function FounderSection() {
             </h3>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-neutral-400 md:text-lg">
               <p>
-                A VagasUX foi criada pela Mah Piacesi, Product Designer e
-                community builder que transformou uma curadoria de vagas em uma
-                iniciativa para aproximar pessoas de oportunidades, conhecimento
-                e comunidade.
+                Designer de produto, mentora, professora e community builder,
+                Mah transita entre diferentes espaços do universo de design e
+                educação. Ao longo da sua trajetória, encontrou nas mentorias e
+                nas comunidades diferentes formas de compartilhar conhecimento,
+                trocar experiências e ajudar outras pessoas a encontrarem seus
+                caminhos profissionais.
               </p>
               <p>
-                O que começou como uma curadoria de vagas cresceu junto com a
-                comunidade e hoje reúne diferentes iniciativas para quem está
-                construindo sua jornada em UX, Produto e Design.
+                Além da atuação em design, dedica parte do seu trabalho à
+                formação e ao desenvolvimento de outras pessoas. É desse
+                encontro entre design, educação e comunidade que nasce sua
+                atuação como fundadora da VagasUX. À frente da iniciativa,
+                transforma ideias em projetos, aproxima pessoas e cria novas
+                possibilidades para quem está construindo sua trajetória em UX,
+                Produto e Design.
               </p>
             </div>
           </ScrollReveal>
