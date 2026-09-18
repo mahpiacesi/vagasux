@@ -10,6 +10,17 @@ export const sobreLinks = {
   founder: 'https://avely.me/mahpiacesi',
   youtubeLive: 'https://youtu.be/_h94hLBW_D4',
   podvagas: 'https://open.spotify.com/show/3XlkhvjZyh425pdRkAtBVs',
+  meetupSp:
+    'https://www.linkedin.com/posts/mahpiacesi_meetup-comunidade-evento-activity-7057783524732358657-fweW',
+  meetupRj:
+    'https://www.linkedin.com/posts/mahpiacesi_vagasux-comunidade-ux-activity-7068259298132279296-Mcp0',
+  meetupJoinville:
+    'https://www.linkedin.com/posts/mahpiacesi_vagasux-comunidade-meetup-activity-7254171311336284160-6iuc',
+  uxconfTalk: 'https://youtu.be/o2Ac7JSkdak',
+  meetupGoiania:
+    'https://www.linkedin.com/posts/mahpiacesi_comunidade-evento-goiaesnia-activity-7397683215332794368-JGYs',
+  meetupNordeste:
+    'https://www.linkedin.com/posts/mahpiacesi_realizei-mais-um-sonho-apoiar-um-evento-activity-7500306202283806720-aNl8',
 } as const
 
 export type SobreTimelineIcon =
@@ -177,6 +188,10 @@ export const sobreMilestones: SobreMilestone[] = [
       'Acontece em São Paulo o primeiro meetup presencial da VagasUX: o Papo de Vaguiner. Um novo capítulo para uma comunidade que até então se encontrava principalmente pela internet.',
     icon: 'MapPin',
     featured: true,
+    link: {
+      label: 'Ver como foi',
+      href: sobreLinks.meetupSp,
+    },
   },
   {
     id: 'meetup-rj-2023',
@@ -185,6 +200,10 @@ export const sobreMilestones: SobreMilestone[] = [
     description:
       'Um mês depois do primeiro encontro presencial em São Paulo, a VagasUX realiza seu primeiro meetup em outro estado, no Rio de Janeiro.',
     icon: 'MapPin',
+    link: {
+      label: 'Ver como foi',
+      href: sobreLinks.meetupRj,
+    },
   },
   {
     id: 'meetup-joinville-2024',
@@ -194,6 +213,10 @@ export const sobreMilestones: SobreMilestone[] = [
       'Depois de uma série de encontros em São Paulo e Rio de Janeiro, a VagasUX realiza seu primeiro meetup fora do Sudeste, em Joinville, Santa Catarina.',
     icon: 'MapTrifold',
     featured: true,
+    link: {
+      label: 'Ver como foi',
+      href: sobreLinks.meetupJoinville,
+    },
   },
   {
     id: 'damas-2025',
@@ -211,6 +234,10 @@ export const sobreMilestones: SobreMilestone[] = [
       'Mah leva para o palco da UXConf BR a conversa “Crescendo juntos: Comunidades como pilar de aprendizado colaborativo”. A apresentação trouxe uma reflexão sobre o papel das comunidades na jornada profissional e sobre como ninguém precisa crescer sozinho.',
     icon: 'Presentation',
     featured: true,
+    link: {
+      label: 'Assistir a palestra',
+      href: sobreLinks.uxconfTalk,
+    },
   },
   {
     id: 'goiania-2025',
@@ -219,6 +246,10 @@ export const sobreMilestones: SobreMilestone[] = [
     description:
       'A VagasUX realiza seu primeiro evento presencial em Goiânia, em parceria com a comunidade PorteraTech, ampliando ainda mais o mapa de encontros da comunidade pelo Brasil.',
     icon: 'MapPin',
+    link: {
+      label: 'Ver fotos',
+      href: sobreLinks.meetupGoiania,
+    },
   },
   {
     id: 'nordeste-2026',
@@ -228,6 +259,10 @@ export const sobreMilestones: SobreMilestone[] = [
       'A comunidade realiza seu primeiro evento presencial no Nordeste, em Fortaleza, durante o evento Plano de Carreira em UX, em parceria com a comunidade UXFor.',
     icon: 'MapPin',
     featured: true,
+    link: {
+      label: 'Ver como foi',
+      href: sobreLinks.meetupNordeste,
+    },
   },
   {
     id: 'novo-site-2026',
