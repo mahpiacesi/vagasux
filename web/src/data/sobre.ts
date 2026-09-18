@@ -8,6 +8,8 @@ export const sobreLinks = {
   feedbacks: guiaRoutes.cursos,
   panorama: superSite.panorama,
   founder: 'https://avely.me/mahpiacesi',
+  youtubeLive: 'https://youtu.be/_h94hLBW_D4',
+  podvagas: 'https://open.spotify.com/show/3XlkhvjZyh425pdRkAtBVs',
 } as const
 
 export type SobreTimelineIcon =
@@ -129,6 +131,10 @@ export const sobreMilestones: SobreMilestone[] = [
     description:
       'Estreia da primeira live da VagasUX: “Por que eu não passei na entrevista?”. Um tira-dúvidas com recrutadores para conversar sobre processos seletivos, entrevistas e os desafios de quem busca uma oportunidade em UX.',
     icon: 'VideoCamera',
+    link: {
+      label: 'Assistir a live',
+      href: sobreLinks.youtubeLive,
+    },
   },
   {
     id: 'ong-2021',
@@ -150,6 +156,10 @@ export const sobreMilestones: SobreMilestone[] = [
     description:
       'A VagasUX lança seu podcast oficial, criando mais um espaço para conversar sobre carreira, mercado, design e as experiências de quem vive essa jornada.',
     icon: 'MicrophoneStage',
+    link: {
+      label: 'Ouvir o PodVagas',
+      href: sobreLinks.podvagas,
+    },
   },
   {
     id: 'dexconf-2022',

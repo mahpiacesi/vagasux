@@ -224,7 +224,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Institucional',
     to: routes.sobre,
     keywords:
-      'história vagasux linha do tempo guia product designer panorama podvagas papo de vaguiner meetup nordeste damas uxconf',
+      'história vagasux linha do tempo guia product designer panorama podvagas youtube live entrevista spotify papo de vaguiner meetup nordeste damas uxconf',
     snippet:
       'Entenda como surgiu a comunidade ao longo dos anos até aqui.',
   },
