@@ -66,9 +66,9 @@ export function SobrePage() {
     <main>
       <Hero />
       <WhySection />
+      <FounderSection />
       <HistorySection />
       <CommunityInMotionSection />
-      <FounderSection />
       <CollectiveSection />
       <ClosingSection />
     </main>
