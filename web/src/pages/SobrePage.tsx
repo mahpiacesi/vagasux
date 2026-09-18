@@ -95,6 +95,7 @@ function Hero() {
           </p>
           <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-3xl text-[2.35rem] leading-[1.04] font-black tracking-[-0.045em] text-neutral-500 md:text-6xl lg:text-[4.05rem]">
             Uma comunidade para todos os níveis,{' '}
+            <br />
             <span className="text-mark">todos mesmo.</span>
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl">
