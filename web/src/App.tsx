@@ -26,6 +26,7 @@ import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
 import { CodigoDeCondutaPage } from '@/pages/CodigoDeCondutaPage'
 import { TermosEPoliticasPage } from '@/pages/TermosEPoliticasPage'
 import { ParceriasPage } from '@/pages/ParceriasPage'
+import { SobrePage } from '@/pages/SobrePage'
 import { VagasParaIniciantesPage } from '@/pages/VagasParaIniciantesPage'
 
 export default function App() {
@@ -65,6 +66,7 @@ export function AppRoutes() {
             <Route path="faq" element={<GuiaFaqPage />} />
             <Route path="glossario" element={<GuiaGlossarioPage />} />
           </Route>
+          <Route path={routes.sobre} element={<SobrePage />} />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
           <Route

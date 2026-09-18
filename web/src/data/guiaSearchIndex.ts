@@ -18,6 +18,7 @@ import { guiaTrilhaPrimeiraVagaStages } from '@/data/guiaTrilhaPrimeiraVaga'
 import { guiaTrilhaVoluntariadoStages } from '@/data/guiaTrilhaVoluntariado'
 import { guiaRelatosMigracao } from '@/data/guiaRelatosMigracao'
 import { guiaRoutes } from '@/lib/guiaRoutes'
+import { routes } from '@/lib/siteLinks'
 import { guiaSearchAnchor } from '@/lib/guiaSearchAnchor'
 
 export type GuiaSearchResult = {
@@ -207,6 +208,36 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
   ...indexedLinks(guiaTemaResearchLinkSections, guiaRoutes.tema('research'), 'Recursos de Research'),
   ...indexedLinks(guiaTemaDesignSystemLinks, guiaRoutes.tema('design-system'), 'Recursos de Design System'),
   ...indexedLinks(guiaTemaAccessibilityLinks, guiaRoutes.tema('acessibilidade'), 'Recursos de Acessibilidade'),
+  {
+    id: 'sobre-vagasux',
+    title: 'Sobre a VagasUX',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'sobre vagasux iniciativa comunidade tech hub iniciantes transição de carreira curadoria vagas mentorias conteúdos mah piacesi',
+    snippet:
+      'Uma comunidade para todos os níveis, todos mesmo.',
+  },
+  {
+    id: 'sobre-historia',
+    title: 'Nossa história',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'história vagasux linha do tempo guia product designer panorama podvagas youtube live entrevista spotify papo de vaguiner meetup nordeste damas uxconf goiânia joinville palestra',
+    snippet:
+      'Entenda como surgiu a comunidade ao longo dos anos até aqui.',
+  },
+  {
+    id: 'sobre-fundadora',
+    title: 'Mah Piacesi, fundadora da VagasUX',
+    category: 'Institucional',
+    to: routes.sobre,
+    keywords:
+      'mah piacesi marianna fundadora community builder mentora professora por trás da comunidade vagasux voluntariado',
+    snippet:
+      'Uma pessoa contagia uma ideia e uma comunidade ganha vida.',
+  },
 ]
 
 export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {
