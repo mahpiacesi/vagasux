@@ -363,6 +363,19 @@
   overflow: visible;
 }
 
+.sobre-hero-illustration {
+  overflow: visible;
+}
+
+.sobre-hero-illustration svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+  shape-rendering: geometricPrecision;
+}
+
 .curation-hero-svg--motion #blob {
   transform-box: fill-box;
   transform-origin: center;

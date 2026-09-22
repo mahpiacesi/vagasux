@@ -11,9 +11,9 @@ import {
   UsersThree,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import aboutUsIllustration from '@/assets/illustrations/about-us-illustration.svg'
 import founderPhoto from '@/assets/volunteers/marianna-piacesi.jpg'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
+import { SobreHeroIllustration } from '@/components/sobre/SobreHeroIllustration'
 import { SobrePhotoGallery } from '@/components/sobre/SobrePhotoGallery'
 import { SobreTimeline } from '@/components/sobre/SobreTimeline'
 import { Button } from '@/components/ui/button'
@@ -107,13 +107,7 @@ function Hero() {
         </div>
 
         <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-lg">
-          <img
-            src={aboutUsIllustration}
-            alt="Ilustração da comunidade VagasUX"
-            className="mx-auto h-auto w-full"
-            width={1135}
-            height={1135}
-          />
+          <SobreHeroIllustration />
         </div>
       </div>
     </section>
