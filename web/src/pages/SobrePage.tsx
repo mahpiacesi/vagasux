@@ -77,15 +77,10 @@ export function SobrePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-neutral-500/10 bg-gradient-to-b from-brand-100/80 via-neutral-100 to-complementary-100/40 px-5 pt-16 pb-16 md:px-6 md:pt-24 md:pb-24">
+    <section className="relative overflow-hidden border-b border-neutral-500/10 bg-gradient-to-b from-brand-100/50 via-neutral-100 to-neutral-100 px-5 pt-16 pb-16 md:px-6 md:pt-24 md:pb-24">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-24 -left-16 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="absolute top-24 -right-20 h-80 w-80 rounded-full bg-complementary-200/50 blur-3xl" />
-        <Umbrella
-          size={220}
-          weight="duotone"
-          className="absolute -right-8 bottom-[-3rem] rotate-[-18deg] text-brand-200/50 md:right-8 md:bottom-[-2rem] md:size-[18rem]"
-        />
+        <div className="absolute -top-32 -left-24 h-[32rem] w-[32rem] rounded-full bg-brand-200/20 blur-3xl" />
+        <div className="absolute right-[-20%] bottom-[-45%] h-[30rem] w-[40rem] rounded-full bg-complementary-200/20 blur-[80px]" />
       </div>
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:gap-14">
