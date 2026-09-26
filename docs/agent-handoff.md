@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-10
+**Última atualização:** 2026-09-18
 
 ---
 
@@ -10,6 +10,7 @@
 
 | Área | Estado | Nota |
 |------|--------|------|
+| `/sobre` | ✅ Live | PR #115 mergeada em 18/09 |
 | `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
 | Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
@@ -24,6 +25,17 @@
 ---
 
 ## Feito recentemente
+
+### Página Sobre (`/sobre`) — 18 set
+- **PR #115** mergeada em `main`.
+- Rota `/sobre` no footer (primeiro link institucional), com hero, propósito, fundadora, timeline e mural de fotos ainda vazio.
+- Timeline com 17 marcos reais (2020–2026), CTAs para artigos, live, PodVagas, palestra da UXConf e posts dos meetups.
+- A seção da fundadora vem antes da linha do tempo.
+
+### SEO, OG e 404 — 16–18 set
+- **PR #110** — catálogo de SEO, canonical, sitemap e prerender.
+- **PR #112** — capa OG de oportunidades.
+- **PR #114** — página 404 com ilustração da chuva.
 
 ### Página Guilda (`/guilda`) — 30–31 jul
 - **PR #44** — branch `cursor/guilda-page-a8a9`, preview: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
@@ -181,9 +193,9 @@
 
 ## Próximo passo esperado
 
-1. Enviar uma candidatura de teste pelo formulário para confirmar a nova integração do webhook.
-2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
-3. Avaliar uma futura camada multilíngue para o site.
+1. Criar a página de publicar relato.
+2. Enviar uma candidatura de teste pelo formulário de mentoria para confirmar a integração do webhook.
+3. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa.
 
 ---
 
@@ -191,6 +203,12 @@
 
 | Item | Status |
 |------|--------|
+| [PR #115 — página Sobre](https://github.com/mahpiacesi/vagasux/pull/115) | ✅ Mergeada em 18/09 |
+| [PR #114 — página 404](https://github.com/mahpiacesi/vagasux/pull/114) | ✅ Mergeada em 17/09 |
+| [PR #112 — OG oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | ✅ Mergeada em 17/09 |
+| [PR #110 — catálogo SEO](https://github.com/mahpiacesi/vagasux/pull/110) | ✅ Mergeada em 17/09 |
+| [PR #111 — handoff SEO](https://github.com/mahpiacesi/vagasux/pull/111) | Draft aberto; este handoff substitui |
+| [PR #109 — handoff InHire](https://github.com/mahpiacesi/vagasux/pull/109) | Draft aberto; este handoff substitui |
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
