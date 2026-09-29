@@ -371,8 +371,8 @@ function ClosingSection() {
   return (
     <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-20 left-[20%] h-64 w-64 rounded-full bg-brand-400/25 blur-3xl" />
-        <div className="absolute right-[-6%] bottom-[-30%] h-80 w-80 rounded-full bg-complementary-400/15 blur-3xl" />
+        <div className="absolute -top-20 left-[20%] h-64 w-64 rounded-full bg-brand-400/20 blur-3xl" />
+        <div className="absolute right-[8%] top-[28%] h-56 w-56 rounded-full bg-brand-400/15 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-3xl text-center">
