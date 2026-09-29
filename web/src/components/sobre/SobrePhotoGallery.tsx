@@ -60,24 +60,14 @@ function PhotoCard({
   item: SobreGalleryItem
   duplicate?: boolean
 }) {
-  const pill = item.title || item.caption
   const media = (
-    <>
-      <img
-        src={item.image}
-        alt={duplicate ? '' : item.alt}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-        loading="lazy"
-        decoding="async"
-      />
-      {pill ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-3 md:p-4">
-          <span className="inline-flex max-w-full items-center rounded-full bg-neutral-500/70 px-3 py-1 text-xs font-semibold text-neutral-100 backdrop-blur-sm">
-            {pill}
-          </span>
-        </div>
-      ) : null}
-    </>
+    <img
+      src={item.image}
+      alt={duplicate ? '' : item.alt}
+      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+      loading="lazy"
+      decoding="async"
+    />
   )
 
   const className =
