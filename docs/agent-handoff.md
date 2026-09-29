@@ -33,6 +33,7 @@
 - **PR #115** mergeada em 18/09: rota `/sobre`, hero, propósito, fundadora, timeline (17 marcos 2020–2026) e mural de fotos.
 - **PRs #117 e #119** mergeadas em 22/09: ilustração about-us no acervo.
 - **PR #120** mergeada em 29/09: galeria em duas faixas contínuas (12 fotos, sem tags), H1 “Um hub de iniciativas para iniciantes”, ilustração da hero, timeline só amarela, closing “Continuamos” + CTA Faça parte, menu Comunidade com Sobre no topo.
+- **PR #118** fechada sem merge: a ilustração já estava na #120; mergear depois reverteria a página.
 - **PRs #109, #111 e #116** não foram mergeadas sozinhas: as três editavam este arquivo e se sobrescreveriam. O conteúdo delas está neste registro.
 
 ### Voluntários vs parceiros (29 set)
