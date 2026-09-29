@@ -206,8 +206,7 @@ function CommunityInMotionSection() {
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
             Ao longo dos anos, a comunidade se encontrou em eventos, encontros,
-            lives, mentorias, workshops e muitos outros momentos. Tem gente de
-            verdade por trás da VagasUX.
+            lives, mentorias, workshops e muitos outros momentos.
           </p>
         </ScrollReveal>
       </div>
@@ -315,10 +314,10 @@ function CollectiveSection() {
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Construída com a comunidade
+            Construída em conjunto
           </p>
           <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            A comunidade também ajuda a construir a VagasUX.
+            Conheça iniciativas que conectam nossa comunidade
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
             Perguntas, experiências, feedbacks e necessidades da comunidade
