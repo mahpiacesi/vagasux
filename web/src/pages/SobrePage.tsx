@@ -13,9 +13,9 @@ import {
 import { Link } from 'react-router-dom'
 import founderPhoto from '@/assets/volunteers/marianna-piacesi.jpg'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
+import { SobreHeroIllustration } from '@/components/sobre/SobreHeroIllustration'
 import { SobrePhotoGallery } from '@/components/sobre/SobrePhotoGallery'
 import { SobreTimeline } from '@/components/sobre/SobreTimeline'
-import { UmbrellaHeroIllustration } from '@/components/UmbrellaHeroIllustration'
 import { Button } from '@/components/ui/button'
 import { sobreLinks, sobrePurposePoints } from '@/data/sobre'
 import { routes } from '@/lib/siteLinks'
@@ -77,15 +77,10 @@ export function SobrePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-neutral-500/10 bg-gradient-to-b from-brand-100/80 via-neutral-100 to-complementary-100/40 px-5 pt-16 pb-16 md:px-6 md:pt-24 md:pb-24">
+    <section className="relative overflow-hidden border-b border-neutral-500/10 bg-gradient-to-b from-brand-100/50 via-neutral-100 to-neutral-100 px-5 pt-16 pb-16 md:px-6 md:pt-24 md:pb-24">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-24 -left-16 h-[28rem] w-[28rem] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="absolute top-24 -right-20 h-80 w-80 rounded-full bg-complementary-200/50 blur-3xl" />
-        <Umbrella
-          size={220}
-          weight="duotone"
-          className="absolute -right-8 bottom-[-3rem] rotate-[-18deg] text-brand-200/50 md:right-8 md:bottom-[-2rem] md:size-[18rem]"
-        />
+        <div className="absolute -top-24 -left-16 h-[28rem] w-[28rem] rounded-full bg-brand-200/20 blur-3xl" />
+        <div className="absolute right-[-20%] bottom-[-45%] h-[30rem] w-[40rem] rounded-full bg-complementary-200/20 blur-[80px]" />
       </div>
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:gap-14">
@@ -94,9 +89,8 @@ function Hero() {
             Sobre a iniciativa
           </p>
           <h1 className="mural-fade mural-fade-delay-1 mt-5 max-w-3xl text-[2.35rem] leading-[1.04] font-black tracking-[-0.045em] text-neutral-500 md:text-6xl lg:text-[4.05rem]">
-            Uma comunidade para todos os níveis,{' '}
-            <br />
-            <span className="text-mark">todos mesmo.</span>
+            Um hub de iniciativas para{' '}
+            <span className="text-mark">iniciantes</span>
           </h1>
           <p className="mural-fade mural-fade-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl">
             A VagasUX é uma comunidade tech que funciona como um hub de
@@ -106,8 +100,8 @@ function Hero() {
           </p>
         </div>
 
-        <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-none">
-          <UmbrellaHeroIllustration />
+        <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-lg">
+          <SobreHeroIllustration />
         </div>
       </div>
     </section>
@@ -201,8 +195,8 @@ function HistorySection() {
 
 function CommunityInMotionSection() {
   return (
-    <section className="border-y border-neutral-500/10 bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24">
-      <div className="mx-auto max-w-6xl">
+    <section className="overflow-hidden border-y border-neutral-500/10 bg-gradient-to-b from-complementary-100/50 to-neutral-100 py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 md:px-6">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
             A comunidade em movimento
@@ -212,13 +206,12 @@ function CommunityInMotionSection() {
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
             Ao longo dos anos, a comunidade se encontrou em eventos, encontros,
-            lives, mentorias, workshops e muitos outros momentos. Tem gente de
-            verdade por trás da VagasUX.
+            lives, mentorias, workshops e muitos outros momentos.
           </p>
         </ScrollReveal>
-        <div className="mt-12">
-          <SobrePhotoGallery />
-        </div>
+      </div>
+      <div className="mt-12 md:mt-14">
+        <SobrePhotoGallery />
       </div>
     </section>
   )
@@ -321,10 +314,10 @@ function CollectiveSection() {
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-            Construída com a comunidade
+            Construída em conjunto
           </p>
           <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-            A comunidade também ajuda a construir a VagasUX.
+            Conheça iniciativas que conectam nossa comunidade
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-400 md:text-lg">
             Perguntas, experiências, feedbacks e necessidades da comunidade
@@ -377,16 +370,11 @@ function ClosingSection() {
   return (
     <section className="relative overflow-hidden bg-neutral-500 px-5 py-20 text-neutral-100 md:px-6 md:py-28">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -top-20 left-[20%] h-64 w-64 rounded-full bg-brand-400/25 blur-3xl" />
-        <div className="absolute right-[-6%] bottom-[-30%] h-80 w-80 rounded-full bg-complementary-400/15 blur-3xl" />
-        <Umbrella
-          size={260}
-          weight="duotone"
-          className="absolute -right-6 -bottom-10 rotate-[-16deg] text-complementary-300/20 md:right-10"
-        />
+        <div className="absolute -top-20 left-[20%] h-64 w-64 rounded-full bg-brand-400/20 blur-3xl" />
+        <div className="absolute right-[8%] top-[28%] h-56 w-56 rounded-full bg-brand-400/15 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-5xl text-center">
         <ScrollReveal>
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Continuamos
@@ -394,19 +382,16 @@ function ClosingSection() {
           <h2 className="mt-5 text-3xl leading-[1.08] font-black tracking-[-0.04em] md:text-5xl">
             Uma comunidade feita de muitas histórias.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            A VagasUX continua crescendo, mudando e sendo construída por quem
-            passa por aqui.
-          </p>
-          <p className="mt-4 text-xl font-black tracking-[-0.03em] text-complementary-200 md:text-2xl">
-            E essa história ainda está acontecendo.
+          <p className="mx-auto mt-6 text-base leading-relaxed text-neutral-300 md:text-lg">
+            A VagasUX continua crescendo e sendo construída por quem passa por
+            aqui.
           </p>
           <Button
             asChild
             size="lg"
             className="mt-10 h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200"
           >
-            <Link to={routes.comunidade}>Conheça a comunidade</Link>
+            <Link to={routes.comunidade}>Faça parte</Link>
           </Button>
         </ScrollReveal>
       </div>

@@ -12,18 +12,23 @@ type ComunidadeNavItem =
 const comunidadeItems: ComunidadeNavItem[] = [
   {
     kind: 'internal' as const,
-    to: routes.comunidade,
-    label: 'Comunidade aberta',
+    to: routes.sobre,
+    label: 'Sobre',
   },
   {
     kind: 'internal' as const,
-    to: routes.mentoria,
-    label: 'Mentoria',
+    to: routes.comunidade,
+    label: 'Como participar',
   },
   {
     kind: 'internal' as const,
     to: routes.guilda,
     label: 'Guilda do Vaguiner',
+  },
+  {
+    kind: 'internal' as const,
+    to: routes.mentoria,
+    label: 'Mentorias',
   },
   {
     kind: 'internal' as const,
@@ -91,9 +96,12 @@ export function ComunidadeNavMenu({
 }) {
   const { pathname } = useLocation()
   const isComunidadeActive =
+    pathname === routes.sobre ||
     pathname === routes.comunidade ||
     pathname === routes.guilda ||
-    pathname === routes.voluntariado
+    pathname === routes.voluntariado ||
+    pathname === routes.mentoria ||
+    pathname.startsWith(`${routes.mentoria}/`)
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
 
