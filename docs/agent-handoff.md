@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-10
+**Última atualização:** 2026-09-29
 
 ---
 
@@ -10,8 +10,12 @@
 
 | Área | Estado | Nota |
 |------|--------|------|
-| `/guilda` | ✅ Live | PR #44 mergeado em 31/07 |
-| Collector Parceiros | ✅ Ativo | 26 logos no Supabase, Scheduler 8h |
+| `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
+| `/guilda` | ✅ Live | Planos atualizados na PR #107 (16/09) |
+| SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
+| Página 404 | ✅ Live | PR #114 em 17/09 |
+| Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
+| Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
 | Mural de vagas | ✅ Live | Filtros, badges, load more |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
@@ -24,6 +28,26 @@
 ---
 
 ## Feito recentemente
+
+### Página Sobre (`/sobre`) — 18–29 set
+- **PR #115** mergeada em 18/09: rota `/sobre`, hero, propósito, fundadora, timeline (17 marcos 2020–2026) e mural de fotos.
+- **PRs #117 e #119** mergeadas em 22/09: ilustração about-us no acervo.
+- **PR #120** mergeada em 29/09: galeria em duas faixas contínuas (12 fotos, sem tags), H1 “Um hub de iniciativas para iniciantes”, ilustração da hero, timeline só amarela, closing “Continuamos” + CTA Faça parte, menu Comunidade com Sobre no topo.
+- **PRs #109, #111 e #116** não foram mergeadas sozinhas: as três editavam este arquivo e se sobrescreveriam. O conteúdo delas está neste registro.
+
+### Voluntários vs parceiros (29 set)
+- O card “UX Metrics” na lista de voluntários vinha de `public.guia_volunteers`, não de `💪 Quem organiza`. Era a página de Parceiros, ingerida por engano em 10/09.
+- Registro desativado no Supabase. UX Metrics segue ativo em `public.partners`.
+- Webhook de voluntários ignora páginas sem a propriedade `Frentes`. Collector Parceiros continua sendo a fonte de `/parcerias` (Status Ativo + Logo, coleta diária ~8h).
+
+### SEO, OG e 404 (17 set)
+- **PR #110** — catálogo de SEO, canonical, sitemap, prerender e 301s do Super.
+- **PR #112** — capa OG de `/oportunidades`.
+- **PR #114** — página 404 com ilustração da chuva; rotas desconhecidas não voltam mais para a home.
+
+### Integração 16 set
+- **PR #106 mergeada:** collector InHire para páginas públicas de vagas (Alice, BRQ, Contabilizei, Neoway, Quero Educação/Qeevo, Sympla, V4 Company, Vitru), com filtro de títulos de Design.
+- **PR #107 mergeada:** Guilda com dois planos (mensal e anual), tag de economia e FAQ da contribuição de R$10 nas mentorias.
 
 ### Página Guilda (`/guilda`) — 30–31 jul
 - **PR #44** — branch `cursor/guilda-page-a8a9`, preview: https://vagasux-git-cursor-guilda-page-a8a9-vagas-ux.vercel.app/guilda
@@ -181,9 +205,9 @@
 
 ## Próximo passo esperado
 
-1. Enviar uma candidatura de teste pelo formulário para confirmar a nova integração do webhook.
-2. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa e conferir que o webhook retorna 2xx.
-3. Avaliar uma futura camada multilíngue para o site.
+1. Criar a página de publicar relato.
+2. Enviar uma candidatura de teste pelo formulário de mentoria para confirmar a integração do webhook.
+3. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa.
 
 ---
 
@@ -191,6 +215,15 @@
 
 | Item | Status |
 |------|--------|
+| [PR #120 — galeria e updates do Sobre](https://github.com/mahpiacesi/vagasux/pull/120) | ✅ Mergeada em 29/09 |
+| [PR #118 — ilustração da hero](https://github.com/mahpiacesi/vagasux/pull/118) | Fechada; conteúdo já na #120 |
+| [PR #115 — página Sobre](https://github.com/mahpiacesi/vagasux/pull/115) | ✅ Mergeada em 18/09 |
+| [PR #114 — página 404](https://github.com/mahpiacesi/vagasux/pull/114) | ✅ Mergeada em 17/09 |
+| [PR #112 — OG oportunidades](https://github.com/mahpiacesi/vagasux/pull/112) | ✅ Mergeada em 17/09 |
+| [PR #110 — catálogo SEO](https://github.com/mahpiacesi/vagasux/pull/110) | ✅ Mergeada em 17/09 |
+| [PR #107 — planos da Guilda](https://github.com/mahpiacesi/vagasux/pull/107) | ✅ Mergeada em 16/09 |
+| [PR #106 — collector InHire](https://github.com/mahpiacesi/vagasux/pull/106) | ✅ Mergeada em 16/09 |
+| [PR #105 — mentores dinâmicos](https://github.com/mahpiacesi/vagasux/pull/105) | ✅ Integrada em `main` em 15/09 |
 | [PR #44 — página Guilda](https://github.com/mahpiacesi/vagasux/pull/44) | ✅ Mergeado (31/07) |
 | Parcerias + collector | ✅ mergeado (#34, #37–#40) |
 | Consolidação PUC Minas | ✅ concluída no Notion (07/08) |
