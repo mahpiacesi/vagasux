@@ -61,6 +61,7 @@ export type SobreGalleryItem = {
   date?: string
   location?: string
   href?: string
+  /** Largura do cartão na faixa: retrato (`tall`), paisagem (`wide`/`featured`) ou padrão. */
   span?: 'normal' | 'wide' | 'tall' | 'featured'
 }
 

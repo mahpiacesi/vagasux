@@ -201,8 +201,8 @@ function HistorySection() {
 
 function CommunityInMotionSection() {
   return (
-    <section className="border-y border-neutral-500/10 bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24">
-      <div className="mx-auto max-w-6xl">
+    <section className="overflow-hidden border-y border-neutral-500/10 bg-gradient-to-b from-complementary-100/50 to-neutral-100 py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 md:px-6">
         <ScrollReveal className="max-w-2xl">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
             A comunidade em movimento
@@ -216,9 +216,9 @@ function CommunityInMotionSection() {
             verdade por trás da VagasUX.
           </p>
         </ScrollReveal>
-        <div className="mt-12">
-          <SobrePhotoGallery />
-        </div>
+      </div>
+      <div className="mt-12 md:mt-14">
+        <SobrePhotoGallery />
       </div>
     </section>
   )
