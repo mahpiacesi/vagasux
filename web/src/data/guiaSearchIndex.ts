@@ -216,7 +216,7 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     keywords:
       'sobre vagasux iniciativa comunidade tech hub iniciantes transição de carreira curadoria vagas mentorias conteúdos mah piacesi hub de iniciativas quem está começando',
     snippet:
-      'Um hub de iniciativas para quem está começando',
+      'Um hub de iniciativas para iniciantes',
   },
   {
     id: 'sobre-historia',
