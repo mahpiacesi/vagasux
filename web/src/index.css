@@ -973,10 +973,10 @@
   border-radius: 999px;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-brand-300) 15%, transparent),
-    var(--color-brand-300),
+    color-mix(in srgb, var(--color-complementary-200) 40%, transparent),
+    var(--color-complementary-200),
     var(--color-complementary-300),
-    color-mix(in srgb, var(--color-complementary-300) 20%, transparent)
+    color-mix(in srgb, var(--color-complementary-300) 25%, transparent)
   );
 }
 
