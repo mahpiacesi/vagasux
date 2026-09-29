@@ -1,3 +1,15 @@
+import encontroConvivio from '@/assets/sobre/encontro-convivio.jpg'
+import encontroGrupo from '@/assets/sobre/encontro-grupo.jpg'
+import encontroGuardaChuva from '@/assets/sobre/encontro-guarda-chuva.jpg'
+import encontroPalco from '@/assets/sobre/encontro-palco.jpg'
+import encontroPlantas from '@/assets/sobre/encontro-plantas.jpg'
+import encontroSala from '@/assets/sobre/encontro-sala.jpg'
+import estandeConversa from '@/assets/sobre/estande-conversa.jpg'
+import palestraComunidade from '@/assets/sobre/palestra-comunidade.jpg'
+import palestraIniciantes from '@/assets/sobre/palestra-iniciantes.jpg'
+import palestraPalco from '@/assets/sobre/palestra-palco.jpg'
+import palestraRodizio from '@/assets/sobre/palestra-rodizio.jpg'
+import respeitaOJunior from '@/assets/sobre/respeita-o-junior.jpg'
 import { guiaRoutes } from '@/lib/guiaRoutes'
 import { routes, superSite } from '@/lib/siteLinks'
 
@@ -276,7 +288,92 @@ export const sobreMilestones: SobreMilestone[] = [
   },
 ]
 
-export const sobreGallery: SobreGalleryItem[] = []
+export const sobreGallery: SobreGalleryItem[] = [
+  {
+    id: 'encontro-sala',
+    image: encontroSala,
+    alt: 'Grupo da comunidade VagasUX posando junto em uma sala de encontro.',
+    title: 'Encontro',
+    span: 'featured',
+  },
+  {
+    id: 'palestra-palco',
+    image: palestraPalco,
+    alt: 'Palestra da VagasUX em um palco com projeção das palavras aberta, colaborativa e humana.',
+    title: 'Palestra',
+    span: 'tall',
+  },
+  {
+    id: 'encontro-plantas',
+    image: encontroPlantas,
+    alt: 'Grupo da comunidade VagasUX reunido em uma sala com plantas no teto.',
+    title: 'Encontro',
+    span: 'featured',
+  },
+  {
+    id: 'respeita-o-junior',
+    image: respeitaOJunior,
+    alt: 'Cartões roxos da VagasUX com a frase Respeita o júnior sobre a mesa.',
+    title: 'Respeita o júnior',
+    span: 'wide',
+  },
+  {
+    id: 'palestra-comunidade',
+    image: palestraComunidade,
+    alt: 'Palestra perguntando se a pessoa já recorreu a uma comunidade para aprender e pedir apoio.',
+    title: 'Palestra',
+    span: 'tall',
+  },
+  {
+    id: 'encontro-palco',
+    image: encontroPalco,
+    alt: 'Grupo grande da comunidade VagasUX posando em um salão com palco ao fundo.',
+    title: 'Encontro',
+    span: 'featured',
+  },
+  {
+    id: 'estande-conversa',
+    image: estandeConversa,
+    alt: 'Pessoas da VagasUX conversando com uma visitante no estande da comunidade.',
+    title: 'Estande',
+    span: 'tall',
+  },
+  {
+    id: 'encontro-grupo',
+    image: encontroGrupo,
+    alt: 'Grupo da comunidade VagasUX posando em uma sala de madeira.',
+    title: 'Encontro',
+    span: 'wide',
+  },
+  {
+    id: 'palestra-rodizio',
+    image: palestraRodizio,
+    alt: 'Mesa de conversa da VagasUX com formato participativo em rodízio projetado ao fundo.',
+    title: 'Palestra',
+    span: 'wide',
+  },
+  {
+    id: 'encontro-guarda-chuva',
+    image: encontroGuardaChuva,
+    alt: 'Grupo da VagasUX no estande da comunidade, com o guarda-chuva amarelo aberto.',
+    title: 'Encontro',
+    span: 'featured',
+  },
+  {
+    id: 'palestra-iniciantes',
+    image: palestraIniciantes,
+    alt: 'Palestra apresentando a VagasUX como comunidade voltada para profissionais iniciantes em UX.',
+    title: 'Palestra',
+    span: 'tall',
+  },
+  {
+    id: 'encontro-convivio',
+    image: encontroConvivio,
+    alt: 'Grupo amplo da comunidade VagasUX reunido em um espaço de convivência.',
+    title: 'Encontro',
+    span: 'featured',
+  },
+]
 
 export function milestoneYear(date: string) {
   const match = date.match(/(?:19|20)\d{2}/)
