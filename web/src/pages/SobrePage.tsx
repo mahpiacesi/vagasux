@@ -13,9 +13,9 @@ import {
 import { Link } from 'react-router-dom'
 import founderPhoto from '@/assets/volunteers/marianna-piacesi.jpg'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
+import { SobreHeroIllustration } from '@/components/sobre/SobreHeroIllustration'
 import { SobrePhotoGallery } from '@/components/sobre/SobrePhotoGallery'
 import { SobreTimeline } from '@/components/sobre/SobreTimeline'
-import { UmbrellaHeroIllustration } from '@/components/UmbrellaHeroIllustration'
 import { Button } from '@/components/ui/button'
 import { sobreLinks, sobrePurposePoints } from '@/data/sobre'
 import { routes } from '@/lib/siteLinks'
@@ -100,8 +100,8 @@ function Hero() {
           </p>
         </div>
 
-        <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-none">
-          <UmbrellaHeroIllustration />
+        <div className="mural-fade mural-fade-delay-2 mx-auto w-full max-w-md lg:max-w-lg">
+          <SobreHeroIllustration />
         </div>
       </div>
     </section>
