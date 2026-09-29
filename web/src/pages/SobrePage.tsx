@@ -375,7 +375,7 @@ function ClosingSection() {
         <div className="absolute right-[8%] top-[28%] h-56 w-56 rounded-full bg-brand-400/15 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-5xl text-center">
         <ScrollReveal>
           <p className="text-xs font-bold tracking-[0.22em] text-complementary-300 uppercase">
             Continuamos
@@ -383,7 +383,7 @@ function ClosingSection() {
           <h2 className="mt-5 text-3xl leading-[1.08] font-black tracking-[-0.04em] md:text-5xl">
             Uma comunidade feita de muitas histórias.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
+          <p className="mx-auto mt-6 text-base leading-relaxed text-neutral-300 md:text-lg">
             A VagasUX continua crescendo e sendo construída por quem passa por
             aqui.
           </p>
