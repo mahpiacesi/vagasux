@@ -214,9 +214,9 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     category: 'Institucional',
     to: routes.sobre,
     keywords:
-      'sobre vagasux iniciativa comunidade tech hub iniciantes transição de carreira curadoria vagas mentorias conteúdos mah piacesi',
+      'sobre vagasux iniciativa comunidade tech hub iniciantes transição de carreira curadoria vagas mentorias conteúdos mah piacesi hub de iniciativas quem está começando',
     snippet:
-      'Uma comunidade para todos os níveis, todos mesmo.',
+      'Um hub de iniciativas para quem está começando',
   },
   {
     id: 'sobre-historia',
