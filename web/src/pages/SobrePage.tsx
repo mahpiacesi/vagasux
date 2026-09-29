@@ -373,11 +373,6 @@ function ClosingSection() {
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-20 left-[20%] h-64 w-64 rounded-full bg-brand-400/25 blur-3xl" />
         <div className="absolute right-[-6%] bottom-[-30%] h-80 w-80 rounded-full bg-complementary-400/15 blur-3xl" />
-        <Umbrella
-          size={260}
-          weight="duotone"
-          className="absolute -right-6 -bottom-10 rotate-[-16deg] text-complementary-300/20 md:right-10"
-        />
       </div>
 
       <div className="relative mx-auto max-w-3xl text-center">
@@ -389,18 +384,15 @@ function ClosingSection() {
             Uma comunidade feita de muitas histórias.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">
-            A VagasUX continua crescendo, mudando e sendo construída por quem
-            passa por aqui.
-          </p>
-          <p className="mt-4 text-xl font-black tracking-[-0.03em] text-complementary-200 md:text-2xl">
-            E essa história ainda está acontecendo.
+            A VagasUX continua crescendo e sendo construída por quem passa por
+            aqui.
           </p>
           <Button
             asChild
             size="lg"
             className="mt-10 h-12 rounded-xl bg-complementary-300 px-7 text-base font-black text-neutral-500 hover:bg-complementary-200"
           >
-            <Link to={routes.comunidade}>Conheça a comunidade</Link>
+            <Link to={routes.comunidade}>Faça parte</Link>
           </Button>
         </ScrollReveal>
       </div>
