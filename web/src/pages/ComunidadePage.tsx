@@ -83,7 +83,7 @@ const participationPaths = [
     title: 'Guilda do Vaguiner',
     hook: 'A experiência completa, com encontros e mentorias.',
     description:
-      'Comunidade exclusiva com encontros quinzenais, grupo fechado no WhatsApp, mentorias em grupo e avulsas com desconto.',
+      'Comunidade exclusiva com encontros quinzenais, sala exclusiva no Discord, mentorias em grupo e avulsas com desconto.',
     bullets: [
       'Encontros e mentorias em grupo',
       'Seletivas e descontos para membros',

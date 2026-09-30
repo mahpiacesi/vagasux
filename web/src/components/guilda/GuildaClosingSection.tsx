@@ -64,7 +64,7 @@ export function GuildaClosingSection() {
                 Guilda do Vaguiner
               </h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
-                Mentorias, grupo fechado, encontros e benefícios exclusivos para
+                Mentorias, sala exclusiva no Discord, encontros e benefícios exclusivos para
                 quem quer migrar para UX com apoio de verdade.
               </p>
               <Button
