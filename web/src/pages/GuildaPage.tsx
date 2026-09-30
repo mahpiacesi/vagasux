@@ -13,7 +13,7 @@ import {
   guildaPainPoints,
   guildaPlans,
   guildaTestimonials,
-  guildaWhatsappFeature,
+  guildaDiscordFeature,
 } from '@/data/guilda'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { guildaHashes } from '@/lib/siteLinks'
@@ -245,10 +245,10 @@ export function GuildaPage() {
                   <span className="text-complementary-300">Conexão</span>
                 </SectionEyebrow>
                 <h3 className="mt-4 text-3xl font-black tracking-[-0.04em] md:text-4xl">
-                  {guildaWhatsappFeature.title}
+                  {guildaDiscordFeature.title}
                 </h3>
                 <p className="mt-4 max-w-md text-base leading-relaxed text-neutral-300">
-                  {guildaWhatsappFeature.description}
+                  {guildaDiscordFeature.description}
                 </p>
                 <Button
                   asChild
@@ -260,13 +260,13 @@ export function GuildaPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <guildaWhatsappFeature.Icon
+                    <guildaDiscordFeature.Icon
                       size={20}
                       weight="regular"
                       className="mr-2"
                       aria-hidden
                     />
-                    Tenha acesso ao grupo
+                    Tenha acesso à sala
                   </a>
                 </Button>
               </div>
@@ -353,7 +353,7 @@ export function GuildaPage() {
             <SectionIntro
               eyebrow="Valores"
               title="Apoie a comunidade e entre na Guilda"
-              description="A partir de R$ 19,90 por mês com conteúdos exclusivos, encontros gravados e grupo fechado no WhatsApp."
+              description="A partir de R$ 19,90 por mês com conteúdos exclusivos, encontros gravados e sala exclusiva no Discord."
             />
 
             <ul className="flex flex-col gap-5">

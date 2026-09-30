@@ -3,13 +3,13 @@ import {
   ChatsCircle,
   Compass,
   CurrencyCircleDollar,
+  DiscordLogo,
   GraduationCap,
   HandHeart,
   LockKey,
   MapTrifold,
   Sparkle,
   UsersThree,
-  WhatsappLogo,
 } from '@phosphor-icons/react'
 
 export const guildaJoinUrl = 'https://nas.io/vagasux' as const
@@ -166,7 +166,7 @@ export const guildaPlans: GuildaPlan[] = [
       'Acesso às gravações dos encontros',
       'Mini-desafios e seletivas para participar',
       'Descontos nas mentorias',
-      'Grupo exclusivo no WhatsApp',
+      'Sala exclusiva no Discord',
     ],
   },
   {
@@ -190,7 +190,7 @@ export const guildaFaq = [
   {
     question: 'O que eu recebo ao entrar na Guilda do Vaguiner?',
     answer:
-      'Você terá acesso à gravação dos encontros, desconto para agendar mentorias com profissionais do mercado, mini-desafios pensados para te apoiar na prática, seletivas e descontos exclusivos em cursos/eventos e participação nos bastidores da VagasUX. Tudo isso em um espaço seguro e colaborativo.',
+      'Você terá acesso à gravação dos encontros, à sala exclusiva no Discord, desconto para agendar mentorias com profissionais do mercado, mini-desafios pensados para te apoiar na prática, seletivas e descontos exclusivos em cursos/eventos e participação nos bastidores da VagasUX. Tudo isso em um espaço seguro e colaborativo.',
   },
   {
     question: 'Preciso já trabalhar com UX pra entrar?',
@@ -213,17 +213,22 @@ export const guildaFaq = [
       'O foco da Guilda é aprendizado prático. Por enquanto não emitimos certificado, mas garantimos que a troca muitas vezes vale mais que papel!',
   },
   {
+    question: 'Como entro na sala exclusiva do Discord?',
+    answer:
+      'Ao assinar a Guilda, inclua seu @ do Discord no cadastro. A sala exclusiva fica no servidor da VagasUX e acompanha o período da sua assinatura.',
+  },
+  {
     question: 'Posso cancelar quando quiser?',
     answer:
       'Sim! O plano é mensal e sem fidelidade. Se quiser sair, pode cancelar direto pela plataforma. Mas a gente aposta que você vai querer ficar 💛',
   },
 ] as const
 
-export const guildaWhatsappFeature = {
-  title: 'Grupo exclusivo no WhatsApp',
+export const guildaDiscordFeature = {
+  title: 'Sala exclusiva no Discord',
   description:
-    'A Guilda rola num grupo fechado, direto no WhatsApp com apoio e troca real entre a comunidade.',
-  Icon: WhatsappLogo,
+    'Quem assina a Guilda entra na sala exclusiva do servidor da VagasUX no Discord e troca com a comunidade no dia a dia.',
+  Icon: DiscordLogo,
 } as const
 
 export const guildaExclusiveBadge = {
