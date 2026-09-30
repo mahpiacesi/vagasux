@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-29
+**Última atualização:** 2026-09-30
 
 ---
 
@@ -11,7 +11,7 @@
 | Área | Estado | Nota |
 |------|--------|------|
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
-| `/guilda` | ✅ Live | Planos atualizados na PR #107 (16/09) |
+| `/guilda` | ✅ Live | Sala exclusiva no Discord, PR #122 (30/09) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
 | Página 404 | ✅ Live | PR #114 em 17/09 |
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
@@ -28,6 +28,11 @@
 ---
 
 ## Feito recentemente
+
+### Guilda no Discord (30 set)
+- **PR #122** mergeada: `/guilda` e o card da Guilda em `/comunidade` falam da sala exclusiva no Discord. O cadastro pede o @ e o acesso acompanha o período da assinatura.
+- Canais abertos seguem no WhatsApp, Telegram e no servidor público do Discord.
+- No n8n, a sincronização diária às 8h está ativa. Os fluxos de teste foram arquivados. O cargo ainda não foi testado numa pessoa pagante de verdade.
 
 ### Página Sobre (`/sobre`) — 18–29 set
 - **PR #115** mergeada em 18/09: rota `/sobre`, hero, propósito, fundadora, timeline (17 marcos 2020–2026) e mural de fotos.
@@ -206,9 +211,9 @@
 
 ## Próximo passo esperado
 
-1. Criar a página de publicar relato.
-2. Enviar uma candidatura de teste pelo formulário de mentoria para confirmar a integração do webhook.
-3. Reexecutar o backfill com o ID corrigido de Tatiana Barbosa.
+1. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
+2. Criar a página de publicar relato.
+3. Enviar uma candidatura de teste pelo formulário de mentoria para confirmar a integração do webhook.
 
 ---
 
@@ -216,6 +221,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #122 — sala da Guilda no Discord](https://github.com/mahpiacesi/vagasux/pull/122) | ✅ Mergeada em 30/09 |
 | [PR #120 — galeria e updates do Sobre](https://github.com/mahpiacesi/vagasux/pull/120) | ✅ Mergeada em 29/09 |
 | [PR #118 — ilustração da hero](https://github.com/mahpiacesi/vagasux/pull/118) | Fechada; conteúdo já na #120 |
 | [PR #115 — página Sobre](https://github.com/mahpiacesi/vagasux/pull/115) | ✅ Mergeada em 18/09 |
