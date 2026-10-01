@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-09-30
+**Última atualização:** 2026-10-01
 
 ---
 
@@ -11,7 +11,8 @@
 | Área | Estado | Nota |
 |------|--------|------|
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
-| `/guilda` | ✅ Live | Sala exclusiva no Discord, PR #122 (30/09) |
+| `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
+| Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
 | Página 404 | ✅ Live | PR #114 em 17/09 |
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
@@ -28,6 +29,10 @@
 ---
 
 ## Feito recentemente
+
+### Menu mobile e Guilda (1 out)
+- **PR #124** mergeada: no celular, o menu abre em tela cheia. Faça parte continua em destaque, ao lado do hambúrguer. No desktop, os menus de Comunidade e Vagas seguem como estavam.
+- **PR #125** entrou na #124 antes do merge: a hero da Guilda não alarga mais a página, e o plano anual não lista mais “Apoio contínuo da comunidade”.
 
 ### Guilda no Discord (30 set)
 - **PR #122** mergeada: `/guilda` e o card da Guilda em `/comunidade` falam da sala exclusiva no Discord. O cadastro pede o @ e o acesso acompanha o período da assinatura.
@@ -221,6 +226,8 @@
 
 | Item | Status |
 |------|--------|
+| [PR #124 — menu mobile em tela cheia](https://github.com/mahpiacesi/vagasux/pull/124) | ✅ Mergeada em 01/10, com a #125 |
+| [PR #125 — scroll e plano anual da Guilda](https://github.com/mahpiacesi/vagasux/pull/125) | ✅ Mergeada em 01/10 na branch do menu |
 | [PR #122 — sala da Guilda no Discord](https://github.com/mahpiacesi/vagasux/pull/122) | ✅ Mergeada em 30/09 |
 | [PR #120 — galeria e updates do Sobre](https://github.com/mahpiacesi/vagasux/pull/120) | ✅ Mergeada em 29/09 |
 | [PR #118 — ilustração da hero](https://github.com/mahpiacesi/vagasux/pull/118) | Fechada; conteúdo já na #120 |
