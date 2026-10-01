@@ -30,6 +30,9 @@
 
 ## Feito recentemente
 
+### Preferências de cookies (1 out)
+- **PR #127** mergeada: “Preferências de cookies” no rodapé abre a seção Cookies e análise de uso em Termos e Políticas. O aviso flutuante não cobre essa página.
+
 ### Menu mobile e Guilda (1 out)
 - **PR #124** mergeada: no celular, o menu abre em tela cheia. Faça parte continua em destaque, ao lado do hambúrguer. No desktop, os menus de Comunidade e Vagas seguem como estavam.
 - **PR #125** entrou na #124 antes do merge: a hero da Guilda não alarga mais a página, e o plano anual não lista mais “Apoio contínuo da comunidade”.
@@ -226,6 +229,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10 |
 | [PR #124 — menu mobile em tela cheia](https://github.com/mahpiacesi/vagasux/pull/124) | ✅ Mergeada em 01/10, com a #125 |
 | [PR #125 — scroll e plano anual da Guilda](https://github.com/mahpiacesi/vagasux/pull/125) | ✅ Mergeada em 01/10 na branch do menu |
 | [PR #122 — sala da Guilda no Discord](https://github.com/mahpiacesi/vagasux/pull/122) | ✅ Mergeada em 30/09 |
