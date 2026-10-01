@@ -70,9 +70,10 @@ export function AppRoutes() {
           <Route path={routes.sobre} element={<SobrePage />} />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
+          <Route path={routes.cookies} element={<PreferenciasDeCookiesPage />} />
           <Route
-            path={routes.preferenciasDeCookies}
-            element={<PreferenciasDeCookiesPage />}
+            path="/preferencias-de-cookies"
+            element={<Navigate to={routes.cookies} replace />}
           />
           <Route
             path="/termos-e-polticas"

@@ -71,7 +71,7 @@ const legalLinks = [
   { label: 'Termos e Políticas', href: routes.termosEPoliticas },
   {
     label: 'Preferências de cookies',
-    href: routes.preferenciasDeCookies,
+    href: routes.cookies,
   },
 ] as const
 

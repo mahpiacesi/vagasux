@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false)
   const { pathname } = useLocation()
-  const onCookiePage = pathname === routes.preferenciasDeCookies
+  const onCookiePage = pathname === routes.cookies
 
   useEffect(() => {
     const stored = getCookieConsent()
@@ -72,7 +72,7 @@ export function CookieConsentBanner() {
 
           <div className="flex flex-nowrap items-center justify-between gap-2">
             <Link
-              to={routes.preferenciasDeCookies}
+              to={routes.cookies}
               className="shrink-0 text-sm font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
               onClick={() => setVisible(false)}
             >

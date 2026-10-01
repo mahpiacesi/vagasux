@@ -14,7 +14,7 @@ const LAST_UPDATED = '30 de julho de 2026'
 export function TermosEPoliticasPage() {
   const { hash } = useLocation()
   if (hash === `#${termosHashes.cookies}`) {
-    return <Navigate to={routes.preferenciasDeCookies} replace />
+    return <Navigate to={routes.cookies} replace />
   }
 
   return (
@@ -241,7 +241,7 @@ export function TermosEPoliticasPage() {
           <p>
             O uso de cookies e de ferramentas de análise, e a forma de mudar
             sua escolha, estão em{' '}
-            <TextLink href={routes.preferenciasDeCookies} external={false}>
+            <TextLink href={routes.cookies} external={false}>
               Preferências de cookies
             </TextLink>
             .
