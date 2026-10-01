@@ -1,41 +1,9 @@
 import { CaretDown, Umbrella } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { routes } from '@/lib/siteLinks'
+import { NavLink, useLocation } from 'react-router-dom'
+import { comunidadeNavItems, pathMatches } from '@/lib/siteNav'
 
 const navIconProps = { weight: 'bold' as const }
-
-type ComunidadeNavItem =
-  | { kind: 'internal'; to: string; label: string }
-  | { kind: 'external'; href: string; label: string }
-
-const comunidadeItems: ComunidadeNavItem[] = [
-  {
-    kind: 'internal' as const,
-    to: routes.sobre,
-    label: 'Sobre',
-  },
-  {
-    kind: 'internal' as const,
-    to: routes.comunidade,
-    label: 'Como participar',
-  },
-  {
-    kind: 'internal' as const,
-    to: routes.guilda,
-    label: 'Guilda do Vaguiner',
-  },
-  {
-    kind: 'internal' as const,
-    to: routes.mentoria,
-    label: 'Mentorias',
-  },
-  {
-    kind: 'internal' as const,
-    to: routes.voluntariado,
-    label: 'Voluntariado',
-  },
-]
 
 const triggerClass =
   'inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -47,61 +15,11 @@ const itemClass =
 
 const CLOSE_DELAY_MS = 120
 
-function ComunidadeMenuItem({
-  item,
-  onNavigate,
-}: {
-  item: ComunidadeNavItem
-  onNavigate?: () => void
-}) {
-  if (item.kind === 'external') {
-    return (
-      <a
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={itemClass}
-        onClick={onNavigate}
-      >
-        {item.label}
-      </a>
-    )
-  }
-
-  if (item.to.includes('#')) {
-    return (
-      <Link to={item.to} className={itemClass} onClick={onNavigate}>
-        {item.label}
-      </Link>
-    )
-  }
-
-  return (
-    <NavLink
-      to={item.to}
-      className={({ isActive }) =>
-        `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
-      }
-      onClick={onNavigate}
-    >
-      {item.label}
-    </NavLink>
-  )
-}
-
-export function ComunidadeNavMenu({
-  variant = 'desktop',
-}: {
-  variant?: 'desktop' | 'mobile'
-}) {
+export function ComunidadeNavMenu() {
   const { pathname } = useLocation()
-  const isComunidadeActive =
-    pathname === routes.sobre ||
-    pathname === routes.comunidade ||
-    pathname === routes.guilda ||
-    pathname === routes.voluntariado ||
-    pathname === routes.mentoria ||
-    pathname.startsWith(`${routes.mentoria}/`)
+  const isComunidadeActive = comunidadeNavItems.some((item) =>
+    pathMatches(pathname, item.to),
+  )
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
 
@@ -120,36 +38,6 @@ export function ComunidadeNavMenu({
   function scheduleClose() {
     clearCloseTimer()
     closeTimer.current = window.setTimeout(() => setOpen(false), CLOSE_DELAY_MS)
-  }
-
-  if (variant === 'mobile') {
-    return (
-      <details className="relative">
-        <summary
-          className={`list-none rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500 marker:content-none ${
-            isComunidadeActive ? 'border-brand-200 text-brand-500' : ''
-          }`}
-        >
-          <span className="inline-flex items-center gap-1">
-            <Umbrella
-              size={14}
-              {...navIconProps}
-              className="shrink-0 translate-y-0.5"
-              aria-hidden
-            />
-            Comunidade
-            <CaretDown size={14} {...navIconProps} className="opacity-70" aria-hidden />
-          </span>
-        </summary>
-        <div className="absolute top-full right-0 z-50 min-w-[15rem] pt-2">
-          <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_16px_40px_-20px_rgb(7_0_58_/_0.35)]">
-            {comunidadeItems.map((item) => (
-              <ComunidadeMenuItem key={item.label} item={item} />
-            ))}
-          </div>
-        </div>
-      </details>
-    )
   }
 
   return (
@@ -194,12 +82,17 @@ export function ComunidadeNavMenu({
         }`}
       >
         <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_20px_48px_-24px_rgb(7_0_58_/_0.4)]">
-          {comunidadeItems.map((item) => (
-            <ComunidadeMenuItem
-              key={item.label}
-              item={item}
-              onNavigate={() => setOpen(false)}
-            />
+          {comunidadeNavItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
+              }
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </NavLink>
           ))}
         </div>
       </div>

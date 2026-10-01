@@ -1,8 +1,9 @@
-import { BookOpen, Handshake } from '@phosphor-icons/react'
 import { Link, NavLink } from 'react-router-dom'
+import { primaryNavLinks } from '@/lib/siteNav'
 import { routes } from '@/lib/siteLinks'
 import { ComunidadeNavMenu } from './ComunidadeNavMenu'
 import { Logo } from './Logo'
+import { MobileNavMenu } from './MobileNavMenu'
 import { VagasNavMenu } from './VagasNavMenu'
 
 const navIconProps = { size: 16, weight: 'bold' as const }
@@ -12,14 +13,6 @@ const linkClass =
 
 const ctaClass =
   'inline-flex items-center rounded-full bg-neutral-500 px-4 py-2 text-sm font-bold tracking-tight text-neutral-100 transition-colors hover:bg-brand-500'
-
-const ctaClassMobile =
-  'rounded-full bg-neutral-500 px-3 py-1.5 text-xs font-bold text-neutral-100'
-
-const internalNavLinks = [
-  { label: 'Guia', to: routes.guia, Icon: BookOpen },
-  { label: 'Parcerias', to: routes.parcerias, Icon: Handshake },
-] as const
 
 export function Header() {
   return (
@@ -33,13 +26,10 @@ export function Header() {
           <Logo />
         </NavLink>
 
-        <nav
-          aria-label="Principal"
-          className="hidden items-center gap-6 md:flex"
-        >
+        <nav aria-label="Principal" className="hidden items-center gap-6 md:flex">
           <ComunidadeNavMenu />
           <VagasNavMenu />
-          {internalNavLinks.map(({ label, to, Icon }) => (
+          {primaryNavLinks.map(({ label, to, Icon }) => (
             <Link key={to} to={to} className={linkClass}>
               <Icon {...navIconProps} className="shrink-0" aria-hidden />
               {label}
@@ -50,13 +40,7 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <ComunidadeNavMenu variant="mobile" />
-          <VagasNavMenu variant="mobile" />
-          <Link to={routes.comunidade} className={ctaClassMobile}>
-            Faça parte
-          </Link>
-        </div>
+        <MobileNavMenu />
       </div>
     </header>
   )

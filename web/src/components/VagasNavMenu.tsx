@@ -1,22 +1,9 @@
 import { Briefcase, CaretDown } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { routes } from '@/lib/siteLinks'
+import { pathMatches, vagasNavItems } from '@/lib/siteNav'
 
 const navIconProps = { weight: 'bold' as const }
-
-const vagasItems = [
-  {
-    to: routes.curadoria,
-    label: 'Curadoria',
-    description: 'Curadoria de vagas Júnior, Trainee e Estágio',
-  },
-  {
-    to: routes.oportunidades,
-    label: 'Oportunidades',
-    description: 'Vagas de diversos níveis',
-  },
-] as const
 
 const triggerClass =
   'inline-flex items-center gap-1.5 text-sm font-semibold tracking-tight text-neutral-400 transition-colors hover:text-neutral-500'
@@ -28,31 +15,9 @@ const itemClass =
 
 const CLOSE_DELAY_MS = 120
 
-function VagasMenuItem({
-  to,
-  label,
-  description,
-  onNavigate,
-}: (typeof vagasItems)[number] & { onNavigate?: () => void }) {
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) =>
-        `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
-      }
-      onClick={onNavigate}
-    >
-      <span className="block text-sm font-bold text-neutral-500">{label}</span>
-      <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
-        {description}
-      </span>
-    </NavLink>
-  )
-}
-
-export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
+export function VagasNavMenu() {
   const { pathname } = useLocation()
-  const isVagasActive = vagasItems.some((item) => pathname === item.to)
+  const isVagasActive = vagasNavItems.some((item) => pathMatches(pathname, item.to))
   const [open, setOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
 
@@ -71,36 +36,6 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
   function scheduleClose() {
     clearCloseTimer()
     closeTimer.current = window.setTimeout(() => setOpen(false), CLOSE_DELAY_MS)
-  }
-
-  if (variant === 'mobile') {
-    return (
-      <details className="relative">
-        <summary
-          className={`list-none rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-500 marker:content-none ${
-            isVagasActive ? 'border-brand-200 text-brand-500' : ''
-          }`}
-        >
-          <span className="inline-flex items-center gap-1">
-            <Briefcase
-              size={14}
-              {...navIconProps}
-              className="shrink-0 translate-y-0.5"
-              aria-hidden
-            />
-            Vagas
-            <CaretDown size={14} {...navIconProps} className="opacity-70" aria-hidden />
-          </span>
-        </summary>
-        <div className="absolute top-full right-0 z-50 min-w-[15rem] pt-2">
-          <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_16px_40px_-20px_rgb(7_0_58_/_0.35)]">
-            {vagasItems.map((item) => (
-              <VagasMenuItem key={item.to} {...item} />
-            ))}
-          </div>
-        </div>
-      </details>
-    )
   }
 
   return (
@@ -145,12 +80,22 @@ export function VagasNavMenu({ variant = 'desktop' }: { variant?: 'desktop' | 'm
         }`}
       >
         <div className="rounded-2xl border border-complementary-200/80 bg-complementary-100 p-2 shadow-[0_20px_48px_-24px_rgb(7_0_58_/_0.4)]">
-          {vagasItems.map((item) => (
-            <VagasMenuItem
+          {vagasNavItems.map((item) => (
+            <NavLink
               key={item.to}
-              {...item}
-              onNavigate={() => setOpen(false)}
-            />
+              to={item.to}
+              className={({ isActive }) =>
+                `${itemClass} ${isActive ? 'bg-brand-100/90' : ''}`
+              }
+              onClick={() => setOpen(false)}
+            >
+              <span className="block text-sm font-bold text-neutral-500">{item.label}</span>
+              {item.description ? (
+                <span className="mt-0.5 block text-xs leading-snug text-neutral-400/90">
+                  {item.description}
+                </span>
+              ) : null}
+            </NavLink>
           ))}
         </div>
       </div>
