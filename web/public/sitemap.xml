@@ -76,6 +76,11 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://vagasux.com.br/cookies</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://vagasux.com.br/oportunidades</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
