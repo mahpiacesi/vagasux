@@ -9,7 +9,7 @@ import {
 import { reopenCookieBanner } from '@/lib/cookieConsent'
 import { analyticsPrivacy } from '@/lib/siteLinks'
 
-const LAST_UPDATED = '30 de julho de 2026'
+const LAST_UPDATED = '1 de outubro de 2026'
 
 export function PreferenciasDeCookiesPage() {
   return (
