@@ -181,7 +181,6 @@ export const guildaPlans: GuildaPlan[] = [
       'Tudo do plano mensal',
       'Economia de R$ 40 no ano',
       '1 mentoria de carreira com Mah Piacesi',
-      'Apoio contínuo da comunidade',
     ],
   },
 ]
