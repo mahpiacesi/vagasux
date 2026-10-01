@@ -1,5 +1,6 @@
 const STORAGE_KEY = 'vagasux:cookie-consent'
 const CONSENT_CHANGED_EVENT = 'vagasux:cookie-consent-changed'
+const OPEN_BANNER_EVENT = 'vagasux:cookie-banner-open'
 
 export type CookieConsentChoice = 'essential' | 'analytics'
 
@@ -105,7 +106,23 @@ export function setCookieConsent(choice: CookieConsentChoice) {
   window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT))
 }
 
+/** Drops the stored choice and asks the first-visit banner to show again. */
+export function reopenCookieBanner() {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // Storage can be blocked; the banner still opens for this visit.
+  }
+  window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT))
+  window.dispatchEvent(new Event(OPEN_BANNER_EVENT))
+}
+
 export function subscribeCookieConsent(listener: () => void) {
   window.addEventListener(CONSENT_CHANGED_EVENT, listener)
   return () => window.removeEventListener(CONSENT_CHANGED_EVENT, listener)
+}
+
+export function subscribeCookieBannerOpen(listener: () => void) {
+  window.addEventListener(OPEN_BANNER_EVENT, listener)
+  return () => window.removeEventListener(OPEN_BANNER_EVENT, listener)
 }

@@ -5,6 +5,7 @@ import {
   applyAnalyticsIfConsented,
   getCookieConsent,
   setCookieConsent,
+  subscribeCookieBannerOpen,
   subscribeCookieConsent,
   type CookieConsentChoice,
 } from '@/lib/cookieConsent'
@@ -33,6 +34,8 @@ export function CookieConsentBanner() {
       }),
     [],
   )
+
+  useEffect(() => subscribeCookieBannerOpen(() => setVisible(true)), [])
 
   function choose(choice: CookieConsentChoice) {
     setCookieConsent(choice)

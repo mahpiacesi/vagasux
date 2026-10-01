@@ -1,4 +1,3 @@
-import { CookiePreferenceControls } from '@/components/CookiePreferenceControls'
 import {
   Callout,
   InstitutionalPage,
@@ -7,6 +6,7 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
+import { reopenCookieBanner } from '@/lib/cookieConsent'
 import { analyticsPrivacy } from '@/lib/siteLinks'
 
 const LAST_UPDATED = '30 de julho de 2026'
@@ -83,11 +83,18 @@ export function PreferenciasDeCookiesPage() {
             Microsoft Clarity para análise e melhoria contínua da plataforma.
           </p>
           <p>
-            Você pode alterar ou revogar seu consentimento a qualquer momento
-            nesta página ou nas configurações do navegador.
+            Essa escolha aparece no aviso da primeira visita. Para ver o aviso
+            de novo,{' '}
+            <button
+              type="button"
+              onClick={reopenCookieBanner}
+              className="cursor-pointer border-0 bg-transparent p-0 font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
+            >
+              altere sua escolha
+            </button>
+            .
           </p>
         </Prose>
-        <CookiePreferenceControls />
       </div>
     </InstitutionalPage>
   )
