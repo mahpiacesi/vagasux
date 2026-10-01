@@ -11,8 +11,7 @@ import {
   YoutubeLogo,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { routes } from '@/lib/siteLinks'
-import { openCookiePreferences } from '@/lib/cookieConsent'
+import { routes, termosHashes } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 
 const socialLinks: { label: string; href: string; Icon: Icon }[] = [
@@ -67,10 +66,13 @@ const legalLinkClass =
   'text-sm text-neutral-300/70 underline decoration-neutral-300/30 underline-offset-4 transition-colors hover:text-complementary-300 hover:decoration-complementary-300/50'
 
 const legalLinks = [
-  { kind: 'internal' as const, label: 'Sobre', href: routes.sobre },
-  { kind: 'internal' as const, label: 'Código de Conduta', href: routes.codigoDeConduta },
-  { kind: 'internal' as const, label: 'Termos e Políticas', href: routes.termosEPoliticas },
-  { kind: 'cookies' as const, label: 'Preferências de cookies' },
+  { label: 'Sobre', href: routes.sobre },
+  { label: 'Código de Conduta', href: routes.codigoDeConduta },
+  { label: 'Termos e Políticas', href: routes.termosEPoliticas },
+  {
+    label: 'Preferências de cookies',
+    href: `${routes.termosEPoliticas}#${termosHashes.cookies}`,
+  },
 ] as const
 
 export function Footer() {
@@ -121,19 +123,9 @@ export function Footer() {
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {legalLinks.map((item) => (
                 <li key={item.label}>
-                  {item.kind === 'cookies' ? (
-                    <button
-                      type="button"
-                      onClick={openCookiePreferences}
-                      className={legalLinkClass}
-                    >
-                      {item.label}
-                    </button>
-                  ) : (
-                    <Link to={item.href} className={legalLinkClass}>
-                      {item.label}
-                    </Link>
-                  )}
+                  <Link to={item.href} className={legalLinkClass}>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

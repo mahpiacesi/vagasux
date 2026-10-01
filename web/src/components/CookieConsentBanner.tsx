@@ -5,7 +5,7 @@ import {
   applyAnalyticsIfConsented,
   getCookieConsent,
   setCookieConsent,
-  subscribeCookiePreferencesOpen,
+  subscribeCookieConsent,
   type CookieConsentChoice,
 } from '@/lib/cookieConsent'
 import { routes, termosHashes } from '@/lib/siteLinks'
@@ -25,8 +25,8 @@ export function CookieConsentBanner() {
 
   useEffect(
     () =>
-      subscribeCookiePreferencesOpen(() => {
-        setVisible(true)
+      subscribeCookieConsent(() => {
+        if (getCookieConsent()) setVisible(false)
       }),
     [],
   )

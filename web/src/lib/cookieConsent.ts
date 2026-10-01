@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'vagasux:cookie-consent'
-const OPEN_PREFERENCES_EVENT = 'vagasux:open-cookie-preferences'
+const CONSENT_CHANGED_EVENT = 'vagasux:cookie-consent-changed'
 
 export type CookieConsentChoice = 'essential' | 'analytics'
 
@@ -102,13 +102,10 @@ export function setCookieConsent(choice: CookieConsentChoice) {
   if (choice === 'analytics') {
     applyAnalyticsIfConsented('analytics')
   }
+  window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT))
 }
 
-export function openCookiePreferences() {
-  window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT))
-}
-
-export function subscribeCookiePreferencesOpen(listener: () => void) {
-  window.addEventListener(OPEN_PREFERENCES_EVENT, listener)
-  return () => window.removeEventListener(OPEN_PREFERENCES_EVENT, listener)
+export function subscribeCookieConsent(listener: () => void) {
+  window.addEventListener(CONSENT_CHANGED_EVENT, listener)
+  return () => window.removeEventListener(CONSENT_CHANGED_EVENT, listener)
 }
