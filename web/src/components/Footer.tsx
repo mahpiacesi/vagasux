@@ -11,7 +11,7 @@ import {
   YoutubeLogo,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { routes, termosHashes } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 import { Logo } from './Logo'
 
 const socialLinks: { label: string; href: string; Icon: Icon }[] = [
@@ -71,7 +71,7 @@ const legalLinks = [
   { label: 'Termos e Políticas', href: routes.termosEPoliticas },
   {
     label: 'Preferências de cookies',
-    href: `${routes.termosEPoliticas}#${termosHashes.cookies}`,
+    href: routes.preferenciasDeCookies,
   },
 ] as const
 

@@ -8,14 +8,13 @@ import {
   subscribeCookieConsent,
   type CookieConsentChoice,
 } from '@/lib/cookieConsent'
-import { routes, termosHashes } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 import { cn } from '@/lib/utils'
 
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false)
-  const { pathname, hash } = useLocation()
-  const onCookiePage =
-    pathname === routes.termosEPoliticas && hash === `#${termosHashes.cookies}`
+  const { pathname } = useLocation()
+  const onCookiePage = pathname === routes.preferenciasDeCookies
 
   useEffect(() => {
     const stored = getCookieConsent()
@@ -73,7 +72,7 @@ export function CookieConsentBanner() {
 
           <div className="flex flex-nowrap items-center justify-between gap-2">
             <Link
-              to={`${routes.termosEPoliticas}#${termosHashes.cookies}`}
+              to={routes.preferenciasDeCookies}
               className="shrink-0 text-sm font-semibold text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors hover:text-brand-400 hover:decoration-brand-300"
               onClick={() => setVisible(false)}
             >

@@ -24,6 +24,7 @@ import { MentorshipRequestPage } from '@/pages/MentorshipRequestPage'
 import { OportunidadesPage } from '@/pages/OportunidadesPage'
 import { VoluntariadoPage } from '@/pages/VoluntariadoPage'
 import { CodigoDeCondutaPage } from '@/pages/CodigoDeCondutaPage'
+import { PreferenciasDeCookiesPage } from '@/pages/PreferenciasDeCookiesPage'
 import { TermosEPoliticasPage } from '@/pages/TermosEPoliticasPage'
 import { ParceriasPage } from '@/pages/ParceriasPage'
 import { SobrePage } from '@/pages/SobrePage'
@@ -69,6 +70,10 @@ export function AppRoutes() {
           <Route path={routes.sobre} element={<SobrePage />} />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
+          <Route
+            path={routes.preferenciasDeCookies}
+            element={<PreferenciasDeCookiesPage />}
+          />
           <Route
             path="/termos-e-polticas"
             element={<Navigate to={routes.termosEPoliticas} replace />}
