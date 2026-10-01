@@ -1,3 +1,4 @@
+import { CookiePreferenceControls } from '@/components/CookiePreferenceControls'
 import {
   Callout,
   InstitutionalPage,
@@ -284,10 +285,10 @@ export function TermosEPoliticasPage() {
             </p>
             <p>
               Você pode alterar ou revogar seu consentimento a qualquer momento
-              por meio das configurações do navegador ou das preferências de
-              cookies disponibilizadas pela VagasUX no rodapé do site.
+              nesta página ou nas configurações do navegador.
             </p>
           </Prose>
+          <CookiePreferenceControls />
         </div>
 
         <div className="space-y-4">

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import {
   applyAnalyticsIfConsented,
   getCookieConsent,
   setCookieConsent,
-  subscribeCookiePreferencesOpen,
+  subscribeCookieConsent,
   type CookieConsentChoice,
 } from '@/lib/cookieConsent'
 import { routes, termosHashes } from '@/lib/siteLinks'
@@ -13,20 +13,24 @@ import { cn } from '@/lib/utils'
 
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false)
+  const { pathname, hash } = useLocation()
+  const onCookiePage =
+    pathname === routes.termosEPoliticas && hash === `#${termosHashes.cookies}`
 
   useEffect(() => {
     const stored = getCookieConsent()
     if (stored) {
       applyAnalyticsIfConsented(stored)
+      setVisible(false)
       return
     }
-    setVisible(true)
-  }, [])
+    setVisible(!onCookiePage)
+  }, [onCookiePage])
 
   useEffect(
     () =>
-      subscribeCookiePreferencesOpen(() => {
-        setVisible(true)
+      subscribeCookieConsent(() => {
+        if (getCookieConsent()) setVisible(false)
       }),
     [],
   )
