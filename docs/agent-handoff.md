@@ -13,8 +13,8 @@
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
-| `/cookies` | ✅ Live | Explicação do Clarity. A escolha fica no aviso da primeira visita (#129, 02/10) |
-| Termos | ✅ Live | Cookies, alterações e contato no fim. Lista de títulos à direita (#129, 02/10) |
+| `/cookies` | ✅ Live | Clarity e Google Analytics. A escolha fica no aviso da primeira visita (#131, 02/10) |
+| Termos | ✅ Live | Quem opera a VagasUX está só no Contato. Sem seção de cookies (#131, 02/10) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
 | Página 404 | ✅ Live | PR #114 em 17/09 |
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
@@ -32,10 +32,15 @@
 
 ## Feito recentemente
 
+### Privacidade, cookies e termos (2 out)
+- **PR #131** mergeada: Termos e Políticas identificam quem opera a VagasUX só no Contato (Marianna Ferraz Piacesi, M F PIACESI SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03, marianna@vagasux.com.br). A privacidade cobre relato de curso e mentoria. Não há seção Sobre nem cookies nessa página.
+- **`/cookies`** cita Microsoft Clarity e Google Analytics. Os dois só carregam depois do aceite. O aviso da primeira visita nomeia os dois. O Google Analytics entra de fato quando o domínio atual migrar.
+- **PR #129** tinha aberto `/cookies` e a lista de títulos dos termos. A #131 completa o aviso de privacidade.
+
 ### Cookies e termos (2 out)
 - **PR #129** mergeada: `/cookies` explica o que a VagasUX guarda no navegador. Os botões ficam no aviso da primeira visita. O link “altere sua escolha” reabre esse aviso. A data da página é 1 de outubro de 2026.
-- Em Termos e Políticas, Cookies, Alterações destes Termos e Contato fecham o texto. Em telas largas, uma lista à direita leva até cada título. A data também é 1 de outubro de 2026.
-- A **PR #127** tinha aberto o texto dentro de Termos. A #129 substitui isso. O rodapé abre `/cookies`.
+- Em Termos e Políticas, a lista de títulos à direita leva até cada seção.
+- A **PR #127** tinha aberto o texto de cookies dentro de Termos. A #129 substitui isso. O rodapé abre `/cookies`.
 
 ### Menu mobile e Guilda (1 out)
 - **PR #124** mergeada: no celular, o menu abre em tela cheia. Faça parte continua em destaque, ao lado do hambúrguer. No desktop, os menus de Comunidade e Vagas seguem como estavam.
@@ -223,9 +228,9 @@
 
 ## Próximo passo esperado
 
-1. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
-2. Criar a página de publicar relato.
-3. Enviar uma candidatura de teste pelo formulário de mentoria para confirmar a integração do webhook.
+1. Migrar `vagasux.com.br` para a Vercel ainda em outubro. Não começar agora. Preservar e-mail e `n8n.vagasux.com.br`. Ligar o Google Analytics só nesse corte.
+2. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
+3. Criar a página de publicar relato.
 
 ---
 
@@ -233,6 +238,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #131 — aviso de privacidade](https://github.com/mahpiacesi/vagasux/pull/131) | ✅ Mergeada em 02/10 |
 | [PR #129 — página /cookies e navegação dos termos](https://github.com/mahpiacesi/vagasux/pull/129) | ✅ Mergeada em 02/10 |
 | [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10. Substituída pela #129 |
 | [PR #124 — menu mobile em tela cheia](https://github.com/mahpiacesi/vagasux/pull/124) | ✅ Mergeada em 01/10, com a #125 |
