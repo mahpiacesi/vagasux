@@ -1,16 +1,22 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  TermsOnThisPage,
+  type TermsTocItem,
+} from '@/components/TermsOnThisPage'
 
 type InstitutionalPageProps = {
   title: string
   lead?: string
   children: ReactNode
+  toc?: readonly TermsTocItem[]
 }
 
 export function InstitutionalPage({
   title,
   lead,
   children,
+  toc,
 }: InstitutionalPageProps) {
   return (
     <main>
@@ -32,8 +38,15 @@ export function InstitutionalPage({
       </section>
 
       <section className="px-5 pb-16 md:px-6 md:pb-24">
-        <div className="mural-fade mural-fade-delay-2 mx-auto max-w-3xl space-y-10 md:max-w-4xl">
-          {children}
+        <div className="relative mx-auto max-w-3xl md:max-w-4xl">
+          <div className="mural-fade mural-fade-delay-2 space-y-10">
+            {children}
+          </div>
+          {toc ? (
+            <div className="absolute top-0 left-full ml-10 hidden h-full w-44 min-[1400px]:block">
+              <TermsOnThisPage items={toc} placement="rail" />
+            </div>
+          ) : null}
         </div>
       </section>
     </main>
@@ -48,9 +61,18 @@ export function Prose({ children }: { children: ReactNode }) {
   )
 }
 
-export function SectionTitle({ children }: { children: ReactNode }) {
+export function SectionTitle({
+  id,
+  children,
+}: {
+  id?: string
+  children: ReactNode
+}) {
   return (
-    <h2 className="text-xl font-black tracking-tight text-neutral-500 md:text-2xl">
+    <h2
+      id={id}
+      className="scroll-mt-28 text-xl font-black tracking-tight text-neutral-500 md:text-2xl"
+    >
       {children}
     </h2>
   )

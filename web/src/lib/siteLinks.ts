@@ -11,6 +11,7 @@ export const routes = {
   curadoria: '/vagas-para-iniciantes',
   codigoDeConduta: '/codigo-de-conduta',
   termosEPoliticas: '/termos-e-politicas',
+  cookies: '/cookies',
   parcerias: '/parcerias',
   guia: '/guia',
   sobre: '/sobre',
