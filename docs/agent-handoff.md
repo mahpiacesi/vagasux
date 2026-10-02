@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-01
+**Última atualização:** 2026-10-02
 
 ---
 
@@ -13,6 +13,8 @@
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
+| `/cookies` | ✅ Live | Explicação do Clarity. A escolha fica no aviso da primeira visita (#129, 02/10) |
+| Termos | ✅ Live | Cookies, alterações e contato no fim. Lista de títulos à direita (#129, 02/10) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
 | Página 404 | ✅ Live | PR #114 em 17/09 |
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
@@ -30,8 +32,10 @@
 
 ## Feito recentemente
 
-### Preferências de cookies (1 out)
-- **PR #127** mergeada: “Preferências de cookies” no rodapé abre a seção Cookies e análise de uso em Termos e Políticas. O aviso flutuante não cobre essa página.
+### Cookies e termos (2 out)
+- **PR #129** mergeada: `/cookies` explica o que a VagasUX guarda no navegador. Os botões ficam no aviso da primeira visita. O link “altere sua escolha” reabre esse aviso. A data da página é 1 de outubro de 2026.
+- Em Termos e Políticas, Cookies, Alterações destes Termos e Contato fecham o texto. Em telas largas, uma lista à direita leva até cada título. A data também é 1 de outubro de 2026.
+- A **PR #127** tinha aberto o texto dentro de Termos. A #129 substitui isso. O rodapé abre `/cookies`.
 
 ### Menu mobile e Guilda (1 out)
 - **PR #124** mergeada: no celular, o menu abre em tela cheia. Faça parte continua em destaque, ao lado do hambúrguer. No desktop, os menus de Comunidade e Vagas seguem como estavam.
@@ -229,7 +233,8 @@
 
 | Item | Status |
 |------|--------|
-| [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10 |
+| [PR #129 — página /cookies e navegação dos termos](https://github.com/mahpiacesi/vagasux/pull/129) | ✅ Mergeada em 02/10 |
+| [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10. Substituída pela #129 |
 | [PR #124 — menu mobile em tela cheia](https://github.com/mahpiacesi/vagasux/pull/124) | ✅ Mergeada em 01/10, com a #125 |
 | [PR #125 — scroll e plano anual da Guilda](https://github.com/mahpiacesi/vagasux/pull/125) | ✅ Mergeada em 01/10 na branch do menu |
 | [PR #122 — sala da Guilda no Discord](https://github.com/mahpiacesi/vagasux/pull/122) | ✅ Mergeada em 30/09 |
