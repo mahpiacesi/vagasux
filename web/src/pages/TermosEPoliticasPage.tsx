@@ -198,11 +198,7 @@ export function TermosEPoliticasPage() {
             <p>
               Caso uma empresa identifique alguma informação incorreta, deseje
               atualizar uma vaga ou solicitar sua remoção da plataforma, pode
-              entrar em contato pelo{' '}
-              <TextLink href="#contato" external={false}>
-                canal indicado ao final desta página
-              </TextLink>
-              .
+              entrar em contato.
             </p>
             <p>
               Sempre que possível, realizaremos a análise e atualização em prazo
@@ -283,12 +279,8 @@ export function TermosEPoliticasPage() {
               Qualquer pessoa que tenha participado de algum curso, tendo
               completado ou não, pode submeter uma avaliação de qualquer curso
               aqui listado e, se aprovado pela equipe, será publicado na página.
-              Caso haja algum curso que não exista na lista, pode ser comunicado
-              pelo{' '}
-              <TextLink href="#contato" external={false}>
-                contato ao final desta página
-              </TextLink>{' '}
-              ou pelas redes sociais.
+              Caso haja algum curso que não exista na lista, a pessoa pode
+              entrar em contato ou avisar pelas redes sociais.
             </p>
             <p>Serão pedidos dados básicos do curso feito, como:</p>
             <ul className="list-disc space-y-1 pl-5">
@@ -372,14 +364,11 @@ export function TermosEPoliticasPage() {
           <Prose>
             <p>
               Para denúncias de possíveis feedbacks com informações falsas ou
-              comentários inapropriados, envie, pelo{' '}
-              <TextLink href="#contato" external={false}>
-                contato ao final desta página
-              </TextLink>
-              , as informações de qual feedback está com problemas, nome da
-              pessoa e data de postagem, além da justificativa para possível
-              retirada. No caso de informações falsas ou equivocadas, pedimos,
-              se possível, fontes para averiguação.
+              comentários inapropriados, entre em contato com as informações de
+              qual feedback está com problemas, nome da pessoa e data de
+              postagem, além da justificativa para possível retirada. No caso
+              de informações falsas ou equivocadas, pedimos, se possível,
+              fontes para averiguação.
             </p>
             <p>
               Solicitações de retirada de feedback que estejam dentro da nossa
@@ -388,12 +377,8 @@ export function TermosEPoliticasPage() {
             </p>
             <p>
               Não fazemos revisão de textos já aprovados. Caso necessário, pode
-              ser enviado um novo feedback e solicitada a retirada do antigo
-              pelo{' '}
-              <TextLink href="#contato" external={false}>
-                contato ao final desta página
-              </TextLink>
-              , desde que comprovado ser a mesma pessoa autora.
+              ser enviado um novo feedback e solicitada a retirada do antigo,
+              desde que comprovado ser a mesma pessoa autora.
             </p>
           </Prose>
         </div>
@@ -434,11 +419,7 @@ export function TermosEPoliticasPage() {
           <p>
             Você pode pedir confirmação do tratamento, acesso, correção,
             exclusão e informação sobre com quem um dado foi compartilhado, e
-            pode retirar um consentimento. O pedido segue o{' '}
-            <TextLink href="#contato" external={false}>
-              contato ao final desta página
-            </TextLink>
-            .
+            pode retirar um consentimento. Para isso, entre em contato.
           </p>
         </Prose>
       </div>
@@ -450,11 +431,6 @@ export function TermosEPoliticasPage() {
               Estes Termos e Políticas podem ser atualizados periodicamente. Quando
               houver mudanças relevantes, publicaremos a nova versão nesta página,
               com indicação da data de atualização no topo do documento.
-            </p>
-            <p>
-              A versão nova passa a valer na data indicada no topo. Se uma
-              mudança afetar o tratamento de dados, a atualização também aparece
-              na seção de privacidade.
             </p>
         </Prose>
       </div>
