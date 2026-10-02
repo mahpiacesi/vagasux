@@ -8,17 +8,17 @@ import {
   TextLink,
 } from '@/components/InstitutionalPage'
 import { TermsOnThisPage, type TermsTocItem } from '@/components/TermsOnThisPage'
-import { contact, routes, termosHashes } from '@/lib/siteLinks'
+import { routes, termosHashes } from '@/lib/siteLinks'
+
+const legalEmail = 'marianna@vagasux.com.br'
 
 const LAST_UPDATED = '1 de outubro de 2026'
 
 const termosToc = [
-  { id: 'sobre-a-vagasux', label: 'Sobre a VagasUX' },
   { id: 'vagas-e-oportunidades', label: 'Vagas e oportunidades' },
   { id: 'uso-da-plataforma', label: 'Uso da plataforma' },
   { id: 'feedbacks-de-cursos', label: 'Feedbacks de cursos' },
   { id: 'privacidade', label: 'Privacidade' },
-  { id: 'cookies-nos-termos', label: 'Cookies' },
   { id: 'alteracoes-destes-termos', label: 'Alterações destes Termos' },
   { id: 'contato', label: 'Contato' },
 ] as const satisfies readonly TermsTocItem[]
@@ -43,18 +43,6 @@ export function TermosEPoliticasPage() {
       </Callout>
 
       <TermsOnThisPage items={termosToc} placement="inline" />
-
-      <div className="space-y-4">
-        <SectionTitle id="sobre-a-vagasux">Sobre a VagasUX</SectionTitle>
-        <Prose>
-          <p>
-            Somos uma comunidade de design e uma iniciativa de acesso para quem
-            está começando na área. Nosso foco são profissionais iniciantes no
-            Brasil e em Portugal. O propósito é promover curadoria de vagas e
-            conteúdos em UX para profissionais de todos os níveis.
-          </p>
-        </Prose>
-      </div>
 
       <div className="space-y-6">
         <SectionTitle id="vagas-e-oportunidades">Vagas e oportunidades</SectionTitle>
@@ -210,9 +198,9 @@ export function TermosEPoliticasPage() {
             <p>
               Caso uma empresa identifique alguma informação incorreta, deseje
               atualizar uma vaga ou solicitar sua remoção da plataforma, pode
-              entrar em contato pelos canais oficiais da VagasUX em{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
+              entrar em contato pelo{' '}
+              <TextLink href="#contato" external={false}>
+                canal indicado ao final desta página
               </TextLink>
               .
             </p>
@@ -296,9 +284,9 @@ export function TermosEPoliticasPage() {
               completado ou não, pode submeter uma avaliação de qualquer curso
               aqui listado e, se aprovado pela equipe, será publicado na página.
               Caso haja algum curso que não exista na lista, pode ser comunicado
-              através do{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
+              pelo{' '}
+              <TextLink href="#contato" external={false}>
+                contato ao final desta página
               </TextLink>{' '}
               ou pelas redes sociais.
             </p>
@@ -384,11 +372,11 @@ export function TermosEPoliticasPage() {
           <Prose>
             <p>
               Para denúncias de possíveis feedbacks com informações falsas ou
-              comentários inapropriados, envie para{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
-              </TextLink>{' '}
-              com informações de qual feedback está com problemas, nome da
+              comentários inapropriados, envie, pelo{' '}
+              <TextLink href="#contato" external={false}>
+                contato ao final desta página
+              </TextLink>
+              , as informações de qual feedback está com problemas, nome da
               pessoa e data de postagem, além da justificativa para possível
               retirada. No caso de informações falsas ou equivocadas, pedimos,
               se possível, fontes para averiguação.
@@ -401,9 +389,9 @@ export function TermosEPoliticasPage() {
             <p>
               Não fazemos revisão de textos já aprovados. Caso necessário, pode
               ser enviado um novo feedback e solicitada a retirada do antigo
-              através do{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
+              pelo{' '}
+              <TextLink href="#contato" external={false}>
+                contato ao final desta página
               </TextLink>
               , desde que comprovado ser a mesma pessoa autora.
             </p>
@@ -414,19 +402,10 @@ export function TermosEPoliticasPage() {
         <SectionTitle id="privacidade">Privacidade</SectionTitle>
         <Prose>
           <p>
-            A VagasUX é operada por Marianna Ferraz Piacesi, por meio de M F
-            PIACESI SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03.
-            Este aviso cobre o tratamento de dados na operação da VagasUX. O
-            contato para privacidade e para os direitos previstos na LGPD é{' '}
-            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
-            .
+            Este aviso cobre o tratamento de dados na operação da VagasUX.
           </p>
           <p>Podemos tratar estes dados, conforme o que você usa no site:</p>
           <ul className="list-disc space-y-2 pl-5">
-            <li>
-              a escolha de cookies, guardada neste navegador, para lembrar se
-              você aceitou ou recusou a análise de uso;
-            </li>
             <li>
               no relato de curso, o primeiro nome, o e-mail, o LinkedIn, dados
               do curso e o texto enviado. Na página pública aparece só o
@@ -436,54 +415,28 @@ export function TermosEPoliticasPage() {
               na mentoria, o nome, o e-mail, o WhatsApp, o LinkedIn e as
               informações do pedido ou da candidatura;
             </li>
-            <li>
-              na Guilda, o @ do Discord informado no cadastro e a confirmação
-              da assinatura feita no serviço de pagamento;
-            </li>
-            <li>as mensagens que você envia para o e-mail da VagasUX.</li>
+            <li>as mensagens enviadas à VagasUX.</li>
           </ul>
           <p>
             Usamos esses dados para publicar o que pode ir ao ar, avaliar
-            relatos, organizar mentorias, liberar a sala da Guilda no período
-            da assinatura e responder pedidos. A análise de navegação com o
-            Microsoft Clarity só acontece se você aceitar os cookies opcionais.
-            O detalhe dessa escolha está em{' '}
-            <TextLink href={routes.cookies} external={false}>
-              Preferências de cookies
-            </TextLink>
-            .
+            relatos, organizar mentorias e responder pedidos.
           </p>
           <p>
-            Compartilhamos dados com quem precisa deles para essa operação: a
-            Microsoft, quando há consentimento para o Clarity; pessoas
-            voluntárias que avaliam relatos; o serviço de pagamento da Guilda;
-            e o Discord, quando você informa o @ para entrar na sala. Não
-            vendemos esses dados.
+            Compartilhamos dados com quem precisa deles para essa operação,
+            como pessoas voluntárias que avaliam relatos. Não vendemos esses
+            dados.
           </p>
           <p>
             Guardamos cada dado enquanto ele for necessário para a finalidade
             correspondente, para analisar uma denúncia ou para cumprir uma
-            obrigação. A escolha de cookies permanece neste navegador até você
-            mudá-la ou limpar os dados do site.
+            obrigação.
           </p>
           <p>
             Você pode pedir confirmação do tratamento, acesso, correção,
             exclusão e informação sobre com quem um dado foi compartilhado, e
-            pode retirar um consentimento. Envie o pedido para{' '}
-            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
-            .
-          </p>
-        </Prose>
-      </div>
-
-      <div className="space-y-4">
-        <SectionTitle id="cookies-nos-termos">Cookies</SectionTitle>
-        <Prose>
-          <p>
-            O uso de cookies e de ferramentas de análise, e a forma de mudar
-            sua escolha, estão em{' '}
-            <TextLink href={routes.cookies} external={false}>
-              Preferências de cookies
+            pode retirar um consentimento. O pedido segue o{' '}
+            <TextLink href="#contato" external={false}>
+              contato ao final desta página
             </TextLink>
             .
           </p>
@@ -510,11 +463,11 @@ export function TermosEPoliticasPage() {
         <SectionTitle id="contato">Contato</SectionTitle>
         <Prose>
           <p>
-            Quem responde pela operação é Marianna Ferraz Piacesi, M F PIACESI
-            SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03. Para questões
-            jurídicas, privacidade, LGPD, denúncias ou solicitações
-            relacionadas a estes Termos, entre em contato pelo e-mail{' '}
-            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
+            Quem responde pela operação da VagasUX é Marianna Ferraz Piacesi,
+            por meio de M F PIACESI SERVICOS DE WEB DESIGN, CNPJ
+            39.617.365/0001-03. Para questões jurídicas, privacidade, LGPD,
+            denúncias ou solicitações relacionadas a estes Termos, escreva para{' '}
+            <TextLink href={`mailto:${legalEmail}`}>{legalEmail}</TextLink>
             .
           </p>
         </Prose>
