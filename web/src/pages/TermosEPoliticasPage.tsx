@@ -398,13 +398,12 @@ export function TermosEPoliticasPage() {
             </li>
             <li>
               na mentoria, o nome, o e-mail, o WhatsApp, o LinkedIn e as
-              informações do pedido ou da candidatura;
+              informações do pedido ou da candidatura.
             </li>
-            <li>as mensagens enviadas à VagasUX.</li>
           </ul>
           <p>
             Usamos esses dados para publicar o que pode ir ao ar, avaliar
-            relatos, organizar mentorias e responder pedidos.
+            relatos e organizar mentorias.
           </p>
           <p>
             Compartilhamos dados com quem precisa deles para essa operação,
