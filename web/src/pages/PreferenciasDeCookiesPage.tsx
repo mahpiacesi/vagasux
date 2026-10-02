@@ -77,25 +77,50 @@ export function PreferenciasDeCookiesPage() {
       </div>
 
       <div className="space-y-4">
+        <SubsectionTitle>Google Analytics</SubsectionTitle>
+        <Prose>
+          <p>
+            Também utilizamos o Google Analytics para medir o uso da
+            plataforma: páginas acessadas, origem das visitas e como a
+            navegação acontece de forma agregada.
+          </p>
+          <p>
+            Esses dados servem para entender o uso da VagasUX. O endereço IP é
+            anonimizado e os cookies de publicidade ficam desligados. Não
+            usamos o Google Analytics para anúncios nem para decisões
+            automatizadas.
+          </p>
+          <p>
+            O tratamento dessas informações segue a política de privacidade do
+            Google. Para saber mais, consulte a{' '}
+            <TextLink href={analyticsPrivacy.googleAnalytics}>
+              Política de Privacidade do Google
+            </TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
         <SectionTitle>Sua escolha</SectionTitle>
         <Prose>
           <p>
             Há duas categorias. A necessária guarda neste navegador apenas a
             sua escolha, para o aviso não voltar toda vez. A opcional só
-            carrega o Microsoft Clarity depois que você aceita. Sem essa
-            aceitação, o Clarity não é carregado.
+            carrega o Microsoft Clarity e o Google Analytics depois que você
+            aceita. Sem essa aceitação, essas ferramentas não são carregadas.
           </p>
           <p>
             A base dessa análise é o seu consentimento. Os dados vão para a
-            Microsoft, que fornece a ferramenta, e servem para entender o uso
-            da plataforma. O prazo de guarda é o da própria ferramenta, descrito
-            na política da Microsoft.
+            Microsoft e para o Google, que fornecem as ferramentas, e servem
+            para entender o uso da plataforma. O prazo de guarda é o de cada
+            ferramenta, descrito na política da Microsoft e na do Google.
           </p>
           <CookieChoiceStatus />
           <p>
             A escolha fica guardada neste navegador. Se você recusar a análise
-            depois de ter aceitado, o Clarity deixa de ser carregado nas
-            visitas seguintes. Para ver o aviso de novo,{' '}
+            depois de ter aceitado, o Clarity e o Google Analytics deixam de
+            ser carregados nas visitas seguintes. Para ver o aviso de novo,{' '}
             <button
               type="button"
               onClick={reopenCookieBanner}

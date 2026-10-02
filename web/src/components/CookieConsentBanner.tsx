@@ -68,9 +68,9 @@ export function CookieConsentBanner() {
             id="cookie-consent-description"
             className="text-sm leading-snug text-neutral-400"
           >
-            Ao aceitar, usamos o Microsoft Clarity para entender como a
-            comunidade utiliza a VagasUX e melhorar continuamente a experiência
-            de quem passa por aqui.
+            Ao aceitar, usamos o Microsoft Clarity e o Google Analytics para
+            entender como a comunidade utiliza a VagasUX e melhorar
+            continuamente a experiência de quem passa por aqui.
           </p>
 
           <div className="flex flex-nowrap items-center justify-between gap-2">
