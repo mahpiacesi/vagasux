@@ -10,7 +10,7 @@ import {
 import { TermsOnThisPage, type TermsTocItem } from '@/components/TermsOnThisPage'
 import { contact, routes, termosHashes } from '@/lib/siteLinks'
 
-const LAST_UPDATED = '30 de julho de 2026'
+const LAST_UPDATED = '1 de outubro de 2026'
 
 const termosToc = [
   { id: 'sobre-a-vagasux', label: 'Sobre a VagasUX' },
