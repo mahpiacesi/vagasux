@@ -8,16 +8,17 @@ import {
   TextLink,
 } from '@/components/InstitutionalPage'
 import { TermsOnThisPage, type TermsTocItem } from '@/components/TermsOnThisPage'
-import { contact, routes, termosHashes } from '@/lib/siteLinks'
+import { routes, termosHashes } from '@/lib/siteLinks'
+
+const legalEmail = 'marianna@vagasux.com.br'
 
 const LAST_UPDATED = '1 de outubro de 2026'
 
 const termosToc = [
-  { id: 'sobre-a-vagasux', label: 'Sobre a VagasUX' },
   { id: 'vagas-e-oportunidades', label: 'Vagas e oportunidades' },
   { id: 'uso-da-plataforma', label: 'Uso da plataforma' },
   { id: 'feedbacks-de-cursos', label: 'Feedbacks de cursos' },
-  { id: 'cookies-nos-termos', label: 'Cookies' },
+  { id: 'privacidade', label: 'Privacidade' },
   { id: 'alteracoes-destes-termos', label: 'Alterações destes Termos' },
   { id: 'contato', label: 'Contato' },
 ] as const satisfies readonly TermsTocItem[]
@@ -42,19 +43,6 @@ export function TermosEPoliticasPage() {
       </Callout>
 
       <TermsOnThisPage items={termosToc} placement="inline" />
-
-      <div className="space-y-4">
-        <SectionTitle id="sobre-a-vagasux">Sobre a VagasUX</SectionTitle>
-        <Prose>
-          <p>
-            Somos uma comunidade de design que funciona como hub de iniciativas
-            acessíveis para quem está começando na área. Nosso foco são
-            profissionais iniciantes no Brasil e Portugal e temos o propósito de
-            promover curadoria de vagas e conteúdos em UX para todos os níveis,
-            todos mesmo.
-          </p>
-        </Prose>
-      </div>
 
       <div className="space-y-6">
         <SectionTitle id="vagas-e-oportunidades">Vagas e oportunidades</SectionTitle>
@@ -210,11 +198,7 @@ export function TermosEPoliticasPage() {
             <p>
               Caso uma empresa identifique alguma informação incorreta, deseje
               atualizar uma vaga ou solicitar sua remoção da plataforma, pode
-              entrar em contato pelos canais oficiais da VagasUX em{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
-              </TextLink>
-              .
+              entrar em contato.
             </p>
             <p>
               Sempre que possível, realizaremos a análise e atualização em prazo
@@ -286,8 +270,8 @@ export function TermosEPoliticasPage() {
           <SubsectionTitle>Sobre os feedbacks</SubsectionTitle>
           <Prose>
             <p>
-              Esta página tem como objetivo mostrar as avaliações que ex-alunos
-              possuem sobre diferentes cursos da área de UX design e correlatos,
+              Esta página tem como objetivo mostrar avaliações de quem participou
+              de cursos da área de UX design e correlatos,
               podendo expor pontos positivos e negativos para apoiar quem busca
               uma formação.
             </p>
@@ -295,12 +279,8 @@ export function TermosEPoliticasPage() {
               Qualquer pessoa que tenha participado de algum curso, tendo
               completado ou não, pode submeter uma avaliação de qualquer curso
               aqui listado e, se aprovado pela equipe, será publicado na página.
-              Caso haja algum curso que não exista na lista, pode ser comunicado
-              através do{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
-              </TextLink>{' '}
-              ou pelas redes sociais.
+              Caso haja algum curso que não exista na lista, a pessoa pode
+              entrar em contato ou avisar pelas redes sociais.
             </p>
             <p>Serão pedidos dados básicos do curso feito, como:</p>
             <ul className="list-disc space-y-1 pl-5">
@@ -318,9 +298,8 @@ export function TermosEPoliticasPage() {
             </blockquote>
             <p>
               Antes de setembro de 2023 os feedbacks podiam ser enviados de forma
-              anônima, por isso há relatos sem identificação da autoria. Nos
-              reservamos o direito de manter estes feedbacks antigos por até 2
-              anos, com possível pedido de retirada apenas mediante o
+              anônima, por isso ainda há relatos sem identificação da autoria.
+              Eles continuam publicados. Um pedido de retirada segue o
               procedimento descrito em denúncias, retirada e revisões.
             </p>
             <p>
@@ -371,8 +350,9 @@ export function TermosEPoliticasPage() {
               e-mail sobre a reprovação.
             </p>
             <p>
-              Nenhum feedback será editado pela equipe da VagasUX, sendo
-              exibidos exatamente como foram enviados.
+              A equipe não edita o texto de um relato aprovado. Ele entra como
+              foi enviado, ou não entra. Um relato também pode ser recusado ou
+              retirado depois, pelos motivos descritos nesta seção.
             </p>
           </Prose>
         </div>
@@ -384,14 +364,11 @@ export function TermosEPoliticasPage() {
           <Prose>
             <p>
               Para denúncias de possíveis feedbacks com informações falsas ou
-              comentários inapropriados, envie para{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
-              </TextLink>{' '}
-              com informações de qual feedback está com problemas, nome da
-              pessoa e data de postagem, além da justificativa para possível
-              retirada. No caso de informações falsas ou equivocadas, pedimos,
-              se possível, fontes para averiguação.
+              comentários inapropriados, entre em contato com as informações de
+              qual feedback está com problemas, nome da pessoa e data de
+              postagem, além da justificativa para possível retirada. No caso
+              de informações falsas ou equivocadas, pedimos, se possível,
+              fontes para averiguação.
             </p>
             <p>
               Solicitações de retirada de feedback que estejam dentro da nossa
@@ -400,26 +377,48 @@ export function TermosEPoliticasPage() {
             </p>
             <p>
               Não fazemos revisão de textos já aprovados. Caso necessário, pode
-              ser enviado um novo feedback e solicitada a retirada do antigo
-              através do{' '}
-              <TextLink href={`mailto:${contact.email}`}>
-                {contact.email}
-              </TextLink>
-              , desde que comprovado ser a mesma pessoa autora.
+              ser enviado um novo feedback e solicitada a retirada do antigo,
+              desde que comprovado ser a mesma pessoa autora.
             </p>
           </Prose>
         </div>
       </div>
       <div className="space-y-4">
-        <SectionTitle id="cookies-nos-termos">Cookies</SectionTitle>
+        <SectionTitle id="privacidade">Privacidade</SectionTitle>
         <Prose>
           <p>
-            O uso de cookies e de ferramentas de análise, e a forma de mudar
-            sua escolha, estão em{' '}
-            <TextLink href={routes.cookies} external={false}>
-              Preferências de cookies
-            </TextLink>
-            .
+            Este aviso cobre o tratamento de dados na operação da VagasUX.
+          </p>
+          <p>Podemos tratar estes dados, conforme o que você usa no site:</p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              no relato de curso, o primeiro nome, o e-mail, o LinkedIn, dados
+              do curso e o texto enviado. Na página pública aparece só o
+              primeiro nome;
+            </li>
+            <li>
+              na mentoria, o nome, o e-mail, o WhatsApp, o LinkedIn e as
+              informações do pedido ou da candidatura.
+            </li>
+          </ul>
+          <p>
+            Usamos esses dados para publicar o que pode ir ao ar, avaliar
+            relatos e organizar mentorias.
+          </p>
+          <p>
+            Compartilhamos dados com quem precisa deles para essa operação,
+            como pessoas voluntárias que avaliam relatos. Não vendemos esses
+            dados.
+          </p>
+          <p>
+            Guardamos cada dado enquanto ele for necessário para a finalidade
+            correspondente, para analisar uma denúncia ou para cumprir uma
+            obrigação.
+          </p>
+          <p>
+            Você pode pedir confirmação do tratamento, acesso, correção,
+            exclusão e informação sobre com quem um dado foi compartilhado, e
+            pode retirar um consentimento. Para isso, entre em contato.
           </p>
         </Prose>
       </div>
@@ -427,15 +426,11 @@ export function TermosEPoliticasPage() {
       <div className="space-y-4">
         <SectionTitle id="alteracoes-destes-termos">Alterações destes Termos</SectionTitle>
         <Prose>
-          <p>
-            Estes Termos e Políticas podem ser atualizados periodicamente. Quando
-            houver mudanças relevantes, publicaremos a nova versão nesta página,
-            com indicação da data de atualização no topo do documento.
-          </p>
-          <p>
-            O uso continuado da plataforma após a publicação de alterações
-            constitui concordância com a versão vigente.
-          </p>
+            <p>
+              Estes Termos e Políticas podem ser atualizados periodicamente. Quando
+              houver mudanças relevantes, publicaremos a nova versão nesta página,
+              com indicação da data de atualização no topo do documento.
+            </p>
         </Prose>
       </div>
 
@@ -443,9 +438,11 @@ export function TermosEPoliticasPage() {
         <SectionTitle id="contato">Contato</SectionTitle>
         <Prose>
           <p>
-            Para questões jurídicas, privacidade, LGPD, denúncias ou solicitações
-            relacionadas a estes Termos, entre em contato pelo e-mail{' '}
-            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
+            Quem responde pela operação da VagasUX é Marianna Ferraz Piacesi,
+            por meio de M F PIACESI SERVICOS DE WEB DESIGN, CNPJ
+            39.617.365/0001-03. Para questões jurídicas, privacidade, LGPD,
+            denúncias ou solicitações relacionadas a estes Termos, escreva para{' '}
+            <TextLink href={`mailto:${legalEmail}`}>{legalEmail}</TextLink>
             .
           </p>
         </Prose>

@@ -106,14 +106,8 @@ export function setCookieConsent(choice: CookieConsentChoice) {
   window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT))
 }
 
-/** Drops the stored choice and asks the first-visit banner to show again. */
+/** Asks the first-visit banner to show again, without discarding the current choice. */
 export function reopenCookieBanner() {
-  try {
-    localStorage.removeItem(STORAGE_KEY)
-  } catch {
-    // Storage can be blocked; the banner still opens for this visit.
-  }
-  window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT))
   window.dispatchEvent(new Event(OPEN_BANNER_EVENT))
 }
 

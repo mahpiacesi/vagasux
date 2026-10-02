@@ -6,6 +6,7 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
+import { CookieChoiceStatus } from '@/components/CookieChoiceStatus'
 import { reopenCookieBanner } from '@/lib/cookieConsent'
 import { analyticsPrivacy } from '@/lib/siteLinks'
 
@@ -50,7 +51,7 @@ export function PreferenciasDeCookiesPage() {
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>mapas de calor (heatmaps);</li>
-            <li>gravações anônimas de sessões;</li>
+            <li>gravações de sessões;</li>
             <li>análise de cliques;</li>
             <li>rolagem de páginas;</li>
             <li>interação com elementos da interface.</li>
@@ -76,15 +77,50 @@ export function PreferenciasDeCookiesPage() {
       </div>
 
       <div className="space-y-4">
+        <SubsectionTitle>Google Analytics</SubsectionTitle>
+        <Prose>
+          <p>
+            Também utilizamos o Google Analytics para medir o uso da
+            plataforma: páginas acessadas, origem das visitas e como a
+            navegação acontece de forma agregada.
+          </p>
+          <p>
+            Esses dados servem para entender o uso da VagasUX. O endereço IP é
+            anonimizado e os cookies de publicidade ficam desligados. Não
+            usamos o Google Analytics para anúncios nem para decisões
+            automatizadas.
+          </p>
+          <p>
+            O tratamento dessas informações segue a política de privacidade do
+            Google. Para saber mais, consulte a{' '}
+            <TextLink href={analyticsPrivacy.googleAnalytics}>
+              Política de Privacidade do Google
+            </TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
         <SectionTitle>Sua escolha</SectionTitle>
         <Prose>
           <p>
-            Ao aceitar os cookies opcionais, você concorda com a utilização do
-            Microsoft Clarity para análise e melhoria contínua da plataforma.
+            Há duas categorias. A necessária guarda neste navegador apenas a
+            sua escolha, para o aviso não voltar toda vez. A opcional só
+            carrega o Microsoft Clarity e o Google Analytics depois que você
+            aceita. Sem essa aceitação, essas ferramentas não são carregadas.
           </p>
           <p>
-            Essa escolha aparece no aviso da primeira visita. Para ver o aviso
-            de novo,{' '}
+            A base dessa análise é o seu consentimento. Os dados vão para a
+            Microsoft e para o Google, que fornecem as ferramentas, e servem
+            para entender o uso da plataforma. O prazo de guarda é o de cada
+            ferramenta, descrito na política da Microsoft e na do Google.
+          </p>
+          <CookieChoiceStatus />
+          <p>
+            A escolha fica guardada neste navegador. Se você recusar a análise
+            depois de ter aceitado, o Clarity e o Google Analytics deixam de
+            ser carregados nas visitas seguintes. Para ver o aviso de novo,{' '}
             <button
               type="button"
               onClick={reopenCookieBanner}
