@@ -7,9 +7,20 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
+import { TermsOnThisPage, type TermsTocItem } from '@/components/TermsOnThisPage'
 import { contact, routes, termosHashes } from '@/lib/siteLinks'
 
 const LAST_UPDATED = '30 de julho de 2026'
+
+const termosToc = [
+  { id: 'sobre-a-vagasux', label: 'Sobre a VagasUX' },
+  { id: 'vagas-e-oportunidades', label: 'Vagas e oportunidades' },
+  { id: 'uso-da-plataforma', label: 'Uso da plataforma' },
+  { id: 'feedbacks-de-cursos', label: 'Feedbacks de cursos' },
+  { id: 'cookies-nos-termos', label: 'Cookies' },
+  { id: 'alteracoes-destes-termos', label: 'Alterações destes Termos' },
+  { id: 'contato', label: 'Contato' },
+] as const satisfies readonly TermsTocItem[]
 
 export function TermosEPoliticasPage() {
   const { hash } = useLocation()
@@ -21,6 +32,7 @@ export function TermosEPoliticasPage() {
     <InstitutionalPage
       title="Termos e Políticas"
       lead="Regras de uso da plataforma, divulgação de vagas, curadoria editorial e publicação de feedbacks de cursos."
+      toc={termosToc}
     >
       <Callout>
         <p className="text-sm text-neutral-400 md:text-base">
@@ -29,8 +41,10 @@ export function TermosEPoliticasPage() {
         </p>
       </Callout>
 
+      <TermsOnThisPage items={termosToc} placement="inline" />
+
       <div className="space-y-4">
-        <SectionTitle>Sobre a VagasUX</SectionTitle>
+        <SectionTitle id="sobre-a-vagasux">Sobre a VagasUX</SectionTitle>
         <Prose>
           <p>
             Somos uma comunidade de design que funciona como hub de iniciativas
@@ -43,7 +57,7 @@ export function TermosEPoliticasPage() {
       </div>
 
       <div className="space-y-6">
-        <SectionTitle>Vagas e oportunidades</SectionTitle>
+        <SectionTitle id="vagas-e-oportunidades">Vagas e oportunidades</SectionTitle>
 
         <div className="space-y-4">
           <SubsectionTitle>
@@ -211,7 +225,7 @@ export function TermosEPoliticasPage() {
       </div>
 
       <div className="space-y-4">
-        <SectionTitle>Uso da plataforma</SectionTitle>
+        <SectionTitle id="uso-da-plataforma">Uso da plataforma</SectionTitle>
         <Prose>
           <p>Ao utilizar a VagasUX, você concorda em não:</p>
           <ul className="list-disc space-y-2 pl-5">
@@ -235,49 +249,8 @@ export function TermosEPoliticasPage() {
         </Prose>
       </div>
 
-      <div className="space-y-4">
-        <SectionTitle>Cookies</SectionTitle>
-        <Prose>
-          <p>
-            O uso de cookies e de ferramentas de análise, e a forma de mudar
-            sua escolha, estão em{' '}
-            <TextLink href={routes.cookies} external={false}>
-              Preferências de cookies
-            </TextLink>
-            .
-          </p>
-        </Prose>
-      </div>
-
-      <div className="space-y-4">
-        <SectionTitle>Alterações destes Termos</SectionTitle>
-        <Prose>
-          <p>
-            Estes Termos e Políticas podem ser atualizados periodicamente. Quando
-            houver mudanças relevantes, publicaremos a nova versão nesta página,
-            com indicação da data de atualização no topo do documento.
-          </p>
-          <p>
-            O uso continuado da plataforma após a publicação de alterações
-            constitui concordância com a versão vigente.
-          </p>
-        </Prose>
-      </div>
-
-      <div className="space-y-4">
-        <SectionTitle>Contato</SectionTitle>
-        <Prose>
-          <p>
-            Para questões jurídicas, privacidade, LGPD, denúncias ou solicitações
-            relacionadas a estes Termos, entre em contato pelo e-mail{' '}
-            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
-            .
-          </p>
-        </Prose>
-      </div>
-
       <div className="space-y-6">
-        <SectionTitle>Feedbacks de cursos</SectionTitle>
+        <SectionTitle id="feedbacks-de-cursos">Feedbacks de cursos</SectionTitle>
 
         <div className="space-y-4">
           <SubsectionTitle>Termos para feedbacks de cursos</SubsectionTitle>
@@ -437,6 +410,47 @@ export function TermosEPoliticasPage() {
           </Prose>
         </div>
       </div>
+      <div className="space-y-4">
+        <SectionTitle id="cookies-nos-termos">Cookies</SectionTitle>
+        <Prose>
+          <p>
+            O uso de cookies e de ferramentas de análise, e a forma de mudar
+            sua escolha, estão em{' '}
+            <TextLink href={routes.cookies} external={false}>
+              Preferências de cookies
+            </TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
+        <SectionTitle id="alteracoes-destes-termos">Alterações destes Termos</SectionTitle>
+        <Prose>
+          <p>
+            Estes Termos e Políticas podem ser atualizados periodicamente. Quando
+            houver mudanças relevantes, publicaremos a nova versão nesta página,
+            com indicação da data de atualização no topo do documento.
+          </p>
+          <p>
+            O uso continuado da plataforma após a publicação de alterações
+            constitui concordância com a versão vigente.
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
+        <SectionTitle id="contato">Contato</SectionTitle>
+        <Prose>
+          <p>
+            Para questões jurídicas, privacidade, LGPD, denúncias ou solicitações
+            relacionadas a estes Termos, entre em contato pelo e-mail{' '}
+            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
     </InstitutionalPage>
   )
 }
