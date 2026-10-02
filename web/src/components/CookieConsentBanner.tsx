@@ -93,6 +93,7 @@ export function CookieConsentBanner() {
               </Button>
               <Button
                 type="button"
+                variant="outline"
                 size="xs"
                 className="whitespace-nowrap sm:h-7 sm:px-2.5 sm:text-xs"
                 onClick={() => choose('analytics')}

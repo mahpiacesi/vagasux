@@ -17,6 +17,7 @@ const termosToc = [
   { id: 'vagas-e-oportunidades', label: 'Vagas e oportunidades' },
   { id: 'uso-da-plataforma', label: 'Uso da plataforma' },
   { id: 'feedbacks-de-cursos', label: 'Feedbacks de cursos' },
+  { id: 'privacidade', label: 'Privacidade' },
   { id: 'cookies-nos-termos', label: 'Cookies' },
   { id: 'alteracoes-destes-termos', label: 'Alterações destes Termos' },
   { id: 'contato', label: 'Contato' },
@@ -47,11 +48,10 @@ export function TermosEPoliticasPage() {
         <SectionTitle id="sobre-a-vagasux">Sobre a VagasUX</SectionTitle>
         <Prose>
           <p>
-            Somos uma comunidade de design que funciona como hub de iniciativas
-            acessíveis para quem está começando na área. Nosso foco são
-            profissionais iniciantes no Brasil e Portugal e temos o propósito de
-            promover curadoria de vagas e conteúdos em UX para todos os níveis,
-            todos mesmo.
+            Somos uma comunidade de design e uma iniciativa de acesso para quem
+            está começando na área. Nosso foco são profissionais iniciantes no
+            Brasil e em Portugal. O propósito é promover curadoria de vagas e
+            conteúdos em UX para profissionais de todos os níveis.
           </p>
         </Prose>
       </div>
@@ -286,8 +286,8 @@ export function TermosEPoliticasPage() {
           <SubsectionTitle>Sobre os feedbacks</SubsectionTitle>
           <Prose>
             <p>
-              Esta página tem como objetivo mostrar as avaliações que ex-alunos
-              possuem sobre diferentes cursos da área de UX design e correlatos,
+              Esta página tem como objetivo mostrar avaliações de quem participou
+              de cursos da área de UX design e correlatos,
               podendo expor pontos positivos e negativos para apoiar quem busca
               uma formação.
             </p>
@@ -318,9 +318,8 @@ export function TermosEPoliticasPage() {
             </blockquote>
             <p>
               Antes de setembro de 2023 os feedbacks podiam ser enviados de forma
-              anônima, por isso há relatos sem identificação da autoria. Nos
-              reservamos o direito de manter estes feedbacks antigos por até 2
-              anos, com possível pedido de retirada apenas mediante o
+              anônima, por isso ainda há relatos sem identificação da autoria.
+              Eles continuam publicados. Um pedido de retirada segue o
               procedimento descrito em denúncias, retirada e revisões.
             </p>
             <p>
@@ -371,8 +370,9 @@ export function TermosEPoliticasPage() {
               e-mail sobre a reprovação.
             </p>
             <p>
-              Nenhum feedback será editado pela equipe da VagasUX, sendo
-              exibidos exatamente como foram enviados.
+              A equipe não edita o texto de um relato aprovado. Ele entra como
+              foi enviado, ou não entra. Um relato também pode ser recusado ou
+              retirado depois, pelos motivos descritos nesta seção.
             </p>
           </Prose>
         </div>
@@ -411,6 +411,72 @@ export function TermosEPoliticasPage() {
         </div>
       </div>
       <div className="space-y-4">
+        <SectionTitle id="privacidade">Privacidade</SectionTitle>
+        <Prose>
+          <p>
+            A VagasUX é operada por Marianna Ferraz Piacesi, por meio de M F
+            PIACESI SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03.
+            Este aviso cobre o tratamento de dados na operação da VagasUX. O
+            contato para privacidade e para os direitos previstos na LGPD é{' '}
+            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
+            .
+          </p>
+          <p>Podemos tratar estes dados, conforme o que você usa no site:</p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              a escolha de cookies, guardada neste navegador, para lembrar se
+              você aceitou ou recusou a análise de uso;
+            </li>
+            <li>
+              no relato de curso, o primeiro nome, o e-mail, o LinkedIn, dados
+              do curso e o texto enviado. Na página pública aparece só o
+              primeiro nome;
+            </li>
+            <li>
+              na mentoria, o nome, o e-mail, o WhatsApp, o LinkedIn e as
+              informações do pedido ou da candidatura;
+            </li>
+            <li>
+              na Guilda, o @ do Discord informado no cadastro e a confirmação
+              da assinatura feita no serviço de pagamento;
+            </li>
+            <li>as mensagens que você envia para o e-mail da VagasUX.</li>
+          </ul>
+          <p>
+            Usamos esses dados para publicar o que pode ir ao ar, avaliar
+            relatos, organizar mentorias, liberar a sala da Guilda no período
+            da assinatura e responder pedidos. A análise de navegação com o
+            Microsoft Clarity só acontece se você aceitar os cookies opcionais.
+            O detalhe dessa escolha está em{' '}
+            <TextLink href={routes.cookies} external={false}>
+              Preferências de cookies
+            </TextLink>
+            .
+          </p>
+          <p>
+            Compartilhamos dados com quem precisa deles para essa operação: a
+            Microsoft, quando há consentimento para o Clarity; pessoas
+            voluntárias que avaliam relatos; o serviço de pagamento da Guilda;
+            e o Discord, quando você informa o @ para entrar na sala. Não
+            vendemos esses dados.
+          </p>
+          <p>
+            Guardamos cada dado enquanto ele for necessário para a finalidade
+            correspondente, para analisar uma denúncia ou para cumprir uma
+            obrigação. A escolha de cookies permanece neste navegador até você
+            mudá-la ou limpar os dados do site.
+          </p>
+          <p>
+            Você pode pedir confirmação do tratamento, acesso, correção,
+            exclusão e informação sobre com quem um dado foi compartilhado, e
+            pode retirar um consentimento. Envie o pedido para{' '}
+            <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
         <SectionTitle id="cookies-nos-termos">Cookies</SectionTitle>
         <Prose>
           <p>
@@ -427,15 +493,16 @@ export function TermosEPoliticasPage() {
       <div className="space-y-4">
         <SectionTitle id="alteracoes-destes-termos">Alterações destes Termos</SectionTitle>
         <Prose>
-          <p>
-            Estes Termos e Políticas podem ser atualizados periodicamente. Quando
-            houver mudanças relevantes, publicaremos a nova versão nesta página,
-            com indicação da data de atualização no topo do documento.
-          </p>
-          <p>
-            O uso continuado da plataforma após a publicação de alterações
-            constitui concordância com a versão vigente.
-          </p>
+            <p>
+              Estes Termos e Políticas podem ser atualizados periodicamente. Quando
+              houver mudanças relevantes, publicaremos a nova versão nesta página,
+              com indicação da data de atualização no topo do documento.
+            </p>
+            <p>
+              A versão nova passa a valer na data indicada no topo. Se uma
+              mudança afetar o tratamento de dados, a atualização também aparece
+              na seção de privacidade.
+            </p>
         </Prose>
       </div>
 
@@ -443,7 +510,9 @@ export function TermosEPoliticasPage() {
         <SectionTitle id="contato">Contato</SectionTitle>
         <Prose>
           <p>
-            Para questões jurídicas, privacidade, LGPD, denúncias ou solicitações
+            Quem responde pela operação é Marianna Ferraz Piacesi, M F PIACESI
+            SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03. Para questões
+            jurídicas, privacidade, LGPD, denúncias ou solicitações
             relacionadas a estes Termos, entre em contato pelo e-mail{' '}
             <TextLink href={`mailto:${contact.email}`}>{contact.email}</TextLink>
             .

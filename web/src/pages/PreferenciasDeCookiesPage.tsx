@@ -6,6 +6,7 @@ import {
   SubsectionTitle,
   TextLink,
 } from '@/components/InstitutionalPage'
+import { CookieChoiceStatus } from '@/components/CookieChoiceStatus'
 import { reopenCookieBanner } from '@/lib/cookieConsent'
 import { analyticsPrivacy } from '@/lib/siteLinks'
 
@@ -50,7 +51,7 @@ export function PreferenciasDeCookiesPage() {
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>mapas de calor (heatmaps);</li>
-            <li>gravações anônimas de sessões;</li>
+            <li>gravações de sessões;</li>
             <li>análise de cliques;</li>
             <li>rolagem de páginas;</li>
             <li>interação com elementos da interface.</li>
@@ -79,12 +80,22 @@ export function PreferenciasDeCookiesPage() {
         <SectionTitle>Sua escolha</SectionTitle>
         <Prose>
           <p>
-            Ao aceitar os cookies opcionais, você concorda com a utilização do
-            Microsoft Clarity para análise e melhoria contínua da plataforma.
+            Há duas categorias. A necessária guarda neste navegador apenas a
+            sua escolha, para o aviso não voltar toda vez. A opcional só
+            carrega o Microsoft Clarity depois que você aceita. Sem essa
+            aceitação, o Clarity não é carregado.
           </p>
           <p>
-            Essa escolha aparece no aviso da primeira visita. Para ver o aviso
-            de novo,{' '}
+            A base dessa análise é o seu consentimento. Os dados vão para a
+            Microsoft, que fornece a ferramenta, e servem para entender o uso
+            da plataforma. O prazo de guarda é o da própria ferramenta, descrito
+            na política da Microsoft.
+          </p>
+          <CookieChoiceStatus />
+          <p>
+            A escolha fica guardada neste navegador. Se você recusar a análise
+            depois de ter aceitado, o Clarity deixa de ser carregado nas
+            visitas seguintes. Para ver o aviso de novo,{' '}
             <button
               type="button"
               onClick={reopenCookieBanner}
