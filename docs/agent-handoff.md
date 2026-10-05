@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-02
+**Última atualização:** 2026-10-05
 
 ---
 
@@ -13,7 +13,8 @@
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
-| `/cookies` | ✅ Live | Clarity e Google Analytics. A escolha fica no aviso da primeira visita (#131, 02/10) |
+| `/cookies` | ✅ Live | Clarity e Google Analytics. A escolha fica no aviso da primeira visita (#131, 02/10). O Analytics já carrega em vagasux.vercel.app depois de Aceitar |
+| Escrita de vagas e parceiros | ✅ Live | A chave pública não grava mais (#135, 05/10). Os coletores seguem com a chave de serviço |
 | Termos | ✅ Live | Quem opera a VagasUX está só no Contato. Sem seção de cookies (#131, 02/10) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
 | Página 404 | ✅ Live | PR #114 em 17/09 |
@@ -32,9 +33,19 @@
 
 ## Feito recentemente
 
+### Escrita de vagas e parceiros (5 out)
+- **PR #135** mergeada: as funções que gravam vagas e parceiros não aceitam mais a chave pública do site. A leitura do mural continua aberta.
+- O Collector VagasUX rodou depois da mudança e gravou 39 vagas, sem falha. O Collector Parceiros não foi executado, porque ele desativa todos os parceiros antes de gravar de novo. Ele usa a mesma credencial de serviço.
+
+### Lançamento do domínio (previsto 9 ou 10 out)
+- `vagasux.com.br` e `www` já estão no projeto da Vercel, ainda sem verificação. Verificar agora trocaria o site na hora, porque o domínio já aponta para a Vercel pelo site antigo.
+- Os dois registros TXT no Cloudflare ficam para quinta ou sexta. O e-mail (MX do Google) permanece como está.
+- Anúncios de verdade esperam o domínio novo. A prévia do card nas vagas ([PR #133](https://github.com/mahpiacesi/vagasux/pull/133)) continua em rascunho.
+- A conexão do Cloudflare no projeto está na [PR #134](https://github.com/mahpiacesi/vagasux/pull/134), em rascunho. A autorização da conta ainda não foi feita neste agente.
+
 ### Privacidade, cookies e termos (2 out)
 - **PR #131** mergeada: Termos e Políticas identificam quem opera a VagasUX só no Contato (Marianna Ferraz Piacesi, M F PIACESI SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03, marianna@vagasux.com.br). A privacidade cobre relato de curso e mentoria. Não há seção Sobre nem cookies nessa página.
-- **`/cookies`** cita Microsoft Clarity e Google Analytics. Os dois só carregam depois do aceite. O aviso da primeira visita nomeia os dois. O Google Analytics entra de fato quando o domínio atual migrar.
+- **`/cookies`** cita Microsoft Clarity e Google Analytics. Os dois só carregam depois do aceite. O aviso da primeira visita nomeia os dois. O Google Analytics já está no ar em vagasux.vercel.app desde 5 out.
 - **PR #129** tinha aberto `/cookies` e a lista de títulos dos termos. A #131 completa o aviso de privacidade.
 
 ### Cookies e termos (2 out)
@@ -228,7 +239,7 @@
 
 ## Próximo passo esperado
 
-1. Migrar `vagasux.com.br` para a Vercel ainda em outubro. Não começar agora. Preservar e-mail e `n8n.vagasux.com.br`. Ligar o Google Analytics só nesse corte.
+1. Na quinta ou sexta (9 ou 10 out), criar os dois TXT de verificação no Cloudflare e confirmar o domínio na Vercel. Não alterar o MX do Google. Conferir se o www deixa de apontar para o site antigo.
 2. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
 3. Criar a página de publicar relato.
 
@@ -238,6 +249,9 @@
 
 | Item | Status |
 |------|--------|
+| [PR #135 — escrita só com a chave de serviço](https://github.com/mahpiacesi/vagasux/pull/135) | ✅ Mergeada em 05/10 |
+| [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho. Não mergear antes do domínio novo |
+| [PR #134 — MCP do Cloudflare](https://github.com/mahpiacesi/vagasux/pull/134) | Rascunho. Autorizar a conta no próximo agente |
 | [PR #131 — aviso de privacidade](https://github.com/mahpiacesi/vagasux/pull/131) | ✅ Mergeada em 02/10 |
 | [PR #129 — página /cookies e navegação dos termos](https://github.com/mahpiacesi/vagasux/pull/129) | ✅ Mergeada em 02/10 |
 | [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10. Substituída pela #129 |
