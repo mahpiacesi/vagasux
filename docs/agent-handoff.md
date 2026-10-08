@@ -12,7 +12,8 @@
 |------|--------|------|
 | Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
 | Anúncios | ✅ Live | Nas listas de vagas, depois do aceite (#139, 08/10). Sem aceite, o anúncio não carrega |
-| `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
+| `/panorama` | ✅ Live | Página da pesquisa (#137, 08/10). O caminho antigo `/a-comunidade/panorama` redireciona para `/panorama` |
+| `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09). O card do Panorama abre `/panorama` |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
 | `/cookies` | ✅ Live | Clarity e Google Analytics. A escolha fica no aviso da primeira visita (#131, 02/10). O Analytics já carrega em vagasux.vercel.app depois de Aceitar |
@@ -34,6 +35,11 @@
 ---
 
 ## Feito recentemente
+
+### Panorama (8 out)
+- **PR #137** mergeada: `/panorama` explica a pesquisa e mostra a 5ª edição, de 2025.
+- O texto fica à esquerda, o card do estudo à direita e o dashboard centralizado abaixo. O botão abre o relatório no Data Studio.
+- O card em Sobre, a linha do tempo e a FAQ apontam para a página nova. `/a-comunidade/panorama` redireciona para `/panorama`.
 
 ### Anúncios nas vagas (8 out)
 - **PR #139** mergeada: nas listas de `/oportunidades` e `/vagas-para-iniciantes`, o Google mostra um anúncio com o rótulo Publicidade. Ele entra depois da 8ª vaga e, daí em diante, a cada 10.
@@ -257,6 +263,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #137 — página do Panorama](https://github.com/mahpiacesi/vagasux/pull/137) | ✅ Mergeada em 08/10 |
 | [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10 |
 | Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
 | [PR #135 — escrita só com a chave de serviço](https://github.com/mahpiacesi/vagasux/pull/135) | ✅ Mergeada em 05/10 |
