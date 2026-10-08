@@ -68,9 +68,11 @@ export function CookieConsentBanner() {
             id="cookie-consent-description"
             className="text-sm leading-snug text-neutral-400"
           >
-            Ao aceitar, usamos o Microsoft Clarity e o Google Analytics para
-            entender como a comunidade utiliza a VagasUX. Nas listas de vagas,
-            o Google também pode mostrar anúncios.
+            As listas de vagas mostram anúncios do Google, porque a curadoria
+            é gratuita. Até você aceitar, o anúncio não usa o seu histórico. Ao
+            aceitar, ele pode ser personalizado e usamos o Microsoft Clarity e
+            o Google Analytics para entender como a comunidade utiliza a
+            VagasUX.
           </p>
 
           <div className="flex flex-nowrap items-center justify-between gap-2">
