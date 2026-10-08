@@ -27,13 +27,16 @@
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
-| Home logos dinâmicos | ✅ Mergeado | PR #46 — PartnershipsSection → Supabase |
+| Home logos dinâmicos | ✅ Live | PR #46. No celular, cada logo cabe no card (#150, 08/10) |
 | Collector Sólides | ✅ Ativo | Exec #35 — 109 vagas; PR #47 mergeado |
 | Collector InfoJobs | ✅ Ativo | Exec #37 — 184 vagas; Scheduler encadeado |
 
 ---
 
 ## Feito recentemente
+
+### Logos de parceiros no celular (8 out)
+- **PR #150** mergeada: na home, a faixa da UXCONFBR e o wordmark da productcamp cabem no card. A marca encolhe com a coluna, sem cortar.
 
 ### Anúncio automático fora do footer (8 out)
 - **PR #148** mergeada: o formato que grudava no fim da tela saiu. Ele cobria o footer e deixava espaço em branco para rolar. A página termina no footer. O anúncio da lista continua.
@@ -267,6 +270,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #150 — logos de parceiros no celular](https://github.com/mahpiacesi/vagasux/pull/150) | ✅ Mergeada em 08/10 |
 | [PR #148 — anúncio automático fora do footer](https://github.com/mahpiacesi/vagasux/pull/148) | ✅ Mergeada em 08/10 |
 | [PR #146 — anúncio em largura total no celular](https://github.com/mahpiacesi/vagasux/pull/146) | ✅ Mergeada em 08/10 |
 | [PR #142 — anúncio da curadoria gratuita](https://github.com/mahpiacesi/vagasux/pull/142) | ✅ Mergeada em 08/10 |
