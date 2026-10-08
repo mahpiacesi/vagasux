@@ -23,7 +23,8 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Filtros, badges, load more |
+| `/panorama` | ✅ Live | Página da pesquisa (#137, 08/10). `/a-comunidade/panorama` redireciona para `/panorama` |
+| Mural de vagas | ✅ Live | No celular, os filtros compartilham a linha (#143, 08/10). O Estado ocupa a largura do card |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
@@ -34,6 +35,14 @@
 ---
 
 ## Feito recentemente
+
+### Filtros das vagas no celular (8 out)
+- **PR #143** mergeada: em `/oportunidades` e `/vagas-para-iniciantes`, Brasil e Internacional ficam na mesma linha, e o formato também.
+- O dropdown de Estado usa a largura do card no celular. No desktop, ele continua ao lado do formato.
+
+### Panorama (8 out)
+- **PR #137** mergeada: `/panorama` explica a pesquisa e mostra a 5ª edição. O card do estudo fica à direita e o dashboard, centralizado abaixo.
+- O card em Sobre, a linha do tempo e a FAQ apontam para a página nova.
 
 ### Anúncio da curadoria gratuita (8 out)
 - **PR #142** mergeada: as listas de `/oportunidades` e `/vagas-para-iniciantes` mostram o anúncio para todo mundo, porque a curadoria é gratuita. O lugar segue o mesmo: rótulo Publicidade, depois da 8ª vaga e a cada 10.
@@ -261,6 +270,8 @@
 
 | Item | Status |
 |------|--------|
+| [PR #143 — filtros de vagas no celular](https://github.com/mahpiacesi/vagasux/pull/143) | ✅ Mergeada em 08/10 |
+| [PR #137 — página do Panorama](https://github.com/mahpiacesi/vagasux/pull/137) | ✅ Mergeada em 08/10 |
 | [PR #142 — anúncio da curadoria gratuita](https://github.com/mahpiacesi/vagasux/pull/142) | ✅ Mergeada em 08/10 |
 | [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10. O anúncio passou a aparecer também antes do aceite na #142 |
 | Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
