@@ -7,7 +7,7 @@ import {
 
 const choiceLabel: Record<CookieConsentChoice, string> = {
   essential: 'Você está usando apenas o necessário.',
-  analytics: 'Você aceitou os cookies de análise.',
+  analytics: 'Você aceitou a análise de uso e os anúncios nas listas de vagas.',
 }
 
 export function CookieChoiceStatus() {

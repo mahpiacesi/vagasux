@@ -1,4 +1,7 @@
+import { Fragment } from 'react'
 import type { Job } from '../types/job'
+import { jobAdAfterCounts } from '@/lib/jobAdSlots'
+import { JobAdSlot } from './JobAdSlot'
 import { JobRow } from './JobRow'
 import { LoadMore } from './LoadMore'
 
@@ -46,26 +49,33 @@ export function JobList({
 
   if (totalCount === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-neutral-200/80 bg-neutral-100/70 px-6 py-14 text-center">
-        <p className="text-lg font-black text-neutral-500">{emptyTitle}</p>
-        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-neutral-400">
-          {emptyDescription}
-        </p>
+      <div className="space-y-3 md:space-y-4">
+        <div className="rounded-2xl border border-dashed border-neutral-200/80 bg-neutral-100/70 px-6 py-14 text-center">
+          <p className="text-lg font-black text-neutral-500">{emptyTitle}</p>
+          <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-neutral-400">
+            {emptyDescription}
+          </p>
+        </div>
+        <JobAdSlot />
       </div>
     )
   }
+
+  const adAfter = new Set(jobAdAfterCounts(jobs.length))
 
   return (
     <div>
       <div className="space-y-3 md:space-y-4">
         {jobs.map((job, index) => (
-          <JobRow
-            key={job.id}
-            job={job}
-            index={index}
-            hideSourceBadge={hideSourceBadge}
-            listingVariant={listingVariant}
-          />
+          <Fragment key={job.id}>
+            <JobRow
+              job={job}
+              index={index}
+              hideSourceBadge={hideSourceBadge}
+              listingVariant={listingVariant}
+            />
+            {adAfter.has(index + 1) ? <JobAdSlot /> : null}
+          </Fragment>
         ))}
       </div>
       <LoadMore shown={jobs.length} total={totalCount} onLoadMore={onLoadMore} />
