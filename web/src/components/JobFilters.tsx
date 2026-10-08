@@ -74,11 +74,11 @@ function FilterRow<T extends string>({
   const visibleOptions = options.filter((option) => option.id !== 'all')
 
   return (
-    <div>
+    <div className="w-max max-w-full shrink-0">
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
       </p>
-      <div className="mt-2 flex flex-wrap gap-1.5" role="group" aria-label={label}>
+      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={label}>
         {visibleOptions.map((option) => {
           const active = value === option.id
           return (
@@ -120,7 +120,10 @@ function StateFilterSelect({
   return (
     <div
       aria-hidden={hidden}
-      className={cn('ml-auto w-[11rem] shrink-0', hidden && 'invisible pointer-events-none')}
+      className={cn(
+        'w-[11rem] max-w-full shrink-0',
+        hidden && 'invisible pointer-events-none',
+      )}
     >
       <p className="text-left text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
@@ -229,22 +232,20 @@ export function JobFilters({
         </div>
       </label>
 
-      <div className="mt-3 space-y-3">
-        <div className="flex items-end justify-between gap-x-4 gap-y-3">
-          <div className="flex flex-wrap items-end gap-x-4 gap-y-3">
-            <FilterRow
-              label="Mercado"
-              options={marketOptions}
-              value={value.market}
-              onChange={handleMarketChange}
-            />
-            <FilterRow
-              label="Formato"
-              options={workOptions}
-              value={value.workModel}
-              onChange={(workModel) => onChange({ ...value, workModel })}
-            />
-          </div>
+      <div className="mt-4 space-y-4">
+        <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
+          <FilterRow
+            label="Mercado"
+            options={marketOptions}
+            value={value.market}
+            onChange={handleMarketChange}
+          />
+          <FilterRow
+            label="Formato"
+            options={workOptions}
+            value={value.workModel}
+            onChange={(workModel) => onChange({ ...value, workModel })}
+          />
           {showStateFilter ? (
             <StateFilterSelect
               label="Estado"
