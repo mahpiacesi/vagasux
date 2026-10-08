@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-05
+**Última atualização:** 2026-10-08
 
 ---
 
@@ -10,6 +10,7 @@
 
 | Área | Estado | Nota |
 |------|--------|------|
+| Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
@@ -33,15 +34,16 @@
 
 ## Feito recentemente
 
+### Domínio publicado (8 out)
+- `vagasux.com.br` e `www` saíram do Super e apontam para o projeto da Vercel. Os dois estão verificados.
+- O `www` responde com redirecionamento para `https://vagasux.com.br/`.
+- A home, o mural (centenas de vagas) e `/cookies` foram abertos no domínio novo. Os caminhos antigos `/a-comunidade`, `/termos-e-polticas` e `/guia-do-product-designer` continuam redirecionando.
+- Os registros MX do Google não foram alterados.
+- Anúncios de verdade continuam de fora. A prévia ([PR #133](https://github.com/mahpiacesi/vagasux/pull/133)) segue em rascunho.
+
 ### Escrita de vagas e parceiros (5 out)
 - **PR #135** mergeada: as funções que gravam vagas e parceiros não aceitam mais a chave pública do site. A leitura do mural continua aberta.
 - O Collector VagasUX rodou depois da mudança e gravou 39 vagas, sem falha. O Collector Parceiros não foi executado, porque ele desativa todos os parceiros antes de gravar de novo. Ele usa a mesma credencial de serviço.
-
-### Lançamento do domínio (previsto 9 ou 10 out)
-- `vagasux.com.br` e `www` já estão no projeto da Vercel, ainda sem verificação. Verificar agora trocaria o site na hora, porque o domínio já aponta para a Vercel pelo site antigo.
-- Os dois registros TXT no Cloudflare ficam para quinta ou sexta. O e-mail (MX do Google) permanece como está.
-- Anúncios de verdade esperam o domínio novo. A prévia do card nas vagas ([PR #133](https://github.com/mahpiacesi/vagasux/pull/133)) continua em rascunho.
-- A conexão do Cloudflare no projeto está na [PR #134](https://github.com/mahpiacesi/vagasux/pull/134), em rascunho. A autorização da conta ainda não foi feita neste agente.
 
 ### Privacidade, cookies e termos (2 out)
 - **PR #131** mergeada: Termos e Políticas identificam quem opera a VagasUX só no Contato (Marianna Ferraz Piacesi, M F PIACESI SERVICOS DE WEB DESIGN, CNPJ 39.617.365/0001-03, marianna@vagasux.com.br). A privacidade cobre relato de curso e mentoria. Não há seção Sobre nem cookies nessa página.
@@ -239,9 +241,9 @@
 
 ## Próximo passo esperado
 
-1. Na quinta ou sexta (9 ou 10 out), criar os dois TXT de verificação no Cloudflare e confirmar o domínio na Vercel. Não alterar o MX do Google. Conferir se o www deixa de apontar para o site antigo.
-2. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
-3. Criar a página de publicar relato.
+1. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
+2. Criar a página de publicar relato.
+3. Anúncios de verdade só quando houver criativo e `ads.txt`. A prévia da PR #133 continua em rascunho.
 
 ---
 
@@ -249,9 +251,10 @@
 
 | Item | Status |
 |------|--------|
+| Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
 | [PR #135 — escrita só com a chave de serviço](https://github.com/mahpiacesi/vagasux/pull/135) | ✅ Mergeada em 05/10 |
-| [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho. Não mergear antes do domínio novo |
-| [PR #134 — MCP do Cloudflare](https://github.com/mahpiacesi/vagasux/pull/134) | Rascunho. Autorizar a conta no próximo agente |
+| [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho. Não mergear enquanto o card for só prévia |
+| [PR #134 — MCP do Cloudflare](https://github.com/mahpiacesi/vagasux/pull/134) | Rascunho. O DNS do lançamento já foi feito |
 | [PR #131 — aviso de privacidade](https://github.com/mahpiacesi/vagasux/pull/131) | ✅ Mergeada em 02/10 |
 | [PR #129 — página /cookies e navegação dos termos](https://github.com/mahpiacesi/vagasux/pull/129) | ✅ Mergeada em 02/10 |
 | [PR #127 — página de cookies](https://github.com/mahpiacesi/vagasux/pull/127) | ✅ Mergeada em 01/10. Substituída pela #129 |
@@ -309,7 +312,7 @@
 
 ## Links úteis
 
-- Produção Guilda: https://vagasux.com.br/guilda (após deploy Vercel)
+- Produção: https://vagasux.com.br
 - n8n: `https://n8n-lws1.srv1866525.hstgr.cloud`
 - Supabase project: `xbvspzwjjjtkvecseoog`
 - Runbook collector parceiros: `docs/collector-partners.md`
