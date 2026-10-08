@@ -32,7 +32,7 @@ const collectiveCards = [
       'Pesquisas realizadas para entender melhor experiências, desafios e percepções de quem está na área de UX e Design.',
     cta: 'Conhecer o Panorama',
     href: sobreLinks.panorama,
-    external: true,
+    external: false,
     Icon: MagnifyingGlass,
   },
   {

@@ -81,7 +81,7 @@ export const guiaFaqItems: GuiaFaqItem[] = [
     question: 'Qual a média salarial para designers iniciantes?',
     answer: [
       'O salário de um júnior sempre pode variar porque precisa considerar o tipo de contratação e a região. Para sermos justos e de fato trazer alguma estimativa e orientação pra quem tá perdido: pensando na contratação PJ pode ser entre R$ 3 mil e R$ 5,5 mil, e na contratação CLT entre R$ 2 mil e R$ 4,5 mil. Mas lembrando que é uma estimativa superficial. Quem vai definir isso é você, o contexto da empresa envolvida e a região.',
-      'Por isso é sempre bom comparar referências e ver o que fizer mais sentido pro seu momento profissional: [Glassdoor: Ux Designer Jr em São Paulo](https://www.glassdoor.com.br/Sal%C3%A1rios/s%C3%A3o-paulo-ux-designer-jr-sal%C3%A1rio-SRCH_IL.0,9_IM1009_KO10,24.htm), [Salário Transparente](https://salariotransparente.com.br/) e o [Panorama UX da VagasUX](https://vagasux.com.br/a-comunidade/panorama).',
+      'Por isso é sempre bom comparar referências e ver o que fizer mais sentido pro seu momento profissional: [Glassdoor: Ux Designer Jr em São Paulo](https://www.glassdoor.com.br/Sal%C3%A1rios/s%C3%A3o-paulo-ux-designer-jr-sal%C3%A1rio-SRCH_IL.0,9_IM1009_KO10,24.htm), [Salário Transparente](https://salariotransparente.com.br/) e o [Panorama UX da VagasUX](/panorama).',
       'Na negociação, considere benefícios, crescimento e tipo de contrato junto com o valor bruto.',
     ],
   },

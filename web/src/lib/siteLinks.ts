@@ -15,6 +15,7 @@ export const routes = {
   parcerias: '/parcerias',
   guia: '/guia',
   sobre: '/sobre',
+  panorama: '/panorama',
 } as const
 
 export const termosHashes = {
@@ -105,8 +106,13 @@ export const superSite = {
   parcerias: 'https://vagasux.com.br/parcerias',
   apoie: 'https://apoia.se/vagasux',
   quemOrganiza: 'https://vagasux.com.br/quem-organiza',
-  panorama: 'https://vagasux.com.br/a-comunidade/panorama',
   termos: 'https://vagasux.com.br/termos-e-polticas',
+} as const
+
+/** Relatório público da edição atual do Panorama VagasUX. */
+export const panoramaStudy = {
+  title: 'Panorama VagasUX 2024/2025',
+  href: 'https://datastudio.google.com/u/0/reporting/112b645e-0b20-4c96-82c8-505cca29de6d/page/p_6m0ce4k84c?s=gPSzU--3tko',
 } as const
 
 export const communityShops = {

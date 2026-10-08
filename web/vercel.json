@@ -296,6 +296,11 @@
       "permanent": true
     },
     {
+      "source": "/a-comunidade/panorama",
+      "destination": "/panorama",
+      "permanent": true
+    },
+    {
       "source": "/a-comunidade",
       "destination": "/comunidade",
       "permanent": true

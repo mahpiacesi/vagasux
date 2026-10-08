@@ -27,6 +27,7 @@ import { CodigoDeCondutaPage } from '@/pages/CodigoDeCondutaPage'
 import { PreferenciasDeCookiesPage } from '@/pages/PreferenciasDeCookiesPage'
 import { TermosEPoliticasPage } from '@/pages/TermosEPoliticasPage'
 import { ParceriasPage } from '@/pages/ParceriasPage'
+import { PanoramaPage } from '@/pages/PanoramaPage'
 import { SobrePage } from '@/pages/SobrePage'
 import { VagasParaIniciantesPage } from '@/pages/VagasParaIniciantesPage'
 
@@ -68,6 +69,11 @@ export function AppRoutes() {
             <Route path="glossario" element={<GuiaGlossarioPage />} />
           </Route>
           <Route path={routes.sobre} element={<SobrePage />} />
+          <Route path={routes.panorama} element={<PanoramaPage />} />
+          <Route
+            path="/a-comunidade/panorama"
+            element={<Navigate to={routes.panorama} replace />}
+          />
           <Route path={routes.codigoDeConduta} element={<CodigoDeCondutaPage />} />
           <Route path={routes.termosEPoliticas} element={<TermosEPoliticasPage />} />
           <Route path={routes.cookies} element={<PreferenciasDeCookiesPage />} />
