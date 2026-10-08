@@ -11,7 +11,7 @@
 | Área | Estado | Nota |
 |------|--------|------|
 | Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
-| Anúncios | ✅ Live | Nas listas, para todo mundo (#142, 08/10). Até Aceitar, o anúncio não é personalizado |
+| Anúncios | ✅ Live | Nas listas, para todo mundo (#142, 08/10). No celular, o anúncio ocupa a largura da tela (#146) |
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
@@ -34,6 +34,9 @@
 ---
 
 ## Feito recentemente
+
+### Anúncio em largura total no celular (8 out)
+- **PR #146** mergeada: no celular o anúncio já ocupava a tela e atravessava o card. Agora o bloco vai de uma borda à outra. No desktop, o card continua.
 
 ### Anúncio da curadoria gratuita (8 out)
 - **PR #142** mergeada: as listas de `/oportunidades` e `/vagas-para-iniciantes` mostram o anúncio para todo mundo, porque a curadoria é gratuita. O lugar segue o mesmo: rótulo Publicidade, depois da 8ª vaga e a cada 10.
@@ -261,6 +264,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #146 — anúncio em largura total no celular](https://github.com/mahpiacesi/vagasux/pull/146) | ✅ Mergeada em 08/10 |
 | [PR #142 — anúncio da curadoria gratuita](https://github.com/mahpiacesi/vagasux/pull/142) | ✅ Mergeada em 08/10 |
 | [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10. O anúncio passou a aparecer também antes do aceite na #142 |
 | Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
