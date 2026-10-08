@@ -121,7 +121,7 @@ function StateFilterSelect({
     <div
       aria-hidden={hidden}
       className={cn(
-        'w-[11rem] max-w-full shrink-0',
+        'w-full shrink-0 md:w-[11rem]',
         hidden && 'invisible pointer-events-none',
       )}
     >
