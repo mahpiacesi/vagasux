@@ -11,11 +11,11 @@
 | Área | Estado | Nota |
 |------|--------|------|
 | Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
-| Anúncios | ✅ Live | Nas listas de vagas, depois do aceite (#139, 08/10). Sem aceite, o anúncio não carrega |
+| Anúncios | ✅ Live | Nas listas, para todo mundo (#142, 08/10). Até Aceitar, o anúncio não é personalizado |
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
-| `/cookies` | ✅ Live | Clarity e Google Analytics. A escolha fica no aviso da primeira visita (#131, 02/10). O Analytics já carrega em vagasux.vercel.app depois de Aceitar |
+| `/cookies` | ✅ Live | O aviso e a página descrevem o anúncio da curadoria gratuita (#142, 08/10). Clarity e Analytics só depois de Aceitar |
 | Escrita de vagas e parceiros | ✅ Live | A chave pública não grava mais (#135, 05/10). Os coletores seguem com a chave de serviço |
 | Termos | ✅ Live | Quem opera a VagasUX está só no Contato. Sem seção de cookies (#131, 02/10) |
 | SEO (catálogo + prerender) | ✅ Mergeado | PR #110 em 17/09 |
@@ -35,9 +35,13 @@
 
 ## Feito recentemente
 
+### Anúncio da curadoria gratuita (8 out)
+- **PR #142** mergeada: as listas de `/oportunidades` e `/vagas-para-iniciantes` mostram o anúncio para todo mundo, porque a curadoria é gratuita. O lugar segue o mesmo: rótulo Publicidade, depois da 8ª vaga e a cada 10.
+- Até Aceitar, o anúncio não usa o histórico da pessoa. Depois de Aceitar, ele pode ser personalizado, e o Clarity e o Google Analytics carregam. “Apenas o necessário” mantém o anúncio sem personalização.
+- Quem já tinha escolhido vê o aviso de novo. O aviso, a página de cookies e a descrição de SEO acompanham esse texto.
+
 ### Anúncios nas vagas (8 out)
-- **PR #139** mergeada: nas listas de `/oportunidades` e `/vagas-para-iniciantes`, o Google mostra um anúncio com o rótulo Publicidade. Ele entra depois da 8ª vaga e, daí em diante, a cada 10.
-- O anúncio só carrega depois de Aceitar. Quem já tinha escolhido antes vê o aviso de novo.
+- **PR #139** mergeada: o anúncio entrou nas duas listas, na época só depois de Aceitar. A #142 mudou isso no mesmo dia.
 - A página de cookies cita o Google AdSense. O `ads.txt` está no ar.
 
 ### Domínio publicado (8 out)
@@ -249,7 +253,7 @@
 
 1. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
 2. Criar a página de publicar relato.
-3. A prévia da PR #133 pode ser fechada. O anúncio de verdade já está na #139.
+3. A prévia da PR #133 pode ser fechada. O anúncio de verdade está nas listas desde a #139, e a #142 passou a mostrá-lo também antes do aceite.
 
 ---
 
@@ -257,7 +261,8 @@
 
 | Item | Status |
 |------|--------|
-| [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10 |
+| [PR #142 — anúncio da curadoria gratuita](https://github.com/mahpiacesi/vagasux/pull/142) | ✅ Mergeada em 08/10 |
+| [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10. O anúncio passou a aparecer também antes do aceite na #142 |
 | Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
 | [PR #135 — escrita só com a chave de serviço](https://github.com/mahpiacesi/vagasux/pull/135) | ✅ Mergeada em 05/10 |
 | [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho antigo. Pode fechar. O anúncio entrou na #139 |
