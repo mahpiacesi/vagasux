@@ -32,7 +32,7 @@ function AdUnit({ personalized }: { personalized: boolean }) {
   return (
     <ins
       ref={insRef}
-      className="adsbygoogle mt-3 block min-h-24 w-full"
+      className="adsbygoogle mt-2 block min-h-24 w-full md:mt-3"
       style={{ display: 'block' }}
       data-ad-client={ADSENSE_CLIENT_ID}
       {...(AD_SLOT ? { 'data-ad-slot': AD_SLOT } : {})}
@@ -61,9 +61,9 @@ export function JobAdSlot() {
     <aside
       ref={asideRef}
       aria-label="Publicidade"
-      className="rounded-2xl border border-neutral-200/80 bg-neutral-100 px-5 py-4 md:px-6"
+      className="max-md:-mx-5 max-md:w-[calc(100%+2.5rem)] md:rounded-2xl md:border md:border-neutral-200/80 md:bg-neutral-100 md:px-6 md:py-4"
     >
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400">
+      <p className="px-10 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-400 md:px-0">
         Publicidade
       </p>
       <AdUnit key={personalized ? 'personalized' : 'plain'} personalized={personalized} />
