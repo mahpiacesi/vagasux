@@ -1,4 +1,5 @@
 import { ArrowUpRight, ChartLineUp, MagnifyingGlass } from '@phosphor-icons/react'
+import editionPreview from '@/assets/panorama/edicao-2024-2025.png'
 import { TextLink } from '@/components/InstitutionalPage'
 import { Button } from '@/components/ui/button'
 import { panoramaStudy, routes } from '@/lib/siteLinks'
@@ -61,30 +62,30 @@ function Hero() {
 function EditionSection() {
   return (
     <section className="px-5 py-16 md:px-6 md:py-24">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
-          Edição atual
-        </p>
-        <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
-          Chegamos em nossa 5ª edição
-        </h2>
-        <p className="mt-6 text-base leading-relaxed text-neutral-400 md:text-lg">
-          E nossa pesquisa chega em mais uma edição, mapeando o cenário na área
-          de UX em 2025. O projeto começou em 2021 e contou com dados coletados
-          durante todo o ano, através da{' '}
-          <TextLink href={routes.curadoria} external={false}>
-            curadoria de vagas
-          </TextLink>{' '}
-          que disponibilizamos aqui em nosso site e da pesquisa disponibilizada
-          em{' '}
-          <TextLink href={routes.comunidade} external={false}>
-            nossa comunidade
-          </TextLink>
-          .
-        </p>
+      <div className="mx-auto grid max-w-6xl items-start gap-10 text-left lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
+        <div>
+          <p className="text-xs font-bold tracking-[0.2em] text-brand-400 uppercase">
+            Edição atual
+          </p>
+          <h2 className="mt-4 text-3xl leading-[1.08] font-black tracking-[-0.04em] text-neutral-500 md:text-5xl">
+            Chegamos em nossa 5ª edição
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-neutral-400 md:text-lg">
+            E nossa pesquisa chega em mais uma edição, mapeando o cenário na área
+            de UX em 2025. O projeto começou em 2021 e contou com dados coletados
+            durante todo o ano, através da{' '}
+            <TextLink href={routes.curadoria} external={false}>
+              curadoria de vagas
+            </TextLink>{' '}
+            que disponibilizamos aqui em nosso site e da pesquisa disponibilizada
+            em{' '}
+            <TextLink href={routes.comunidade} external={false}>
+              nossa comunidade
+            </TextLink>
+            .
+          </p>
 
-        <div className="mt-10 rounded-3xl bg-neutral-500 p-6 text-neutral-100 md:flex md:items-center md:justify-between md:gap-8 md:p-8">
-          <div>
+          <div className="mt-10 rounded-3xl bg-neutral-500 p-6 text-neutral-100 md:p-8">
             <div className="flex items-center gap-3">
               <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-white/10 text-complementary-300">
                 <ChartLineUp size={22} weight="bold" aria-hidden />
@@ -96,29 +97,35 @@ function EditionSection() {
             <p className="mt-4 text-xl font-black tracking-[-0.03em] md:text-2xl">
               {panoramaStudy.title}
             </p>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-neutral-300">
+            <p className="mt-2 text-sm leading-relaxed text-neutral-300">
               A visualização da 5ª edição abre o relatório no Data Studio.
             </p>
-          </div>
-          <Button
-            asChild
-            size="lg"
-            className="mt-6 h-12 shrink-0 rounded-xl bg-complementary-300 px-6 text-base font-black text-neutral-500 hover:bg-complementary-200 md:mt-0"
-          >
-            <a
-              href={panoramaStudy.href}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 h-12 rounded-xl bg-complementary-300 px-6 text-base font-black text-neutral-500 hover:bg-complementary-200"
             >
-              Ver o estudo
-              <span className="sr-only">
-                {' '}
-                {panoramaStudy.title}, abre em uma nova aba
-              </span>
-              <ArrowUpRight weight="bold" aria-hidden />
-            </a>
-          </Button>
+              <a
+                href={panoramaStudy.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver o estudo
+                <span className="sr-only">
+                  {' '}
+                  {panoramaStudy.title}, abre em uma nova aba
+                </span>
+                <ArrowUpRight weight="bold" aria-hidden />
+              </a>
+            </Button>
+          </div>
         </div>
+
+        <img
+          src={editionPreview}
+          alt="Dashboard do Panorama VagasUX 2024/2025, com os dados comparativos das pesquisas da comunidade."
+          className="w-full rounded-[20px] border border-neutral-500/10 shadow-[0_10px_28px_-16px_rgb(7_0_58_/_0.28)]"
+        />
       </div>
     </section>
   )
