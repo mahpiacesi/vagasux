@@ -15,7 +15,7 @@ function FeaturedPartnerCard({ partner }: { partner: HomeFeaturedPartnerDisplay 
       src={partner.logo}
       alt={partner.name}
       className={cn(
-        'object-contain',
+        'h-auto w-auto max-w-full min-w-0 object-contain',
         partner.logoClass,
         partner.logoTone === 'white' && 'brightness-0 invert',
       )}
@@ -26,7 +26,7 @@ function FeaturedPartnerCard({ partner }: { partner: HomeFeaturedPartnerDisplay 
 
   return (
     <div
-      className={`flex items-center justify-center rounded-2xl px-4 py-5 ${partner.className}`}
+      className={`flex min-w-0 items-center justify-center overflow-hidden rounded-2xl px-3 py-5 sm:px-4 ${partner.className}`}
       style={{ backgroundColor: partner.bg }}
     >
       {content}
