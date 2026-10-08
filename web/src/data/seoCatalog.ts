@@ -214,7 +214,7 @@ const staticPages: SeoRoute[] = [
   page(
     routes.cookies,
     'VagasUX · Preferências de cookies',
-    'O que a VagasUX guarda no navegador, para que o Microsoft Clarity e o Google Analytics são usados e como mudar sua escolha.',
+    'O que a VagasUX guarda no navegador, para que o Microsoft Clarity, o Google Analytics e os anúncios do Google são usados e como mudar sua escolha.',
     { priority: 0.3, changefreq: 'yearly' },
   ),
   page(

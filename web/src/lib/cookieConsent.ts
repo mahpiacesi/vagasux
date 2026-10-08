@@ -1,4 +1,6 @@
 const STORAGE_KEY = 'vagasux:cookie-consent'
+const CONSENT_VERSION = '2'
+const CONSENT_VERSION_KEY = 'vagasux:cookie-consent-version'
 const CONSENT_CHANGED_EVENT = 'vagasux:cookie-consent-changed'
 const OPEN_BANNER_EVENT = 'vagasux:cookie-banner-open'
 
@@ -14,6 +16,7 @@ declare global {
 
 function readStoredConsent(): CookieConsentChoice | null {
   try {
+    if (localStorage.getItem(CONSENT_VERSION_KEY) !== CONSENT_VERSION) return null
     const value = localStorage.getItem(STORAGE_KEY)
     if (value === 'essential' || value === 'analytics') return value
   } catch {
@@ -25,9 +28,29 @@ function readStoredConsent(): CookieConsentChoice | null {
 function writeStoredConsent(choice: CookieConsentChoice) {
   try {
     localStorage.setItem(STORAGE_KEY, choice)
+    localStorage.setItem(CONSENT_VERSION_KEY, CONSENT_VERSION)
   } catch {
     // Ignore write failures; analytics still run for this session if accepted.
   }
+}
+
+let googleConsentReady = false
+
+export function grantOptionalGoogleConsent() {
+  window.dataLayer = window.dataLayer || []
+  if (!window.gtag) {
+    window.gtag = function gtag(...args: unknown[]) {
+      window.dataLayer!.push(args)
+    }
+  }
+  if (googleConsentReady) return
+  googleConsentReady = true
+  window.gtag('consent', 'default', {
+    analytics_storage: 'granted',
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+  })
 }
 
 function loadClarity(projectId: string) {
@@ -61,25 +84,20 @@ function loadClarity(projectId: string) {
 }
 
 function loadGoogleAnalytics(measurementId: string) {
-  if (window.gtag) return
-
-  window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args)
+  grantOptionalGoogleConsent()
+  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${measurementId}"]`)) {
+    return
   }
-  window.gtag('js', new Date())
-  window.gtag('consent', 'default', {
-    analytics_storage: 'granted',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  })
+
+  const gtag = window.gtag
+  if (!gtag) return
+  gtag('js', new Date())
 
   const script = document.createElement('script')
   script.async = true
   script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`
   document.head.appendChild(script)
-  window.gtag('config', measurementId, { anonymize_ip: true })
+  gtag('config', measurementId, { anonymize_ip: true })
 }
 
 export function applyAnalyticsIfConsented(

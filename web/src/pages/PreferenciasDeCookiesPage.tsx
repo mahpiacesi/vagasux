@@ -10,7 +10,7 @@ import { CookieChoiceStatus } from '@/components/CookieChoiceStatus'
 import { reopenCookieBanner } from '@/lib/cookieConsent'
 import { analyticsPrivacy } from '@/lib/siteLinks'
 
-const LAST_UPDATED = '1 de outubro de 2026'
+const LAST_UPDATED = '8 de outubro de 2026'
 
 export function PreferenciasDeCookiesPage() {
   return (
@@ -30,8 +30,8 @@ export function PreferenciasDeCookiesPage() {
         <Prose>
           <p>
             A VagasUX utiliza cookies e tecnologias semelhantes para melhorar a
-            experiência de navegação, entender como a plataforma é utilizada e
-            orientar decisões de produto.
+            experiência de navegação, entender como a plataforma é utilizada,
+            orientar decisões de produto e mostrar anúncios nas listas de vagas.
           </p>
           <p>
             Essas informações nos ajudam a identificar páginas mais acessadas,
@@ -86,9 +86,8 @@ export function PreferenciasDeCookiesPage() {
           </p>
           <p>
             Esses dados servem para entender o uso da VagasUX. O endereço IP é
-            anonimizado e os cookies de publicidade ficam desligados. Não
-            usamos o Google Analytics para anúncios nem para decisões
-            automatizadas.
+            anonimizado. Não usamos o Google Analytics para decisões
+            automatizadas. Os anúncios ficam na seção seguinte.
           </p>
           <p>
             O tratamento dessas informações segue a política de privacidade do
@@ -102,24 +101,53 @@ export function PreferenciasDeCookiesPage() {
       </div>
 
       <div className="space-y-4">
+        <SubsectionTitle>Google AdSense</SubsectionTitle>
+        <Prose>
+          <p>
+            Nas listas de vagas, depois do aceite, a VagasUX mostra anúncios do
+            Google AdSense. Eles entram na mesma coluna da lista, com o rótulo
+            Publicidade.
+          </p>
+          <p>
+            O Google pode usar cookies para escolher e medir esses anúncios.
+            Sem o aceite, o anúncio não é carregado.
+          </p>
+          <p>
+            O tratamento dessas informações segue a política de privacidade do
+            Google. Para saber mais, consulte a{' '}
+            <TextLink href={analyticsPrivacy.googleAnalytics}>
+              Política de Privacidade do Google
+            </TextLink>{' '}
+            e a página sobre{' '}
+            <TextLink href={analyticsPrivacy.googleAds}>
+              tecnologias de publicidade do Google
+            </TextLink>
+            .
+          </p>
+        </Prose>
+      </div>
+
+      <div className="space-y-4">
         <SectionTitle>Sua escolha</SectionTitle>
         <Prose>
           <p>
             Há duas categorias. A necessária guarda neste navegador apenas a
-            sua escolha, para o aviso não voltar toda vez. A opcional só
-            carrega o Microsoft Clarity e o Google Analytics depois que você
-            aceita. Sem essa aceitação, essas ferramentas não são carregadas.
+            sua escolha, para o aviso não voltar toda vez. A opcional carrega o
+            Microsoft Clarity, o Google Analytics e os anúncios do Google
+            AdSense depois que você aceita. Sem essa aceitação, essas
+            ferramentas não são carregadas.
           </p>
           <p>
-            A base dessa análise é o seu consentimento. Os dados vão para a
-            Microsoft e para o Google, que fornecem as ferramentas, e servem
-            para entender o uso da plataforma. O prazo de guarda é o de cada
-            ferramenta, descrito na política da Microsoft e na do Google.
+            A base é o seu consentimento. Os dados vão para a Microsoft e para
+            o Google, que fornecem as ferramentas. Servem para entender o uso
+            da plataforma e para os anúncios nas listas de vagas. O prazo de
+            guarda é o de cada ferramenta, descrito na política da Microsoft e
+            na do Google.
           </p>
           <CookieChoiceStatus />
           <p>
-            A escolha fica guardada neste navegador. Se você recusar a análise
-            depois de ter aceitado, o Clarity e o Google Analytics deixam de
+            A escolha fica guardada neste navegador. Se você recusar depois de
+            ter aceitado, o Clarity, o Google Analytics e os anúncios deixam de
             ser carregados nas visitas seguintes. Para ver o aviso de novo,{' '}
             <button
               type="button"

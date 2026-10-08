@@ -29,6 +29,7 @@ export const analyticsPrivacy = {
   microsoftClarity:
     'https://privacy.microsoft.com/pt-br/privacystatement',
   googleAnalytics: 'https://policies.google.com/privacy',
+  googleAds: 'https://policies.google.com/technologies/ads',
 } as const
 
 export const parceriasContact = {

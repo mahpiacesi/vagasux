@@ -69,8 +69,8 @@ export function CookieConsentBanner() {
             className="text-sm leading-snug text-neutral-400"
           >
             Ao aceitar, usamos o Microsoft Clarity e o Google Analytics para
-            entender como a comunidade utiliza a VagasUX e melhorar
-            continuamente a experiência de quem passa por aqui.
+            entender como a comunidade utiliza a VagasUX. Nas listas de vagas,
+            o Google também pode mostrar anúncios.
           </p>
 
           <div className="flex flex-nowrap items-center justify-between gap-2">
