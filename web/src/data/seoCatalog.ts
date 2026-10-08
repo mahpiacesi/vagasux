@@ -116,6 +116,12 @@ const staticPages: SeoRoute[] = [
     { priority: 0.7, image: ogImages.sobre },
   ),
   page(
+    routes.panorama,
+    'VagasUX · Panorama',
+    'Pesquisa da VagasUX sobre experiências, desafios e percepções de quem está em UX e Design. A 5ª edição mapeia o cenário de 2025.',
+    { priority: 0.7 },
+  ),
+  page(
     routes.mentoria,
     'VagasUX · Mentoria',
     'Mentoria em UX, UI e Product Design para quem busca orientação de carreira, desenvolvimento profissional e apoio para definir os próximos passos.',
@@ -459,6 +465,7 @@ export const seoRedirects: SeoRedirect[] = [
   redirect('/trilhas/portfolio-iniciante', guiaRoutes.trilha('portfolio')),
   redirect('/trilhas/ux-research-basics', guiaRoutes.tema('research')),
   redirect('/trilhas/design-systems-101', guiaRoutes.tema('design-system')),
+  redirect('/a-comunidade/panorama', routes.panorama),
   redirect('/a-comunidade', routes.comunidade),
   redirect('/iniciantes-em-design/apenas-mentores', routes.mentoria),
   redirect('/iniciantes-em-design', routes.curadoria),

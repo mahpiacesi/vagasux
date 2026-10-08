@@ -119,7 +119,12 @@ describe('seo catalog', () => {
     const bySource = Object.fromEntries(
       seoRedirects.map((entry) => [entry.source, entry.destination]),
     )
+    assert.equal(bySource['/a-comunidade/panorama'], '/panorama')
     assert.equal(bySource['/a-comunidade'], '/comunidade')
+    assert.equal(
+      getSeoRoute('/panorama')?.description,
+      'Pesquisa da VagasUX sobre experiências, desafios e percepções de quem está em UX e Design. A 5ª edição mapeia o cenário de 2025.',
+    )
     assert.equal(bySource['/quem-organiza'], '/voluntariado')
     assert.equal(bySource['/iniciantes-em-design'], '/vagas-para-iniciantes')
     assert.equal(

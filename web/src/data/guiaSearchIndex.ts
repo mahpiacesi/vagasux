@@ -238,6 +238,15 @@ export const guiaSearchIndex: GuiaSearchResult[] = [
     snippet:
       'Uma pessoa contagia uma ideia e uma comunidade ganha vida.',
   },
+  {
+    id: 'panorama-vagasux',
+    title: 'Panorama VagasUX',
+    category: 'Institucional',
+    to: routes.panorama,
+    keywords:
+      'panorama pesquisa ux design cenário 2025 quinta edição curadoria comunidade estudo datastudio relatório',
+    snippet: 'A gente pergunta antes de sair assumindo.',
+  },
 ]
 
 export function searchGuia(query: string, limit = 8): GuiaSearchResult[] {

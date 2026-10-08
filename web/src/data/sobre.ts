@@ -11,14 +11,14 @@ import palestraPalco from '@/assets/sobre/palestra-palco.jpg'
 import palestraRodizio from '@/assets/sobre/palestra-rodizio.jpg'
 import respeitaOJunior from '@/assets/sobre/respeita-o-junior.jpg'
 import { guiaRoutes } from '@/lib/guiaRoutes'
-import { routes, superSite } from '@/lib/siteLinks'
+import { routes } from '@/lib/siteLinks'
 
 export const sobreLinks = {
   comunidade: routes.comunidade,
   voluntariado: routes.voluntariado,
   mentoria: routes.mentoria,
   feedbacks: guiaRoutes.cursos,
-  panorama: superSite.panorama,
+  panorama: routes.panorama,
   founder: 'https://avely.me/mahpiacesi',
   youtubeLive: 'https://youtu.be/_h94hLBW_D4',
   podvagas: 'https://open.spotify.com/show/3XlkhvjZyh425pdRkAtBVs',
