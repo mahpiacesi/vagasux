@@ -1231,3 +1231,24 @@
     opacity: 0;
   }
 }
+
+/* Automatic anchor ads stick to the screen and leave empty space after the footer.
+   The in-list unit lives inside aside[aria-label="Publicidade"] and stays visible. */
+html,
+body {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body > ins.adsbygoogle,
+.adsbygoogle-noablate {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
