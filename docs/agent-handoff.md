@@ -11,6 +11,7 @@
 | Área | Estado | Nota |
 |------|--------|------|
 | Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
+| Anúncios | ✅ Live | Nas listas de vagas, depois do aceite (#139, 08/10). Sem aceite, o anúncio não carrega |
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
 | `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
@@ -34,12 +35,17 @@
 
 ## Feito recentemente
 
+### Anúncios nas vagas (8 out)
+- **PR #139** mergeada: nas listas de `/oportunidades` e `/vagas-para-iniciantes`, o Google mostra um anúncio com o rótulo Publicidade. Ele entra depois da 8ª vaga e, daí em diante, a cada 10.
+- O anúncio só carrega depois de Aceitar. Quem já tinha escolhido antes vê o aviso de novo.
+- A página de cookies cita o Google AdSense. O `ads.txt` está no ar.
+
 ### Domínio publicado (8 out)
 - `vagasux.com.br` e `www` saíram do Super e apontam para o projeto da Vercel. Os dois estão verificados.
 - O `www` responde com redirecionamento para `https://vagasux.com.br/`.
 - A home, o mural (centenas de vagas) e `/cookies` foram abertos no domínio novo. Os caminhos antigos `/a-comunidade`, `/termos-e-polticas` e `/guia-do-product-designer` continuam redirecionando.
 - Os registros MX do Google não foram alterados.
-- Anúncios de verdade continuam de fora. A prévia ([PR #133](https://github.com/mahpiacesi/vagasux/pull/133)) segue em rascunho.
+- A prévia antiga do card ([PR #133](https://github.com/mahpiacesi/vagasux/pull/133)) ficou para trás. O anúncio de verdade entrou na #139.
 
 ### Escrita de vagas e parceiros (5 out)
 - **PR #135** mergeada: as funções que gravam vagas e parceiros não aceitam mais a chave pública do site. A leitura do mural continua aberta.
@@ -243,7 +249,7 @@
 
 1. Quando alguém assinar a Guilda paga, conferir se o cargo entra na conta certa do Discord.
 2. Criar a página de publicar relato.
-3. Anúncios de verdade só quando houver criativo e `ads.txt`. A prévia da PR #133 continua em rascunho.
+3. A prévia da PR #133 pode ser fechada. O anúncio de verdade já está na #139.
 
 ---
 
@@ -251,9 +257,10 @@
 
 | Item | Status |
 |------|--------|
+| [PR #139 — anúncios nas listas de vagas](https://github.com/mahpiacesi/vagasux/pull/139) | ✅ Mergeada em 08/10 |
 | Domínio `vagasux.com.br` | ✅ No ar em 08/10, no projeto Vercel |
 | [PR #135 — escrita só com a chave de serviço](https://github.com/mahpiacesi/vagasux/pull/135) | ✅ Mergeada em 05/10 |
-| [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho. Não mergear enquanto o card for só prévia |
+| [PR #133 — prévia do anúncio nas vagas](https://github.com/mahpiacesi/vagasux/pull/133) | Rascunho antigo. Pode fechar. O anúncio entrou na #139 |
 | [PR #134 — MCP do Cloudflare](https://github.com/mahpiacesi/vagasux/pull/134) | Rascunho. O DNS do lançamento já foi feito |
 | [PR #131 — aviso de privacidade](https://github.com/mahpiacesi/vagasux/pull/131) | ✅ Mergeada em 02/10 |
 | [PR #129 — página /cookies e navegação dos termos](https://github.com/mahpiacesi/vagasux/pull/129) | ✅ Mergeada em 02/10 |
