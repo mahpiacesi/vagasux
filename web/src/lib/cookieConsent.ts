@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'vagasux:cookie-consent'
-const CONSENT_VERSION = '2'
+const CONSENT_VERSION = '3'
 const CONSENT_VERSION_KEY = 'vagasux:cookie-consent-version'
 const CONSENT_CHANGED_EVENT = 'vagasux:cookie-consent-changed'
 const OPEN_BANNER_EVENT = 'vagasux:cookie-banner-open'
@@ -34,18 +34,52 @@ function writeStoredConsent(choice: CookieConsentChoice) {
   }
 }
 
-let googleConsentReady = false
+let googleConsentDefaultSet = false
 
-export function grantOptionalGoogleConsent() {
+function ensureGtag() {
   window.dataLayer = window.dataLayer || []
   if (!window.gtag) {
     window.gtag = function gtag(...args: unknown[]) {
       window.dataLayer!.push(args)
     }
   }
-  if (googleConsentReady) return
-  googleConsentReady = true
-  window.gtag('consent', 'default', {
+}
+
+const deniedGoogleConsent = {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+} as const
+
+/** Ad requests before Aceitar, and after "Apenas o necessario", stay non-personalized. */
+export function denyOptionalGoogleConsent() {
+  ensureGtag()
+  const gtag = window.gtag
+  if (!gtag) return
+  if (!googleConsentDefaultSet) {
+    googleConsentDefaultSet = true
+    gtag('consent', 'default', deniedGoogleConsent)
+    return
+  }
+  gtag('consent', 'update', deniedGoogleConsent)
+}
+
+export function grantOptionalGoogleConsent() {
+  ensureGtag()
+  const gtag = window.gtag
+  if (!gtag) return
+  if (!googleConsentDefaultSet) {
+    googleConsentDefaultSet = true
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+    })
+    return
+  }
+  gtag('consent', 'update', {
     analytics_storage: 'granted',
     ad_storage: 'granted',
     ad_user_data: 'granted',

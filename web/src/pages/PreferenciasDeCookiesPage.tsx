@@ -29,9 +29,10 @@ export function PreferenciasDeCookiesPage() {
         <SectionTitle>Cookies e análise de uso</SectionTitle>
         <Prose>
           <p>
-            A VagasUX utiliza cookies e tecnologias semelhantes para melhorar a
-            experiência de navegação, entender como a plataforma é utilizada,
-            orientar decisões de produto e mostrar anúncios nas listas de vagas.
+            A VagasUX utiliza cookies e tecnologias semelhantes para o
+            funcionamento da plataforma, para entender como ela é utilizada e
+            para mostrar anúncios nas listas de vagas. A curadoria é gratuita, e
+            o anúncio ajuda a sustentá-la.
           </p>
           <p>
             Essas informações nos ajudam a identificar páginas mais acessadas,
@@ -104,13 +105,14 @@ export function PreferenciasDeCookiesPage() {
         <SubsectionTitle>Google AdSense</SubsectionTitle>
         <Prose>
           <p>
-            Nas listas de vagas, depois do aceite, a VagasUX mostra anúncios do
-            Google AdSense. Eles entram na mesma coluna da lista, com o rótulo
-            Publicidade.
+            Nas listas de vagas, a VagasUX mostra anúncios do Google AdSense.
+            Eles entram na mesma coluna da lista, com o rótulo Publicidade.
+            Esse anúncio faz parte da curadoria gratuita.
           </p>
           <p>
-            O Google pode usar cookies para escolher e medir esses anúncios.
-            Sem o aceite, o anúncio não é carregado.
+            Até você aceitar, o anúncio não é personalizado: o Google não usa o
+            seu histórico para escolhê-lo. Depois do aceite, o Google pode usar
+            cookies para escolher e medir esses anúncios.
           </p>
           <p>
             O tratamento dessas informações segue a política de privacidade do
@@ -131,24 +133,26 @@ export function PreferenciasDeCookiesPage() {
         <SectionTitle>Sua escolha</SectionTitle>
         <Prose>
           <p>
-            Há duas categorias. A necessária guarda neste navegador apenas a
-            sua escolha, para o aviso não voltar toda vez. A opcional carrega o
-            Microsoft Clarity, o Google Analytics e os anúncios do Google
-            AdSense depois que você aceita. Sem essa aceitação, essas
-            ferramentas não são carregadas.
+            Há duas categorias. A necessária guarda neste navegador a sua
+            escolha, para o aviso não voltar toda vez. As listas continuam
+            mostrando um anúncio não personalizado. A opcional personaliza esse
+            anúncio e carrega o Microsoft Clarity e o Google Analytics depois
+            que você aceita. Sem essa aceitação, o Clarity e o Google Analytics
+            não são carregados, e o anúncio permanece sem personalização.
           </p>
           <p>
-            A base é o seu consentimento. Os dados vão para a Microsoft e para
-            o Google, que fornecem as ferramentas. Servem para entender o uso
-            da plataforma e para os anúncios nas listas de vagas. O prazo de
-            guarda é o de cada ferramenta, descrito na política da Microsoft e
-            na do Google.
+            A personalização do anúncio e a análise de uso têm como base o seu
+            consentimento. Os dados vão para a Microsoft e para o Google, que
+            fornecem as ferramentas. Servem para escolher o anúncio e para
+            entender o uso da plataforma. O prazo de guarda é o de cada
+            ferramenta, descrito na política da Microsoft e na do Google.
           </p>
           <CookieChoiceStatus />
           <p>
-            A escolha fica guardada neste navegador. Se você recusar depois de
-            ter aceitado, o Clarity, o Google Analytics e os anúncios deixam de
-            ser carregados nas visitas seguintes. Para ver o aviso de novo,{' '}
+            A escolha fica guardada neste navegador. Se você recusar a
+            personalização depois de ter aceitado, o Clarity e o Google
+            Analytics deixam de ser carregados nas visitas seguintes, e o
+            anúncio volta a ser não personalizado. Para ver o aviso de novo,{' '}
             <button
               type="button"
               onClick={reopenCookieBanner}
