@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { isNonDesignCareerJob } from './discipline.ts'
+import { isNonDesignCareerJob } from '../src/lib/discipline.ts'
 
 const rejected = [
   'Designer De Sobrancelha - Shopping Eldorado',
