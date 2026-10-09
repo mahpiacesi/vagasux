@@ -243,8 +243,16 @@ function normalizeTitle(title) {
     .replace(/[\\u0300-\\u036f]/g, '');
 }
 
+function isOutOfScopeTitle(title) {
+  const t = normalizeTitle(title);
+  if (/\\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(t)) return true;
+  if (/\\b(motion designer|motion design)\\b/.test(t)) return false;
+  return /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bedicao\\s+de\\s+videos?\\b|\\banalista\\s+audiovisual\\b/.test(t);
+}
+
 function isRelevant(title) {
   const t = normalizeTitle(title);
+  if (isOutOfScopeTitle(title)) return false;
   const excluded =
     /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|interior(es)?|design de ambientes|moveis planejados|mobiliario|decorador de interiores)\\b/.test(t);
   const designRole =

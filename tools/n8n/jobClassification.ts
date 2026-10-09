@@ -59,7 +59,11 @@ const MOTION_KEEP =
   /\b(motion designer|motion design|animador ui|ui animation|animacao ui)\b/
 
 const VIDEO_EDITING =
-  /\b(editor de videos?|editor de videos curtos|video editor|videomaker|video maker|analista audiovisual|edicao de video|video editing)\b/
+  /\b(?:editor(?:\s*\(a\))?|editora)\s+de\s+videos?(?:\s+curtos)?\b|\bvideo\s+editors?\b|\bvideomakers?\b|\bvideo\s+makers?\b|\bedicao\s+de\s+videos?\b|\bvideo\s+editing\b|\banalista\s+audiovisual\b|\bproducao\s+audiovisual\b/
+
+/** Beauty, fashion pattern/styling — not digital product / UX / graphic design. */
+const OUT_OF_SCOPE_HEADLINE =
+  /\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\b/
 
 /** True when the listing is audiovisual post-production, not product/UI motion design. */
 export function isVideoEditingRole(input: {
@@ -76,7 +80,7 @@ export function isVideoEditingRole(input: {
 
 /** CAD/engineering, beauty, industrial/furniture — not digital product / UX design careers. */
 const NON_DESIGN_CAREER =
-  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|solid edge|sketchup|autocad|promob|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|ferramental|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
+  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|solid edge|sketchup|autocad|promob|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|ferramental|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelhas?|designer de sobrancelhas?|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
 
 export function isInfoJobsSource(source: unknown): boolean {
   return normalizeJobText(source) === 'infojobs'
@@ -100,12 +104,16 @@ export function isNonDesignCareerJob(input: {
   )
 
   if (NON_DESIGN_CAREER.test(text)) return true
+  if (OUT_OF_SCOPE_HEADLINE.test(normalizeJobText([input.title, input.role, input.area].filter(Boolean).join(' ')))) {
+    return true
+  }
+  if (isVideoEditingRole(input)) return true
 
   // InfoJobs card snippets often lack body text — title-only CAD/engineering bait.
   if (isInfoJobsSource(input.source)) {
     const title = normalizeJobText(input.title)
     if (
-      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\b/.test(
+      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelhas?|consultora de beleza)\b/.test(
         title,
       )
     ) {
@@ -127,10 +135,15 @@ function normalizeJobText(value) {
 
 const nonDesignText = normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.area ?? ''} \${description} \${job.source ?? ''}\`);
 const nonDesignCareer =
-  /\\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\\(nx\\)|\\bnx cad\\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\\bprojetista\\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\\bui\\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\\b/.test(nonDesignText)
+  /\\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\\(nx\\)|\\bnx cad\\b|catia|solidworks|inventor|creo|pro engineer|projetista e designer|\\bprojetista\\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\\b|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\\bui\\b|sobrancelhas?|designer de sobrancelhas?|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\\b/.test(nonDesignText)
+  || /\\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.area ?? ''}\`))
+  || (
+    !/\\b(motion designer|motion design|animador ui|ui animation|animacao ui)\\b/.test(normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.area ?? ''}\`))
+    && /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?(?:\\s+curtos)?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bvideo\\s+makers?\\b|\\bedicao\\s+de\\s+videos?\\b|\\bvideo\\s+editing\\b|\\banalista\\s+audiovisual\\b|\\bproducao\\s+audiovisual\\b/.test(normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.area ?? ''}\`))
+  )
   || (
     normalizeJobText(job.source) === 'infojobs'
-    && /\\b(product design lead engineer|design engineer|\\(nx\\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\\b/.test(normalizeJobText(job.title))
+    && /\\b(product design lead engineer|design engineer|\\(nx\\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelhas?|consultora de beleza)\\b/.test(normalizeJobText(job.title))
   );
 `.trim()
 
@@ -193,7 +206,7 @@ const classifyText = normalizeJobText(\`\${job.title} \${ai.role ?? ''} \${ai.ar
 const motionKeep = /\\b(motion designer|motion design|animador ui|ui animation|animacao ui)\\b/.test(classifyText);
 const videoEditing =
   !motionKeep &&
-  /\\b(editor de videos?|editor de videos curtos|video editor|videomaker|video maker|analista audiovisual|edicao de video|video editing)\\b/.test(classifyText);
+  /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?(?:\\s+curtos)?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bvideo\\s+makers?\\b|\\bedicao\\s+de\\s+videos?\\b|\\bvideo\\s+editing\\b|\\banalista\\s+audiovisual\\b|\\bproducao\\s+audiovisual\\b/.test(classifyText);
 `.trim()
 
 /** Inline IIFE for Gupy collector Edit Fields → isRelevant. */
@@ -205,7 +218,11 @@ export const GUPY_IS_RELEVANT_JS = `={{
       .replace(/[\\u0300-\\u036f]/g, '');
 
     const excluded =
-      /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas)\\b/.test(title);
+      /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(title)
+      || (
+        !/\\b(motion designer|motion design)\\b/.test(title)
+        && /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bedicao\\s+de\\s+videos?\\b/.test(title)
+      );
 
     const explicitDesign =
       /\\b(de design|designer|design ops|design system|design de produto|product design|graphic design|visual design|motion design|ux design|ui design|design lead|head of design|gerente de design|coordenadora de design|coordenador de design|carreira de design|design grafico|designer grafico|ux writer|content designer|product designer|visual designer|graphic designer|web designer|motion designer|service designer|interaction designer|art director|diretor de arte|ux|ui|research|pesquisa)\\b/.test(title);

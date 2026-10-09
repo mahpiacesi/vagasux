@@ -598,14 +598,7 @@ export function inferDisciplineFromJob(input: {
     if (/\b(ux designer|designer ux|designer de ux|designer de experiencia)\b/.test(role)) return 'ux'
   }
 
-  if (
-    /\b(editor de videos?|video editor|videomaker|audiovisual|edicao de video|producao audiovisual)\b/.test(
-      text,
-    ) &&
-    !MOTION_HEADLINE.test(headline)
-  ) {
-    return 'visual_graphic'
-  }
+  if (isVideoEditingHeadline(input)) return 'visual_graphic'
 
   const venueOrRetailFalsePositive =
     (/\b(rio design|shopping .* design|design barra|design leak)\b/.test(text) &&
@@ -689,8 +682,38 @@ export function labelDiscipline(input: {
   return disciplineLabels[resolveDiscipline(input)]
 }
 
+/** Beauty, fashion pattern/styling, and similar titles that are not digital design. */
+const OUT_OF_SCOPE_HEADLINE =
+  /\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\b/
+
+/**
+ * Audiovisual editing, not product motion.
+ * `editor(a)` is optional gender marking in PT titles ("Editor(a) de Vídeo").
+ */
+const VIDEO_EDITING_HEADLINE =
+  /\b(?:editor(?:\s*\(a\))?|editora)\s+de\s+videos?(?:\s+curtos)?\b|\bvideo\s+editors?\b|\bvideomakers?\b|\bvideo\s+makers?\b|\bedicao\s+de\s+videos?\b|\bvideo\s+editing\b|\banalista\s+audiovisual\b|\bproducao\s+audiovisual\b/
+
+function isVideoEditingHeadline(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): boolean {
+  const headline = headlineText(input)
+  if (MOTION_HEADLINE.test(headline)) return false
+  return VIDEO_EDITING_HEADLINE.test(headline)
+}
+
+function isOutOfScopeHeadline(input: {
+  title?: unknown
+  area?: unknown
+  role?: unknown
+}): boolean {
+  if (OUT_OF_SCOPE_HEADLINE.test(headlineText(input))) return true
+  return isVideoEditingHeadline(input)
+}
+
 const NON_DESIGN_CAREER =
-  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|solid edge|sketchup|autocad|promob|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|ferramental|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelh|designer de sobrancelh|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
+  /\b(product design lead engineer|design lead engineer|design engineer|engenheiro de design|engenharia mecanica|engenharia de materiais|graduacao em arquitetura|formacao em arquitetura|bacharelado em arquitetura|siemens nx|\(nx\)|\bnx cad\b|catia|solidworks|solid edge|sketchup|autocad|promob|inventor|creo|pro engineer|projetista e designer|\bprojetista\b|designer de produtos industrial|design de produtos industrial|design de moveis|designer de moveis|design industrial\b|ferramental|desenvolvedor.*front.?end|front.?end.*desenvolvedor|desenvolvedor.*\bui\b|sobrancelhas?|designer de sobrancelhas?|depilador|micropigment|consultora de beleza|designer de unha|manicure|barbeir)\b/
 
 /** Listing should not appear on VagasUX mural. Keep in sync with tools/n8n/jobClassification.ts */
 export function isNonDesignCareerJob(input: {
@@ -710,11 +733,12 @@ export function isNonDesignCareerJob(input: {
   )
 
   if (NON_DESIGN_CAREER.test(text)) return true
+  if (isOutOfScopeHeadline(input)) return true
 
   if (isInfoJobsSource(input.source)) {
     const title = normalizeJobText(input.title)
     if (
-      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelh|consultora de beleza)\b/.test(
+      /\b(product design lead engineer|design engineer|\(nx\)|designer de produtos industrial|design de moveis|projetista|desenvolvedor.*ui|sobrancelhas?|consultora de beleza)\b/.test(
         title,
       )
     ) {
