@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-08
+**Última atualização:** 2026-10-09
 
 ---
 
@@ -23,7 +23,7 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Filtros, badges, load more |
+| Mural de vagas | ✅ Live | Sobrancelha, modelista, estilo e editor de vídeo ficam de fora (#152, 09/10) |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
@@ -34,6 +34,9 @@
 ---
 
 ## Feito recentemente
+
+### Escopo do mural (9 out)
+- **PR #152** mergeada: saem do mural vagas de design de sobrancelha, modelista, assistente de estilo e editor de vídeo. Motion, produto e gráfico continuam.
 
 ### Logos de parceiros no celular (8 out)
 - **PR #150** mergeada: na home, a faixa da UXCONFBR e o wordmark da productcamp cabem no card. A marca encolhe com a coluna, sem cortar.
@@ -270,6 +273,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #152 — escopo do mural](https://github.com/mahpiacesi/vagasux/pull/152) | ✅ Mergeada em 09/10 |
 | [PR #150 — logos de parceiros no celular](https://github.com/mahpiacesi/vagasux/pull/150) | ✅ Mergeada em 08/10 |
 | [PR #148 — anúncio automático fora do footer](https://github.com/mahpiacesi/vagasux/pull/148) | ✅ Mergeada em 08/10 |
 | [PR #146 — anúncio em largura total no celular](https://github.com/mahpiacesi/vagasux/pull/146) | ✅ Mergeada em 08/10 |
