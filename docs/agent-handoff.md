@@ -23,7 +23,7 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Sobrancelha, modelista, estilo e editor de vídeo ficam de fora (#152, 09/10) |
+| Mural de vagas | ✅ Live | Sobrancelha, modelista, estilo e editor de vídeo ficam de fora (#152, 09/10). A busca aceita espaço entre palavras (#161, 12/10) |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
@@ -34,6 +34,9 @@
 ---
 
 ## Feito recentemente
+
+### Espaço na busca das vagas (12 out)
+- **PR #161** mergeada: em `/oportunidades` e `/vagas-para-iniciantes`, dá para escrever duas palavras no filtro. O espaço no fim da palavra deixa de sumir.
 
 ### Relatos da home no celular (12 out)
 - **PR #159** mergeada: com o movimento reduzido, no iPhone com Chrome, os relatos da home passam para o lado em vez de ficarem cortados na margem.
@@ -282,6 +285,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #161 — espaço na busca das vagas](https://github.com/mahpiacesi/vagasux/pull/161) | ✅ Mergeada em 12/10 |
 | [PR #159 — relatos da home no celular](https://github.com/mahpiacesi/vagasux/pull/159) | ✅ Mergeada em 12/10 |
 | [PR #157 — cards de FAQ e Glossário](https://github.com/mahpiacesi/vagasux/pull/157) | ✅ Mergeada em 12/10 |
 | [PR #155 — âncora das abas da Guilda](https://github.com/mahpiacesi/vagasux/pull/155) | ✅ Mergeada em 12/10 |
