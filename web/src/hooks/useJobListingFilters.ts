@@ -34,6 +34,7 @@ export function useJobListingFilters() {
       next.market === urlFilters.market &&
       next.workModel === urlFilters.workModel &&
       next.seniority === urlFilters.seniority &&
+      next.contract === urlFilters.contract &&
       next.discipline === urlFilters.discipline &&
       next.state === urlFilters.state
     if (unchanged) return

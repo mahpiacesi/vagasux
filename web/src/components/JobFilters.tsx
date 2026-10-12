@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 import { BRAZILIAN_STATES } from '@/lib/location'
 import { hasActiveFilters } from '@/lib/filterJobs'
 import type {
+  ContractFilter,
   JobFiltersState,
   MarketFilter,
   SeniorityFilter,
@@ -42,6 +43,13 @@ const seniorityOptions: Option<SeniorityFilter>[] = [
   { id: 'mid', label: 'Pleno' },
   { id: 'senior', label: 'Sênior' },
   { id: 'lead', label: 'Liderança' },
+]
+
+const contractOptions: Option<ContractFilter>[] = [
+  { id: 'all', label: 'Todos' },
+  { id: 'clt', label: 'CLT' },
+  { id: 'pj', label: 'PJ' },
+  { id: 'freelance', label: 'Freela' },
 ]
 
 const disciplineOptions: Option<DisciplineFilter>[] = [
@@ -174,6 +182,7 @@ export function JobFilters({
       ...value,
       market,
       state: market === 'international' ? 'all' : value.state,
+      contract: market === 'international' ? 'all' : value.contract,
     })
   }
 
@@ -262,6 +271,14 @@ export function JobFilters({
             options={seniorityOptions}
             value={value.seniority}
             onChange={(seniority) => onChange({ ...value, seniority })}
+          />
+        )}
+        {value.market === 'international' ? null : (
+          <FilterRow
+            label="Contrato"
+            options={contractOptions}
+            value={value.contract}
+            onChange={(contract) => onChange({ ...value, contract })}
           />
         )}
         <FilterRow

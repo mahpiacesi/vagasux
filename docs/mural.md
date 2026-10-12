@@ -54,7 +54,9 @@ order by published_at desc nulls last, captured_at desc;
 
 ## Filtros
 
-Além da busca por texto, o mural oferece pills para **Mercado**, **Formato**, **Estado** (Brasil), **Nível** e **Cargo**.
+Além da busca por texto, o mural oferece pills para **Mercado**, **Formato**, **Estado** (Brasil), **Nível**, **Contrato** e **Cargo**.
+
+O filtro **Contrato** usa `employment_type` quando a vaga declara o regime: `clt`, `pj` ou `freelance`. Vaga sem essa frase (`null` ou `unknown`) continua na lista e fica de fora só quando a pessoa escolhe CLT, PJ ou Freela. No mercado internacional o filtro some, no mesmo espírito do Estado. O card mostra o selo só nesses três casos.
 
 O filtro **Cargo** usa a coluna normalizada `discipline` (enum no banco). Valores:
 
@@ -70,6 +72,7 @@ Cada vaga pode mostrar:
 
 - **Nova** — capturada nos últimos 3 dias
 - **Remota / Híbrida / Presencial** — quando `work_model` estiver preenchido
+- **CLT / PJ / Freela** — quando `employment_type` tiver esse regime explícito
 - **Internacional** — quando `is_international = true`
 - **Fonte** — Gupy, Remotar, Greenhouse, etc. (`source`)
 - **Cargo** — label de `discipline` (ex.: Product Design, UX, Visual & Graphic)

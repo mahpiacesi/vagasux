@@ -63,6 +63,17 @@ Enums:
 - `work_model`: remote | hybrid | onsite | unknown  
 - `employment_type`: clt | pj | freelance | internship | unknown  
 
+`employment_type` alimenta o filtro **Contrato** do mural (CLT, PJ, Freela). O modelo devolve um valor, e o node **Apply enrichment** substitui pelo texto da vaga (`resolveEmploymentType` em `tools/n8n/jobEmployment.ts`):
+
+- **CLT** só com `CLT` ou carteira assinada.
+- **PJ** só com `PJ`, pessoa jurídica, nota fiscal, emissão de nota, ou exigência de CNPJ para contratar (`possuir CNPJ`, `CNPJ ativo`). CNPJ numérico de rodapé não conta.
+- **Freela** só com freelancer, freelance ou freela. "Por projeto" só conta perto de palavras de contratação.
+- **CLT e PJ no mesmo texto** (ou qualquer combinação) fica `unknown`.
+- **Sem essas frases** fica `unknown`. Empresa brasileira, vaga da Gupy ou a palavra "efetivo" não viram CLT.
+- Estágio continua no filtro **Nível**. Este campo não grava `internship`.
+
+Vaga sem regime segue publicada. O filtro só separa quem escolhe um contrato.
+
 `discipline` é a categoria normalizada usada no filtro **Cargo** do mural. A IA devolve o valor; o node **Apply enrichment** valida com `resolveDiscipline` (`tools/n8n/jobDiscipline.ts`):
 
 - **Motion** e **UI** — só com sinal explícito em título/role/área (como motion: área `UX/UI Design` sozinha não vira UI).
