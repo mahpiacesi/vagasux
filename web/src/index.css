@@ -776,6 +776,11 @@
   transform: translateY(0);
 }
 
+.guilda-page {
+  --guilda-nav-top: 4.75rem;
+  --guilda-anchor-offset: 8.25rem;
+}
+
 .guilda-bevel::before {
   content: '';
   position: absolute;
@@ -1182,6 +1187,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .mural-fade,
   .job-row,
   .skeleton,
