@@ -29,6 +29,10 @@ O chat pode ficar **visualmente vazio** após summarization ou ao retomar no dia
 
 3. Se o usuário só cumprimentar ou retomar sem pedido novo, o Handoff **é** a resposta principal — não deixe a conversa “vazia”.
 
+## Quando a alteração fica pronta para ver
+
+Na mesma mensagem, mande o link da prévia da Vercel e o número da PR. Não espere a pessoa perguntar se já está no ar.
+
 ## Ao **encerrar** ou antes de pausar trabalho relevante
 
 Atualize `docs/agent-handoff.md`:
