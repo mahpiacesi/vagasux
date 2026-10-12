@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import type { Testimonial, TestimonialTone } from '@/data/testimonials'
@@ -89,6 +89,20 @@ function RowCard({ entry }: { entry: RowItem }) {
   return <TestimonialCard item={entry.item} />
 }
 
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReduced(media.matches)
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
+
+  return reduced
+}
+
 function MarqueeRow({
   items,
   reverse = false,
@@ -98,7 +112,8 @@ function MarqueeRow({
   reverse?: boolean
   duration?: number
 }) {
-  const loop = [...items, ...items]
+  const reducedMotion = usePrefersReducedMotion()
+  const loop = reducedMotion ? items : [...items, ...items]
   const trackRef = useRef<HTMLDivElement>(null)
 
   const setSpeed = (rate: number) => {
@@ -112,13 +127,13 @@ function MarqueeRow({
   return (
     <div
       className="testimonials-row relative overflow-hidden py-1"
-      aria-hidden
+      aria-hidden={reducedMotion ? undefined : true}
       onMouseEnter={() => setSpeed(0.35)}
       onMouseLeave={() => setSpeed(1)}
     >
       <div
         ref={trackRef}
-        className={`flex w-max gap-4 ${reverse ? 'testimonials-track-reverse' : 'testimonials-track'}`}
+        className={`flex w-max gap-4 ${reducedMotion ? '' : reverse ? 'testimonials-track-reverse' : 'testimonials-track'}`}
         style={{ ['--marquee-duration' as string]: `${duration}s` }}
       >
         {loop.map((entry, index) => (
@@ -191,7 +206,7 @@ export function TestimonialsMarquee() {
   ].filter((entry) => entry.kind === 'quote' && entry.item)
 
   return (
-    <section className="overflow-hidden bg-white py-16 md:py-24">
+    <section className="overflow-x-clip bg-white py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-5 md:max-w-4xl md:px-6">
         <p className="text-xs font-bold tracking-[0.18em] text-brand-400 uppercase">
           Wall of Vaguiners

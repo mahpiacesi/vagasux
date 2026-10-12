@@ -246,6 +246,11 @@
   animation: marquee-scroll 28s linear infinite;
 }
 
+.testimonials-row {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .testimonials-track {
   --marquee-duration: 95s;
   animation: marquee-scroll var(--marquee-duration) linear infinite;
@@ -1203,6 +1208,19 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .testimonials-row {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-inline: 1.25rem;
+    scroll-padding-inline: 1.25rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testimonials-row article {
+    scroll-snap-align: start;
   }
 
   .umbrella-hero-raindrop {
