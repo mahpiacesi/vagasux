@@ -35,6 +35,9 @@
 
 ## Feito recentemente
 
+### Relatos da home no celular (12 out)
+- **PR #159** mergeada: com o movimento reduzido, no iPhone com Chrome, os relatos da home passam para o lado em vez de ficarem cortados na margem.
+
 ### Cards de FAQ e Glossário (12 out)
 - **PR #157** mergeada: no fim do Guia, o clarão branco saiu dos cards de FAQ e Glossário. A borda colorida fica, e no hover o card só sobe.
 
@@ -279,6 +282,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #159 — relatos da home no celular](https://github.com/mahpiacesi/vagasux/pull/159) | ✅ Mergeada em 12/10 |
 | [PR #157 — cards de FAQ e Glossário](https://github.com/mahpiacesi/vagasux/pull/157) | ✅ Mergeada em 12/10 |
 | [PR #155 — âncora das abas da Guilda](https://github.com/mahpiacesi/vagasux/pull/155) | ✅ Mergeada em 12/10 |
 | [PR #152 — escopo do mural](https://github.com/mahpiacesi/vagasux/pull/152) | ✅ Mergeada em 09/10 |
