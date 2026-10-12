@@ -61,6 +61,15 @@ export function parseJobFiltersFromSearchParams(
   }
 }
 
+/**
+ * The field is controlled by the URL. Trimming on every keystroke deletes the
+ * space before the next word is typed. Keep that space in the field while the
+ * trimmed term already matches the URL.
+ */
+export function preserveJobQueryWhileTyping(draft: string, urlQuery: string) {
+  return draft.trim() === urlQuery.trim() ? draft : urlQuery
+}
+
 export function serializeJobFiltersToSearchParams(
   filters: JobFiltersState,
 ): URLSearchParams {
