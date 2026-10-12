@@ -35,6 +35,9 @@
 
 ## Feito recentemente
 
+### Cards de FAQ e Glossário (12 out)
+- **PR #157** mergeada: no fim do Guia, o clarão branco saiu dos cards de FAQ e Glossário. A borda colorida fica, e no hover o card só sobe.
+
 ### Âncora das abas da Guilda (12 out)
 - **PR #155** mergeada: o clique em Benefícios, Como funciona, Depoimentos, Planos, FAQ e em Ver planos desce a página até a seção. As abas ficam abaixo do menu.
 
@@ -276,6 +279,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #157 — cards de FAQ e Glossário](https://github.com/mahpiacesi/vagasux/pull/157) | ✅ Mergeada em 12/10 |
 | [PR #155 — âncora das abas da Guilda](https://github.com/mahpiacesi/vagasux/pull/155) | ✅ Mergeada em 12/10 |
 | [PR #152 — escopo do mural](https://github.com/mahpiacesi/vagasux/pull/152) | ✅ Mergeada em 09/10 |
 | [PR #150 — logos de parceiros no celular](https://github.com/mahpiacesi/vagasux/pull/150) | ✅ Mergeada em 08/10 |
