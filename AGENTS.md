@@ -1,5 +1,9 @@
 # Guia: previews de links
 
+## Entrega para revisão
+
+Quando a alteração estiver pronta para a pessoa ver, mande na mesma mensagem o link da prévia da Vercel e o número da PR. Não espere ela perguntar se já está no ar.
+
 ## Handoff de agentes
 
 Atualize `docs/agent-handoff.md` somente após uma PR ser integrada. Não edite

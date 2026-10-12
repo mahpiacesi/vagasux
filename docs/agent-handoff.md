@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-09
+**Última atualização:** 2026-10-12
 
 ---
 
@@ -13,7 +13,7 @@
 | Domínio | ✅ Live | `vagasux.com.br` serve o site novo desde 08/10. `www` redireciona para o apex. O e-mail (MX do Google) ficou como estava |
 | Anúncios | ✅ Live | Nas listas, em largura total no celular (#146). O anúncio automático não passa mais do footer (#148) |
 | `/sobre` | ✅ Live | PR #115 + atualização #120 (29/09) |
-| `/guilda` | ✅ Live | Sala no Discord (#122). Sem scroll horizontal; plano anual sem “Apoio contínuo” (#124, 01/10) |
+| `/guilda` | ✅ Live | Sala no Discord (#122). As abas descem a página até a seção (#155, 12/10) |
 | Menu mobile | ✅ Live | Tela cheia, com Faça parte e hambúrguer (#124, 01/10) |
 | `/cookies` | ✅ Live | O aviso e a página descrevem o anúncio da curadoria gratuita (#142, 08/10). Clarity e Analytics só depois de Aceitar |
 | Escrita de vagas e parceiros | ✅ Live | A chave pública não grava mais (#135, 05/10). Os coletores seguem com a chave de serviço |
@@ -34,6 +34,9 @@
 ---
 
 ## Feito recentemente
+
+### Âncora das abas da Guilda (12 out)
+- **PR #155** mergeada: o clique em Benefícios, Como funciona, Depoimentos, Planos, FAQ e em Ver planos desce a página até a seção. As abas ficam abaixo do menu.
 
 ### Escopo do mural (9 out)
 - **PR #152** mergeada: saem do mural vagas de design de sobrancelha, modelista, assistente de estilo e editor de vídeo. Motion, produto e gráfico continuam.
@@ -273,6 +276,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #155 — âncora das abas da Guilda](https://github.com/mahpiacesi/vagasux/pull/155) | ✅ Mergeada em 12/10 |
 | [PR #152 — escopo do mural](https://github.com/mahpiacesi/vagasux/pull/152) | ✅ Mergeada em 09/10 |
 | [PR #150 — logos de parceiros no celular](https://github.com/mahpiacesi/vagasux/pull/150) | ✅ Mergeada em 08/10 |
 | [PR #148 — anúncio automático fora do footer](https://github.com/mahpiacesi/vagasux/pull/148) | ✅ Mergeada em 08/10 |
