@@ -1,5 +1,6 @@
 import { ArrowUpRight, CaretDown } from '@phosphor-icons/react'
-import { useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { GuildaClosingSection } from '@/components/guilda/GuildaClosingSection'
 import { GuildaTestimonials } from '@/components/guilda/GuildaTestimonials'
 import { ScrollReveal } from '@/components/guilda/ScrollReveal'
@@ -16,6 +17,7 @@ import {
   guildaDiscordFeature,
 } from '@/data/guilda'
 import { useActiveSection } from '@/hooks/useActiveSection'
+import { prefersReducedMotion, scrollToAnchor } from '@/lib/anchorScroll'
 import { guildaHashes } from '@/lib/siteLinks'
 import { cn } from '@/lib/utils'
 
@@ -114,20 +116,76 @@ function FaqItem({
 
 export function GuildaPage() {
   const activeSection = useActiveSection(guildaNav.map((item) => item.hash))
+  const navigate = useNavigate()
+  const location = useLocation()
+  const pageRef = useRef<HTMLElement>(null)
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const page = pageRef.current
+    const nav = navRef.current
+    const header = document.querySelector('header')
+    if (!page || !nav || !(header instanceof HTMLElement)) return
+
+    const sync = () => {
+      const top = Math.ceil(header.getBoundingClientRect().height)
+      page.style.setProperty('--guilda-nav-top', `${top}px`)
+      page.style.setProperty(
+        '--guilda-anchor-offset',
+        `${top + nav.offsetHeight + 12}px`,
+      )
+    }
+
+    sync()
+    const observer = new ResizeObserver(sync)
+    observer.observe(header)
+    observer.observe(nav)
+    return () => observer.disconnect()
+  }, [])
+
+  function handleAnchorClick(event: MouseEvent<HTMLElement>) {
+    if (event.defaultPrevented || event.button !== 0) return
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+
+    const link = (event.target as Element | null)?.closest('a')
+    if (!link || !event.currentTarget.contains(link)) return
+    if (link.target && link.target !== '_self') return
+
+    const href = link.getAttribute('href')
+    if (!href?.startsWith('#') || href.length < 2) return
+
+    const id = decodeURIComponent(href.slice(1))
+    if (!document.getElementById(id)) return
+
+    event.preventDefault()
+
+    if (window.location.hash === href) {
+      scrollToAnchor(href, prefersReducedMotion() ? 'instant' : 'smooth')
+      return
+    }
+
+    navigate({
+      pathname: location.pathname,
+      search: location.search,
+      hash: href,
+    })
+  }
 
   return (
-    <main className="guilda-page">
+    <main ref={pageRef} className="guilda-page" onClick={handleAnchorClick}>
       <GuildaHero />
 
       <nav
+        ref={navRef}
         aria-label="Seções da Guilda"
-        className="sticky top-0 z-40 border-b border-neutral-500/10 bg-neutral-100/90 backdrop-blur-md"
+        className="sticky top-[var(--guilda-nav-top)] z-40 border-b border-neutral-500/10 bg-neutral-100/90 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-5 py-2.5 md:justify-center md:px-6">
           {guildaNav.map((item) => (
             <a
               key={item.hash}
               href={`#${item.hash}`}
+              aria-current={activeSection === item.hash ? 'true' : undefined}
               className={cn(
                 'shrink-0 rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wide transition-all duration-300 md:text-sm',
                 activeSection === item.hash
@@ -181,7 +239,7 @@ export function GuildaPage() {
 
       <section
         id={guildaHashes.beneficios}
-        className="guilda-bevel scroll-mt-28 border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-[var(--guilda-anchor-offset)] border-t border-neutral-500/10 bg-gradient-to-b from-brand-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
           <SectionIntro
@@ -224,7 +282,7 @@ export function GuildaPage() {
 
       <section
         id={guildaHashes.comoFunciona}
-        className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24"
+        className="scroll-mt-[var(--guilda-anchor-offset)] px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <ScrollReveal className="max-w-2xl">
@@ -330,7 +388,7 @@ export function GuildaPage() {
 
       <section
         id={guildaHashes.depoimentos}
-        className="guilda-bevel scroll-mt-28 bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-[var(--guilda-anchor-offset)] bg-gradient-to-b from-complementary-100/50 to-neutral-100 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <SectionIntro
@@ -346,7 +404,7 @@ export function GuildaPage() {
 
       <section
         id={guildaHashes.planos}
-        className="scroll-mt-28 border-t border-neutral-500/10 px-5 py-16 md:px-6 md:py-24"
+        className="scroll-mt-[var(--guilda-anchor-offset)] border-t border-neutral-500/10 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-16">
@@ -447,7 +505,7 @@ export function GuildaPage() {
 
       <section
         id={guildaHashes.faq}
-        className="guilda-bevel scroll-mt-28 border-t border-neutral-500/10 bg-brand-100/25 px-5 py-16 md:px-6 md:py-24"
+        className="guilda-bevel scroll-mt-[var(--guilda-anchor-offset)] border-t border-neutral-500/10 bg-brand-100/25 px-5 py-16 md:px-6 md:py-24"
       >
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <SectionIntro
