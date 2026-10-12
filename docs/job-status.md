@@ -55,8 +55,8 @@ Roda no **Scheduler** do n8n (node `Expire stale jobs`) depois dos collectors, t
 
 Workflow **Expire broken links** (após `Expire stale jobs`):
 
-- Verifica URLs de vagas `published` dos **últimos 14 dias** (até 250/dia)
-- Expira quando: HTTP **404/410**, DNS não resolve, timeout, conexão recusada
+- Verifica URLs de vagas `published` em lotes de 250, percorrendo o mural inteiro a cada 3 dias
+- Expira quando: HTTP **404/410**, DNS não resolve, timeout, conexão recusada, a página do InfoJobs diz que a vaga não está mais disponível, o Remotar marca `expired`, ou o LinkedIn mostra a vaga encerrada
 - RPC: `expire_jobs_by_ids(uuid[])`
 - Código: `tools/n8n/expire-broken-links.workflow.ts`
 
