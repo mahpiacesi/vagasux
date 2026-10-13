@@ -134,7 +134,9 @@ function StateFilterSelect({
       aria-hidden={hidden}
       className={cn(
         'shrink-0',
-        fill ? 'w-0 min-w-full' : 'w-full',
+        fill
+          ? 'w-full md:w-[11rem] min-[860px]:w-0 min-[860px]:max-w-none min-[860px]:min-w-full'
+          : 'w-full',
         !fill && (narrow ? 'md:w-28 md:max-w-28' : 'md:w-[11rem]'),
         hidden && 'invisible pointer-events-none',
       )}
@@ -256,7 +258,7 @@ export function JobFilters({
             curationSpread &&
               'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
             opportunityAlign &&
-              'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content] min-[860px]:items-end min-[860px]:justify-items-start min-[860px]:gap-x-0',
+              'min-[860px]:grid min-[860px]:w-max min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_max-content_max-content] min-[860px]:items-end min-[860px]:justify-start min-[860px]:gap-x-8 min-[860px]:gap-y-5',
           )}
         >
           <FilterRow
@@ -265,18 +267,14 @@ export function JobFilters({
             value={value.market}
             onChange={handleMarketChange}
           />
-          {curationSpread || opportunityAlign ? (
-            <div className="hidden min-[860px]:block" aria-hidden />
-          ) : null}
+          {curationSpread ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
           <FilterRow
             label="Formato"
             options={workOptions}
             value={value.workModel}
             onChange={(workModel) => onChange({ ...value, workModel })}
           />
-          {curationSpread || opportunityAlign ? (
-            <div className="hidden min-[860px]:block" aria-hidden />
-          ) : null}
+          {curationSpread ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
           {showStateFilter && !opportunityAlign ? (
             <StateFilterSelect
               label="Estado"
@@ -287,8 +285,18 @@ export function JobFilters({
               onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
+          {showStateFilter && opportunityAlign ? (
+            <StateFilterSelect
+              label="Estado"
+              options={BRAZILIAN_STATES}
+              value={value.state}
+              hidden={!showState}
+              fill
+              onChange={(state) => onChange({ ...value, state })}
+            />
+          ) : null}
           {curationSpread ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
-          {curationSpread || opportunityAlign ? (
+          {curationSpread ? (
             <FilterRow
               label="Contrato"
               options={contractOptions}
@@ -300,7 +308,7 @@ export function JobFilters({
             <div className="h-0 w-full basis-full min-[860px]:hidden" aria-hidden />
           ) : null}
           {opportunityAlign ? (
-            <div className="max-[859px]:-mt-4 min-[860px]:col-span-3">
+            <div className="max-[859px]:-mt-4 min-[860px]:col-span-2">
               <FilterRow
                 label="Nível"
                 options={seniorityOptions}
@@ -309,15 +317,12 @@ export function JobFilters({
               />
             </div>
           ) : null}
-          {opportunityAlign ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
-          {showStateFilter && opportunityAlign ? (
-            <StateFilterSelect
-              label="Estado"
-              options={BRAZILIAN_STATES}
-              value={value.state}
-              hidden={!showState}
-              fill
-              onChange={(state) => onChange({ ...value, state })}
+          {opportunityAlign ? (
+            <FilterRow
+              label="Contrato"
+              options={contractOptions}
+              value={value.contract}
+              onChange={(contract) => onChange({ ...value, contract })}
             />
           ) : null}
         </div>
