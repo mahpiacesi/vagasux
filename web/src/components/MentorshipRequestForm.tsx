@@ -47,9 +47,12 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
     const proof = data.get('proof')
     const nextErrors: Record<string, string> = {}
 
+    const mentorId = String(data.get('mentorId') ?? '').trim()
+    const mentor = mentors.find((item) => item.id === mentorId)
     for (const field of ['mentorId', 'name', 'email', 'whatsapp', 'linkedin', 'area', 'experience', 'availability', 'need']) {
       if (!String(data.get(field) ?? '').trim()) nextErrors[field] = 'Este campo é obrigatório.'
     }
+    if (mentorId && !mentor) nextErrors.mentorId = 'Selecione uma pessoa mentora.'
     const email = String(data.get('email') ?? '').trim()
     const whatsapp = String(data.get('whatsapp') ?? '').trim()
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Informe um e-mail válido.'
@@ -71,7 +74,8 @@ export function MentorshipRequestForm({ mentors }: { mentors: AvailableMentor[] 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          mentorId: data.get('mentorId'),
+          mentorId,
+          mentorName: mentor?.name ?? '',
           name: data.get('name'),
           email,
           whatsapp,

@@ -1,5 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { randomUUID } from 'node:crypto'
+import { resolveMentorPageId } from '../src/data/mentorPageIds'
 
 const json = (response: ServerResponse, status: number, body: Record<string, string>) => {
   response.statusCode = status
@@ -60,10 +61,19 @@ export default async function handler(request: IncomingMessage, response: Server
   const { proofUrl } = await upload.json() as { proofUrl?: unknown }
   if (typeof proofUrl !== 'string') return json(response, 502, { error: 'Could not save payment proof' })
 
+  const mentorId = resolveMentorPageId(String(input.mentorId))
+  const mentorName = typeof input.mentorName === 'string' ? input.mentorName.trim() : ''
   const upstream = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-VagasUX-Request-ID': requestId },
-    body: JSON.stringify({ ...input, requestId, proofUrl, receivedAt: new Date().toISOString() }),
+    body: JSON.stringify({
+      ...input,
+      mentorId,
+      ...(mentorName ? { mentorName } : {}),
+      requestId,
+      proofUrl,
+      receivedAt: new Date().toISOString(),
+    }),
   })
   if (!upstream.ok) return json(response, 502, { error: 'Could not save mentorship request' })
 
