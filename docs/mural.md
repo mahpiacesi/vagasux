@@ -54,7 +54,7 @@ order by published_at desc nulls last, captured_at desc;
 
 ## Filtros
 
-Além da busca por texto, o mural oferece pills para **Mercado**, **Formato** e **Estado** (Brasil). **Contrato** fica na mesma linha de **Nível**, à direita. **Cargo** fica na linha de baixo.
+Além da busca por texto, o mural oferece pills para **Mercado**, **Formato** e **Estado** (Brasil). **Contrato** fica na mesma linha de **Nível**, à direita. Na curadoria, sem o Nível, **Contrato** fica nessa primeira linha, à direita de Estado. **Cargo** fica na linha de baixo.
 
 O filtro **Contrato** usa `employment_type` quando a vaga declara o regime: `clt`, `pj` ou `freelance`. Vaga sem essa frase (`null` ou `unknown`) continua na lista e fica de fora só quando a pessoa escolhe CLT, PJ ou Freela. Vaga de **estágio** (`seniority = intern`) não mostra selo de contrato e não entra nesse filtro: estágio fica em **Nível**. No mercado internacional o filtro some, no mesmo espírito do Estado. O card mostra o selo só nesses três casos, fora de estágio.
 

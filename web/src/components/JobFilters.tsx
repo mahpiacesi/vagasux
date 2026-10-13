@@ -264,27 +264,39 @@ export function JobFilters({
               onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
+          {hideSeniority && value.market !== 'international' ? (
+            <FilterRow
+              label="Contrato"
+              options={contractOptions}
+              value={value.contract}
+              onChange={(contract) => onChange({ ...value, contract })}
+            />
+          ) : null}
         </div>
-        {hideSeniority && value.market === 'international' ? null : (
+        {hideSeniority || value.market === 'international' ? null : (
           <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
-            {hideSeniority ? null : (
-              <FilterRow
-                label="Nível"
-                options={seniorityOptions}
-                value={value.seniority}
-                onChange={(seniority) => onChange({ ...value, seniority })}
-              />
-            )}
-            {value.market === 'international' ? null : (
-              <FilterRow
-                label="Contrato"
-                options={contractOptions}
-                value={value.contract}
-                onChange={(contract) => onChange({ ...value, contract })}
-              />
-            )}
+            <FilterRow
+              label="Nível"
+              options={seniorityOptions}
+              value={value.seniority}
+              onChange={(seniority) => onChange({ ...value, seniority })}
+            />
+            <FilterRow
+              label="Contrato"
+              options={contractOptions}
+              value={value.contract}
+              onChange={(contract) => onChange({ ...value, contract })}
+            />
           </div>
         )}
+        {!hideSeniority && value.market === 'international' ? (
+          <FilterRow
+            label="Nível"
+            options={seniorityOptions}
+            value={value.seniority}
+            onChange={(seniority) => onChange({ ...value, seniority })}
+          />
+        ) : null}
         <FilterRow
           label="Cargo"
           options={disciplineOptions}
