@@ -23,7 +23,7 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Filtro de contrato CLT, PJ e Freela (#164, 13/10). Estágio não entra nesse filtro. A busca aceita espaço entre palavras (#161, 12/10) |
+| Mural de vagas | ✅ Live | Filtro de contrato CLT, PJ e Freela (#164, 13/10). No celular, as pills quebram dentro do card (#165, 13/10). A busca aceita espaço entre palavras (#161, 12/10) |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
@@ -34,6 +34,10 @@
 ---
 
 ## Feito recentemente
+
+### Filtro no celular (13 out)
+- **PR #165** mergeada: em `/oportunidades` e `/vagas-para-iniciantes`, no celular, cada grupo do filtro fica na própria linha e as pills quebram dentro do card. A página deixa de rolar para o lado.
+- No desktop, Estado e Contrato continuam na mesma coluna.
 
 ### Filtro de contrato no mural (13 out)
 - **PR #164** mergeada: em `/oportunidades` e `/vagas-para-iniciantes` dá para filtrar CLT, PJ e Freela.
@@ -290,6 +294,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #165 — filtro no celular](https://github.com/mahpiacesi/vagasux/pull/165) | ✅ Mergeada em 13/10 |
 | [PR #164 — filtro de contrato CLT, PJ e Freela](https://github.com/mahpiacesi/vagasux/pull/164) | ✅ Mergeada em 13/10 |
 | [PR #161 — espaço na busca das vagas](https://github.com/mahpiacesi/vagasux/pull/161) | ✅ Mergeada em 12/10 |
 | [PR #159 — relatos da home no celular](https://github.com/mahpiacesi/vagasux/pull/159) | ✅ Mergeada em 12/10 |
