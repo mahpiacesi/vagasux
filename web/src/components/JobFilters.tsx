@@ -179,6 +179,8 @@ export function JobFilters({
 }: JobFiltersProps) {
   const active = hasActiveFilters(value)
   const showState = showStateFilter && value.market !== 'international'
+  const curationSpread = hideSeniority && value.market !== 'international'
+  const opportunityAlign = !hideSeniority && value.market !== 'international'
 
   function handleMarketChange(market: MarketFilter) {
     onChange({
@@ -248,9 +250,10 @@ export function JobFilters({
         <div
           className={cn(
             'flex flex-wrap items-end gap-x-5 gap-y-4',
-            hideSeniority &&
-              value.market !== 'international' &&
+            curationSpread &&
               'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
+            opportunityAlign &&
+              'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content] min-[860px]:items-end min-[860px]:justify-items-start min-[860px]:gap-x-0',
           )}
         >
           <FilterRow
@@ -259,7 +262,7 @@ export function JobFilters({
             value={value.market}
             onChange={handleMarketChange}
           />
-          {hideSeniority && value.market !== 'international' ? (
+          {curationSpread || opportunityAlign ? (
             <div className="hidden min-[860px]:block" aria-hidden />
           ) : null}
           <FilterRow
@@ -268,7 +271,7 @@ export function JobFilters({
             value={value.workModel}
             onChange={(workModel) => onChange({ ...value, workModel })}
           />
-          {hideSeniority && value.market !== 'international' ? (
+          {curationSpread || opportunityAlign ? (
             <div className="hidden min-[860px]:block" aria-hidden />
           ) : null}
           {showStateFilter ? (
@@ -277,14 +280,34 @@ export function JobFilters({
               options={BRAZILIAN_STATES}
               value={value.state}
               hidden={!showState}
-              narrow={hideSeniority && value.market !== 'international'}
+              narrow={curationSpread}
               onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
-          {hideSeniority && value.market !== 'international' ? (
-            <div className="hidden min-[860px]:block" aria-hidden />
+          {curationSpread ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
+          {curationSpread ? (
+            <FilterRow
+              label="Contrato"
+              options={contractOptions}
+              value={value.contract}
+              onChange={(contract) => onChange({ ...value, contract })}
+            />
           ) : null}
-          {hideSeniority && value.market !== 'international' ? (
+          {opportunityAlign ? (
+            <div className="h-0 w-full basis-full min-[860px]:hidden" aria-hidden />
+          ) : null}
+          {opportunityAlign ? (
+            <div className="max-[859px]:-mt-4 min-[860px]:col-span-3">
+              <FilterRow
+                label="Nível"
+                options={seniorityOptions}
+                value={value.seniority}
+                onChange={(seniority) => onChange({ ...value, seniority })}
+              />
+            </div>
+          ) : null}
+          {opportunityAlign ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
+          {opportunityAlign ? (
             <FilterRow
               label="Contrato"
               options={contractOptions}
@@ -293,22 +316,6 @@ export function JobFilters({
             />
           ) : null}
         </div>
-        {hideSeniority || value.market === 'international' ? null : (
-          <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
-            <FilterRow
-              label="Nível"
-              options={seniorityOptions}
-              value={value.seniority}
-              onChange={(seniority) => onChange({ ...value, seniority })}
-            />
-            <FilterRow
-              label="Contrato"
-              options={contractOptions}
-              value={value.contract}
-              onChange={(contract) => onChange({ ...value, contract })}
-            />
-          </div>
-        )}
         {!hideSeniority && value.market === 'international' ? (
           <FilterRow
             label="Nível"
