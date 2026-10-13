@@ -73,13 +73,11 @@ function FilterRow<T extends string>({
   options,
   value,
   onChange,
-  dense = false,
 }: {
   label: string
   options: Option<T>[]
   value: T
   onChange: (value: T) => void
-  dense?: boolean
 }) {
   const visibleOptions = options.filter((option) => option.id !== 'all')
 
@@ -88,7 +86,7 @@ function FilterRow<T extends string>({
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
       </p>
-      <div className={cn('mt-2 flex flex-nowrap', dense ? 'gap-1.5' : 'gap-2')} role="group" aria-label={label}>
+      <div className="mt-2 flex flex-nowrap gap-2" role="group" aria-label={label}>
         {visibleOptions.map((option) => {
           const active = value === option.id
           return (
@@ -99,7 +97,7 @@ function FilterRow<T extends string>({
               variant={active ? 'default' : 'outline'}
               aria-pressed={active}
               onClick={() => onChange(active ? ('all' as T) : option.id)}
-              className={`rounded-full font-semibold ${dense ? 'px-3' : 'px-4'} ${
+              className={`rounded-full px-4 font-semibold ${
                 active
                   ? 'bg-brand-500 text-neutral-100 shadow-sm hover:bg-brand-400'
                   : 'border-neutral-200/80 bg-neutral-100 text-neutral-400 hover:border-brand-200 hover:bg-brand-100/50 hover:text-brand-500'
@@ -120,21 +118,18 @@ function StateFilterSelect({
   value,
   onChange,
   hidden = false,
-  narrow = false,
 }: {
   label: string
   options: string[]
   value: string
   onChange: (value: string) => void
   hidden?: boolean
-  narrow?: boolean
 }) {
   return (
     <div
       aria-hidden={hidden}
       className={cn(
-        'w-full shrink-0',
-        narrow ? 'md:w-36' : 'md:w-[11rem]',
+        'w-full shrink-0 md:w-[11rem]',
         hidden && 'invisible pointer-events-none',
       )}
     >
@@ -251,7 +246,7 @@ export function JobFilters({
           className={cn(
             'flex items-end gap-y-4',
             hideSeniority && value.market !== 'international'
-              ? 'flex-wrap gap-x-3 lg:flex-nowrap'
+              ? 'flex-wrap gap-x-5 gap-y-4 lg:flex-nowrap lg:justify-between'
               : 'flex-wrap gap-x-5',
           )}
         >
@@ -273,13 +268,11 @@ export function JobFilters({
               options={BRAZILIAN_STATES}
               value={value.state}
               hidden={!showState}
-              narrow={hideSeniority && value.market !== 'international'}
               onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
           {hideSeniority && value.market !== 'international' ? (
             <FilterRow
-              dense
               label="Contrato"
               options={contractOptions}
               value={value.contract}
