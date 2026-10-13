@@ -82,11 +82,11 @@ function FilterRow<T extends string>({
   const visibleOptions = options.filter((option) => option.id !== 'all')
 
   return (
-    <div className="w-max max-w-full shrink-0">
+    <div className="w-full min-w-0 max-w-full min-[860px]:w-max">
       <p className="text-xs font-bold tracking-[0.12em] text-neutral-400 uppercase">
         {label}
       </p>
-      <div className="mt-2 flex flex-nowrap gap-2" role="group" aria-label={label}>
+      <div className="mt-2 flex flex-wrap gap-2 min-[860px]:flex-nowrap" role="group" aria-label={label}>
         {visibleOptions.map((option) => {
           const active = value === option.id
           return (
@@ -133,11 +133,9 @@ function StateFilterSelect({
     <div
       aria-hidden={hidden}
       className={cn(
-        'shrink-0',
-        fill
-          ? 'w-full md:w-[11rem] min-[860px]:w-0 min-[860px]:max-w-none min-[860px]:min-w-full'
-          : 'w-full',
-        !fill && (narrow ? 'md:w-28 md:max-w-28' : 'md:w-[11rem]'),
+        'w-full min-w-0 max-w-full shrink-0',
+        fill && 'min-[860px]:w-0 min-[860px]:max-w-none min-[860px]:min-w-full',
+        !fill && (narrow ? 'min-[860px]:w-28 min-[860px]:max-w-28' : 'min-[860px]:w-[11rem]'),
         hidden && 'invisible pointer-events-none',
       )}
     >
@@ -254,7 +252,7 @@ export function JobFilters({
       <div className="mt-4 space-y-4">
         <div
           className={cn(
-            'flex flex-wrap items-end gap-x-5 gap-y-4',
+            'flex flex-col gap-4 min-[860px]:items-end',
             curationSpread &&
               'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
             opportunityAlign &&
@@ -305,10 +303,7 @@ export function JobFilters({
             />
           ) : null}
           {opportunityAlign ? (
-            <div className="h-0 w-full basis-full min-[860px]:hidden" aria-hidden />
-          ) : null}
-          {opportunityAlign ? (
-            <div className="max-[859px]:-mt-4 min-[860px]:col-span-2">
+            <div className="min-[860px]:col-span-2">
               <FilterRow
                 label="Nível"
                 options={seniorityOptions}
