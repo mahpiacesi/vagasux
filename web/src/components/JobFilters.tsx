@@ -119,6 +119,7 @@ function StateFilterSelect({
   onChange,
   hidden = false,
   narrow = false,
+  fill = false,
 }: {
   label: string
   options: string[]
@@ -126,13 +127,15 @@ function StateFilterSelect({
   onChange: (value: string) => void
   hidden?: boolean
   narrow?: boolean
+  fill?: boolean
 }) {
   return (
     <div
       aria-hidden={hidden}
       className={cn(
-        'w-full shrink-0',
-        narrow ? 'md:w-28 md:max-w-28' : 'md:w-[11rem]',
+        'shrink-0',
+        fill ? 'w-0 min-w-full' : 'w-full',
+        !fill && (narrow ? 'md:w-28 md:max-w-28' : 'md:w-[11rem]'),
         hidden && 'invisible pointer-events-none',
       )}
     >
@@ -274,7 +277,7 @@ export function JobFilters({
           {curationSpread || opportunityAlign ? (
             <div className="hidden min-[860px]:block" aria-hidden />
           ) : null}
-          {showStateFilter ? (
+          {showStateFilter && !opportunityAlign ? (
             <StateFilterSelect
               label="Estado"
               options={BRAZILIAN_STATES}
@@ -285,7 +288,7 @@ export function JobFilters({
             />
           ) : null}
           {curationSpread ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
-          {curationSpread ? (
+          {curationSpread || opportunityAlign ? (
             <FilterRow
               label="Contrato"
               options={contractOptions}
@@ -307,12 +310,14 @@ export function JobFilters({
             </div>
           ) : null}
           {opportunityAlign ? <div className="hidden min-[860px]:block" aria-hidden /> : null}
-          {opportunityAlign ? (
-            <FilterRow
-              label="Contrato"
-              options={contractOptions}
-              value={value.contract}
-              onChange={(contract) => onChange({ ...value, contract })}
+          {showStateFilter && opportunityAlign ? (
+            <StateFilterSelect
+              label="Estado"
+              options={BRAZILIAN_STATES}
+              value={value.state}
+              hidden={!showState}
+              fill
+              onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
         </div>
