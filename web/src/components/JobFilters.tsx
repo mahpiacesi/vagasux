@@ -265,21 +265,25 @@ export function JobFilters({
             />
           ) : null}
         </div>
-        {hideSeniority ? null : (
-          <FilterRow
-            label="Nível"
-            options={seniorityOptions}
-            value={value.seniority}
-            onChange={(seniority) => onChange({ ...value, seniority })}
-          />
-        )}
-        {value.market === 'international' ? null : (
-          <FilterRow
-            label="Contrato"
-            options={contractOptions}
-            value={value.contract}
-            onChange={(contract) => onChange({ ...value, contract })}
-          />
+        {hideSeniority && value.market === 'international' ? null : (
+          <div className="flex flex-wrap items-end gap-x-5 gap-y-4">
+            {hideSeniority ? null : (
+              <FilterRow
+                label="Nível"
+                options={seniorityOptions}
+                value={value.seniority}
+                onChange={(seniority) => onChange({ ...value, seniority })}
+              />
+            )}
+            {value.market === 'international' ? null : (
+              <FilterRow
+                label="Contrato"
+                options={contractOptions}
+                value={value.contract}
+                onChange={(contract) => onChange({ ...value, contract })}
+              />
+            )}
+          </div>
         )}
         <FilterRow
           label="Cargo"
