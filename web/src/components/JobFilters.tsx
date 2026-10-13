@@ -118,18 +118,21 @@ function StateFilterSelect({
   value,
   onChange,
   hidden = false,
+  narrow = false,
 }: {
   label: string
   options: string[]
   value: string
   onChange: (value: string) => void
   hidden?: boolean
+  narrow?: boolean
 }) {
   return (
     <div
       aria-hidden={hidden}
       className={cn(
-        'w-full shrink-0 md:w-[11rem]',
+        'w-full shrink-0',
+        narrow ? 'md:w-36' : 'md:w-[11rem]',
         hidden && 'invisible pointer-events-none',
       )}
     >
@@ -247,7 +250,7 @@ export function JobFilters({
             'flex flex-wrap items-end gap-x-5 gap-y-4',
             hideSeniority &&
               value.market !== 'international' &&
-              'min-[860px]:grid min-[860px]:w-full min-[860px]:grid-cols-[max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
+              'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0.75rem,1fr)_max-content_minmax(0.75rem,1fr)_max-content_minmax(0.75rem,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
           )}
         >
           <FilterRow
@@ -274,6 +277,7 @@ export function JobFilters({
               options={BRAZILIAN_STATES}
               value={value.state}
               hidden={!showState}
+              narrow={hideSeniority && value.market !== 'international'}
               onChange={(state) => onChange({ ...value, state })}
             />
           ) : null}
