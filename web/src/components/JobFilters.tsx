@@ -244,10 +244,10 @@ export function JobFilters({
       <div className="mt-4 space-y-4">
         <div
           className={cn(
-            'flex items-end gap-y-4',
-            hideSeniority && value.market !== 'international'
-              ? 'flex-wrap gap-x-5 lg:flex-nowrap lg:justify-between'
-              : 'flex-wrap gap-x-5',
+            'flex flex-wrap items-end gap-x-5 gap-y-4',
+            hideSeniority &&
+              value.market !== 'international' &&
+              'min-[860px]:grid min-[860px]:w-full min-[860px]:grid-cols-[max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content_minmax(1.25rem,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
           )}
         >
           <FilterRow
@@ -256,12 +256,18 @@ export function JobFilters({
             value={value.market}
             onChange={handleMarketChange}
           />
+          {hideSeniority && value.market !== 'international' ? (
+            <div className="hidden min-[860px]:block" aria-hidden />
+          ) : null}
           <FilterRow
             label="Formato"
             options={workOptions}
             value={value.workModel}
             onChange={(workModel) => onChange({ ...value, workModel })}
           />
+          {hideSeniority && value.market !== 'international' ? (
+            <div className="hidden min-[860px]:block" aria-hidden />
+          ) : null}
           {showStateFilter ? (
             <StateFilterSelect
               label="Estado"
@@ -270,6 +276,9 @@ export function JobFilters({
               hidden={!showState}
               onChange={(state) => onChange({ ...value, state })}
             />
+          ) : null}
+          {hideSeniority && value.market !== 'international' ? (
+            <div className="hidden min-[860px]:block" aria-hidden />
           ) : null}
           {hideSeniority && value.market !== 'international' ? (
             <FilterRow
