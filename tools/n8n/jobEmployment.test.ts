@@ -53,6 +53,36 @@ test('mais de um regime, ou nenhum, fica desconhecido', () => {
   assert.equal(resolveEmploymentType('Designer', 'Não aceitamos PJ. Contratação CLT.'), 'clt')
 })
 
+test('estágio fica sem contrato, mesmo quando o texto cita freela', () => {
+  assert.equal(
+    resolveEmploymentType(
+      'Product Designer',
+      'We are seeking a talented and motivated Product Design Intern who loves interfaces. Some hands-on experience (through internships, coursework, freelance, or personal projects).',
+    ),
+    'unknown',
+  )
+  assert.equal(resolveEmploymentType('Product Design Intern', 'Freelance experience is welcome.'), 'unknown')
+  assert.equal(resolveEmploymentType('Estagiário de Design Gráfico', 'Atuação em peças digitais.'), 'unknown')
+  assert.equal(
+    resolveEmploymentType('UX Designer', 'As a Design Intern, you will work with the design system.'),
+    'unknown',
+  )
+  assert.equal(
+    resolveEmploymentType(
+      'Strategy Consultant',
+      'Atuar como mentor de estagiários. Contratação CLT.',
+    ),
+    'clt',
+  )
+  assert.equal(
+    resolveEmploymentType(
+      'Product Designer',
+      'Experience through internships, coursework, freelance, or personal projects.',
+    ),
+    'unknown',
+  )
+})
+
 test('a reclassificação só grava regime com evidência e limpa chute de CLT', () => {
   assert.equal(reclassifyEmploymentType('clt', 'Product Designer', 'Atuação em produto.'), 'unknown')
   assert.equal(reclassifyEmploymentType(null, 'Product Designer', 'Atuação em produto.'), null)

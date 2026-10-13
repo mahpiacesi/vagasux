@@ -29,7 +29,7 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 
     if (filters.contract !== 'all' && filters.market !== 'international') {
-      if (job.employment_type !== filters.contract) return false
+      if (job.seniority === 'intern' || job.employment_type !== filters.contract) return false
     }
 
     if (filters.discipline !== 'all') {

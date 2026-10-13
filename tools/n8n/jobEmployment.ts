@@ -14,10 +14,24 @@ export const resolveEmploymentTypeSource = `function resolveEmploymentType(title
     .replace(/[\\u0300-\\u036f]/g, '')
     .slice(0, 20000);
 
+  const titleOnly = String(title || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\\u0300-\\u036f]/g, '');
+  const internship =
+    /\\b(estagiari[oa]s?|estagios?|internships?|interns?)\\b/.test(titleOnly) ||
+    /\\bpessoa estagiaria\\b/.test(normalized) ||
+    /\\b(?:vaga|programa|contrato|oportunidade) de estagio\\b/.test(normalized) ||
+    /\\b(?:seeking|hiring|looking for)\\b(?:\\s+\\w+){0,14}\\s+intern\\b/.test(normalized) ||
+    /\\bas an?\\b(?:\\s+\\w+){0,4}\\s+intern\\b/.test(normalized) ||
+    /\\b(?:product|ux|ui|graphic|visual|motion|research|design)(?:\\s+\\w+){0,3}\\s+intern\\b/.test(normalized);
+  if (internship) return 'unknown';
+
   const cleaned = normalized
     .replace(/\\bcnpj\\s*[:.]?\\s*\\d[\\d.\\/\\-]*/g, ' ')
     .replace(/\\b(?:nao|sem|exceto|nem)\\s+(?:e\\s+|aceita(?:mos)?\\s+|sera\\s+|ser\\s+|temos\\s+|trabalhamos\\s+com\\s+)?(?:clt|pj|freela|freelance|freelancer|pessoa juridica)\\b/g, ' ')
-    .replace(/\\b(?:nao precisa|nao e necessario|nao necessita|dispensa)(?:\\s+\\w+){0,4}\\s+(?:cnpj|nota fiscal)\\b/g, ' ');
+    .replace(/\\b(?:nao precisa|nao e necessario|nao necessita|dispensa)(?:\\s+\\w+){0,4}\\s+(?:cnpj|nota fiscal)\\b/g, ' ')
+    .replace(/\\b(?:through|via|from)\\s+(?:internships?|coursework|freelance|freelancing|personal projects)(?:\\s*,\\s*(?:or\\s+)?)(?:internships?|coursework|freelance|freelancing|personal projects)(?:\\s*,\\s*(?:or\\s+)?(?:internships?|coursework|freelance|freelancing|personal projects))*/g, ' ');
 
   const clt = /\\bclt\\b/.test(cleaned) || /\\bcarteira assinada\\b/.test(cleaned);
   const pj =
@@ -78,5 +92,5 @@ export const EMPLOYMENT_PROMPT_RULE = `- employment_type: set this ONLY from exp
   - pj: the text says PJ, "pessoa jurídica", "nota fiscal", "emissão de nota", or requires an active CNPJ to be hired ("possuir CNPJ", "CNPJ ativo"). A CNPJ number in a footer is not a contract.
   - freelance: the text says freelancer, freelance, or freela.
   - If more than one of clt, pj, and freelance appears (for example "CLT ou PJ"), use "unknown".
-  - Do not use "internship". Estágio is seniority, not employment_type.
+  - Do not use "internship". Estágio, estagiário, and intern roles are seniority, not employment_type. If the vacancy is an internship, use "unknown" even when the text also says freelance, CLT, or PJ. Mentoring interns is not an internship vacancy. "Freelance" listed as past experience ("through internships, coursework, freelance, or personal projects") is not a contract.
   The Apply enrichment node overwrites this field with the same rules. A guessed value is discarded.`

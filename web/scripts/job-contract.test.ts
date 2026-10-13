@@ -6,7 +6,7 @@ import {
   parseJobFiltersFromSearchParams,
   serializeJobFiltersToSearchParams,
 } from '../src/lib/jobSearchParams.ts'
-import { labelEmploymentType } from '../src/lib/labels.ts'
+import { labelEmploymentType, visibleEmploymentLabel } from '../src/lib/labels.ts'
 import type { Job } from '../src/types/job.ts'
 
 function job(partial: Partial<Job>): Job {
@@ -103,4 +103,25 @@ test('o selo só aparece para CLT, PJ e freela', () => {
   assert.equal(labelEmploymentType('unknown'), null)
   assert.equal(labelEmploymentType('internship'), null)
   assert.equal(labelEmploymentType(null), null)
+  assert.equal(visibleEmploymentLabel('intern', 'freelance'), null)
+  assert.equal(visibleEmploymentLabel('mid', 'freelance'), 'Freela')
+})
+
+test('estágio não entra no filtro de contrato', () => {
+  const intern = job({
+    id: 'sezzle',
+    title: 'Product Designer',
+    company: 'sezzle',
+    seniority: 'intern',
+    employment_type: 'freelance',
+    is_international: true,
+  })
+  assert.deepEqual(
+    filterJobs([intern], { ...emptyJobFilters, contract: 'freelance' }).map((item) => item.id),
+    [],
+  )
+  assert.deepEqual(
+    filterJobs([intern], emptyJobFilters).map((item) => item.id),
+    ['sezzle'],
+  )
 })

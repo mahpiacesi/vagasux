@@ -6,7 +6,7 @@ import {
   displayCompany,
   formatJobListedAt,
   isNewJob,
-  labelEmploymentType,
+  visibleEmploymentLabel,
   labelSeniority,
   labelSource,
   resolveWorkModelLabel,
@@ -29,7 +29,7 @@ export function JobRow({
   listingVariant = 'default',
 }: JobRowProps) {
   const seniority = labelSeniority(job.seniority)
-  const contract = labelEmploymentType(job.employment_type)
+  const contract = visibleEmploymentLabel(job.seniority, job.employment_type)
   const workModel = resolveWorkModelLabel(job.work_model, job.location, job.description)
   const source = labelSource(job.source)
   const location = displayLocation(job.location, workModel)

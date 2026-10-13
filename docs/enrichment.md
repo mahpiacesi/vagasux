@@ -70,7 +70,7 @@ Enums:
 - **Freela** só com freelancer, freelance ou freela. "Por projeto" só conta perto de palavras de contratação.
 - **CLT e PJ no mesmo texto** (ou qualquer combinação) fica `unknown`.
 - **Sem essas frases** fica `unknown`. Empresa brasileira, vaga da Gupy ou a palavra "efetivo" não viram CLT.
-- Estágio continua no filtro **Nível**. Este campo não grava `internship`.
+- **Estágio** continua no filtro **Nível**. Vaga de estágio, estagiário ou intern não grava contrato, mesmo se o texto também disser freela, CLT ou PJ. "Freelance" numa lista de experiência anterior ("through internships, coursework, freelance, or personal projects") não conta. Mentorar estagiários não transforma a vaga em estágio.
 
 Vaga sem regime segue publicada. O filtro só separa quem escolhe um contrato.
 

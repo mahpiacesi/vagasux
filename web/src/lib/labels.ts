@@ -152,6 +152,15 @@ export function labelEmploymentType(value: string | null | undefined) {
   return employmentLabels[value] ?? null
 }
 
+/** Estágio é Nível. O selo de contrato não aparece nessa vaga. */
+export function visibleEmploymentLabel(
+  seniority: string | null | undefined,
+  employmentType: string | null | undefined,
+) {
+  if (seniority === 'intern') return null
+  return labelEmploymentType(employmentType)
+}
+
 export function resolveWorkModelLabel(
   workModel: string | null | undefined,
   location: string | null | undefined,
