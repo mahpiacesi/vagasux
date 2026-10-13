@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-12
+**Última atualização:** 2026-10-13
 
 ---
 
@@ -23,7 +23,7 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Sobrancelha, modelista, estilo e editor de vídeo ficam de fora (#152, 09/10). A busca aceita espaço entre palavras (#161, 12/10) |
+| Mural de vagas | ✅ Live | Filtro de contrato CLT, PJ e Freela (#164, 13/10). Estágio não entra nesse filtro. A busca aceita espaço entre palavras (#161, 12/10) |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
 | Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
@@ -34,6 +34,11 @@
 ---
 
 ## Feito recentemente
+
+### Filtro de contrato no mural (13 out)
+- **PR #164** mergeada: em `/oportunidades` e `/vagas-para-iniciantes` dá para filtrar CLT, PJ e Freela.
+- Vaga de estágio não mostra o selo de contrato e não entra nesse filtro.
+- No mural, Estado fica na primeira linha e Contrato na linha de Nível, na mesma coluna. Na curadoria, Contrato fica na primeira linha, à direita de Estado.
 
 ### Espaço na busca das vagas (12 out)
 - **PR #161** mergeada: em `/oportunidades` e `/vagas-para-iniciantes`, dá para escrever duas palavras no filtro. O espaço no fim da palavra deixa de sumir.
@@ -285,6 +290,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #164 — filtro de contrato CLT, PJ e Freela](https://github.com/mahpiacesi/vagasux/pull/164) | ✅ Mergeada em 13/10 |
 | [PR #161 — espaço na busca das vagas](https://github.com/mahpiacesi/vagasux/pull/161) | ✅ Mergeada em 12/10 |
 | [PR #159 — relatos da home no celular](https://github.com/mahpiacesi/vagasux/pull/159) | ✅ Mergeada em 12/10 |
 | [PR #157 — cards de FAQ e Glossário](https://github.com/mahpiacesi/vagasux/pull/157) | ✅ Mergeada em 12/10 |
