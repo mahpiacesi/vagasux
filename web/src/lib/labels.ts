@@ -18,6 +18,12 @@ const workModelLabels: Record<string, string> = {
   unknown: 'Modelo',
 }
 
+const employmentLabels: Record<string, string> = {
+  clt: 'CLT',
+  pj: 'PJ',
+  freelance: 'Freela',
+}
+
 const sourceLabels: Record<string, string> = {
   Gupy: 'Gupy',
   Remotar: 'Remotar',
@@ -139,6 +145,20 @@ export function labelSeniority(value: string | null | undefined) {
 export function labelWorkModel(value: string | null | undefined) {
   if (!value || value === 'unknown') return null
   return workModelLabels[value] ?? value
+}
+
+export function labelEmploymentType(value: string | null | undefined) {
+  if (!value || value === 'unknown' || value === 'internship') return null
+  return employmentLabels[value] ?? null
+}
+
+/** Estágio é Nível. O selo de contrato não aparece nessa vaga. */
+export function visibleEmploymentLabel(
+  seniority: string | null | undefined,
+  employmentType: string | null | undefined,
+) {
+  if (seniority === 'intern') return null
+  return labelEmploymentType(employmentType)
 }
 
 export function resolveWorkModelLabel(

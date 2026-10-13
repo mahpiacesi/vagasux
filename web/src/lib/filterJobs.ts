@@ -28,6 +28,10 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
 
     if (filters.seniority !== 'all' && job.seniority !== filters.seniority) return false
 
+    if (filters.contract !== 'all' && filters.market !== 'international') {
+      if (job.seniority === 'intern' || job.employment_type !== filters.contract) return false
+    }
+
     if (filters.discipline !== 'all') {
       const discipline = resolveDiscipline({
         discipline: job.discipline,
@@ -68,6 +72,7 @@ export function hasActiveFilters(filters: JobFiltersState) {
   const stateActive =
     filters.state !== 'all' &&
     (filters.market === 'all' || filters.market === 'national')
+  const contractActive = filters.contract !== 'all' && filters.market !== 'international'
 
   return (
     filters.query.trim() !== '' ||
@@ -75,6 +80,7 @@ export function hasActiveFilters(filters: JobFiltersState) {
     filters.workModel !== 'all' ||
     filters.seniority !== 'all' ||
     filters.discipline !== 'all' ||
+    contractActive ||
     stateActive
   )
 }

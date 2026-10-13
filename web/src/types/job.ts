@@ -25,6 +25,7 @@ export type Job = {
 export type MarketFilter = 'all' | 'national' | 'international'
 export type WorkModelFilter = 'all' | 'remote' | 'hybrid' | 'onsite'
 export type SeniorityFilter = 'all' | 'intern' | 'trainee' | 'junior' | 'mid' | 'senior' | 'lead'
+export type ContractFilter = 'all' | 'clt' | 'pj' | 'freelance'
 export type StateFilter = 'all' | string
 
 export type JobFiltersState = {
@@ -32,6 +33,7 @@ export type JobFiltersState = {
   market: MarketFilter
   workModel: WorkModelFilter
   seniority: SeniorityFilter
+  contract: ContractFilter
   discipline: DisciplineFilter
   state: StateFilter
 }

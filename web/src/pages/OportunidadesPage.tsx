@@ -54,7 +54,7 @@ export function OportunidadesPage() {
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
-  }, [filters.market, filters.workModel, filters.seniority, filters.discipline, filters.state, deferredQuery])
+  }, [filters.market, filters.workModel, filters.seniority, filters.contract, filters.discipline, filters.state, deferredQuery])
 
   const visibleJobs = useMemo(
     () => filtered.slice(0, visibleCount),

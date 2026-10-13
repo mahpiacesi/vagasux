@@ -4,6 +4,7 @@ import {
   resolveBrazilianStateFilter,
 } from '@/lib/location'
 import type {
+  ContractFilter,
   JobFiltersState,
   MarketFilter,
   SeniorityFilter,
@@ -15,6 +16,7 @@ export const emptyJobFilters: JobFiltersState = {
   market: 'all',
   workModel: 'all',
   seniority: 'all',
+  contract: 'all',
   discipline: 'all',
   state: 'all',
 }
@@ -29,6 +31,7 @@ const SENIORITY_VALUES = [
   'senior',
   'lead',
 ] as const
+const CONTRACT_VALUES = ['clt', 'pj', 'freelance'] as const
 
 function pick<T extends string>(
   value: string | null,
@@ -54,6 +57,7 @@ export function parseJobFiltersFromSearchParams(
       searchParams.get('seniority'),
       SENIORITY_VALUES,
     ) as SeniorityFilter,
+    contract: pick(searchParams.get('contract'), CONTRACT_VALUES) as ContractFilter,
     discipline: JOB_DISCIPLINES.includes(discipline as never)
       ? (discipline as DisciplineFilter)
       : 'all',
@@ -79,6 +83,9 @@ export function serializeJobFiltersToSearchParams(
   if (filters.market !== 'all') params.set('market', filters.market)
   if (filters.workModel !== 'all') params.set('workModel', filters.workModel)
   if (filters.seniority !== 'all') params.set('seniority', filters.seniority)
+  if (filters.contract !== 'all' && filters.market !== 'international') {
+    params.set('contract', filters.contract)
+  }
   if (filters.discipline !== 'all') params.set('discipline', filters.discipline)
   if (filters.state !== 'all') {
     params.set('state', brazilianStateToUf(filters.state) ?? filters.state)

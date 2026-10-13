@@ -6,6 +6,7 @@ import {
   displayCompany,
   formatJobListedAt,
   isNewJob,
+  visibleEmploymentLabel,
   labelSeniority,
   labelSource,
   resolveWorkModelLabel,
@@ -28,6 +29,7 @@ export function JobRow({
   listingVariant = 'default',
 }: JobRowProps) {
   const seniority = labelSeniority(job.seniority)
+  const contract = visibleEmploymentLabel(job.seniority, job.employment_type)
   const workModel = resolveWorkModelLabel(job.work_model, job.location, job.description)
   const source = labelSource(job.source)
   const location = displayLocation(job.location, workModel)
@@ -65,6 +67,14 @@ export function JobRow({
                 className={`${badgeBase} bg-brand-100 text-brand-400`}
               >
                 {workModel}
+              </Badge>
+            ) : null}
+            {contract ? (
+              <Badge
+                variant="outline"
+                className={`${badgeBase} border-brand-200/80 text-brand-500`}
+              >
+                {contract}
               </Badge>
             ) : null}
             {job.is_international ? (
