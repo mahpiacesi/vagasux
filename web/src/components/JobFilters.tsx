@@ -132,7 +132,7 @@ function StateFilterSelect({
       aria-hidden={hidden}
       className={cn(
         'w-full shrink-0',
-        narrow ? 'md:w-36' : 'md:w-[11rem]',
+        narrow ? 'md:w-28 md:max-w-28' : 'md:w-[11rem]',
         hidden && 'invisible pointer-events-none',
       )}
     >
@@ -250,7 +250,7 @@ export function JobFilters({
             'flex flex-wrap items-end gap-x-5 gap-y-4',
             hideSeniority &&
               value.market !== 'international' &&
-              'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0.75rem,1fr)_max-content_minmax(0.75rem,1fr)_max-content_minmax(0.75rem,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
+              'min-[860px]:grid min-[860px]:w-full min-[860px]:max-w-full min-[860px]:grid-cols-[max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content_minmax(0px,1fr)_max-content] min-[860px]:items-end min-[860px]:gap-x-0',
           )}
         >
           <FilterRow
