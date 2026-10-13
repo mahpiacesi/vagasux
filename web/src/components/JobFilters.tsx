@@ -246,7 +246,7 @@ export function JobFilters({
           className={cn(
             'flex items-end gap-y-4',
             hideSeniority && value.market !== 'international'
-              ? 'flex-wrap gap-x-5 gap-y-4 lg:flex-nowrap lg:justify-between'
+              ? 'flex-wrap gap-x-5 lg:flex-nowrap lg:justify-between'
               : 'flex-wrap gap-x-5',
           )}
         >
