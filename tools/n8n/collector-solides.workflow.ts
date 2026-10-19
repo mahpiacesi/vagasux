@@ -245,7 +245,7 @@ function normalizeTitle(title) {
 
 function isOutOfScopeTitle(title) {
   const t = normalizeTitle(title);
-  if (/\\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(t)) return true;
+  if (/\\b(sobrancelhas?|designer de sobrancelhas?|cilios|lash(?:es)?|eyelash(?:es)?|pestanas?|nail designer|designer de unhas?|hair designer|designer de cabelo|maquiador(?:as|es|a)?|makeup artists?|esteticistas?|designer de estetica|brow designers?|volume russo|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(t)) return true;
   if (/\\b(motion designer|motion design)\\b/.test(t)) return false;
   return /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bedicao\\s+de\\s+videos?\\b|\\banalista\\s+audiovisual\\b/.test(t);
 }

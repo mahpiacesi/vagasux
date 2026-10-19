@@ -164,7 +164,7 @@ function isNonDesignTitle(title) {
 
 function isOutOfScopeTitle(title) {
   const t = normalizeTitle(title);
-  if (/\\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(t)) return true;
+  if (/\\b(sobrancelhas?|designer de sobrancelhas?|cilios|lash(?:es)?|eyelash(?:es)?|pestanas?|nail designer|designer de unhas?|hair designer|designer de cabelo|maquiador(?:as|es|a)?|makeup artists?|esteticistas?|designer de estetica|brow designers?|volume russo|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\\b/.test(t)) return true;
   if (/\\b(motion designer|motion design)\\b/.test(t)) return false;
   return /\\b(?:editor(?:\\s*\\(a\\))?|editora)\\s+de\\s+videos?\\b|\\bvideo\\s+editors?\\b|\\bvideomakers?\\b|\\bedicao\\s+de\\s+videos?\\b|\\banalista\\s+audiovisual\\b/.test(t);
 }
@@ -173,7 +173,7 @@ function isRelevant(title) {
   const t = normalizeTitle(title);
   if (isNonDesignTitle(t) || isOutOfScopeTitle(t)) return false;
   const excluded =
-    /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|sobrancelhas?|unha|barbeir|cabelo|estetic|manicure|pedicure|micropigment|interior(es)?|design de ambientes|moveis planejados|mobiliario|decorador de interiores)\\b/.test(t);
+    /\\b(vendedor|vendedora|auxiliar administrativo|apoio de loja|operador de loja|caixa|estoquista|consultor de vendas|sobrancelhas?|cilios|lash(?:es)?|eyelash(?:es)?|pestanas?|nail designer|designer de unhas?|hair designer|designer de cabelo|maquiador(?:as|es|a)?|makeup artists?|esteticistas?|designer de estetica|brow designers?|volume russo|unha|barbeir|cabelo|manicure|pedicure|micropigment|interior(es)?|design de ambientes|moveis planejados|mobiliario|decorador de interiores)\\b/.test(t);
   const designRole =
     /\\b(designer|design grafico|designer grafico|design de produto|carreira de design|design ops|design system|ux writer|content designer|product designer|visual designer|graphic designer|web designer|motion designer|service designer|interaction designer|art director|diretor de arte|ux|ui|research|pesquisa)\\b/.test(t);
   const leadershipOrSupport =

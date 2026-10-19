@@ -5,8 +5,18 @@ import { isNonDesignCareerJob } from '../src/lib/discipline.ts'
 const rejected = [
   'Designer De Sobrancelha - Shopping Eldorado',
   'Designer De Sobrancelha',
+  'Designer De Cílios (Lash Designer)',
+  'Lash Designer',
+  'Lashes',
+  'Nail Designer - Nail Designer Em Vargem Grande Paulista',
+  'Designer de Unhas',
+  'Maquiadora',
+  'Hair Designer',
+  'Esteticista',
+  'Designer de Estética',
   'Modelista Pleno | Temporário',
   'Assistente de Estilo Infantil',
+  'Estilista Júnior | Acessórios',
   'Editor(a) de Vídeo',
   'Editora de Vídeo',
   'Editor de vídeo',
@@ -38,6 +48,16 @@ for (const title of kept) {
     assert.equal(isNonDesignCareerJob({ title }), false)
   })
 }
+
+test('product designer não sai por cliente de estética na descrição', () => {
+  assert.equal(
+    isNonDesignCareerJob({
+      title: 'Product Designer',
+      description: 'Produto digital para um estúdio de cílios e lash designer.',
+    }),
+    false,
+  )
+})
 
 test('motion designer não sai por menção de vídeo na descrição', () => {
   assert.equal(

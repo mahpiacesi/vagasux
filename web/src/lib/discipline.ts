@@ -684,7 +684,7 @@ export function labelDiscipline(input: {
 
 /** Beauty, fashion pattern/styling, and similar titles that are not digital design. */
 const OUT_OF_SCOPE_HEADLINE =
-  /\b(sobrancelhas?|designer de sobrancelhas?|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\b/
+  /\b(sobrancelhas?|designer de sobrancelhas?|cilios|lash(?:es)?|eyelash(?:es)?|pestanas?|nail designer|designer de unhas?|hair designer|designer de cabelo|maquiador(?:as|es|a)?|makeup artists?|esteticistas?|designer de estetica|brow designers?|volume russo|modelistas?|assistente de estilo|estilistas?|designer de moda|design de moda)\b/
 
 /**
  * Audiovisual editing, not product motion.
