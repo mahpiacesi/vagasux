@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "limpa:demo": "node tools/limpa-grupos/server.mjs",
+    "limpa:test": "node --test tools/limpa-grupos/domain.test.mjs tools/limpa-grupos/engine.test.mjs",
     "export:carousel": "node tools/carousel/export-carousel.mjs",
     "fetch:storyset": "node tools/carousel/scripts/fetch-storyset-illustrations.mjs"
   },
