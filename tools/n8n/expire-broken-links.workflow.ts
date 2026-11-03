@@ -47,7 +47,7 @@ const fetchRecentPublished = node({
     parameters: {
       method: 'GET',
       url: expr(
-        '{{ "https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/jobs?status=eq.published&select=id,url,source,source_job_id,title&url=not.is.null&order=updated_at.desc&limit=250&published_at=gte." + $now.minus({ days: 14 }).toISO() }}',
+        '{{ "https://xbvspzwjjjtkvecseoog.supabase.co/rest/v1/jobs?status=eq.published&select=id,url,source,source_job_id,title&url=not.is.null&order=published_at.asc.nullslast&limit=250&offset=" + String(($now.day % 3) * 250) }}',
       ),
       authentication: 'predefinedCredentialType',
       nodeCredentialType: 'supabaseApi',
@@ -161,11 +161,15 @@ const classifyBrokenLinks = node({
     parameters: {
       mode: 'runOnceForAllItems',
       language: 'javaScript',
-      jsCode: `function isBroken(statusCode, error) {
+      jsCode: `function isBroken(statusCode, error, body) {
   if (statusCode === 404 || statusCode === 410) return true;
   const blob = String(error?.message || error?.code || error?.description || '');
   if (/status code 404|status code 410/i.test(blob)) return true;
   if (/ENOTFOUND|ECONNREFUSED|ETIMEDOUT|EAI_AGAIN|Could not resolve|getaddrinfo|ERR_BAD_REQUEST.*404/i.test(blob)) return true;
+  const text = String(body || '').toLowerCase();
+  if (text.includes('esta vaga não está mais disponível') || text.includes('esta vaga nao esta mais disponivel')) return true;
+  if (text.replace(/\\s/g, '').includes('"expired":true')) return true;
+  if (text.includes('closed-job__flavor--closed')) return true;
   return false;
 }
 
@@ -175,8 +179,9 @@ for (let i = 0; i < items.length; i++) {
   const base = inputs[i]?.json ?? {};
   const statusCode = items[i].json?.statusCode ?? items[i].json?.status;
   const error = items[i].json?.error;
+  const body = items[i].json?.body ?? items[i].json?.data;
   if (!base.id) continue;
-  if (isBroken(statusCode, error)) {
+  if (isBroken(statusCode, error, body)) {
     broken.push({
       id: base.id,
       url: base.url,
