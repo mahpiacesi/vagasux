@@ -124,6 +124,36 @@ export function isNonDesignCareerJob(input: {
   return false
 }
 
+/** Notion "Vagas para iniciantes" already passed a person. Collectors did not. */
+export function isHumanCuratedListing(input: {
+  source?: unknown
+  curated?: unknown
+}): boolean {
+  if (input.curated === true) return true
+  return normalizeJobText(input.source) === 'vagasux'
+}
+
+/**
+ * Enrichment may hide a collector job that is not design.
+ * A human-curated listing stays published. Closed links are a separate check.
+ */
+export function shouldPublishEnrichedJob(input: {
+  source?: unknown
+  curated?: unknown
+  isDesignJob: boolean
+  confidence: number
+  retailFalsePositive: boolean
+  nonDesignCareer: boolean
+}): boolean {
+  if (isHumanCuratedListing(input)) return true
+  return (
+    input.isDesignJob &&
+    input.confidence >= 0.7 &&
+    !input.retailFalsePositive &&
+    !input.nonDesignCareer
+  )
+}
+
 /** n8n-friendly guard for Apply enrichment (non-design career false positives). */
 export const NON_DESIGN_CAREER_GUARD_JS = `
 function normalizeJobText(value) {

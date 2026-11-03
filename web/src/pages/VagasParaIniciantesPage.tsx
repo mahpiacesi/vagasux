@@ -10,7 +10,6 @@ import { fetchPublishedJobs } from '@/lib/supabase'
 import type { Job } from '@/types/job'
 
 const PAGE_SIZE = 15
-const CURATED_SOURCE = 'VagasUX'
 
 export function VagasParaIniciantesPage() {
   const { filters, setFilters, clearFilters } = useJobListingFilters()
@@ -27,7 +26,7 @@ export function VagasParaIniciantesPage() {
       setLoading(true)
       setError(null)
       try {
-        const data = await fetchPublishedJobs({ source: CURATED_SOURCE })
+        const data = await fetchPublishedJobs({ curated: true })
         if (!cancelled) setJobs(data)
       } catch (err) {
         if (!cancelled) {

@@ -30,8 +30,9 @@ O collector usa `upsert_collector_jobs_batch`, que internamente chama `upsert_co
 
 - **`source_job_id`** = ID da page no Notion (re-sync da curadoria)
 - **`url`** = link de candidatura → dedup com Gupy/Remotar/Greenhouse
-- Se a URL já existir → `updated_by_url` (sem duplicata; `source` original preservado)
-- Se for vaga exclusiva da curadoria → insert com `source = 'VagasUX'`
+- Se o mesmo anúncio da Gupy já existir (id no link, ou a mesma URL) e estiver publicado → `curated_existing`: marca `curated` e `also_on_board` na linha do coletor, aponta `merged_into` na linha extra e não cria outra vaga. A curadoria mostra o selo "Também no mural".
+- Se a URL já existir e a vaga estiver expirada porque o link fechou → mantém expirada. Não reabre.
+- Se for vaga exclusiva da curadoria → insert com `source = 'VagasUX'` e `curated = true`
 
 Falhas individuais dentro do batch **não abortam** o restante; o RPC devolve `{ total, ok, failed, errors }`.
 
