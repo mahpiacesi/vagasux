@@ -33,7 +33,7 @@ O node nativo **Supabase** do n8n não tem upsert. Por isso os collectors usam u
 - Header `Prefer`: `resolution=merge-duplicates,return=representation`
 - Body: contrato normalizado (`source`, `source_job_id`, `company`, `title`, `description`, `url`, `location`, `published_at`, `status`)
 
-**Collector VagasUX (curadoria):** usa RPC `upsert_collector_jobs_batch` — uma chamada HTTP com array de vagas. Ver [`collector-vagasux.md`](collector-vagasux.md).
+**Collector VagasUX (curadoria):** usa RPC `upsert_collector_jobs_batch`, uma chamada HTTP com array de vagas. Se o anúncio já veio de um coletor, reaproveita essa linha e marca o selo da curadoria, sem segunda cópia. Ver [`collector-vagasux.md`](collector-vagasux.md).
 
 Workflows atualizados e publicados:
 

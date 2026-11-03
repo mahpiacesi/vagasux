@@ -34,10 +34,13 @@ const jobColumns = [
   'tools',
   'published_at',
   'captured_at',
+  'curated',
+  'also_on_board',
 ] as const
 
 export type FetchPublishedJobsOptions = {
   source?: string
+  curated?: boolean
 }
 
 export async function fetchPublishedJobs(
@@ -47,8 +50,11 @@ export async function fetchPublishedJobs(
     .from('jobs')
     .select(jobColumns.join(', '))
     .eq('status', 'published')
+    .is('merged_into', null)
 
-  if (options?.source) {
+  if (options?.curated) {
+    query = query.or('source.eq.VagasUX,curated.eq.true')
+  } else if (options?.source) {
     query = query.eq('source', options.source)
   }
 

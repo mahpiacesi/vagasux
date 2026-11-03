@@ -14,7 +14,8 @@ export function filterJobs(jobs: Job[], filters: JobFiltersState): Job[] {
   const q = normalize(filters.query.trim())
 
   return jobs.filter((job) => {
-    if (isNonDesignCareerJob(job)) return false
+    const humanCurated = job.curated === true || job.source === 'VagasUX'
+    if (!humanCurated && isNonDesignCareerJob(job)) return false
 
     const isInternational = resolveIsInternational(job.is_international, job.location)
 

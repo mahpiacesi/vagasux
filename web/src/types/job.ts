@@ -20,6 +20,8 @@ export type Job = {
   tools: string[] | null
   published_at: string | null
   captured_at: string
+  curated?: boolean | null
+  also_on_board?: boolean | null
 }
 
 export type MarketFilter = 'all' | 'national' | 'international'

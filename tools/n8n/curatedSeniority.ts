@@ -1,6 +1,7 @@
 /**
- * Seniority rules for VagasUX curated jobs (Notion → source = VagasUX).
- * Keep in sync with Enrichment Apply enrichment node.
+ * Seniority helper kept for reference.
+ * Do not use it to hide or rewrite a human-curated job. A volunteer already
+ * decided that listing belongs on the iniciantes page, at whatever level.
  */
 
 export function normalizeJobText(value: unknown): string {

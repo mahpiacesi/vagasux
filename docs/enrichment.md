@@ -29,17 +29,14 @@ Regras aplicadas em três camadas:
 2. **Guarda determinística** — `tools/n8n/jobClassification.ts` no node **Apply enrichment** (vídeo/audiovisual + falso positivo de shopping/gerente de loja)
 3. **Filtro do collector Gupy** — título precisa de cargo de design explícito; `\bdesign\b` sozinho em nome de shopping não entra
 
-## Curadoria (`source = VagasUX`)
+## Curadoria (`source = VagasUX` ou `curated`)
 
-Vagas da base Notion **Vagas para iniciantes** também passam pelo enrichment, com regra extra de senioridade:
+A base Notion **Vagas para iniciantes** já passou por uma pessoa. O enrichment preenche os campos, mas não esconde a vaga por escopo, senioridade ou palavra no benefício (por exemplo "manicure" num benefício).
 
-- Permitido: **`intern`**, **`trainee`** ou **`junior`** apenas
-- Estágio/aprendiz no texto → `intern`
-- Trainee no texto → `trainee`
-- Júnior no texto → `junior`
-- Sem nível no título (ex.: só "Product Designer") → **`junior`**, nunca pleno
-
-Implementação: `tools/n8n/curatedSeniority.ts` + node **Apply enrichment** no workflow Enrichment.
+- A trava de não-design, varejo e confiança fica só nas vagas dos coletores gerais.
+- Nível pleno, trainee ou o que a pessoa cadastrou permanece. Não há checagem para forçar júnior.
+- Link 404, vaga encerrada ou página que diz que não há mais vaga continua expirada. Isso vale para a curadoria também.
+- `shouldPublishEnrichedJob` em `tools/n8n/jobClassification.ts`. No workflow publicado, o node **Keep human curation** grava `published` quando `source` é VagasUX ou `curated` é verdadeiro. O export do node **Apply enrichment** usa a mesma condição.
 
 ## Fluxo
 
@@ -48,8 +45,9 @@ Scheduler (após collectors + expire)
     → Enrichment
          buscar status = raw (lote)
          → Gemini (JSON)
-         → se design + confidence >= 0.70 → published
-         → senão → expired
+         → curadoria humana → published
+         → coletor: design + confidence >= 0.70 → published
+         → coletor, senão → expired
 ```
 
 ## Campos preenchidos pela IA

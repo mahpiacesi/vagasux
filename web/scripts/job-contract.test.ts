@@ -125,3 +125,30 @@ test('estágio não entra no filtro de contrato', () => {
     ['sezzle'],
   )
 })
+
+test('curadoria humana permanece mesmo com manicure na descrição', () => {
+  const description = 'Benefício Posher de manicure para o time.'
+  const curated = job({
+    id: 'juntos',
+    source: 'VagasUX',
+    curated: true,
+    description,
+  })
+  const overlap = job({
+    id: 'bemobi',
+    source: 'Gupy',
+    curated: true,
+    also_on_board: true,
+    description,
+  })
+  const collector = job({
+    id: 'gupy',
+    source: 'Gupy',
+    description,
+  })
+
+  assert.deepEqual(
+    filterJobs([curated, overlap, collector], emptyJobFilters).map((item) => item.id),
+    ['juntos', 'bemobi'],
+  )
+})

@@ -85,6 +85,14 @@ export function JobRow({
                 Internacional
               </Badge>
             ) : null}
+            {listingVariant === 'curated' && job.also_on_board ? (
+              <Badge
+                variant="outline"
+                className={`${badgeBase} border-brand-200/80 bg-brand-100/60 text-brand-500`}
+              >
+                Também no mural
+              </Badge>
+            ) : null}
             {source && !hideSourceBadge ? (
               <Badge
                 variant="outline"
