@@ -2,7 +2,7 @@
 
 > **Leia isto ao retomar uma sessão.** O chat pode aparecer vazio após summarization; este arquivo é o resumo visual persistente.
 
-**Última atualização:** 2026-10-13
+**Última atualização:** 2026-11-03
 
 ---
 
@@ -23,9 +23,9 @@
 | Collector Parceiros | ✅ Ativo | Scheduler 8h; só Ativo + Logo |
 | Collector InHire | ✅ Mergeado | PR #106 — tenants públicos de Design |
 | `/parcerias` | ✅ Live | CTAs de contato ok, sem e-mail visível |
-| Mural de vagas | ✅ Live | Filtro de contrato CLT, PJ e Freela (#164, 13/10). No celular, as pills quebram dentro do card (#165, 13/10). A busca aceita espaço entre palavras (#161, 12/10) |
+| Mural de vagas | ✅ Live | Curadoria humana fica publicada. Vaga que também está no mural leva o selo Também no mural (#168, 03/11). Filtro de contrato CLT, PJ e Freela (#164, 13/10). No celular, as pills quebram dentro do card (#165, 13/10) |
 | Analytics (Clarity + GA4) | ✅ Mergeado | PR #42 |
-| Enrichment (IA) | ✅ Ativo | 31 vagas enriquecidas em catch-up 31/07 |
+| Enrichment (IA) | ✅ Ativo | A trava de design, confiança e palavra no benefício vale só para os coletores gerais. A curadoria humana segue publicada (#168, 03/11) |
 | Collector VagasUX batch | ✅ Mergeado | PR #45 — RPC batch + Scheduler resiliente |
 | Home logos dinâmicos | ✅ Live | PR #46. No celular, cada logo cabe no card (#150, 08/10) |
 | Collector Sólides | ✅ Ativo | Exec #35 — 109 vagas; PR #47 mergeado |
@@ -34,6 +34,12 @@
 ---
 
 ## Feito recentemente
+
+### Curadoria humana sem a trava da IA (3 nov)
+- **PR #168** mergeada: vaga que uma pessoa colocou na curadoria não passa pela trava de design, confiança, senioridade ou palavra no benefício. Essa trava fica só nas vagas dos coletores gerais.
+- Se a mesma vaga já está no mural, a curadoria mostra um card com o selo Também no mural e não duplica.
+- Juntos Somos Mais e Bertuzzi voltaram. Paciente 360, Bemobi e Rodobens ficam com o selo. Na Rodobens, o card é o título que já estava na Gupy.
+- C6, singlo, vagas do LinkedIn já encerradas e Wellhub continuam fora: o link não tem mais vaga.
 
 ### Filtro no celular (13 out)
 - **PR #165** mergeada: em `/oportunidades` e `/vagas-para-iniciantes`, no celular, cada grupo do filtro fica na própria linha e as pills quebram dentro do card. A página deixa de rolar para o lado.
@@ -294,6 +300,7 @@
 
 | Item | Status |
 |------|--------|
+| [PR #168, curadoria humana sem a trava da IA](https://github.com/mahpiacesi/vagasux/pull/168) | ✅ Mergeada em 03/11 |
 | [PR #165 — filtro no celular](https://github.com/mahpiacesi/vagasux/pull/165) | ✅ Mergeada em 13/10 |
 | [PR #164 — filtro de contrato CLT, PJ e Freela](https://github.com/mahpiacesi/vagasux/pull/164) | ✅ Mergeada em 13/10 |
 | [PR #161 — espaço na busca das vagas](https://github.com/mahpiacesi/vagasux/pull/161) | ✅ Mergeada em 12/10 |
