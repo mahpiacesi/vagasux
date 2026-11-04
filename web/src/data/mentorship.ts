@@ -1,3 +1,4 @@
+import { mentorPageIds } from '@/data/mentorPageIds'
 import { volunteers } from '@/data/volunteers'
 
 export type Mentor = {
@@ -25,7 +26,7 @@ export const mentors: Mentor[] = mentorAvailability.flatMap((mentor) => {
   const volunteer = volunteers.find((person) => person.slug === mentor.slug)
   return volunteer
     ? [{
-        id: mentor.slug,
+        id: mentorPageIds[mentor.slug] ?? mentor.slug,
         ...mentor,
         name: volunteer.name,
         photo: volunteer.photo,
